@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://dap.digitalgov.gov/ https://www.google-analytics.com/ https://code.jquery.com/; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com/ https://www.python.org/ https://binder.opensci.2i2c.cloud/ https://anaconda.org/ https://img.shields.io/;" >
+  <title>SSC RESTful Web Services</title>
+  <meta content="Bernie Harris" name="author">
+  <meta name="orgcode" content="672">
+  <meta name="description"
+ content="The SSC Web services allow a software developer to use SSC services in their own application...">
+  <meta name="keywords"
+ content="science, data, sscweb, coordinated data analysis, multi-mission, multi-instrument, space physics, XML, Web services">
+  <meta name="rno" content="Robert.M.Candey.1">
+  <meta name="content-owner" content="Tamara.J.Kovalick.1">
+  <meta name="webmaster" content="Tamara.J.Kovalick.1">
+  <link rel="icon" href="nasaicon.png" type="image/png">
+  <link rel="SHORTCUT ICON" href="favicon.ico">
+  <link rel="stylesheet" href="/css/common.css" type="text/css">
+  <link rel="stylesheet" href="/css/spdf_services.css" type="text/css">
+  <style type="text/css">	
+	        a.modellink {font-size:13px; font-style:oblique; font-weight:700;} 
+	   	a.serviceName {color: #069; background-color: #fff;}
+		table td {border: thin solid black}
+
+	   	#sources	td.selected {color: #ffffff; background-color: #006699; text-decoration:none;} 
+   	  	#services	td.selected {padding: 2px; border: 1px dashed #069; text-decoration:none; font-size: 16px; color: #006699;} 
+  </style>
+  <script type="text/javascript" id="_fed_an_ua_tag"
+           src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC">
+  </script>
+  <script type="text/javascript"
+      src="https://code.jquery.com/jquery-3.1.0.min.js">
+  </script>
+  <script type="text/javascript" src="../WebServices.js">
+  </script>
+</head>
+<body alink="#000088" bgcolor="#ffffff" link="#0000ff" text="#000000"
+ vlink="#ff0000">
+<div id="paper">
+<!--#include virtual="../header.html"-->
+<p><font size="+1">
+<center>SSC RESTful Web Services</center>
+</font>
+</p>
+
+<h2>Introduction </h2>
+
+The <a href="/">Satellite Situation Center</a> is a system to cast 
+geocentric spacecraft location information into a framework of (empirical) 
+geophysical regions and mappings of spacecraft locations along lines of 
+the Earth's magnetic field.  While SSCWeb provides access to this data 
+through an HTML-based user interface, these Web services provides a
+<a href="https://en.wikipedia.org/wiki/Web_api">(Web)</a>
+<a href="https://en.wikipedia.org/wiki/API">application programmming interface
+</a>(API) to SSC.
+
+If you are not a software developer and simply want to use the existing web
+(HTML) interface to SSC, then return to the <a href="/">main SSCWeb page</a>.
+
+If you are developing software that requires the type of information
+available at SSC, the the SSC Web services
+will provide a convenient API to the information.
+This document is organized as follows:
+<ul>
+  <li><a href="#Simple_Access_Mechanisms">Simple Access Mechanisms</a></li>
+  <li><a href="#Technical_Details">Technical Details</a></li>
+</ul>
+
+
+<h3 id="Simple_Access_Mechanisms">Simple Access Mechanisms</h3>
+
+This section describes simple, high-level, mechanisms for accessing SSC
+data through these web services from various programming languages.  If
+these do not meet your needs, you may be interested the
+<a href="#Technical_Details">low-level details</a> instead.
+
+<ul>
+  <li id="Python_Client_Libraries"><img width="100px" hight="auto" src="https://www.python.org/static/community_logos/python-logo-generic.svg" width="100px" height="auto" alt="Python"></img></li>
+  <ul>
+    <li><a href="py/sscws" target="_blank">sscws</a> 
+      <ul>
+        <li><a href="py/GetStarted.html" target="_blank">Getting started</a>
+            with the <code>sscws</code> client library.</li>
+        <li>sscws at the
+          <a href="https://pypi.org/project/sscws/" target="_blank">
+             PyPI respository</a>.
+        </li>
+        <li>
+          <div style="display: flex">sscws at &nbsp;
+            <a href="https://anaconda.org/conda-forge/sscws" target="_blank"> <img src="https://anaconda.org/conda-forge/sscws/badges/version.svg" /> </a>
+          </div>
+        </li>
+        <li id="Jupyter_Notebook_Examples">
+<!-- Use
+    binder.org (and static.binder.org for badge) OR
+    binder.opensci.2i2c.cloud
+    in this notebook section and CSP above
+ -->
+          <div style="display: flex">Jupyter Notebook Examples:&nbsp;
+            <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/sscws-notebooks/main"
+               target="_blank">
+              <img alt="launch binder"
+                  src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+            </a>
+          </div>
+          <ul>
+            <li id="SscWsExample">
+              <a href="jupyter/SscWsExample.html" 
+                 target="_blank">Simple Location Example</a>
+             (<a href="jupyter/SscWsExample.ipynb" download>ipynb file</a>).
+              <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/sscws-notebooks/main?labpath=SscWsExample.ipynb"
+             target="_blank">
+                <img alt="launch binder"
+                  src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+              </a>
+            </li>
+            <li id="SscWsBTraceExample">
+              <a href="jupyter/SscWsBTraceExample.html" 
+                 target="_blank">Complex Location Example</a>
+              (<a href="jupyter/SscWsBTraceExample.ipynb" download>ipynb file</a>)
+              requesting many values including magnetic field line
+              tracing.  This example also demonstrates how to diagnose
+              a problem with an invalid request.
+              <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/sscws-notebooks/main?labpath=SscWsBTraceExample.ipynb"
+             target="_blank">
+                <img alt="launch binder"
+                  src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+              </a>
+            </li>
+            <li id="SscWsRadialConjunction">
+              <a href="jupyter/SscWsRadialConjunction.html" 
+                 target="_blank">Radial Conjunction With Ground Location</a> 
+              (<a href="jupyter/SscWsRadialConjunction.ipynb" download>ipynb file</a>).
+              <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/sscws-notebooks/main?labpath=SscWsRadialConjunction.ipynb"
+             target="_blank">
+                <img alt="launch binder"
+                  src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+              </a>
+            </li>
+            <li id="SscWsConjunctionExample">
+              <a href="jupyter/SscWsConjunctionExample.html" 
+                 target="_blank">Magnetic Field Line Conjunction Example</a> 
+              (<a href="jupyter/SscWsConjunctionExample.ipynb" download>ipynb file</a>)
+              with related data retrieval/plotting using 
+              <a href="https://pypi.org/project/cdasws/"
+                 target="_blank">cdasws</a>.
+              <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/sscws-notebooks/main?labpath=SscWsConjunctionExample.ipynb"
+             target="_blank">
+                <img alt="launch binder"
+                  src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li id="pyscript">
+          <a href="https://pyscript.net/" target="_blank">PyScript</a>
+          <a href="pyscript" target="_blank">example</a> of using 
+          <a href="py/sscws" target="_blank">sscws</a> in a web page.
+        </li>
+        <li id="WS_Client_Examples">
+          These <a href="#Get_Client_Example">web services themselves</a>
+          can produce example client Python and IDL&reg; source code.  
+          For example, here is 
+          <a href="/WS/sscr/2/observatories/iss/clientLibraryExample/" 
+           target="_blank">example client code</a> to get 
+          <a href="https://en.wikipedia.org/wiki/International_Space_Station" 
+           target="_blank">International Space Station</a> (ISS) orbit 
+          information.
+        </li>
+
+      </ul>
+    </li>
+  </ul>
+  <li><a href="https://www.nv5geospatialsoftware.com/Products/IDL"
+       target="_blank">NV5 Interactive Data Language (IDL&reg;)</a></li>
+    <ul>
+      <li><a href="SscIdlLibrary.html" target="_blank">SPDF SSC IDL&reg; Web 
+          Services Library</a>. This library makes it easy to call these 
+        web services from IDL&reg; code. The library contains several complete
+        example clients (e.g., spdfsscwsexample) and an IDL&reg; Jupyter 
+        notebook. 
+      </li>
+<!--
+      <li>IDLnetURL</li>
+      <li>IDLffXMLDOM</li>
+-->
+    </ul>
+  </li>
+  <li>Unix <a href="https://en.wikipedia.org/wiki/Shell_script" 
+            target="_blank">Shell Script</a>
+    <ul>
+<!--
+      <li>cURL</li>
+      <li>xsltproc</li>
+      <li>jq</li>
+-->
+      <li><a href="restExamples.tar.gz">Shell Script Examples</a>.&nbsp;
+        These examples should run on most 
+        <a href="https://en.wikipedia.org/wiki/Unix-like" 
+         target="_blank"> Unix-like</a> 
+        (e.g., macOS, Linux, Solaris, Windows Subsystem for Linux, etc.) 
+        platforms that have 
+        <code>curl</code>, <code>xsltproc</code>, and <code>xmllint</code>.
+        To install the prerequisite software on debian/ubuntu based Linux
+        distributions, do
+        <ul>
+          <li><code>$ sudo apt install libxml2-utils</code></li>
+          <li><code>$ sudo apt install xsltproc</code></li>
+        </ul>
+        To install the prerequisite software on rpm based Linux
+        distributions, do
+        <ul>
+          <li><code>$ sudo dnf install libxml2</code></li>
+          <li><code>$ sudo dnf install libxslt</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>JavaScript
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
+          target="_blank">Fetch API</a>
+      <li><a href="https://jquery.com/" target="_blank">jQuery</a>
+          <a href="https://api.jquery.com/category/ajax/" target="_blank">
+            .ajax()</a></li>
+<!--
+      <li><a href="https://en.wikipedia.org/wiki/XMLHttpRequest"
+           target="_blank">XMLHttpRequest</a></li>
+-->
+    </ul>
+    <li><a href="https://en.wikipedia.org/wiki/Javascript" target="_blank">
+      JavaScript</a> Examples.&nbsp; These examples should run on most modern 
+      browsers.
+      <ul>
+        <li><a href="jQueryExample1.html" target="_blank">Get Graphs example</a>.</li>
+        <li><a href="jQueryExample3.html" target="_blank">Get Locations example</a>.</li>
+      </ul>
+    </li>
+  </li>
+  <li>Java
+    <ul>
+      <li><a href="https://en.wikipedia.org/wiki/Jakarta_RESTful_Web_Services"
+           target="_blank">Jakarta RESTful Web Services</a> client API<br>
+      </li>
+<!--
+      <li><a href="https://hc.apache.org/" target="_blank">
+           Apache HttpComponents</a> 
+        <a href="https://hc.apache.org/httpcomponents-client-ga/index.html" 
+          target="_blank">HttpClient</a>
+      </li>
+-->
+      <li id="JAX-RS_Examples">JAX-RS Examples
+        <ul>
+          <li><a href="JaxRsExample_ee8.tar.gz">Java EE 8 Location example</a>.</li>
+          <li><a href="JaxRsExample.tar.gz">Jakarta EE 10 Location example</a>.</li>
+          To run the Location examples, do the following:
+          <ol>
+            <li>Download the version you want.</li>
+            <li>untar the files.</li>
+            <li>cd JaxRsExamples/java</li>
+            <li>mvn compile</li>
+            <li>mvn exec:java</li>
+          </ol>
+          <li><a href="SatelliteSituationCenter.java" target="_blank">
+            Jakarta EE 10 Conjunction example</a>.</li>
+        </ul>
+      </li>
+<!--
+      <li><code>java.net.http.HttpClient</code></li>
+      <li><code>java.net.HttpURLConnection</code></li>
+-->
+    </ul>
+  </li>
+<!--
+  <li>C/C++</li>
+    <ul>
+      <li><a href="https://curl.haxx.se/" target="_blank">libcurl</a></li>
+      <li><a href="http://www.xmlsoft.org/" target="_blank">libxml</a></li>
+    </ul>
+-->
+</ul>
+
+<!--
+The following describe the <a href="/about.html">Satellite Situation Center</a> <a
+ href="https://en.wikipedia.org/wiki/Web_service#Representational_state_transfer"
+ target="_blank">RESTful Web services</a>.<br>
+<ul>
+  <li><a href="#Target_Audience">Target Audience</a></li>
+  <li><a href="#Overview">Overview</a></li>
+  <li><a href="#Client_Access_Mechanisms">Client Access Mechanisms</a></li>
+  <li><a href="#Web_Services">Web Services</a></li>
+</ul>
+-->
+
+<h2 id="Technical_Details">Technical Details</h2>
+This section contains a more detailed description of the SSC web service
+interface.  These details are only relevant if the high-level mechanisms
+described above are insufficient for your use.  For example, if you are
+using a programming language other than Python, IDL, or Java.  This
+section is organized as follows:
+
+<ul>
+  <li><a href="#Target_Audience">Target Audience</a></li>
+  <li><a href="#Overview">Overview</a></li>
+  <li><a href="#Web_Services">Web Services</a></li>
+</ul>
+
+<h2 id="Target_Audience">Target Audience</h2>
+This document assumes that the reader is familar with RESTful Web service and 
+<a href="https://tools.ietf.org/html/rfc2616" target="_blank">Hypertext
+Transfer Protocol</a> (HTTP) technology.<br>
+
+<h2 id="Overview">Overview</h2>
+This section contains an overview of these Web services.<br><br>
+
+<h3 id="Entity_Body_Representations">Entity-Body Representations</h3>
+The <a href="https://tools.ietf.org/html/rfc2616#section-4.3" 
+target="_blank">HTTP
+entity-body</a> for both the request and response messages of these
+services is described by a <a
+ href="https://en.wikipedia.org/wiki/XML_Schema_%28W3C%29" target="_blank">W3C XML schema</a>
+<a href="SSC.xsd">document</a> (<a href="SSC_xsd.svg">diagram</a>).&nbsp; 
+The detailed description of each service describes the
+specific XML element from the schema that is an entity-body for the
+specific request or response message of the service.&nbsp; In addition
+to the XML representation of the entity-body, all the services can
+return the entity-body in a <span style="font-style: italic;">mapped
+(with root unwrapping)</span> <a
+ href="https://en.wikipedia.org/wiki/Json" target="_blank">JSON</a> representation of
+the XML object.&nbsp; A client can express their preference for a
+specific entity-body representation (XML or JSON) by setting the HTTP
+accept header (to "application/xml" or "application/json").<br><br>
+
+<table
+style="margin-left: auto; margin-right: auto; text-align: left; width: 65%; background-color: rgb(255, 255, 204);"
+border="1" cellpadding="2" cellspacing="2">
+<tbody>
+<tr align="center">
+<th style="vertical-align: top;">JSON Support</th>
+</tr>
+<tr>
+<td style="vertical-align: top;">Anyone considering using JSON, should
+<a href="json/"><b>read this page</b></a> first.
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="Error_Responses">Error Responses</h3>
+This section provides a general description of error responses (i.e., a
+reponse with
+a code other than 200) that may be returned by any of the web
+services.&nbsp; More details about the error response of specific
+services are provided in the specific service's description.<br>
+<br>
+<span style="font-weight: bold;"></span>Any entity-body returned within
+an error response will be XHTML (or a JSON representation of
+XHTML) that contains a more detailed description of the error.&nbsp;
+Whether the entity-body is XHTML or JSON depends upon the HTTP Accept
+header in the request.&nbsp;
+Not all error responses will contain an entity-body.&nbsp; A client may
+simply display the XHTML or access the more detailed error message
+within the XHTML at&nbsp; <code>//p[class='ErrorMessage']/text() and</code>&nbsp;
+<code>//p[class='ErrorDescription']/text().</code><br>
+<!--
+within the JSON object at property <code>response.body.p.$</code>.<br>
+-->
+<br>
+Note that error responses may also be generated by software components
+other than the web services software described here in response to
+requests intended for these web services.&nbsp; For example, a request
+with an invalid URI path may result in a response (e.g., 404) that is
+generated by the application server instead of by the web service
+software.&nbsp; In fact, different invalid URI paths may result in an
+error response being generated by a proxy server, the application
+firewall, the web application server, the web service framework, or 
+the web service implementation
+itself.&nbsp; The entity-body in an error response will vary depending
+upon the software component that generates the response.&nbsp; A client
+must be prepared to deal with these differences.&nbsp; The above
+description of an entity-body in an error response only describes those
+generated by the web service implementation itself.&nbsp; At the time
+this documentation was written, the entity-body returned in an error
+response from both these web services and the application server
+hosting them were similar.&nbsp; The&nbsp; <code>//p[class='ErrorMessage']/text()
+</code>value described above is accessible by<code> //p[2]/text() </code>in
+the error response from both these web services and their hosting
+application server.&nbsp; Likewise, the <code>//p[class='ErrorDescription']/text()
+</code>value described above is accessible by<code> //p[3]/text() </code>in
+the error response from both these web services and their hosting
+application server. <br>
+
+<h3 id="Cross_Origin_Resource_Sharing">Cross-Origin Resource Sharing</h3>
+These web services implement the <a
+ href="https://fetch.spec.whatwg.org/#http-cors-protocol" target="_blank">
+Cross-Origin Resource Sharing</a> (CORS) mechanism and allow cross-origin access
+from any domain. <br>
+
+<!--
+<h3>JavaScript Client Library</h3>
+<ul>
+  <li>A JavaScript library is being made available for JavaScript
+clients that want to use it.&nbsp; The library simplifies calling these
+Web services and shields the client from lower-level details and
+browser
+specific optimizations.&nbsp; See the <a href="js/index.html">library's
+documentation</a> for more details.&nbsp; The JSON issue described
+above has hindered work on this library.&nbsp; The library can be
+implemented with XML instead if there is sufficient interest in the
+library.<br>
+  </li>
+</ul>
+-->
+<h3><a name="SDK"></a>Software Development Kit (SDK)</h3>
+<p>The SSC REST SDK consists of documentation, example code, and
+pre-compiled
+client libraries that may be helpful to client developers. The SDK is
+available for download <a href="sscWebServicesJaxRsSdk-2.4.13.zip">here</a>.
+</p>
+
+<h3 id="Web_Services">Web Services</h3>
+The table below summarizes the services which are available.&nbsp; Only the
+last part of the URL's path is shown in the table.&nbsp; The beginning part
+of the URL is 
+<div id="endpoint" style="font-family: monospace; text-align: center"></div>
+The table contains links to more detail descriptions of each operation.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <caption><span style="font-weight: bold;">Web Services</span><br>
+  </caption> <tbody>
+    <tr>
+      <th style="vertical-align: top;">Category<br>
+      </th>
+      <th style="vertical-align: top;">Operation<br>
+      </th>
+      <th style="vertical-align: top;">Implementation<br>
+      </th>
+      <th style="vertical-align: top;">Details<br>
+      </th>
+    </tr>
+    <tr>
+      <td colspan="1" rowspan="5" style="vertical-align: top;">Metadata<br>
+      </td>
+      <td style="vertical-align: top;">Get WADL<br>
+      </td>
+      <td style="vertical-align: top;">GET /application.wadl<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_WADL">Details</a><br>
+      </td>
+    </tr>
+<!--
+    <tr>
+      <td style="vertical-align: top;">Get About Info.<br>
+      </td>
+      <td style="vertical-align: top;">GET /about<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get Privacy Info.<br>
+      </td>
+      <td style="vertical-align: top;">GET /privacy<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get Term Of Use Info.<br>
+      </td>
+      <td style="vertical-align: top;">Get /termsOfUse<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+-->
+    <tr>
+      <td style="vertical-align: top;">Get Observatories<br>
+      </td>
+      <td style="vertical-align: top;">GET /observatories<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Observatories">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get Client Example<br>
+      </td>
+      <td style="vertical-align: top;">GET /observatories/{observatory}/clientLibraryExample/{library}?mediaType={mediaType}<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Client_Example">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get SPASE Observatories<br>
+      </td>
+      <td style="vertical-align: top;">GET /spaseObservatories<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_SPASE_Observatories">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get GroundStations<br>
+      </td>
+      <td style="vertical-align: top;">GET /groundStations<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Ground_Stations">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="1" rowspan="4" style="vertical-align: top;">Data<br>
+      <br>
+      <br>
+      </td>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Get
+Locations<br>
+      </td>
+      <td style="vertical-align: top;">POST
+/locations<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Locations_POST">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">GET
+/locations/{observatories}/{timeRange}/{coordinateSystems}/<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Locations_GET">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get Graphs<br>
+      </td>
+      <td style="vertical-align: top;">POST /graphs<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Graphs_POST">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get Conjunctions<br>
+      </td>
+      <td style="vertical-align: top;">POST /conjunctions<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Conjunctions_POST">Details</a><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h3><a name="Get_WADL"></a>Get WADL</h3>
+This service provides the <a
+ href="https://en.wikipedia.org/wiki/Web_Application_Description_Language"
+ target="_blank">Web Application Description Language</a> (WADL) for these Web 
+ services.<br>
+<h4>Example</h4>
+Below is an example client request to this service and the results.<br>
+<pre>$ curl https://sscweb.gsfc.nasa.gov/WS/sscr/2/application.wadl | xmllint --format -<br><br></pre>
+<iframe src="ssc.wadl.txt" height="300" width="90%"></iframe>
+<!--
+<h3>Get About</h3>
+<h3>Get Privacy</h3>
+<h3>Get Terms Of Use</h3>
+-->
+<br>
+<br>
+<h3><a name="Get_Observatories"></a>Get Observatories</h3>
+This service provides descriptions of the observatories that are
+available
+from SSC.&nbsp; The following table describes the HTTP request and
+response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Partial Path<br>
+      </th>
+      <td style="vertical-align: top;">/observatories<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-None-Match<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">ETag<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Cache-Control<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;">As specified by
+ObservatoryResponse in <a href="SSC.xsd">SSC.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of
+ObservatoryResponse
+in SSC.xsd<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Most
+Likely Response Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h3><a name="Get_Client_Example"></a>Get Client Example</h3>
+This service provides example client code to retrieve data for an observatory.
+&nbsp; The following table describes the HTTP request and
+response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Partial Path<br>
+      </th>
+      <td style="vertical-align: top;">/observatories/{observatory}/clientLibraryExample/{library}?mediaType={mediaType}
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="6" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="5" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xhtml+xml
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/octet-stream
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">text/plain
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">text/x-python
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">text/x-idl
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-None-Match<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">ETag<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Cache-Control<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      </th>
+      <td style="vertical-align: top;">Content-Type: application/xhtml+xml
+      </td>
+      <td style="vertical-align: top;">An XHTML page containing example code for the specified client library to retrieve data for the specified observatory. 
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: text/plain, text/x-python, text/x-idl, application/octet-stream
+      </td>
+      <td style="vertical-align: top;">Example code for the specified client library to retrieve data for the specified observatory. 
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Most
+Likely Response Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3>Notes:</h3>
+<ul>
+  <li>The path parameters are described below: </li>
+  <ul>
+    <li>The {observatory} value is one returned by
+        <a href="#Get_Observatories">Get Observatories</a>.</li>
+    <li>The {library} value is a comma separated list of these values:
+        sscwsPy,sscwsIdl.  If no {library} values are specified
+        and the Accept HTTP header value indicates a peference for XHTML,
+        then example code for all known libraries are included.  If no
+        {library} value is specified and the Accept HTTP header value
+        is absent or indicates a preference for text/plain, the code is
+        returned for the sscwsPy library.</li>
+    <li>The optional {mediaType} query parameter overrides the HTTP Accept
+        header value for those cases where it is difficult or impossible
+        for the client to set the HTTP header.  The valid values are as
+        follows:
+        <table border="1" cellpadding="2" cellspacing="2">
+          <tr><th>Value</th><th>Corresponding MIME Type</th></tr>
+          <tr><td>octet</td><td>application/octet-stream</td></tr>
+          <tr><td>plain</td><td>text/plain</td></tr>
+          <tr><td>python</td><td>text/x-python</td></tr>
+          <tr><td>idl</td><td>text/x-idl</td></tr>
+        </table>
+    </li>
+  </ul>
+</ul>
+<br>
+<h3><a name="Get_SPASE_Observatories"></a>Get SPASE Observatories</h3>
+This service provides descriptions of the observatories with SPASE 
+ResourceIDs that are available
+from SSC.&nbsp; The following table describes the HTTP request and
+response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Partial Path<br>
+      </th>
+      <td style="vertical-align: top;">/spaseObservatories<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json<br>
+      </td>
+    </tr>
+<!--
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+-->
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+<!--
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+-->
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;">As specified by
+ObservatoryResponse in <a href="SSC.xsd">SSC.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of
+ObservatoryResponse
+in SSC.xsd<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Most
+Likely Response Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+<!--
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+-->
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h3><a name="Get_Ground_Stations"></a>Get Ground Stations<br>
+</h3>
+This service provides descriptions of the ground stations that are
+available
+from SSC.&nbsp; The following table describes the HTTP request and
+response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Partial Path<br>
+      </th>
+      <td style="vertical-align: top;">/groundStations<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Cache-Control<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;">As specified by
+GroundStationDescription in <a href="SSC.xsd">SSC.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of
+GroundStationDescription
+in SSC.xsd<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Most
+Likely Response Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<br>
+<h3><a name="Get_Locations_POST"></a>Get Locations (POST)</h3>
+This service provides observatory location information.&nbsp; The
+following table describes the HTTP
+request and response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;">POST<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Partial Path<br>
+      </th>
+      <td style="vertical-align: top;">/locations<br>
+      </td>
+      <td style="vertical-align: top;"></td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      <br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json</td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">As specified by DataRequest
+in <a href="SSC.xsd">SSC.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      <br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span>As
+specified by DataResult in <a href="SSC.xsd">SSC.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of DataResult<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="7" style="vertical-align: top;">Most Likely Reponse Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">404<br>
+      </td>
+      <td style="vertical-align: top;">Not Found<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">415<br>
+      </td>
+      <td style="vertical-align: top;">Unsupported Media Type<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">429<br>
+      </td>
+      <td style="vertical-align: top;">Too Many Requests.  Check Retry-After header value.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">503<br>
+      </td>
+      <td style="vertical-align: top;">Service Unavailable.  Check Retry-After header value.<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h3><a name="Get_Locations_GET"></a>Get Locations (GET)</h3>
+This service provides basic observatory location information.&nbsp; 
+It is a simplified version of the <a href="#Get_Locations_POST">Get 
+Locations (POST)</a> resource.  It does not support all the features of
+the POST method.  In particular, no values related to the magnetic
+field models (for example, distance to bowshock) are available with
+this method.  The
+following table describes the HTTP
+request and response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Partial Path<br>
+      </th>
+      <td style="vertical-align: top;">/locations/{observatories}/{timeRange}/{coordinateSystems}/?resolutionFactor={resolutionFactor}<br>
+      </td>
+      <td style="vertical-align: top;"></td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      <br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json</td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">None
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      <br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span>As
+specified by DataResult in <a href="SSC.xsd">SSC.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of DataResult<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="7" style="vertical-align: top;">Most Likely Reponse Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">404<br>
+      </td>
+      <td style="vertical-align: top;">Not Found<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">415<br>
+      </td>
+      <td style="vertical-align: top;">Unsupported Media Type<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">429<br>
+      </td>
+      <td style="vertical-align: top;">Too Many Requests.  Check Retry-After header value.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">503<br>
+      </td>
+      <td style="vertical-align: top;">Service Unavailable.  Check Retry-After header value.<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Where:
+<ul>
+  <li>{observatories} = a comma separated list of observatory identifiers
+      for which location data is being requested.  The values must be
+      from those returned by 
+      <a href="#Get_Observatories">Get Observatories</a>.</li>
+  <li>{timeRange} = time range for which data location is being 
+      requested.  There must be two comma separated basic format
+      (minimal number of separators) 
+      <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>
+      date values.</li>
+  <li>{coordinateSystems} = a comma separated list of the names of 
+      the coordinate systems in which to represent the returned
+      location information.  The values must be from this list:
+      <code>geo, gm, gse, gsm, sm, geitod, geij2000</code>.  If no 
+      values are given, <code>gse</code> will be assumed.  For each 
+      coordinate system, the X, Y, Z, Latitude, Longitude, and
+      local-time (if applicable) values will be returned.</li>
+  <li>{resolutionFactor} = Resolution factor.  Include 1 out of every 
+      ResolutionFactor values.</li>
+  <li>The <code>output=listing</code> query parameter value requests 
+      a file containing the location information in a more human 
+      readable form be produced instead of the XML/JSON entity body that
+      is otherwise produced.
+  </li>
+</ul>
+For example:
+<pre style="overflow-x: scroll;">
+$ curl -s https://sscweb.gsfc.nasa.gov/WS/sscr/2/locations/mms1,mms2/20190101T000000Z,20190101T001000Z/gse,geo/ | xmllint --format -
+</pre>
+<br>
+<h3><a name="Get_Graphs_POST"></a>Get Graphs (POST)</h3>
+This service provides observatory location graphs.&nbsp; The
+following table describes the HTTP
+request and response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;">POST<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Partial Path<br>
+      </th>
+      <td style="vertical-align: top;">/graphs<br>
+      </td>
+      <td style="vertical-align: top;"></td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      <br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json</td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">As specified by GraphRequest
+in <a href="SSC.xsd">SSC.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      <br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span>As
+specified by LocationFileResult in <a href="SSC.xsd">SSC.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of
+LocationFileResult<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="7" style="vertical-align: top;">Most Likely Reponse Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">404<br>
+      </td>
+      <td style="vertical-align: top;">Not Found<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">415<br>
+      </td>
+      <td style="vertical-align: top;">Unsupported Media Type<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">429<br>
+      </td>
+      <td style="vertical-align: top;">Too Many Requests.  Check Retry-After header value.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">503<br>
+      </td>
+      <td style="vertical-align: top;">Service Unavailable.  Check Retry-After header value.<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h3><a name="Get_Conjunctions_POST"></a>Get Conjunctions (POST)</h3>
+This service provides results of a conjunction query.&nbsp; The
+following table describes the HTTP
+request and response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;">POST<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Partial Path<br>
+      </th>
+      <td style="vertical-align: top;">/conjunctions<br>
+      </td>
+      <td style="vertical-align: top;"></td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      <br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json</td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">As specified by QueryRequest in <a
+ href="SSC.xsd">SSC.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      <br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span>As
+specified by QueryResult in <a href="SSC.xsd">SSC.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of
+QueryResult<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="7" style="vertical-align: top;">Most Likely Reponse Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">404<br>
+      </td>
+      <td style="vertical-align: top;">Not Found<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">415<br>
+      </td>
+      <td style="vertical-align: top;">Unsupported Media Type<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">429<br>
+      </td>
+      <td style="vertical-align: top;">Too Many Requests.  Check Retry-After header value.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">503<br>
+      </td>
+      <td style="vertical-align: top;">Service Unavailable.  Check Retry-After header value.<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h3><br>
+</h3>
+<h2>Questions/Comments</h2>
+<p>Questions or comments concerning these Web services should be sent
+to <a
+ href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com?subject=SSC%20Web%20Service%0As%20Feedback">SSC
+Feedback</a>.</p>
+<!--#include virtual="/sscfooter.html"--> </div>
+</body>
+</html>

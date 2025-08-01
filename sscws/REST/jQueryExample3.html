@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--
+ * NOSA HEADER START
+ *
+ * The contents of this file are subject to the terms of the NASA Open
+ * Source Agreement (NOSA), Version 1.3 only (the "Agreement").  You may
+ * not use this file except in compliance with the Agreement.
+ *
+ * You can obtain a copy of the agreement at
+ *   docs/NASA_Open_Source_Agreement_1.3.txt
+ * or
+ *   https://sscweb.gsfc.nasa.gov/WebServices/NASA_Open_Source_Agreement_1.3.txt.
+ *
+ * See the Agreement for the specific language governing permissions
+ * and limitations under the Agreement.
+ *
+ * When distributing Covered Code, include this NOSA HEADER in each
+ * file and include the Agreement file at
+ * docs/NASA_Open_Source_Agreement_1.3.txt.  If applicable, add the
+ * following below this NOSA HEADER, with the fields enclosed by
+ * brackets "[]" replaced with your own identifying information:
+ * Portions Copyright [yyyy] [name of copyright owner]
+ *
+ * NOSA HEADER END
+ *
+ * Copyright (c) 2018-2025 United States Government as represented by
+ * the National Aeronautics and Space Administration. No copyright is
+ * claimed in the United States under Title 17, U.S.Code. All Other
+ * Rights Reserved.
+ *
+-->
+<head>
+  <link rel="stylesheet" href="watermark.css">
+</head>
+<title>JavaScript Example of using the SSC Web Services</title>
+
+<!-- Note: The following json-ld is simply metadata and not required
+     to call the ssc web services -->
+<script type="application/ld+json"> {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "description": "JavaScript code snippets to access SSCWeb data.",
+    "creator": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Space Physics Data Facility",
+        "email": "NASA-SPDF-Support@nasa.onmicrosoft.com",
+        "keywords": ["heliophysics", "space physics", "spdf", "SSCWeb", "sscws", "heliophysics data", "ephemeris", "Earth magnetic field"],
+        "parentOrganization": {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Goddard Space Flight Center",
+            "keywords": [
+                "nasa"
+            ],
+            "parentOrganization": {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "National Aeronautics and Space Administration",
+                "keywords": [
+                    "nasa"
+                ]
+            }
+        }
+    },
+    "keywords": ["heliophysics", "space physics", "spdf", "SSCWeb", "sscws", "heliophysics data", "ephemeris", "Earth magnetic field"],
+    "codeSampleType": "code snippet",
+    "programmingLanguage": [
+        {
+            "@context": "https://schema.org",
+            "@type": "ComputerLanguage",
+            "name": "JavaScript"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "ComputerLanguage",
+            "name": "HTML"
+        }
+    ],
+    "runtimePlatform": "JavaScript and HTML 5"
+}
+</script>
+
+<!-- Note: The following json-ld is simply metadata and not required
+     to call the ssc web services -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- still (7/2025) fails with a 403 (at gsfc)
+<script src="https://cdn.plot.ly/plotly-lastest.min.js" charset="utf-8"></script>
+-->
+
+<!-- plotly and d3 are used to produce the plot but is not required to call 
+     the ssc web services. -->
+<script src="https://cdaweb.gsfc.nasa.gov/WebServices/hapi/plotly-3.0.1.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+<!-- jQueryExample3.js contains the js calls to the ssc web services -->
+<script src="jQueryExample3.js"></script>
+
+
+<body>
+<h2 style="text-align: center;">
+JavaScript Example of using the SSC Web Services
+</h2>
+
+<div id="watermark">JavaScript Web Service Example</div>
+
+<div id="notes" style="border: 1px solid; margin:10px; padding:5px; color: #00529B; background-color: #BDE5F8;">
+<p>This page demonstrates using 
+<a href="https://en.wikipedia.org/wiki/Javascript" target="_blank">JavaScript</a>
+to access the 
+<a href="/WebServices/REST/" target="_blank">
+SSC Web Services</a>.  This example uses
+<a href="https://plotly.com/" target="_blank">plotly</a> to display an 
+interactive, 3-Dimensional representation of the
+satellite trajectory information obtained from SSC.
+This page is not intended to be an end-user
+application.  It is intended to show web client developers how they could
+use the SSC web services in their own JavaScript clients.  
+Use your browser's view-source/debugger function (F12 with Chrome
+and Firefox) to view the JavaScript source code.</p>
+</div>
+
+<div id="errDialog" title="Server Error Message">
+</div>
+
+<form>
+<div id="satellites" style="width:25%;padding:10px;border:5px solid blue;margin:10px;float:left;">
+  <h4>Satellites</h4>
+  <select id="satSel" size="15" multiple="multiple">
+  </select>
+</div>
+
+<div style="width:25%;float:left;">
+
+<div id="time" style="width:100%;padding:10px;border:5px solid blue;margin:10px;">
+  <h4>Time</h4>
+    <label for="startTime">Start Time</label>
+    <input id="startTime" type="text" name="startTime" size="23" 
+       value="2012-01-01 20:00:00"
+       required="required"
+       pattern="\d{4}-\d{2}-\d{2}((( \d{2})?(:\d{2})?)?(:\d{2})?)?"
+       title="yyyy-mm-dd[ hh[:mm[:ss]]]"><br>
+    <label for="stopTime">Stop Time</label>
+    <input id="stopTime" type="text" name="stopTime" size="23" 
+       value="2012-01-02 00:00:00"
+       required="required"
+       pattern="\d{4}-\d{2}-\d{2}((( \d{2})?(:\d{2})?)?(:\d{2})?)?"
+       title="yyyy-mm-dd[ hh[:mm[:ss]]]">
+</div>
+
+<div id="request" style="clear:both">
+<p></p>
+  <input id="requestButton" type="button" value="Plot"
+     onclick="requestData()">
+</div>
+</div>
+</form>
+<br><br>
+
+<div id="plot" style="clear:both">
+</div>
+<br><br>
+
+<input id="dataTableVisibility" type="button" value="Show/Hide Table">
+<br><br>
+<div id="data">
+  <table id="dataTable" style="width: 50%; text-align: left;" border="1" 
+     cellpadding="2" cellspacing="2" >
+    <thead>
+      <tr><th>Satellite</th><th>Time</th><th>X</ht><th>Y</th><th>Z</th></tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

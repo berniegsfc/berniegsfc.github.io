@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SPDF - SSC Web Services</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src https://dap.digitalgov.gov/ https://www.google-analytics.com/; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com/ http://ipv6-test.com/;" >
+  <meta name="orgcode" content="672">
+  <meta name="rno" content="Robert.M.Candey.1">
+  <meta name="content-owner" content="Bernard.T.Harris.1">
+  <meta name="webmaster" content="Tamara.J.Kovalick.1">
+  <meta name="description"
+ content="The SSC Web services allow a software developer to use SSC services in their own application...">
+  <meta name="keyword"
+ content="Satellite Situation Center,SSC,SSCWeb,SPDF,space physics data facility, science planning,satellite orbit plots, satellite orbits,orbit,heliophysics,space physics, earths magnetic fields,spacecraft location,satellite conjunctions,magnetic field line conjunctions,ephemeris, XML, Web services">
+  <link rel="icon" href="nasa-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/common.css" type="text/css">
+  <link rel="stylesheet" href="/css/spdf_services.css" type="text/css">
+  <style type="text/css">
+            a.modellink {font-size:13px; font-style:oblique; font-weight:700;}
+            a.serviceName {color: #069; background-color: #fff;}
+
+            #sources        td.selected {color: #ffffff; background-color: #006699; text-decoration:none;}
+            #services       td.selected {padding: 2px; border: 1px dashed #069; text-decoration:none; font-size: 16px; color: #006699;}
+  </style>
+  <script type="text/javascript" id="_fed_an_ua_tag" 
+       src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC">
+  </script>
+</head>
+<body alink="#000088" bgcolor="#ffffff" link="#0000ff" text="#000000"
+ vlink="#ff0000">
+<div id="paper"><!--#include virtual="header.html"-->
+<!--
+WebServices.html is created from the WebServicesTemplate.html file during the
+automated building of this application's documentation.  Modifications should
+be made to the WebServicesTemplate.html file.
+-->
+<p><font size="+1">
+<center><b>SSC Web Services</b></center>
+</font>
+</p>
+<p></p>
+<p>The Satellite Situation Center (SSC) Web services allow a software
+developer
+to use portions of the SSC software in their own application.&nbsp; If
+you are not a software developer and simply want to use the existing
+web interface to SSC, then return to the 
+<a href="/index.html">main SSCWeb page</a>.
+</p>
+<h2> Description</h2>
+<p>SSC is a system to cast geocentric spacecraft location information
+into a framework of (empirical) geophysical regions and mappings of spacecraft
+locations along lines of the Earth's magnetic field. This capability is
+one key to mission science planning (both single missions and
+coordinated observations of multiple spacecraft with ground-based 
+investigations) and to subsequent multi-mission data analysis.</p>
+<p>If you are developing an application that requires satellite
+location
+data based upon updated, predictive and definitive ephemeris for the
+satellites
+maintained at the SSC, then the SSC Web services can be used to avoid
+developing
+and maintaining this data and software yourself.&nbsp; The following
+describes
+how to utilize these services from your own application.</p>
+
+<h2>Network Protocol Support</h2>
+
+<!-- As of 1/18/17, ipv6-test.com doesn't provide their png file through
+     https.  This causes a mix-mode content issue so don't bother with this.
+<a href='http://ipv6-test.com/validate.php?url=referer'>
+<img src='http://ipv6-test.com/button-ipv6-big.png'
+ alt='ipv6 ready' title='ipv6 ready' border='0' align="right"/></a>
+-->
+
+The following web services are currently available over 
+<a href="https://en.wikipedia.org/wiki/HTTPS" target="_blank">HTTPS</a>
+and both IPv4 and
+<a href="https://en.wikipedia.org/wiki/IPv6" target="_blank">IPv6</a>.  
+Additional information about accessing these web services over HTTPS is 
+available at
+<a href="//sscweb.gsfc.nasa.gov/WebServices/https.html">HTTPS SPDF web 
+services</a>.
+
+
+<h2>Supported Web Service Styles</h2>
+
+The following types of Web services are supported by SSC:
+
+<ul>
+  <li><a
+ href="https://en.wikipedia.org/wiki/Representational_State_Transfer" target="_blank">
+Representational State Transfer</a> (REST)</li>
+  <li>Simple Object Access Protocol (<a
+ href="https://en.wikipedia.org/wiki/SOAP" target="_blank">SOAP</a>)</li>
+</ul>
+Client developers may choose whichever type is best suited for the type
+of
+client they are developing.&nbsp; The following table highlights some
+of the differences in features supported by the two types of SSC Web
+services.<br>
+<br>
+<table style="text-align: left; width: 525px; height: 129px;" border="1"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">Feature<br>
+      </th>
+      <th style="vertical-align: top;">SOAP<br>
+      </th>
+      <th style="vertical-align: top;">REST<br>
+      </th>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Location Information<br>
+      </td>
+      <td style="vertical-align: top;">Yes<br>
+      </td>
+      <td style="vertical-align: top;">Yes<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Graphics<br>
+      </td>
+      <td style="vertical-align: top;">Yes<br>
+      </td>
+      <td style="vertical-align: top;">Yes<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Conjunction Queries<br>
+      </td>
+      <td style="vertical-align: top;">No<br>
+      </td>
+      <td style="vertical-align: top;">Yes<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<a name="Implementations"></a>The following links provide detailed
+information about the SSC Web
+service implementations:
+<ul>
+  <li>SSC <a href="REST">RESTful Web services</a></li>
+  <li>SSC <a href="SOAP">SOAP Web services</a></li>
+</ul>
+<h2>Questions/Comments</h2>
+<p>Questions or comments concerning these Web services should be sent
+to
+<a
+ href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com?subject=SSC%20Web%20Services%20Feedback">SSC
+Feedback</a>.</p>
+<!--#include virtual="/sscfooter.html"--> </div>
+</body>
+</html>
