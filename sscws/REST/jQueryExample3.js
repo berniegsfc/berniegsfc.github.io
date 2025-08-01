@@ -47,11 +47,18 @@
  */
 
 /**
- * Beginning part of URL for the SSC web services.
+ * Default beginning part of URL for the SSC web services.
  */
-const sscUrl = window.location.protocol + '//' +
-    window.location.hostname + '/WS/sscr/2';
-// const sscUrl='https://sscweb.gsfc.nasa.gov/WS/sscr/2';
+let sscUrl='https://sscweb.gsfc.nasa.gov/WS/sscr/2';
+
+if (window.location.hostname.includes('sscweb')) {
+    
+    // This page is hosted on any of the sscweb servers so use the
+    // specific server.
+
+    sscUrl=window.location.protocol + '//' +
+           window.location.hostname + '/WS/sscr/2';
+}
 
 /**
  * SSC web services XML namespace.
