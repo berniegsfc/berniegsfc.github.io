@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+        <title>SSC Web Services IDLdoc</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="orgcode" content="672">
+        <meta name="rno" content="Robert.M.Candey.1">
+        <meta name="content-owner" content="Tamara.J.Kovalick.1">
+        <meta name="webmaster" content="Tamara.J.Kovalick.1">
+        <meta name="author" content="Bernard.T.Harris.1">
+        <meta name="description" content="This web page contains documentation for NASA's Satellite Situation Center IDL Web Services library.">
+        <meta name="keywords" content="science, data, SPDF, HPL, HSD, CDAWeb, SSCWeb, NSSDC, coordinated data analysis, multi-mission, multi-instrument, space physics, IMAGE, Polar, Wind, Geotail, FAST, ACE, Cluster">
+        <link rel="icon" href="/logos/nasa-logo.svg" type="image/svg+xml">
+
+<style type="text/css">
+.usa-banner {
+    padding-left: 10px;
+    overflow: hidden;
+    background: LightBlue;
+}
+.official-websites {
+    float: left;
+    width: 50%;
+}
+.secure-websites {
+    float: left;
+    width: 50%;
+}
+.image-left {
+    float: left;
+    margin-right: 10px;
+}
+.footer {
+    width: 100%;
+    padding: 1em 10px 1em 10px;
+    background: LightBlue;
+    display: table;
+}
+div.footer-item {
+    float: left;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+button.usa-banner-button {
+    background-color: initial;
+    border: initial;
+    border-radius: initial;
+    color: initial;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: initial;
+    text-decoration: underline;
+    display: initial;
+}
+</style>
+        <script id="_fed_an_ua_tag" type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC"></script>
+
+
+</head>
+    <div class="usa-banner">
+      <span><img src="/logos/us_flag_small.png" alt="USA flag" height="10px" width="20px" class="usa-banner__header-flag"/> An official website of the United States government<button id="toggle_usa_banner_button" onclick="toggle_usa_banner_details()" class="usa-banner-button"> Here's how you know </button><span id="usa-banner-indicator">v</span></span>
+      <div id="usa-banner-details" style="display: none">
+        <div class="official-websites">
+          <div>
+            <img src="/logos/icon-dot-gov.svg" alt="dot gov icon" class="image-left"/>
+            <p>
+              <b>Official websites use .gov</b>
+            </p>
+            <p>A<b> .gov </b>websites belogs to an official government organization in the United States</p>
+          </div>
+        </div>
+        <div class="secure-websites">
+          <div>
+            <img src="/logos/icon-https.svg" alt="HTTPS icon" class="image-left"/>
+            <p>
+              <b>Secure .gov websites use HTTPS</b>
+            </p>
+            <p>A<b> lock(</b><img src="/logos/usa-banner-lock.svg" alt="HTTPS lock icon"/>) or <b>https://</b> means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<body style="text-align: center">
+
+    <iframe id="docIframe" src="index.html"
+            frameborder="0"
+            style="display:block;border:none;height:100vh;width:98vw"
+            height="100%"
+            width="98%">
+    </iframe>
+
+    <div class="footer">
+      <img src="/logos/nasa-logo.svg" alt="NASA Insignia" class="image-left"/>
+      <div class="footer-item">Contact SPDF: <a style="all:revert" href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com?subject=SSC Web Services IDL client">NASA-SPDF Feedback/Support</a></div>
+      <div class="footer-item">Responsible NASA Official: <a style="all:revert" href="mailto:Robert.M.Candey@nasa.gov">Robert M. Candey</a></div>
+      <div class="footer-item">Site Editor: <a style="all:revert" href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com">Tami Kovalick</a></div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://ror.org/00ryjtt64">SPDF ROR ID</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.re3data.org/repository/r3d100010168">SPDF re3data ID</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.nasa.gov/about/">About NASA</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.nasa.gov/accessibility/">Accessibility</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.nasa.gov/foia/">FOIA</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.nasa.gov/no-fear-act/">No FEAR Act</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.nasa.gov/privacy/">Privacy Policy</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.nasa.gov/vulnerability-disclosure-policy/">Vulnerability Disclosure Policy</a>
+      </div>
+      <div class="footer-item">
+        <span>Last Updated:  <span id="last-updated"></span></span>
+      </div>
+    </div>
+        <script type="text/javascript">
+            const docIframe = document.getElementById("docIframe");
+            const lastUpdated = document.getElementById("last-updated");
+            //const lastModified = new Date(document.lastModified);
+            const lastModified = new Date(docIframe.contentDocument.lastModified);
+            lastUpdated.innerText = lastModified.toISOString().split("T")[0];
+
+            function toggle_usa_banner_details() {
+                const details = document.getElementById("usa-banner-details");
+                const indicator = document.getElementById("usa-banner-indicator");
+                if (details.style.display === "none") {
+                details.style.display = "block";
+                    indicator.textContent = "^";
+                }
+                else {
+                    details.style.display = "none";
+                    indicator.textContent = "v";
+                }
+            }
+        </script>
+</body>
+
+</html>

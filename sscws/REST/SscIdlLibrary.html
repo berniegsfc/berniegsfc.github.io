@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type"
+      content="text/html; charset=utf-8">
+  <title>IDL SSCWeb Access</title>
+  <meta content="Bernie Harris" name="author">
+  <meta name="orgcode" content="672">
+  <meta name="description"
+ content="The SSC Web services allow a software developer to use SSC services in their own application...">
+  <meta name="keywords"
+ content="Satellite Situation Center,SSC,SSCWeb,SPDF,space physics data facility, science planning,satellite orbit plots, satellite orbits,orbit,space physics, earths magnetic fields,spacecraft location,satellite conjunctions,magnetic field line conjunctions,ephemeris, XML, Web services">
+<!--
+  <meta name="rno" content="Robert.M.Candey.1">
+  <meta name="content-owner" content="Tamara.J.Kovalick.1">
+  <meta name="webmaster" content="Tamara.J.Kovalick.1">
+  <link rel="icon" href="nasaicon.png" type="image/png">
+  <link rel="SHORTCUT ICON" href="favicon.ico">
+  <link rel="stylesheet" href="/css/common.css" type="text/css">
+  <link rel="stylesheet" href="/css/spdf_services.css" type="text/css">
+  <style type="text/css">
+                a.modellink {font-size:13px; font-style:oblique; font-weight:700;}
+                a.serviceName {color: #069; background-color: #fff;}
+                table td {border: thin solid black}
+
+                #sources        td.selected {color: #ffffff; background-color: #006699; text-decoration:none;}
+                #services       td.selected {padding: 2px; border: 1px dashed #069; text-decoration:none; font-size: 16px; color: #006699;}
+      </style>
+      <script type="text/javascript" id="_fed_an_ua_tag"
+           src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC">
+      </script>
+-->
+      <script type="text/javascript">
+          function copyCode(id) {
+            var code = document.getElementById(id);
+            code.select();
+            code.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+          }
+     </script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "description": "IDL code snippets to access SPDF data.",
+    "creator": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Space Physics Data Facility",
+        "email": "NASA-SPDF-Support@nasa.onmicrosoft.com",
+        "keywords": [
+            "heliophysics",
+            "space physics",
+            "spdf"
+        ],
+        "parentOrganization": {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Goddard Space Flight Center",
+            "keywords": [
+                "nasa"
+            ],
+            "parentOrganization": {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "National Aeronautics and Space Administration",
+                "keywords": [
+                    "nasa"
+                ]
+            }
+        }
+    },
+    "keywords": [
+        "heliophysics",
+        "space physics",
+        "spdf",
+        "spacecraft position",
+        "geomagnetic field models"
+    ],
+    "codeSampleType": "code snippet",
+    "programmingLanguage": [
+        {
+            "@context": "https://schema.org",
+            "@type": "ComputerLanguage",
+            "name": "IDL"
+        }
+    ],
+    "runtimePlatform": "IDL8"
+}
+</script>
+</head>
+<!--
+<body alink="#000088" bgcolor="#ffffff" link="#0000ff" text="#000000"
+ vlink="#ff0000">
+<div id="paper">
+-->
+<!--#include virtual="../header.html"-->
+<h1>Accessing SSCWeb Data From IDL</h1>
+
+This page describes an IDL library that provides easy access to <a
+ href="https://sscweb.gsfc.nasa.gov/">SSCWeb</a> data from an <a
+ href="https://www.nv5geospatialsoftware.com/Products/IDL">IDL</a>
+program.&nbsp; With this library, an IDL user can retrieve data from
+SSCWeb.
+The data is automatically downloaded and read into an IDL object
+in the user's local IDL
+environment.&nbsp; The user can then write their own IDL code to
+analyze or visualize the data.&nbsp; This is further illustrated with
+an <a href="#IDL_Jupyter_Notebook_Example">IDL Jupyter</a>
+notebook example.&nbsp; There is also an 
+<a href="#More_Complete_SSCWeb_Access_Example">example program</a> that
+demonstrates many of the lower-level calls.<br>
+</p>
+<h2>Preparation</h2>
+<ol>
+  <li>Download <code><a href="spdfssc.sav">spdfssc.sav</a></code></li>
+  <li>Start IDL 8.4 or higher.</li>
+  <li><code>IDL&gt; restore, 'spdfssc.sav', /skip_existing</code></li>
+</ol>
+
+<h2 id="pkg_install">IDL Package Installation (alternative installation 
+procedure)</h2> <br>
+
+If you are using IDL version 8.7.1 or higher, you may install the
+SPDF_SSC package by doing the following in an IDL session:<br><br>
+
+<textarea rows="3" cols="80" id="ipmCode" style="overflow-x: scroll;">
+ipm, /install, 'https://sscweb.gsfc.nasa.gov/WebServices/REST/SPDF_SSC.zip'
+restore, !package_path + '/SPDF_SSC/spdfssc.sav'
+</textarea><br>
+<button onclick="copyCode('ipmCode')">Copy Code</button><br><br>
+
+<h2><a name="One-line_Data_Access"></a>"One-line" Data Access</h2><br>
+<!--
+<pre>  IDL&gt; l = spdfGetLocations('iss', ['2013-01-01T00:00:00.000Z', '2013-01-01T01:00:00.000Z'])<br></pre>
+-->
+The following demonstrates getting location data with a single line of IDL 
+code.
+<textarea rows="3" cols="80" id="getDataCode" style="overflow-x: scroll;">
+l = spdfGetLocations('iss', ['2013-01-01T00:00:00.000Z', '2013-01-01T01:00:00.000Z'])
+</textarea><br>
+<button onclick="copyCode('getDataCode')">Copy Code</button><br><br>
+
+An example use of the returned data is shown below:
+<textarea rows="2" cols="80" id="plotCode" style="overflow-x: scroll;">
+p = plot3d(l->getX(), l->getY(), l->getZ(), window_title='Orbit')
+</textarea><br>
+<button onclick="copyCode('plotCode')">Copy Code</button><br><br>
+
+
+<h2><a name="More_Complete_SSCWeb_Access_Example"></a>"More Complete"
+SSCWeb Access Example</h2><br>
+The following example demonstrates additional features of this library.
+<textarea rows="2" cols="80" id="exampleCode" style="overflow-x: scroll;">
+spdfsscwsexample
+</textarea><br>
+<button onclick="copyCode('exampleCode')">Copy Code</button><br><br>
+
+
+<h2><a name="Conjunction_Example"></a>Conjunction Example</h2><br>
+
+At this time, this IDL client library does not natively support the
+<a href="#Get_Conjunctions_POST" target="_blank">conjunction query 
+capability</a> of the SSC web services.  However, it is
+possibly to use IDL's Python bridge to call the Python 
+<a href="https://pypi.org/project/sscws/" target="_blank">sscws</a>
+library (which does support conjunction queries) from IDL.  An example
+to find magnetic field line conjunctions of at least 2 THEMIS
+satellites with one of 4 THEMIS ground stations duing 2008 doy = 1 - 5 
+is provided in 
+<a href="idl/api/spdfsscwsconjunctionexample.html" target="_blank">
+spdfsscwsconjunctionexample</a>.  <br><br>
+
+Note that this example does not function if restored from spdfssc.sav or 
+the IPM package because those files were produced for compatibility with 
+older versions of IDL.  Use the 
+<a href="SpdfSsc.tar.gz">source code</a> to compile and run this example
+on IDL 8.5 or newer.
+<br><br>
+
+<h2 id="IDL_Jupyter_Notebook_Example">IDL Jupyter Notebook Example</h2><br>
+
+Use of this IDL library to access SSCWeb data if further illustrated in this
+<a href="https://www.nv5geospatialsoftware.com/docs/IDL_Kernel.html"
+target="_blank">IDL Jupyter</a>
+<a href="jupyter/SscWsIdlExample.html" target="_blank">notebook example</a> (
+<a href="jupyter/SscWsIdlExample.ipynb" download>ipynb file</a>).
+<br><br>
+
+
+Notes:<br>
+<ul>
+  <li>View <a href="idl/api/spdfsscwsexample.html" target="_blank">SpdfSscWsExample
+documentation</a>.</li>
+  <li>View <a href="idl/public/govframe.html" target="_blank">simplified
+API documentation</a>.</li>
+  <li>View <a href="idl/api/govframe.html" target="_blank">complete
+API documentation</a>.</li>
+  <li>Get the <a href="SpdfSsc.tar.gz">source code</a>.<br>
+  </li>
+</ul>
+<br>
+<!--#include virtual="/sscfooter.html"--> </div>
+</body>
+</html>
