@@ -1,0 +1,6 @@
+name = "sscws"
+description = "sscws example with PyScript."
+packages = ["sscws", "matplotlib"]
+#packages = ["sscws", "matplotlib", "cdflib"]
+# as of 4/11/25, pyscript doesn't support package versions
+#packages = ["sscws='2.4.3'", "matplotlib", "cdflib"]

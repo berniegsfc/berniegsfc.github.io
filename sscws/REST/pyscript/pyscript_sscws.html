@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <title>sscws pyscript example</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="orgcode" content="672">
+        <meta name="rno" content="Robert.M.Candey.1">
+        <meta name="content-owner" content="Tamara.J.Kovalick.1">
+        <meta name="webmaster" content="Tamara.J.Kovalick.1">
+        <meta name="author" content="Bernard.T.Harris.1">
+        <meta name="description" content="This web page demonstrates using the sscws and pyscript Python packages to access satellite location information from NASA's Satellite Situation Center in an HTML page.">
+        <meta name="keywords" content="science, data, SPDF, HPL, HSD, CDAWeb, SSCWeb, NSSDC, coordinated data analysis, multi-mission, multi-instrument, space physics, IMAGE, Polar, Wind, Geotail, FAST, ACE, Cluster">
+        <link rel="icon" href="/images/NASA_Insignia-RGB-2023.png" sizes="any">
+
+<style type="text/css">
+.usa-banner {
+    padding-left: 10px;
+    overflow: hidden;
+    background: LightBlue;
+}
+.official-websites {
+    float: left;
+    width: 50%;
+}
+.secure-websites {
+    float: left;
+    width: 50%;
+}
+.image-left {
+    float: left;
+    margin-right: 10px;
+}
+.footer {
+    width: 100%;
+    padding: 1em 10px 1em 10px;
+    background: LightBlue;
+    display: table;
+}
+div.footer-item {
+    float: left;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+button.usa-banner-button {
+    background-color: initial;
+    border: initial;
+    border-radius: initial;
+    color: initial;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: initial;
+    text-decoration: underline;
+    display: initial;
+}
+</style>
+
+<script type="application/ld+json"> {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "description": "Python code snippets to access SPDF data.",
+    "creator": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Space Physics Data Facility",
+        "email": "NASA-SPDF-Support@nasa.onmicrosoft.com",
+        "keywords": [
+            "heliophysics",
+            "space physics",
+            "spdf"
+        ],
+        "parentOrganization": {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Goddard Space Flight Center",
+            "keywords": [
+                "nasa"
+            ],
+            "parentOrganization": {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "National Aeronautics and Space Administration",
+                "keywords": [
+                    "nasa"
+                ]
+            }
+        }
+    },
+    "keywords": [
+        "heliophysics",
+        "space physics",
+        "spdf",
+        "spacecraft position",
+        "geomagnetic field models"
+    ],
+    "codeSampleType": "code snippet",
+    "programmingLanguage": [
+        {
+            "@context": "https://schema.org",
+            "@type": "ComputerLanguage",
+            "name": "Python"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "ComputerLanguage",
+            "name": "HTML"
+        }
+    ],
+    "runtimePlatform": "PyScript, Python 3, and HTML 5"
+}
+</style>
+
+        <script id="_fed_an_ua_tag" type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC"></script>
+
+        <!-- PyScript CSS -->
+        <link rel="stylesheet" href="https://pyscript.net/releases/2025.3.1/core.css">
+
+        <!-- This script tag bootstraps PyScript -->
+        <script type="module" src="https://pyscript.net/releases/2025.3.1/core.js"></script>
+
+        <!-- for status dialog -->
+        <style>
+            #status { outline: none; border: none; background: transparent }
+        </style>
+        <script type="module">
+            const status = document.getElementById('status');
+            addEventListener('py:ready', () => status.close());
+            status.showModal();
+        </script>
+
+        <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    </head>
+
+    <body>
+
+    <div class="usa-banner">
+      <span><img src="/logos/us_flag_small.png" alt="USA flag" height="10px" width="20px" class="usa-banner__header-flag"/> An official website of the United States government<button id="toggle_usa_banner_button" onclick="toggle_usa_banner_details()" class="usa-banner-button"> Here's how you know </button><span id="usa-banner-indicator">v</span></span>
+      <div id="usa-banner-details" style="display: none">
+        <div class="official-websites">
+          <div>
+            <img src="/logos/icon-dot-gov.svg" alt="dot gov icon" class="image-left"/>
+            <p>
+              <b>Official websites use .gov</b>
+            </p>
+            <p>A<b> .gov </b>websites belogs to an official government organization in the United States</p>
+          </div>
+        </div>
+        <div class="secure-websites">
+          <div> 
+            <img src="/logos/icon-https.svg" alt="HTTPS icon" class="image-left"/>
+            <p>
+              <b>Secure .gov websites use HTTPS</b>
+            </p>
+            <p>A<b> lock(</b><img src="/logos/usa-banner-lock.svg" alt="HTTPS lock icon"/>) or <b>https://</b> means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+        <h1>sscws PyScript example</h1>
+
+        <div id="intro">
+        <p>
+        This web page demonstrates using the 
+        <a href="https://pypi.org/project/sscws/" target="_blank">sscws</a>
+        and 
+        <a href="https://pyscript.net/" target="_blank">pyscript</a> 
+        Python packages to access satellite location information from 
+        NASA's Satellite Situation Center in an HTML page.  No 
+        <a href=https://jupyter.org/" target="_blank">Jupyter notebook</a>
+        server is used.
+        But the Python code is essentially the same as part of this
+        <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/jupyter/SscWsExample.html" target="_blank">Jupyter notebook</a>.
+        </p>
+        <p>
+        View this page's HTML source and associated 
+	<a href="pyscript_sscws.py" target="_blank">Python source code</a>
+        to see the details.
+        </p>
+        </div>
+
+<div>
+        <div id="satellites" style="width:25%;padding:10px;border:5px solid blue;margin:10px;float:left;">
+          <h4>Satellites</h4>
+          <select id="satSel" size="15" multiple>
+          </select>
+        </div>
+
+        <div style="width:25%;float:left;">
+          <div id="time" style="width:100%;padding:10px;border:5px solid blue;margin:10px">
+            <h4>Time</h4>
+              <label for="startTime">Start Time</label>
+              <input id="startTime" type="text" name="startTime" size="23" 
+                 value="2012-01-01 20:00:00"
+                 required="required"
+                 pattern="\d{4}-\d{2}-\d{2}((( \d{2})?(:\d{2})?)?(:\d{2})?)?"
+                 title="yyyy-mm-dd[ hh[:mm[:ss]]]"><br>
+              <label for="stopTime">Stop Time</label>
+              <input id="stopTime" type="text" name="stopTime" size="23" 
+                 value="2012-01-02 00:00:00"
+                 required="required"
+                 pattern="\d{4}-\d{2}-\d{2}((( \d{2})?(:\d{2})?)?(:\d{2})?)?"
+                 title="yyyy-mm-dd[ hh[:mm[:ss]]]">
+          </div>
+
+          <div id="plot" style="clear:both">
+            <p></p>
+            <button id="plotButton">Plot</button>
+         </div>
+        </div>
+</div>
+
+        <dialog id="status">
+            <h1>Starting Python...</h1>
+        </dialog>
+
+        <section class="pyscript" style="clear:both">
+            <div id="mpl"></div>
+            <script type="py" src="pyscript_sscws.py" config="pyscript_sscws.toml"></script>
+        </section>
+
+    <div class="footer">
+      <img src="/logos/nasa-logo.svg" alt="NASA Insignia" class="image-left"/>
+      <div class="footer-item">Contact SPDF: <a style="all:revert" href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com?subject=HDP client jupyter notebook example">NASA-SPDF Feedback/Support</a></div>
+      <div class="footer-item">Responsible NASA Official: <a style="all:revert" href="mailto:Robert.M.Candey@nasa.gov">Robert M. Candey</a></div>
+      <div class="footer-item">Site Editor: <a style="all:revert" href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com">Tami Kovalick</a></div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://ror.org/00ryjtt64">SPDF ROR ID</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.re3data.org/repository/r3d100010168">SPDF re3data ID</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.nasa.gov/about/">About NASA</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.nasa.gov/accessibility/">Accessibility</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.nasa.gov/foia/">FOIA</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.nasa.gov/no-fear-act/">No FEAR Act</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.nasa.gov/privacy/">Privacy Policy</a>
+      </div>
+      <div class="footer-item">
+        <a style="all:revert" href="https://www.nasa.gov/vulnerability-disclosure-policy/">Vulnerability Disclosure Policy</a>
+      </div>
+      <div class="footer-item">
+        <span>Last Updated:  <span id="last-updated"></span></span>
+      </div>
+    </div>
+        <script type="text/javascript">
+            if (!window.location.href.includes("nasa.gov")) {
+                const footer = document.getElementsByClassName("footer");
+                const usaBanner = document.getElementsByClassName("usa-banner");
+                footer[0].style.display = 'none';
+                usaBanner[0].style.display = 'none';
+            }
+            const lastUpdated = document.getElementById("last-updated");
+            const lastModified = new Date(document.lastModified);
+            lastUpdated.innerText = lastModified.toISOString().split("T")[0];
+
+            function toggle_usa_banner_details() {
+                const details = document.getElementById("usa-banner-details");
+                const indicator = document.getElementById("usa-banner-indicator");
+                if (details.style.display === "none") {
+                details.style.display = "block";
+                    indicator.textContent = "^";
+                }
+                else {
+                    details.style.display = "none";
+                    indicator.textContent = "v";
+                }
+            }
+        </script>
+    </body>
+
+</html>
+
