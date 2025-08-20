@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>sscws.tracing API documentation</title>
+<meta name="description" content="Module defining classes to represent tracing classes from
+&lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.&lt;br&gt; …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>sscws.tracing</code></h1>
+</header>
+<section id="section-intro">
+<p>Module defining classes to represent tracing classes from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.<br></p>
+<p>Copyright &copy; 2013-2023 United States Government as represented by the
+National Aeronautics and Space Administration. No copyright is claimed in
+the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="sscws.tracing.BFieldTraceDirection"><code class="flex name class">
+<span>class <span class="ident">BFieldTraceDirection</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BFieldTraceDirection(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the BFieldTraceDirection defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    SAME_HEMISPHERE = &#39;SameHemisphere&#39;
+    OPPOSITE_HEMISPHERE = &#39;OppositeHemisphere&#39;
+    NORTH_HEMISPHERE = &#39;NorthHemisphere&#39;
+    SOUTH_HEMISPHERE = &#39;SouthHemisphere&#39;
+    EITHER_HEMISPHERE = &#39;EitherHemisphere&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the BFieldTraceDirection defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.tracing.BFieldTraceDirection.EITHER_HEMISPHERE"><code class="name">var <span class="ident">EITHER_HEMISPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.tracing.BFieldTraceDirection.NORTH_HEMISPHERE"><code class="name">var <span class="ident">NORTH_HEMISPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.tracing.BFieldTraceDirection.OPPOSITE_HEMISPHERE"><code class="name">var <span class="ident">OPPOSITE_HEMISPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.tracing.BFieldTraceDirection.SAME_HEMISPHERE"><code class="name">var <span class="ident">SAME_HEMISPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.tracing.BFieldTraceDirection.SOUTH_HEMISPHERE"><code class="name">var <span class="ident">SOUTH_HEMISPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.tracing.TraceCoordinateSystem"><code class="flex name class">
+<span>class <span class="ident">TraceCoordinateSystem</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TraceCoordinateSystem(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the TraceCoordinateSystem defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    GEO = &#39;Geo&#39;
+    GM = &#39;Gm&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the TraceCoordinateSystem defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.tracing.TraceCoordinateSystem.GEO"><code class="name">var <span class="ident">GEO</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.tracing.TraceCoordinateSystem.GM"><code class="name">var <span class="ident">GM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.tracing.TraceRegions"><code class="flex name class">
+<span>class <span class="ident">TraceRegions</span></span>
+<span>(</span><span>cusp: <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a> = None,<br>cleft: <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a> = None,<br>auroral_oval: <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a> = None,<br>polar_cap: <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a> = None,<br>mid_latitude: <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a> = None,<br>low_latitude: bool = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TraceRegions:
+    &#34;&#34;&#34;
+    Class representing a TraceRegions from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    cusp
+        Cusp region.
+    cleft
+        Cleft region.
+    auroral_oval
+        Auroral Oval region.
+    polar_cap
+        Polar Cap region.
+    mid_latitude
+        Mid-Latitude region.
+    low_latitude
+        Low-Latitude region.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 cusp: HemisphereRegions = None,
+                 cleft: HemisphereRegions = None,
+                 auroral_oval: HemisphereRegions = None,
+                 polar_cap: HemisphereRegions = None,
+                 mid_latitude: HemisphereRegions = None,
+                 low_latitude: bool = None,
+                 ):  # pylint: disable=too-many-arguments
+
+        self._cusp = cusp
+        self._cleft = cleft
+        self._auroral_oval = auroral_oval
+        self._polar_cap = polar_cap
+        self._mid_latitude = mid_latitude
+        self._low_latitude = low_latitude
+
+
+    @property
+    def cusp(self) -&gt; HemisphereRegions:
+        &#34;&#34;&#34;
+        Gets the cusp value.
+
+        Returns
+        -------
+        str
+            cusp value.
+        &#34;&#34;&#34;
+        return self._cusp
+
+
+    @cusp.setter
+    def cusp(self, value: HemisphereRegions):
+        &#34;&#34;&#34;
+        Sets the cusp value.
+
+        Parameters
+        ----------
+        value
+            cusp value.
+        &#34;&#34;&#34;
+        self._cusp = value
+
+
+    @property
+    def cleft(self) -&gt; HemisphereRegions:
+        &#34;&#34;&#34;
+        Gets the cleft value.
+
+        Returns
+        -------
+        str
+            cleft value.
+        &#34;&#34;&#34;
+        return self._cleft
+
+
+    @cleft.setter
+    def cleft(self, value: HemisphereRegions):
+        &#34;&#34;&#34;
+        Sets the cleft value.
+
+        Parameters
+        ----------
+        value
+            cleft value.
+        &#34;&#34;&#34;
+        self._cleft = value
+
+
+    @property
+    def auroral_oval(self) -&gt; HemisphereRegions:
+        &#34;&#34;&#34;
+        Gets the auroral_oval value.
+
+        Returns
+        -------
+        str
+            auroral_oval value.
+        &#34;&#34;&#34;
+        return self._auroral_oval
+
+
+    @auroral_oval.setter
+    def auroral_oval(self, value: HemisphereRegions):
+        &#34;&#34;&#34;
+        Sets the auroral_oval value.
+
+        Parameters
+        ----------
+        value
+            auroral_oval value.
+        &#34;&#34;&#34;
+        self._auroral_oval = value
+
+
+    @property
+    def polar_cap(self) -&gt; HemisphereRegions:
+        &#34;&#34;&#34;
+        Gets the polar_cap value.
+
+        Returns
+        -------
+        str
+            polar_cap value.
+        &#34;&#34;&#34;
+        return self._polar_cap
+
+
+    @polar_cap.setter
+    def polar_cap(self, value: HemisphereRegions):
+        &#34;&#34;&#34;
+        Sets the polar_cap value.
+
+        Parameters
+        ----------
+        value
+            polar_cap value.
+        &#34;&#34;&#34;
+        self._polar_cap = value
+
+
+    @property
+    def mid_latitude(self) -&gt; HemisphereRegions:
+        &#34;&#34;&#34;
+        Gets the mid_latitude value.
+
+        Returns
+        -------
+        str
+            mid_latitude value.
+        &#34;&#34;&#34;
+        return self._mid_latitude
+
+
+    @mid_latitude.setter
+    def mid_latitude(self, value: HemisphereRegions):
+        &#34;&#34;&#34;
+        Sets the mid_latitude value.
+
+        Parameters
+        ----------
+        value
+            mid_latitude value.
+        &#34;&#34;&#34;
+        self._mid_latitude = value
+
+
+    @property
+    def low_latitude(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the low_latitude value.
+
+        Returns
+        -------
+        str
+            low_latitude value.
+        &#34;&#34;&#34;
+        return self._low_latitude
+
+
+    @low_latitude.setter
+    def low_latitude(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the low_latitude value.
+
+        Parameters
+        ----------
+        value
+            low_latitude value.
+        &#34;&#34;&#34;
+        self._low_latitude = value
+
+
+    def xml_element(self,
+                    name: str) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Parameters
+        ----------
+        name
+            Name of this TraceRegion.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        builder = ET.TreeBuilder()
+        builder.start(name, {})
+        builder.end(name)
+        xml_element = builder.close()
+
+        xml_element.append(self._cusp.xml_element(&#39;Cusp&#39;))
+        xml_element.append(self._cleft.xml_element(&#39;Cleft&#39;))
+        xml_element.append(self._auroral_oval.xml_element(&#39;AuroralOval&#39;))
+        xml_element.append(self._polar_cap.xml_element(&#39;PolarCap&#39;))
+        xml_element.append(self._mid_latitude.xml_element(&#39;MidLatitude&#39;))
+        builder = ET.TreeBuilder()
+        builder.start(&#39;LowLatitude&#39;, {})
+        builder.data(str(self._low_latitude).lower())
+        builder.end(&#39;LowLatitude&#39;)
+        xml_element.append(builder.close())
+
+        return xml_element</code></pre>
+</details>
+<div class="desc"><p>Class representing a TraceRegions from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>cusp</code></strong></dt>
+<dd>Cusp region.</dd>
+<dt><strong><code>cleft</code></strong></dt>
+<dd>Cleft region.</dd>
+<dt><strong><code>auroral_oval</code></strong></dt>
+<dd>Auroral Oval region.</dd>
+<dt><strong><code>polar_cap</code></strong></dt>
+<dd>Polar Cap region.</dd>
+<dt><strong><code>mid_latitude</code></strong></dt>
+<dd>Mid-Latitude region.</dd>
+<dt><strong><code>low_latitude</code></strong></dt>
+<dd>Low-Latitude region.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.tracing.TraceRegions.auroral_oval"><code class="name">prop <span class="ident">auroral_oval</span> : <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def auroral_oval(self) -&gt; HemisphereRegions:
+    &#34;&#34;&#34;
+    Gets the auroral_oval value.
+
+    Returns
+    -------
+    str
+        auroral_oval value.
+    &#34;&#34;&#34;
+    return self._auroral_oval</code></pre>
+</details>
+<div class="desc"><p>Gets the auroral_oval value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>auroral_oval value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.tracing.TraceRegions.cleft"><code class="name">prop <span class="ident">cleft</span> : <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def cleft(self) -&gt; HemisphereRegions:
+    &#34;&#34;&#34;
+    Gets the cleft value.
+
+    Returns
+    -------
+    str
+        cleft value.
+    &#34;&#34;&#34;
+    return self._cleft</code></pre>
+</details>
+<div class="desc"><p>Gets the cleft value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>cleft value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.tracing.TraceRegions.cusp"><code class="name">prop <span class="ident">cusp</span> : <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def cusp(self) -&gt; HemisphereRegions:
+    &#34;&#34;&#34;
+    Gets the cusp value.
+
+    Returns
+    -------
+    str
+        cusp value.
+    &#34;&#34;&#34;
+    return self._cusp</code></pre>
+</details>
+<div class="desc"><p>Gets the cusp value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>cusp value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.tracing.TraceRegions.low_latitude"><code class="name">prop <span class="ident">low_latitude</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def low_latitude(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the low_latitude value.
+
+    Returns
+    -------
+    str
+        low_latitude value.
+    &#34;&#34;&#34;
+    return self._low_latitude</code></pre>
+</details>
+<div class="desc"><p>Gets the low_latitude value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>low_latitude value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.tracing.TraceRegions.mid_latitude"><code class="name">prop <span class="ident">mid_latitude</span> : <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def mid_latitude(self) -&gt; HemisphereRegions:
+    &#34;&#34;&#34;
+    Gets the mid_latitude value.
+
+    Returns
+    -------
+    str
+        mid_latitude value.
+    &#34;&#34;&#34;
+    return self._mid_latitude</code></pre>
+</details>
+<div class="desc"><p>Gets the mid_latitude value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>mid_latitude value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.tracing.TraceRegions.polar_cap"><code class="name">prop <span class="ident">polar_cap</span> : <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def polar_cap(self) -&gt; HemisphereRegions:
+    &#34;&#34;&#34;
+    Gets the polar_cap value.
+
+    Returns
+    -------
+    str
+        polar_cap value.
+    &#34;&#34;&#34;
+    return self._polar_cap</code></pre>
+</details>
+<div class="desc"><p>Gets the polar_cap value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>polar_cap value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.tracing.TraceRegions.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self, name: str) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self,
+                name: str) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Parameters
+    ----------
+    name
+        Name of this TraceRegion.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+
+    builder = ET.TreeBuilder()
+    builder.start(name, {})
+    builder.end(name)
+    xml_element = builder.close()
+
+    xml_element.append(self._cusp.xml_element(&#39;Cusp&#39;))
+    xml_element.append(self._cleft.xml_element(&#39;Cleft&#39;))
+    xml_element.append(self._auroral_oval.xml_element(&#39;AuroralOval&#39;))
+    xml_element.append(self._polar_cap.xml_element(&#39;PolarCap&#39;))
+    xml_element.append(self._mid_latitude.xml_element(&#39;MidLatitude&#39;))
+    builder = ET.TreeBuilder()
+    builder.start(&#39;LowLatitude&#39;, {})
+    builder.data(str(self._low_latitude).lower())
+    builder.end(&#39;LowLatitude&#39;)
+    xml_element.append(builder.close())
+
+    return xml_element</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>Name of this TraceRegion.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.tracing.TraceType"><code class="flex name class">
+<span>class <span class="ident">TraceType</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TraceType(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the TraceType defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    B_FIELD = &#39;BField&#39;
+    RADIAL = &#39;Radial&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the TraceType defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.tracing.TraceType.B_FIELD"><code class="name">var <span class="ident">B_FIELD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.tracing.TraceType.RADIAL"><code class="name">var <span class="ident">RADIAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="sscws" href="index.html">sscws</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="sscws.tracing.BFieldTraceDirection" href="#sscws.tracing.BFieldTraceDirection">BFieldTraceDirection</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.tracing.BFieldTraceDirection.EITHER_HEMISPHERE" href="#sscws.tracing.BFieldTraceDirection.EITHER_HEMISPHERE">EITHER_HEMISPHERE</a></code></li>
+<li><code><a title="sscws.tracing.BFieldTraceDirection.NORTH_HEMISPHERE" href="#sscws.tracing.BFieldTraceDirection.NORTH_HEMISPHERE">NORTH_HEMISPHERE</a></code></li>
+<li><code><a title="sscws.tracing.BFieldTraceDirection.OPPOSITE_HEMISPHERE" href="#sscws.tracing.BFieldTraceDirection.OPPOSITE_HEMISPHERE">OPPOSITE_HEMISPHERE</a></code></li>
+<li><code><a title="sscws.tracing.BFieldTraceDirection.SAME_HEMISPHERE" href="#sscws.tracing.BFieldTraceDirection.SAME_HEMISPHERE">SAME_HEMISPHERE</a></code></li>
+<li><code><a title="sscws.tracing.BFieldTraceDirection.SOUTH_HEMISPHERE" href="#sscws.tracing.BFieldTraceDirection.SOUTH_HEMISPHERE">SOUTH_HEMISPHERE</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.tracing.TraceCoordinateSystem" href="#sscws.tracing.TraceCoordinateSystem">TraceCoordinateSystem</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.tracing.TraceCoordinateSystem.GEO" href="#sscws.tracing.TraceCoordinateSystem.GEO">GEO</a></code></li>
+<li><code><a title="sscws.tracing.TraceCoordinateSystem.GM" href="#sscws.tracing.TraceCoordinateSystem.GM">GM</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.tracing.TraceRegions" href="#sscws.tracing.TraceRegions">TraceRegions</a></code></h4>
+<ul class="two-column">
+<li><code><a title="sscws.tracing.TraceRegions.auroral_oval" href="#sscws.tracing.TraceRegions.auroral_oval">auroral_oval</a></code></li>
+<li><code><a title="sscws.tracing.TraceRegions.cleft" href="#sscws.tracing.TraceRegions.cleft">cleft</a></code></li>
+<li><code><a title="sscws.tracing.TraceRegions.cusp" href="#sscws.tracing.TraceRegions.cusp">cusp</a></code></li>
+<li><code><a title="sscws.tracing.TraceRegions.low_latitude" href="#sscws.tracing.TraceRegions.low_latitude">low_latitude</a></code></li>
+<li><code><a title="sscws.tracing.TraceRegions.mid_latitude" href="#sscws.tracing.TraceRegions.mid_latitude">mid_latitude</a></code></li>
+<li><code><a title="sscws.tracing.TraceRegions.polar_cap" href="#sscws.tracing.TraceRegions.polar_cap">polar_cap</a></code></li>
+<li><code><a title="sscws.tracing.TraceRegions.xml_element" href="#sscws.tracing.TraceRegions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.tracing.TraceType" href="#sscws.tracing.TraceType">TraceType</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.tracing.TraceType.B_FIELD" href="#sscws.tracing.TraceType.B_FIELD">B_FIELD</a></code></li>
+<li><code><a title="sscws.tracing.TraceType.RADIAL" href="#sscws.tracing.TraceType.RADIAL">RADIAL</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

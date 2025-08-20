@@ -1,0 +1,1498 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>sscws.result API documentation</title>
+<meta name="description" content="Module defining classes to represent the Result class and its
+sub-classes from
+&lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.&lt;br&gt; …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>sscws.result</code></h1>
+</header>
+<section id="section-intro">
+<p>Module defining classes to represent the Result class and its
+sub-classes from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.<br></p>
+<p>Copyright &copy; 2013-2023 United States Government as represented by the
+National Aeronautics and Space Administration. No copyright is claimed in
+the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="sscws.result.Result"><code class="flex name class">
+<span>class <span class="ident">Result</span></span>
+<span>(</span><span>status_code: <a title="sscws.result.ResultStatusCode" href="#sscws.result.ResultStatusCode">ResultStatusCode</a>,<br>status_sub_code: <a title="sscws.result.ResultStatusSubCode" href="#sscws.result.ResultStatusSubCode">ResultStatusSubCode</a>,<br>status_text: List[str])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Result(metaclass=ABCMeta):
+    &#34;&#34;&#34;
+    Class representing a Result from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    status_code
+        Result status code.
+    status_sub_code
+        Result status sub-code.
+    status_text
+        Result status text.
+
+    Notes
+    -----
+    Although this class is essentially a dictionary, it was defined as a
+    class to make certain that it matched the structure and key names
+    of a Result from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    It also needs to function as a base class for the concrete
+    sub-classes of a Result.
+
+    &#34;&#34;&#34;
+    @abstractmethod
+    def __init__(
+            self,
+            status_code: ResultStatusCode,
+            status_sub_code: ResultStatusSubCode,
+            status_text: List[str]):
+
+        self._status_code = status_code
+        self._status_sub_code = status_sub_code
+        self._status_text = status_text
+
+
+    @property
+    def status_code(self) -&gt; ResultStatusCode:
+        &#34;&#34;&#34;
+        Gets the status_code value.
+
+        Returns
+        -------
+        str
+            status_code value.
+        &#34;&#34;&#34;
+        return self._status_code
+
+
+    @status_code.setter
+    def status_code(self, value: ResultStatusCode):
+        &#34;&#34;&#34;
+        Sets the status_code value.
+
+        Parameters
+        ----------
+        value
+            status_code value.
+        &#34;&#34;&#34;
+        self._status_code = value
+
+
+
+    @property
+    def status_sub_code(self) -&gt; ResultStatusSubCode:
+        &#34;&#34;&#34;
+        Gets the status_sub_code value.
+
+        Returns
+        -------
+        str
+            status_sub_code value.
+        &#34;&#34;&#34;
+        return self._status_sub_code
+
+
+    @status_sub_code.setter
+    def status_sub_code(self, value: ResultStatusSubCode):
+        &#34;&#34;&#34;
+        Sets the status_sub_code value.
+
+        Parameters
+        ----------
+        value
+            status_sub_code value.
+        &#34;&#34;&#34;
+        self._status_sub_code = value
+
+
+
+    @property
+    def status_text(self) -&gt; List[str]:
+        &#34;&#34;&#34;
+        Gets the status_text value.
+
+        Returns
+        -------
+        str
+            status_text value.
+        &#34;&#34;&#34;
+        return self._status_text
+
+
+    @status_text.setter
+    def status_text(self, value: List[str]):
+        &#34;&#34;&#34;
+        Sets the status_text value.
+
+        Parameters
+        ----------
+        value
+            status_text value.
+        &#34;&#34;&#34;
+        self._status_text = value
+
+
+    @staticmethod
+    def get_result(
+            result_element: ET
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Produces a Result from the given xml representation of a Result.
+
+        Parameters
+        ----------
+        result_element
+            ElementTree representation of a Result from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+        Returns
+        -------
+        Dict
+            Dict representation of the given ElementTree Result
+            as described in
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+        Raises
+        ------
+        ValueError
+            If the given xml is not a valid XML representation of Result.
+        &#34;&#34;&#34;
+
+        result_type = result_element.get(\
+            &#39;{http://www.w3.org/2001/XMLSchema-instance}type&#39;)
+
+        if result_type == &#39;DataResult&#39;:
+            return Result.get_data_result(result_element)
+
+        if result_type == &#39;FileResult&#39;:
+            return Result.get_file_result(result_element)
+
+        if result_type == &#39;QueryDataResult&#39;:
+            return Result.get_query_result(result_element)
+
+        raise ValueError(&#39;Unrecognized Result type = &#39; + result_type)
+
+
+    @staticmethod
+    def get_status(
+            result_element: ET
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Produces a Dict representation of a Result with the StatusCode and
+        SubStatusCode values from the given xml representation of a Result.
+
+        Parameters
+        ----------
+        result_element
+            ElementTree representation of a Result from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+        Returns
+        -------
+        Dict
+            Dict representation of the given ElementTree Result
+            as described in
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+            containing the StatusCode and SubStatusCode values.
+
+        Raises
+        ------
+        ValueError
+            If the given xml is not a valid XML representation of a
+            DataResult.
+        &#34;&#34;&#34;
+
+        return {
+            &#39;StatusCode&#39;: ResultStatusCode(\
+                 result_element.find(&#39;ssc:StatusCode&#39;, namespaces=NS).text),
+            &#39;StatusSubCode&#39;: ResultStatusSubCode(\
+                 result_element.find(&#39;ssc:StatusSubCode&#39;, namespaces=NS).text)
+        }
+
+
+    # pylint: disable=too-many-locals
+    # pylint: disable=too-many-branches
+    @staticmethod
+    def get_data_result(
+            data_result_element: ET
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Produces a Dict representation of a DataResult from the given
+        xml representation of a DataResult.
+
+        Parameters
+        ----------
+        data_result_element
+            ElementTree representation of a DataResult from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+        Returns
+        -------
+        Dict
+            Dict representation of the given ElementTree DataResult
+            as described in
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+        Raises
+        ------
+        ValueError
+            If the given xml is not a valid XML representation of a
+            DataResult.
+        &#34;&#34;&#34;
+
+        result = Result.get_status(data_result_element)
+
+        data_elements = data_result_element.findall(&#39;ssc:Data&#39;, namespaces=NS)
+        if data_elements is not None:
+            data_len = len(data_elements)
+        else:
+            data_len = 0
+        result[&#39;Data&#39;] = np.empty(data_len, dtype=object)
+
+        for data_i, data_element in enumerate(data_elements):
+
+            result[&#39;Data&#39;][data_i] = {
+                &#39;Id&#39;: data_element.find(&#39;ssc:Id&#39;, namespaces=NS).text,
+            }
+            coords_elements = data_element.findall(&#39;ssc:Coordinates&#39;,
+                                                   namespaces=NS)
+
+            if coords_elements is not None:
+                coords_len = len(coords_elements)
+            else:
+                coords_len = 0
+            result[&#39;Data&#39;][data_i][&#39;Coordinates&#39;] =\
+                np.empty(coords_len, dtype=object)
+
+            for coords_i, coords_element in enumerate(coords_elements):
+
+                coord_system = coords_element.find(\
+                            &#39;ssc:CoordinateSystem&#39;, namespaces=NS).text
+
+                result[&#39;Data&#39;][data_i][&#39;Coordinates&#39;][coords_i] = {
+                    &#39;CoordinateSystem&#39;: CoordinateSystem(coord_system)
+                }
+
+                for name in [&#39;X&#39;, &#39;Y&#39;, &#39;Z&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;,
+                             &#39;LocalTime&#39;]:
+                    result[&#39;Data&#39;][data_i][&#39;Coordinates&#39;][coords_i][name] = \
+                        Result._get_data(coords_element, name, float)
+
+            result[&#39;Data&#39;][data_i][&#39;Time&#39;] = \
+                Result._get_data(data_element, &#39;Time&#39;, datetime)
+
+
+            b_trace_data_elements = data_element.findall(\
+                   &#39;ssc:BTraceData&#39;, namespaces=NS)
+            if b_trace_data_elements is not None:
+                b_trace_data_len = len(b_trace_data_elements)
+            else:
+                b_trace_data_len = 0
+
+            result[&#39;Data&#39;][data_i][&#39;BTraceData&#39;] = \
+                np.empty(b_trace_data_len, dtype=object)
+
+            for b_trace_data_i, b_trace_data in \
+                enumerate(b_trace_data_elements):
+
+                result[&#39;Data&#39;][data_i][&#39;BTraceData&#39;][b_trace_data_i] = {
+                    &#39;CoordinateSystem&#39;: CoordinateSystem(\
+                        b_trace_data.find(\
+                            &#39;ssc:CoordinateSystem&#39;, namespaces=NS).text),
+                    &#39;Hemisphere&#39;: Hemisphere(b_trace_data.find(\
+                            &#39;ssc:Hemisphere&#39;, namespaces=NS).text),
+                }
+                for name in [&#39;Latitude&#39;, &#39;Longitude&#39;, &#39;ArcLength&#39;]:
+                    result[&#39;Data&#39;][data_i][&#39;BTraceData&#39;][b_trace_data_i][name] = \
+                        Result._get_data(b_trace_data, name, float)
+
+
+            for name in [&#39;RadialLength&#39;, &#39;MagneticStrength&#39;,
+                         &#39;NeutralSheetDistance&#39;, &#39;BowShockDistance&#39;,
+                         &#39;MagnetoPauseDistance&#39;, &#39;DipoleLValue&#39;,
+                         &#39;DipoleInvariantLatitude&#39;]:
+                result[&#39;Data&#39;][data_i][name] = \
+                    Result._get_data(data_element, name, float)
+
+
+            result[&#39;Data&#39;][data_i][&#39;SpacecraftRegion&#39;] = \
+                Result._get_data(data_element, &#39;SpacecraftRegion&#39;,
+                                 SpaceRegion)
+
+            for name in [&#39;BGseX&#39;, &#39;BGseY&#39;, &#39;BGseZ&#39;]:
+                result[&#39;Data&#39;][data_i][name] = \
+                    Result._get_data(data_element, name, float)
+
+            for name in [&#39;RadialTracedFootpointRegions&#39;,
+                         &#39;NorthBTracedFootpointRegions&#39;,
+                         &#39;SouthBTracedFootpointRegions&#39;]:
+                result[&#39;Data&#39;][data_i][name] = \
+                    Result._get_data(data_element, name,
+                                     FootpointRegion)
+
+        return result
+    # pylint: enable=too-many-locals
+    # pylint: enable=too-many-branches
+
+
+    @staticmethod
+    def _get_data(
+            data_element: ET,
+            name: str,
+            value_type: Callable[[str], Any],
+        ) -&gt; np.ndarray:
+        &#34;&#34;&#34;
+        Produces an np.ndarray(m, dtype=value_type) representation of the
+        values of specified element in the given data_element ET.
+
+        Parameters
+        ----------
+        data_element
+            ElementTree representation of a DataResult from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+        name
+            Name of element in data_element to get values of.
+        value_type
+            Type of values to get.
+
+        Returns
+        -------
+        np.ndarray
+            np.ndarray representation of the specified values from
+            data_element.
+        &#34;&#34;&#34;
+        data_elements = data_element.findall(&#39;ssc:&#39; + name, namespaces=NS)
+        if data_elements is not None:
+            size = len(data_elements)
+        else:
+            size = 0
+        values = np.empty(size, dtype=value_type)
+        for index, value in enumerate(data_elements):
+            if value_type is datetime:
+                values[index] = dateutil.parser.parse(value.text)
+            else:
+                values[index] = value_type(value.text)
+
+        return values
+
+
+    @staticmethod
+    def get_file_result(
+            file_result_element: ET
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Produces a Dict representation of a FileResult from the given
+        xml representation of a FileResult.
+
+        Parameters
+        ----------
+        file_result_element
+            ElementTree representation of a FileResult from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+        Returns
+        -------
+        Dict
+            Dict representation of the given ElementTree FileResult
+            as described in
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+        Raises
+        ------
+        ValueError
+            If the given xml is not a valid XML representation of a
+            FileResult.
+        &#34;&#34;&#34;
+
+        result = Result.get_status(file_result_element)
+        result[&#39;Files&#39;] = []
+
+        for file_description in file_result_element.findall(\
+                &#39;ssc:Files&#39;, namespaces=NS):
+            result[&#39;Files&#39;].append({
+                &#39;Name&#39;: file_description.find(&#39;ssc:Name&#39;, namespaces=NS).text,
+                &#39;MimeType&#39;: file_description.find(&#39;ssc:MimeType&#39;,
+                                                  namespaces=NS).text,
+                &#39;Length&#39;: int(file_description.find(&#39;ssc:Length&#39;,
+                                                    namespaces=NS).text),
+                &#39;LastModified&#39;: dateutil.parser.parse(\
+                    file_description.find(&#39;ssc:LastModified&#39;,
+                                          namespaces=NS).text)
+            })
+        return result
+
+
+    @staticmethod
+    def __get_conjunction_description(
+            description: ET
+        ) -&gt; Dict:
+
+        conjunction = {}
+
+        location = description.find(&#39;ssc:Location&#39;, namespaces=NS)
+        if location is not None:
+            conjunction[&#39;Location&#39;] = Result.__get_location(location)
+
+        trace_description = description.find(&#39;ssc:TraceDescription&#39;,
+                                             namespaces=NS)
+        if trace_description is not None:
+            conjunction[&#39;TraceDescription&#39;] = \
+                Result.__get_trace_description(trace_description)
+
+        return conjunction
+
+
+    @staticmethod
+    def __get_location(
+            location: ET
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Produces a Dict representation of the given Location element&#39;s
+        value (type or subtype of SurfaceGeographicCoordinates).
+
+        Parameters
+        ----------
+        location
+            Location ET from which to get the value.
+
+        Returns
+        -------
+        Dict
+            Dict representation of the given Location element&#39;s value
+            (type or subtype of SurfaceGeographicCoordinates).
+
+        Raises
+        ------
+        ValueError
+            If the xsi:type value is unrecognized.
+        &#34;&#34;&#34;
+
+        loc_type = location.get(\
+                       &#39;{http://www.w3.org/2001/XMLSchema-instance}type&#39;)
+
+        if loc_type == &#39;RadiusGeographicCoordinates&#39;:
+            location = {
+                &#39;Latitude&#39;: float(location.find(&#39;ssc:Latitude&#39;,
+                                                namespaces=NS).text),
+                &#39;Longitude&#39;: float(location.find(&#39;ssc:Longitude&#39;,
+                                                 namespaces=NS).text),
+                &#39;Radius&#39;: float(location.find(&#39;ssc:Radius&#39;,
+                                              namespaces=NS).text)
+            }
+        elif loc_type == &#39;SurfaceGeographicCoordinates&#39;:
+            location = {
+                &#39;Latitude&#39;: float(location.find(&#39;ssc:Latitude&#39;,
+                                                namespaces=NS).text),
+                &#39;Longitude&#39;: float(location.find(&#39;ssc:Longitude&#39;,
+                                                 namespaces=NS).text),
+            }
+        else:
+            raise ValueError(&#39;Unrecongized Location xsi:type = &#39; + loc_type)
+
+        return location
+
+
+    @staticmethod
+    def __get_trace_description(
+            trace_element: ET
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Produces a Dict representation of the given TraceDescription
+        element&#39;s value.
+
+        Parameters
+        ----------
+        trace_element
+            TraceDescription ET from which to get the value.
+
+        Returns
+        -------
+        Dict
+            Dict representation of the given TraceDescription element&#39;s
+            value.
+        &#34;&#34;&#34;
+
+        return {
+            &#39;Location&#39;: Result.__get_location(\
+                trace_element.find(&#39;ssc:Location&#39;, namespaces=NS)),
+            &#39;ArcLength&#39;: float(trace_element.find(\
+                                   &#39;ssc:ArcLength&#39;, namespaces=NS).text),
+            &#39;Target&#39;: Result.__get_target(\
+                                 trace_element.find(&#39;ssc:Target&#39;,
+                                                    namespaces=NS))
+        }
+
+
+    @staticmethod
+    def __get_target(
+            target: ET
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Produces a Dict representation of the given Target element&#39;s
+        value (subtype of TraceTarget).
+
+        Parameters
+        ----------
+        target
+            TraceTarget ET from which to get the value.
+
+        Returns
+        -------
+        Dict
+            Dict representation of the given Target element&#39;s value
+            (subtype of TraceTarget).
+
+        Raises
+        ------
+        ValueError
+            If the xsi:type value is unrecognized.
+        &#34;&#34;&#34;
+
+        target_type = target.get(\
+                          &#39;{http://www.w3.org/2001/XMLSchema-instance}type&#39;)
+
+        if target_type == &#39;GroundStationTarget&#39;:
+            target = {
+                &#39;GroundStation&#39;: target.find(&#39;ssc:GroundStation&#39;,
+                                             namespaces=NS).text
+            }
+        elif target_type == &#39;SatelliteTarget&#39;:
+            target = {
+                &#39;LeadSatellite&#39;: target.find(&#39;ssc:LeadSatellite&#39;,
+                                             namespaces=NS).text,
+                &#39;Distance&#39;: float(target.find(&#39;ssc:Distance&#39;,
+                                              namespaces=NS).text),
+            }
+        else:
+            raise ValueError(&#39;Unrecongized Target xsi:type = &#39; +
+                             target_type)
+        return target
+
+
+    # pylint: disable=too-many-locals
+    @staticmethod
+    def get_query_result(
+            query_result_element: ET
+        ) -&gt; Dict:  # pylint: disable=too-many-locals
+        &#34;&#34;&#34;
+        Produces a Dict representation of a QueryDataResult from the given
+        xml representation of a QueryDataResult.
+
+        Parameters
+        ----------
+        query_result_element
+            ElementTree representation of a QueryDataResult from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+        Returns
+        -------
+        Dict
+            Dict representation of the given ElementTree QueryDataResult
+            as described in
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+        Raises
+        ------
+        ValueError
+            If the given xml is not a valid XML representation of a
+            QueryResult.
+        &#34;&#34;&#34;
+
+        result = Result.get_status(query_result_element)
+        conjunction_elements = query_result_element.findall(\
+                                   &#39;ssc:Conjunction&#39;, namespaces=NS)
+        if conjunction_elements is not None:
+            conjunction_len = len(conjunction_elements)
+        else:
+            conjunction_len = 0
+
+        result[&#39;Conjunction&#39;] = np.empty(conjunction_len, dtype=object)
+
+        for conjunction_i, conjunction in enumerate(conjunction_elements):
+
+            time_interval = conjunction.find(\
+                                &#39;ssc:TimeInterval&#39;, namespaces=NS)
+            start = dateutil.parser.parse(\
+                        time_interval.find(&#39;ssc:Start&#39;, namespaces=NS).text)
+            end = dateutil.parser.parse(\
+                      time_interval.find(&#39;ssc:End&#39;, namespaces=NS).text)
+            sat_description_elements = \
+                conjunction.findall(&#39;ssc:SatelliteDescription&#39;, namespaces=NS)
+            if sat_description_elements is not None:
+                sat_description_len = len(sat_description_elements)
+            else:
+                sat_description_len = 0
+            sat_descriptions = np.empty(sat_description_len, dtype=object)
+            for sat_description_i, sat_description in \
+                enumerate(sat_description_elements):
+
+                description_elements = \
+                    sat_description.findall(&#39;ssc:Description&#39;, namespaces=NS)
+                if description_elements is not None:
+                    description_len = len(description_elements)
+                else:
+                    description_len = 0
+                descriptions = np.empty(description_len, dtype=object)
+                for description_i, description in \
+                    enumerate(description_elements):
+
+                    descriptions[description_i] = \
+                        Result.__get_conjunction_description(description)
+
+                sat_descriptions[sat_description_i] = {
+                    &#39;Satellite&#39;: sat_description.find(\
+                        &#39;ssc:Satellite&#39;, namespaces=NS).text,
+                    &#39;Description&#39;: descriptions
+                }
+
+            result[&#39;Conjunction&#39;][conjunction_i] = {
+                &#39;TimeInterval&#39;: {
+                    &#39;Start&#39;: start,
+                    &#39;End&#39;: end
+                },
+                &#39;SatelliteDescription&#39;: sat_descriptions
+            }
+
+        return result
+    # pylint: enable=too-many-locals</code></pre>
+</details>
+<div class="desc"><p>Class representing a Result from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>status_code</code></strong></dt>
+<dd>Result status code.</dd>
+<dt><strong><code>status_sub_code</code></strong></dt>
+<dd>Result status sub-code.</dd>
+<dt><strong><code>status_text</code></strong></dt>
+<dd>Result status text.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>Although this class is essentially a dictionary, it was defined as a
+class to make certain that it matched the structure and key names
+of a Result from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.
+It also needs to function as a base class for the concrete
+sub-classes of a Result.</p></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="sscws.result.Result.get_data_result"><code class="name flex">
+<span>def <span class="ident">get_data_result</span></span>(<span>data_result_element: <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'>) ‑> Dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def get_data_result(
+        data_result_element: ET
+    ) -&gt; Dict:
+    &#34;&#34;&#34;
+    Produces a Dict representation of a DataResult from the given
+    xml representation of a DataResult.
+
+    Parameters
+    ----------
+    data_result_element
+        ElementTree representation of a DataResult from
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Returns
+    -------
+    Dict
+        Dict representation of the given ElementTree DataResult
+        as described in
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Raises
+    ------
+    ValueError
+        If the given xml is not a valid XML representation of a
+        DataResult.
+    &#34;&#34;&#34;
+
+    result = Result.get_status(data_result_element)
+
+    data_elements = data_result_element.findall(&#39;ssc:Data&#39;, namespaces=NS)
+    if data_elements is not None:
+        data_len = len(data_elements)
+    else:
+        data_len = 0
+    result[&#39;Data&#39;] = np.empty(data_len, dtype=object)
+
+    for data_i, data_element in enumerate(data_elements):
+
+        result[&#39;Data&#39;][data_i] = {
+            &#39;Id&#39;: data_element.find(&#39;ssc:Id&#39;, namespaces=NS).text,
+        }
+        coords_elements = data_element.findall(&#39;ssc:Coordinates&#39;,
+                                               namespaces=NS)
+
+        if coords_elements is not None:
+            coords_len = len(coords_elements)
+        else:
+            coords_len = 0
+        result[&#39;Data&#39;][data_i][&#39;Coordinates&#39;] =\
+            np.empty(coords_len, dtype=object)
+
+        for coords_i, coords_element in enumerate(coords_elements):
+
+            coord_system = coords_element.find(\
+                        &#39;ssc:CoordinateSystem&#39;, namespaces=NS).text
+
+            result[&#39;Data&#39;][data_i][&#39;Coordinates&#39;][coords_i] = {
+                &#39;CoordinateSystem&#39;: CoordinateSystem(coord_system)
+            }
+
+            for name in [&#39;X&#39;, &#39;Y&#39;, &#39;Z&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;,
+                         &#39;LocalTime&#39;]:
+                result[&#39;Data&#39;][data_i][&#39;Coordinates&#39;][coords_i][name] = \
+                    Result._get_data(coords_element, name, float)
+
+        result[&#39;Data&#39;][data_i][&#39;Time&#39;] = \
+            Result._get_data(data_element, &#39;Time&#39;, datetime)
+
+
+        b_trace_data_elements = data_element.findall(\
+               &#39;ssc:BTraceData&#39;, namespaces=NS)
+        if b_trace_data_elements is not None:
+            b_trace_data_len = len(b_trace_data_elements)
+        else:
+            b_trace_data_len = 0
+
+        result[&#39;Data&#39;][data_i][&#39;BTraceData&#39;] = \
+            np.empty(b_trace_data_len, dtype=object)
+
+        for b_trace_data_i, b_trace_data in \
+            enumerate(b_trace_data_elements):
+
+            result[&#39;Data&#39;][data_i][&#39;BTraceData&#39;][b_trace_data_i] = {
+                &#39;CoordinateSystem&#39;: CoordinateSystem(\
+                    b_trace_data.find(\
+                        &#39;ssc:CoordinateSystem&#39;, namespaces=NS).text),
+                &#39;Hemisphere&#39;: Hemisphere(b_trace_data.find(\
+                        &#39;ssc:Hemisphere&#39;, namespaces=NS).text),
+            }
+            for name in [&#39;Latitude&#39;, &#39;Longitude&#39;, &#39;ArcLength&#39;]:
+                result[&#39;Data&#39;][data_i][&#39;BTraceData&#39;][b_trace_data_i][name] = \
+                    Result._get_data(b_trace_data, name, float)
+
+
+        for name in [&#39;RadialLength&#39;, &#39;MagneticStrength&#39;,
+                     &#39;NeutralSheetDistance&#39;, &#39;BowShockDistance&#39;,
+                     &#39;MagnetoPauseDistance&#39;, &#39;DipoleLValue&#39;,
+                     &#39;DipoleInvariantLatitude&#39;]:
+            result[&#39;Data&#39;][data_i][name] = \
+                Result._get_data(data_element, name, float)
+
+
+        result[&#39;Data&#39;][data_i][&#39;SpacecraftRegion&#39;] = \
+            Result._get_data(data_element, &#39;SpacecraftRegion&#39;,
+                             SpaceRegion)
+
+        for name in [&#39;BGseX&#39;, &#39;BGseY&#39;, &#39;BGseZ&#39;]:
+            result[&#39;Data&#39;][data_i][name] = \
+                Result._get_data(data_element, name, float)
+
+        for name in [&#39;RadialTracedFootpointRegions&#39;,
+                     &#39;NorthBTracedFootpointRegions&#39;,
+                     &#39;SouthBTracedFootpointRegions&#39;]:
+            result[&#39;Data&#39;][data_i][name] = \
+                Result._get_data(data_element, name,
+                                 FootpointRegion)
+
+    return result</code></pre>
+</details>
+<div class="desc"><p>Produces a Dict representation of a DataResult from the given
+xml representation of a DataResult.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data_result_element</code></strong></dt>
+<dd>ElementTree representation of a DataResult from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict</code></dt>
+<dd>Dict representation of the given ElementTree DataResult
+as described in
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the given xml is not a valid XML representation of a
+DataResult.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.result.Result.get_file_result"><code class="name flex">
+<span>def <span class="ident">get_file_result</span></span>(<span>file_result_element: <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'>) ‑> Dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def get_file_result(
+        file_result_element: ET
+    ) -&gt; Dict:
+    &#34;&#34;&#34;
+    Produces a Dict representation of a FileResult from the given
+    xml representation of a FileResult.
+
+    Parameters
+    ----------
+    file_result_element
+        ElementTree representation of a FileResult from
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Returns
+    -------
+    Dict
+        Dict representation of the given ElementTree FileResult
+        as described in
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Raises
+    ------
+    ValueError
+        If the given xml is not a valid XML representation of a
+        FileResult.
+    &#34;&#34;&#34;
+
+    result = Result.get_status(file_result_element)
+    result[&#39;Files&#39;] = []
+
+    for file_description in file_result_element.findall(\
+            &#39;ssc:Files&#39;, namespaces=NS):
+        result[&#39;Files&#39;].append({
+            &#39;Name&#39;: file_description.find(&#39;ssc:Name&#39;, namespaces=NS).text,
+            &#39;MimeType&#39;: file_description.find(&#39;ssc:MimeType&#39;,
+                                              namespaces=NS).text,
+            &#39;Length&#39;: int(file_description.find(&#39;ssc:Length&#39;,
+                                                namespaces=NS).text),
+            &#39;LastModified&#39;: dateutil.parser.parse(\
+                file_description.find(&#39;ssc:LastModified&#39;,
+                                      namespaces=NS).text)
+        })
+    return result</code></pre>
+</details>
+<div class="desc"><p>Produces a Dict representation of a FileResult from the given
+xml representation of a FileResult.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>file_result_element</code></strong></dt>
+<dd>ElementTree representation of a FileResult from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict</code></dt>
+<dd>Dict representation of the given ElementTree FileResult
+as described in
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the given xml is not a valid XML representation of a
+FileResult.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.result.Result.get_query_result"><code class="name flex">
+<span>def <span class="ident">get_query_result</span></span>(<span>query_result_element: <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'>) ‑> Dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def get_query_result(
+        query_result_element: ET
+    ) -&gt; Dict:  # pylint: disable=too-many-locals
+    &#34;&#34;&#34;
+    Produces a Dict representation of a QueryDataResult from the given
+    xml representation of a QueryDataResult.
+
+    Parameters
+    ----------
+    query_result_element
+        ElementTree representation of a QueryDataResult from
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Returns
+    -------
+    Dict
+        Dict representation of the given ElementTree QueryDataResult
+        as described in
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Raises
+    ------
+    ValueError
+        If the given xml is not a valid XML representation of a
+        QueryResult.
+    &#34;&#34;&#34;
+
+    result = Result.get_status(query_result_element)
+    conjunction_elements = query_result_element.findall(\
+                               &#39;ssc:Conjunction&#39;, namespaces=NS)
+    if conjunction_elements is not None:
+        conjunction_len = len(conjunction_elements)
+    else:
+        conjunction_len = 0
+
+    result[&#39;Conjunction&#39;] = np.empty(conjunction_len, dtype=object)
+
+    for conjunction_i, conjunction in enumerate(conjunction_elements):
+
+        time_interval = conjunction.find(\
+                            &#39;ssc:TimeInterval&#39;, namespaces=NS)
+        start = dateutil.parser.parse(\
+                    time_interval.find(&#39;ssc:Start&#39;, namespaces=NS).text)
+        end = dateutil.parser.parse(\
+                  time_interval.find(&#39;ssc:End&#39;, namespaces=NS).text)
+        sat_description_elements = \
+            conjunction.findall(&#39;ssc:SatelliteDescription&#39;, namespaces=NS)
+        if sat_description_elements is not None:
+            sat_description_len = len(sat_description_elements)
+        else:
+            sat_description_len = 0
+        sat_descriptions = np.empty(sat_description_len, dtype=object)
+        for sat_description_i, sat_description in \
+            enumerate(sat_description_elements):
+
+            description_elements = \
+                sat_description.findall(&#39;ssc:Description&#39;, namespaces=NS)
+            if description_elements is not None:
+                description_len = len(description_elements)
+            else:
+                description_len = 0
+            descriptions = np.empty(description_len, dtype=object)
+            for description_i, description in \
+                enumerate(description_elements):
+
+                descriptions[description_i] = \
+                    Result.__get_conjunction_description(description)
+
+            sat_descriptions[sat_description_i] = {
+                &#39;Satellite&#39;: sat_description.find(\
+                    &#39;ssc:Satellite&#39;, namespaces=NS).text,
+                &#39;Description&#39;: descriptions
+            }
+
+        result[&#39;Conjunction&#39;][conjunction_i] = {
+            &#39;TimeInterval&#39;: {
+                &#39;Start&#39;: start,
+                &#39;End&#39;: end
+            },
+            &#39;SatelliteDescription&#39;: sat_descriptions
+        }
+
+    return result</code></pre>
+</details>
+<div class="desc"><p>Produces a Dict representation of a QueryDataResult from the given
+xml representation of a QueryDataResult.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>query_result_element</code></strong></dt>
+<dd>ElementTree representation of a QueryDataResult from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict</code></dt>
+<dd>Dict representation of the given ElementTree QueryDataResult
+as described in
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the given xml is not a valid XML representation of a
+QueryResult.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.result.Result.get_result"><code class="name flex">
+<span>def <span class="ident">get_result</span></span>(<span>result_element: <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'>) ‑> Dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def get_result(
+        result_element: ET
+    ) -&gt; Dict:
+    &#34;&#34;&#34;
+    Produces a Result from the given xml representation of a Result.
+
+    Parameters
+    ----------
+    result_element
+        ElementTree representation of a Result from
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Returns
+    -------
+    Dict
+        Dict representation of the given ElementTree Result
+        as described in
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Raises
+    ------
+    ValueError
+        If the given xml is not a valid XML representation of Result.
+    &#34;&#34;&#34;
+
+    result_type = result_element.get(\
+        &#39;{http://www.w3.org/2001/XMLSchema-instance}type&#39;)
+
+    if result_type == &#39;DataResult&#39;:
+        return Result.get_data_result(result_element)
+
+    if result_type == &#39;FileResult&#39;:
+        return Result.get_file_result(result_element)
+
+    if result_type == &#39;QueryDataResult&#39;:
+        return Result.get_query_result(result_element)
+
+    raise ValueError(&#39;Unrecognized Result type = &#39; + result_type)</code></pre>
+</details>
+<div class="desc"><p>Produces a Result from the given xml representation of a Result.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>result_element</code></strong></dt>
+<dd>ElementTree representation of a Result from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict</code></dt>
+<dd>Dict representation of the given ElementTree Result
+as described in
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the given xml is not a valid XML representation of Result.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.result.Result.get_status"><code class="name flex">
+<span>def <span class="ident">get_status</span></span>(<span>result_element: <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'>) ‑> Dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def get_status(
+        result_element: ET
+    ) -&gt; Dict:
+    &#34;&#34;&#34;
+    Produces a Dict representation of a Result with the StatusCode and
+    SubStatusCode values from the given xml representation of a Result.
+
+    Parameters
+    ----------
+    result_element
+        ElementTree representation of a Result from
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Returns
+    -------
+    Dict
+        Dict representation of the given ElementTree Result
+        as described in
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+        containing the StatusCode and SubStatusCode values.
+
+    Raises
+    ------
+    ValueError
+        If the given xml is not a valid XML representation of a
+        DataResult.
+    &#34;&#34;&#34;
+
+    return {
+        &#39;StatusCode&#39;: ResultStatusCode(\
+             result_element.find(&#39;ssc:StatusCode&#39;, namespaces=NS).text),
+        &#39;StatusSubCode&#39;: ResultStatusSubCode(\
+             result_element.find(&#39;ssc:StatusSubCode&#39;, namespaces=NS).text)
+    }</code></pre>
+</details>
+<div class="desc"><p>Produces a Dict representation of a Result with the StatusCode and
+SubStatusCode values from the given xml representation of a Result.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>result_element</code></strong></dt>
+<dd>ElementTree representation of a Result from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict</code></dt>
+<dd>Dict representation of the given ElementTree Result
+as described in
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>
+containing the StatusCode and SubStatusCode values.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the given xml is not a valid XML representation of a
+DataResult.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.result.Result.status_code"><code class="name">prop <span class="ident">status_code</span> : <a title="sscws.result.ResultStatusCode" href="#sscws.result.ResultStatusCode">ResultStatusCode</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def status_code(self) -&gt; ResultStatusCode:
+    &#34;&#34;&#34;
+    Gets the status_code value.
+
+    Returns
+    -------
+    str
+        status_code value.
+    &#34;&#34;&#34;
+    return self._status_code</code></pre>
+</details>
+<div class="desc"><p>Gets the status_code value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>status_code value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.result.Result.status_sub_code"><code class="name">prop <span class="ident">status_sub_code</span> : <a title="sscws.result.ResultStatusSubCode" href="#sscws.result.ResultStatusSubCode">ResultStatusSubCode</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def status_sub_code(self) -&gt; ResultStatusSubCode:
+    &#34;&#34;&#34;
+    Gets the status_sub_code value.
+
+    Returns
+    -------
+    str
+        status_sub_code value.
+    &#34;&#34;&#34;
+    return self._status_sub_code</code></pre>
+</details>
+<div class="desc"><p>Gets the status_sub_code value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>status_sub_code value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.result.Result.status_text"><code class="name">prop <span class="ident">status_text</span> : List[str]</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def status_text(self) -&gt; List[str]:
+    &#34;&#34;&#34;
+    Gets the status_text value.
+
+    Returns
+    -------
+    str
+        status_text value.
+    &#34;&#34;&#34;
+    return self._status_text</code></pre>
+</details>
+<div class="desc"><p>Gets the status_text value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>status_text value.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.result.ResultStatusCode"><code class="flex name class">
+<span>class <span class="ident">ResultStatusCode</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ResultStatusCode(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the ResultStatusCode defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    SUCCESS = &#39;Success&#39;
+    CONDITIONAL_SUCCESS = &#39;ConditionalSuccess&#39;
+    ERROR = &#39;Error&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the ResultStatusCode defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.result.ResultStatusCode.CONDITIONAL_SUCCESS"><code class="name">var <span class="ident">CONDITIONAL_SUCCESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusCode.ERROR"><code class="name">var <span class="ident">ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusCode.SUCCESS"><code class="name">var <span class="ident">SUCCESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode"><code class="flex name class">
+<span>class <span class="ident">ResultStatusSubCode</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ResultStatusSubCode(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the ResultStatusSubCode defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    SUCCESS = &#39;Success&#39;
+    MISSING_REQUEST = &#39;MissingRequest&#39;
+    MISSING_SATELLITES = &#39;MissingSatellites&#39;
+    INVALID_BEGIN_TIME = &#39;InvalidBeginTime&#39;
+    INVALID_END_TIME = &#39;InvalidEndTime&#39;
+    INVALID_SATELLITE = &#39;InvalidSatellite&#39;
+    INVALID_TIME_RANGE = &#39;InvalidTimeRange&#39;
+    INVALID_RESOLUTION_FACTOR = &#39;InvalidResolutionFactor&#39;
+    MISSING_OUTPUT_OPTIONS = &#39;MissingOutputOptions&#39;
+    MISSING_COORD_OPTIONS = &#39;MissingCoordOptions&#39;
+    MISSING_COORD_SYSTEM = &#39;MissingCoordSystem&#39;
+    INVALID_COORD_SYSTEM = &#39;InvalidCoordSystem&#39;
+    MISSING_COORD_COMPONENT = &#39;MissingCoordComponent&#39;
+    MISSING_GRAPH_OPTIONS = &#39;MissingGraphOptions&#39;
+    MISSING_COORDINATE_SYSTEM = &#39;MissingCoordinateSystem&#39;
+    MISSING_COORDINATE_COMPONENT = &#39;MissingCoordinateComponent&#39;
+    SERVER_ERROR = &#39;ServerError&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the ResultStatusSubCode defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.result.ResultStatusSubCode.INVALID_BEGIN_TIME"><code class="name">var <span class="ident">INVALID_BEGIN_TIME</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.INVALID_COORD_SYSTEM"><code class="name">var <span class="ident">INVALID_COORD_SYSTEM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.INVALID_END_TIME"><code class="name">var <span class="ident">INVALID_END_TIME</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.INVALID_RESOLUTION_FACTOR"><code class="name">var <span class="ident">INVALID_RESOLUTION_FACTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.INVALID_SATELLITE"><code class="name">var <span class="ident">INVALID_SATELLITE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.INVALID_TIME_RANGE"><code class="name">var <span class="ident">INVALID_TIME_RANGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.MISSING_COORDINATE_COMPONENT"><code class="name">var <span class="ident">MISSING_COORDINATE_COMPONENT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.MISSING_COORDINATE_SYSTEM"><code class="name">var <span class="ident">MISSING_COORDINATE_SYSTEM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.MISSING_COORD_COMPONENT"><code class="name">var <span class="ident">MISSING_COORD_COMPONENT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.MISSING_COORD_OPTIONS"><code class="name">var <span class="ident">MISSING_COORD_OPTIONS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.MISSING_COORD_SYSTEM"><code class="name">var <span class="ident">MISSING_COORD_SYSTEM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.MISSING_GRAPH_OPTIONS"><code class="name">var <span class="ident">MISSING_GRAPH_OPTIONS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.MISSING_OUTPUT_OPTIONS"><code class="name">var <span class="ident">MISSING_OUTPUT_OPTIONS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.MISSING_REQUEST"><code class="name">var <span class="ident">MISSING_REQUEST</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.MISSING_SATELLITES"><code class="name">var <span class="ident">MISSING_SATELLITES</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.SERVER_ERROR"><code class="name">var <span class="ident">SERVER_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.result.ResultStatusSubCode.SUCCESS"><code class="name">var <span class="ident">SUCCESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="sscws" href="index.html">sscws</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="sscws.result.Result" href="#sscws.result.Result">Result</a></code></h4>
+<ul class="two-column">
+<li><code><a title="sscws.result.Result.get_data_result" href="#sscws.result.Result.get_data_result">get_data_result</a></code></li>
+<li><code><a title="sscws.result.Result.get_file_result" href="#sscws.result.Result.get_file_result">get_file_result</a></code></li>
+<li><code><a title="sscws.result.Result.get_query_result" href="#sscws.result.Result.get_query_result">get_query_result</a></code></li>
+<li><code><a title="sscws.result.Result.get_result" href="#sscws.result.Result.get_result">get_result</a></code></li>
+<li><code><a title="sscws.result.Result.get_status" href="#sscws.result.Result.get_status">get_status</a></code></li>
+<li><code><a title="sscws.result.Result.status_code" href="#sscws.result.Result.status_code">status_code</a></code></li>
+<li><code><a title="sscws.result.Result.status_sub_code" href="#sscws.result.Result.status_sub_code">status_sub_code</a></code></li>
+<li><code><a title="sscws.result.Result.status_text" href="#sscws.result.Result.status_text">status_text</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.result.ResultStatusCode" href="#sscws.result.ResultStatusCode">ResultStatusCode</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.result.ResultStatusCode.CONDITIONAL_SUCCESS" href="#sscws.result.ResultStatusCode.CONDITIONAL_SUCCESS">CONDITIONAL_SUCCESS</a></code></li>
+<li><code><a title="sscws.result.ResultStatusCode.ERROR" href="#sscws.result.ResultStatusCode.ERROR">ERROR</a></code></li>
+<li><code><a title="sscws.result.ResultStatusCode.SUCCESS" href="#sscws.result.ResultStatusCode.SUCCESS">SUCCESS</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.result.ResultStatusSubCode" href="#sscws.result.ResultStatusSubCode">ResultStatusSubCode</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.result.ResultStatusSubCode.INVALID_BEGIN_TIME" href="#sscws.result.ResultStatusSubCode.INVALID_BEGIN_TIME">INVALID_BEGIN_TIME</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.INVALID_COORD_SYSTEM" href="#sscws.result.ResultStatusSubCode.INVALID_COORD_SYSTEM">INVALID_COORD_SYSTEM</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.INVALID_END_TIME" href="#sscws.result.ResultStatusSubCode.INVALID_END_TIME">INVALID_END_TIME</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.INVALID_RESOLUTION_FACTOR" href="#sscws.result.ResultStatusSubCode.INVALID_RESOLUTION_FACTOR">INVALID_RESOLUTION_FACTOR</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.INVALID_SATELLITE" href="#sscws.result.ResultStatusSubCode.INVALID_SATELLITE">INVALID_SATELLITE</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.INVALID_TIME_RANGE" href="#sscws.result.ResultStatusSubCode.INVALID_TIME_RANGE">INVALID_TIME_RANGE</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.MISSING_COORDINATE_COMPONENT" href="#sscws.result.ResultStatusSubCode.MISSING_COORDINATE_COMPONENT">MISSING_COORDINATE_COMPONENT</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.MISSING_COORDINATE_SYSTEM" href="#sscws.result.ResultStatusSubCode.MISSING_COORDINATE_SYSTEM">MISSING_COORDINATE_SYSTEM</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.MISSING_COORD_COMPONENT" href="#sscws.result.ResultStatusSubCode.MISSING_COORD_COMPONENT">MISSING_COORD_COMPONENT</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.MISSING_COORD_OPTIONS" href="#sscws.result.ResultStatusSubCode.MISSING_COORD_OPTIONS">MISSING_COORD_OPTIONS</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.MISSING_COORD_SYSTEM" href="#sscws.result.ResultStatusSubCode.MISSING_COORD_SYSTEM">MISSING_COORD_SYSTEM</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.MISSING_GRAPH_OPTIONS" href="#sscws.result.ResultStatusSubCode.MISSING_GRAPH_OPTIONS">MISSING_GRAPH_OPTIONS</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.MISSING_OUTPUT_OPTIONS" href="#sscws.result.ResultStatusSubCode.MISSING_OUTPUT_OPTIONS">MISSING_OUTPUT_OPTIONS</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.MISSING_REQUEST" href="#sscws.result.ResultStatusSubCode.MISSING_REQUEST">MISSING_REQUEST</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.MISSING_SATELLITES" href="#sscws.result.ResultStatusSubCode.MISSING_SATELLITES">MISSING_SATELLITES</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.SERVER_ERROR" href="#sscws.result.ResultStatusSubCode.SERVER_ERROR">SERVER_ERROR</a></code></li>
+<li><code><a title="sscws.result.ResultStatusSubCode.SUCCESS" href="#sscws.result.ResultStatusSubCode.SUCCESS">SUCCESS</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

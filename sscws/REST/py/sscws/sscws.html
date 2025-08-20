@@ -1,0 +1,2241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>sscws.sscws API documentation</title>
+<meta name="description" content="Module for accessing the Satellite Situation Center (SSC) web services
+https://sscweb.gsfc.nasa.gov/WebServices/REST/.
+&lt;br&gt; …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>sscws.sscws</code></h1>
+</header>
+<section id="section-intro">
+<p>Module for accessing the Satellite Situation Center (SSC) web services
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/.">https://sscweb.gsfc.nasa.gov/WebServices/REST/.</a>
+<br></p>
+<p>Copyright &copy; 2013-2025 United States Government as represented by the
+National Aeronautics and Space Administration. No copyright is claimed in
+the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="sscws.sscws.SscWs"><code class="flex name class">
+<span>class <span class="ident">SscWs</span></span>
+<span>(</span><span>endpoint=None,<br>timeout=None,<br>proxy=None,<br>ca_certs=None,<br>disable_ssl_certificate_validation=False,<br>user_agent=None,<br>disable_cache=False)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SscWs:
+    &#34;&#34;&#34;
+    Class representing the web service interface to NASA&#39;s
+    Satelite Situation Center (SSC) &lt;https://sscweb.gsfc.nasa.gov/&gt;.
+
+    Parameters
+    ----------
+    endpoint
+        URL of the SSC web service.  If None, the default is
+        &#39;https://sscweb.gsfc.nasa.gov/WS/sscr/2/&#39;.
+    timeout
+        Number of seconds to wait for a response from the server.
+    proxy
+        HTTP proxy information.  For example,&lt;pre&gt;
+        proxies = {
+          &#39;http&#39;: &#39;http://10.10.1.10:3128&#39;,
+          &#39;https&#39;: &#39;http://10.10.1.10:1080&#39;,
+        }&lt;/pre&gt;
+        Proxy information can also be set with environment variables.
+        For example,&lt;pre&gt;
+        $ export HTTP_PROXY=&#34;http://10.10.1.10:3128&#34;
+        $ export HTTPS_PROXY=&#34;http://10.10.1.10:1080&#34;&lt;/pre&gt;
+    ca_certs
+        Path to certificate authority (CA) certificates that will
+        override the default bundle.
+    disable_ssl_certificate_validation
+        Flag indicating whether to validate the SSL certificate.
+    user_agent
+        A value that is appended to the HTTP User-Agent values.
+    disable_cache
+        Flag indicating whether to disable HTTP caching.
+
+    Notes
+    -----
+    The logger used by this class has the class&#39; name (SscWs).  By default,
+    it is configured with a NullHandler.  Users of this class may configure
+    the logger to aid in diagnosing problems.
+
+    This class is dependent upon xml.etree.ElementTree module which is
+    vulnerable to an &#34;exponential entity expansion&#34; and &#34;quadratic blowup
+    entity expansion&#34; XML attack.  However, this class only receives XML
+    from the (trusted) SSC server so these attacks are not a threat.  See
+    the xml.etree.ElementTree &#34;XML vulnerabilities&#34; documentation for
+    more details
+    &lt;https://docs.python.org/3/library/xml.html#xml-vulnerabilities&gt;.
+    &#34;&#34;&#34;
+    # pylint: disable=too-many-instance-attributes
+    # pylint: disable=too-many-arguments
+    def __init__(
+            self,
+            endpoint=None,
+            timeout=None,
+            proxy=None,
+            ca_certs=None,
+            disable_ssl_certificate_validation=False,
+            user_agent=None,
+            disable_cache=False):
+
+        self.logger = logging.getLogger(type(self).__name__)
+        self.logger.addHandler(logging.NullHandler())
+
+        self.retry_after_time = None
+
+        self.logger.debug(&#39;endpoint = %s&#39;, endpoint)
+        self.logger.debug(&#39;ca_certs = %s&#39;, ca_certs)
+        self.logger.debug(&#39;disable_ssl_certificate_validation = %s&#39;,
+                          disable_ssl_certificate_validation)
+        self.logger.debug(&#39;disable_cache = %s&#39;, disable_cache)
+
+        if endpoint is None:
+            self._endpoint = &#39;https://sscweb.gsfc.nasa.gov/WS/sscr/2/&#39;
+        else:
+            self._endpoint = endpoint
+
+        self._user_agent = &#39;sscws/&#39; + __version__ + &#39; (&#39; + \
+            platform.python_implementation() + &#39; &#39; \
+            + platform.python_version() + &#39;; &#39;+ platform.platform() + &#39;)&#39;
+
+        if user_agent is not None:
+            self._user_agent += &#39; (&#39; + user_agent + &#39;)&#39;
+
+        self._request_headers = {
+            &#39;Content-Type&#39; : &#39;application/xml&#39;,
+            &#39;Accept&#39; : &#39;application/xml&#39;,
+            &#39;User-Agent&#39; : self._user_agent
+        }
+        if CACHE_AVAILABLE and disable_cache is not True:
+            self._session = requests_cache.CachedSession(&#39;sscws_cache&#39;,
+                                                         cache_control=True)
+        else:
+            self._session = requests.Session()
+
+        #self._session.max_redirects = 0
+        self._session.headers.update(self._request_headers)
+
+        if ca_certs is not None:
+            self._session.verify = ca_certs
+
+        if disable_ssl_certificate_validation is True:
+            self._session.verify = False
+
+        if proxy is not None:
+            self._proxy = proxy
+
+        self._timeout = timeout
+
+        self._cache = {
+            &#39;Observatories&#39;: {
+                &#39;ETag&#39;: None,
+                &#39;Value&#39;: None
+            },
+            &#39;GroundStations&#39;: {
+                &#39;Last-Modified&#39;: None,
+                &#39;Value&#39;: None
+            }
+        }
+
+    # pylint: enable=too-many-arguments
+
+
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;
+        Produces a string representation of this object.
+
+        Returns
+        -------
+        str
+            A string representation of this object.
+        &#34;&#34;&#34;
+        return &#39;SscWs(endpoint=&#39; + self._endpoint + &#39;, timeout=&#39; + \
+               str(self._timeout) + &#39;)&#39;
+
+
+    def __del__(self):
+        &#34;&#34;&#34;
+        Destructor.  Closes all network connections.
+        &#34;&#34;&#34;
+
+        self.close()
+
+
+    def close(self) -&gt; None:
+        &#34;&#34;&#34;
+        Closes any persistent network connections.  Generally, deleting
+        this object is sufficient and calling this method is unnecessary.
+        &#34;&#34;&#34;
+        self._session.close()
+
+
+    def get_observatories(
+            self
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Gets a description of the available SSC observatories.
+
+        Returns
+        -------
+        Dict
+            Dictionary whose structure mirrors ObservatoryResponse from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+            with the addition of the following key/values:&lt;br&gt;
+            - HttpStatus: with the value of the HTTP status code.
+              Successful == 200.&lt;br&gt;
+            When HttpStatus != 200:&lt;br&gt;
+            - HttpText: containing a string representation of the HTTP
+              entity body.&lt;br&gt;
+            When HttpText is a standard SSC WS error entity body the
+            following key/values (convenience to avoid parsing
+            HttpStatus):&lt;br&gt;
+            - ErrorMessage: value from HttpText.&lt;br&gt;
+            - ErrorDescription: value from HttpText.&lt;br&gt;
+        &#34;&#34;&#34;
+        url = self._endpoint + &#39;observatories&#39;
+
+        self.logger.debug(&#39;request url = %s&#39;, url)
+
+        headers = None
+        if self._cache[&#39;Observatories&#39;][&#39;ETag&#39;] is not None:
+            headers = {
+                &#39;If-None-Match&#39;: self._cache[&#39;Observatories&#39;][&#39;ETag&#39;]
+            }
+
+        response = self._session.get(url, timeout=self._timeout,
+                                     headers=headers)
+
+        if response.status_code == 304:
+            return self._cache[&#39;Observatories&#39;][&#39;Value&#39;]
+
+        status = self.__get_status(response)
+        if response.status_code != 200:
+            return status
+
+        observatory_response = ET.fromstring(response.text)
+
+        result = {
+            &#39;Observatory&#39;: []
+        }
+
+        for observatory in observatory_response.findall(&#39;ssc:Observatory&#39;,
+                                                        namespaces=NS):
+            result[&#39;Observatory&#39;].append({
+                &#39;Id&#39;: observatory.find(&#39;ssc:Id&#39;, namespaces=NS).text,
+                &#39;Name&#39;: observatory.find(&#39;ssc:Name&#39;, namespaces=NS).text,
+                &#39;Resolution&#39;: int(observatory.find(&#39;ssc:Resolution&#39;,
+                                                   namespaces=NS).text),
+                &#39;StartTime&#39;: dateutil.parser.parse(observatory.find(\
+                    &#39;ssc:StartTime&#39;, namespaces=NS).text),
+                &#39;EndTime&#39;: dateutil.parser.parse(observatory.find(\
+                    &#39;ssc:EndTime&#39;, namespaces=NS).text),
+                &#39;ResourceId&#39;: observatory.find(&#39;ssc:ResourceId&#39;,
+                                               namespaces=NS).text
+            })
+
+        result.update(status)
+
+        if &#39;ETag&#39; in response.headers:
+            etag = response.headers[&#39;ETag&#39;]
+            # workaround old apache bugs that are still causing problems
+            etag = etag.replace(&#39;-gzip&#39;, &#39;&#39;)
+            self._cache[&#39;Observatories&#39;][&#39;ETag&#39;] = etag
+            self._cache[&#39;Observatories&#39;][&#39;Value&#39;] = result
+        else:
+            self._cache[&#39;Observatories&#39;][&#39;ETag&#39;] = None
+            self._cache[&#39;Observatories&#39;][&#39;Value&#39;] = None
+
+        return result
+
+
+    def get_ground_stations(
+            self
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Gets a description of the available SSC ground stations.
+
+        Returns
+        -------
+        Dict
+            Dictionary whose structure mirrors GroundStationResponse from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+            with the addition of the following key/values:&lt;br&gt;
+            - HttpStatus: with the value of the HTTP status code.
+              Successful == 200.&lt;br&gt;
+            When HttpStatus != 200:&lt;br&gt;
+            - HttpText: containing a string representation of the HTTP
+              entity body.&lt;br&gt;
+            When HttpText is a standard SSC WS error entity body the
+            following key/values (convenience to avoid parsing
+            HttpStatus):&lt;br&gt;
+            - ErrorMessage: value from HttpText.&lt;br&gt;
+            - ErrorDescription: value from HttpText.&lt;br&gt;
+        &#34;&#34;&#34;
+        url = self._endpoint + &#39;groundStations&#39;
+
+        self.logger.debug(&#39;request url = %s&#39;, url)
+
+        headers = None
+        if self._cache[&#39;GroundStations&#39;][&#39;Last-Modified&#39;] is not None:
+            headers = {
+                &#39;If-Modified-Since&#39;: self._cache[&#39;GroundStations&#39;][&#39;Last-Modified&#39;]
+            }
+
+        response = self._session.get(url, timeout=self._timeout,
+                                     headers=headers)
+
+        if response.status_code == 304:
+            return self._cache[&#39;GroundStations&#39;][&#39;Value&#39;]
+
+        status = self.__get_status(response)
+        if response.status_code != 200:
+            return status
+
+        ground_station_response = ET.fromstring(response.text)
+
+        result = {
+            &#39;GroundStation&#39;: []
+        }
+
+        for ground_station in ground_station_response.findall(\
+                &#39;ssc:GroundStation&#39;, namespaces=NS):
+
+            location = ground_station.find(&#39;ssc:Location&#39;, namespaces=NS)
+            latitude = float(location.find(&#39;ssc:Latitude&#39;, namespaces=NS).text)
+            longitude = float(location.find(&#39;ssc:Longitude&#39;,
+                                            namespaces=NS).text)
+
+            result[&#39;GroundStation&#39;].append({
+                &#39;Id&#39;: ground_station.find(&#39;ssc:Id&#39;, namespaces=NS).text,
+                &#39;Name&#39;: ground_station.find(&#39;ssc:Name&#39;, namespaces=NS).text,
+                &#39;Location&#39;: {
+                    &#39;Latitude&#39;: latitude,
+                    &#39;Longitude&#39;: longitude
+                }
+            })
+
+        result.update(status)
+
+        if &#39;Last-Modified&#39; in response.headers:
+            self._cache[&#39;GroundStations&#39;][&#39;Last-Modified&#39;] = response.headers[&#39;Last-Modified&#39;]
+            self._cache[&#39;GroundStations&#39;][&#39;Value&#39;] = result
+        else:
+            self._cache[&#39;GroundStations&#39;][&#39;Last-Modified&#39;] = None
+            self._cache[&#39;GroundStations&#39;][&#39;Value&#39;] = None
+
+        return result
+
+
+    def get_example_time_interval(
+            self,
+            observatory: str
+        ) -&gt; TimeInterval:
+        &#34;&#34;&#34;
+        Gets a small example time interval for the specified observatory.
+
+        Parameters:
+        -----------
+        observatory
+            Specifies the observatory.
+
+        Returns
+        -------
+        TimeInterval
+            A small example time interval for the specified observatory.
+        &#34;&#34;&#34;
+
+        for obs in self.get_observatories()[&#39;Observatory&#39;]:
+            if obs[&#39;Id&#39;] == observatory:
+                end = obs[&#39;EndTime&#39;]
+                return TimeInterval(end - timedelta(hours=2), end)
+
+        return None
+
+
+    def get_locations(
+            self,
+            param1: Union[List[str], DataRequest],
+            time_range: Union[List[str], TimeInterval] = None,
+            coords: List[CoordinateSystem] = None
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Gets the specified locations.  Complex requests (requesting
+        magnetic field model values) require a single DataRequest
+        parameter.  Simple requests (for only x, y, z, lat, lon,
+        local_time) require at least the first two paramters.
+
+        Parameters
+        ----------
+        param1
+            A locations DataRequest or a list of observatory identifier
+            (returned by get_observatories).
+        time_range
+            A TimeInterval or two element array of ISO 8601 string
+            values of the start and stop time of requested data.  The
+            datetime values should have a UTC timezone.  If the values
+            have no timezone, it will be set to UTC.  A datetime with
+            a non-UTC timezone, will have its value adjusted to UTC and
+            the returned data may not have the expected range.
+        coords
+            Array of CoordinateSystem values that location information
+            is to be in.  If None, default is CoordinateSystem.GSE.
+
+        Returns
+        -------
+        Dict
+            Dictionary whose structure mirrors Result from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+            with the addition of the following key/values:&lt;br&gt;
+            - HttpStatus: with the value of the HTTP status code.
+              Successful == 200.&lt;br&gt;
+            When HttpStatus != 200:&lt;br&gt;
+            - HttpText: containing a string representation of the HTTP
+              entity body.&lt;br&gt;
+            When HttpText is a standard SSC WS error entity body the
+            following key/values (convenience to avoid parsing
+            HttpStatus):&lt;br&gt;
+            - ErrorMessage: value from HttpText.&lt;br&gt;
+            - ErrorDescription: value from HttpText.&lt;br&gt;
+
+        Raises
+        ------
+        ValueError
+            If param1 is not a DataRequest and time_range is missing or
+            time_range does not contain valid values.
+        &#34;&#34;&#34;
+
+        if isinstance(param1, DataRequest):
+            request = param1
+        else:
+            request = SscWs.__create_locations_request(param1, time_range,
+                                                       coords)
+        return self.__get_locations(request)
+
+
+    def get_locations2(
+            self,
+            param1: Union[List[str], DataRequest],
+            time_range: Union[List[str], TimeInterval] = None,
+            coords: List[CoordinateSystem] = None
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Gets the specified locations using CDF instead of XML.  This
+        method is faster, supports larger requests, and the server 
+        supports more concurrency with this method than with the 
+        `SscWs.get_locations` method.  Complex requests (requesting
+        magnetic field model values) require a single DataRequest
+        parameter.  Simple requests (for only x, y, z, lat, lon,
+        local_time) require at least the first two paramters.
+
+        Parameters
+        ----------
+        param1
+            A locations DataRequest or a list of observatory identifier
+            (returned by get_observatories).
+        time_range
+            A TimeInterval or two element array of ISO 8601 string
+            values of the start and stop time of requested data.  The
+            datetime values should have a UTC timezone.  If the values
+            have no timezone, it will be set to UTC.  A datetime with
+            a non-UTC timezone, will have its value adjusted to UTC and
+            the returned data may not have the expected range.
+        coords
+            Array of CoordinateSystem values that location information
+            is to be in.  If None, default is CoordinateSystem.GSE.
+
+        Returns
+        -------
+        Dict
+            Dictionary whose structure mirrors Result from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+            with the addition of the following key/values:&lt;br&gt;
+            - HttpStatus: with the value of the HTTP status code.
+              Successful == 200.&lt;br&gt;
+            When HttpStatus != 200:&lt;br&gt;
+            - HttpText: containing a string representation of the HTTP
+              entity body.&lt;br&gt;
+            When HttpText is a standard SSC WS error entity body the
+            following key/values (convenience to avoid parsing
+            HttpStatus):&lt;br&gt;
+            - ErrorMessage: value from HttpText.&lt;br&gt;
+            - ErrorDescription: value from HttpText.&lt;br&gt;
+
+        Raises
+        ------
+        ValueError
+            If param1 is not a DataRequest and time_range is missing or
+            time_range does not contain valid values.
+        ModuleNotFoundExcepttion
+            If cdflib is not installed.
+
+        Warnings
+        --------
+        This method is experimental and may be eliminated or changed
+        significantly in future releases.  Code expecting a stable API
+        should use `SscWs.get_locations` instead.  The results returned 
+        are compatible with `SscWs.get_locations` except that the numpy 
+        array of datetime.datetime values are returned as a numpy array 
+        of numpy.datetime64 values.  This method requires the 
+        cdflib module to be installed.
+
+        See Also
+        --------
+        SscWs.get_locations : Gets the specified locations.
+        &#34;&#34;&#34;
+
+        if not CDF_AVAILABLE:
+            raise ModuleNotFoundError(&#39;cdflib module not installed&#39;)
+
+        if isinstance(param1, DataRequest):
+            request = param1
+        else:
+            request = SscWs.__create_locations_request(param1, time_range,
+                                                       coords)
+        if request.format_options is None:
+            request.format_options = CdfFormatOptions()
+
+        request.format_options.cdf = True
+
+        result = self.__get_locations(request)
+
+        if result[&#39;HttpStatus&#39;] == 200:
+            #print(&#39;result = &#39;, result)
+            result = self.get_locations_from_file(result)
+
+        return result
+
+
+    def download(
+            self,
+            url: str
+        ) -&gt; str:
+        &#34;&#34;&#34;
+        Downloads the file specified by the given URL to a temporary
+        file without reading all of it into memory.  This method
+        utilizes the connection pool and persistent HTTP connection
+        to the SscWs server.
+
+        Parameters
+        ----------
+        url
+            URL of file to download.
+        Returns
+        -------
+        str
+            name of tempory file or None if there was an error.
+        &#34;&#34;&#34;
+        suffix = os.path.splitext(urlparse(url).path)[1]
+
+        file_descriptor, tmp_filename = mkstemp(suffix=suffix)
+
+        with self._session.get(url, stream=True,
+                               timeout=self._timeout) as response:
+
+            with open(tmp_filename, &#39;wb&#39;) as file:
+                for chunk in response.iter_content(chunk_size=8192):
+                    if chunk:  # filter out keep-alive new chunks
+                        file.write(chunk)
+            os.close(file_descriptor)
+
+        return tmp_filename
+
+
+    def get_locations_from_file(
+            self,
+            results: Result
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Gets the given file(s) from the server and returns the contents
+        in a dictionary.
+
+        Parameters
+        ----------
+        results
+            results to get locations from.
+        Returns
+        -------
+        Dict
+            Dictionary whose structure mirrors Result from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+            with the addition of the following key/values:&lt;br&gt;
+            - HttpStatus: with the value of the HTTP status code.
+              Successful == 200.&lt;br&gt;
+            When HttpStatus != 200:&lt;br&gt;
+            - HttpText: containing a string representation of the HTTP
+              entity body.&lt;br&gt;
+            When HttpText is a standard SSC WS error entity body the
+            following key/values (convenience to avoid parsing
+            HttpStatus):&lt;br&gt;
+            - ErrorMessage: value from HttpText.&lt;br&gt;
+            - ErrorDescription: value from HttpText.&lt;br&gt;
+        &#34;&#34;&#34;
+        locations_result = {}
+        locations_result[&#39;HttpStatus&#39;] = results[&#39;HttpStatus&#39;]
+        locations_result[&#39;StatusCode&#39;] = results[&#39;StatusCode&#39;]
+        locations_result[&#39;StatusSubCode&#39;] = results[&#39;StatusSubCode&#39;]
+        locations_result[&#39;Data&#39;] = np.empty(len(results[&#39;Files&#39;]), dtype=object)
+        #print(&#39;results = &#39;, results)
+        for index in range(len(results[&#39;Files&#39;])):
+            tmp_cdf_file = &#39;unset&#39;
+            try:
+                result_url = results[&#39;Files&#39;][index][&#39;Name&#39;]
+                tmp_cdf_file = self.download(result_url)
+                #print(&#39;tmp_cdf_file&#39;, tmp_cdf_file)
+                cdf = Cdf()
+                cdf.open(tmp_cdf_file)
+                locations_result[&#39;Data&#39;][index] = cdf.get_satellite_data()
+                #cdf.close() ???
+                os.remove(tmp_cdf_file)
+                #print(&#39;tmp_cdf_file&#39;, tmp_cdf_file, &#39;retained&#39;)
+            except:
+                self.logger.error(&#39;Exception from read_data(%s): %s&#39;,
+                                  tmp_cdf_file, sys.exc_info()[0])
+                self.logger.error(&#39;CDF file has been retained.&#39;)
+                raise
+        return locations_result
+
+
+    @staticmethod
+    def __create_locations_request(
+            obs_ids: List[str],
+            time_range: Union[List[str], TimeInterval] = None,
+            coords: List[CoordinateSystem] = None
+        ) -&gt; DataRequest:
+        &#34;&#34;&#34;
+        Creates a &#34;simple&#34; (only x, y, z, lat, lon, local_time in GSE)
+        locations DataRequest for the given values.
+        More complicated requests should be made with DataRequest
+        directly.
+
+        Parameters
+        ----------
+        obs_ids
+            A list of observatory identifier (returned by
+            get_observatories).
+        time_range
+            A TimeInterval or two element array of ISO 8601 string
+            values of the start and stop time of requested data.
+        coords
+            Array of CoordinateSystem values that location information
+            is to be in.  If None, default is CoordinateSystem.GSE.
+        Returns
+        -------
+        DataRequest
+            A simple locations DataRequest based upon the given values.
+        Raises
+        ------
+        ValueError
+            If time_range is missing or time_range does not contain
+            valid values.
+        &#34;&#34;&#34;
+
+        sats = []
+        for sat in obs_ids:
+            sats.append(SatelliteSpecification(sat, 1))
+
+        if time_range is None:
+            raise ValueError(&#39;time_range value is required when &#39; +
+                             &#39;1st is not a DataRequest&#39;)
+
+        if isinstance(time_range, list):
+            time_interval = TimeInterval(time_range[0], time_range[1])
+        else:
+            time_interval = time_range
+
+        if coords is None:
+            coords = [CoordinateSystem.GSE]
+
+        coord_options = []
+        for coord in coords:
+            coord_options.append(
+                CoordinateOptions(coord, CoordinateComponent.X))
+            coord_options.append(
+                CoordinateOptions(coord, CoordinateComponent.Y))
+            coord_options.append(
+                CoordinateOptions(coord, CoordinateComponent.Z))
+            coord_options.append(
+                CoordinateOptions(coord, CoordinateComponent.LAT))
+            coord_options.append(
+                CoordinateOptions(coord, CoordinateComponent.LON))
+            coord_options.append(
+                CoordinateOptions(coord, CoordinateComponent.LOCAL_TIME))
+
+        return DataRequest(None, time_interval, sats, None,
+                           OutputOptions(coord_options), None, None)
+
+
+    def __get_locations(
+            self,
+            request: DataRequest
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Gets the given locations DataRequest.
+
+        Parameters
+        ----------
+        request
+            A locations DataRequest.
+        Returns
+        -------
+        Dict
+            Dictionary whose structure mirrors Result from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+            with the addition of the following key/values:&lt;br&gt;
+            - HttpStatus: with the value of the HTTP status code.
+              Successful == 200.&lt;br&gt;
+            When HttpStatus != 200:&lt;br&gt;
+            - HttpText: containing a string representation of the HTTP
+              entity body.&lt;br&gt;
+            When HttpText is a standard SSC WS error entity body the
+            following key/values (convenience to avoid parsing
+            HttpStatus):&lt;br&gt;
+            - ErrorMessage: value from HttpText.&lt;br&gt;
+            - ErrorDescription: value from HttpText.&lt;br&gt;
+        &#34;&#34;&#34;
+        url = self._endpoint + &#39;locations&#39;
+
+        self.logger.debug(&#39;__get_locations: POST request url = %s&#39;, url)
+
+        xml_data_request = request.xml_element()
+
+        #self.logger.debug(&#39;request XML = %s&#39;,
+        #                  ET.tostring(xml_data_request))
+
+        for retries in range(RETRY_LIMIT): # pylint: disable=unused-variable
+
+            response = self._session.post(url,
+                                          data=ET.tostring(xml_data_request),
+                                          timeout=self._timeout)
+            if response.status_code == 429 or \
+               response.status_code == 503 and \
+               &#39;Retry-After&#39; in response.headers:
+
+                retry_after = response.headers[&#39;Retry-After&#39;]
+
+                self.logger.debug(&#39;429/503 status with Retry-After header: %s&#39;,
+                                  retry_after)
+                retry_after = int(retry_after)
+
+                self.logger.info(&#39;Sleeping %d seconds before retrying request&#39;,
+                                 retry_after)
+                time.sleep(retry_after)
+            else:
+                break
+
+        return self.__get_result(response)
+
+
+    @staticmethod
+    def __get_status(
+            response: requests.Response
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Gets status information from the given response.  In particular,
+        when status_code != 200, an attempt is made to extract the SSC WS
+        ErrorMessage and ErrorDescription from the response.
+
+        Parameters
+        ----------
+        response
+            requests Response object.
+
+        Returns
+        -------
+        Dict
+            Dict containing the following:&lt;br&gt;
+            - HttpStatus: the HTTP status code&lt;br&gt;
+            additionally, when HttpStatus != 200&lt;br&gt;
+            - ErrorText: a string representation of the entire entity
+              body&lt;br&gt;
+            - ErrorMessage: SSC WS ErrorMessage (when available)&lt;br&gt;
+            - ErrorDescription: SSC WS ErrorDescription (when available)
+        &#34;&#34;&#34;
+        http_result = {
+            &#39;HttpStatus&#39;: response.status_code
+        }
+
+        if response.status_code != 200:
+
+            http_result[&#39;ErrorText&#39;] = response.text
+            try:
+                error_element = ET.fromstring(response.text)
+                http_result[&#39;ErrorMessage&#39;] = error_element.findall(\
+                    &#39;.//xhtml:p[@class=&#34;ErrorMessage&#34;]/xhtml:b&#39;,
+                    namespaces=NS)[0].tail
+                http_result[&#39;ErrorDescription&#39;] = error_element.findall(\
+                    &#39;.//xhtml:p[@class=&#34;ErrorDescription&#34;]/&#39; +
+                    &#39;xhtml:b&#39;, namespaces=NS)[0].tail
+            except ParseError:
+                pass  # ErrorText is the best we can do
+
+        return http_result
+
+
+    def __get_result(
+            self,
+            response: requests.Response
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Creates a dict representation of a Result from the given response.
+
+        Parameters
+        ----------
+        response
+            A response from a web service request.
+
+        Returns
+        -------
+        Dict
+            Dict representation of a Result as described in
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+            with the addition of an HttpStatus key with the value of the
+            HTTP status code.  When HttpStatus != 200, a key named
+            HttpText will contain a string representation of the entity
+            body.  And if the HttpText is a standard SSC WS error
+            entity body, then keys named ErrorMessage and ErrorDescription
+            will contain the values from the SSC WS error entity body
+            (saving the caller the trouble of parsing HttpText).
+        &#34;&#34;&#34;
+
+        status = self.__get_status(response)
+        if response.status_code != 200:
+            return status
+
+        element = ET.fromstring(response.text)
+
+        result_element = element.find(&#39;ssc:Result&#39;, namespaces=NS)
+
+        if result_element is None:
+            result_element = element.find(&#39;ssc:QueryResult&#39;, namespaces=NS)
+
+        result = Result.get_result(result_element)
+        result.update(status)
+        return result
+
+
+    def get_conjunctions(
+            self,
+            query: QueryRequest
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Gets the conjunctions specified by query.
+
+        Parameters
+        ----------
+        query
+            Conjunction query request.
+        Returns
+        -------
+        Dict
+            Dictionary whose structure mirrors QueryResult from
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+            with the addition of the following key/values:&lt;br&gt;
+            - HttpStatus: with the value of the HTTP status code.
+              Successful == 200.&lt;br&gt;
+            When HttpStatus != 200:&lt;br&gt;
+            - HttpText: containing a string representation of the HTTP
+              entity body.&lt;br&gt;
+            When HttpText is a standard SSC WS error entity body the
+            following key/values (convenience to avoid parsing
+            HttpStatus):&lt;br&gt;
+            - ErrorMessage: value from HttpText.&lt;br&gt;
+            - ErrorDescription: value from HttpText.&lt;br&gt;
+        Raises
+        ------
+        ValueError
+            If query is invalid.
+        &#34;&#34;&#34;
+
+        url = self._endpoint + &#39;conjunctions&#39;
+
+        self.logger.debug(&#39;POST request url = %s&#39;, url)
+
+        xml_query_request = query.xml_element()
+
+        self.logger.debug(&#39;request XML = %s&#39;,
+                          ET.tostring(xml_query_request))
+
+        for retries in range(RETRY_LIMIT):  # pylint: disable=unused-variable
+
+            response = self._session.post(url,
+                                          data=ET.tostring(xml_query_request),
+                                          timeout=self._timeout)
+            if response.status_code == 429 or \
+               response.status_code == 503 and \
+               &#39;Retry-After&#39; in response.headers:
+
+                retry_after = response.headers[&#39;Retry-After&#39;]
+
+                self.logger.debug(&#39;429/503 status with Retry-After header: %s&#39;,
+                                  retry_after)
+                retry_after = int(retry_after)
+
+                self.logger.info(&#39;Sleeping %d seconds before retrying request&#39;,
+                                 retry_after)
+                time.sleep(retry_after)
+            else:
+                break
+
+        status = self.__get_status(response)
+        if response.status_code != 200:
+            return status
+
+        #self.logger.debug(&#39;response XML = %s&#39;, response.text)
+
+        result = self.__get_result(response)
+        result.update(status)
+        return result
+
+
+    @staticmethod
+    def print_files_result(
+            result: Dict):
+        &#34;&#34;&#34;
+        Prints a Result containing files names document.
+
+        Parameters
+        ----------
+        result
+            Dict representation of Result as described
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+        &#34;&#34;&#34;
+        for file in result[&#39;Files&#39;]:
+            print(file[&#39;Name&#39;])
+
+
+    # pylint: disable=too-many-branches
+    @staticmethod
+    def print_locations_result(
+            result: Dict
+        ) -&gt; None:
+        &#34;&#34;&#34;
+        Prints a Dict representation of a Result.
+
+        Parameters
+        ----------
+        result
+            Dict representation of a Result as described
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+        &#34;&#34;&#34;
+
+        #print(&#39;StatusCode:&#39;, result[&#39;StatusCode&#39;],
+        #      &#39;StatusSubCode:&#39;, result[&#39;StatusSubCode&#39;])
+        #print(result)
+
+        if &#39;Files&#39; in result:
+            SscWs.print_files_result(result)
+            return
+
+        for data in result[&#39;Data&#39;]:
+            if &#39;Coordinates&#39; not in data:
+                continue
+            for coords in data[&#39;Coordinates&#39;]:
+                print(data[&#39;Id&#39;], coords[&#39;CoordinateSystem&#39;].value)
+                print(&#39;Time                     &#39;, &#39;X                     &#39;,
+                      &#39;Y                     &#39;, &#39;Z                     &#39;)
+                for index in range(min(len(data[&#39;Time&#39;]), len(coords[&#39;X&#39;]))):
+                    print(data[&#39;Time&#39;][index], coords[&#39;X&#39;][index],
+                          coords[&#39;Y&#39;][index], coords[&#39;Z&#39;][index])
+
+                if &#39;BTraceData&#39; in data:
+                    for b_trace in data[&#39;BTraceData&#39;]:
+
+                        print(b_trace[&#39;CoordinateSystem&#39;].value,
+                              b_trace[&#39;Hemisphere&#39;].value,
+                              &#39;Magnetic Field-Line Trace Footpoints&#39;)
+                        print(&#39;Time                          &#39;, &#39;Latitude        &#39;,
+                              &#39;Longitude   &#39;, &#39;Arc Length&#39;)
+                        for index in range(min(len(data[&#39;Time&#39;]),
+                                               len(b_trace[&#39;Latitude&#39;]))):
+                            print(data[&#39;Time&#39;][index],
+                                  (f&#34;{b_trace[&#39;Latitude&#39;][index]:15.5f} &#34;
+                                   f&#34;{b_trace[&#39;Longitude&#39;][index]:15.5f} &#34;
+                                   f&#34;{b_trace[&#39;ArcLength&#39;][index]:15.5f}&#34;))
+
+                quantities = [&#39;RadialLength&#39;, &#39;MagneticStrength&#39;,
+                              &#39;NeutralSheetDistance&#39;, &#39;BowShockDistance&#39;,
+                              &#39;MagnetoPauseDistance&#39;, &#39;DipoleLValue&#39;,
+                              &#39;DipoleInvariantLatitude&#39;, &#39;SpacecraftRegion&#39;,
+                              &#39;RadialTracedFootpointRegions&#39;,
+                              &#39;NorthBTracedFootpointRegions&#39;,
+                              &#39;SouthBTracedFootpointRegions&#39;]
+
+                for quantity in quantities:
+                    SscWs.print_time_series(quantity, data)
+
+                if &#39;BGseX&#39; in data and data[&#39;BGseX&#39;] is not None:
+
+                    min_len = min(len(data[&#39;Time&#39;]), len(data[&#39;BGseX&#39;]))
+                    if min_len &gt; 0:
+                        print(f&#34;{&#39;Time&#39;:25s} {&#39;B Strength GSE&#39;:^30s}&#34;)
+                        print(f&#34;{&#39;&#39;:25s} {&#39;X&#39;:^9s} {&#39;Y&#39;:^9s} {&#39;Z&#39;:^9s}&#34;)
+                        for index in range(min_len):
+                            bgse_time = data[&#39;Time&#39;][index]
+                            try:
+                                iso_time = bgse_time.isoformat()
+                            except AttributeError:
+                                iso_time = str(bgse_time)
+                            print((f&#34;{iso_time:25s} &#34;
+                                   f&#34;{data[&#39;BGseX&#39;][index]:9.6f} &#34;
+                                   f&#34;{data[&#39;BGseY&#39;][index]:9.6f} &#34;
+                                   f&#34;{data[&#39;BGseZ&#39;][index]:9.6f}&#34;))
+
+                if &#39;NorthBTracedFootpointRegion&#39; in data and \
+                   &#39;SouthBTracedFootpointRegion&#39; in data:
+
+                    min_len = min(len(data[&#39;Time&#39;]),
+                                  len(data[&#39;NorthBTracedFootpointRegion&#39;]))
+                    if min_len &gt; 0:
+                        print(&#39;                 B-Traced Footpoint Region&#39;)
+                        print(&#39;Time                     &#39;, &#39;North            &#39;,
+                              &#39;South           &#39;)
+                        for index in range(min_len):
+                            print(data[&#39;Time&#39;][index],
+                                  data[&#39;NorthBTracedFootpointRegion&#39;][index].value,
+                                  data[&#39;SouthBTracedFootpointRegion&#39;][index].value)
+    # pylint: enable=too-many-branches
+
+
+    @staticmethod
+    def print_time_series(
+            name: str,
+            data: Dict
+        ) -&gt; None:
+        &#34;&#34;&#34;
+        Prints the given time-series data.
+
+        Parameters
+        ----------
+        name
+            Name (key) of data to print.
+        data
+            Dict containing the values to print.
+        &#34;&#34;&#34;
+
+        if name in data and data[name] is not None:
+            min_len = min(len(data[&#39;Time&#39;]), len(data[name]))
+            if min_len &gt; 0:
+                print(&#39;Time                     &#39;, name)
+                for index in range(min_len):
+                    print(data[&#39;Time&#39;][index], data[name][index])
+
+
+    @staticmethod
+    def print_conjunction_result(
+            result: Dict
+        ) -&gt; None:
+        &#34;&#34;&#34;
+        Prints the given Dict representation of a QueryResult.
+
+        Parameters
+        ----------
+        result
+            Dict representation of QueryResult as described
+            &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+        &#34;&#34;&#34;
+
+        print(&#39;StatusCode:&#39;, result[&#39;StatusCode&#39;],
+              &#39;StatusSubCode:&#39;, result[&#39;StatusSubCode&#39;])
+        #print(result)
+
+        for conjunction in result[&#39;Conjunction&#39;]:
+            print(conjunction[&#39;TimeInterval&#39;][&#39;Start&#39;].isoformat(), &#39;to&#39;,
+                  conjunction[&#39;TimeInterval&#39;][&#39;End&#39;].isoformat())
+            print((f&#34;  {&#39;Satellite&#39;:10s} {&#39;Lat&#39;:&gt;7s} {&#39;Lon&#39;:&gt;7s} &#34;
+                   f&#34;{&#39;Radius&#39;:&gt;9s} {&#39;Ground Stations&#39;:20s} {&#39;Lat&#39;:&gt;7s} &#34;
+                   f&#34;{&#39;Lon&#39;:&gt;7s} {&#39;ArcLen&#39;:&gt;9s}&#34;))
+            for sat in conjunction[&#39;SatelliteDescription&#39;]:
+                for description in sat[&#39;Description&#39;]:
+                    trace = description[&#39;TraceDescription&#39;]
+                    print((f&#34;  {sat[&#39;Satellite&#39;]:10s} &#34;
+                           f&#34;{description[&#39;Location&#39;][&#39;Latitude&#39;]:7.2f} &#34;
+                           f&#34;{description[&#39;Location&#39;][&#39;Longitude&#39;]:7.2f} &#34;
+                           f&#34;{description[&#39;Location&#39;][&#39;Radius&#39;]:9.2f} &#34;
+                           f&#34;{trace[&#39;Target&#39;][&#39;GroundStation&#39;]:20s} &#34;
+                           f&#34;{trace[&#39;Location&#39;][&#39;Latitude&#39;]:7.2f} &#34;
+                           f&#34;{trace[&#39;Location&#39;][&#39;Longitude&#39;]:7.2f} &#34;
+                           f&#34;{trace[&#39;ArcLength&#39;]:9.2f}&#34;))</code></pre>
+</details>
+<div class="desc"><p>Class representing the web service interface to NASA's
+Satelite Situation Center (SSC) <a href="https://sscweb.gsfc.nasa.gov/">https://sscweb.gsfc.nasa.gov/</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>endpoint</code></strong></dt>
+<dd>URL of the SSC web service.
+If None, the default is
+'https://sscweb.gsfc.nasa.gov/WS/sscr/2/'.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>Number of seconds to wait for a response from the server.</dd>
+<dt><strong><code>proxy</code></strong></dt>
+<dd>HTTP proxy information.
+For example,<pre>
+proxies = {
+  'http': 'http://10.10.1.10:3128',
+  'https': 'http://10.10.1.10:1080',
+}</pre>
+Proxy information can also be set with environment variables.
+For example,<pre>
+$ export HTTP_PROXY="http://10.10.1.10:3128"
+$ export HTTPS_PROXY="http://10.10.1.10:1080"</pre></dd>
+<dt><strong><code>ca_certs</code></strong></dt>
+<dd>Path to certificate authority (CA) certificates that will
+override the default bundle.</dd>
+<dt><strong><code>disable_ssl_certificate_validation</code></strong></dt>
+<dd>Flag indicating whether to validate the SSL certificate.</dd>
+<dt><strong><code>user_agent</code></strong></dt>
+<dd>A value that is appended to the HTTP User-Agent values.</dd>
+<dt><strong><code>disable_cache</code></strong></dt>
+<dd>Flag indicating whether to disable HTTP caching.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>The logger used by this class has the class' name (SscWs).
+By default,
+it is configured with a NullHandler.
+Users of this class may configure
+the logger to aid in diagnosing problems.</p>
+<p>This class is dependent upon xml.etree.ElementTree module which is
+vulnerable to an "exponential entity expansion" and "quadratic blowup
+entity expansion" XML attack.
+However, this class only receives XML
+from the (trusted) SSC server so these attacks are not a threat.
+See
+the xml.etree.ElementTree "XML vulnerabilities" documentation for
+more details
+<a href="https://docs.python.org/3/library/xml.html#xml-vulnerabilities">https://docs.python.org/3/library/xml.html#xml-vulnerabilities</a>.</p></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="sscws.sscws.SscWs.print_conjunction_result"><code class="name flex">
+<span>def <span class="ident">print_conjunction_result</span></span>(<span>result: Dict) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def print_conjunction_result(
+        result: Dict
+    ) -&gt; None:
+    &#34;&#34;&#34;
+    Prints the given Dict representation of a QueryResult.
+
+    Parameters
+    ----------
+    result
+        Dict representation of QueryResult as described
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+
+    print(&#39;StatusCode:&#39;, result[&#39;StatusCode&#39;],
+          &#39;StatusSubCode:&#39;, result[&#39;StatusSubCode&#39;])
+    #print(result)
+
+    for conjunction in result[&#39;Conjunction&#39;]:
+        print(conjunction[&#39;TimeInterval&#39;][&#39;Start&#39;].isoformat(), &#39;to&#39;,
+              conjunction[&#39;TimeInterval&#39;][&#39;End&#39;].isoformat())
+        print((f&#34;  {&#39;Satellite&#39;:10s} {&#39;Lat&#39;:&gt;7s} {&#39;Lon&#39;:&gt;7s} &#34;
+               f&#34;{&#39;Radius&#39;:&gt;9s} {&#39;Ground Stations&#39;:20s} {&#39;Lat&#39;:&gt;7s} &#34;
+               f&#34;{&#39;Lon&#39;:&gt;7s} {&#39;ArcLen&#39;:&gt;9s}&#34;))
+        for sat in conjunction[&#39;SatelliteDescription&#39;]:
+            for description in sat[&#39;Description&#39;]:
+                trace = description[&#39;TraceDescription&#39;]
+                print((f&#34;  {sat[&#39;Satellite&#39;]:10s} &#34;
+                       f&#34;{description[&#39;Location&#39;][&#39;Latitude&#39;]:7.2f} &#34;
+                       f&#34;{description[&#39;Location&#39;][&#39;Longitude&#39;]:7.2f} &#34;
+                       f&#34;{description[&#39;Location&#39;][&#39;Radius&#39;]:9.2f} &#34;
+                       f&#34;{trace[&#39;Target&#39;][&#39;GroundStation&#39;]:20s} &#34;
+                       f&#34;{trace[&#39;Location&#39;][&#39;Latitude&#39;]:7.2f} &#34;
+                       f&#34;{trace[&#39;Location&#39;][&#39;Longitude&#39;]:7.2f} &#34;
+                       f&#34;{trace[&#39;ArcLength&#39;]:9.2f}&#34;))</code></pre>
+</details>
+<div class="desc"><p>Prints the given Dict representation of a QueryResult.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>result</code></strong></dt>
+<dd>Dict representation of QueryResult as described
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.sscws.SscWs.print_files_result"><code class="name flex">
+<span>def <span class="ident">print_files_result</span></span>(<span>result: Dict)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def print_files_result(
+        result: Dict):
+    &#34;&#34;&#34;
+    Prints a Result containing files names document.
+
+    Parameters
+    ----------
+    result
+        Dict representation of Result as described
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    for file in result[&#39;Files&#39;]:
+        print(file[&#39;Name&#39;])</code></pre>
+</details>
+<div class="desc"><p>Prints a Result containing files names document.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>result</code></strong></dt>
+<dd>Dict representation of Result as described
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.sscws.SscWs.print_locations_result"><code class="name flex">
+<span>def <span class="ident">print_locations_result</span></span>(<span>result: Dict) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def print_locations_result(
+        result: Dict
+    ) -&gt; None:
+    &#34;&#34;&#34;
+    Prints a Dict representation of a Result.
+
+    Parameters
+    ----------
+    result
+        Dict representation of a Result as described
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+
+    #print(&#39;StatusCode:&#39;, result[&#39;StatusCode&#39;],
+    #      &#39;StatusSubCode:&#39;, result[&#39;StatusSubCode&#39;])
+    #print(result)
+
+    if &#39;Files&#39; in result:
+        SscWs.print_files_result(result)
+        return
+
+    for data in result[&#39;Data&#39;]:
+        if &#39;Coordinates&#39; not in data:
+            continue
+        for coords in data[&#39;Coordinates&#39;]:
+            print(data[&#39;Id&#39;], coords[&#39;CoordinateSystem&#39;].value)
+            print(&#39;Time                     &#39;, &#39;X                     &#39;,
+                  &#39;Y                     &#39;, &#39;Z                     &#39;)
+            for index in range(min(len(data[&#39;Time&#39;]), len(coords[&#39;X&#39;]))):
+                print(data[&#39;Time&#39;][index], coords[&#39;X&#39;][index],
+                      coords[&#39;Y&#39;][index], coords[&#39;Z&#39;][index])
+
+            if &#39;BTraceData&#39; in data:
+                for b_trace in data[&#39;BTraceData&#39;]:
+
+                    print(b_trace[&#39;CoordinateSystem&#39;].value,
+                          b_trace[&#39;Hemisphere&#39;].value,
+                          &#39;Magnetic Field-Line Trace Footpoints&#39;)
+                    print(&#39;Time                          &#39;, &#39;Latitude        &#39;,
+                          &#39;Longitude   &#39;, &#39;Arc Length&#39;)
+                    for index in range(min(len(data[&#39;Time&#39;]),
+                                           len(b_trace[&#39;Latitude&#39;]))):
+                        print(data[&#39;Time&#39;][index],
+                              (f&#34;{b_trace[&#39;Latitude&#39;][index]:15.5f} &#34;
+                               f&#34;{b_trace[&#39;Longitude&#39;][index]:15.5f} &#34;
+                               f&#34;{b_trace[&#39;ArcLength&#39;][index]:15.5f}&#34;))
+
+            quantities = [&#39;RadialLength&#39;, &#39;MagneticStrength&#39;,
+                          &#39;NeutralSheetDistance&#39;, &#39;BowShockDistance&#39;,
+                          &#39;MagnetoPauseDistance&#39;, &#39;DipoleLValue&#39;,
+                          &#39;DipoleInvariantLatitude&#39;, &#39;SpacecraftRegion&#39;,
+                          &#39;RadialTracedFootpointRegions&#39;,
+                          &#39;NorthBTracedFootpointRegions&#39;,
+                          &#39;SouthBTracedFootpointRegions&#39;]
+
+            for quantity in quantities:
+                SscWs.print_time_series(quantity, data)
+
+            if &#39;BGseX&#39; in data and data[&#39;BGseX&#39;] is not None:
+
+                min_len = min(len(data[&#39;Time&#39;]), len(data[&#39;BGseX&#39;]))
+                if min_len &gt; 0:
+                    print(f&#34;{&#39;Time&#39;:25s} {&#39;B Strength GSE&#39;:^30s}&#34;)
+                    print(f&#34;{&#39;&#39;:25s} {&#39;X&#39;:^9s} {&#39;Y&#39;:^9s} {&#39;Z&#39;:^9s}&#34;)
+                    for index in range(min_len):
+                        bgse_time = data[&#39;Time&#39;][index]
+                        try:
+                            iso_time = bgse_time.isoformat()
+                        except AttributeError:
+                            iso_time = str(bgse_time)
+                        print((f&#34;{iso_time:25s} &#34;
+                               f&#34;{data[&#39;BGseX&#39;][index]:9.6f} &#34;
+                               f&#34;{data[&#39;BGseY&#39;][index]:9.6f} &#34;
+                               f&#34;{data[&#39;BGseZ&#39;][index]:9.6f}&#34;))
+
+            if &#39;NorthBTracedFootpointRegion&#39; in data and \
+               &#39;SouthBTracedFootpointRegion&#39; in data:
+
+                min_len = min(len(data[&#39;Time&#39;]),
+                              len(data[&#39;NorthBTracedFootpointRegion&#39;]))
+                if min_len &gt; 0:
+                    print(&#39;                 B-Traced Footpoint Region&#39;)
+                    print(&#39;Time                     &#39;, &#39;North            &#39;,
+                          &#39;South           &#39;)
+                    for index in range(min_len):
+                        print(data[&#39;Time&#39;][index],
+                              data[&#39;NorthBTracedFootpointRegion&#39;][index].value,
+                              data[&#39;SouthBTracedFootpointRegion&#39;][index].value)</code></pre>
+</details>
+<div class="desc"><p>Prints a Dict representation of a Result.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>result</code></strong></dt>
+<dd>Dict representation of a Result as described
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.sscws.SscWs.print_time_series"><code class="name flex">
+<span>def <span class="ident">print_time_series</span></span>(<span>name: str, data: Dict) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def print_time_series(
+        name: str,
+        data: Dict
+    ) -&gt; None:
+    &#34;&#34;&#34;
+    Prints the given time-series data.
+
+    Parameters
+    ----------
+    name
+        Name (key) of data to print.
+    data
+        Dict containing the values to print.
+    &#34;&#34;&#34;
+
+    if name in data and data[name] is not None:
+        min_len = min(len(data[&#39;Time&#39;]), len(data[name]))
+        if min_len &gt; 0:
+            print(&#39;Time                     &#39;, name)
+            for index in range(min_len):
+                print(data[&#39;Time&#39;][index], data[name][index])</code></pre>
+</details>
+<div class="desc"><p>Prints the given time-series data.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>Name (key) of data to print.</dd>
+<dt><strong><code>data</code></strong></dt>
+<dd>Dict containing the values to print.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.sscws.SscWs.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self) -&gt; None:
+    &#34;&#34;&#34;
+    Closes any persistent network connections.  Generally, deleting
+    this object is sufficient and calling this method is unnecessary.
+    &#34;&#34;&#34;
+    self._session.close()</code></pre>
+</details>
+<div class="desc"><p>Closes any persistent network connections.
+Generally, deleting
+this object is sufficient and calling this method is unnecessary.</p></div>
+</dd>
+<dt id="sscws.sscws.SscWs.download"><code class="name flex">
+<span>def <span class="ident">download</span></span>(<span>self, url: str) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def download(
+        self,
+        url: str
+    ) -&gt; str:
+    &#34;&#34;&#34;
+    Downloads the file specified by the given URL to a temporary
+    file without reading all of it into memory.  This method
+    utilizes the connection pool and persistent HTTP connection
+    to the SscWs server.
+
+    Parameters
+    ----------
+    url
+        URL of file to download.
+    Returns
+    -------
+    str
+        name of tempory file or None if there was an error.
+    &#34;&#34;&#34;
+    suffix = os.path.splitext(urlparse(url).path)[1]
+
+    file_descriptor, tmp_filename = mkstemp(suffix=suffix)
+
+    with self._session.get(url, stream=True,
+                           timeout=self._timeout) as response:
+
+        with open(tmp_filename, &#39;wb&#39;) as file:
+            for chunk in response.iter_content(chunk_size=8192):
+                if chunk:  # filter out keep-alive new chunks
+                    file.write(chunk)
+        os.close(file_descriptor)
+
+    return tmp_filename</code></pre>
+</details>
+<div class="desc"><p>Downloads the file specified by the given URL to a temporary
+file without reading all of it into memory.
+This method
+utilizes the connection pool and persistent HTTP connection
+to the SscWs server.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>url</code></strong></dt>
+<dd>URL of file to download.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>name of tempory file or None if there was an error.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.sscws.SscWs.get_conjunctions"><code class="name flex">
+<span>def <span class="ident">get_conjunctions</span></span>(<span>self,<br>query: <a title="sscws.request.QueryRequest" href="request.html#sscws.request.QueryRequest">QueryRequest</a>) ‑> Dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_conjunctions(
+        self,
+        query: QueryRequest
+    ) -&gt; Dict:
+    &#34;&#34;&#34;
+    Gets the conjunctions specified by query.
+
+    Parameters
+    ----------
+    query
+        Conjunction query request.
+    Returns
+    -------
+    Dict
+        Dictionary whose structure mirrors QueryResult from
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+        with the addition of the following key/values:&lt;br&gt;
+        - HttpStatus: with the value of the HTTP status code.
+          Successful == 200.&lt;br&gt;
+        When HttpStatus != 200:&lt;br&gt;
+        - HttpText: containing a string representation of the HTTP
+          entity body.&lt;br&gt;
+        When HttpText is a standard SSC WS error entity body the
+        following key/values (convenience to avoid parsing
+        HttpStatus):&lt;br&gt;
+        - ErrorMessage: value from HttpText.&lt;br&gt;
+        - ErrorDescription: value from HttpText.&lt;br&gt;
+    Raises
+    ------
+    ValueError
+        If query is invalid.
+    &#34;&#34;&#34;
+
+    url = self._endpoint + &#39;conjunctions&#39;
+
+    self.logger.debug(&#39;POST request url = %s&#39;, url)
+
+    xml_query_request = query.xml_element()
+
+    self.logger.debug(&#39;request XML = %s&#39;,
+                      ET.tostring(xml_query_request))
+
+    for retries in range(RETRY_LIMIT):  # pylint: disable=unused-variable
+
+        response = self._session.post(url,
+                                      data=ET.tostring(xml_query_request),
+                                      timeout=self._timeout)
+        if response.status_code == 429 or \
+           response.status_code == 503 and \
+           &#39;Retry-After&#39; in response.headers:
+
+            retry_after = response.headers[&#39;Retry-After&#39;]
+
+            self.logger.debug(&#39;429/503 status with Retry-After header: %s&#39;,
+                              retry_after)
+            retry_after = int(retry_after)
+
+            self.logger.info(&#39;Sleeping %d seconds before retrying request&#39;,
+                             retry_after)
+            time.sleep(retry_after)
+        else:
+            break
+
+    status = self.__get_status(response)
+    if response.status_code != 200:
+        return status
+
+    #self.logger.debug(&#39;response XML = %s&#39;, response.text)
+
+    result = self.__get_result(response)
+    result.update(status)
+    return result</code></pre>
+</details>
+<div class="desc"><p>Gets the conjunctions specified by query.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>query</code></strong></dt>
+<dd>Conjunction query request.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict</code></dt>
+<dd>Dictionary whose structure mirrors QueryResult from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>
+with the addition of the following key/values:<br>
+- HttpStatus: with the value of the HTTP status code.
+Successful == 200.<br>
+When HttpStatus != 200:<br>
+- HttpText: containing a string representation of the HTTP
+entity body.<br>
+When HttpText is a standard SSC WS error entity body the
+following key/values (convenience to avoid parsing
+HttpStatus):<br>
+- ErrorMessage: value from HttpText.<br>
+- ErrorDescription: value from HttpText.<br></dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If query is invalid.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.sscws.SscWs.get_example_time_interval"><code class="name flex">
+<span>def <span class="ident">get_example_time_interval</span></span>(<span>self, observatory: str) ‑> <a title="sscws.timeinterval.TimeInterval" href="timeinterval.html#sscws.timeinterval.TimeInterval">TimeInterval</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_example_time_interval(
+        self,
+        observatory: str
+    ) -&gt; TimeInterval:
+    &#34;&#34;&#34;
+    Gets a small example time interval for the specified observatory.
+
+    Parameters:
+    -----------
+    observatory
+        Specifies the observatory.
+
+    Returns
+    -------
+    TimeInterval
+        A small example time interval for the specified observatory.
+    &#34;&#34;&#34;
+
+    for obs in self.get_observatories()[&#39;Observatory&#39;]:
+        if obs[&#39;Id&#39;] == observatory:
+            end = obs[&#39;EndTime&#39;]
+            return TimeInterval(end - timedelta(hours=2), end)
+
+    return None</code></pre>
+</details>
+<div class="desc"><p>Gets a small example time interval for the specified observatory.</p>
+<h2 id="parameters">Parameters:</h2>
+<p>observatory
+Specifies the observatory.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>TimeInterval</code></dt>
+<dd>A small example time interval for the specified observatory.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.sscws.SscWs.get_ground_stations"><code class="name flex">
+<span>def <span class="ident">get_ground_stations</span></span>(<span>self) ‑> Dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_ground_stations(
+        self
+    ) -&gt; Dict:
+    &#34;&#34;&#34;
+    Gets a description of the available SSC ground stations.
+
+    Returns
+    -------
+    Dict
+        Dictionary whose structure mirrors GroundStationResponse from
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+        with the addition of the following key/values:&lt;br&gt;
+        - HttpStatus: with the value of the HTTP status code.
+          Successful == 200.&lt;br&gt;
+        When HttpStatus != 200:&lt;br&gt;
+        - HttpText: containing a string representation of the HTTP
+          entity body.&lt;br&gt;
+        When HttpText is a standard SSC WS error entity body the
+        following key/values (convenience to avoid parsing
+        HttpStatus):&lt;br&gt;
+        - ErrorMessage: value from HttpText.&lt;br&gt;
+        - ErrorDescription: value from HttpText.&lt;br&gt;
+    &#34;&#34;&#34;
+    url = self._endpoint + &#39;groundStations&#39;
+
+    self.logger.debug(&#39;request url = %s&#39;, url)
+
+    headers = None
+    if self._cache[&#39;GroundStations&#39;][&#39;Last-Modified&#39;] is not None:
+        headers = {
+            &#39;If-Modified-Since&#39;: self._cache[&#39;GroundStations&#39;][&#39;Last-Modified&#39;]
+        }
+
+    response = self._session.get(url, timeout=self._timeout,
+                                 headers=headers)
+
+    if response.status_code == 304:
+        return self._cache[&#39;GroundStations&#39;][&#39;Value&#39;]
+
+    status = self.__get_status(response)
+    if response.status_code != 200:
+        return status
+
+    ground_station_response = ET.fromstring(response.text)
+
+    result = {
+        &#39;GroundStation&#39;: []
+    }
+
+    for ground_station in ground_station_response.findall(\
+            &#39;ssc:GroundStation&#39;, namespaces=NS):
+
+        location = ground_station.find(&#39;ssc:Location&#39;, namespaces=NS)
+        latitude = float(location.find(&#39;ssc:Latitude&#39;, namespaces=NS).text)
+        longitude = float(location.find(&#39;ssc:Longitude&#39;,
+                                        namespaces=NS).text)
+
+        result[&#39;GroundStation&#39;].append({
+            &#39;Id&#39;: ground_station.find(&#39;ssc:Id&#39;, namespaces=NS).text,
+            &#39;Name&#39;: ground_station.find(&#39;ssc:Name&#39;, namespaces=NS).text,
+            &#39;Location&#39;: {
+                &#39;Latitude&#39;: latitude,
+                &#39;Longitude&#39;: longitude
+            }
+        })
+
+    result.update(status)
+
+    if &#39;Last-Modified&#39; in response.headers:
+        self._cache[&#39;GroundStations&#39;][&#39;Last-Modified&#39;] = response.headers[&#39;Last-Modified&#39;]
+        self._cache[&#39;GroundStations&#39;][&#39;Value&#39;] = result
+    else:
+        self._cache[&#39;GroundStations&#39;][&#39;Last-Modified&#39;] = None
+        self._cache[&#39;GroundStations&#39;][&#39;Value&#39;] = None
+
+    return result</code></pre>
+</details>
+<div class="desc"><p>Gets a description of the available SSC ground stations.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict</code></dt>
+<dd>Dictionary whose structure mirrors GroundStationResponse from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>
+with the addition of the following key/values:<br>
+- HttpStatus: with the value of the HTTP status code.
+Successful == 200.<br>
+When HttpStatus != 200:<br>
+- HttpText: containing a string representation of the HTTP
+entity body.<br>
+When HttpText is a standard SSC WS error entity body the
+following key/values (convenience to avoid parsing
+HttpStatus):<br>
+- ErrorMessage: value from HttpText.<br>
+- ErrorDescription: value from HttpText.<br></dd>
+</dl></div>
+</dd>
+<dt id="sscws.sscws.SscWs.get_locations"><code class="name flex">
+<span>def <span class="ident">get_locations</span></span>(<span>self,<br>param1: List[str] | <a title="sscws.request.DataRequest" href="request.html#sscws.request.DataRequest">DataRequest</a>,<br>time_range: List[str] | <a title="sscws.timeinterval.TimeInterval" href="timeinterval.html#sscws.timeinterval.TimeInterval">TimeInterval</a> = None,<br>coords: List[<a title="sscws.coordinates.CoordinateSystem" href="coordinates.html#sscws.coordinates.CoordinateSystem">CoordinateSystem</a>] = None) ‑> Dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_locations(
+        self,
+        param1: Union[List[str], DataRequest],
+        time_range: Union[List[str], TimeInterval] = None,
+        coords: List[CoordinateSystem] = None
+    ) -&gt; Dict:
+    &#34;&#34;&#34;
+    Gets the specified locations.  Complex requests (requesting
+    magnetic field model values) require a single DataRequest
+    parameter.  Simple requests (for only x, y, z, lat, lon,
+    local_time) require at least the first two paramters.
+
+    Parameters
+    ----------
+    param1
+        A locations DataRequest or a list of observatory identifier
+        (returned by get_observatories).
+    time_range
+        A TimeInterval or two element array of ISO 8601 string
+        values of the start and stop time of requested data.  The
+        datetime values should have a UTC timezone.  If the values
+        have no timezone, it will be set to UTC.  A datetime with
+        a non-UTC timezone, will have its value adjusted to UTC and
+        the returned data may not have the expected range.
+    coords
+        Array of CoordinateSystem values that location information
+        is to be in.  If None, default is CoordinateSystem.GSE.
+
+    Returns
+    -------
+    Dict
+        Dictionary whose structure mirrors Result from
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+        with the addition of the following key/values:&lt;br&gt;
+        - HttpStatus: with the value of the HTTP status code.
+          Successful == 200.&lt;br&gt;
+        When HttpStatus != 200:&lt;br&gt;
+        - HttpText: containing a string representation of the HTTP
+          entity body.&lt;br&gt;
+        When HttpText is a standard SSC WS error entity body the
+        following key/values (convenience to avoid parsing
+        HttpStatus):&lt;br&gt;
+        - ErrorMessage: value from HttpText.&lt;br&gt;
+        - ErrorDescription: value from HttpText.&lt;br&gt;
+
+    Raises
+    ------
+    ValueError
+        If param1 is not a DataRequest and time_range is missing or
+        time_range does not contain valid values.
+    &#34;&#34;&#34;
+
+    if isinstance(param1, DataRequest):
+        request = param1
+    else:
+        request = SscWs.__create_locations_request(param1, time_range,
+                                                   coords)
+    return self.__get_locations(request)</code></pre>
+</details>
+<div class="desc"><p>Gets the specified locations.
+Complex requests (requesting
+magnetic field model values) require a single DataRequest
+parameter.
+Simple requests (for only x, y, z, lat, lon,
+local_time) require at least the first two paramters.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>param1</code></strong></dt>
+<dd>A locations DataRequest or a list of observatory identifier
+(returned by get_observatories).</dd>
+<dt><strong><code>time_range</code></strong></dt>
+<dd>A TimeInterval or two element array of ISO 8601 string
+values of the start and stop time of requested data.
+The
+datetime values should have a UTC timezone.
+If the values
+have no timezone, it will be set to UTC.
+A datetime with
+a non-UTC timezone, will have its value adjusted to UTC and
+the returned data may not have the expected range.</dd>
+<dt><strong><code>coords</code></strong></dt>
+<dd>Array of CoordinateSystem values that location information
+is to be in.
+If None, default is CoordinateSystem.GSE.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict</code></dt>
+<dd>Dictionary whose structure mirrors Result from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>
+with the addition of the following key/values:<br>
+- HttpStatus: with the value of the HTTP status code.
+Successful == 200.<br>
+When HttpStatus != 200:<br>
+- HttpText: containing a string representation of the HTTP
+entity body.<br>
+When HttpText is a standard SSC WS error entity body the
+following key/values (convenience to avoid parsing
+HttpStatus):<br>
+- ErrorMessage: value from HttpText.<br>
+- ErrorDescription: value from HttpText.<br></dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If param1 is not a DataRequest and time_range is missing or
+time_range does not contain valid values.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.sscws.SscWs.get_locations2"><code class="name flex">
+<span>def <span class="ident">get_locations2</span></span>(<span>self,<br>param1: List[str] | <a title="sscws.request.DataRequest" href="request.html#sscws.request.DataRequest">DataRequest</a>,<br>time_range: List[str] | <a title="sscws.timeinterval.TimeInterval" href="timeinterval.html#sscws.timeinterval.TimeInterval">TimeInterval</a> = None,<br>coords: List[<a title="sscws.coordinates.CoordinateSystem" href="coordinates.html#sscws.coordinates.CoordinateSystem">CoordinateSystem</a>] = None) ‑> Dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_locations2(
+        self,
+        param1: Union[List[str], DataRequest],
+        time_range: Union[List[str], TimeInterval] = None,
+        coords: List[CoordinateSystem] = None
+    ) -&gt; Dict:
+    &#34;&#34;&#34;
+    Gets the specified locations using CDF instead of XML.  This
+    method is faster, supports larger requests, and the server 
+    supports more concurrency with this method than with the 
+    `SscWs.get_locations` method.  Complex requests (requesting
+    magnetic field model values) require a single DataRequest
+    parameter.  Simple requests (for only x, y, z, lat, lon,
+    local_time) require at least the first two paramters.
+
+    Parameters
+    ----------
+    param1
+        A locations DataRequest or a list of observatory identifier
+        (returned by get_observatories).
+    time_range
+        A TimeInterval or two element array of ISO 8601 string
+        values of the start and stop time of requested data.  The
+        datetime values should have a UTC timezone.  If the values
+        have no timezone, it will be set to UTC.  A datetime with
+        a non-UTC timezone, will have its value adjusted to UTC and
+        the returned data may not have the expected range.
+    coords
+        Array of CoordinateSystem values that location information
+        is to be in.  If None, default is CoordinateSystem.GSE.
+
+    Returns
+    -------
+    Dict
+        Dictionary whose structure mirrors Result from
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+        with the addition of the following key/values:&lt;br&gt;
+        - HttpStatus: with the value of the HTTP status code.
+          Successful == 200.&lt;br&gt;
+        When HttpStatus != 200:&lt;br&gt;
+        - HttpText: containing a string representation of the HTTP
+          entity body.&lt;br&gt;
+        When HttpText is a standard SSC WS error entity body the
+        following key/values (convenience to avoid parsing
+        HttpStatus):&lt;br&gt;
+        - ErrorMessage: value from HttpText.&lt;br&gt;
+        - ErrorDescription: value from HttpText.&lt;br&gt;
+
+    Raises
+    ------
+    ValueError
+        If param1 is not a DataRequest and time_range is missing or
+        time_range does not contain valid values.
+    ModuleNotFoundExcepttion
+        If cdflib is not installed.
+
+    Warnings
+    --------
+    This method is experimental and may be eliminated or changed
+    significantly in future releases.  Code expecting a stable API
+    should use `SscWs.get_locations` instead.  The results returned 
+    are compatible with `SscWs.get_locations` except that the numpy 
+    array of datetime.datetime values are returned as a numpy array 
+    of numpy.datetime64 values.  This method requires the 
+    cdflib module to be installed.
+
+    See Also
+    --------
+    SscWs.get_locations : Gets the specified locations.
+    &#34;&#34;&#34;
+
+    if not CDF_AVAILABLE:
+        raise ModuleNotFoundError(&#39;cdflib module not installed&#39;)
+
+    if isinstance(param1, DataRequest):
+        request = param1
+    else:
+        request = SscWs.__create_locations_request(param1, time_range,
+                                                   coords)
+    if request.format_options is None:
+        request.format_options = CdfFormatOptions()
+
+    request.format_options.cdf = True
+
+    result = self.__get_locations(request)
+
+    if result[&#39;HttpStatus&#39;] == 200:
+        #print(&#39;result = &#39;, result)
+        result = self.get_locations_from_file(result)
+
+    return result</code></pre>
+</details>
+<div class="desc"><p>Gets the specified locations using CDF instead of XML.
+This
+method is faster, supports larger requests, and the server
+supports more concurrency with this method than with the
+<code><a title="sscws.sscws.SscWs.get_locations" href="#sscws.sscws.SscWs.get_locations">SscWs.get_locations()</a></code> method.
+Complex requests (requesting
+magnetic field model values) require a single DataRequest
+parameter.
+Simple requests (for only x, y, z, lat, lon,
+local_time) require at least the first two paramters.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>param1</code></strong></dt>
+<dd>A locations DataRequest or a list of observatory identifier
+(returned by get_observatories).</dd>
+<dt><strong><code>time_range</code></strong></dt>
+<dd>A TimeInterval or two element array of ISO 8601 string
+values of the start and stop time of requested data.
+The
+datetime values should have a UTC timezone.
+If the values
+have no timezone, it will be set to UTC.
+A datetime with
+a non-UTC timezone, will have its value adjusted to UTC and
+the returned data may not have the expected range.</dd>
+<dt><strong><code>coords</code></strong></dt>
+<dd>Array of CoordinateSystem values that location information
+is to be in.
+If None, default is CoordinateSystem.GSE.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict</code></dt>
+<dd>Dictionary whose structure mirrors Result from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>
+with the addition of the following key/values:<br>
+- HttpStatus: with the value of the HTTP status code.
+Successful == 200.<br>
+When HttpStatus != 200:<br>
+- HttpText: containing a string representation of the HTTP
+entity body.<br>
+When HttpText is a standard SSC WS error entity body the
+following key/values (convenience to avoid parsing
+HttpStatus):<br>
+- ErrorMessage: value from HttpText.<br>
+- ErrorDescription: value from HttpText.<br></dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If param1 is not a DataRequest and time_range is missing or
+time_range does not contain valid values.</dd>
+<dt><code>ModuleNotFoundExcepttion</code></dt>
+<dd>If cdflib is not installed.</dd>
+</dl>
+<h2 id="warnings">Warnings</h2>
+<p>This method is experimental and may be eliminated or changed
+significantly in future releases.
+Code expecting a stable API
+should use <code><a title="sscws.sscws.SscWs.get_locations" href="#sscws.sscws.SscWs.get_locations">SscWs.get_locations()</a></code> instead.
+The results returned
+are compatible with <code><a title="sscws.sscws.SscWs.get_locations" href="#sscws.sscws.SscWs.get_locations">SscWs.get_locations()</a></code> except that the numpy
+array of datetime.datetime values are returned as a numpy array
+of numpy.datetime64 values.
+This method requires the
+cdflib module to be installed.</p>
+<h2 id="see-also">See Also</h2>
+<dl>
+<dt><code><a title="sscws.sscws.SscWs.get_locations" href="#sscws.sscws.SscWs.get_locations">SscWs.get_locations()</a></code></dt>
+<dd>Gets the specified locations.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.sscws.SscWs.get_locations_from_file"><code class="name flex">
+<span>def <span class="ident">get_locations_from_file</span></span>(<span>self,<br>results: <a title="sscws.result.Result" href="result.html#sscws.result.Result">Result</a>) ‑> Dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_locations_from_file(
+        self,
+        results: Result
+    ) -&gt; Dict:
+    &#34;&#34;&#34;
+    Gets the given file(s) from the server and returns the contents
+    in a dictionary.
+
+    Parameters
+    ----------
+    results
+        results to get locations from.
+    Returns
+    -------
+    Dict
+        Dictionary whose structure mirrors Result from
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+        with the addition of the following key/values:&lt;br&gt;
+        - HttpStatus: with the value of the HTTP status code.
+          Successful == 200.&lt;br&gt;
+        When HttpStatus != 200:&lt;br&gt;
+        - HttpText: containing a string representation of the HTTP
+          entity body.&lt;br&gt;
+        When HttpText is a standard SSC WS error entity body the
+        following key/values (convenience to avoid parsing
+        HttpStatus):&lt;br&gt;
+        - ErrorMessage: value from HttpText.&lt;br&gt;
+        - ErrorDescription: value from HttpText.&lt;br&gt;
+    &#34;&#34;&#34;
+    locations_result = {}
+    locations_result[&#39;HttpStatus&#39;] = results[&#39;HttpStatus&#39;]
+    locations_result[&#39;StatusCode&#39;] = results[&#39;StatusCode&#39;]
+    locations_result[&#39;StatusSubCode&#39;] = results[&#39;StatusSubCode&#39;]
+    locations_result[&#39;Data&#39;] = np.empty(len(results[&#39;Files&#39;]), dtype=object)
+    #print(&#39;results = &#39;, results)
+    for index in range(len(results[&#39;Files&#39;])):
+        tmp_cdf_file = &#39;unset&#39;
+        try:
+            result_url = results[&#39;Files&#39;][index][&#39;Name&#39;]
+            tmp_cdf_file = self.download(result_url)
+            #print(&#39;tmp_cdf_file&#39;, tmp_cdf_file)
+            cdf = Cdf()
+            cdf.open(tmp_cdf_file)
+            locations_result[&#39;Data&#39;][index] = cdf.get_satellite_data()
+            #cdf.close() ???
+            os.remove(tmp_cdf_file)
+            #print(&#39;tmp_cdf_file&#39;, tmp_cdf_file, &#39;retained&#39;)
+        except:
+            self.logger.error(&#39;Exception from read_data(%s): %s&#39;,
+                              tmp_cdf_file, sys.exc_info()[0])
+            self.logger.error(&#39;CDF file has been retained.&#39;)
+            raise
+    return locations_result</code></pre>
+</details>
+<div class="desc"><p>Gets the given file(s) from the server and returns the contents
+in a dictionary.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>results</code></strong></dt>
+<dd>results to get locations from.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict</code></dt>
+<dd>Dictionary whose structure mirrors Result from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>
+with the addition of the following key/values:<br>
+- HttpStatus: with the value of the HTTP status code.
+Successful == 200.<br>
+When HttpStatus != 200:<br>
+- HttpText: containing a string representation of the HTTP
+entity body.<br>
+When HttpText is a standard SSC WS error entity body the
+following key/values (convenience to avoid parsing
+HttpStatus):<br>
+- ErrorMessage: value from HttpText.<br>
+- ErrorDescription: value from HttpText.<br></dd>
+</dl></div>
+</dd>
+<dt id="sscws.sscws.SscWs.get_observatories"><code class="name flex">
+<span>def <span class="ident">get_observatories</span></span>(<span>self) ‑> Dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_observatories(
+        self
+    ) -&gt; Dict:
+    &#34;&#34;&#34;
+    Gets a description of the available SSC observatories.
+
+    Returns
+    -------
+    Dict
+        Dictionary whose structure mirrors ObservatoryResponse from
+        &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;
+        with the addition of the following key/values:&lt;br&gt;
+        - HttpStatus: with the value of the HTTP status code.
+          Successful == 200.&lt;br&gt;
+        When HttpStatus != 200:&lt;br&gt;
+        - HttpText: containing a string representation of the HTTP
+          entity body.&lt;br&gt;
+        When HttpText is a standard SSC WS error entity body the
+        following key/values (convenience to avoid parsing
+        HttpStatus):&lt;br&gt;
+        - ErrorMessage: value from HttpText.&lt;br&gt;
+        - ErrorDescription: value from HttpText.&lt;br&gt;
+    &#34;&#34;&#34;
+    url = self._endpoint + &#39;observatories&#39;
+
+    self.logger.debug(&#39;request url = %s&#39;, url)
+
+    headers = None
+    if self._cache[&#39;Observatories&#39;][&#39;ETag&#39;] is not None:
+        headers = {
+            &#39;If-None-Match&#39;: self._cache[&#39;Observatories&#39;][&#39;ETag&#39;]
+        }
+
+    response = self._session.get(url, timeout=self._timeout,
+                                 headers=headers)
+
+    if response.status_code == 304:
+        return self._cache[&#39;Observatories&#39;][&#39;Value&#39;]
+
+    status = self.__get_status(response)
+    if response.status_code != 200:
+        return status
+
+    observatory_response = ET.fromstring(response.text)
+
+    result = {
+        &#39;Observatory&#39;: []
+    }
+
+    for observatory in observatory_response.findall(&#39;ssc:Observatory&#39;,
+                                                    namespaces=NS):
+        result[&#39;Observatory&#39;].append({
+            &#39;Id&#39;: observatory.find(&#39;ssc:Id&#39;, namespaces=NS).text,
+            &#39;Name&#39;: observatory.find(&#39;ssc:Name&#39;, namespaces=NS).text,
+            &#39;Resolution&#39;: int(observatory.find(&#39;ssc:Resolution&#39;,
+                                               namespaces=NS).text),
+            &#39;StartTime&#39;: dateutil.parser.parse(observatory.find(\
+                &#39;ssc:StartTime&#39;, namespaces=NS).text),
+            &#39;EndTime&#39;: dateutil.parser.parse(observatory.find(\
+                &#39;ssc:EndTime&#39;, namespaces=NS).text),
+            &#39;ResourceId&#39;: observatory.find(&#39;ssc:ResourceId&#39;,
+                                           namespaces=NS).text
+        })
+
+    result.update(status)
+
+    if &#39;ETag&#39; in response.headers:
+        etag = response.headers[&#39;ETag&#39;]
+        # workaround old apache bugs that are still causing problems
+        etag = etag.replace(&#39;-gzip&#39;, &#39;&#39;)
+        self._cache[&#39;Observatories&#39;][&#39;ETag&#39;] = etag
+        self._cache[&#39;Observatories&#39;][&#39;Value&#39;] = result
+    else:
+        self._cache[&#39;Observatories&#39;][&#39;ETag&#39;] = None
+        self._cache[&#39;Observatories&#39;][&#39;Value&#39;] = None
+
+    return result</code></pre>
+</details>
+<div class="desc"><p>Gets a description of the available SSC observatories.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict</code></dt>
+<dd>Dictionary whose structure mirrors ObservatoryResponse from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>
+with the addition of the following key/values:<br>
+- HttpStatus: with the value of the HTTP status code.
+Successful == 200.<br>
+When HttpStatus != 200:<br>
+- HttpText: containing a string representation of the HTTP
+entity body.<br>
+When HttpText is a standard SSC WS error entity body the
+following key/values (convenience to avoid parsing
+HttpStatus):<br>
+- ErrorMessage: value from HttpText.<br>
+- ErrorDescription: value from HttpText.<br></dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="sscws" href="index.html">sscws</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="sscws.sscws.SscWs" href="#sscws.sscws.SscWs">SscWs</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.sscws.SscWs.close" href="#sscws.sscws.SscWs.close">close</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.download" href="#sscws.sscws.SscWs.download">download</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.get_conjunctions" href="#sscws.sscws.SscWs.get_conjunctions">get_conjunctions</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.get_example_time_interval" href="#sscws.sscws.SscWs.get_example_time_interval">get_example_time_interval</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.get_ground_stations" href="#sscws.sscws.SscWs.get_ground_stations">get_ground_stations</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.get_locations" href="#sscws.sscws.SscWs.get_locations">get_locations</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.get_locations2" href="#sscws.sscws.SscWs.get_locations2">get_locations2</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.get_locations_from_file" href="#sscws.sscws.SscWs.get_locations_from_file">get_locations_from_file</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.get_observatories" href="#sscws.sscws.SscWs.get_observatories">get_observatories</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.print_conjunction_result" href="#sscws.sscws.SscWs.print_conjunction_result">print_conjunction_result</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.print_files_result" href="#sscws.sscws.SscWs.print_files_result">print_files_result</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.print_locations_result" href="#sscws.sscws.SscWs.print_locations_result">print_locations_result</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.print_time_series" href="#sscws.sscws.SscWs.print_time_series">print_time_series</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,3205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>sscws.conjunctions API documentation</title>
+<meta name="description" content="Module defining classes to represent conjunction related classes from
+&lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.&lt;br&gt; …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>sscws.conjunctions</code></h1>
+</header>
+<section id="section-intro">
+<p>Module defining classes to represent conjunction related classes from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.<br></p>
+<p>Copyright &copy; 2013-2023 United States Government as represented by the
+National Aeronautics and Space Administration. No copyright is claimed in
+the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="sscws.conjunctions.BoxConjunctionArea"><code class="flex name class">
+<span>class <span class="ident">BoxConjunctionArea</span></span>
+<span>(</span><span>coordinate_system: <a title="sscws.tracing.TraceCoordinateSystem" href="tracing.html#sscws.tracing.TraceCoordinateSystem">TraceCoordinateSystem</a>,<br>delta_latitude: float,<br>delta_longitude: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BoxConjunctionArea(ConjunctionArea):
+    &#34;&#34;&#34;
+    Class representing a BoxConjunctionArea defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    coordinate_system
+        (Trace) Coordinate system.
+    delta_latitude
+        Delta Latitude in degrees.
+    delta_longitude
+        Delta Longitude in degrees.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 coordinate_system: TraceCoordinateSystem,
+                 delta_latitude: float,
+                 delta_longitude: float):
+
+        super().__init__(&#39;Box&#39;)
+
+        self._coordinate_system = coordinate_system
+        self._delta_latitude = delta_latitude
+        self._delta_longitude = delta_longitude
+
+
+    @property
+    def coordinate_system(self) -&gt; TraceCoordinateSystem:
+        &#34;&#34;&#34;
+        Gets the coordinate_system value.
+
+        Returns
+        -------
+        TraceCoordinateSystem
+            coordinate_system value.
+        &#34;&#34;&#34;
+        return self._coordinate_system
+
+
+    @coordinate_system.setter
+    def coordinate_system(self, value: TraceCoordinateSystem):
+        &#34;&#34;&#34;
+        Sets the coordinate_system value.
+
+        Parameters
+        ----------
+        value
+            new coordinate_system value.
+        &#34;&#34;&#34;
+        self._coordinate_system = value
+
+
+    @property
+    def delta_latitude(self) -&gt; float:
+        &#34;&#34;&#34;
+        Gets the delta_latitude value.
+
+        Returns
+        -------
+        float
+            delta_latitude value.
+        &#34;&#34;&#34;
+        return self._delta_latitude
+
+
+    @delta_latitude.setter
+    def delta_latitude(self, value: float):
+        &#34;&#34;&#34;
+        Sets the delta_latitude value.
+
+        Parameters
+        ----------
+        value
+            new delta_latitude value.
+        &#34;&#34;&#34;
+        self._delta_latitude = value
+
+
+    @property
+    def delta_longitude(self) -&gt; float:
+        &#34;&#34;&#34;
+        Gets the delta_longitude value.
+
+        Returns
+        -------
+        float
+            delta_longitude value.
+        &#34;&#34;&#34;
+        return self._delta_longitude
+
+
+    @delta_longitude.setter
+    def delta_longitude(self, value: float):
+        &#34;&#34;&#34;
+        Sets the delta_longitude value.
+
+        Parameters
+        ----------
+        value
+            new delta_longitude value.
+        &#34;&#34;&#34;
+        self._delta_longitude = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        xml_element = super().xml_element()
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;CoordinateSystem&#39;, {})
+        builder.data(self._coordinate_system.value)
+        builder.end(&#39;CoordinateSystem&#39;)
+        xml_element.append(builder.close())
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;DeltaLatitude&#39;, {})
+        builder.data(str(self._delta_latitude))
+        builder.end(&#39;DeltaLatitude&#39;)
+        xml_element.append(builder.close())
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;DeltaLongitude&#39;, {})
+        builder.data(str(self._delta_longitude))
+        builder.end(&#39;DeltaLongitude&#39;)
+        xml_element.append(builder.close())
+
+        return xml_element</code></pre>
+</details>
+<div class="desc"><p>Class representing a BoxConjunctionArea defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>coordinate_system</code></strong></dt>
+<dd>(Trace) Coordinate system.</dd>
+<dt><strong><code>delta_latitude</code></strong></dt>
+<dd>Delta Latitude in degrees.</dd>
+<dt><strong><code>delta_longitude</code></strong></dt>
+<dd>Delta Longitude in degrees.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="sscws.conjunctions.ConjunctionArea" href="#sscws.conjunctions.ConjunctionArea">ConjunctionArea</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.BoxConjunctionArea.coordinate_system"><code class="name">prop <span class="ident">coordinate_system</span> : <a title="sscws.tracing.TraceCoordinateSystem" href="tracing.html#sscws.tracing.TraceCoordinateSystem">TraceCoordinateSystem</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def coordinate_system(self) -&gt; TraceCoordinateSystem:
+    &#34;&#34;&#34;
+    Gets the coordinate_system value.
+
+    Returns
+    -------
+    TraceCoordinateSystem
+        coordinate_system value.
+    &#34;&#34;&#34;
+    return self._coordinate_system</code></pre>
+</details>
+<div class="desc"><p>Gets the coordinate_system value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>TraceCoordinateSystem</code></dt>
+<dd>coordinate_system value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.BoxConjunctionArea.delta_latitude"><code class="name">prop <span class="ident">delta_latitude</span> : float</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def delta_latitude(self) -&gt; float:
+    &#34;&#34;&#34;
+    Gets the delta_latitude value.
+
+    Returns
+    -------
+    float
+        delta_latitude value.
+    &#34;&#34;&#34;
+    return self._delta_latitude</code></pre>
+</details>
+<div class="desc"><p>Gets the delta_latitude value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>delta_latitude value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.BoxConjunctionArea.delta_longitude"><code class="name">prop <span class="ident">delta_longitude</span> : float</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def delta_longitude(self) -&gt; float:
+    &#34;&#34;&#34;
+    Gets the delta_longitude value.
+
+    Returns
+    -------
+    float
+        delta_longitude value.
+    &#34;&#34;&#34;
+    return self._delta_longitude</code></pre>
+</details>
+<div class="desc"><p>Gets the delta_longitude value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>delta_longitude value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="sscws.conjunctions.ConjunctionArea" href="#sscws.conjunctions.ConjunctionArea">ConjunctionArea</a></b></code>:
+<ul class="hlist">
+<li><code><a title="sscws.conjunctions.ConjunctionArea.sub_type" href="#sscws.conjunctions.ConjunctionArea.sub_type">sub_type</a></code></li>
+<li><code><a title="sscws.conjunctions.ConjunctionArea.xml_element" href="#sscws.conjunctions.ConjunctionArea.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="sscws.conjunctions.Condition"><code class="flex name class">
+<span>class <span class="ident">Condition</span></span>
+<span>(</span><span>sub_type: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Condition(metaclass=ABCMeta):
+    &#34;&#34;&#34;
+    Class representing a Condition defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    sub_type
+        Sub-type name.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 sub_type: str):
+
+        self._sub_type = sub_type
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;Conditions&#39;, {
+            &#39;xmlns:xsi&#39;: &#39;http://www.w3.org/2001/XMLSchema-instance&#39;,
+            &#39;xsi:type&#39;: self._sub_type + &#39;Condition&#39;
+        })
+        builder.end(&#39;Conditions&#39;)
+        return builder.close()
+
+
+    @property
+    def sub_type(self) -&gt; str:
+        &#34;&#34;&#34;
+        Gets the sub_type value.
+
+        Returns
+        -------
+        str
+            sub_type value.
+        &#34;&#34;&#34;
+        return self._sub_type
+
+
+    @sub_type.setter
+    def sub_type(self, value: str):
+        &#34;&#34;&#34;
+        Sets the sub_type value.
+
+        Parameters
+        ----------
+        value
+            new sub_type value.
+        &#34;&#34;&#34;
+        self._sub_type = value</code></pre>
+</details>
+<div class="desc"><p>Class representing a Condition defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sub_type</code></strong></dt>
+<dd>Sub-type name.</dd>
+</dl></div>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="sscws.conjunctions.GroundStationCondition" href="#sscws.conjunctions.GroundStationCondition">GroundStationCondition</a></li>
+<li><a title="sscws.conjunctions.LeadSatelliteCondition" href="#sscws.conjunctions.LeadSatelliteCondition">LeadSatelliteCondition</a></li>
+<li><a title="sscws.conjunctions.RegionCondition" href="#sscws.conjunctions.RegionCondition">RegionCondition</a></li>
+<li><a title="sscws.conjunctions.SatelliteCondition" href="#sscws.conjunctions.SatelliteCondition">SatelliteCondition</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.Condition.sub_type"><code class="name">prop <span class="ident">sub_type</span> : str</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def sub_type(self) -&gt; str:
+    &#34;&#34;&#34;
+    Gets the sub_type value.
+
+    Returns
+    -------
+    str
+        sub_type value.
+    &#34;&#34;&#34;
+    return self._sub_type</code></pre>
+</details>
+<div class="desc"><p>Gets the sub_type value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>sub_type value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.conjunctions.Condition.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+
+    builder = ET.TreeBuilder()
+    builder.start(&#39;Conditions&#39;, {
+        &#39;xmlns:xsi&#39;: &#39;http://www.w3.org/2001/XMLSchema-instance&#39;,
+        &#39;xsi:type&#39;: self._sub_type + &#39;Condition&#39;
+    })
+    builder.end(&#39;Conditions&#39;)
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.conjunctions.ConditionOperator"><code class="flex name class">
+<span>class <span class="ident">ConditionOperator</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConditionOperator(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the ConditionOperator defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    ALL = &#39;All&#39;
+    ANY = &#39;Any&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the ConditionOperator defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.conjunctions.ConditionOperator.ALL"><code class="name">var <span class="ident">ALL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.conjunctions.ConditionOperator.ANY"><code class="name">var <span class="ident">ANY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.conjunctions.ConjunctionArea"><code class="flex name class">
+<span>class <span class="ident">ConjunctionArea</span></span>
+<span>(</span><span>sub_type: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConjunctionArea(metaclass=ABCMeta):
+    &#34;&#34;&#34;
+    Class representing a ConjunctionArea defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    sub_type
+        Sub-type name.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 sub_type: str):
+
+        self._sub_type = sub_type
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;ConjunctionArea&#39;, {
+            &#39;xmlns:xsi&#39;: &#39;http://www.w3.org/2001/XMLSchema-instance&#39;,
+            &#39;xsi:type&#39;: self._sub_type + &#39;ConjunctionArea&#39;
+        })
+        builder.end(&#39;ConjunctionArea&#39;)
+        return builder.close()
+
+
+    @property
+    def sub_type(self) -&gt; str:
+        &#34;&#34;&#34;
+        Gets the sub_type value.
+
+        Returns
+        -------
+        str
+            sub_type value.
+        &#34;&#34;&#34;
+        return self._sub_type
+
+
+    @sub_type.setter
+    def sub_type(self, value: str):
+        &#34;&#34;&#34;
+        Sets the sub_type value.
+
+        Parameters
+        ----------
+        value
+            new sub_type value.
+        &#34;&#34;&#34;
+        self._sub_type = value</code></pre>
+</details>
+<div class="desc"><p>Class representing a ConjunctionArea defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sub_type</code></strong></dt>
+<dd>Sub-type name.</dd>
+</dl></div>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="sscws.conjunctions.BoxConjunctionArea" href="#sscws.conjunctions.BoxConjunctionArea">BoxConjunctionArea</a></li>
+<li><a title="sscws.conjunctions.DistanceConjunctionArea" href="#sscws.conjunctions.DistanceConjunctionArea">DistanceConjunctionArea</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.ConjunctionArea.sub_type"><code class="name">prop <span class="ident">sub_type</span> : str</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def sub_type(self) -&gt; str:
+    &#34;&#34;&#34;
+    Gets the sub_type value.
+
+    Returns
+    -------
+    str
+        sub_type value.
+    &#34;&#34;&#34;
+    return self._sub_type</code></pre>
+</details>
+<div class="desc"><p>Gets the sub_type value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>sub_type value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.conjunctions.ConjunctionArea.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+
+    builder = ET.TreeBuilder()
+    builder.start(&#39;ConjunctionArea&#39;, {
+        &#39;xmlns:xsi&#39;: &#39;http://www.w3.org/2001/XMLSchema-instance&#39;,
+        &#39;xsi:type&#39;: self._sub_type + &#39;ConjunctionArea&#39;
+    })
+    builder.end(&#39;ConjunctionArea&#39;)
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.conjunctions.ConjunctionAreaType"><code class="flex name class">
+<span>class <span class="ident">ConjunctionAreaType</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConjunctionAreaType(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the ConjunctionAreaType defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    GEO_BOX = &#39;GeoBox&#39;
+    GM_BOX = &#39;GmBox&#39;
+    DISTANCE = &#39;Distance&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the ConjunctionAreaType defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.conjunctions.ConjunctionAreaType.DISTANCE"><code class="name">var <span class="ident">DISTANCE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.conjunctions.ConjunctionAreaType.GEO_BOX"><code class="name">var <span class="ident">GEO_BOX</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.conjunctions.ConjunctionAreaType.GM_BOX"><code class="name">var <span class="ident">GM_BOX</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.conjunctions.DistanceConjunctionArea"><code class="flex name class">
+<span>class <span class="ident">DistanceConjunctionArea</span></span>
+<span>(</span><span>radius: float)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DistanceConjunctionArea(ConjunctionArea):
+    &#34;&#34;&#34;
+    Class representing a DistanceConjunctionArea defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    radius
+        Radius in km.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 radius: float):
+
+        super().__init__(&#39;Distance&#39;)
+
+        self._radius = radius
+
+
+    @property
+    def radius(self) -&gt; float:
+        &#34;&#34;&#34;
+        Gets the radius value.
+
+        Returns
+        -------
+        float
+            radius value.
+        &#34;&#34;&#34;
+        return self._radius
+
+
+    @radius.setter
+    def radius(self, value: float):
+        &#34;&#34;&#34;
+        Sets the radius value.
+
+        Parameters
+        ----------
+        value
+            new radius value.
+        &#34;&#34;&#34;
+        self._radius = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        xml_element = super().xml_element()
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;Radius&#39;, {})
+        builder.data(str(self._radius))
+        builder.end(&#39;Radius&#39;)
+        xml_element.append(builder.close())
+
+        return xml_element</code></pre>
+</details>
+<div class="desc"><p>Class representing a DistanceConjunctionArea defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>radius</code></strong></dt>
+<dd>Radius in km.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="sscws.conjunctions.ConjunctionArea" href="#sscws.conjunctions.ConjunctionArea">ConjunctionArea</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.DistanceConjunctionArea.radius"><code class="name">prop <span class="ident">radius</span> : float</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def radius(self) -&gt; float:
+    &#34;&#34;&#34;
+    Gets the radius value.
+
+    Returns
+    -------
+    float
+        radius value.
+    &#34;&#34;&#34;
+    return self._radius</code></pre>
+</details>
+<div class="desc"><p>Gets the radius value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>radius value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="sscws.conjunctions.ConjunctionArea" href="#sscws.conjunctions.ConjunctionArea">ConjunctionArea</a></b></code>:
+<ul class="hlist">
+<li><code><a title="sscws.conjunctions.ConjunctionArea.sub_type" href="#sscws.conjunctions.ConjunctionArea.sub_type">sub_type</a></code></li>
+<li><code><a title="sscws.conjunctions.ConjunctionArea.xml_element" href="#sscws.conjunctions.ConjunctionArea.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="sscws.conjunctions.ExecuteOptions"><code class="flex name class">
+<span>class <span class="ident">ExecuteOptions</span></span>
+<span>(</span><span>wait_for_result: bool = True, result_email_address: str = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ExecuteOptions:
+    &#34;&#34;&#34;
+    Class representing an ExecuteOptions from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    wait_for_result
+        Boolean indicating whether the results are returned in the
+        response to this request or whether the results become
+        available at a later time.  Currently, a value of
+        &#34;false&#34; (and the corresponding ResultEmailAddress
+        value below) is ignored.  That is, a client must
+        always wait on the result.
+    result_email_address
+        When wait_for_result is false, e-mail address where a
+        &#34;query complete&#34; e-mail message is to be sent.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 wait_for_result: bool = True,
+                 result_email_address: str = None):
+
+        self._wait_for_result = wait_for_result
+        self._result_email_address = result_email_address
+
+
+    @property
+    def wait_for_result(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the wait_for_result value.
+
+        Returns
+        -------
+        bool
+            wait_for_result value.
+        &#34;&#34;&#34;
+        return self._wait_for_result
+
+
+    @wait_for_result.setter
+    def wait_for_result(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the wait_for_result value.
+
+        Parameters
+        ----------
+        value
+            new wait_for_result value.
+        &#34;&#34;&#34;
+        self._wait_for_result = value
+
+
+    @property
+    def result_email_address(self) -&gt; str:
+        &#34;&#34;&#34;
+        Gets the result_email_address value.
+
+        Returns
+        -------
+        str
+            result_email_address value.
+        &#34;&#34;&#34;
+        return self._result_email_address
+
+
+    @result_email_address.setter
+    def result_email_address(self, value: str):
+        &#34;&#34;&#34;
+        Sets the result_email_address value.
+
+        Parameters
+        ----------
+        value
+            new result_email_address value.
+        &#34;&#34;&#34;
+        self._result_email_address = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        builder = ET.TreeBuilder()
+
+        builder.start(&#39;ExecuteOptions&#39;, {})
+        builder.start(&#39;WaitForResult&#39;, {})
+        builder.data(str(self._wait_for_result).lower())
+        builder.end(&#39;WaitForResult&#39;)
+
+        if self._result_email_address is not None:
+            builder.start(&#39;ResultEmailAddress&#39;, {})
+            builder.data(self._result_email_address)
+            builder.end(&#39;ResultEmailAddress&#39;)
+
+        builder.end(&#39;ExecuteOptions&#39;)
+
+        return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Class representing an ExecuteOptions from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>wait_for_result</code></strong></dt>
+<dd>Boolean indicating whether the results are returned in the
+response to this request or whether the results become
+available at a later time.
+Currently, a value of
+"false" (and the corresponding ResultEmailAddress
+value below) is ignored.
+That is, a client must
+always wait on the result.</dd>
+<dt><strong><code>result_email_address</code></strong></dt>
+<dd>When wait_for_result is false, e-mail address where a
+"query complete" e-mail message is to be sent.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.ExecuteOptions.result_email_address"><code class="name">prop <span class="ident">result_email_address</span> : str</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def result_email_address(self) -&gt; str:
+    &#34;&#34;&#34;
+    Gets the result_email_address value.
+
+    Returns
+    -------
+    str
+        result_email_address value.
+    &#34;&#34;&#34;
+    return self._result_email_address</code></pre>
+</details>
+<div class="desc"><p>Gets the result_email_address value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>result_email_address value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.ExecuteOptions.wait_for_result"><code class="name">prop <span class="ident">wait_for_result</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def wait_for_result(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the wait_for_result value.
+
+    Returns
+    -------
+    bool
+        wait_for_result value.
+    &#34;&#34;&#34;
+    return self._wait_for_result</code></pre>
+</details>
+<div class="desc"><p>Gets the wait_for_result value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>wait_for_result value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.conjunctions.ExecuteOptions.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+    builder = ET.TreeBuilder()
+
+    builder.start(&#39;ExecuteOptions&#39;, {})
+    builder.start(&#39;WaitForResult&#39;, {})
+    builder.data(str(self._wait_for_result).lower())
+    builder.end(&#39;WaitForResult&#39;)
+
+    if self._result_email_address is not None:
+        builder.start(&#39;ResultEmailAddress&#39;, {})
+        builder.data(self._result_email_address)
+        builder.end(&#39;ResultEmailAddress&#39;)
+
+    builder.end(&#39;ExecuteOptions&#39;)
+
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.conjunctions.GroundStation"><code class="flex name class">
+<span>class <span class="ident">GroundStation</span></span>
+<span>(</span><span>identifier: str,<br>name: str,<br>location: <a title="sscws.coordinates.SurfaceGeographicCoordinates" href="coordinates.html#sscws.coordinates.SurfaceGeographicCoordinates">SurfaceGeographicCoordinates</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GroundStation:
+    &#34;&#34;&#34;
+    Class representing a GroundStation defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    identifier
+        Ground station idenifier.
+    name
+        Ground station name.
+    location
+        Ground station location.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 identifier: str,
+                 name: str,
+                 location: SurfaceGeographicCoordinates):
+
+        self._identifier = identifier
+        self._name = name
+        self._location = location
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;GroundStation&#39;, {})
+        builder.start(&#39;Id&#39;, {})
+        builder.data(self._identifier)
+        builder.end(&#39;Id&#39;)
+        builder.start(&#39;Name&#39;, {})
+        builder.data(self._name)
+        builder.end(&#39;Name&#39;)
+        builder.end(&#39;GroundStation&#39;)
+        xml_element = builder.close()
+        xml_element.append(self._location.xml_element(&#39;Location&#39;))
+
+        return xml_element
+
+
+    @property
+    def identifier(self) -&gt; str:
+        &#34;&#34;&#34;
+        Gets the identifier value.
+
+        Returns
+        -------
+        str
+            identifier value.
+        &#34;&#34;&#34;
+        return self._identifier
+
+
+    @identifier.setter
+    def identifier(self, value: str):
+        &#34;&#34;&#34;
+        Sets the identifier value.
+
+        Parameters
+        ----------
+        value
+            new identifier value.
+        &#34;&#34;&#34;
+        self._identifier = value
+
+
+    @property
+    def name(self) -&gt; str:
+        &#34;&#34;&#34;
+        Gets the name value.
+
+        Returns
+        -------
+        str
+            name value.
+        &#34;&#34;&#34;
+        return self._name
+
+
+    @name.setter
+    def name(self, value: str):
+        &#34;&#34;&#34;
+        Sets the name value.
+
+        Parameters
+        ----------
+        value
+            new name value.
+        &#34;&#34;&#34;
+        self._name = value
+
+
+    @property
+    def location(self) -&gt; SurfaceGeographicCoordinates:
+        &#34;&#34;&#34;
+        Gets the location value.
+
+        Returns
+        -------
+        str
+            location value.
+        &#34;&#34;&#34;
+        return self._location
+
+
+    @location.setter
+    def location(self, value: SurfaceGeographicCoordinates):
+        &#34;&#34;&#34;
+        Sets the location value.
+
+        Parameters
+        ----------
+        value
+            new location value.
+        &#34;&#34;&#34;
+        self._location = value</code></pre>
+</details>
+<div class="desc"><p>Class representing a GroundStation defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>identifier</code></strong></dt>
+<dd>Ground station idenifier.</dd>
+<dt><strong><code>name</code></strong></dt>
+<dd>Ground station name.</dd>
+<dt><strong><code>location</code></strong></dt>
+<dd>Ground station location.</dd>
+</dl></div>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="sscws.conjunctions.GroundStationConjunction" href="#sscws.conjunctions.GroundStationConjunction">GroundStationConjunction</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.GroundStation.identifier"><code class="name">prop <span class="ident">identifier</span> : str</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def identifier(self) -&gt; str:
+    &#34;&#34;&#34;
+    Gets the identifier value.
+
+    Returns
+    -------
+    str
+        identifier value.
+    &#34;&#34;&#34;
+    return self._identifier</code></pre>
+</details>
+<div class="desc"><p>Gets the identifier value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>identifier value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.GroundStation.location"><code class="name">prop <span class="ident">location</span> : <a title="sscws.coordinates.SurfaceGeographicCoordinates" href="coordinates.html#sscws.coordinates.SurfaceGeographicCoordinates">SurfaceGeographicCoordinates</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def location(self) -&gt; SurfaceGeographicCoordinates:
+    &#34;&#34;&#34;
+    Gets the location value.
+
+    Returns
+    -------
+    str
+        location value.
+    &#34;&#34;&#34;
+    return self._location</code></pre>
+</details>
+<div class="desc"><p>Gets the location value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>location value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.GroundStation.name"><code class="name">prop <span class="ident">name</span> : str</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def name(self) -&gt; str:
+    &#34;&#34;&#34;
+    Gets the name value.
+
+    Returns
+    -------
+    str
+        name value.
+    &#34;&#34;&#34;
+    return self._name</code></pre>
+</details>
+<div class="desc"><p>Gets the name value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>name value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.conjunctions.GroundStation.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+
+    builder = ET.TreeBuilder()
+    builder.start(&#39;GroundStation&#39;, {})
+    builder.start(&#39;Id&#39;, {})
+    builder.data(self._identifier)
+    builder.end(&#39;Id&#39;)
+    builder.start(&#39;Name&#39;, {})
+    builder.data(self._name)
+    builder.end(&#39;Name&#39;)
+    builder.end(&#39;GroundStation&#39;)
+    xml_element = builder.close()
+    xml_element.append(self._location.xml_element(&#39;Location&#39;))
+
+    return xml_element</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.conjunctions.GroundStationCondition"><code class="flex name class">
+<span>class <span class="ident">GroundStationCondition</span></span>
+<span>(</span><span>ground_station: List[<a title="sscws.conjunctions.GroundStationConjunction" href="#sscws.conjunctions.GroundStationConjunction">GroundStationConjunction</a>],<br>coordinate_system: <a title="sscws.tracing.TraceCoordinateSystem" href="tracing.html#sscws.tracing.TraceCoordinateSystem">TraceCoordinateSystem</a>,<br>trace_type: <a title="sscws.tracing.TraceType" href="tracing.html#sscws.tracing.TraceType">TraceType</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GroundStationCondition(Condition):
+    &#34;&#34;&#34;
+    Class representing a GroundStationCondition defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    ground_station
+        1 to 4 GroundStations.
+    coordinate_system
+        Ground station coordinates system.
+    trace_type
+        Trace type.
+
+    Raises
+    ------
+    ValueError
+        If number of ground stations is out of range.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 ground_station: List[GroundStationConjunction],
+                 coordinate_system: TraceCoordinateSystem,
+                 trace_type: TraceType):
+
+        super().__init__(&#39;GroundStation&#39;)
+
+        if not ground_station or len(ground_station) &gt; 4:
+            raise ValueError(&#39;len(ground_station) must be &gt; 0 and &lt; 5&#39;)
+
+        self._ground_station = ground_station
+        self._coordinate_system = coordinate_system
+        self._trace_type = trace_type
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        xml_element = super().xml_element()
+
+        for ground_station in self._ground_station:
+            xml_element.append(ground_station.xml_element())
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;CoordinateSystem&#39;, {
+            &#39;xmlns:xsi&#39;: &#39;http://www.w3.org/2001/XMLSchema-instance&#39;,
+            &#39;xsi:type&#39;: &#39;TraceCoordinateSystem&#39;
+        })
+        builder.data(self._coordinate_system.value)
+        builder.end(&#39;CoordinateSystem&#39;)
+        xml_element.append(builder.close())
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;TraceType&#39;, {})
+        builder.data(self._trace_type.value)
+        builder.end(&#39;TraceType&#39;)
+        xml_element.append(builder.close())
+
+        return xml_element
+
+
+    @property
+    def ground_station(self) -&gt; GroundStationConjunction:
+        &#34;&#34;&#34;
+        Gets the ground_station value.
+
+        Returns
+        -------
+        str
+            ground_station value.
+        &#34;&#34;&#34;
+        return self._ground_station
+
+
+    @ground_station.setter
+    def ground_station(self, value: GroundStationConjunction):
+        &#34;&#34;&#34;
+        Sets the ground_station value.
+
+        Parameters
+        ----------
+        value
+            new ground_station value.
+        &#34;&#34;&#34;
+        self._ground_station = value
+
+
+    @property
+    def coordinate_system(self) -&gt; CoordinateSystem:
+        &#34;&#34;&#34;
+        Gets the coordinate_system value.
+
+        Returns
+        -------
+        str
+            coordinate_system value.
+        &#34;&#34;&#34;
+        return self._coordinate_system
+
+
+    @coordinate_system.setter
+    def coordinate_system(self, value: CoordinateSystem):
+        &#34;&#34;&#34;
+        Sets the coordinate_system value.
+
+        Parameters
+        ----------
+        value
+            new coordinate_system value.
+        &#34;&#34;&#34;
+        self._coordinate_system = value
+
+
+    @property
+    def trace_type(self) -&gt; TraceType:
+        &#34;&#34;&#34;
+        Gets the trace_type value.
+
+        Returns
+        -------
+        str
+            trace_type value.
+        &#34;&#34;&#34;
+        return self._trace_type
+
+
+    @trace_type.setter
+    def trace_type(self, value: TraceType):
+        &#34;&#34;&#34;
+        Sets the trace_type value.
+
+        Parameters
+        ----------
+        value
+            new trace_type value.
+        &#34;&#34;&#34;
+        self._trace_type = value</code></pre>
+</details>
+<div class="desc"><p>Class representing a GroundStationCondition defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>ground_station</code></strong></dt>
+<dd>1 to 4 GroundStations.</dd>
+<dt><strong><code>coordinate_system</code></strong></dt>
+<dd>Ground station coordinates system.</dd>
+<dt><strong><code>trace_type</code></strong></dt>
+<dd>Trace type.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If number of ground stations is out of range.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="sscws.conjunctions.Condition" href="#sscws.conjunctions.Condition">Condition</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.GroundStationCondition.coordinate_system"><code class="name">prop <span class="ident">coordinate_system</span> : <a title="sscws.coordinates.CoordinateSystem" href="coordinates.html#sscws.coordinates.CoordinateSystem">CoordinateSystem</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def coordinate_system(self) -&gt; CoordinateSystem:
+    &#34;&#34;&#34;
+    Gets the coordinate_system value.
+
+    Returns
+    -------
+    str
+        coordinate_system value.
+    &#34;&#34;&#34;
+    return self._coordinate_system</code></pre>
+</details>
+<div class="desc"><p>Gets the coordinate_system value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>coordinate_system value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.GroundStationCondition.ground_station"><code class="name">prop <span class="ident">ground_station</span> : <a title="sscws.conjunctions.GroundStationConjunction" href="#sscws.conjunctions.GroundStationConjunction">GroundStationConjunction</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def ground_station(self) -&gt; GroundStationConjunction:
+    &#34;&#34;&#34;
+    Gets the ground_station value.
+
+    Returns
+    -------
+    str
+        ground_station value.
+    &#34;&#34;&#34;
+    return self._ground_station</code></pre>
+</details>
+<div class="desc"><p>Gets the ground_station value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>ground_station value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.GroundStationCondition.trace_type"><code class="name">prop <span class="ident">trace_type</span> : <a title="sscws.tracing.TraceType" href="tracing.html#sscws.tracing.TraceType">TraceType</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def trace_type(self) -&gt; TraceType:
+    &#34;&#34;&#34;
+    Gets the trace_type value.
+
+    Returns
+    -------
+    str
+        trace_type value.
+    &#34;&#34;&#34;
+    return self._trace_type</code></pre>
+</details>
+<div class="desc"><p>Gets the trace_type value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>trace_type value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="sscws.conjunctions.Condition" href="#sscws.conjunctions.Condition">Condition</a></b></code>:
+<ul class="hlist">
+<li><code><a title="sscws.conjunctions.Condition.sub_type" href="#sscws.conjunctions.Condition.sub_type">sub_type</a></code></li>
+<li><code><a title="sscws.conjunctions.Condition.xml_element" href="#sscws.conjunctions.Condition.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="sscws.conjunctions.GroundStationConjunction"><code class="flex name class">
+<span>class <span class="ident">GroundStationConjunction</span></span>
+<span>(</span><span>identifier: str,<br>name: str,<br>location: <a title="sscws.coordinates.SurfaceGeographicCoordinates" href="coordinates.html#sscws.coordinates.SurfaceGeographicCoordinates">SurfaceGeographicCoordinates</a>,<br>conjunction_area: <a title="sscws.conjunctions.ConjunctionArea" href="#sscws.conjunctions.ConjunctionArea">ConjunctionArea</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GroundStationConjunction(GroundStation):
+    &#34;&#34;&#34;
+    Class representing a GroundStationConjunction defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    identifier
+        Ground station idenifier.
+    name
+        Ground station name.
+    location
+        Ground station location.
+    conjunction_area
+        Conjunction area.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 identifier: str,
+                 name: str,
+                 location: SurfaceGeographicCoordinates,
+                 conjunction_area: ConjunctionArea):
+
+        super().__init__(identifier, name, location)
+
+        self._conjunction_area = conjunction_area
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        xml_element = super().xml_element()
+
+        xml_element.append(self._conjunction_area.xml_element())
+
+        return xml_element
+
+
+    @property
+    def conjunction_area(self) -&gt; ConjunctionArea:
+        &#34;&#34;&#34;
+        Gets the conjunction_area value.
+
+        Returns
+        -------
+        str
+            conjunction_area value.
+        &#34;&#34;&#34;
+        return self._conjunction_area
+
+
+    @conjunction_area.setter
+    def conjunction_area(self, value: ConjunctionArea):
+        &#34;&#34;&#34;
+        Sets the conjunction_area value.
+
+        Parameters
+        ----------
+        value
+            new conjunction_area value.
+        &#34;&#34;&#34;
+        self._conjunction_area = value</code></pre>
+</details>
+<div class="desc"><p>Class representing a GroundStationConjunction defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>identifier</code></strong></dt>
+<dd>Ground station idenifier.</dd>
+<dt><strong><code>name</code></strong></dt>
+<dd>Ground station name.</dd>
+<dt><strong><code>location</code></strong></dt>
+<dd>Ground station location.</dd>
+<dt><strong><code>conjunction_area</code></strong></dt>
+<dd>Conjunction area.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="sscws.conjunctions.GroundStation" href="#sscws.conjunctions.GroundStation">GroundStation</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.GroundStationConjunction.conjunction_area"><code class="name">prop <span class="ident">conjunction_area</span> : <a title="sscws.conjunctions.ConjunctionArea" href="#sscws.conjunctions.ConjunctionArea">ConjunctionArea</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def conjunction_area(self) -&gt; ConjunctionArea:
+    &#34;&#34;&#34;
+    Gets the conjunction_area value.
+
+    Returns
+    -------
+    str
+        conjunction_area value.
+    &#34;&#34;&#34;
+    return self._conjunction_area</code></pre>
+</details>
+<div class="desc"><p>Gets the conjunction_area value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>conjunction_area value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="sscws.conjunctions.GroundStation" href="#sscws.conjunctions.GroundStation">GroundStation</a></b></code>:
+<ul class="hlist">
+<li><code><a title="sscws.conjunctions.GroundStation.identifier" href="#sscws.conjunctions.GroundStation.identifier">identifier</a></code></li>
+<li><code><a title="sscws.conjunctions.GroundStation.location" href="#sscws.conjunctions.GroundStation.location">location</a></code></li>
+<li><code><a title="sscws.conjunctions.GroundStation.name" href="#sscws.conjunctions.GroundStation.name">name</a></code></li>
+<li><code><a title="sscws.conjunctions.GroundStation.xml_element" href="#sscws.conjunctions.GroundStation.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="sscws.conjunctions.LeadSatelliteCondition"><code class="flex name class">
+<span>class <span class="ident">LeadSatelliteCondition</span></span>
+<span>(</span><span>satellite: List[<a title="sscws.conjunctions.Satellite" href="#sscws.conjunctions.Satellite">Satellite</a>],<br>conjunction_area: <a title="sscws.conjunctions.ConjunctionArea" href="#sscws.conjunctions.ConjunctionArea">ConjunctionArea</a>,<br>trace_type: <a title="sscws.tracing.TraceType" href="tracing.html#sscws.tracing.TraceType">TraceType</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LeadSatelliteCondition(Condition):
+    &#34;&#34;&#34;
+    Class representing a LeadSatelliteCondition defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    satellite
+        Satellites.
+    conjunction_area
+        Conjunction area.
+    trace_type
+        Trace type.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 satellite: List[Satellite],
+                 conjunction_area: ConjunctionArea,
+                 trace_type: TraceType):
+
+        super().__init__(&#39;LeadSatellite&#39;)
+
+        self._satellite = satellite
+        self._conjunction_area = conjunction_area
+        self._trace_type = trace_type
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        xml_element = super().xml_element()
+
+        for sat in self._satellite:
+            xml_element.append(sat.xml_element())
+
+        xml_element.append(self._conjunction_area.xml_element())
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;TraceType&#39;, {})
+        builder.data(self._trace_type.value)
+        builder.end(&#39;TraceType&#39;)
+        xml_element.append(builder.close())
+
+        return xml_element
+
+
+    @property
+    def conjunction_area(self) -&gt; ConjunctionArea:
+        &#34;&#34;&#34;
+        Gets the conjunction_area value.
+
+        Returns
+        -------
+        str
+            conjunction_area value.
+        &#34;&#34;&#34;
+        return self._conjunction_area
+
+
+    @conjunction_area.setter
+    def conjunction_area(self, value: ConjunctionArea):
+        &#34;&#34;&#34;
+        Sets the conjunction_area value.
+
+        Parameters
+        ----------
+        value
+            new conjunction_area value.
+        &#34;&#34;&#34;
+        self._conjunction_area = value
+
+
+    @property
+    def trace_type(self) -&gt; TraceType:
+        &#34;&#34;&#34;
+        Gets the trace_type value.
+
+        Returns
+        -------
+        str
+            trace_type value.
+        &#34;&#34;&#34;
+        return self._trace_type
+
+
+    @trace_type.setter
+    def trace_type(self, value: TraceType):
+        &#34;&#34;&#34;
+        Sets the trace_type value.
+
+        Parameters
+        ----------
+        value
+            new trace_type value.
+        &#34;&#34;&#34;
+        self._trace_type = value</code></pre>
+</details>
+<div class="desc"><p>Class representing a LeadSatelliteCondition defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>satellite</code></strong></dt>
+<dd>Satellites.</dd>
+<dt><strong><code>conjunction_area</code></strong></dt>
+<dd>Conjunction area.</dd>
+<dt><strong><code>trace_type</code></strong></dt>
+<dd>Trace type.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="sscws.conjunctions.Condition" href="#sscws.conjunctions.Condition">Condition</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.LeadSatelliteCondition.conjunction_area"><code class="name">prop <span class="ident">conjunction_area</span> : <a title="sscws.conjunctions.ConjunctionArea" href="#sscws.conjunctions.ConjunctionArea">ConjunctionArea</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def conjunction_area(self) -&gt; ConjunctionArea:
+    &#34;&#34;&#34;
+    Gets the conjunction_area value.
+
+    Returns
+    -------
+    str
+        conjunction_area value.
+    &#34;&#34;&#34;
+    return self._conjunction_area</code></pre>
+</details>
+<div class="desc"><p>Gets the conjunction_area value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>conjunction_area value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.LeadSatelliteCondition.trace_type"><code class="name">prop <span class="ident">trace_type</span> : <a title="sscws.tracing.TraceType" href="tracing.html#sscws.tracing.TraceType">TraceType</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def trace_type(self) -&gt; TraceType:
+    &#34;&#34;&#34;
+    Gets the trace_type value.
+
+    Returns
+    -------
+    str
+        trace_type value.
+    &#34;&#34;&#34;
+    return self._trace_type</code></pre>
+</details>
+<div class="desc"><p>Gets the trace_type value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>trace_type value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="sscws.conjunctions.Condition" href="#sscws.conjunctions.Condition">Condition</a></b></code>:
+<ul class="hlist">
+<li><code><a title="sscws.conjunctions.Condition.sub_type" href="#sscws.conjunctions.Condition.sub_type">sub_type</a></code></li>
+<li><code><a title="sscws.conjunctions.Condition.xml_element" href="#sscws.conjunctions.Condition.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="sscws.conjunctions.QueryResultType"><code class="flex name class">
+<span>class <span class="ident">QueryResultType</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class QueryResultType(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the QueryResultType defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    XML = &#39;Xml&#39;
+    LISTING = &#39;Listing&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the QueryResultType defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.conjunctions.QueryResultType.LISTING"><code class="name">var <span class="ident">LISTING</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.conjunctions.QueryResultType.XML"><code class="name">var <span class="ident">XML</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.conjunctions.RegionCondition"><code class="flex name class">
+<span>class <span class="ident">RegionCondition</span></span>
+<span>(</span><span>condition_operator: <a title="sscws.conjunctions.ConditionOperator" href="#sscws.conjunctions.ConditionOperator">ConditionOperator</a>,<br>space_regions: <a title="sscws.filteroptions.SpaceRegionsFilterOptions" href="filteroptions.html#sscws.filteroptions.SpaceRegionsFilterOptions">SpaceRegionsFilterOptions</a>,<br>radial_trace_regions: <a title="sscws.tracing.TraceRegions" href="tracing.html#sscws.tracing.TraceRegions">TraceRegions</a>,<br>b_field_trace_regions: <a title="sscws.tracing.TraceRegions" href="tracing.html#sscws.tracing.TraceRegions">TraceRegions</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RegionCondition(Condition):
+    &#34;&#34;&#34;
+    Class representing a RegionCondition defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    condition_operator
+        Operator for combining region conditions.
+    space_regions
+        Space regions.
+    radial_trace_regions
+        Radial trace regions.
+    b_field_trace_regions
+        Magnetic field trace regions.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 condition_operator: ConditionOperator,
+                 space_regions: SpaceRegionsFilterOptions,
+                 radial_trace_regions: TraceRegions,
+                 b_field_trace_regions: TraceRegions):
+
+        super().__init__(&#39;Region&#39;)
+
+        self._condition_operator = condition_operator
+        self._space_regions = space_regions
+        self._radial_trace_regions = radial_trace_regions
+        self._b_field_trace_regions = b_field_trace_regions
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        xml_element = super().xml_element()
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;ConditionOperator&#39;, {})
+        builder.data(self._condition_operator.value)
+        builder.end(&#39;ConditionOperator&#39;)
+        xml_element.append(builder.close())
+
+        if self._space_regions is not None:
+            xml_element.append(self._space_regions.xml_element())
+        if self._radial_trace_regions is not None:
+            xml_element.append(\
+                self._radial_trace_regions.xml_element(\
+                    &#39;RadialTraceRegions&#39;))
+        if self._b_field_trace_regions is not None:
+            xml_element.append(\
+                self._b_field_trace_regions.xml_element(\
+                    &#39;BFieldTraceRegions&#39;))
+
+        return xml_element
+
+
+    @property
+    def condition_operator(self) -&gt; ConditionOperator:
+        &#34;&#34;&#34;
+        Gets the condition_operator value.
+
+        Returns
+        -------
+        str
+            condition_operator value.
+        &#34;&#34;&#34;
+        return self._condition_operator
+
+
+    @condition_operator.setter
+    def condition_operator(self, value: ConditionOperator):
+        &#34;&#34;&#34;
+        Sets the condition_operator value.
+
+        Parameters
+        ----------
+        value
+            new condition_operator value.
+        &#34;&#34;&#34;
+        self._condition_operator = value
+
+
+    @property
+    def space_regions(self) -&gt; SpaceRegionsFilterOptions:
+        &#34;&#34;&#34;
+        Gets the space_regions value.
+
+        Returns
+        -------
+        str
+            space_regions value.
+        &#34;&#34;&#34;
+        return self._space_regions
+
+
+    @space_regions.setter
+    def space_regions(self, value: SpaceRegionsFilterOptions):
+        &#34;&#34;&#34;
+        Sets the space_regions value.
+
+        Parameters
+        ----------
+        value
+            new space_regions value.
+        &#34;&#34;&#34;
+        self._space_regions = value
+
+
+    @property
+    def radial_trace_regions(self) -&gt; TraceRegions:
+        &#34;&#34;&#34;
+        Gets the radial_trace_regions value.
+
+        Returns
+        -------
+        str
+            radial_trace_regions value.
+        &#34;&#34;&#34;
+        return self._radial_trace_regions
+
+
+    @radial_trace_regions.setter
+    def radial_trace_regions(self, value: TraceRegions):
+        &#34;&#34;&#34;
+        Sets the radial_trace_regions value.
+
+        Parameters
+        ----------
+        value
+            new radial_trace_regions value.
+        &#34;&#34;&#34;
+        self._radial_trace_regions = value
+
+
+    @property
+    def b_field_trace_regions(self) -&gt; TraceRegions:
+        &#34;&#34;&#34;
+        Gets the b_field_trace_regions value.
+
+        Returns
+        -------
+        str
+            b_field_trace_regions value.
+        &#34;&#34;&#34;
+        return self._b_field_trace_regions
+
+
+    @b_field_trace_regions.setter
+    def b_field_trace_regions(self, value: TraceRegions):
+        &#34;&#34;&#34;
+        Sets the b_field_trace_regions value.
+
+        Parameters
+        ----------
+        value
+            new b_field_trace_regions value.
+        &#34;&#34;&#34;
+        self._b_field_trace_regions = value</code></pre>
+</details>
+<div class="desc"><p>Class representing a RegionCondition defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>condition_operator</code></strong></dt>
+<dd>Operator for combining region conditions.</dd>
+<dt><strong><code>space_regions</code></strong></dt>
+<dd>Space regions.</dd>
+<dt><strong><code>radial_trace_regions</code></strong></dt>
+<dd>Radial trace regions.</dd>
+<dt><strong><code>b_field_trace_regions</code></strong></dt>
+<dd>Magnetic field trace regions.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="sscws.conjunctions.Condition" href="#sscws.conjunctions.Condition">Condition</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.RegionCondition.b_field_trace_regions"><code class="name">prop <span class="ident">b_field_trace_regions</span> : <a title="sscws.tracing.TraceRegions" href="tracing.html#sscws.tracing.TraceRegions">TraceRegions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def b_field_trace_regions(self) -&gt; TraceRegions:
+    &#34;&#34;&#34;
+    Gets the b_field_trace_regions value.
+
+    Returns
+    -------
+    str
+        b_field_trace_regions value.
+    &#34;&#34;&#34;
+    return self._b_field_trace_regions</code></pre>
+</details>
+<div class="desc"><p>Gets the b_field_trace_regions value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>b_field_trace_regions value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.RegionCondition.condition_operator"><code class="name">prop <span class="ident">condition_operator</span> : <a title="sscws.conjunctions.ConditionOperator" href="#sscws.conjunctions.ConditionOperator">ConditionOperator</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def condition_operator(self) -&gt; ConditionOperator:
+    &#34;&#34;&#34;
+    Gets the condition_operator value.
+
+    Returns
+    -------
+    str
+        condition_operator value.
+    &#34;&#34;&#34;
+    return self._condition_operator</code></pre>
+</details>
+<div class="desc"><p>Gets the condition_operator value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>condition_operator value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.RegionCondition.radial_trace_regions"><code class="name">prop <span class="ident">radial_trace_regions</span> : <a title="sscws.tracing.TraceRegions" href="tracing.html#sscws.tracing.TraceRegions">TraceRegions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def radial_trace_regions(self) -&gt; TraceRegions:
+    &#34;&#34;&#34;
+    Gets the radial_trace_regions value.
+
+    Returns
+    -------
+    str
+        radial_trace_regions value.
+    &#34;&#34;&#34;
+    return self._radial_trace_regions</code></pre>
+</details>
+<div class="desc"><p>Gets the radial_trace_regions value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>radial_trace_regions value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.RegionCondition.space_regions"><code class="name">prop <span class="ident">space_regions</span> : <a title="sscws.filteroptions.SpaceRegionsFilterOptions" href="filteroptions.html#sscws.filteroptions.SpaceRegionsFilterOptions">SpaceRegionsFilterOptions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def space_regions(self) -&gt; SpaceRegionsFilterOptions:
+    &#34;&#34;&#34;
+    Gets the space_regions value.
+
+    Returns
+    -------
+    str
+        space_regions value.
+    &#34;&#34;&#34;
+    return self._space_regions</code></pre>
+</details>
+<div class="desc"><p>Gets the space_regions value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>space_regions value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="sscws.conjunctions.Condition" href="#sscws.conjunctions.Condition">Condition</a></b></code>:
+<ul class="hlist">
+<li><code><a title="sscws.conjunctions.Condition.sub_type" href="#sscws.conjunctions.Condition.sub_type">sub_type</a></code></li>
+<li><code><a title="sscws.conjunctions.Condition.xml_element" href="#sscws.conjunctions.Condition.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="sscws.conjunctions.ResultOptions"><code class="flex name class">
+<span>class <span class="ident">ResultOptions</span></span>
+<span>(</span><span>include_query_in_result: bool = False,<br>query_result_type: <a title="sscws.conjunctions.QueryResultType" href="#sscws.conjunctions.QueryResultType">QueryResultType</a> = QueryResultType.XML,<br>format_options: <a title="sscws.formatoptions.FormatOptions" href="formatoptions.html#sscws.formatoptions.FormatOptions">FormatOptions</a> = None,<br>trace_coordinate_system: <a title="sscws.tracing.TraceCoordinateSystem" href="tracing.html#sscws.tracing.TraceCoordinateSystem">TraceCoordinateSystem</a> = TraceCoordinateSystem.GEO,<br>sub_satellite_coordinate_system: <a title="sscws.coordinates.CoordinateSystem" href="coordinates.html#sscws.coordinates.CoordinateSystem">CoordinateSystem</a> = CoordinateSystem.GEO,<br>sub_satellite_coordinate_system_type: <a title="sscws.coordinates.CoordinateSystemType" href="coordinates.html#sscws.coordinates.CoordinateSystemType">CoordinateSystemType</a> = CoordinateSystemType.SPHERICAL)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ResultOptions:
+    &#34;&#34;&#34;
+    Class representing a RequestOptions from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    include_query_in_result
+        Boolean indicating whether to include a copy of the query in the
+        results.
+    query_result_type
+        Requested QueryResultType
+    format_options
+        Format options.
+    trace_coordinate_system
+        Trace coordinate system.
+    sub_satellite_coordinate_system
+        Sub-satellite coordinate system.
+    sub_satellite_coordinate_system_type
+        Sub-satellite coordinate system type.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 include_query_in_result: bool = False,
+                 query_result_type: QueryResultType = QueryResultType.XML,
+                 format_options: FormatOptions = None,
+                 trace_coordinate_system: TraceCoordinateSystem = \
+                     TraceCoordinateSystem.GEO,
+                 sub_satellite_coordinate_system: CoordinateSystem = \
+                     CoordinateSystem.GEO,
+                 sub_satellite_coordinate_system_type: CoordinateSystemType = \
+                     CoordinateSystemType.SPHERICAL
+                ):    # pylint: disable=too-many-arguments
+
+        self._include_query_in_result = include_query_in_result
+        self._query_result_type = query_result_type
+        self._format_options = format_options
+        self._trace_coordinate_system = trace_coordinate_system
+        self._sub_satellite_coordinate_system = \
+            sub_satellite_coordinate_system
+        self._sub_satellite_coordinate_system_type = \
+            sub_satellite_coordinate_system_type
+
+
+    @property
+    def include_query_in_result(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the include_query_in_result value.
+
+        Returns
+        -------
+        bool
+            include_query_in_result value.
+        &#34;&#34;&#34;
+        return self._include_query_in_result
+
+
+    @include_query_in_result.setter
+    def include_query_in_result(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the include_query_in_result value.
+
+        Parameters
+        ----------
+        value
+            new include_query_in_result value.
+        &#34;&#34;&#34;
+        self._include_query_in_result = value
+
+
+    @property
+    def query_result_type(self) -&gt; QueryResultType:
+        &#34;&#34;&#34;
+        Gets the query_result_type value.
+
+        Returns
+        -------
+        QueryResultType
+            query_result_type value.
+        &#34;&#34;&#34;
+        return self._query_result_type
+
+
+    @query_result_type.setter
+    def query_result_type(self, value: QueryResultType):
+        &#34;&#34;&#34;
+        Sets the query_result_type value.
+
+        Parameters
+        ----------
+        value
+            new query_result_type value.
+        &#34;&#34;&#34;
+        self._query_result_type = value
+
+
+    @property
+    def format_options(self) -&gt; FormatOptions:
+        &#34;&#34;&#34;
+        Gets the format_options value.
+
+        Returns
+        -------
+        FormatOptions
+            format_options value.
+        &#34;&#34;&#34;
+        return self._format_options
+
+
+    @format_options.setter
+    def format_options(self, value: FormatOptions):
+        &#34;&#34;&#34;
+        Sets the format_options value.
+
+        Parameters
+        ----------
+        value
+            new format_options value.
+        &#34;&#34;&#34;
+        self._format_options = value
+
+
+    @property
+    def trace_coordinate_system(self) -&gt; TraceCoordinateSystem:
+        &#34;&#34;&#34;
+        Gets the trace_coordinate_system value.
+
+        Returns
+        -------
+        TraceCoordinateSystem
+            trace_coordinate_system value.
+        &#34;&#34;&#34;
+        return self._trace_coordinate_system
+
+
+    @trace_coordinate_system.setter
+    def trace_coordinate_system(self, value: TraceCoordinateSystem):
+        &#34;&#34;&#34;
+        Sets the trace_coordinate_system value.
+
+        Parameters
+        ----------
+        value
+            new trace_coordinate_system value.
+        &#34;&#34;&#34;
+        self._trace_coordinate_system = value
+
+
+    @property
+    def sub_satellite_coordinate_system(self) -&gt; CoordinateSystem:
+        &#34;&#34;&#34;
+        Gets the sub_satellite_coordinate_system value.
+
+        Returns
+        -------
+        CoordinateSystem
+            sub_satellite_coordinate_system value.
+        &#34;&#34;&#34;
+        return self._sub_satellite_coordinate_system
+
+
+    @sub_satellite_coordinate_system.setter
+    def sub_satellite_coordinate_system(self, value: CoordinateSystem):
+        &#34;&#34;&#34;
+        Sets the sub_satellite_coordinate_system value.
+
+        Parameters
+        ----------
+        value
+            new sub_satellite_coordinate_system value.
+        &#34;&#34;&#34;
+        self._sub_satellite_coordinate_system = value
+
+
+    @property
+    def sub_satellite_coordinate_system_type(self) -&gt; CoordinateSystemType:
+        &#34;&#34;&#34;
+        Gets the sub_satellite_coordinate_system_type value.
+
+        Returns
+        -------
+        CoordinateSystemType
+            sub_satellite_coordinate_system_type value.
+        &#34;&#34;&#34;
+        return self._sub_satellite_coordinate_system_type
+
+
+    @sub_satellite_coordinate_system_type.setter
+    def sub_satellite_coordinate_system_type(self,
+                                             value: CoordinateSystemType):
+        &#34;&#34;&#34;
+        Sets the sub_satellite_coordinate_system_type value.
+
+        Parameters
+        ----------
+        value
+            new sub_satellite_coordinate_system_type value.
+        &#34;&#34;&#34;
+        self._sub_satellite_coordinate_system_type = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        builder = ET.TreeBuilder()
+        builder.start(&#39;ResultOptions&#39;, {})
+        builder.start(&#39;IncludeQueryInResult&#39;, {})
+        builder.data(str(self._include_query_in_result).lower())
+        builder.end(&#39;IncludeQueryInResult&#39;)
+        builder.start(&#39;QueryResultType&#39;, {})
+        builder.data(self._query_result_type.value)
+        builder.end(&#39;QueryResultType&#39;)
+        builder.end(&#39;ResultOptions&#39;)
+        xml_element = builder.close()
+
+        if self._format_options is not None:
+            xml_element.append(self._format_options.xml_element())
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;TraceCoordinateSystem&#39;, {})
+        builder.data(self._trace_coordinate_system.value)
+        builder.end(&#39;TraceCoordinateSystem&#39;)
+        xml_element.append(builder.close())
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;SubSatelliteCoordinateSystem&#39;, {})
+        builder.data(self._sub_satellite_coordinate_system.value)
+        builder.end(&#39;SubSatelliteCoordinateSystem&#39;)
+        xml_element.append(builder.close())
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;SubSatelliteCoordinateSystemType&#39;, {})
+        builder.data(self._sub_satellite_coordinate_system_type.value)
+        builder.end(&#39;SubSatelliteCoordinateSystemType&#39;)
+
+        xml_element.append(builder.close())
+
+        return xml_element</code></pre>
+</details>
+<div class="desc"><p>Class representing a RequestOptions from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>include_query_in_result</code></strong></dt>
+<dd>Boolean indicating whether to include a copy of the query in the
+results.</dd>
+<dt><strong><code>query_result_type</code></strong></dt>
+<dd>Requested QueryResultType</dd>
+<dt><strong><code>format_options</code></strong></dt>
+<dd>Format options.</dd>
+<dt><strong><code>trace_coordinate_system</code></strong></dt>
+<dd>Trace coordinate system.</dd>
+<dt><strong><code>sub_satellite_coordinate_system</code></strong></dt>
+<dd>Sub-satellite coordinate system.</dd>
+<dt><strong><code>sub_satellite_coordinate_system_type</code></strong></dt>
+<dd>Sub-satellite coordinate system type.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.ResultOptions.format_options"><code class="name">prop <span class="ident">format_options</span> : <a title="sscws.formatoptions.FormatOptions" href="formatoptions.html#sscws.formatoptions.FormatOptions">FormatOptions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def format_options(self) -&gt; FormatOptions:
+    &#34;&#34;&#34;
+    Gets the format_options value.
+
+    Returns
+    -------
+    FormatOptions
+        format_options value.
+    &#34;&#34;&#34;
+    return self._format_options</code></pre>
+</details>
+<div class="desc"><p>Gets the format_options value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>FormatOptions</code></dt>
+<dd>format_options value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.ResultOptions.include_query_in_result"><code class="name">prop <span class="ident">include_query_in_result</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def include_query_in_result(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the include_query_in_result value.
+
+    Returns
+    -------
+    bool
+        include_query_in_result value.
+    &#34;&#34;&#34;
+    return self._include_query_in_result</code></pre>
+</details>
+<div class="desc"><p>Gets the include_query_in_result value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>include_query_in_result value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.ResultOptions.query_result_type"><code class="name">prop <span class="ident">query_result_type</span> : <a title="sscws.conjunctions.QueryResultType" href="#sscws.conjunctions.QueryResultType">QueryResultType</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def query_result_type(self) -&gt; QueryResultType:
+    &#34;&#34;&#34;
+    Gets the query_result_type value.
+
+    Returns
+    -------
+    QueryResultType
+        query_result_type value.
+    &#34;&#34;&#34;
+    return self._query_result_type</code></pre>
+</details>
+<div class="desc"><p>Gets the query_result_type value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="sscws.conjunctions.QueryResultType" href="#sscws.conjunctions.QueryResultType">QueryResultType</a></code></dt>
+<dd>query_result_type value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.ResultOptions.sub_satellite_coordinate_system"><code class="name">prop <span class="ident">sub_satellite_coordinate_system</span> : <a title="sscws.coordinates.CoordinateSystem" href="coordinates.html#sscws.coordinates.CoordinateSystem">CoordinateSystem</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def sub_satellite_coordinate_system(self) -&gt; CoordinateSystem:
+    &#34;&#34;&#34;
+    Gets the sub_satellite_coordinate_system value.
+
+    Returns
+    -------
+    CoordinateSystem
+        sub_satellite_coordinate_system value.
+    &#34;&#34;&#34;
+    return self._sub_satellite_coordinate_system</code></pre>
+</details>
+<div class="desc"><p>Gets the sub_satellite_coordinate_system value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>CoordinateSystem</code></dt>
+<dd>sub_satellite_coordinate_system value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.ResultOptions.sub_satellite_coordinate_system_type"><code class="name">prop <span class="ident">sub_satellite_coordinate_system_type</span> : <a title="sscws.coordinates.CoordinateSystemType" href="coordinates.html#sscws.coordinates.CoordinateSystemType">CoordinateSystemType</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def sub_satellite_coordinate_system_type(self) -&gt; CoordinateSystemType:
+    &#34;&#34;&#34;
+    Gets the sub_satellite_coordinate_system_type value.
+
+    Returns
+    -------
+    CoordinateSystemType
+        sub_satellite_coordinate_system_type value.
+    &#34;&#34;&#34;
+    return self._sub_satellite_coordinate_system_type</code></pre>
+</details>
+<div class="desc"><p>Gets the sub_satellite_coordinate_system_type value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>CoordinateSystemType</code></dt>
+<dd>sub_satellite_coordinate_system_type value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.ResultOptions.trace_coordinate_system"><code class="name">prop <span class="ident">trace_coordinate_system</span> : <a title="sscws.tracing.TraceCoordinateSystem" href="tracing.html#sscws.tracing.TraceCoordinateSystem">TraceCoordinateSystem</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def trace_coordinate_system(self) -&gt; TraceCoordinateSystem:
+    &#34;&#34;&#34;
+    Gets the trace_coordinate_system value.
+
+    Returns
+    -------
+    TraceCoordinateSystem
+        trace_coordinate_system value.
+    &#34;&#34;&#34;
+    return self._trace_coordinate_system</code></pre>
+</details>
+<div class="desc"><p>Gets the trace_coordinate_system value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>TraceCoordinateSystem</code></dt>
+<dd>trace_coordinate_system value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.conjunctions.ResultOptions.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+    builder = ET.TreeBuilder()
+    builder.start(&#39;ResultOptions&#39;, {})
+    builder.start(&#39;IncludeQueryInResult&#39;, {})
+    builder.data(str(self._include_query_in_result).lower())
+    builder.end(&#39;IncludeQueryInResult&#39;)
+    builder.start(&#39;QueryResultType&#39;, {})
+    builder.data(self._query_result_type.value)
+    builder.end(&#39;QueryResultType&#39;)
+    builder.end(&#39;ResultOptions&#39;)
+    xml_element = builder.close()
+
+    if self._format_options is not None:
+        xml_element.append(self._format_options.xml_element())
+
+    builder = ET.TreeBuilder()
+    builder.start(&#39;TraceCoordinateSystem&#39;, {})
+    builder.data(self._trace_coordinate_system.value)
+    builder.end(&#39;TraceCoordinateSystem&#39;)
+    xml_element.append(builder.close())
+
+    builder = ET.TreeBuilder()
+    builder.start(&#39;SubSatelliteCoordinateSystem&#39;, {})
+    builder.data(self._sub_satellite_coordinate_system.value)
+    builder.end(&#39;SubSatelliteCoordinateSystem&#39;)
+    xml_element.append(builder.close())
+
+    builder = ET.TreeBuilder()
+    builder.start(&#39;SubSatelliteCoordinateSystemType&#39;, {})
+    builder.data(self._sub_satellite_coordinate_system_type.value)
+    builder.end(&#39;SubSatelliteCoordinateSystemType&#39;)
+
+    xml_element.append(builder.close())
+
+    return xml_element</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.conjunctions.Satellite"><code class="flex name class">
+<span>class <span class="ident">Satellite</span></span>
+<span>(</span><span>identifier: str,<br>b_field_trace_direction: <a title="sscws.tracing.BFieldTraceDirection" href="tracing.html#sscws.tracing.BFieldTraceDirection">BFieldTraceDirection</a> = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Satellite:
+    &#34;&#34;&#34;
+    Class representing a Satellite defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    identifier
+        Selected satellite identifier.
+    b_field_trace_direction
+        Magnetic field tracing direction.  This value is only
+        required if magnetic field tracing is specified in a
+        RegionCondition.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 identifier: str,
+                 b_field_trace_direction: BFieldTraceDirection = None):
+
+        self._identifier = identifier
+        self._b_field_trace_direction = b_field_trace_direction
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;Satellite&#39;, {})
+        builder.start(&#39;Id&#39;, {})
+        builder.data(self._identifier)
+        builder.end(&#39;Id&#39;)
+        if self._b_field_trace_direction is not None:
+            builder.start(&#39;BFieldTraceDirection&#39;, {})
+            builder.data(self._b_field_trace_direction.value)
+            builder.end(&#39;BFieldTraceDirection&#39;)
+        builder.end(&#39;Satellite&#39;)
+        return builder.close()
+
+
+    @property
+    def identifier(self) -&gt; str:
+        &#34;&#34;&#34;
+        Gets the identifier value.
+
+        Returns
+        -------
+        str
+            identifier value.
+        &#34;&#34;&#34;
+        return self._identifier
+
+
+    @identifier.setter
+    def identifier(self, value: str):
+        &#34;&#34;&#34;
+        Sets the identifier value.
+
+        Parameters
+        ----------
+        value
+            new identifier value.
+        &#34;&#34;&#34;
+        self._identifier = value
+
+
+    @property
+    def b_field_trace_direction(self) -&gt; BFieldTraceDirection:
+        &#34;&#34;&#34;
+        Gets the b_field_trace_direction value.
+
+        Returns
+        -------
+        str
+            b_field_trace_direction value.
+        &#34;&#34;&#34;
+        return self._b_field_trace_direction
+
+
+    @b_field_trace_direction.setter
+    def b_field_trace_direction(self, value: BFieldTraceDirection):
+        &#34;&#34;&#34;
+        Sets the b_field_trace_direction value.
+
+        Parameters
+        ----------
+        value
+            new b_field_trace_direction value.
+        &#34;&#34;&#34;
+        self._b_field_trace_direction = value</code></pre>
+</details>
+<div class="desc"><p>Class representing a Satellite defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>identifier</code></strong></dt>
+<dd>Selected satellite identifier.</dd>
+<dt><strong><code>b_field_trace_direction</code></strong></dt>
+<dd>Magnetic field tracing direction.
+This value is only
+required if magnetic field tracing is specified in a
+RegionCondition.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.Satellite.b_field_trace_direction"><code class="name">prop <span class="ident">b_field_trace_direction</span> : <a title="sscws.tracing.BFieldTraceDirection" href="tracing.html#sscws.tracing.BFieldTraceDirection">BFieldTraceDirection</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def b_field_trace_direction(self) -&gt; BFieldTraceDirection:
+    &#34;&#34;&#34;
+    Gets the b_field_trace_direction value.
+
+    Returns
+    -------
+    str
+        b_field_trace_direction value.
+    &#34;&#34;&#34;
+    return self._b_field_trace_direction</code></pre>
+</details>
+<div class="desc"><p>Gets the b_field_trace_direction value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>b_field_trace_direction value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.conjunctions.Satellite.identifier"><code class="name">prop <span class="ident">identifier</span> : str</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def identifier(self) -&gt; str:
+    &#34;&#34;&#34;
+    Gets the identifier value.
+
+    Returns
+    -------
+    str
+        identifier value.
+    &#34;&#34;&#34;
+    return self._identifier</code></pre>
+</details>
+<div class="desc"><p>Gets the identifier value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>identifier value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.conjunctions.Satellite.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+
+    builder = ET.TreeBuilder()
+    builder.start(&#39;Satellite&#39;, {})
+    builder.start(&#39;Id&#39;, {})
+    builder.data(self._identifier)
+    builder.end(&#39;Id&#39;)
+    if self._b_field_trace_direction is not None:
+        builder.start(&#39;BFieldTraceDirection&#39;, {})
+        builder.data(self._b_field_trace_direction.value)
+        builder.end(&#39;BFieldTraceDirection&#39;)
+    builder.end(&#39;Satellite&#39;)
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.conjunctions.SatelliteCondition"><code class="flex name class">
+<span>class <span class="ident">SatelliteCondition</span></span>
+<span>(</span><span>satellite: List[<a title="sscws.conjunctions.Satellite" href="#sscws.conjunctions.Satellite">Satellite</a>],<br>satellite_combination: int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SatelliteCondition(Condition):
+    &#34;&#34;&#34;
+    Class representing a SatelliteCondition defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    satellite
+        Satellites.
+    satellite_combination
+        The minimum number of satellites that must satisfy this condition.
+
+    Raises
+    ------
+    ValueError
+        If minumum number of satellites is greater than number of
+        satellites.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 satellite: List[Satellite],
+                 satellite_combination: int):
+
+        super().__init__(&#39;Satellite&#39;)
+
+        if satellite_combination &gt; len(satellite):
+            raise ValueError(&#39;satellite_combination &gt; len(satellite)&#39;)
+
+        self._satellite = satellite
+        self._satellite_combination = satellite_combination
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        xml_element = super().xml_element()
+
+        for sat in self._satellite:
+            xml_element.append(sat.xml_element())
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;SatelliteCombination&#39;, {})
+        builder.data(str(self._satellite_combination))
+        builder.end(&#39;SatelliteCombination&#39;)
+        xml_element.append(builder.close())
+
+        return xml_element
+
+
+    @property
+    def satellite_combination(self) -&gt; int:
+        &#34;&#34;&#34;
+        Gets the satellite_combination value.
+
+        Returns
+        -------
+        str
+            satellite_combination value.
+        &#34;&#34;&#34;
+        return self._satellite_combination
+
+
+    @satellite_combination.setter
+    def satellite_combination(self, value: int):
+        &#34;&#34;&#34;
+        Sets the satellite_combination value.
+
+        Parameters
+        ----------
+        value
+            new satellite_combination value.
+        &#34;&#34;&#34;
+        self._satellite_combination = value</code></pre>
+</details>
+<div class="desc"><p>Class representing a SatelliteCondition defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>satellite</code></strong></dt>
+<dd>Satellites.</dd>
+<dt><strong><code>satellite_combination</code></strong></dt>
+<dd>The minimum number of satellites that must satisfy this condition.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If minumum number of satellites is greater than number of
+satellites.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="sscws.conjunctions.Condition" href="#sscws.conjunctions.Condition">Condition</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.conjunctions.SatelliteCondition.satellite_combination"><code class="name">prop <span class="ident">satellite_combination</span> : int</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def satellite_combination(self) -&gt; int:
+    &#34;&#34;&#34;
+    Gets the satellite_combination value.
+
+    Returns
+    -------
+    str
+        satellite_combination value.
+    &#34;&#34;&#34;
+    return self._satellite_combination</code></pre>
+</details>
+<div class="desc"><p>Gets the satellite_combination value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>satellite_combination value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="sscws.conjunctions.Condition" href="#sscws.conjunctions.Condition">Condition</a></b></code>:
+<ul class="hlist">
+<li><code><a title="sscws.conjunctions.Condition.sub_type" href="#sscws.conjunctions.Condition.sub_type">sub_type</a></code></li>
+<li><code><a title="sscws.conjunctions.Condition.xml_element" href="#sscws.conjunctions.Condition.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="sscws" href="index.html">sscws</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="sscws.conjunctions.BoxConjunctionArea" href="#sscws.conjunctions.BoxConjunctionArea">BoxConjunctionArea</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.BoxConjunctionArea.coordinate_system" href="#sscws.conjunctions.BoxConjunctionArea.coordinate_system">coordinate_system</a></code></li>
+<li><code><a title="sscws.conjunctions.BoxConjunctionArea.delta_latitude" href="#sscws.conjunctions.BoxConjunctionArea.delta_latitude">delta_latitude</a></code></li>
+<li><code><a title="sscws.conjunctions.BoxConjunctionArea.delta_longitude" href="#sscws.conjunctions.BoxConjunctionArea.delta_longitude">delta_longitude</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.Condition" href="#sscws.conjunctions.Condition">Condition</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.Condition.sub_type" href="#sscws.conjunctions.Condition.sub_type">sub_type</a></code></li>
+<li><code><a title="sscws.conjunctions.Condition.xml_element" href="#sscws.conjunctions.Condition.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.ConditionOperator" href="#sscws.conjunctions.ConditionOperator">ConditionOperator</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.ConditionOperator.ALL" href="#sscws.conjunctions.ConditionOperator.ALL">ALL</a></code></li>
+<li><code><a title="sscws.conjunctions.ConditionOperator.ANY" href="#sscws.conjunctions.ConditionOperator.ANY">ANY</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.ConjunctionArea" href="#sscws.conjunctions.ConjunctionArea">ConjunctionArea</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.ConjunctionArea.sub_type" href="#sscws.conjunctions.ConjunctionArea.sub_type">sub_type</a></code></li>
+<li><code><a title="sscws.conjunctions.ConjunctionArea.xml_element" href="#sscws.conjunctions.ConjunctionArea.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.ConjunctionAreaType" href="#sscws.conjunctions.ConjunctionAreaType">ConjunctionAreaType</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.ConjunctionAreaType.DISTANCE" href="#sscws.conjunctions.ConjunctionAreaType.DISTANCE">DISTANCE</a></code></li>
+<li><code><a title="sscws.conjunctions.ConjunctionAreaType.GEO_BOX" href="#sscws.conjunctions.ConjunctionAreaType.GEO_BOX">GEO_BOX</a></code></li>
+<li><code><a title="sscws.conjunctions.ConjunctionAreaType.GM_BOX" href="#sscws.conjunctions.ConjunctionAreaType.GM_BOX">GM_BOX</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.DistanceConjunctionArea" href="#sscws.conjunctions.DistanceConjunctionArea">DistanceConjunctionArea</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.DistanceConjunctionArea.radius" href="#sscws.conjunctions.DistanceConjunctionArea.radius">radius</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.ExecuteOptions" href="#sscws.conjunctions.ExecuteOptions">ExecuteOptions</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.ExecuteOptions.result_email_address" href="#sscws.conjunctions.ExecuteOptions.result_email_address">result_email_address</a></code></li>
+<li><code><a title="sscws.conjunctions.ExecuteOptions.wait_for_result" href="#sscws.conjunctions.ExecuteOptions.wait_for_result">wait_for_result</a></code></li>
+<li><code><a title="sscws.conjunctions.ExecuteOptions.xml_element" href="#sscws.conjunctions.ExecuteOptions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.GroundStation" href="#sscws.conjunctions.GroundStation">GroundStation</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.GroundStation.identifier" href="#sscws.conjunctions.GroundStation.identifier">identifier</a></code></li>
+<li><code><a title="sscws.conjunctions.GroundStation.location" href="#sscws.conjunctions.GroundStation.location">location</a></code></li>
+<li><code><a title="sscws.conjunctions.GroundStation.name" href="#sscws.conjunctions.GroundStation.name">name</a></code></li>
+<li><code><a title="sscws.conjunctions.GroundStation.xml_element" href="#sscws.conjunctions.GroundStation.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.GroundStationCondition" href="#sscws.conjunctions.GroundStationCondition">GroundStationCondition</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.GroundStationCondition.coordinate_system" href="#sscws.conjunctions.GroundStationCondition.coordinate_system">coordinate_system</a></code></li>
+<li><code><a title="sscws.conjunctions.GroundStationCondition.ground_station" href="#sscws.conjunctions.GroundStationCondition.ground_station">ground_station</a></code></li>
+<li><code><a title="sscws.conjunctions.GroundStationCondition.trace_type" href="#sscws.conjunctions.GroundStationCondition.trace_type">trace_type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.GroundStationConjunction" href="#sscws.conjunctions.GroundStationConjunction">GroundStationConjunction</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.GroundStationConjunction.conjunction_area" href="#sscws.conjunctions.GroundStationConjunction.conjunction_area">conjunction_area</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.LeadSatelliteCondition" href="#sscws.conjunctions.LeadSatelliteCondition">LeadSatelliteCondition</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.LeadSatelliteCondition.conjunction_area" href="#sscws.conjunctions.LeadSatelliteCondition.conjunction_area">conjunction_area</a></code></li>
+<li><code><a title="sscws.conjunctions.LeadSatelliteCondition.trace_type" href="#sscws.conjunctions.LeadSatelliteCondition.trace_type">trace_type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.QueryResultType" href="#sscws.conjunctions.QueryResultType">QueryResultType</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.QueryResultType.LISTING" href="#sscws.conjunctions.QueryResultType.LISTING">LISTING</a></code></li>
+<li><code><a title="sscws.conjunctions.QueryResultType.XML" href="#sscws.conjunctions.QueryResultType.XML">XML</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.RegionCondition" href="#sscws.conjunctions.RegionCondition">RegionCondition</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.RegionCondition.b_field_trace_regions" href="#sscws.conjunctions.RegionCondition.b_field_trace_regions">b_field_trace_regions</a></code></li>
+<li><code><a title="sscws.conjunctions.RegionCondition.condition_operator" href="#sscws.conjunctions.RegionCondition.condition_operator">condition_operator</a></code></li>
+<li><code><a title="sscws.conjunctions.RegionCondition.radial_trace_regions" href="#sscws.conjunctions.RegionCondition.radial_trace_regions">radial_trace_regions</a></code></li>
+<li><code><a title="sscws.conjunctions.RegionCondition.space_regions" href="#sscws.conjunctions.RegionCondition.space_regions">space_regions</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.ResultOptions" href="#sscws.conjunctions.ResultOptions">ResultOptions</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.ResultOptions.format_options" href="#sscws.conjunctions.ResultOptions.format_options">format_options</a></code></li>
+<li><code><a title="sscws.conjunctions.ResultOptions.include_query_in_result" href="#sscws.conjunctions.ResultOptions.include_query_in_result">include_query_in_result</a></code></li>
+<li><code><a title="sscws.conjunctions.ResultOptions.query_result_type" href="#sscws.conjunctions.ResultOptions.query_result_type">query_result_type</a></code></li>
+<li><code><a title="sscws.conjunctions.ResultOptions.sub_satellite_coordinate_system" href="#sscws.conjunctions.ResultOptions.sub_satellite_coordinate_system">sub_satellite_coordinate_system</a></code></li>
+<li><code><a title="sscws.conjunctions.ResultOptions.sub_satellite_coordinate_system_type" href="#sscws.conjunctions.ResultOptions.sub_satellite_coordinate_system_type">sub_satellite_coordinate_system_type</a></code></li>
+<li><code><a title="sscws.conjunctions.ResultOptions.trace_coordinate_system" href="#sscws.conjunctions.ResultOptions.trace_coordinate_system">trace_coordinate_system</a></code></li>
+<li><code><a title="sscws.conjunctions.ResultOptions.xml_element" href="#sscws.conjunctions.ResultOptions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.Satellite" href="#sscws.conjunctions.Satellite">Satellite</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.Satellite.b_field_trace_direction" href="#sscws.conjunctions.Satellite.b_field_trace_direction">b_field_trace_direction</a></code></li>
+<li><code><a title="sscws.conjunctions.Satellite.identifier" href="#sscws.conjunctions.Satellite.identifier">identifier</a></code></li>
+<li><code><a title="sscws.conjunctions.Satellite.xml_element" href="#sscws.conjunctions.Satellite.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.conjunctions.SatelliteCondition" href="#sscws.conjunctions.SatelliteCondition">SatelliteCondition</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.conjunctions.SatelliteCondition.satellite_combination" href="#sscws.conjunctions.SatelliteCondition.satellite_combination">satellite_combination</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

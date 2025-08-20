@@ -1,0 +1,1524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>sscws.request API documentation</title>
+<meta name="description" content="Module defining classes to represent the Request and its
+sub-classes from
+&lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.&lt;br&gt; …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>sscws.request</code></h1>
+</header>
+<section id="section-intro">
+<p>Module defining classes to represent the Request and its
+sub-classes from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.<br></p>
+<p>Copyright &copy; 2013-2023 United States Government as represented by the
+National Aeronautics and Space Administration. No copyright is claimed in
+the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="sscws.request.DataRequest"><code class="flex name class">
+<span>class <span class="ident">DataRequest</span></span>
+<span>(</span><span>description: str,<br>interval: <a title="sscws.timeinterval.TimeInterval" href="timeinterval.html#sscws.timeinterval.TimeInterval">TimeInterval</a>,<br>satellites: List[<a title="sscws.request.SatelliteSpecification" href="#sscws.request.SatelliteSpecification">SatelliteSpecification</a>],<br>b_field_model: <a title="sscws.bfieldmodels.BFieldModel" href="bfieldmodels.html#sscws.bfieldmodels.BFieldModel">BFieldModel</a> = None,<br>output_options: <a title="sscws.outputoptions.OutputOptions" href="outputoptions.html#sscws.outputoptions.OutputOptions">OutputOptions</a> = None,<br>region_filter_options: <a title="sscws.filteroptions.RegionFilterOptions" href="filteroptions.html#sscws.filteroptions.RegionFilterOptions">RegionFilterOptions</a> = None,<br>location_filter_options: <a title="sscws.filteroptions.LocationFilterOptions" href="filteroptions.html#sscws.filteroptions.LocationFilterOptions">LocationFilterOptions</a> = None,<br>format_options: <a title="sscws.formatoptions.FormatOptions" href="formatoptions.html#sscws.formatoptions.FormatOptions">FormatOptions</a> = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DataRequest(LocationRequest):
+    &#34;&#34;&#34;
+    Class representing a DataRequest from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    description
+        Description of request.
+    interval
+        Time interval of request.
+    satellites
+        Array of SatelliteSpecifications.
+    b_field_model
+        Magnetic field model.  If None, default is
+        InternalBFieldModel.IGRF and Tsyganenko89cBFieldModel().
+    output_options
+        Output options.
+    region_filter_options
+        Region filter options.
+    location_filter_options
+        Location filter options.
+    format_options
+        Format options.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 description: str,
+                 interval: TimeInterval,
+                 satellites: List[SatelliteSpecification],
+                 b_field_model: BFieldModel = None,
+                 output_options: OutputOptions = None,
+                 region_filter_options: RegionFilterOptions = None,
+                 location_filter_options: LocationFilterOptions = None,
+                 format_options: FormatOptions = None
+                 ):  # pylint: disable=too-many-arguments
+
+        super().__init__(description,
+                         interval, satellites, b_field_model)
+
+        self._output_options = output_options
+        self._region_filter_options = region_filter_options
+        self._location_filter_options = location_filter_options
+        self._format_options = format_options
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        xml_element = super().xml_element()
+
+        if self._output_options is not None:
+            xml_element.append(self._output_options.xml_element())
+        if self._region_filter_options is not None:
+            xml_element.append(self._region_filter_options.xml_element())
+        if self._location_filter_options is not None:
+            xml_element.append(self._location_filter_options.xml_element())
+        if self._format_options is not None:
+            xml_element.append(self._format_options.xml_element())
+
+
+        return xml_element
+
+
+    @property
+    def output_options(self) -&gt; OutputOptions:
+        &#34;&#34;&#34;
+        Gets the output_options value.
+
+        Returns
+        -------
+        str
+            output_options value.
+        &#34;&#34;&#34;
+        return self._output_options
+
+
+    @output_options.setter
+    def output_options(self, value: OutputOptions):
+        &#34;&#34;&#34;
+        Sets the output_options value.
+
+        Parameters
+        ----------
+        value
+            output_options value.
+        &#34;&#34;&#34;
+        self._output_options = value
+
+
+    @property
+    def region_filter_options(self) -&gt; RegionFilterOptions:
+        &#34;&#34;&#34;
+        Gets the region_filter_options value.
+
+        Returns
+        -------
+        str
+            region_filter_options value.
+        &#34;&#34;&#34;
+        return self._region_filter_options
+
+
+    @region_filter_options.setter
+    def region_filter_options(self, value: RegionFilterOptions):
+        &#34;&#34;&#34;
+        Sets the region_filter_options value.
+
+        Parameters
+        ----------
+        value
+            region_filter_options value.
+        &#34;&#34;&#34;
+        self._region_filter_options = value
+
+
+    @property
+    def location_filter_options(self) -&gt; LocationFilterOptions:
+        &#34;&#34;&#34;
+        Gets the location_filter_options value.
+
+        Returns
+        -------
+        str
+            location_filter_options value.
+        &#34;&#34;&#34;
+        return self._location_filter_options
+
+
+    @location_filter_options.setter
+    def location_filter_options(self, value: LocationFilterOptions):
+        &#34;&#34;&#34;
+        Sets the location_filter_options value.
+
+        Parameters
+        ----------
+        value
+            location_filter_options value.
+        &#34;&#34;&#34;
+        self._location_filter_options = value
+
+
+    @property
+    def format_options(self) -&gt; FormatOptions:
+        &#34;&#34;&#34;
+        Gets the format_options value.
+
+        Returns
+        -------
+        str
+            format_options value.
+        &#34;&#34;&#34;
+        return self._format_options
+
+
+    @format_options.setter
+    def format_options(self, value: FormatOptions):
+        &#34;&#34;&#34;
+        Sets the format_options value.
+
+        Parameters
+        ----------
+        value
+            format_options value.
+        &#34;&#34;&#34;
+        self._format_options = value</code></pre>
+</details>
+<div class="desc"><p>Class representing a DataRequest from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>description</code></strong></dt>
+<dd>Description of request.</dd>
+<dt><strong><code>interval</code></strong></dt>
+<dd>Time interval of request.</dd>
+<dt><strong><code>satellites</code></strong></dt>
+<dd>Array of SatelliteSpecifications.</dd>
+<dt><strong><code>b_field_model</code></strong></dt>
+<dd>Magnetic field model.
+If None, default is
+InternalBFieldModel.IGRF and Tsyganenko89cBFieldModel().</dd>
+<dt><strong><code>output_options</code></strong></dt>
+<dd>Output options.</dd>
+<dt><strong><code>region_filter_options</code></strong></dt>
+<dd>Region filter options.</dd>
+<dt><strong><code>location_filter_options</code></strong></dt>
+<dd>Location filter options.</dd>
+<dt><strong><code>format_options</code></strong></dt>
+<dd>Format options.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="sscws.request.LocationRequest" href="#sscws.request.LocationRequest">LocationRequest</a></li>
+<li><a title="sscws.request.Request" href="#sscws.request.Request">Request</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.request.DataRequest.format_options"><code class="name">prop <span class="ident">format_options</span> : <a title="sscws.formatoptions.FormatOptions" href="formatoptions.html#sscws.formatoptions.FormatOptions">FormatOptions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def format_options(self) -&gt; FormatOptions:
+    &#34;&#34;&#34;
+    Gets the format_options value.
+
+    Returns
+    -------
+    str
+        format_options value.
+    &#34;&#34;&#34;
+    return self._format_options</code></pre>
+</details>
+<div class="desc"><p>Gets the format_options value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>format_options value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.request.DataRequest.location_filter_options"><code class="name">prop <span class="ident">location_filter_options</span> : <a title="sscws.filteroptions.LocationFilterOptions" href="filteroptions.html#sscws.filteroptions.LocationFilterOptions">LocationFilterOptions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def location_filter_options(self) -&gt; LocationFilterOptions:
+    &#34;&#34;&#34;
+    Gets the location_filter_options value.
+
+    Returns
+    -------
+    str
+        location_filter_options value.
+    &#34;&#34;&#34;
+    return self._location_filter_options</code></pre>
+</details>
+<div class="desc"><p>Gets the location_filter_options value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>location_filter_options value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.request.DataRequest.output_options"><code class="name">prop <span class="ident">output_options</span> : <a title="sscws.outputoptions.OutputOptions" href="outputoptions.html#sscws.outputoptions.OutputOptions">OutputOptions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def output_options(self) -&gt; OutputOptions:
+    &#34;&#34;&#34;
+    Gets the output_options value.
+
+    Returns
+    -------
+    str
+        output_options value.
+    &#34;&#34;&#34;
+    return self._output_options</code></pre>
+</details>
+<div class="desc"><p>Gets the output_options value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>output_options value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.request.DataRequest.region_filter_options"><code class="name">prop <span class="ident">region_filter_options</span> : <a title="sscws.filteroptions.RegionFilterOptions" href="filteroptions.html#sscws.filteroptions.RegionFilterOptions">RegionFilterOptions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def region_filter_options(self) -&gt; RegionFilterOptions:
+    &#34;&#34;&#34;
+    Gets the region_filter_options value.
+
+    Returns
+    -------
+    str
+        region_filter_options value.
+    &#34;&#34;&#34;
+    return self._region_filter_options</code></pre>
+</details>
+<div class="desc"><p>Gets the region_filter_options value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>region_filter_options value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="sscws.request.LocationRequest" href="#sscws.request.LocationRequest">LocationRequest</a></b></code>:
+<ul class="hlist">
+<li><code><a title="sscws.request.LocationRequest.b_field_model" href="#sscws.request.Request.b_field_model">b_field_model</a></code></li>
+<li><code><a title="sscws.request.LocationRequest.description" href="#sscws.request.Request.description">description</a></code></li>
+<li><code><a title="sscws.request.LocationRequest.interval" href="#sscws.request.Request.interval">interval</a></code></li>
+<li><code><a title="sscws.request.LocationRequest.satellites" href="#sscws.request.LocationRequest.satellites">satellites</a></code></li>
+<li><code><a title="sscws.request.LocationRequest.xml_element" href="#sscws.request.Request.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="sscws.request.LocationRequest"><code class="flex name class">
+<span>class <span class="ident">LocationRequest</span></span>
+<span>(</span><span>description: str,<br>interval: <a title="sscws.timeinterval.TimeInterval" href="timeinterval.html#sscws.timeinterval.TimeInterval">TimeInterval</a>,<br>satellites: List[<a title="sscws.request.SatelliteSpecification" href="#sscws.request.SatelliteSpecification">SatelliteSpecification</a>],<br>b_field_model: <a title="sscws.bfieldmodels.BFieldModel" href="bfieldmodels.html#sscws.bfieldmodels.BFieldModel">BFieldModel</a> = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LocationRequest(Request):
+    &#34;&#34;&#34;
+    Class representing a LocationRequest from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    description
+        Description of request.
+    interval
+        Time interval of request.
+    b_field_model
+        Magnetic field model.  If None, default is
+        InternalBFieldModel.IGRF and Tsyganenko89cBFieldModel().
+    satellites
+        array of SatelliteSpecifications
+    &#34;&#34;&#34;
+    def __init__(self,
+                 description: str,
+                 interval: TimeInterval,
+                 satellites: List[SatelliteSpecification],
+                 b_field_model: BFieldModel = None):
+
+        super().__init__(description, interval, b_field_model)
+
+        self._satellites = satellites
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        xml_element = super().xml_element()
+
+        for sat in self._satellites:
+            xml_element.append(sat.xml_element())
+
+        return xml_element
+
+
+    @property
+    def satellites(self) -&gt; List[SatelliteSpecification]:
+        &#34;&#34;&#34;
+        Gets the satellites value.
+
+        Returns
+        -------
+        str
+            satellites value.
+        &#34;&#34;&#34;
+        return self._satellites
+
+
+    @satellites.setter
+    def satellites(self, value: List[SatelliteSpecification]):
+        &#34;&#34;&#34;
+        Sets the satellites value.
+
+        Parameters
+        ----------
+        value
+            satellites value.
+        &#34;&#34;&#34;
+        self._satellites = value</code></pre>
+</details>
+<div class="desc"><p>Class representing a LocationRequest from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>description</code></strong></dt>
+<dd>Description of request.</dd>
+<dt><strong><code>interval</code></strong></dt>
+<dd>Time interval of request.</dd>
+<dt><strong><code>b_field_model</code></strong></dt>
+<dd>Magnetic field model.
+If None, default is
+InternalBFieldModel.IGRF and Tsyganenko89cBFieldModel().</dd>
+<dt><strong><code>satellites</code></strong></dt>
+<dd>array of SatelliteSpecifications</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="sscws.request.Request" href="#sscws.request.Request">Request</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="sscws.request.DataRequest" href="#sscws.request.DataRequest">DataRequest</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.request.LocationRequest.satellites"><code class="name">prop <span class="ident">satellites</span> : List[<a title="sscws.request.SatelliteSpecification" href="#sscws.request.SatelliteSpecification">SatelliteSpecification</a>]</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def satellites(self) -&gt; List[SatelliteSpecification]:
+    &#34;&#34;&#34;
+    Gets the satellites value.
+
+    Returns
+    -------
+    str
+        satellites value.
+    &#34;&#34;&#34;
+    return self._satellites</code></pre>
+</details>
+<div class="desc"><p>Gets the satellites value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>satellites value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="sscws.request.Request" href="#sscws.request.Request">Request</a></b></code>:
+<ul class="hlist">
+<li><code><a title="sscws.request.Request.b_field_model" href="#sscws.request.Request.b_field_model">b_field_model</a></code></li>
+<li><code><a title="sscws.request.Request.description" href="#sscws.request.Request.description">description</a></code></li>
+<li><code><a title="sscws.request.Request.interval" href="#sscws.request.Request.interval">interval</a></code></li>
+<li><code><a title="sscws.request.Request.xml_element" href="#sscws.request.Request.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="sscws.request.QueryRequest"><code class="flex name class">
+<span>class <span class="ident">QueryRequest</span></span>
+<span>(</span><span>description: str,<br>interval: <a title="sscws.timeinterval.TimeInterval" href="timeinterval.html#sscws.timeinterval.TimeInterval">TimeInterval</a>,<br>condition_operator: <a title="sscws.conjunctions.ConditionOperator" href="conjunctions.html#sscws.conjunctions.ConditionOperator">ConditionOperator</a>,<br>conditions: List[<a title="sscws.conjunctions.Condition" href="conjunctions.html#sscws.conjunctions.Condition">Condition</a>],<br>b_field_model: <a title="sscws.bfieldmodels.BFieldModel" href="bfieldmodels.html#sscws.bfieldmodels.BFieldModel">BFieldModel</a> = None,<br>result_options: <a title="sscws.conjunctions.ResultOptions" href="conjunctions.html#sscws.conjunctions.ResultOptions">ResultOptions</a> = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class QueryRequest():
+    &#34;&#34;&#34;
+    Class representing a QueryRequest from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    description
+        Description of request.
+    interval
+        Time interval of request.
+    condition_operator
+        Operator for combining conditions.
+    conditions
+        Query conditions.  Consists of a SatelliteCondition along with
+        one of the following:&lt;br&gt;
+        - GroundStationCondition (and optionally a RegionCondition)&lt;br&gt;
+        - LeadSatelliteCondition (and optionally a RegionCondition)&lt;br&gt;
+        - RegionCondition
+    b_field_model
+        Magnetic field model.  If None, default is
+        InternalBFieldModel.IGRF and Tsyganenko89cBFieldModel().
+    result_options
+        Query result options
+
+    Raises
+    ------
+        ValueError if the conditions are not as described above.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 description: str,
+                 interval: TimeInterval,
+                 condition_operator: ConditionOperator,
+                 conditions: List[Condition],
+                 b_field_model: BFieldModel = None,
+                 result_options: ResultOptions = None
+                 ):  # pylint: disable=too-many-arguments
+
+        self._request = Request(description, interval, b_field_model)
+
+        self._condition_operator = condition_operator
+
+        if conditions is None or len(conditions) &gt; 9:
+            raise ValueError(&#39;Number of conditions is &lt; 1 or &gt; 9&#39;)
+
+        sat_cond = 0
+        gs_cond = 0
+        lead_sat_cond = 0
+        region_cond = 0
+        for condition in conditions:
+            if isinstance(condition, SatelliteCondition):
+                sat_cond += 1
+            if isinstance(condition, GroundStationCondition):
+                gs_cond += 1
+            if isinstance(condition, LeadSatelliteCondition):
+                lead_sat_cond += 1
+            if isinstance(condition, RegionCondition):
+                region_cond += 1
+
+        if sat_cond != 1:
+            raise ValueError(&#39;Exactly 1 SatelliteCondition is required&#39;)
+
+        if gs_cond == 0 and lead_sat_cond == 0 and region_cond == 0:
+            raise ValueError(&#39;At lease 1 GroundStationCondition, &#39; +
+                             &#39;LeadSatilliteCondition, or RegionCondition &#39; +
+                             &#39;is required&#39;)
+
+        self._conditions = conditions
+
+        if result_options is None:
+            self._result_options = ResultOptions()
+        else:
+            self._result_options = result_options
+
+        self._execute_options = ExecuteOptions()
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        xml_element = self._request.xml_element()
+
+        xml_element.append(self._execute_options.xml_element())
+
+        if self._result_options is not None:
+            xml_element.append(self._result_options.xml_element())
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;ConditionOperator&#39;, {})
+        builder.data(self._condition_operator.value)
+        builder.end(&#39;ConditionOperator&#39;)
+        xml_element.append(builder.close())
+
+        for condition in self._conditions:
+            xml_element.append(condition.xml_element())
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;QueryRequest&#39;, {&#39;xmlns&#39;: NS})
+        builder.end(&#39;QueryRequest&#39;)
+        query_element = builder.close()
+
+        query_element.append(xml_element)
+
+        return query_element
+
+
+    @property
+    def execute_options(self) -&gt; ExecuteOptions:
+        &#34;&#34;&#34;
+        Gets the execute_options value.
+
+        Returns
+        -------
+        str
+            execute_options value.
+        &#34;&#34;&#34;
+        return self._execute_options
+
+
+    @execute_options.setter
+    def execute_options(self, value: ExecuteOptions):
+        &#34;&#34;&#34;
+        Sets the execute_options value.  Currently, the server ignores any
+        value other than the default.
+
+        Parameters
+        ----------
+        value
+            execute_options value.
+        &#34;&#34;&#34;
+        self._execute_options = value
+
+
+    @property
+    def result_options(self) -&gt; ResultOptions:
+        &#34;&#34;&#34;
+        Gets the result_options value.
+
+        Returns
+        -------
+        str
+            result_options value.
+        &#34;&#34;&#34;
+        return self._result_options
+
+
+    @result_options.setter
+    def result_options(self, value: ResultOptions):
+        &#34;&#34;&#34;
+        Sets the result_options value.
+
+        Parameters
+        ----------
+        value
+            result_options value.
+        &#34;&#34;&#34;
+        self._result_options = value
+
+
+    @property
+    def condition_operator(self) -&gt; ConditionOperator:
+        &#34;&#34;&#34;
+        Gets the condition_operator value.
+
+        Returns
+        -------
+        str
+            condition_operator value.
+        &#34;&#34;&#34;
+        return self._condition_operator
+
+
+    @condition_operator.setter
+    def condition_operator(self, value: ConditionOperator):
+        &#34;&#34;&#34;
+        Sets the condition_operator value.
+
+        Parameters
+        ----------
+        value
+            condition_operator value.
+        &#34;&#34;&#34;
+        self._condition_operator = value
+
+
+    @property
+    def conditions(self) -&gt; List[Condition]:
+        &#34;&#34;&#34;
+        Gets the conditions value.
+
+        Returns
+        -------
+        str
+            conditions value.
+        &#34;&#34;&#34;
+        return self._conditions
+
+
+    @conditions.setter
+    def conditions(self, value: List[Condition]):
+        &#34;&#34;&#34;
+        Sets the conditions value.
+
+        Parameters
+        ----------
+        value
+            conditions value.
+        &#34;&#34;&#34;
+        self._conditions = value</code></pre>
+</details>
+<div class="desc"><p>Class representing a QueryRequest from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>description</code></strong></dt>
+<dd>Description of request.</dd>
+<dt><strong><code>interval</code></strong></dt>
+<dd>Time interval of request.</dd>
+<dt><strong><code>condition_operator</code></strong></dt>
+<dd>Operator for combining conditions.</dd>
+<dt><strong><code>conditions</code></strong></dt>
+<dd>Query conditions.
+Consists of a SatelliteCondition along with
+one of the following:<br>
+- GroundStationCondition (and optionally a RegionCondition)<br>
+- LeadSatelliteCondition (and optionally a RegionCondition)<br>
+- RegionCondition</dd>
+<dt><strong><code>b_field_model</code></strong></dt>
+<dd>Magnetic field model.
+If None, default is
+InternalBFieldModel.IGRF and Tsyganenko89cBFieldModel().</dd>
+<dt><strong><code>result_options</code></strong></dt>
+<dd>Query result options</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<pre><code>ValueError if the conditions are not as described above.
+</code></pre></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.request.QueryRequest.condition_operator"><code class="name">prop <span class="ident">condition_operator</span> : <a title="sscws.conjunctions.ConditionOperator" href="conjunctions.html#sscws.conjunctions.ConditionOperator">ConditionOperator</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def condition_operator(self) -&gt; ConditionOperator:
+    &#34;&#34;&#34;
+    Gets the condition_operator value.
+
+    Returns
+    -------
+    str
+        condition_operator value.
+    &#34;&#34;&#34;
+    return self._condition_operator</code></pre>
+</details>
+<div class="desc"><p>Gets the condition_operator value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>condition_operator value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.request.QueryRequest.conditions"><code class="name">prop <span class="ident">conditions</span> : List[<a title="sscws.conjunctions.Condition" href="conjunctions.html#sscws.conjunctions.Condition">Condition</a>]</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def conditions(self) -&gt; List[Condition]:
+    &#34;&#34;&#34;
+    Gets the conditions value.
+
+    Returns
+    -------
+    str
+        conditions value.
+    &#34;&#34;&#34;
+    return self._conditions</code></pre>
+</details>
+<div class="desc"><p>Gets the conditions value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>conditions value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.request.QueryRequest.execute_options"><code class="name">prop <span class="ident">execute_options</span> : <a title="sscws.conjunctions.ExecuteOptions" href="conjunctions.html#sscws.conjunctions.ExecuteOptions">ExecuteOptions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def execute_options(self) -&gt; ExecuteOptions:
+    &#34;&#34;&#34;
+    Gets the execute_options value.
+
+    Returns
+    -------
+    str
+        execute_options value.
+    &#34;&#34;&#34;
+    return self._execute_options</code></pre>
+</details>
+<div class="desc"><p>Gets the execute_options value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>execute_options value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.request.QueryRequest.result_options"><code class="name">prop <span class="ident">result_options</span> : <a title="sscws.conjunctions.ResultOptions" href="conjunctions.html#sscws.conjunctions.ResultOptions">ResultOptions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def result_options(self) -&gt; ResultOptions:
+    &#34;&#34;&#34;
+    Gets the result_options value.
+
+    Returns
+    -------
+    str
+        result_options value.
+    &#34;&#34;&#34;
+    return self._result_options</code></pre>
+</details>
+<div class="desc"><p>Gets the result_options value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>result_options value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.request.QueryRequest.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+    xml_element = self._request.xml_element()
+
+    xml_element.append(self._execute_options.xml_element())
+
+    if self._result_options is not None:
+        xml_element.append(self._result_options.xml_element())
+
+    builder = ET.TreeBuilder()
+    builder.start(&#39;ConditionOperator&#39;, {})
+    builder.data(self._condition_operator.value)
+    builder.end(&#39;ConditionOperator&#39;)
+    xml_element.append(builder.close())
+
+    for condition in self._conditions:
+        xml_element.append(condition.xml_element())
+
+    builder = ET.TreeBuilder()
+    builder.start(&#39;QueryRequest&#39;, {&#39;xmlns&#39;: NS})
+    builder.end(&#39;QueryRequest&#39;)
+    query_element = builder.close()
+
+    query_element.append(xml_element)
+
+    return query_element</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.request.Request"><code class="flex name class">
+<span>class <span class="ident">Request</span></span>
+<span>(</span><span>description: str,<br>interval: <a title="sscws.timeinterval.TimeInterval" href="timeinterval.html#sscws.timeinterval.TimeInterval">TimeInterval</a>,<br>b_field_model: <a title="sscws.bfieldmodels.BFieldModel" href="bfieldmodels.html#sscws.bfieldmodels.BFieldModel">BFieldModel</a> = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Request(metaclass=ABCMeta):
+    &#34;&#34;&#34;
+    Class representing a Request from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Notes
+    -----
+    Although this class is essentially a dictionary, it was defined as a
+    class to make certain that it matched the structure and key names
+    of a Request from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    It also needs to function as a base class for the concrete
+    sub-classes of a Request.
+
+    Parameters
+    ----------
+    description
+        Textual description of this request.
+    interval
+        Time interval of this request
+    b_field_model
+        Magnetic field model.  If None, default is BFieldModel.
+    &#34;&#34;&#34;
+    #@abstractmethod
+    def __init__(self,
+                 description: str,
+                 interval: TimeInterval,
+                 b_field_model: BFieldModel = None):
+
+        self._description = description
+        self._interval = interval
+        if b_field_model is None:
+            self._b_field_model = BFieldModel()
+        else:
+            self._b_field_model = b_field_model
+
+
+    @property
+    def description(self) -&gt; str:
+        &#34;&#34;&#34;
+        Gets the description value.
+
+        Returns
+        -------
+        str
+            description value.
+        &#34;&#34;&#34;
+        return self._description
+
+
+    @description.setter
+    def description(self, value: str):
+        &#34;&#34;&#34;
+        Sets the description value.
+
+        Parameters
+        ----------
+        value
+            description value.
+        &#34;&#34;&#34;
+        self._description = value
+
+
+    @property
+    def interval(self) -&gt; TimeInterval:
+        &#34;&#34;&#34;
+        Gets the interval value.
+
+        Returns
+        -------
+        str
+            interval value.
+        &#34;&#34;&#34;
+        return self._interval
+
+
+    @interval.setter
+    def interval(self, value: TimeInterval):
+        &#34;&#34;&#34;
+        Sets the interval value.
+
+        Parameters
+        ----------
+        value
+            interval value.
+        &#34;&#34;&#34;
+        self._interval = value
+
+
+    @property
+    def b_field_model(self) -&gt; BFieldModel:
+        &#34;&#34;&#34;
+        Gets the b_field_model value.
+
+        Returns
+        -------
+        str
+            b_field_model value.
+        &#34;&#34;&#34;
+        return self._b_field_model
+
+
+    @b_field_model.setter
+    def b_field_model(self, value: BFieldModel):
+        &#34;&#34;&#34;
+        Sets the b_field_model value.
+
+        Parameters
+        ----------
+        value
+            b_field_model value.
+        &#34;&#34;&#34;
+        self._b_field_model = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        attrs = {&#39;xmlns&#39;: NS}
+        if isinstance(self, DataRequest):
+            request_type = &#39;Data&#39;
+#        elif isinstance(self, GraphRequest):
+#            request_type = &#39;Graph&#39;
+#        elif isinstance(self, KmlRequest):
+#            request_type = &#39;Kml&#39;
+        elif isinstance(self, LocationRequest):
+            request_type = &#39;Location&#39;
+#        elif isinstance(self, QueryRequest):
+#            request_type = &#39;Query&#39;
+        else:
+            request_type = &#39;&#39;
+            attrs = {}
+
+        builder = ET.TreeBuilder()
+        builder.start(request_type + &#39;Request&#39;, attrs)
+        builder.start(&#39;Description&#39;, {})
+        builder.data(self._description)
+        builder.end(&#39;Description&#39;)
+        builder.end(request_type + &#39;Request&#39;)
+        xml_element = builder.close()
+
+        xml_element.append(self._interval.xml_element())
+        xml_element.append(self._b_field_model.xml_element())
+
+        return xml_element</code></pre>
+</details>
+<div class="desc"><p>Class representing a Request from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="notes">Notes</h2>
+<p>Although this class is essentially a dictionary, it was defined as a
+class to make certain that it matched the structure and key names
+of a Request from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.
+It also needs to function as a base class for the concrete
+sub-classes of a Request.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>description</code></strong></dt>
+<dd>Textual description of this request.</dd>
+<dt><strong><code>interval</code></strong></dt>
+<dd>Time interval of this request</dd>
+<dt><strong><code>b_field_model</code></strong></dt>
+<dd>Magnetic field model.
+If None, default is BFieldModel.</dd>
+</dl></div>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="sscws.request.LocationRequest" href="#sscws.request.LocationRequest">LocationRequest</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.request.Request.b_field_model"><code class="name">prop <span class="ident">b_field_model</span> : <a title="sscws.bfieldmodels.BFieldModel" href="bfieldmodels.html#sscws.bfieldmodels.BFieldModel">BFieldModel</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def b_field_model(self) -&gt; BFieldModel:
+    &#34;&#34;&#34;
+    Gets the b_field_model value.
+
+    Returns
+    -------
+    str
+        b_field_model value.
+    &#34;&#34;&#34;
+    return self._b_field_model</code></pre>
+</details>
+<div class="desc"><p>Gets the b_field_model value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>b_field_model value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.request.Request.description"><code class="name">prop <span class="ident">description</span> : str</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def description(self) -&gt; str:
+    &#34;&#34;&#34;
+    Gets the description value.
+
+    Returns
+    -------
+    str
+        description value.
+    &#34;&#34;&#34;
+    return self._description</code></pre>
+</details>
+<div class="desc"><p>Gets the description value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>description value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.request.Request.interval"><code class="name">prop <span class="ident">interval</span> : <a title="sscws.timeinterval.TimeInterval" href="timeinterval.html#sscws.timeinterval.TimeInterval">TimeInterval</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def interval(self) -&gt; TimeInterval:
+    &#34;&#34;&#34;
+    Gets the interval value.
+
+    Returns
+    -------
+    str
+        interval value.
+    &#34;&#34;&#34;
+    return self._interval</code></pre>
+</details>
+<div class="desc"><p>Gets the interval value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>interval value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.request.Request.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        attrs = {&#39;xmlns&#39;: NS}
+        if isinstance(self, DataRequest):
+            request_type = &#39;Data&#39;
+#        elif isinstance(self, GraphRequest):
+#            request_type = &#39;Graph&#39;
+#        elif isinstance(self, KmlRequest):
+#            request_type = &#39;Kml&#39;
+        elif isinstance(self, LocationRequest):
+            request_type = &#39;Location&#39;
+#        elif isinstance(self, QueryRequest):
+#            request_type = &#39;Query&#39;
+        else:
+            request_type = &#39;&#39;
+            attrs = {}
+
+        builder = ET.TreeBuilder()
+        builder.start(request_type + &#39;Request&#39;, attrs)
+        builder.start(&#39;Description&#39;, {})
+        builder.data(self._description)
+        builder.end(&#39;Description&#39;)
+        builder.end(request_type + &#39;Request&#39;)
+        xml_element = builder.close()
+
+        xml_element.append(self._interval.xml_element())
+        xml_element.append(self._b_field_model.xml_element())
+
+        return xml_element</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.request.SatelliteSpecification"><code class="flex name class">
+<span>class <span class="ident">SatelliteSpecification</span></span>
+<span>(</span><span>identifier: str, resolution_factor: int)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SatelliteSpecification:
+    &#34;&#34;&#34;
+    Class representing a SatelliteSpecification from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    identifier
+        satellite identifier
+    resolution_factor
+        resolution factor
+    &#34;&#34;&#34;
+    def __init__(self,
+                 identifier: str,
+                 resolution_factor: int):
+
+        self._identifier = identifier
+        self._resolution_factor = resolution_factor
+
+
+    @property
+    def identifier(self) -&gt; str:
+        &#34;&#34;&#34;
+        Gets the identifier value.
+
+        Returns
+        -------
+        str
+            identifier value.
+        &#34;&#34;&#34;
+        return self._identifier
+
+
+    @identifier.setter
+    def identifier(self, value: str):
+        &#34;&#34;&#34;
+        Sets the identifier value.
+
+        Parameters
+        ----------
+        value
+            identifier value.
+        &#34;&#34;&#34;
+        self._identifier = value
+
+
+    @property
+    def resolution_factor(self) -&gt; int:
+        &#34;&#34;&#34;
+        Gets the resolution_factor value.
+
+        Returns
+        -------
+        str
+            resolution_factor value.
+        &#34;&#34;&#34;
+        return self._resolution_factor
+
+
+    @resolution_factor.setter
+    def resolution_factor(self, value: int):
+        &#34;&#34;&#34;
+        Sets the resolution_factor value.
+
+        Parameters
+        ----------
+        value
+            resolution_factor value.
+        &#34;&#34;&#34;
+        self._resolution_factor = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        builder = ET.TreeBuilder()
+
+        builder.start(&#39;Satellites&#39;, {})
+        builder.start(&#39;Id&#39;, {})
+        builder.data(self._identifier)
+        builder.end(&#39;Id&#39;)
+        builder.start(&#39;ResolutionFactor&#39;, {})
+        builder.data(str(self._resolution_factor))
+        builder.end(&#39;ResolutionFactor&#39;)
+        builder.end(&#39;Satellites&#39;)
+
+        return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Class representing a SatelliteSpecification from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>identifier</code></strong></dt>
+<dd>satellite identifier</dd>
+<dt><strong><code>resolution_factor</code></strong></dt>
+<dd>resolution factor</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.request.SatelliteSpecification.identifier"><code class="name">prop <span class="ident">identifier</span> : str</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def identifier(self) -&gt; str:
+    &#34;&#34;&#34;
+    Gets the identifier value.
+
+    Returns
+    -------
+    str
+        identifier value.
+    &#34;&#34;&#34;
+    return self._identifier</code></pre>
+</details>
+<div class="desc"><p>Gets the identifier value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>identifier value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.request.SatelliteSpecification.resolution_factor"><code class="name">prop <span class="ident">resolution_factor</span> : int</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def resolution_factor(self) -&gt; int:
+    &#34;&#34;&#34;
+    Gets the resolution_factor value.
+
+    Returns
+    -------
+    str
+        resolution_factor value.
+    &#34;&#34;&#34;
+    return self._resolution_factor</code></pre>
+</details>
+<div class="desc"><p>Gets the resolution_factor value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>resolution_factor value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.request.SatelliteSpecification.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+    builder = ET.TreeBuilder()
+
+    builder.start(&#39;Satellites&#39;, {})
+    builder.start(&#39;Id&#39;, {})
+    builder.data(self._identifier)
+    builder.end(&#39;Id&#39;)
+    builder.start(&#39;ResolutionFactor&#39;, {})
+    builder.data(str(self._resolution_factor))
+    builder.end(&#39;ResolutionFactor&#39;)
+    builder.end(&#39;Satellites&#39;)
+
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="sscws" href="index.html">sscws</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="sscws.request.DataRequest" href="#sscws.request.DataRequest">DataRequest</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.request.DataRequest.format_options" href="#sscws.request.DataRequest.format_options">format_options</a></code></li>
+<li><code><a title="sscws.request.DataRequest.location_filter_options" href="#sscws.request.DataRequest.location_filter_options">location_filter_options</a></code></li>
+<li><code><a title="sscws.request.DataRequest.output_options" href="#sscws.request.DataRequest.output_options">output_options</a></code></li>
+<li><code><a title="sscws.request.DataRequest.region_filter_options" href="#sscws.request.DataRequest.region_filter_options">region_filter_options</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.request.LocationRequest" href="#sscws.request.LocationRequest">LocationRequest</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.request.LocationRequest.satellites" href="#sscws.request.LocationRequest.satellites">satellites</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.request.QueryRequest" href="#sscws.request.QueryRequest">QueryRequest</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.request.QueryRequest.condition_operator" href="#sscws.request.QueryRequest.condition_operator">condition_operator</a></code></li>
+<li><code><a title="sscws.request.QueryRequest.conditions" href="#sscws.request.QueryRequest.conditions">conditions</a></code></li>
+<li><code><a title="sscws.request.QueryRequest.execute_options" href="#sscws.request.QueryRequest.execute_options">execute_options</a></code></li>
+<li><code><a title="sscws.request.QueryRequest.result_options" href="#sscws.request.QueryRequest.result_options">result_options</a></code></li>
+<li><code><a title="sscws.request.QueryRequest.xml_element" href="#sscws.request.QueryRequest.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.request.Request" href="#sscws.request.Request">Request</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.request.Request.b_field_model" href="#sscws.request.Request.b_field_model">b_field_model</a></code></li>
+<li><code><a title="sscws.request.Request.description" href="#sscws.request.Request.description">description</a></code></li>
+<li><code><a title="sscws.request.Request.interval" href="#sscws.request.Request.interval">interval</a></code></li>
+<li><code><a title="sscws.request.Request.xml_element" href="#sscws.request.Request.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.request.SatelliteSpecification" href="#sscws.request.SatelliteSpecification">SatelliteSpecification</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.request.SatelliteSpecification.identifier" href="#sscws.request.SatelliteSpecification.identifier">identifier</a></code></li>
+<li><code><a title="sscws.request.SatelliteSpecification.resolution_factor" href="#sscws.request.SatelliteSpecification.resolution_factor">resolution_factor</a></code></li>
+<li><code><a title="sscws.request.SatelliteSpecification.xml_element" href="#sscws.request.SatelliteSpecification.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

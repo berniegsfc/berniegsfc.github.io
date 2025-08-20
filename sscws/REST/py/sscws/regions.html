@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>sscws.regions API documentation</title>
+<meta name="description" content="Module defining classes to represent region classes from
+&lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.&lt;br&gt; …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>sscws.regions</code></h1>
+</header>
+<section id="section-intro">
+<p>Module defining classes to represent region classes from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.<br></p>
+<p>Copyright &copy; 2013-2023 United States Government as represented by the
+National Aeronautics and Space Administration. No copyright is claimed in
+the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="sscws.regions.FootpointRegion"><code class="flex name class">
+<span>class <span class="ident">FootpointRegion</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class FootpointRegion(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the FootpointRegion defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    NOT_APPLICABLE = &#39;NotApplicable&#39;
+    NORTH_CUSP = &#39;NorthCusp&#39;
+    SOUTH_CUSP = &#39;SouthCusp&#39;
+    NORTH_CLEFT = &#39;NorthCleft&#39;
+    SOUTH_CLEFT = &#39;SouthCleft&#39;
+    NORTH_AURORAL_OVAL = &#39;NorthAuroralOval&#39;
+    SOUTH_AURORAL_OVAL = &#39;SouthAuroralOval&#39;
+    NORTH_POLAR_CAP = &#39;NorthPolarCap&#39;
+    SOUTH_POLAR_CAP = &#39;SouthPolarCap&#39;
+    NORTH_MID_LATITUDE = &#39;NorthMidLatitude&#39;
+    SOUTH_MID_LATITUDE = &#39;SouthMidLatitude&#39;
+    LOW_LATITUDE = &#39;LowLatitude&#39;
+
+
+    def __str__(self):
+        return self.value
+
+
+    # pylint: disable=too-many-return-statements
+    @staticmethod
+    def from_code(
+            code: int
+        ) -&gt; &#39;FootpointRegion&#39;:
+        &#34;&#34;&#34;
+        Produces the FootpointRegion Enum corresponding to the given code
+        in an SSC CDF.
+
+        Parameters
+        ----------
+        code
+            FootpointRegion value from an SSC CDF.
+        Returns
+        -------
+        FootpointRegion
+            Corresponding to the given code.
+        Raises
+        ------
+        ValueError
+            If the given code is not a valid FootpointRegion code.
+        &#34;&#34;&#34;
+
+        if code == 0:
+            return FootpointRegion.NOT_APPLICABLE
+        if code == 1:
+            return FootpointRegion.NORTH_CUSP
+        if code == 2:
+            return FootpointRegion.SOUTH_CUSP
+        if code == 3:
+            return FootpointRegion.NORTH_CLEFT
+        if code == 4:
+            return FootpointRegion.SOUTH_CLEFT
+        if code == 5:
+            return FootpointRegion.NORTH_AURORAL_OVAL
+        if code == 6:
+            return FootpointRegion.SOUTH_AURORAL_OVAL
+        if code == 7:
+            return FootpointRegion.NORTH_POLAR_CAP
+        if code == 8:
+            return FootpointRegion.SOUTH_POLAR_CAP
+        if code == 9:
+            return FootpointRegion.NORTH_MID_LATITUDE
+        if code == 10:
+            return FootpointRegion.SOUTH_MID_LATITUDE
+        if code == 11:
+            return FootpointRegion.LOW_LATITUDE
+        raise ValueError(&#39;unrecognized FootpointRegion code &#39; + code)
+    # pylint: enable=too-many-return-statements</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the FootpointRegion defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.regions.FootpointRegion.LOW_LATITUDE"><code class="name">var <span class="ident">LOW_LATITUDE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.FootpointRegion.NORTH_AURORAL_OVAL"><code class="name">var <span class="ident">NORTH_AURORAL_OVAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.FootpointRegion.NORTH_CLEFT"><code class="name">var <span class="ident">NORTH_CLEFT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.FootpointRegion.NORTH_CUSP"><code class="name">var <span class="ident">NORTH_CUSP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.FootpointRegion.NORTH_MID_LATITUDE"><code class="name">var <span class="ident">NORTH_MID_LATITUDE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.FootpointRegion.NORTH_POLAR_CAP"><code class="name">var <span class="ident">NORTH_POLAR_CAP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.FootpointRegion.NOT_APPLICABLE"><code class="name">var <span class="ident">NOT_APPLICABLE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.FootpointRegion.SOUTH_AURORAL_OVAL"><code class="name">var <span class="ident">SOUTH_AURORAL_OVAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.FootpointRegion.SOUTH_CLEFT"><code class="name">var <span class="ident">SOUTH_CLEFT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.FootpointRegion.SOUTH_CUSP"><code class="name">var <span class="ident">SOUTH_CUSP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.FootpointRegion.SOUTH_MID_LATITUDE"><code class="name">var <span class="ident">SOUTH_MID_LATITUDE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.FootpointRegion.SOUTH_POLAR_CAP"><code class="name">var <span class="ident">SOUTH_POLAR_CAP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="sscws.regions.FootpointRegion.from_code"><code class="name flex">
+<span>def <span class="ident">from_code</span></span>(<span>code: int) ‑> <a title="sscws.regions.FootpointRegion" href="#sscws.regions.FootpointRegion">FootpointRegion</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def from_code(
+        code: int
+    ) -&gt; &#39;FootpointRegion&#39;:
+    &#34;&#34;&#34;
+    Produces the FootpointRegion Enum corresponding to the given code
+    in an SSC CDF.
+
+    Parameters
+    ----------
+    code
+        FootpointRegion value from an SSC CDF.
+    Returns
+    -------
+    FootpointRegion
+        Corresponding to the given code.
+    Raises
+    ------
+    ValueError
+        If the given code is not a valid FootpointRegion code.
+    &#34;&#34;&#34;
+
+    if code == 0:
+        return FootpointRegion.NOT_APPLICABLE
+    if code == 1:
+        return FootpointRegion.NORTH_CUSP
+    if code == 2:
+        return FootpointRegion.SOUTH_CUSP
+    if code == 3:
+        return FootpointRegion.NORTH_CLEFT
+    if code == 4:
+        return FootpointRegion.SOUTH_CLEFT
+    if code == 5:
+        return FootpointRegion.NORTH_AURORAL_OVAL
+    if code == 6:
+        return FootpointRegion.SOUTH_AURORAL_OVAL
+    if code == 7:
+        return FootpointRegion.NORTH_POLAR_CAP
+    if code == 8:
+        return FootpointRegion.SOUTH_POLAR_CAP
+    if code == 9:
+        return FootpointRegion.NORTH_MID_LATITUDE
+    if code == 10:
+        return FootpointRegion.SOUTH_MID_LATITUDE
+    if code == 11:
+        return FootpointRegion.LOW_LATITUDE
+    raise ValueError(&#39;unrecognized FootpointRegion code &#39; + code)</code></pre>
+</details>
+<div class="desc"><p>Produces the FootpointRegion Enum corresponding to the given code
+in an SSC CDF.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>code</code></strong></dt>
+<dd>FootpointRegion value from an SSC CDF.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="sscws.regions.FootpointRegion" href="#sscws.regions.FootpointRegion">FootpointRegion</a></code></dt>
+<dd>Corresponding to the given code.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the given code is not a valid FootpointRegion code.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.regions.Hemisphere"><code class="flex name class">
+<span>class <span class="ident">Hemisphere</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Hemisphere(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the Hemisphere defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    SOUTH = &#39;South&#39;
+    NORTH = &#39;North&#39;
+
+    @classmethod
+    def from_identifier(
+        cls,
+        identifier: str) -&gt; &#39;Hemisphere&#39;:
+        &#34;&#34;&#34;
+        Get the Enum corresponding to the given identifier value.
+
+        Parameters
+        ----------
+        cls
+            class.
+        identifier
+            Enum value corresponding to a Hemisphere.
+        Returns
+        -------
+        Hemisphere
+            Enum corresponding to the given identifier value.
+        Raises
+        ------
+        ValueError
+            If the given identifier does not correspond to any
+            Hemisphere value.
+        &#34;&#34;&#34;
+
+        for member in cls:
+            #if member.name == identifier or member.value == identifier:
+            if identifier in (member.name, member.value):
+                return member
+        raise ValueError(&#39;Invalid Hemisphere identifier &#39; + identifier)</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the Hemisphere defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.regions.Hemisphere.NORTH"><code class="name">var <span class="ident">NORTH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.Hemisphere.SOUTH"><code class="name">var <span class="ident">SOUTH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="sscws.regions.Hemisphere.from_identifier"><code class="name flex">
+<span>def <span class="ident">from_identifier</span></span>(<span>identifier: str) ‑> <a title="sscws.regions.Hemisphere" href="#sscws.regions.Hemisphere">Hemisphere</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the Enum corresponding to the given identifier value.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>cls</code></strong></dt>
+<dd>class.</dd>
+<dt><strong><code>identifier</code></strong></dt>
+<dd>Enum value corresponding to a Hemisphere.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="sscws.regions.Hemisphere" href="#sscws.regions.Hemisphere">Hemisphere</a></code></dt>
+<dd>Enum corresponding to the given identifier value.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the given identifier does not correspond to any
+Hemisphere value.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.regions.HemisphereRegions"><code class="flex name class">
+<span>class <span class="ident">HemisphereRegions</span></span>
+<span>(</span><span>north: bool, south: bool)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HemisphereRegions:
+    &#34;&#34;&#34;
+    Class representing a HemisphereRegions from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    north
+        Northern hemisphere region.
+    south
+        Southern hemisphere region.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 north: bool,
+                 south: bool):
+
+        self._north = north
+        self._south = south
+
+
+    @property
+    def north(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the north value.
+
+        Returns
+        -------
+        str
+            north value.
+        &#34;&#34;&#34;
+        return self._north
+
+
+    @north.setter
+    def north(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the north value.
+
+        Parameters
+        ----------
+        value
+            north value.
+        &#34;&#34;&#34;
+        self._north = value
+
+
+    @property
+    def south(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the south value.
+
+        Returns
+        -------
+        str
+            south value.
+        &#34;&#34;&#34;
+        return self._south
+
+
+    @south.setter
+    def south(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the south value.
+
+        Parameters
+        ----------
+        value
+            south value.
+        &#34;&#34;&#34;
+        self._south = value
+
+
+    def xml_element(self,
+                    name: str) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Parameters
+        ----------
+        name
+            Name of Region.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        builder = ET.TreeBuilder()
+
+        builder.start(name, {})
+        builder.start(&#39;North&#39;, {})
+        builder.data(str(self._north).lower())
+        builder.end(&#39;North&#39;)
+        builder.start(&#39;South&#39;, {})
+        builder.data(str(self._south).lower())
+        builder.end(&#39;South&#39;)
+        builder.end(name)
+
+        return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Class representing a HemisphereRegions from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>north</code></strong></dt>
+<dd>Northern hemisphere region.</dd>
+<dt><strong><code>south</code></strong></dt>
+<dd>Southern hemisphere region.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.regions.HemisphereRegions.north"><code class="name">prop <span class="ident">north</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def north(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the north value.
+
+    Returns
+    -------
+    str
+        north value.
+    &#34;&#34;&#34;
+    return self._north</code></pre>
+</details>
+<div class="desc"><p>Gets the north value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>north value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.regions.HemisphereRegions.south"><code class="name">prop <span class="ident">south</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def south(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the south value.
+
+    Returns
+    -------
+    str
+        south value.
+    &#34;&#34;&#34;
+    return self._south</code></pre>
+</details>
+<div class="desc"><p>Gets the south value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>south value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.regions.HemisphereRegions.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self, name: str) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self,
+                name: str) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Parameters
+    ----------
+    name
+        Name of Region.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+    builder = ET.TreeBuilder()
+
+    builder.start(name, {})
+    builder.start(&#39;North&#39;, {})
+    builder.data(str(self._north).lower())
+    builder.end(&#39;North&#39;)
+    builder.start(&#39;South&#39;, {})
+    builder.data(str(self._south).lower())
+    builder.end(&#39;South&#39;)
+    builder.end(name)
+
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>Name of Region.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.regions.SpaceRegion"><code class="flex name class">
+<span>class <span class="ident">SpaceRegion</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SpaceRegion(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the SpaceRegion defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    INTERPLANETARY_MEDIUM = &#39;InterplanetaryMedium&#39;
+    DAYSIDE_MAGNETOSHEATH = &#39;DaysideMagnetosheath&#39;
+    NIGHTSIDE_MAGNETOSHEATH = &#39;NightsideMagnetosheath&#39;
+    DAYSIDE_MAGNETOSPHERE = &#39;DaysideMagnetosphere&#39;
+    NIGHTSIDE_MAGNETOSPHERE = &#39;NightsideMagnetosphere&#39;
+    PLASMA_SHEET = &#39;PlasmaSheet&#39;
+    TAIL_LOBE = &#39;TailLobe&#39;
+    LOW_LATITUDE_BOUNDARY_LAYER = &#39;LowLatitudeBoundaryLayer&#39;
+    HIGH_LATITUDE_BOUNDARY_LAYER = &#39;HighLatitudeBoundaryLayer&#39;
+    DAYSIDE_PLASMASPHERE = &#39;DaysidePlasmasphere&#39;
+    NIGHTSIDE_PLASMASPHERE = &#39;NightsidePlasmasphere&#39;
+
+
+    def __str__(self):
+        return self.value
+
+    # pylint: disable=too-many-return-statements
+    @staticmethod
+    def from_code(
+            code: int
+        ) -&gt; &#39;SpaceRegion&#39;:
+        &#34;&#34;&#34;
+        Produces the SpaceRegion Enum corresponding to the given code
+        in an SSC CDF.
+
+        Parameters
+        ----------
+        code
+            SpaceRegion value from an SSC CDF.
+        Returns
+        -------
+        SpaceRegion
+            Corresponding to the given code.
+        Raises
+        ------
+        ValueError
+            If the given code is not a valid SpaceRegion code.
+        &#34;&#34;&#34;
+
+        if code == 1:
+            return SpaceRegion.INTERPLANETARY_MEDIUM
+        if code == 2:
+            return SpaceRegion.DAYSIDE_MAGNETOSHEATH
+        if code == 3:
+            return SpaceRegion.NIGHTSIDE_MAGNETOSHEATH
+        if code == 4:
+            return SpaceRegion.DAYSIDE_MAGNETOSPHERE
+        if code == 5:
+            return SpaceRegion.NIGHTSIDE_MAGNETOSPHERE
+        if code == 6:
+            return SpaceRegion.PLASMA_SHEET
+        if code == 7:
+            return SpaceRegion.TAIL_LOBE
+        if code == 8:
+            return SpaceRegion.LOW_LATITUDE_BOUNDARY_LAYER
+        if code == 9:
+            return SpaceRegion.HIGH_LATITUDE_BOUNDARY_LAYER
+        if code == 10:
+            return SpaceRegion.DAYSIDE_PLASMASPHERE
+        if code == 11:
+            return SpaceRegion.NIGHTSIDE_PLASMASPHERE
+        raise ValueError(&#39;unrecognized SpaceRegion code &#39; + code)
+    # pylint: enable=too-many-return-statements</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the SpaceRegion defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.regions.SpaceRegion.DAYSIDE_MAGNETOSHEATH"><code class="name">var <span class="ident">DAYSIDE_MAGNETOSHEATH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegion.DAYSIDE_MAGNETOSPHERE"><code class="name">var <span class="ident">DAYSIDE_MAGNETOSPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegion.DAYSIDE_PLASMASPHERE"><code class="name">var <span class="ident">DAYSIDE_PLASMASPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegion.HIGH_LATITUDE_BOUNDARY_LAYER"><code class="name">var <span class="ident">HIGH_LATITUDE_BOUNDARY_LAYER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegion.INTERPLANETARY_MEDIUM"><code class="name">var <span class="ident">INTERPLANETARY_MEDIUM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegion.LOW_LATITUDE_BOUNDARY_LAYER"><code class="name">var <span class="ident">LOW_LATITUDE_BOUNDARY_LAYER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegion.NIGHTSIDE_MAGNETOSHEATH"><code class="name">var <span class="ident">NIGHTSIDE_MAGNETOSHEATH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegion.NIGHTSIDE_MAGNETOSPHERE"><code class="name">var <span class="ident">NIGHTSIDE_MAGNETOSPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegion.NIGHTSIDE_PLASMASPHERE"><code class="name">var <span class="ident">NIGHTSIDE_PLASMASPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegion.PLASMA_SHEET"><code class="name">var <span class="ident">PLASMA_SHEET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegion.TAIL_LOBE"><code class="name">var <span class="ident">TAIL_LOBE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="sscws.regions.SpaceRegion.from_code"><code class="name flex">
+<span>def <span class="ident">from_code</span></span>(<span>code: int) ‑> <a title="sscws.regions.SpaceRegion" href="#sscws.regions.SpaceRegion">SpaceRegion</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def from_code(
+        code: int
+    ) -&gt; &#39;SpaceRegion&#39;:
+    &#34;&#34;&#34;
+    Produces the SpaceRegion Enum corresponding to the given code
+    in an SSC CDF.
+
+    Parameters
+    ----------
+    code
+        SpaceRegion value from an SSC CDF.
+    Returns
+    -------
+    SpaceRegion
+        Corresponding to the given code.
+    Raises
+    ------
+    ValueError
+        If the given code is not a valid SpaceRegion code.
+    &#34;&#34;&#34;
+
+    if code == 1:
+        return SpaceRegion.INTERPLANETARY_MEDIUM
+    if code == 2:
+        return SpaceRegion.DAYSIDE_MAGNETOSHEATH
+    if code == 3:
+        return SpaceRegion.NIGHTSIDE_MAGNETOSHEATH
+    if code == 4:
+        return SpaceRegion.DAYSIDE_MAGNETOSPHERE
+    if code == 5:
+        return SpaceRegion.NIGHTSIDE_MAGNETOSPHERE
+    if code == 6:
+        return SpaceRegion.PLASMA_SHEET
+    if code == 7:
+        return SpaceRegion.TAIL_LOBE
+    if code == 8:
+        return SpaceRegion.LOW_LATITUDE_BOUNDARY_LAYER
+    if code == 9:
+        return SpaceRegion.HIGH_LATITUDE_BOUNDARY_LAYER
+    if code == 10:
+        return SpaceRegion.DAYSIDE_PLASMASPHERE
+    if code == 11:
+        return SpaceRegion.NIGHTSIDE_PLASMASPHERE
+    raise ValueError(&#39;unrecognized SpaceRegion code &#39; + code)</code></pre>
+</details>
+<div class="desc"><p>Produces the SpaceRegion Enum corresponding to the given code
+in an SSC CDF.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>code</code></strong></dt>
+<dd>SpaceRegion value from an SSC CDF.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="sscws.regions.SpaceRegion" href="#sscws.regions.SpaceRegion">SpaceRegion</a></code></dt>
+<dd>Corresponding to the given code.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the given code is not a valid SpaceRegion code.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.regions.SpaceRegionType"><code class="flex name class">
+<span>class <span class="ident">SpaceRegionType</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SpaceRegionType(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the SpaceRegionType defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    INTERPLANETARY_MEDIUM = &#39;InterplanetaryMedium&#39;
+    DAYSIDE_MAGNETOSHEATH = &#39;DaysideMagnetosheath&#39;
+    NIGHTSIDE_MAGNETOSHEATH = &#39;NightsideMagnetosheath&#39;
+    DAYSIDE_MAGNETOSPHERE = &#39;DaysideMagnetosphere&#39;
+    NIGHTSIDE_MAGNETOSPHERE = &#39;NightsideMagnetosphere&#39;
+    PLASMA_SHEET = &#39;PlasmaSheet&#39;
+    TAIL_LOBE = &#39;TailLobe&#39;
+    LOW_LATITUDE_BOUNDARY_LAYER = &#39;LowLatitudeBoundaryLayer&#39;
+    HIGH_LATITUDE_BOUNDARY_LAYER = &#39;HighLatitudeBoundaryLayer&#39;
+    DAYSIDE_PLASMASPHERE = &#39;DaysidePlasmasphere&#39;
+    NIGHTSIDE_PLASMASPHERE = &#39;NightsidePlasmasphere&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the SpaceRegionType defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.regions.SpaceRegionType.DAYSIDE_MAGNETOSHEATH"><code class="name">var <span class="ident">DAYSIDE_MAGNETOSHEATH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegionType.DAYSIDE_MAGNETOSPHERE"><code class="name">var <span class="ident">DAYSIDE_MAGNETOSPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegionType.DAYSIDE_PLASMASPHERE"><code class="name">var <span class="ident">DAYSIDE_PLASMASPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegionType.HIGH_LATITUDE_BOUNDARY_LAYER"><code class="name">var <span class="ident">HIGH_LATITUDE_BOUNDARY_LAYER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegionType.INTERPLANETARY_MEDIUM"><code class="name">var <span class="ident">INTERPLANETARY_MEDIUM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegionType.LOW_LATITUDE_BOUNDARY_LAYER"><code class="name">var <span class="ident">LOW_LATITUDE_BOUNDARY_LAYER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegionType.NIGHTSIDE_MAGNETOSHEATH"><code class="name">var <span class="ident">NIGHTSIDE_MAGNETOSHEATH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegionType.NIGHTSIDE_MAGNETOSPHERE"><code class="name">var <span class="ident">NIGHTSIDE_MAGNETOSPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegionType.NIGHTSIDE_PLASMASPHERE"><code class="name">var <span class="ident">NIGHTSIDE_PLASMASPHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegionType.PLASMA_SHEET"><code class="name">var <span class="ident">PLASMA_SHEET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.regions.SpaceRegionType.TAIL_LOBE"><code class="name">var <span class="ident">TAIL_LOBE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="sscws" href="index.html">sscws</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="sscws.regions.FootpointRegion" href="#sscws.regions.FootpointRegion">FootpointRegion</a></code></h4>
+<ul class="two-column">
+<li><code><a title="sscws.regions.FootpointRegion.LOW_LATITUDE" href="#sscws.regions.FootpointRegion.LOW_LATITUDE">LOW_LATITUDE</a></code></li>
+<li><code><a title="sscws.regions.FootpointRegion.NORTH_AURORAL_OVAL" href="#sscws.regions.FootpointRegion.NORTH_AURORAL_OVAL">NORTH_AURORAL_OVAL</a></code></li>
+<li><code><a title="sscws.regions.FootpointRegion.NORTH_CLEFT" href="#sscws.regions.FootpointRegion.NORTH_CLEFT">NORTH_CLEFT</a></code></li>
+<li><code><a title="sscws.regions.FootpointRegion.NORTH_CUSP" href="#sscws.regions.FootpointRegion.NORTH_CUSP">NORTH_CUSP</a></code></li>
+<li><code><a title="sscws.regions.FootpointRegion.NORTH_MID_LATITUDE" href="#sscws.regions.FootpointRegion.NORTH_MID_LATITUDE">NORTH_MID_LATITUDE</a></code></li>
+<li><code><a title="sscws.regions.FootpointRegion.NORTH_POLAR_CAP" href="#sscws.regions.FootpointRegion.NORTH_POLAR_CAP">NORTH_POLAR_CAP</a></code></li>
+<li><code><a title="sscws.regions.FootpointRegion.NOT_APPLICABLE" href="#sscws.regions.FootpointRegion.NOT_APPLICABLE">NOT_APPLICABLE</a></code></li>
+<li><code><a title="sscws.regions.FootpointRegion.SOUTH_AURORAL_OVAL" href="#sscws.regions.FootpointRegion.SOUTH_AURORAL_OVAL">SOUTH_AURORAL_OVAL</a></code></li>
+<li><code><a title="sscws.regions.FootpointRegion.SOUTH_CLEFT" href="#sscws.regions.FootpointRegion.SOUTH_CLEFT">SOUTH_CLEFT</a></code></li>
+<li><code><a title="sscws.regions.FootpointRegion.SOUTH_CUSP" href="#sscws.regions.FootpointRegion.SOUTH_CUSP">SOUTH_CUSP</a></code></li>
+<li><code><a title="sscws.regions.FootpointRegion.SOUTH_MID_LATITUDE" href="#sscws.regions.FootpointRegion.SOUTH_MID_LATITUDE">SOUTH_MID_LATITUDE</a></code></li>
+<li><code><a title="sscws.regions.FootpointRegion.SOUTH_POLAR_CAP" href="#sscws.regions.FootpointRegion.SOUTH_POLAR_CAP">SOUTH_POLAR_CAP</a></code></li>
+<li><code><a title="sscws.regions.FootpointRegion.from_code" href="#sscws.regions.FootpointRegion.from_code">from_code</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.regions.Hemisphere" href="#sscws.regions.Hemisphere">Hemisphere</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.regions.Hemisphere.NORTH" href="#sscws.regions.Hemisphere.NORTH">NORTH</a></code></li>
+<li><code><a title="sscws.regions.Hemisphere.SOUTH" href="#sscws.regions.Hemisphere.SOUTH">SOUTH</a></code></li>
+<li><code><a title="sscws.regions.Hemisphere.from_identifier" href="#sscws.regions.Hemisphere.from_identifier">from_identifier</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.regions.HemisphereRegions" href="#sscws.regions.HemisphereRegions">HemisphereRegions</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.regions.HemisphereRegions.north" href="#sscws.regions.HemisphereRegions.north">north</a></code></li>
+<li><code><a title="sscws.regions.HemisphereRegions.south" href="#sscws.regions.HemisphereRegions.south">south</a></code></li>
+<li><code><a title="sscws.regions.HemisphereRegions.xml_element" href="#sscws.regions.HemisphereRegions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.regions.SpaceRegion" href="#sscws.regions.SpaceRegion">SpaceRegion</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.regions.SpaceRegion.DAYSIDE_MAGNETOSHEATH" href="#sscws.regions.SpaceRegion.DAYSIDE_MAGNETOSHEATH">DAYSIDE_MAGNETOSHEATH</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegion.DAYSIDE_MAGNETOSPHERE" href="#sscws.regions.SpaceRegion.DAYSIDE_MAGNETOSPHERE">DAYSIDE_MAGNETOSPHERE</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegion.DAYSIDE_PLASMASPHERE" href="#sscws.regions.SpaceRegion.DAYSIDE_PLASMASPHERE">DAYSIDE_PLASMASPHERE</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegion.HIGH_LATITUDE_BOUNDARY_LAYER" href="#sscws.regions.SpaceRegion.HIGH_LATITUDE_BOUNDARY_LAYER">HIGH_LATITUDE_BOUNDARY_LAYER</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegion.INTERPLANETARY_MEDIUM" href="#sscws.regions.SpaceRegion.INTERPLANETARY_MEDIUM">INTERPLANETARY_MEDIUM</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegion.LOW_LATITUDE_BOUNDARY_LAYER" href="#sscws.regions.SpaceRegion.LOW_LATITUDE_BOUNDARY_LAYER">LOW_LATITUDE_BOUNDARY_LAYER</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegion.NIGHTSIDE_MAGNETOSHEATH" href="#sscws.regions.SpaceRegion.NIGHTSIDE_MAGNETOSHEATH">NIGHTSIDE_MAGNETOSHEATH</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegion.NIGHTSIDE_MAGNETOSPHERE" href="#sscws.regions.SpaceRegion.NIGHTSIDE_MAGNETOSPHERE">NIGHTSIDE_MAGNETOSPHERE</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegion.NIGHTSIDE_PLASMASPHERE" href="#sscws.regions.SpaceRegion.NIGHTSIDE_PLASMASPHERE">NIGHTSIDE_PLASMASPHERE</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegion.PLASMA_SHEET" href="#sscws.regions.SpaceRegion.PLASMA_SHEET">PLASMA_SHEET</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegion.TAIL_LOBE" href="#sscws.regions.SpaceRegion.TAIL_LOBE">TAIL_LOBE</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegion.from_code" href="#sscws.regions.SpaceRegion.from_code">from_code</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.regions.SpaceRegionType" href="#sscws.regions.SpaceRegionType">SpaceRegionType</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.regions.SpaceRegionType.DAYSIDE_MAGNETOSHEATH" href="#sscws.regions.SpaceRegionType.DAYSIDE_MAGNETOSHEATH">DAYSIDE_MAGNETOSHEATH</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegionType.DAYSIDE_MAGNETOSPHERE" href="#sscws.regions.SpaceRegionType.DAYSIDE_MAGNETOSPHERE">DAYSIDE_MAGNETOSPHERE</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegionType.DAYSIDE_PLASMASPHERE" href="#sscws.regions.SpaceRegionType.DAYSIDE_PLASMASPHERE">DAYSIDE_PLASMASPHERE</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegionType.HIGH_LATITUDE_BOUNDARY_LAYER" href="#sscws.regions.SpaceRegionType.HIGH_LATITUDE_BOUNDARY_LAYER">HIGH_LATITUDE_BOUNDARY_LAYER</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegionType.INTERPLANETARY_MEDIUM" href="#sscws.regions.SpaceRegionType.INTERPLANETARY_MEDIUM">INTERPLANETARY_MEDIUM</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegionType.LOW_LATITUDE_BOUNDARY_LAYER" href="#sscws.regions.SpaceRegionType.LOW_LATITUDE_BOUNDARY_LAYER">LOW_LATITUDE_BOUNDARY_LAYER</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegionType.NIGHTSIDE_MAGNETOSHEATH" href="#sscws.regions.SpaceRegionType.NIGHTSIDE_MAGNETOSHEATH">NIGHTSIDE_MAGNETOSHEATH</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegionType.NIGHTSIDE_MAGNETOSPHERE" href="#sscws.regions.SpaceRegionType.NIGHTSIDE_MAGNETOSPHERE">NIGHTSIDE_MAGNETOSPHERE</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegionType.NIGHTSIDE_PLASMASPHERE" href="#sscws.regions.SpaceRegionType.NIGHTSIDE_PLASMASPHERE">NIGHTSIDE_PLASMASPHERE</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegionType.PLASMA_SHEET" href="#sscws.regions.SpaceRegionType.PLASMA_SHEET">PLASMA_SHEET</a></code></li>
+<li><code><a title="sscws.regions.SpaceRegionType.TAIL_LOBE" href="#sscws.regions.SpaceRegionType.TAIL_LOBE">TAIL_LOBE</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

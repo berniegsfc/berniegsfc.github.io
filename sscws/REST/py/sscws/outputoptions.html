@@ -1,0 +1,2904 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>sscws.outputoptions API documentation</title>
+<meta name="description" content="Module defining classes to represent output options from
+&lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.&lt;br&gt; …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>sscws.outputoptions</code></h1>
+</header>
+<section id="section-intro">
+<p>Module defining classes to represent output options from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.<br></p>
+<p>Copyright &copy; 2013-2023 United States Government as represented by the
+National Aeronautics and Space Administration. No copyright is claimed in
+the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="sscws.outputoptions.BFieldTraceOptions"><code class="flex name class">
+<span>class <span class="ident">BFieldTraceOptions</span></span>
+<span>(</span><span>coordinate_system: bool = None,<br>hemisphere: <a title="sscws.regions.Hemisphere" href="regions.html#sscws.regions.Hemisphere">Hemisphere</a> = None,<br>footpoint_latitude: bool = None,<br>footpoint_longitude: bool = None,<br>field_line_length: bool = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BFieldTraceOptions:
+    &#34;&#34;&#34;
+    Class representing a BFieldTraceOptions from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    coordinate_system
+        Specifies the coordinate system.  If None, default is
+        CoordinateSystem.GEO.
+    hemisphere
+        Specifies the hemisphere.  If None, default is Hemisphere.NORTH.
+    footpoint_latitude
+        Specifies whether to include footpoint latitude values in the
+        listing.
+    footpoint_longitude
+        Specifies whether to include footpoint longitude values in the
+        listing.
+    field_line_length
+        Specifies whether to include field line length values in the
+        listing.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 coordinate_system: bool = None,
+                 hemisphere: Hemisphere = None,
+                 footpoint_latitude: bool = None,
+                 footpoint_longitude: bool = None,
+                 field_line_length: bool = None
+                 ):  # pylint: disable=too-many-arguments
+
+        if coordinate_system is None:
+            self._coordinate_system = CoordinateSystem.GEO
+        else:
+            self._coordinate_system = coordinate_system
+
+        if hemisphere is None:
+            self._hemisphere = Hemisphere.NORTH
+        else:
+            self._hemisphere = hemisphere
+
+        if footpoint_latitude is None:
+            self._footpoint_latitude = False
+        else:
+            self._footpoint_latitude = footpoint_latitude
+
+        if footpoint_longitude is None:
+            self._footpoint_longitude = False
+        else:
+            self._footpoint_longitude = footpoint_longitude
+
+        if field_line_length is None:
+            self._field_line_length = False
+        else:
+            self._field_line_length = field_line_length
+
+
+    @property
+    def coordinate_system(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the coordinate_system value.
+
+        Returns
+        -------
+        str
+            coordinate_system value.
+        &#34;&#34;&#34;
+        return self._coordinate_system
+
+
+    @coordinate_system.setter
+    def coordinate_system(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the coordinate_system value.
+
+        Parameters
+        ----------
+        value
+            coordinate_system value.
+        &#34;&#34;&#34;
+        self._coordinate_system = value
+
+
+    @property
+    def hemisphere(self) -&gt; Hemisphere:
+        &#34;&#34;&#34;
+        Gets the hemisphere value.
+
+        Returns
+        -------
+        str
+            hemisphere value.
+        &#34;&#34;&#34;
+        return self._hemisphere
+
+
+    @hemisphere.setter
+    def hemisphere(self, value: Hemisphere):
+        &#34;&#34;&#34;
+        Sets the hemisphere value.
+
+        Parameters
+        ----------
+        value
+            hemisphere value.
+        &#34;&#34;&#34;
+        self._hemisphere = value
+
+
+    @property
+    def footpoint_latitude(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the footpoint_latitude value.
+
+        Returns
+        -------
+        str
+            footpoint_latitude value.
+        &#34;&#34;&#34;
+        return self._footpoint_latitude
+
+
+    @footpoint_latitude.setter
+    def footpoint_latitude(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the footpoint_latitude value.
+
+        Parameters
+        ----------
+        value
+            footpoint_latitude value.
+        &#34;&#34;&#34;
+        self._footpoint_latitude = value
+
+
+    @property
+    def footpoint_longitude(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the footpoint_longitude value.
+
+        Returns
+        -------
+        str
+            footpoint_longitude value.
+        &#34;&#34;&#34;
+        return self._footpoint_longitude
+
+
+    @footpoint_longitude.setter
+    def footpoint_longitude(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the footpoint_longitude value.
+
+        Parameters
+        ----------
+        value
+            footpoint_longitude value.
+        &#34;&#34;&#34;
+        self._footpoint_longitude = value
+
+
+    @property
+    def field_line_length(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the field_line_length value.
+
+        Returns
+        -------
+        str
+            field_line_length value.
+        &#34;&#34;&#34;
+        return self._field_line_length
+
+
+    @field_line_length.setter
+    def field_line_length(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the field_line_length value.
+
+        Parameters
+        ----------
+        value
+            field_line_length value.
+        &#34;&#34;&#34;
+        self._field_line_length = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        builder = ET.TreeBuilder()
+
+        builder.start(&#39;BFieldTraceOptions&#39;, {})
+        builder.start(&#39;CoordinateSystem&#39;, {})
+        builder.data(self._coordinate_system.value)
+        builder.end(&#39;CoordinateSystem&#39;)
+        builder.start(&#39;Hemisphere&#39;, {})
+        builder.data(self._hemisphere.value)
+        builder.end(&#39;Hemisphere&#39;)
+        builder.start(&#39;FootpointLatitude&#39;, {})
+        builder.data(str(self._footpoint_latitude).lower())
+        builder.end(&#39;FootpointLatitude&#39;)
+        builder.start(&#39;FootpointLongitude&#39;, {})
+        builder.data(str(self._footpoint_longitude).lower())
+        builder.end(&#39;FootpointLongitude&#39;)
+        builder.start(&#39;FieldLineLength&#39;, {})
+        builder.data(str(self._field_line_length).lower())
+        builder.end(&#39;FieldLineLength&#39;)
+        builder.end(&#39;BFieldTraceOptions&#39;)
+
+        return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Class representing a BFieldTraceOptions from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>coordinate_system</code></strong></dt>
+<dd>Specifies the coordinate system.
+If None, default is
+CoordinateSystem.GEO.</dd>
+<dt><strong><code>hemisphere</code></strong></dt>
+<dd>Specifies the hemisphere.
+If None, default is Hemisphere.NORTH.</dd>
+<dt><strong><code>footpoint_latitude</code></strong></dt>
+<dd>Specifies whether to include footpoint latitude values in the
+listing.</dd>
+<dt><strong><code>footpoint_longitude</code></strong></dt>
+<dd>Specifies whether to include footpoint longitude values in the
+listing.</dd>
+<dt><strong><code>field_line_length</code></strong></dt>
+<dd>Specifies whether to include field line length values in the
+listing.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.outputoptions.BFieldTraceOptions.coordinate_system"><code class="name">prop <span class="ident">coordinate_system</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def coordinate_system(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the coordinate_system value.
+
+    Returns
+    -------
+    str
+        coordinate_system value.
+    &#34;&#34;&#34;
+    return self._coordinate_system</code></pre>
+</details>
+<div class="desc"><p>Gets the coordinate_system value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>coordinate_system value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.BFieldTraceOptions.field_line_length"><code class="name">prop <span class="ident">field_line_length</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def field_line_length(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the field_line_length value.
+
+    Returns
+    -------
+    str
+        field_line_length value.
+    &#34;&#34;&#34;
+    return self._field_line_length</code></pre>
+</details>
+<div class="desc"><p>Gets the field_line_length value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>field_line_length value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.BFieldTraceOptions.footpoint_latitude"><code class="name">prop <span class="ident">footpoint_latitude</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def footpoint_latitude(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the footpoint_latitude value.
+
+    Returns
+    -------
+    str
+        footpoint_latitude value.
+    &#34;&#34;&#34;
+    return self._footpoint_latitude</code></pre>
+</details>
+<div class="desc"><p>Gets the footpoint_latitude value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>footpoint_latitude value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.BFieldTraceOptions.footpoint_longitude"><code class="name">prop <span class="ident">footpoint_longitude</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def footpoint_longitude(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the footpoint_longitude value.
+
+    Returns
+    -------
+    str
+        footpoint_longitude value.
+    &#34;&#34;&#34;
+    return self._footpoint_longitude</code></pre>
+</details>
+<div class="desc"><p>Gets the footpoint_longitude value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>footpoint_longitude value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.BFieldTraceOptions.hemisphere"><code class="name">prop <span class="ident">hemisphere</span> : <a title="sscws.regions.Hemisphere" href="regions.html#sscws.regions.Hemisphere">Hemisphere</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def hemisphere(self) -&gt; Hemisphere:
+    &#34;&#34;&#34;
+    Gets the hemisphere value.
+
+    Returns
+    -------
+    str
+        hemisphere value.
+    &#34;&#34;&#34;
+    return self._hemisphere</code></pre>
+</details>
+<div class="desc"><p>Gets the hemisphere value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>hemisphere value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.outputoptions.BFieldTraceOptions.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+    builder = ET.TreeBuilder()
+
+    builder.start(&#39;BFieldTraceOptions&#39;, {})
+    builder.start(&#39;CoordinateSystem&#39;, {})
+    builder.data(self._coordinate_system.value)
+    builder.end(&#39;CoordinateSystem&#39;)
+    builder.start(&#39;Hemisphere&#39;, {})
+    builder.data(self._hemisphere.value)
+    builder.end(&#39;Hemisphere&#39;)
+    builder.start(&#39;FootpointLatitude&#39;, {})
+    builder.data(str(self._footpoint_latitude).lower())
+    builder.end(&#39;FootpointLatitude&#39;)
+    builder.start(&#39;FootpointLongitude&#39;, {})
+    builder.data(str(self._footpoint_longitude).lower())
+    builder.end(&#39;FootpointLongitude&#39;)
+    builder.start(&#39;FieldLineLength&#39;, {})
+    builder.data(str(self._field_line_length).lower())
+    builder.end(&#39;FieldLineLength&#39;)
+    builder.end(&#39;BFieldTraceOptions&#39;)
+
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.outputoptions.CoordinateOptions"><code class="flex name class">
+<span>class <span class="ident">CoordinateOptions</span></span>
+<span>(</span><span>coordinate_system: <a title="sscws.coordinates.CoordinateSystem" href="coordinates.html#sscws.coordinates.CoordinateSystem">CoordinateSystem</a>,<br>component: <a title="sscws.coordinates.CoordinateComponent" href="coordinates.html#sscws.coordinates.CoordinateComponent">CoordinateComponent</a>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CoordinateOptions:
+    &#34;&#34;&#34;
+    Class representing a CoordinateOptions from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    coordinate_system
+        Coordinate system.
+    component
+        Coordinate system component.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 coordinate_system: CoordinateSystem,
+                 component: CoordinateComponent):
+
+        self._coordinate_system = coordinate_system
+        self._component = component
+
+
+    @property
+    def coordinate_system(self) -&gt; CoordinateSystem:
+        &#34;&#34;&#34;
+        Gets the coordinate_system value.
+
+        Returns
+        -------
+        str
+            coordinate_system value.
+        &#34;&#34;&#34;
+        return self._coordinate_system
+
+
+    @coordinate_system.setter
+    def coordinate_system(self, value: CoordinateSystem):
+        &#34;&#34;&#34;
+        Sets the coordinate_system value.
+
+        Parameters
+        ----------
+        value
+            coordinate_system value.
+        &#34;&#34;&#34;
+        self._coordinate_system = value
+
+
+    @property
+    def component(self) -&gt; CoordinateComponent:
+        &#34;&#34;&#34;
+        Gets the component value.
+
+        Returns
+        -------
+        str
+            component value.
+        &#34;&#34;&#34;
+        return self._component
+
+
+    @component.setter
+    def component(self, value: CoordinateComponent):
+        &#34;&#34;&#34;
+        Sets the component value.
+
+        Parameters
+        ----------
+        value
+            component value.
+        &#34;&#34;&#34;
+        self._component = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        builder = ET.TreeBuilder()
+
+        builder.start(&#39;CoordinateOptions&#39;, {})
+        builder.start(&#39;CoordinateSystem&#39;, {})
+        builder.data(self._coordinate_system.value)
+        builder.end(&#39;CoordinateSystem&#39;)
+        builder.start(&#39;Component&#39;, {})
+        builder.data(self._component.value)
+        builder.end(&#39;Component&#39;)
+        builder.end(&#39;CoordinateOptions&#39;)
+
+        return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Class representing a CoordinateOptions from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>coordinate_system</code></strong></dt>
+<dd>Coordinate system.</dd>
+<dt><strong><code>component</code></strong></dt>
+<dd>Coordinate system component.</dd>
+</dl></div>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="sscws.outputoptions.FilteredCoordinateOptions" href="#sscws.outputoptions.FilteredCoordinateOptions">FilteredCoordinateOptions</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.outputoptions.CoordinateOptions.component"><code class="name">prop <span class="ident">component</span> : <a title="sscws.coordinates.CoordinateComponent" href="coordinates.html#sscws.coordinates.CoordinateComponent">CoordinateComponent</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def component(self) -&gt; CoordinateComponent:
+    &#34;&#34;&#34;
+    Gets the component value.
+
+    Returns
+    -------
+    str
+        component value.
+    &#34;&#34;&#34;
+    return self._component</code></pre>
+</details>
+<div class="desc"><p>Gets the component value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>component value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.CoordinateOptions.coordinate_system"><code class="name">prop <span class="ident">coordinate_system</span> : <a title="sscws.coordinates.CoordinateSystem" href="coordinates.html#sscws.coordinates.CoordinateSystem">CoordinateSystem</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def coordinate_system(self) -&gt; CoordinateSystem:
+    &#34;&#34;&#34;
+    Gets the coordinate_system value.
+
+    Returns
+    -------
+    str
+        coordinate_system value.
+    &#34;&#34;&#34;
+    return self._coordinate_system</code></pre>
+</details>
+<div class="desc"><p>Gets the coordinate_system value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>coordinate_system value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.outputoptions.CoordinateOptions.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+    builder = ET.TreeBuilder()
+
+    builder.start(&#39;CoordinateOptions&#39;, {})
+    builder.start(&#39;CoordinateSystem&#39;, {})
+    builder.data(self._coordinate_system.value)
+    builder.end(&#39;CoordinateSystem&#39;)
+    builder.start(&#39;Component&#39;, {})
+    builder.data(self._component.value)
+    builder.end(&#39;Component&#39;)
+    builder.end(&#39;CoordinateOptions&#39;)
+
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.outputoptions.DistanceFromOptions"><code class="flex name class">
+<span>class <span class="ident">DistanceFromOptions</span></span>
+<span>(</span><span>neutral_sheet: bool = None,<br>bow_shock: bool = None,<br>m_pause: bool = None,<br>b_gse_xyz: bool = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DistanceFromOptions:
+    &#34;&#34;&#34;
+    Class representing a DistanceFromOptions from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    neutral_sheet
+        Specifies whether the distance to the neutral sheet values are
+        to be included in the listing.  If None, default is False.
+    bow_shock
+        Specifies whether the distance to the bow shock values are to
+        be included in the listing.  If None, default is False.
+    m_pause
+        Specifies whether the distance to the magneto pause values that
+        are to be included in the listing.  If None, default is False.
+    b_gse_xyz
+        Specifies whether the magnetic field strength in the GSE XYZ
+        directions that are to be included in the listing.  If None,
+        default is False.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 neutral_sheet: bool = None,
+                 bow_shock: bool = None,
+                 m_pause: bool = None,
+                 b_gse_xyz: bool = None):
+
+        if neutral_sheet is None:
+            self._neutral_sheet = False
+        else:
+            self._neutral_sheet = neutral_sheet
+
+        if bow_shock is None:
+            self._bow_shock = False
+        else:
+            self._bow_shock = bow_shock
+
+        if m_pause is None:
+            self._m_pause = False
+        else:
+            self._m_pause = m_pause
+
+        if b_gse_xyz is None:
+            self._b_gse_xyz = False
+        else:
+            self._b_gse_xyz = b_gse_xyz
+
+
+    @property
+    def neutral_sheet(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the neutral_sheet value.
+
+        Returns
+        -------
+        str
+            neutral_sheet value.
+        &#34;&#34;&#34;
+        return self._neutral_sheet
+
+
+    @neutral_sheet.setter
+    def neutral_sheet(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the neutral_sheet value.
+
+        Parameters
+        ----------
+        value
+            neutral_sheet value.
+        &#34;&#34;&#34;
+        self._neutral_sheet = value
+
+
+    @property
+    def bow_shock(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the bow_shock value.
+
+        Returns
+        -------
+        str
+            bow_shock value.
+        &#34;&#34;&#34;
+        return self._bow_shock
+
+
+    @bow_shock.setter
+    def bow_shock(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the bow_shock value.
+
+        Parameters
+        ----------
+        value
+            bow_shock value.
+        &#34;&#34;&#34;
+        self._bow_shock = value
+
+
+    @property
+    def m_pause(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the m_pause value.
+
+        Returns
+        -------
+        str
+            m_pause value.
+        &#34;&#34;&#34;
+        return self._m_pause
+
+
+    @m_pause.setter
+    def m_pause(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the m_pause value.
+
+        Parameters
+        ----------
+        value
+            m_pause value.
+        &#34;&#34;&#34;
+        self._m_pause = value
+
+
+    @property
+    def b_gse_xyz(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the b_gse_xyz value.
+
+        Returns
+        -------
+        str
+            b_gse_xyz value.
+        &#34;&#34;&#34;
+        return self._b_gse_xyz
+
+
+    @b_gse_xyz.setter
+    def b_gse_xyz(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the b_gse_xyz value.
+
+        Parameters
+        ----------
+        value
+            b_gse_xyz value.
+        &#34;&#34;&#34;
+        self._b_gse_xyz = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        builder = ET.TreeBuilder()
+
+        builder.start(&#39;DistanceFromOptions&#39;, {})
+        builder.start(&#39;NeutralSheet&#39;, {})
+        builder.data(str(self._neutral_sheet).lower())
+        builder.end(&#39;NeutralSheet&#39;)
+        builder.start(&#39;BowShock&#39;, {})
+        builder.data(str(self._bow_shock).lower())
+        builder.end(&#39;BowShock&#39;)
+        builder.start(&#39;MPause&#39;, {})
+        builder.data(str(self._m_pause).lower())
+        builder.end(&#39;MPause&#39;)
+        builder.start(&#39;BGseXYZ&#39;, {})
+        builder.data(str(self._b_gse_xyz).lower())
+        builder.end(&#39;BGseXYZ&#39;)
+        builder.end(&#39;DistanceFromOptions&#39;)
+
+        return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Class representing a DistanceFromOptions from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>neutral_sheet</code></strong></dt>
+<dd>Specifies whether the distance to the neutral sheet values are
+to be included in the listing.
+If None, default is False.</dd>
+<dt><strong><code>bow_shock</code></strong></dt>
+<dd>Specifies whether the distance to the bow shock values are to
+be included in the listing.
+If None, default is False.</dd>
+<dt><strong><code>m_pause</code></strong></dt>
+<dd>Specifies whether the distance to the magneto pause values that
+are to be included in the listing.
+If None, default is False.</dd>
+<dt><strong><code>b_gse_xyz</code></strong></dt>
+<dd>Specifies whether the magnetic field strength in the GSE XYZ
+directions that are to be included in the listing.
+If None,
+default is False.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.outputoptions.DistanceFromOptions.b_gse_xyz"><code class="name">prop <span class="ident">b_gse_xyz</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def b_gse_xyz(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the b_gse_xyz value.
+
+    Returns
+    -------
+    str
+        b_gse_xyz value.
+    &#34;&#34;&#34;
+    return self._b_gse_xyz</code></pre>
+</details>
+<div class="desc"><p>Gets the b_gse_xyz value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>b_gse_xyz value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.DistanceFromOptions.bow_shock"><code class="name">prop <span class="ident">bow_shock</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def bow_shock(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the bow_shock value.
+
+    Returns
+    -------
+    str
+        bow_shock value.
+    &#34;&#34;&#34;
+    return self._bow_shock</code></pre>
+</details>
+<div class="desc"><p>Gets the bow_shock value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>bow_shock value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.DistanceFromOptions.m_pause"><code class="name">prop <span class="ident">m_pause</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def m_pause(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the m_pause value.
+
+    Returns
+    -------
+    str
+        m_pause value.
+    &#34;&#34;&#34;
+    return self._m_pause</code></pre>
+</details>
+<div class="desc"><p>Gets the m_pause value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>m_pause value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.DistanceFromOptions.neutral_sheet"><code class="name">prop <span class="ident">neutral_sheet</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def neutral_sheet(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the neutral_sheet value.
+
+    Returns
+    -------
+    str
+        neutral_sheet value.
+    &#34;&#34;&#34;
+    return self._neutral_sheet</code></pre>
+</details>
+<div class="desc"><p>Gets the neutral_sheet value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>neutral_sheet value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.outputoptions.DistanceFromOptions.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+    builder = ET.TreeBuilder()
+
+    builder.start(&#39;DistanceFromOptions&#39;, {})
+    builder.start(&#39;NeutralSheet&#39;, {})
+    builder.data(str(self._neutral_sheet).lower())
+    builder.end(&#39;NeutralSheet&#39;)
+    builder.start(&#39;BowShock&#39;, {})
+    builder.data(str(self._bow_shock).lower())
+    builder.end(&#39;BowShock&#39;)
+    builder.start(&#39;MPause&#39;, {})
+    builder.data(str(self._m_pause).lower())
+    builder.end(&#39;MPause&#39;)
+    builder.start(&#39;BGseXYZ&#39;, {})
+    builder.data(str(self._b_gse_xyz).lower())
+    builder.end(&#39;BGseXYZ&#39;)
+    builder.end(&#39;DistanceFromOptions&#39;)
+
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.outputoptions.FilteredCoordinateOptions"><code class="flex name class">
+<span>class <span class="ident">FilteredCoordinateOptions</span></span>
+<span>(</span><span>coordinate_system: <a title="sscws.coordinates.CoordinateSystem" href="coordinates.html#sscws.coordinates.CoordinateSystem">CoordinateSystem</a>,<br>component: <a title="sscws.coordinates.CoordinateComponent" href="coordinates.html#sscws.coordinates.CoordinateComponent">CoordinateComponent</a>,<br>location_filter: <a title="sscws.outputoptions.LocationFilter" href="#sscws.outputoptions.LocationFilter">LocationFilter</a> = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class FilteredCoordinateOptions(CoordinateOptions):
+    &#34;&#34;&#34;
+    Class representing a FilteredCoordinateOptions from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    coordinate_system
+        Coordinate system.
+    component
+        Coordinate system component.
+    location_filter
+        Location filter listing options.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 coordinate_system: CoordinateSystem,
+                 component: CoordinateComponent,
+                 location_filter: LocationFilter = None):
+
+        super().__init__(coordinate_system, component)
+        self._location_filter = location_filter
+
+
+    @property
+    def location_filter(self) -&gt; LocationFilter:
+        &#34;&#34;&#34;
+        Gets the location_filter value.
+
+        Returns
+        -------
+        str
+            location_filter value.
+        &#34;&#34;&#34;
+        return self._location_filter
+
+
+    @location_filter.setter
+    def location_filter(self, value: LocationFilter):
+        &#34;&#34;&#34;
+        Sets the location_filter value.
+
+        Parameters
+        ----------
+        value
+            location_filter value.
+        &#34;&#34;&#34;
+        self._location_filter = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        xml_element = super().xml_element()
+
+        if self._location_filter is not None:
+            xml_element.append(self._location_filter.xml_element())
+
+        return xml_element</code></pre>
+</details>
+<div class="desc"><p>Class representing a FilteredCoordinateOptions from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>coordinate_system</code></strong></dt>
+<dd>Coordinate system.</dd>
+<dt><strong><code>component</code></strong></dt>
+<dd>Coordinate system component.</dd>
+<dt><strong><code>location_filter</code></strong></dt>
+<dd>Location filter listing options.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="sscws.outputoptions.CoordinateOptions" href="#sscws.outputoptions.CoordinateOptions">CoordinateOptions</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.outputoptions.FilteredCoordinateOptions.location_filter"><code class="name">prop <span class="ident">location_filter</span> : <a title="sscws.outputoptions.LocationFilter" href="#sscws.outputoptions.LocationFilter">LocationFilter</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def location_filter(self) -&gt; LocationFilter:
+    &#34;&#34;&#34;
+    Gets the location_filter value.
+
+    Returns
+    -------
+    str
+        location_filter value.
+    &#34;&#34;&#34;
+    return self._location_filter</code></pre>
+</details>
+<div class="desc"><p>Gets the location_filter value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>location_filter value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="sscws.outputoptions.CoordinateOptions" href="#sscws.outputoptions.CoordinateOptions">CoordinateOptions</a></b></code>:
+<ul class="hlist">
+<li><code><a title="sscws.outputoptions.CoordinateOptions.component" href="#sscws.outputoptions.CoordinateOptions.component">component</a></code></li>
+<li><code><a title="sscws.outputoptions.CoordinateOptions.coordinate_system" href="#sscws.outputoptions.CoordinateOptions.coordinate_system">coordinate_system</a></code></li>
+<li><code><a title="sscws.outputoptions.CoordinateOptions.xml_element" href="#sscws.outputoptions.CoordinateOptions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="sscws.outputoptions.LocationFilter"><code class="flex name class">
+<span>class <span class="ident">LocationFilter</span></span>
+<span>(</span><span>lower_limit: float,<br>upper_limit: float,<br>minimum: bool = None,<br>maximum: bool = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LocationFilter:
+    &#34;&#34;&#34;
+    Class representing a LocationFilter from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    lower_limit
+        Specifies the lower limit of values that are to be included in
+        the listing.  The value is kilometer or degrees as applicable.
+    upper_limit
+        Specifies the upper limit of values that are to be included in
+        the listing.  The value is kilometer or degrees as applicable.
+    minimum
+        Specifies whether the minimum value is to be marked by a &#34;v&#34;
+        in the listing.  If None, default is False.
+    maximum
+        Specifies whether the maximum value is to be marked by a &#34;v&#34;
+        in the listing.  If None, default is False.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 lower_limit: float,
+                 upper_limit: float,
+                 minimum: bool = None,
+                 maximum: bool = None):
+
+        if minimum is None:
+            self._minimum = False
+        else:
+            self._minimum = minimum
+
+        if maximum is None:
+            self._maximum = False
+        else:
+            self._maximum = maximum
+
+        self._lower_limit = lower_limit
+        self._upper_limit = upper_limit
+
+
+    @property
+    def minimum(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the minimum value.
+
+        Returns
+        -------
+        str
+            minimum value.
+        &#34;&#34;&#34;
+        return self._minimum
+
+
+    @minimum.setter
+    def minimum(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the minimum value.
+
+        Parameters
+        ----------
+        value
+            minimum value.
+        &#34;&#34;&#34;
+        self._minimum = value
+
+
+    @property
+    def maximum(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the maximum value.
+
+        Returns
+        -------
+        str
+            maximum value.
+        &#34;&#34;&#34;
+        return self._maximum
+
+
+    @maximum.setter
+    def maximum(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the maximum value.
+
+        Parameters
+        ----------
+        value
+            maximum value.
+        &#34;&#34;&#34;
+        self._maximum = value
+
+
+    @property
+    def lower_limit(self) -&gt; float:
+        &#34;&#34;&#34;
+        Gets the lower_limit value.
+
+        Returns
+        -------
+        str
+            lower_limit value.
+        &#34;&#34;&#34;
+        return self._lower_limit
+
+
+    @lower_limit.setter
+    def lower_limit(self, value: float):
+        &#34;&#34;&#34;
+        Sets the lower_limit value.
+
+        Parameters
+        ----------
+        value
+            lower_limit value.
+        &#34;&#34;&#34;
+        self._lower_limit = value
+
+
+    @property
+    def upper_limit(self) -&gt; float:
+        &#34;&#34;&#34;
+        Gets the upper_limit value.
+
+        Returns
+        -------
+        str
+            upper_limit value.
+        &#34;&#34;&#34;
+        return self._upper_limit
+
+
+    @upper_limit.setter
+    def upper_limit(self, value: float):
+        &#34;&#34;&#34;
+        Sets the upper_limit value.
+
+        Parameters
+        ----------
+        value
+            upper_limit value.
+        &#34;&#34;&#34;
+        self._upper_limit = value
+
+
+    def xml_element(self,
+                    name: str) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Parameters
+        ----------
+        name
+            Name of this LocationFilter.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        builder = ET.TreeBuilder()
+
+        builder.start(name, {})
+        builder.start(&#39;Minimum&#39;, {})
+        builder.data(str(self._minimum).lower())
+        builder.end(&#39;Minimum&#39;)
+        builder.start(&#39;Maximum&#39;, {})
+        builder.data(str(self._maximum).lower())
+        builder.end(&#39;Maximum&#39;)
+        builder.start(&#39;LowerLimit&#39;, {})
+        builder.data(str(self._lower_limit))
+        builder.end(&#39;LowerLimit&#39;)
+        builder.start(&#39;UpperLimit&#39;, {})
+        builder.data(str(self._upper_limit))
+        builder.end(&#39;UpperLimit&#39;)
+        builder.end(name)
+
+        return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Class representing a LocationFilter from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>lower_limit</code></strong></dt>
+<dd>Specifies the lower limit of values that are to be included in
+the listing.
+The value is kilometer or degrees as applicable.</dd>
+<dt><strong><code>upper_limit</code></strong></dt>
+<dd>Specifies the upper limit of values that are to be included in
+the listing.
+The value is kilometer or degrees as applicable.</dd>
+<dt><strong><code>minimum</code></strong></dt>
+<dd>Specifies whether the minimum value is to be marked by a "v"
+in the listing.
+If None, default is False.</dd>
+<dt><strong><code>maximum</code></strong></dt>
+<dd>Specifies whether the maximum value is to be marked by a "v"
+in the listing.
+If None, default is False.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.outputoptions.LocationFilter.lower_limit"><code class="name">prop <span class="ident">lower_limit</span> : float</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def lower_limit(self) -&gt; float:
+    &#34;&#34;&#34;
+    Gets the lower_limit value.
+
+    Returns
+    -------
+    str
+        lower_limit value.
+    &#34;&#34;&#34;
+    return self._lower_limit</code></pre>
+</details>
+<div class="desc"><p>Gets the lower_limit value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>lower_limit value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.LocationFilter.maximum"><code class="name">prop <span class="ident">maximum</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def maximum(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the maximum value.
+
+    Returns
+    -------
+    str
+        maximum value.
+    &#34;&#34;&#34;
+    return self._maximum</code></pre>
+</details>
+<div class="desc"><p>Gets the maximum value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>maximum value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.LocationFilter.minimum"><code class="name">prop <span class="ident">minimum</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def minimum(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the minimum value.
+
+    Returns
+    -------
+    str
+        minimum value.
+    &#34;&#34;&#34;
+    return self._minimum</code></pre>
+</details>
+<div class="desc"><p>Gets the minimum value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>minimum value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.LocationFilter.upper_limit"><code class="name">prop <span class="ident">upper_limit</span> : float</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def upper_limit(self) -&gt; float:
+    &#34;&#34;&#34;
+    Gets the upper_limit value.
+
+    Returns
+    -------
+    str
+        upper_limit value.
+    &#34;&#34;&#34;
+    return self._upper_limit</code></pre>
+</details>
+<div class="desc"><p>Gets the upper_limit value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>upper_limit value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.outputoptions.LocationFilter.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self, name: str) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self,
+                name: str) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Parameters
+    ----------
+    name
+        Name of this LocationFilter.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+    builder = ET.TreeBuilder()
+
+    builder.start(name, {})
+    builder.start(&#39;Minimum&#39;, {})
+    builder.data(str(self._minimum).lower())
+    builder.end(&#39;Minimum&#39;)
+    builder.start(&#39;Maximum&#39;, {})
+    builder.data(str(self._maximum).lower())
+    builder.end(&#39;Maximum&#39;)
+    builder.start(&#39;LowerLimit&#39;, {})
+    builder.data(str(self._lower_limit))
+    builder.end(&#39;LowerLimit&#39;)
+    builder.start(&#39;UpperLimit&#39;, {})
+    builder.data(str(self._upper_limit))
+    builder.end(&#39;UpperLimit&#39;)
+    builder.end(name)
+
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>Name of this LocationFilter.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.outputoptions.OutputOptions"><code class="flex name class">
+<span>class <span class="ident">OutputOptions</span></span>
+<span>(</span><span>coordinate_options: List[<a title="sscws.outputoptions.FilteredCoordinateOptions" href="#sscws.outputoptions.FilteredCoordinateOptions">FilteredCoordinateOptions</a>],<br>all_location_filters: bool = None,<br>min_max_points: int = None,<br>region_options: <a title="sscws.outputoptions.RegionOptions" href="#sscws.outputoptions.RegionOptions">RegionOptions</a> = None,<br>value_options: <a title="sscws.outputoptions.ValueOptions" href="#sscws.outputoptions.ValueOptions">ValueOptions</a> = None,<br>distance_from_options: <a title="sscws.outputoptions.DistanceFromOptions" href="#sscws.outputoptions.DistanceFromOptions">DistanceFromOptions</a> = None,<br>b_field_trace_options: List[<a title="sscws.outputoptions.BFieldTraceOptions" href="#sscws.outputoptions.BFieldTraceOptions">BFieldTraceOptions</a>] = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OutputOptions:
+    &#34;&#34;&#34;
+    Class representing a OutputOptions from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    coordinate_options
+        Coordinate options.
+    all_location_filters
+        All location filters flag.  If None, default is True.
+    min_max_points
+        Minimum/Maximum number of points.  If None, default is 2.
+    region_options
+        Region options.
+    value_options
+        Value options.
+    distance_from_options
+        Distance-from options.
+    b_field_trace_options
+        B-field trace options.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 coordinate_options: List[FilteredCoordinateOptions],
+                 all_location_filters: bool = None,
+                 min_max_points: int = None,
+                 region_options: RegionOptions = None,
+                 value_options: ValueOptions = None,
+                 distance_from_options: DistanceFromOptions = None,
+                 b_field_trace_options: List[BFieldTraceOptions] = None
+                 ):  # pylint: disable=too-many-arguments
+
+        self._coordinate_options = coordinate_options
+        if all_location_filters is None:
+            self._all_location_filters = True
+        else:
+            self._all_location_filters = all_location_filters
+        if min_max_points is None:
+            self._min_max_points = 2
+        else:
+            self._min_max_points = min_max_points
+        self._region_options = region_options
+        self._value_options = value_options
+        self._distance_from_options = distance_from_options
+
+        if b_field_trace_options is None:
+            self._b_field_trace_options = []
+        else:
+            self._b_field_trace_options = b_field_trace_options
+
+
+    @property
+    def coordinate_options(self) -&gt; List[FilteredCoordinateOptions]:
+        &#34;&#34;&#34;
+        Gets the coordinate_options value.
+
+        Returns
+        -------
+        str
+            coordinate_options value.
+        &#34;&#34;&#34;
+        return self._coordinate_options
+
+
+    @coordinate_options.setter
+    def coordinate_options(self, value: List[FilteredCoordinateOptions]):
+        &#34;&#34;&#34;
+        Sets the coordinate_options value.
+
+        Parameters
+        ----------
+        value
+            coordinate_options value.
+        &#34;&#34;&#34;
+        self._coordinate_options = value
+
+
+    @property
+    def all_location_filters(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the all_location_filters value.
+
+        Returns
+        -------
+        str
+            all_location_filters value.
+        &#34;&#34;&#34;
+        return self._all_location_filters
+
+
+    @all_location_filters.setter
+    def all_location_filters(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the all_location_filters value.
+
+        Parameters
+        ----------
+        value
+            all_location_filters value.
+        &#34;&#34;&#34;
+        self._all_location_filters = value
+
+
+    @property
+    def min_max_points(self) -&gt; int:
+        &#34;&#34;&#34;
+        Gets the min_max_points value.
+
+        Returns
+        -------
+        str
+            min_max_points value.
+        &#34;&#34;&#34;
+        return self._min_max_points
+
+
+    @min_max_points.setter
+    def min_max_points(self, value: int):
+        &#34;&#34;&#34;
+        Sets the min_max_points value.
+
+        Parameters
+        ----------
+        value
+            min_max_points value.
+        &#34;&#34;&#34;
+        self._min_max_points = value
+
+
+    @property
+    def region_options(self) -&gt; RegionOptions:
+        &#34;&#34;&#34;
+        Gets the region_options value.
+
+        Returns
+        -------
+        str
+            region_options value.
+        &#34;&#34;&#34;
+        return self._region_options
+
+
+    @region_options.setter
+    def region_options(self, value: RegionOptions):
+        &#34;&#34;&#34;
+        Sets the region_options value.
+
+        Parameters
+        ----------
+        value
+            region_options value.
+        &#34;&#34;&#34;
+        self._region_options = value
+
+
+    @property
+    def value_options(self) -&gt; ValueOptions:
+        &#34;&#34;&#34;
+        Gets the value_options value.
+
+        Returns
+        -------
+        str
+            value_options value.
+        &#34;&#34;&#34;
+        return self._value_options
+
+
+    @value_options.setter
+    def value_options(self, value: ValueOptions):
+        &#34;&#34;&#34;
+        Sets the value_options value.
+
+        Parameters
+        ----------
+        value
+            value_options value.
+        &#34;&#34;&#34;
+        self._value_options = value
+
+
+    @property
+    def distance_from_options(self) -&gt; DistanceFromOptions:
+        &#34;&#34;&#34;
+        Gets the distance_from_options value.
+
+        Returns
+        -------
+        str
+            distance_from_options value.
+        &#34;&#34;&#34;
+        return self._distance_from_options
+
+
+    @distance_from_options.setter
+    def distance_from_options(self, value: DistanceFromOptions):
+        &#34;&#34;&#34;
+        Sets the distance_from_options value.
+
+        Parameters
+        ----------
+        value
+            distance_from_options value.
+        &#34;&#34;&#34;
+        self._distance_from_options = value
+
+
+    @property
+    def b_field_trace_options(self) -&gt; List[BFieldTraceOptions]:
+        &#34;&#34;&#34;
+        Gets the b_field_trace_options value.
+
+        Returns
+        -------
+        str
+            b_field_trace_options value.
+        &#34;&#34;&#34;
+        return self._b_field_trace_options
+
+
+    @b_field_trace_options.setter
+    def b_field_trace_options(self, value: List[BFieldTraceOptions]):
+        &#34;&#34;&#34;
+        Sets the b_field_trace_options value.
+
+        Parameters
+        ----------
+        value
+            b_field_trace_options value.
+        &#34;&#34;&#34;
+        self._b_field_trace_options = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;OutputOptions&#39;, {})
+        builder.start(&#39;AllLocationFilters&#39;, {})
+        builder.data(str(self._all_location_filters).lower())
+        builder.end(&#39;AllLocationFilters&#39;)
+        builder.start(&#39;MinMaxPoints&#39;, {})
+        builder.data(str(self._min_max_points).lower())
+        builder.end(&#39;MinMaxPoints&#39;)
+        builder.end(&#39;OutputOptions&#39;)
+
+        xml_element = builder.close()
+
+        for coord_option in self._coordinate_options:
+            xml_element.append(coord_option.xml_element())
+        if self._region_options is not None:
+            xml_element.append(self._region_options.xml_element())
+        if self._value_options is not None:
+            xml_element.append(self._value_options.xml_element())
+        if self._distance_from_options is not None:
+            xml_element.append(self._distance_from_options.xml_element())
+
+        for b_trace_option in self._b_field_trace_options:
+            xml_element.append(b_trace_option.xml_element())
+
+        return xml_element</code></pre>
+</details>
+<div class="desc"><p>Class representing a OutputOptions from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>coordinate_options</code></strong></dt>
+<dd>Coordinate options.</dd>
+<dt><strong><code>all_location_filters</code></strong></dt>
+<dd>All location filters flag.
+If None, default is True.</dd>
+<dt><strong><code>min_max_points</code></strong></dt>
+<dd>Minimum/Maximum number of points.
+If None, default is 2.</dd>
+<dt><strong><code>region_options</code></strong></dt>
+<dd>Region options.</dd>
+<dt><strong><code>value_options</code></strong></dt>
+<dd>Value options.</dd>
+<dt><strong><code>distance_from_options</code></strong></dt>
+<dd>Distance-from options.</dd>
+<dt><strong><code>b_field_trace_options</code></strong></dt>
+<dd>B-field trace options.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.outputoptions.OutputOptions.all_location_filters"><code class="name">prop <span class="ident">all_location_filters</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def all_location_filters(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the all_location_filters value.
+
+    Returns
+    -------
+    str
+        all_location_filters value.
+    &#34;&#34;&#34;
+    return self._all_location_filters</code></pre>
+</details>
+<div class="desc"><p>Gets the all_location_filters value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>all_location_filters value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.OutputOptions.b_field_trace_options"><code class="name">prop <span class="ident">b_field_trace_options</span> : List[<a title="sscws.outputoptions.BFieldTraceOptions" href="#sscws.outputoptions.BFieldTraceOptions">BFieldTraceOptions</a>]</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def b_field_trace_options(self) -&gt; List[BFieldTraceOptions]:
+    &#34;&#34;&#34;
+    Gets the b_field_trace_options value.
+
+    Returns
+    -------
+    str
+        b_field_trace_options value.
+    &#34;&#34;&#34;
+    return self._b_field_trace_options</code></pre>
+</details>
+<div class="desc"><p>Gets the b_field_trace_options value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>b_field_trace_options value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.OutputOptions.coordinate_options"><code class="name">prop <span class="ident">coordinate_options</span> : List[<a title="sscws.outputoptions.FilteredCoordinateOptions" href="#sscws.outputoptions.FilteredCoordinateOptions">FilteredCoordinateOptions</a>]</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def coordinate_options(self) -&gt; List[FilteredCoordinateOptions]:
+    &#34;&#34;&#34;
+    Gets the coordinate_options value.
+
+    Returns
+    -------
+    str
+        coordinate_options value.
+    &#34;&#34;&#34;
+    return self._coordinate_options</code></pre>
+</details>
+<div class="desc"><p>Gets the coordinate_options value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>coordinate_options value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.OutputOptions.distance_from_options"><code class="name">prop <span class="ident">distance_from_options</span> : <a title="sscws.outputoptions.DistanceFromOptions" href="#sscws.outputoptions.DistanceFromOptions">DistanceFromOptions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def distance_from_options(self) -&gt; DistanceFromOptions:
+    &#34;&#34;&#34;
+    Gets the distance_from_options value.
+
+    Returns
+    -------
+    str
+        distance_from_options value.
+    &#34;&#34;&#34;
+    return self._distance_from_options</code></pre>
+</details>
+<div class="desc"><p>Gets the distance_from_options value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>distance_from_options value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.OutputOptions.min_max_points"><code class="name">prop <span class="ident">min_max_points</span> : int</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def min_max_points(self) -&gt; int:
+    &#34;&#34;&#34;
+    Gets the min_max_points value.
+
+    Returns
+    -------
+    str
+        min_max_points value.
+    &#34;&#34;&#34;
+    return self._min_max_points</code></pre>
+</details>
+<div class="desc"><p>Gets the min_max_points value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>min_max_points value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.OutputOptions.region_options"><code class="name">prop <span class="ident">region_options</span> : <a title="sscws.outputoptions.RegionOptions" href="#sscws.outputoptions.RegionOptions">RegionOptions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def region_options(self) -&gt; RegionOptions:
+    &#34;&#34;&#34;
+    Gets the region_options value.
+
+    Returns
+    -------
+    str
+        region_options value.
+    &#34;&#34;&#34;
+    return self._region_options</code></pre>
+</details>
+<div class="desc"><p>Gets the region_options value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>region_options value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.OutputOptions.value_options"><code class="name">prop <span class="ident">value_options</span> : <a title="sscws.outputoptions.ValueOptions" href="#sscws.outputoptions.ValueOptions">ValueOptions</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def value_options(self) -&gt; ValueOptions:
+    &#34;&#34;&#34;
+    Gets the value_options value.
+
+    Returns
+    -------
+    str
+        value_options value.
+    &#34;&#34;&#34;
+    return self._value_options</code></pre>
+</details>
+<div class="desc"><p>Gets the value_options value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>value_options value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.outputoptions.OutputOptions.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+
+    builder = ET.TreeBuilder()
+    builder.start(&#39;OutputOptions&#39;, {})
+    builder.start(&#39;AllLocationFilters&#39;, {})
+    builder.data(str(self._all_location_filters).lower())
+    builder.end(&#39;AllLocationFilters&#39;)
+    builder.start(&#39;MinMaxPoints&#39;, {})
+    builder.data(str(self._min_max_points).lower())
+    builder.end(&#39;MinMaxPoints&#39;)
+    builder.end(&#39;OutputOptions&#39;)
+
+    xml_element = builder.close()
+
+    for coord_option in self._coordinate_options:
+        xml_element.append(coord_option.xml_element())
+    if self._region_options is not None:
+        xml_element.append(self._region_options.xml_element())
+    if self._value_options is not None:
+        xml_element.append(self._value_options.xml_element())
+    if self._distance_from_options is not None:
+        xml_element.append(self._distance_from_options.xml_element())
+
+    for b_trace_option in self._b_field_trace_options:
+        xml_element.append(b_trace_option.xml_element())
+
+    return xml_element</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.outputoptions.RegionOptions"><code class="flex name class">
+<span>class <span class="ident">RegionOptions</span></span>
+<span>(</span><span>spacecraft: bool = None,<br>radial_traced_footpoint: bool = None,<br>north_b_traced_footpoint: bool = None,<br>south_b_traced_footpoint: bool = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RegionOptions:
+    &#34;&#34;&#34;
+    Class representing a RegionOptions from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    spacecraft
+        Specifies whether the spacecraft regions are to be included
+        in the listing.  If None, default is False.
+    radial_traced_footpoint
+        Specifies whether the radial traced footpoint values are to be
+        included in the listing.  If None, default is False.
+    north_b_traced_footpoint
+        Specifies the north B-field traced footpoint values that are
+        to be included in the listing.  If None, default is False.
+    south_b_traced_footpoint
+        Specifies the south B-field traced footpoint values that are
+        to be included in the listing.  If None, default is False.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 spacecraft: bool = None,
+                 radial_traced_footpoint: bool = None,
+                 north_b_traced_footpoint: bool = None,
+                 south_b_traced_footpoint: bool = None):
+
+        if spacecraft is None:
+            self._spacecraft = False
+        else:
+            self._spacecraft = spacecraft
+
+        if radial_traced_footpoint is None:
+            self._radial_traced_footpoint = False
+        else:
+            self._radial_traced_footpoint = radial_traced_footpoint
+
+        if north_b_traced_footpoint is None:
+            self._north_b_traced_footpoint = False
+        else:
+            self._north_b_traced_footpoint = north_b_traced_footpoint
+
+        if south_b_traced_footpoint is None:
+            self._south_b_traced_footpoint = False
+        else:
+            self._south_b_traced_footpoint = south_b_traced_footpoint
+
+
+    @property
+    def spacecraft(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the spacecraft value.
+
+        Returns
+        -------
+        str
+            spacecraft value.
+        &#34;&#34;&#34;
+        return self._spacecraft
+
+
+    @spacecraft.setter
+    def spacecraft(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the spacecraft value.
+
+        Parameters
+        ----------
+        value
+            spacecraft value.
+        &#34;&#34;&#34;
+        self._spacecraft = value
+
+
+    @property
+    def radial_traced_footpoint(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the radial_traced_footpoint value.
+
+        Returns
+        -------
+        str
+            radial_traced_footpoint value.
+        &#34;&#34;&#34;
+        return self._radial_traced_footpoint
+
+
+    @radial_traced_footpoint.setter
+    def radial_traced_footpoint(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the radial_traced_footpoint value.
+
+        Parameters
+        ----------
+        value
+            radial_traced_footpoint value.
+        &#34;&#34;&#34;
+        self._radial_traced_footpoint = value
+
+
+    @property
+    def north_b_traced_footpoint(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the north_b_traced_footpoint value.
+
+        Returns
+        -------
+        str
+            north_b_traced_footpoint value.
+        &#34;&#34;&#34;
+        return self._north_b_traced_footpoint
+
+
+    @north_b_traced_footpoint.setter
+    def north_b_traced_footpoint(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the north_b_traced_footpoint value.
+
+        Parameters
+        ----------
+        value
+            north_b_traced_footpoint value.
+        &#34;&#34;&#34;
+        self._north_b_traced_footpoint = value
+
+
+    @property
+    def south_b_traced_footpoint(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the south_b_traced_footpoint value.
+
+        Returns
+        -------
+        str
+            south_b_traced_footpoint value.
+        &#34;&#34;&#34;
+        return self._south_b_traced_footpoint
+
+
+    @south_b_traced_footpoint.setter
+    def south_b_traced_footpoint(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the south_b_traced_footpoint value.
+
+        Parameters
+        ----------
+        value
+            south_b_traced_footpoint value.
+        &#34;&#34;&#34;
+        self._south_b_traced_footpoint = value
+
+
+    def xml_element(
+            self
+        ) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        builder = ET.TreeBuilder()
+
+        builder.start(&#39;RegionOptions&#39;, {})
+        builder.start(&#39;Spacecraft&#39;, {})
+        builder.data(str(self._spacecraft).lower())
+        builder.end(&#39;Spacecraft&#39;)
+        builder.start(&#39;RadialTracedFootpoint&#39;, {})
+        builder.data(str(self._radial_traced_footpoint).lower())
+        builder.end(&#39;RadialTracedFootpoint&#39;)
+        builder.start(&#39;NorthBTracedFootpoint&#39;, {})
+        builder.data(str(self._north_b_traced_footpoint).lower())
+        builder.end(&#39;NorthBTracedFootpoint&#39;)
+        builder.start(&#39;SouthBTracedFootpoint&#39;, {})
+        builder.data(str(self._south_b_traced_footpoint).lower())
+        builder.end(&#39;SouthBTracedFootpoint&#39;)
+        builder.end(&#39;RegionOptions&#39;)
+
+        return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Class representing a RegionOptions from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>spacecraft</code></strong></dt>
+<dd>Specifies whether the spacecraft regions are to be included
+in the listing.
+If None, default is False.</dd>
+<dt><strong><code>radial_traced_footpoint</code></strong></dt>
+<dd>Specifies whether the radial traced footpoint values are to be
+included in the listing.
+If None, default is False.</dd>
+<dt><strong><code>north_b_traced_footpoint</code></strong></dt>
+<dd>Specifies the north B-field traced footpoint values that are
+to be included in the listing.
+If None, default is False.</dd>
+<dt><strong><code>south_b_traced_footpoint</code></strong></dt>
+<dd>Specifies the south B-field traced footpoint values that are
+to be included in the listing.
+If None, default is False.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.outputoptions.RegionOptions.north_b_traced_footpoint"><code class="name">prop <span class="ident">north_b_traced_footpoint</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def north_b_traced_footpoint(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the north_b_traced_footpoint value.
+
+    Returns
+    -------
+    str
+        north_b_traced_footpoint value.
+    &#34;&#34;&#34;
+    return self._north_b_traced_footpoint</code></pre>
+</details>
+<div class="desc"><p>Gets the north_b_traced_footpoint value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>north_b_traced_footpoint value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.RegionOptions.radial_traced_footpoint"><code class="name">prop <span class="ident">radial_traced_footpoint</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def radial_traced_footpoint(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the radial_traced_footpoint value.
+
+    Returns
+    -------
+    str
+        radial_traced_footpoint value.
+    &#34;&#34;&#34;
+    return self._radial_traced_footpoint</code></pre>
+</details>
+<div class="desc"><p>Gets the radial_traced_footpoint value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>radial_traced_footpoint value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.RegionOptions.south_b_traced_footpoint"><code class="name">prop <span class="ident">south_b_traced_footpoint</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def south_b_traced_footpoint(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the south_b_traced_footpoint value.
+
+    Returns
+    -------
+    str
+        south_b_traced_footpoint value.
+    &#34;&#34;&#34;
+    return self._south_b_traced_footpoint</code></pre>
+</details>
+<div class="desc"><p>Gets the south_b_traced_footpoint value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>south_b_traced_footpoint value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.RegionOptions.spacecraft"><code class="name">prop <span class="ident">spacecraft</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def spacecraft(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the spacecraft value.
+
+    Returns
+    -------
+    str
+        spacecraft value.
+    &#34;&#34;&#34;
+    return self._spacecraft</code></pre>
+</details>
+<div class="desc"><p>Gets the spacecraft value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>spacecraft value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.outputoptions.RegionOptions.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(
+        self
+    ) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+    builder = ET.TreeBuilder()
+
+    builder.start(&#39;RegionOptions&#39;, {})
+    builder.start(&#39;Spacecraft&#39;, {})
+    builder.data(str(self._spacecraft).lower())
+    builder.end(&#39;Spacecraft&#39;)
+    builder.start(&#39;RadialTracedFootpoint&#39;, {})
+    builder.data(str(self._radial_traced_footpoint).lower())
+    builder.end(&#39;RadialTracedFootpoint&#39;)
+    builder.start(&#39;NorthBTracedFootpoint&#39;, {})
+    builder.data(str(self._north_b_traced_footpoint).lower())
+    builder.end(&#39;NorthBTracedFootpoint&#39;)
+    builder.start(&#39;SouthBTracedFootpoint&#39;, {})
+    builder.data(str(self._south_b_traced_footpoint).lower())
+    builder.end(&#39;SouthBTracedFootpoint&#39;)
+    builder.end(&#39;RegionOptions&#39;)
+
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.outputoptions.ValueOptions"><code class="flex name class">
+<span>class <span class="ident">ValueOptions</span></span>
+<span>(</span><span>radial_distance: bool = None,<br>b_field_strength: bool = None,<br>dipole_l_value: bool = None,<br>dipole_inv_lat: bool = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ValueOptions:
+    &#34;&#34;&#34;
+    Class representing a ValueOptions from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    radial_distance
+        Specifies whether the radial distance values are to be included
+        in the listing.  If None, default is False.
+    b_field_strength
+        Specifies whether the B field strength values are to be
+        included in the listing.  If None, default is False.
+    dipole_l_value
+        Specifies whether the dipole L values that are
+        to be included in the listing.  If None, default is False.
+    dipole_inv_lat
+        Specifies whether the dipole invariant latitude values that
+        are to be included in the listing.  If None, default is False.
+    &#34;&#34;&#34;
+    def __init__(self,
+                 radial_distance: bool = None,
+                 b_field_strength: bool = None,
+                 dipole_l_value: bool = None,
+                 dipole_inv_lat: bool = None):
+
+        if radial_distance is None:
+            self._radial_distance = False
+        else:
+            self._radial_distance = radial_distance
+
+        if b_field_strength is None:
+            self._b_field_strength = False
+        else:
+            self._b_field_strength = b_field_strength
+
+        if dipole_l_value is None:
+            self._dipole_l_value = False
+        else:
+            self._dipole_l_value = dipole_l_value
+
+        if dipole_inv_lat is None:
+            self._dipole_inv_lat = False
+        else:
+            self._dipole_inv_lat = dipole_inv_lat
+
+
+    @property
+    def radial_distance(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the radial_distance value.
+
+        Returns
+        -------
+        str
+            radial_distance value.
+        &#34;&#34;&#34;
+        return self._radial_distance
+
+
+    @radial_distance.setter
+    def radial_distance(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the radial_distance value.
+
+        Parameters
+        ----------
+        value
+            radial_distance value.
+        &#34;&#34;&#34;
+        self._radial_distance = value
+
+
+    @property
+    def b_field_strength(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the b_field_strength value.
+
+        Returns
+        -------
+        str
+            b_field_strength value.
+        &#34;&#34;&#34;
+        return self._b_field_strength
+
+
+    @b_field_strength.setter
+    def b_field_strength(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the b_field_strength value.
+
+        Parameters
+        ----------
+        value
+            b_field_strength value.
+        &#34;&#34;&#34;
+        self._b_field_strength = value
+
+
+    @property
+    def dipole_l_value(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the dipole_l_value value.
+
+        Returns
+        -------
+        str
+            dipole_l_value value.
+        &#34;&#34;&#34;
+        return self._dipole_l_value
+
+
+    @dipole_l_value.setter
+    def dipole_l_value(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the dipole_l_value value.
+
+        Parameters
+        ----------
+        value
+            dipole_l_value value.
+        &#34;&#34;&#34;
+        self._dipole_l_value = value
+
+
+    @property
+    def dipole_inv_lat(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the dipole_inv_lat value.
+
+        Returns
+        -------
+        str
+            dipole_inv_lat value.
+        &#34;&#34;&#34;
+        return self._dipole_inv_lat
+
+
+    @dipole_inv_lat.setter
+    def dipole_inv_lat(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the dipole_inv_lat value.
+
+        Parameters
+        ----------
+        value
+            dipole_inv_lat value.
+        &#34;&#34;&#34;
+        self._dipole_inv_lat = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+        builder = ET.TreeBuilder()
+
+        builder.start(&#39;ValueOptions&#39;, {})
+        builder.start(&#39;RadialDistance&#39;, {})
+        builder.data(str(self._radial_distance).lower())
+        builder.end(&#39;RadialDistance&#39;)
+        builder.start(&#39;BFieldStrength&#39;, {})
+        builder.data(str(self._b_field_strength).lower())
+        builder.end(&#39;BFieldStrength&#39;)
+        builder.start(&#39;DipoleLValue&#39;, {})
+        builder.data(str(self._dipole_l_value).lower())
+        builder.end(&#39;DipoleLValue&#39;)
+        builder.start(&#39;DipoleInvLat&#39;, {})
+        builder.data(str(self._dipole_inv_lat).lower())
+        builder.end(&#39;DipoleInvLat&#39;)
+        builder.end(&#39;ValueOptions&#39;)
+
+        return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Class representing a ValueOptions from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>radial_distance</code></strong></dt>
+<dd>Specifies whether the radial distance values are to be included
+in the listing.
+If None, default is False.</dd>
+<dt><strong><code>b_field_strength</code></strong></dt>
+<dd>Specifies whether the B field strength values are to be
+included in the listing.
+If None, default is False.</dd>
+<dt><strong><code>dipole_l_value</code></strong></dt>
+<dd>Specifies whether the dipole L values that are
+to be included in the listing.
+If None, default is False.</dd>
+<dt><strong><code>dipole_inv_lat</code></strong></dt>
+<dd>Specifies whether the dipole invariant latitude values that
+are to be included in the listing.
+If None, default is False.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.outputoptions.ValueOptions.b_field_strength"><code class="name">prop <span class="ident">b_field_strength</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def b_field_strength(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the b_field_strength value.
+
+    Returns
+    -------
+    str
+        b_field_strength value.
+    &#34;&#34;&#34;
+    return self._b_field_strength</code></pre>
+</details>
+<div class="desc"><p>Gets the b_field_strength value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>b_field_strength value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.ValueOptions.dipole_inv_lat"><code class="name">prop <span class="ident">dipole_inv_lat</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def dipole_inv_lat(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the dipole_inv_lat value.
+
+    Returns
+    -------
+    str
+        dipole_inv_lat value.
+    &#34;&#34;&#34;
+    return self._dipole_inv_lat</code></pre>
+</details>
+<div class="desc"><p>Gets the dipole_inv_lat value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>dipole_inv_lat value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.ValueOptions.dipole_l_value"><code class="name">prop <span class="ident">dipole_l_value</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def dipole_l_value(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the dipole_l_value value.
+
+    Returns
+    -------
+    str
+        dipole_l_value value.
+    &#34;&#34;&#34;
+    return self._dipole_l_value</code></pre>
+</details>
+<div class="desc"><p>Gets the dipole_l_value value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>dipole_l_value value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.outputoptions.ValueOptions.radial_distance"><code class="name">prop <span class="ident">radial_distance</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def radial_distance(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the radial_distance value.
+
+    Returns
+    -------
+    str
+        radial_distance value.
+    &#34;&#34;&#34;
+    return self._radial_distance</code></pre>
+</details>
+<div class="desc"><p>Gets the radial_distance value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>radial_distance value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.outputoptions.ValueOptions.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+    builder = ET.TreeBuilder()
+
+    builder.start(&#39;ValueOptions&#39;, {})
+    builder.start(&#39;RadialDistance&#39;, {})
+    builder.data(str(self._radial_distance).lower())
+    builder.end(&#39;RadialDistance&#39;)
+    builder.start(&#39;BFieldStrength&#39;, {})
+    builder.data(str(self._b_field_strength).lower())
+    builder.end(&#39;BFieldStrength&#39;)
+    builder.start(&#39;DipoleLValue&#39;, {})
+    builder.data(str(self._dipole_l_value).lower())
+    builder.end(&#39;DipoleLValue&#39;)
+    builder.start(&#39;DipoleInvLat&#39;, {})
+    builder.data(str(self._dipole_inv_lat).lower())
+    builder.end(&#39;DipoleInvLat&#39;)
+    builder.end(&#39;ValueOptions&#39;)
+
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="sscws" href="index.html">sscws</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="sscws.outputoptions.BFieldTraceOptions" href="#sscws.outputoptions.BFieldTraceOptions">BFieldTraceOptions</a></code></h4>
+<ul class="two-column">
+<li><code><a title="sscws.outputoptions.BFieldTraceOptions.coordinate_system" href="#sscws.outputoptions.BFieldTraceOptions.coordinate_system">coordinate_system</a></code></li>
+<li><code><a title="sscws.outputoptions.BFieldTraceOptions.field_line_length" href="#sscws.outputoptions.BFieldTraceOptions.field_line_length">field_line_length</a></code></li>
+<li><code><a title="sscws.outputoptions.BFieldTraceOptions.footpoint_latitude" href="#sscws.outputoptions.BFieldTraceOptions.footpoint_latitude">footpoint_latitude</a></code></li>
+<li><code><a title="sscws.outputoptions.BFieldTraceOptions.footpoint_longitude" href="#sscws.outputoptions.BFieldTraceOptions.footpoint_longitude">footpoint_longitude</a></code></li>
+<li><code><a title="sscws.outputoptions.BFieldTraceOptions.hemisphere" href="#sscws.outputoptions.BFieldTraceOptions.hemisphere">hemisphere</a></code></li>
+<li><code><a title="sscws.outputoptions.BFieldTraceOptions.xml_element" href="#sscws.outputoptions.BFieldTraceOptions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.outputoptions.CoordinateOptions" href="#sscws.outputoptions.CoordinateOptions">CoordinateOptions</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.outputoptions.CoordinateOptions.component" href="#sscws.outputoptions.CoordinateOptions.component">component</a></code></li>
+<li><code><a title="sscws.outputoptions.CoordinateOptions.coordinate_system" href="#sscws.outputoptions.CoordinateOptions.coordinate_system">coordinate_system</a></code></li>
+<li><code><a title="sscws.outputoptions.CoordinateOptions.xml_element" href="#sscws.outputoptions.CoordinateOptions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.outputoptions.DistanceFromOptions" href="#sscws.outputoptions.DistanceFromOptions">DistanceFromOptions</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.outputoptions.DistanceFromOptions.b_gse_xyz" href="#sscws.outputoptions.DistanceFromOptions.b_gse_xyz">b_gse_xyz</a></code></li>
+<li><code><a title="sscws.outputoptions.DistanceFromOptions.bow_shock" href="#sscws.outputoptions.DistanceFromOptions.bow_shock">bow_shock</a></code></li>
+<li><code><a title="sscws.outputoptions.DistanceFromOptions.m_pause" href="#sscws.outputoptions.DistanceFromOptions.m_pause">m_pause</a></code></li>
+<li><code><a title="sscws.outputoptions.DistanceFromOptions.neutral_sheet" href="#sscws.outputoptions.DistanceFromOptions.neutral_sheet">neutral_sheet</a></code></li>
+<li><code><a title="sscws.outputoptions.DistanceFromOptions.xml_element" href="#sscws.outputoptions.DistanceFromOptions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.outputoptions.FilteredCoordinateOptions" href="#sscws.outputoptions.FilteredCoordinateOptions">FilteredCoordinateOptions</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.outputoptions.FilteredCoordinateOptions.location_filter" href="#sscws.outputoptions.FilteredCoordinateOptions.location_filter">location_filter</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.outputoptions.LocationFilter" href="#sscws.outputoptions.LocationFilter">LocationFilter</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.outputoptions.LocationFilter.lower_limit" href="#sscws.outputoptions.LocationFilter.lower_limit">lower_limit</a></code></li>
+<li><code><a title="sscws.outputoptions.LocationFilter.maximum" href="#sscws.outputoptions.LocationFilter.maximum">maximum</a></code></li>
+<li><code><a title="sscws.outputoptions.LocationFilter.minimum" href="#sscws.outputoptions.LocationFilter.minimum">minimum</a></code></li>
+<li><code><a title="sscws.outputoptions.LocationFilter.upper_limit" href="#sscws.outputoptions.LocationFilter.upper_limit">upper_limit</a></code></li>
+<li><code><a title="sscws.outputoptions.LocationFilter.xml_element" href="#sscws.outputoptions.LocationFilter.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.outputoptions.OutputOptions" href="#sscws.outputoptions.OutputOptions">OutputOptions</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.outputoptions.OutputOptions.all_location_filters" href="#sscws.outputoptions.OutputOptions.all_location_filters">all_location_filters</a></code></li>
+<li><code><a title="sscws.outputoptions.OutputOptions.b_field_trace_options" href="#sscws.outputoptions.OutputOptions.b_field_trace_options">b_field_trace_options</a></code></li>
+<li><code><a title="sscws.outputoptions.OutputOptions.coordinate_options" href="#sscws.outputoptions.OutputOptions.coordinate_options">coordinate_options</a></code></li>
+<li><code><a title="sscws.outputoptions.OutputOptions.distance_from_options" href="#sscws.outputoptions.OutputOptions.distance_from_options">distance_from_options</a></code></li>
+<li><code><a title="sscws.outputoptions.OutputOptions.min_max_points" href="#sscws.outputoptions.OutputOptions.min_max_points">min_max_points</a></code></li>
+<li><code><a title="sscws.outputoptions.OutputOptions.region_options" href="#sscws.outputoptions.OutputOptions.region_options">region_options</a></code></li>
+<li><code><a title="sscws.outputoptions.OutputOptions.value_options" href="#sscws.outputoptions.OutputOptions.value_options">value_options</a></code></li>
+<li><code><a title="sscws.outputoptions.OutputOptions.xml_element" href="#sscws.outputoptions.OutputOptions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.outputoptions.RegionOptions" href="#sscws.outputoptions.RegionOptions">RegionOptions</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.outputoptions.RegionOptions.north_b_traced_footpoint" href="#sscws.outputoptions.RegionOptions.north_b_traced_footpoint">north_b_traced_footpoint</a></code></li>
+<li><code><a title="sscws.outputoptions.RegionOptions.radial_traced_footpoint" href="#sscws.outputoptions.RegionOptions.radial_traced_footpoint">radial_traced_footpoint</a></code></li>
+<li><code><a title="sscws.outputoptions.RegionOptions.south_b_traced_footpoint" href="#sscws.outputoptions.RegionOptions.south_b_traced_footpoint">south_b_traced_footpoint</a></code></li>
+<li><code><a title="sscws.outputoptions.RegionOptions.spacecraft" href="#sscws.outputoptions.RegionOptions.spacecraft">spacecraft</a></code></li>
+<li><code><a title="sscws.outputoptions.RegionOptions.xml_element" href="#sscws.outputoptions.RegionOptions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.outputoptions.ValueOptions" href="#sscws.outputoptions.ValueOptions">ValueOptions</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.outputoptions.ValueOptions.b_field_strength" href="#sscws.outputoptions.ValueOptions.b_field_strength">b_field_strength</a></code></li>
+<li><code><a title="sscws.outputoptions.ValueOptions.dipole_inv_lat" href="#sscws.outputoptions.ValueOptions.dipole_inv_lat">dipole_inv_lat</a></code></li>
+<li><code><a title="sscws.outputoptions.ValueOptions.dipole_l_value" href="#sscws.outputoptions.ValueOptions.dipole_l_value">dipole_l_value</a></code></li>
+<li><code><a title="sscws.outputoptions.ValueOptions.radial_distance" href="#sscws.outputoptions.ValueOptions.radial_distance">radial_distance</a></code></li>
+<li><code><a title="sscws.outputoptions.ValueOptions.xml_element" href="#sscws.outputoptions.ValueOptions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

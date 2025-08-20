@@ -1,0 +1,1341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>sscws.cdf API documentation</title>
+<meta name="description" content="Module defining a class to represent a Common Data Format (CDF)
+&lt;https://cdf.gsfc.nasa.gov/&gt; produced by the Satellite Situation
+Center (SSC) …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>sscws.cdf</code></h1>
+</header>
+<section id="section-intro">
+<p>Module defining a class to represent a Common Data Format (CDF)
+<a href="https://cdf.gsfc.nasa.gov/">https://cdf.gsfc.nasa.gov/</a> produced by the Satellite Situation
+Center (SSC) <a href="https://sscweb.gsfc.nasa.gov">https://sscweb.gsfc.nasa.gov</a>.
+This module is specialized
+for SSC CDF files.
+It should not be used for more general CDF files.
+<br></p>
+<p>Copyright &copy; 2023-2025 United States Government as represented by the
+National Aeronautics and Space Administration. No copyright is claimed in
+the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="sscws.cdf.Cdf"><code class="flex name class">
+<span>class <span class="ident">Cdf</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Cdf:
+    &#34;&#34;&#34;
+    A class representing a CDF file produced by
+    &lt;https://sscweb.gsfc.nasa.gov/&gt;.  Note that this class is specialized
+    for SSC CDF files.  It should not be used for more general CDF files.
+    This class only supports reading the file and does not support 
+    writing to the CDF file.
+    &#34;&#34;&#34;
+    def __init__(self):
+        self._filename = None
+        self._cdf = None
+        self._info = None
+        self._global_attributes = None
+
+
+    @property
+    def filename(self) -&gt; str:
+        &#34;&#34;&#34;
+        Gets the filename value.
+
+        Returns
+        -------
+        str
+            filename value.
+        &#34;&#34;&#34;
+        return self._filename
+
+
+    def open(
+            self,
+            name: str
+        ) -&gt; None:
+        &#34;&#34;&#34;
+        Opens the specified file for reading.
+
+        Parameters
+        ----------
+        name
+            Name of CDF file to open.
+
+        Raises
+        ------
+        FileNotFound
+            If the specified file is not found.
+        &#34;&#34;&#34;
+        self._filename = name
+        self._cdf = cdflib.cdfread.CDF(name)
+        self._info = self._cdf.cdf_info()
+        self._global_attributes = self._cdf.globalattsget()
+
+
+    def get_variable_names(
+            self
+        ) -&gt; List[str]:
+        &#34;&#34;&#34;
+        Gets the variable names (both r and z variables).
+
+        Returns
+        -------
+        List
+            A list of the variable names.
+        &#34;&#34;&#34;
+
+        try:
+            return self._info[&#39;rVariables&#39;] + self._info[&#39;zVariables&#39;]
+        except TypeError:
+            # cdflib &gt;= 1.0
+            return self._info.rVariables + self._info.zVariables
+
+
+    def get_variable_info(
+            self,
+            name: str
+        ): # -&gt; VDRInfo:
+        &#34;&#34;&#34;
+        Gets information about the specified variable.
+
+        Parameters
+        ----------
+        name
+            Name of variable.
+        Returns
+        -------
+        VDRInfo
+            Information about the specified variable.
+        &#34;&#34;&#34;
+        return self._cdf.varinq(name)
+
+
+    def get_variable_data(
+            self,
+            name: str,
+            startrec: int,
+            endrec: int
+        ) -&gt; np.ndarray:
+        &#34;&#34;&#34;
+        Gets the specified variable&#39;s data.
+
+        Parameters
+        ----------
+        name
+            Name of variable.
+        startrec
+            Index of the first record to get.
+        endrec
+            Index of the last record to get.  All records from startrec
+            ot endrec inclusive are fetched.
+        Returns
+        -------
+        np.ndarray
+            The specified variable&#39;s data from startrec to endrec
+            inclusive.
+        &#34;&#34;&#34;
+        return self._cdf.varget(name, startrec = startrec, endrec = endrec)
+
+
+    def get_text_attributes(
+            self
+        ): # -&gt; AttData
+        &#34;&#34;&#34;
+        Gets the value of the TEXT global attribute entries.
+
+        Returns
+        -------
+        AttData
+            Value of the TEXT global attribute entries.
+        &#34;&#34;&#34;
+        return self._global_attributes[&#39;TEXT&#39;]
+
+
+    def get_b_trace_stop_altitude(
+            self
+        ) -&gt; float:
+        &#34;&#34;&#34;
+        Gets the B-field trace stop altitude value.
+
+        Returns
+        -------
+        float
+            B-field trace stop altitude value.  NaN if not found.
+        &#34;&#34;&#34;
+        for value in self.get_text_attributes():
+            match = B_TRACE_STOP_ALTITUDE_PATTERN.match(value)
+            if match:
+                return float(match.groups()[0])
+
+        return float(&#39;NaN&#39;)
+
+
+    def get_source_name(
+            self
+        ) -&gt; str:
+        &#34;&#34;&#34;
+        Gets the value of the Source_name global attribute.
+
+        Returns
+        -------
+        str
+            Value of the Source_name global attribute.
+        &#34;&#34;&#34;
+        name = self._global_attributes[&#39;Source_name&#39;]
+
+        if isinstance(name, list):    # cdflib &gt;= 1.0
+            name = name[0]
+
+        return name
+
+
+    def get_satellite_name(
+            self
+        ) -&gt; str:
+        &#34;&#34;&#34;
+        Gets the name of the satellite whose location data is in
+        this file.
+
+        Returns
+        -------
+        str
+            Name of satellite whose location data is in this file.
+        &#34;&#34;&#34;
+        return self.get_source_name()
+
+
+    def get_coordinate_data(
+            self
+        ) -&gt; List[Dict]:
+        &#34;&#34;&#34;
+        Gets coordinate data.
+
+        Returns
+        -------
+        List[Dict]
+            Coordinate data.
+        &#34;&#34;&#34;
+
+        coordinate_data = {}
+
+        for name in self.get_variable_names():
+            var_info = self.get_variable_info(name)
+            try:
+                last_rec = var_info[&#39;Last_Rec&#39;]
+            except TypeError:
+                # cdflib &gt;= 1.0
+                last_rec = var_info.Last_Rec
+            data = self.get_variable_data(name, 0, last_rec)
+
+            matcher = XYZ_PATTERN.match(name)
+
+            if matcher:
+                coord_system = matcher.group(1)
+
+                #print(name, &#39; VDRInfo: &#39;, var_info)
+                #print(&#39;data = &#39;, data)
+
+                coordinate_data[coord_system] = {
+                    &#39;CoordinateSystem&#39;: CoordinateSystem.from_identifier(coord_system),
+                    &#39;X&#39;: data[:,0],
+                    &#39;Y&#39;: data[:,1],
+                    &#39;Z&#39;: data[:,2]
+                }
+            else:
+                matcher = COMPONENT_PATTERN.match(name)
+
+                if matcher:
+                    coord_system = matcher.group(1)
+                    component = matcher.group(2)
+
+                    coordinate_data[coord_system] = {
+                        &#39;CoordinateSystem&#39;: CoordinateSystem.from_identifier(coord_system),
+                        component: data
+                    }
+        results = []
+        for value in coordinate_data.values():
+            results.append(value)
+
+        return results
+
+
+    def get_time(
+            self
+        ) -&gt; List[np.datetime64]:
+        &#34;&#34;&#34;
+        Get the time values.
+
+        Returns
+        -------
+        List[np.datetime64]
+            Time values.
+        &#34;&#34;&#34;
+
+        name = &#39;Epoch&#39;
+        var_info = self.get_variable_info(name)
+        try:
+            last_rec = var_info[&#39;Last_Rec&#39;]
+        except TypeError:
+            # cdflib &gt;= 1.0
+            last_rec = var_info.Last_Rec
+        epoch = self.get_variable_data(name, 0, last_rec)
+
+        datetimes = cdflib.cdfepoch.to_datetime(epoch)
+
+        return datetimes
+
+        # fix timezone (https://github.com/MAVENSDC/cdflib/issues/224)
+        #tz_datetimes = np.empty(len(datetimes), dtype=object)
+        #for i in range(len(datetimes)):
+        #    tz_datetimes[i] = datetimes[i].replace(tzinfo=timezone.utc)
+        #return tz_datetimes
+
+
+    def get_b_trace_data(
+            self
+        ) -&gt; List[Dict]:
+        &#34;&#34;&#34;
+        Gets the B-field trace data.
+
+        Returns
+        -------
+        List[Dict]
+            B-field trace data.
+        &#34;&#34;&#34;
+
+        b_trace_data = {}
+
+        for name in self.get_variable_names():
+            var_info = self.get_variable_info(name)
+            try:
+                last_rec = var_info[&#39;Last_Rec&#39;]
+            except TypeError:
+                # cdflib &gt;= 1.0
+                last_rec = var_info.Last_Rec
+            data = self.get_variable_data(name, 0, last_rec)
+
+            matcher = B_TRACE_PATTERN.match(name)
+
+            if matcher:
+                hemisphere = matcher.group(1)
+                coord_system = matcher.group(2)
+                component = matcher.group(3)
+                if component == &#39;LAT&#39;:
+                    component = &#39;Latitude&#39;
+                if component == &#39;LON&#39;:
+                    component = &#39;Longitude&#39;
+                if component == &#39;LCT_T&#39;:
+                    component = &#39;LocalTime&#39;
+                if component == &#39;ARCLEN&#39;:
+                    component = &#39;ArcLength&#39;
+
+                key = coord_system + hemisphere
+
+                if key not in b_trace_data:
+
+                    b_trace_data[key] = {
+                        &#39;CoordinateSystem&#39;: CoordinateSystem.from_identifier(coord_system),
+                        &#39;Hemisphere&#39;: Hemisphere.from_identifier(hemisphere)
+                    }
+                b_trace_data[key][component] = data
+
+        results = []
+        for key, value in b_trace_data.items():
+            results.append(value)
+
+        return results
+
+
+    def get_value(
+            self,
+            name: str
+        ) -&gt; np.ndarray:
+        &#34;&#34;&#34;
+        Gets all of the specified variable&#39;s data.
+
+        Parameters
+        ----------
+        name
+            Name of variable.
+        Returns
+        -------
+        np.ndarray
+            All of the specified variable&#39;s data.
+        &#34;&#34;&#34;
+
+        var_info = self.get_variable_info(name)
+        try:
+            last_rec = var_info[&#39;Last_Rec&#39;]
+        except TypeError:
+            # cdflib &gt;= 1.0
+            last_rec = var_info.Last_Rec
+        return self.get_variable_data(name, 0, last_rec)
+
+
+    def get_spacecraft_region(
+            self
+        ) -&gt; List[&#39;SpaceRegion&#39;]:
+        &#34;&#34;&#34;
+        Gets the spacecraft region information.
+
+        Returns
+        -------
+        List[SpaceRegion]
+            Spacecraft region information.
+        &#34;&#34;&#34;
+
+        regions = []
+
+        try:
+            region_codes = self.get_value(&#39;SPACECRAFT_REGIONS&#39;)
+        except ValueError:
+            return regions
+
+        for region_code in region_codes:
+            regions.append(SpaceRegion.from_code(region_code))
+
+        return regions
+
+
+    def get_footpoint_regions(
+            self,
+            name: str
+        ) -&gt; List[FootpointRegion]:
+        &#34;&#34;&#34;
+        Gets the trace footpoint region information.
+
+        Returns
+        -------
+        List[FootpointRegion]
+            Trace footpoint region information.
+        &#34;&#34;&#34;
+
+        regions = []
+
+        try:
+            region_codes = self.get_value(name + &#39;TRACED_REGIONS&#39;)
+        except ValueError:
+            return regions
+
+        for region_code in region_codes:
+            regions.append(FootpointRegion.from_code(region_code))
+
+        return regions
+
+
+    def get_b_gse_component(
+            self,
+            name: str
+        ) -&gt; np.ndarray:
+        &#34;&#34;&#34;
+        Gets all of the specified B-field GSE component data.
+
+        Parameters
+        ----------
+        name
+            Name of component (X, Y, or Z).
+        Returns
+        -------
+        np.ndarray
+            All of the specified B-field GSE component data.
+        &#34;&#34;&#34;
+
+        return self.get_value(&#39;MAG_&#39; + name)
+
+
+    def get_satellite_data(
+            self
+        ) -&gt; Dict:
+        &#34;&#34;&#34;
+        Gets the SatelliteData from this CDF.
+
+        Returns
+        -------
+        Dict
+            The SatelliteData from this CDF.
+        &#34;&#34;&#34;
+        var_names = self.get_variable_names()
+        data = {}
+        data[&#39;Id&#39;] = self.get_satellite_name().lower()
+        data[&#39;Coordinates&#39;] = self.get_coordinate_data()
+        data[&#39;Time&#39;] = self.get_time()
+        b_trace_data = self.get_b_trace_data()
+        if len(b_trace_data) &gt; 0:
+            data[&#39;BTraceData&#39;] = b_trace_data
+
+        if &#39;RADIUS&#39; in var_names:
+            data[&#39;RadialLength&#39;] = self.get_value(&#39;RADIUS&#39;)
+        if &#39;MAG_STRTH&#39; in var_names:
+            data[&#39;MagneticStrength&#39;] = self.get_value(&#39;MAG_STRTH&#39;)
+        if &#39;DNEUTS&#39; in var_names:
+            data[&#39;NeutralSheetDistance&#39;] = self.get_value(&#39;DNEUTS&#39;)
+
+        if &#39;BOW_SHOCK&#39; in var_names:
+            data[&#39;BowShockDistance&#39;] = self.get_value(&#39;BOW_SHOCK&#39;)
+        if &#39;MAG_PAUSE&#39; in var_names:
+            data[&#39;MagnetoPauseDistance&#39;] = self.get_value(&#39;MAG_PAUSE&#39;)
+        if &#39;L_VALUE&#39; in var_names:
+            data[&#39;DipoleLValue&#39;] = self.get_value(&#39;L_VALUE&#39;)
+        if &#39;INVAR_LAT&#39; in var_names:
+            data[&#39;DipoleInvariantLatitude&#39;] = self.get_value(&#39;INVAR_LAT&#39;)
+        sc_region = self.get_spacecraft_region()
+        if len(sc_region) &gt; 0:
+            data[&#39;SpacecraftRegion&#39;] = sc_region
+        if &#39;RADIAL_TRACED_REGIONS&#39; in var_names:
+            data[&#39;RadialTracedFootpointRegions&#39;] = \
+                self.get_footpoint_regions(&#39;RADIAL_&#39;)
+        if &#39;MAG_X&#39; in var_names:
+            data[&#39;BGseX&#39;] = self.get_b_gse_component(&#39;X&#39;)
+        if &#39;MAG_Y&#39; in var_names:
+            data[&#39;BGseY&#39;] = self.get_b_gse_component(&#39;Y&#39;)
+        if &#39;MAG_Z&#39; in var_names:
+            data[&#39;BGseZ&#39;] = self.get_b_gse_component(&#39;Z&#39;)
+        if &#39;NORTH_B_TRACED_REGIONS&#39; in var_names:
+            data[&#39;NorthBTracedFootpointRegions&#39;] = \
+                self.get_footpoint_regions(&#39;NORTH_B&#39;)
+        if &#39;SOUTH_B_TRACED_REGIONS&#39; in var_names:
+            data[&#39;SouthBTracedFootpointRegions&#39;] = \
+                self.get_footpoint_regions(&#39;SOUTH_B&#39;)
+
+        return data</code></pre>
+</details>
+<div class="desc"><p>A class representing a CDF file produced by
+<a href="https://sscweb.gsfc.nasa.gov/">https://sscweb.gsfc.nasa.gov/</a>.
+Note that this class is specialized
+for SSC CDF files.
+It should not be used for more general CDF files.
+This class only supports reading the file and does not support
+writing to the CDF file.</p></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.cdf.Cdf.filename"><code class="name">prop <span class="ident">filename</span> : str</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def filename(self) -&gt; str:
+    &#34;&#34;&#34;
+    Gets the filename value.
+
+    Returns
+    -------
+    str
+        filename value.
+    &#34;&#34;&#34;
+    return self._filename</code></pre>
+</details>
+<div class="desc"><p>Gets the filename value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>filename value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.cdf.Cdf.get_b_gse_component"><code class="name flex">
+<span>def <span class="ident">get_b_gse_component</span></span>(<span>self, name: str) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_b_gse_component(
+        self,
+        name: str
+    ) -&gt; np.ndarray:
+    &#34;&#34;&#34;
+    Gets all of the specified B-field GSE component data.
+
+    Parameters
+    ----------
+    name
+        Name of component (X, Y, or Z).
+    Returns
+    -------
+    np.ndarray
+        All of the specified B-field GSE component data.
+    &#34;&#34;&#34;
+
+    return self.get_value(&#39;MAG_&#39; + name)</code></pre>
+</details>
+<div class="desc"><p>Gets all of the specified B-field GSE component data.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>Name of component (X, Y, or Z).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>All of the specified B-field GSE component data.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_b_trace_data"><code class="name flex">
+<span>def <span class="ident">get_b_trace_data</span></span>(<span>self) ‑> List[Dict]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_b_trace_data(
+        self
+    ) -&gt; List[Dict]:
+    &#34;&#34;&#34;
+    Gets the B-field trace data.
+
+    Returns
+    -------
+    List[Dict]
+        B-field trace data.
+    &#34;&#34;&#34;
+
+    b_trace_data = {}
+
+    for name in self.get_variable_names():
+        var_info = self.get_variable_info(name)
+        try:
+            last_rec = var_info[&#39;Last_Rec&#39;]
+        except TypeError:
+            # cdflib &gt;= 1.0
+            last_rec = var_info.Last_Rec
+        data = self.get_variable_data(name, 0, last_rec)
+
+        matcher = B_TRACE_PATTERN.match(name)
+
+        if matcher:
+            hemisphere = matcher.group(1)
+            coord_system = matcher.group(2)
+            component = matcher.group(3)
+            if component == &#39;LAT&#39;:
+                component = &#39;Latitude&#39;
+            if component == &#39;LON&#39;:
+                component = &#39;Longitude&#39;
+            if component == &#39;LCT_T&#39;:
+                component = &#39;LocalTime&#39;
+            if component == &#39;ARCLEN&#39;:
+                component = &#39;ArcLength&#39;
+
+            key = coord_system + hemisphere
+
+            if key not in b_trace_data:
+
+                b_trace_data[key] = {
+                    &#39;CoordinateSystem&#39;: CoordinateSystem.from_identifier(coord_system),
+                    &#39;Hemisphere&#39;: Hemisphere.from_identifier(hemisphere)
+                }
+            b_trace_data[key][component] = data
+
+    results = []
+    for key, value in b_trace_data.items():
+        results.append(value)
+
+    return results</code></pre>
+</details>
+<div class="desc"><p>Gets the B-field trace data.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List[Dict]</code></dt>
+<dd>B-field trace data.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_b_trace_stop_altitude"><code class="name flex">
+<span>def <span class="ident">get_b_trace_stop_altitude</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_b_trace_stop_altitude(
+        self
+    ) -&gt; float:
+    &#34;&#34;&#34;
+    Gets the B-field trace stop altitude value.
+
+    Returns
+    -------
+    float
+        B-field trace stop altitude value.  NaN if not found.
+    &#34;&#34;&#34;
+    for value in self.get_text_attributes():
+        match = B_TRACE_STOP_ALTITUDE_PATTERN.match(value)
+        if match:
+            return float(match.groups()[0])
+
+    return float(&#39;NaN&#39;)</code></pre>
+</details>
+<div class="desc"><p>Gets the B-field trace stop altitude value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>B-field trace stop altitude value.
+NaN if not found.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_coordinate_data"><code class="name flex">
+<span>def <span class="ident">get_coordinate_data</span></span>(<span>self) ‑> List[Dict]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_coordinate_data(
+        self
+    ) -&gt; List[Dict]:
+    &#34;&#34;&#34;
+    Gets coordinate data.
+
+    Returns
+    -------
+    List[Dict]
+        Coordinate data.
+    &#34;&#34;&#34;
+
+    coordinate_data = {}
+
+    for name in self.get_variable_names():
+        var_info = self.get_variable_info(name)
+        try:
+            last_rec = var_info[&#39;Last_Rec&#39;]
+        except TypeError:
+            # cdflib &gt;= 1.0
+            last_rec = var_info.Last_Rec
+        data = self.get_variable_data(name, 0, last_rec)
+
+        matcher = XYZ_PATTERN.match(name)
+
+        if matcher:
+            coord_system = matcher.group(1)
+
+            #print(name, &#39; VDRInfo: &#39;, var_info)
+            #print(&#39;data = &#39;, data)
+
+            coordinate_data[coord_system] = {
+                &#39;CoordinateSystem&#39;: CoordinateSystem.from_identifier(coord_system),
+                &#39;X&#39;: data[:,0],
+                &#39;Y&#39;: data[:,1],
+                &#39;Z&#39;: data[:,2]
+            }
+        else:
+            matcher = COMPONENT_PATTERN.match(name)
+
+            if matcher:
+                coord_system = matcher.group(1)
+                component = matcher.group(2)
+
+                coordinate_data[coord_system] = {
+                    &#39;CoordinateSystem&#39;: CoordinateSystem.from_identifier(coord_system),
+                    component: data
+                }
+    results = []
+    for value in coordinate_data.values():
+        results.append(value)
+
+    return results</code></pre>
+</details>
+<div class="desc"><p>Gets coordinate data.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List[Dict]</code></dt>
+<dd>Coordinate data.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_footpoint_regions"><code class="name flex">
+<span>def <span class="ident">get_footpoint_regions</span></span>(<span>self, name: str) ‑> List[<a title="sscws.regions.FootpointRegion" href="regions.html#sscws.regions.FootpointRegion">FootpointRegion</a>]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_footpoint_regions(
+        self,
+        name: str
+    ) -&gt; List[FootpointRegion]:
+    &#34;&#34;&#34;
+    Gets the trace footpoint region information.
+
+    Returns
+    -------
+    List[FootpointRegion]
+        Trace footpoint region information.
+    &#34;&#34;&#34;
+
+    regions = []
+
+    try:
+        region_codes = self.get_value(name + &#39;TRACED_REGIONS&#39;)
+    except ValueError:
+        return regions
+
+    for region_code in region_codes:
+        regions.append(FootpointRegion.from_code(region_code))
+
+    return regions</code></pre>
+</details>
+<div class="desc"><p>Gets the trace footpoint region information.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List[FootpointRegion]</code></dt>
+<dd>Trace footpoint region information.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_satellite_data"><code class="name flex">
+<span>def <span class="ident">get_satellite_data</span></span>(<span>self) ‑> Dict</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_satellite_data(
+        self
+    ) -&gt; Dict:
+    &#34;&#34;&#34;
+    Gets the SatelliteData from this CDF.
+
+    Returns
+    -------
+    Dict
+        The SatelliteData from this CDF.
+    &#34;&#34;&#34;
+    var_names = self.get_variable_names()
+    data = {}
+    data[&#39;Id&#39;] = self.get_satellite_name().lower()
+    data[&#39;Coordinates&#39;] = self.get_coordinate_data()
+    data[&#39;Time&#39;] = self.get_time()
+    b_trace_data = self.get_b_trace_data()
+    if len(b_trace_data) &gt; 0:
+        data[&#39;BTraceData&#39;] = b_trace_data
+
+    if &#39;RADIUS&#39; in var_names:
+        data[&#39;RadialLength&#39;] = self.get_value(&#39;RADIUS&#39;)
+    if &#39;MAG_STRTH&#39; in var_names:
+        data[&#39;MagneticStrength&#39;] = self.get_value(&#39;MAG_STRTH&#39;)
+    if &#39;DNEUTS&#39; in var_names:
+        data[&#39;NeutralSheetDistance&#39;] = self.get_value(&#39;DNEUTS&#39;)
+
+    if &#39;BOW_SHOCK&#39; in var_names:
+        data[&#39;BowShockDistance&#39;] = self.get_value(&#39;BOW_SHOCK&#39;)
+    if &#39;MAG_PAUSE&#39; in var_names:
+        data[&#39;MagnetoPauseDistance&#39;] = self.get_value(&#39;MAG_PAUSE&#39;)
+    if &#39;L_VALUE&#39; in var_names:
+        data[&#39;DipoleLValue&#39;] = self.get_value(&#39;L_VALUE&#39;)
+    if &#39;INVAR_LAT&#39; in var_names:
+        data[&#39;DipoleInvariantLatitude&#39;] = self.get_value(&#39;INVAR_LAT&#39;)
+    sc_region = self.get_spacecraft_region()
+    if len(sc_region) &gt; 0:
+        data[&#39;SpacecraftRegion&#39;] = sc_region
+    if &#39;RADIAL_TRACED_REGIONS&#39; in var_names:
+        data[&#39;RadialTracedFootpointRegions&#39;] = \
+            self.get_footpoint_regions(&#39;RADIAL_&#39;)
+    if &#39;MAG_X&#39; in var_names:
+        data[&#39;BGseX&#39;] = self.get_b_gse_component(&#39;X&#39;)
+    if &#39;MAG_Y&#39; in var_names:
+        data[&#39;BGseY&#39;] = self.get_b_gse_component(&#39;Y&#39;)
+    if &#39;MAG_Z&#39; in var_names:
+        data[&#39;BGseZ&#39;] = self.get_b_gse_component(&#39;Z&#39;)
+    if &#39;NORTH_B_TRACED_REGIONS&#39; in var_names:
+        data[&#39;NorthBTracedFootpointRegions&#39;] = \
+            self.get_footpoint_regions(&#39;NORTH_B&#39;)
+    if &#39;SOUTH_B_TRACED_REGIONS&#39; in var_names:
+        data[&#39;SouthBTracedFootpointRegions&#39;] = \
+            self.get_footpoint_regions(&#39;SOUTH_B&#39;)
+
+    return data</code></pre>
+</details>
+<div class="desc"><p>Gets the SatelliteData from this CDF.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict</code></dt>
+<dd>The SatelliteData from this CDF.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_satellite_name"><code class="name flex">
+<span>def <span class="ident">get_satellite_name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_satellite_name(
+        self
+    ) -&gt; str:
+    &#34;&#34;&#34;
+    Gets the name of the satellite whose location data is in
+    this file.
+
+    Returns
+    -------
+    str
+        Name of satellite whose location data is in this file.
+    &#34;&#34;&#34;
+    return self.get_source_name()</code></pre>
+</details>
+<div class="desc"><p>Gets the name of the satellite whose location data is in
+this file.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Name of satellite whose location data is in this file.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_source_name"><code class="name flex">
+<span>def <span class="ident">get_source_name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_source_name(
+        self
+    ) -&gt; str:
+    &#34;&#34;&#34;
+    Gets the value of the Source_name global attribute.
+
+    Returns
+    -------
+    str
+        Value of the Source_name global attribute.
+    &#34;&#34;&#34;
+    name = self._global_attributes[&#39;Source_name&#39;]
+
+    if isinstance(name, list):    # cdflib &gt;= 1.0
+        name = name[0]
+
+    return name</code></pre>
+</details>
+<div class="desc"><p>Gets the value of the Source_name global attribute.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Value of the Source_name global attribute.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_spacecraft_region"><code class="name flex">
+<span>def <span class="ident">get_spacecraft_region</span></span>(<span>self) ‑> List[<a title="sscws.regions.SpaceRegion" href="regions.html#sscws.regions.SpaceRegion">SpaceRegion</a>]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_spacecraft_region(
+        self
+    ) -&gt; List[&#39;SpaceRegion&#39;]:
+    &#34;&#34;&#34;
+    Gets the spacecraft region information.
+
+    Returns
+    -------
+    List[SpaceRegion]
+        Spacecraft region information.
+    &#34;&#34;&#34;
+
+    regions = []
+
+    try:
+        region_codes = self.get_value(&#39;SPACECRAFT_REGIONS&#39;)
+    except ValueError:
+        return regions
+
+    for region_code in region_codes:
+        regions.append(SpaceRegion.from_code(region_code))
+
+    return regions</code></pre>
+</details>
+<div class="desc"><p>Gets the spacecraft region information.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List[SpaceRegion]</code></dt>
+<dd>Spacecraft region information.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_text_attributes"><code class="name flex">
+<span>def <span class="ident">get_text_attributes</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_text_attributes(
+        self
+    ): # -&gt; AttData
+    &#34;&#34;&#34;
+    Gets the value of the TEXT global attribute entries.
+
+    Returns
+    -------
+    AttData
+        Value of the TEXT global attribute entries.
+    &#34;&#34;&#34;
+    return self._global_attributes[&#39;TEXT&#39;]</code></pre>
+</details>
+<div class="desc"><p>Gets the value of the TEXT global attribute entries.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>AttData</code></dt>
+<dd>Value of the TEXT global attribute entries.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_time"><code class="name flex">
+<span>def <span class="ident">get_time</span></span>(<span>self) ‑> List[numpy.datetime64]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_time(
+        self
+    ) -&gt; List[np.datetime64]:
+    &#34;&#34;&#34;
+    Get the time values.
+
+    Returns
+    -------
+    List[np.datetime64]
+        Time values.
+    &#34;&#34;&#34;
+
+    name = &#39;Epoch&#39;
+    var_info = self.get_variable_info(name)
+    try:
+        last_rec = var_info[&#39;Last_Rec&#39;]
+    except TypeError:
+        # cdflib &gt;= 1.0
+        last_rec = var_info.Last_Rec
+    epoch = self.get_variable_data(name, 0, last_rec)
+
+    datetimes = cdflib.cdfepoch.to_datetime(epoch)
+
+    return datetimes
+
+    # fix timezone (https://github.com/MAVENSDC/cdflib/issues/224)
+    #tz_datetimes = np.empty(len(datetimes), dtype=object)
+    #for i in range(len(datetimes)):
+    #    tz_datetimes[i] = datetimes[i].replace(tzinfo=timezone.utc)
+    #return tz_datetimes</code></pre>
+</details>
+<div class="desc"><p>Get the time values.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List[np.datetime64]</code></dt>
+<dd>Time values.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_value"><code class="name flex">
+<span>def <span class="ident">get_value</span></span>(<span>self, name: str) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_value(
+        self,
+        name: str
+    ) -&gt; np.ndarray:
+    &#34;&#34;&#34;
+    Gets all of the specified variable&#39;s data.
+
+    Parameters
+    ----------
+    name
+        Name of variable.
+    Returns
+    -------
+    np.ndarray
+        All of the specified variable&#39;s data.
+    &#34;&#34;&#34;
+
+    var_info = self.get_variable_info(name)
+    try:
+        last_rec = var_info[&#39;Last_Rec&#39;]
+    except TypeError:
+        # cdflib &gt;= 1.0
+        last_rec = var_info.Last_Rec
+    return self.get_variable_data(name, 0, last_rec)</code></pre>
+</details>
+<div class="desc"><p>Gets all of the specified variable's data.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>Name of variable.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>All of the specified variable's data.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_variable_data"><code class="name flex">
+<span>def <span class="ident">get_variable_data</span></span>(<span>self, name: str, startrec: int, endrec: int) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_variable_data(
+        self,
+        name: str,
+        startrec: int,
+        endrec: int
+    ) -&gt; np.ndarray:
+    &#34;&#34;&#34;
+    Gets the specified variable&#39;s data.
+
+    Parameters
+    ----------
+    name
+        Name of variable.
+    startrec
+        Index of the first record to get.
+    endrec
+        Index of the last record to get.  All records from startrec
+        ot endrec inclusive are fetched.
+    Returns
+    -------
+    np.ndarray
+        The specified variable&#39;s data from startrec to endrec
+        inclusive.
+    &#34;&#34;&#34;
+    return self._cdf.varget(name, startrec = startrec, endrec = endrec)</code></pre>
+</details>
+<div class="desc"><p>Gets the specified variable's data.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>Name of variable.</dd>
+<dt><strong><code>startrec</code></strong></dt>
+<dd>Index of the first record to get.</dd>
+<dt><strong><code>endrec</code></strong></dt>
+<dd>Index of the last record to get.
+All records from startrec
+ot endrec inclusive are fetched.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The specified variable's data from startrec to endrec
+inclusive.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_variable_info"><code class="name flex">
+<span>def <span class="ident">get_variable_info</span></span>(<span>self, name: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_variable_info(
+        self,
+        name: str
+    ): # -&gt; VDRInfo:
+    &#34;&#34;&#34;
+    Gets information about the specified variable.
+
+    Parameters
+    ----------
+    name
+        Name of variable.
+    Returns
+    -------
+    VDRInfo
+        Information about the specified variable.
+    &#34;&#34;&#34;
+    return self._cdf.varinq(name)</code></pre>
+</details>
+<div class="desc"><p>Gets information about the specified variable.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>Name of variable.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>VDRInfo</code></dt>
+<dd>Information about the specified variable.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.get_variable_names"><code class="name flex">
+<span>def <span class="ident">get_variable_names</span></span>(<span>self) ‑> List[str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_variable_names(
+        self
+    ) -&gt; List[str]:
+    &#34;&#34;&#34;
+    Gets the variable names (both r and z variables).
+
+    Returns
+    -------
+    List
+        A list of the variable names.
+    &#34;&#34;&#34;
+
+    try:
+        return self._info[&#39;rVariables&#39;] + self._info[&#39;zVariables&#39;]
+    except TypeError:
+        # cdflib &gt;= 1.0
+        return self._info.rVariables + self._info.zVariables</code></pre>
+</details>
+<div class="desc"><p>Gets the variable names (both r and z variables).</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List</code></dt>
+<dd>A list of the variable names.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.cdf.Cdf.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self, name: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(
+        self,
+        name: str
+    ) -&gt; None:
+    &#34;&#34;&#34;
+    Opens the specified file for reading.
+
+    Parameters
+    ----------
+    name
+        Name of CDF file to open.
+
+    Raises
+    ------
+    FileNotFound
+        If the specified file is not found.
+    &#34;&#34;&#34;
+    self._filename = name
+    self._cdf = cdflib.cdfread.CDF(name)
+    self._info = self._cdf.cdf_info()
+    self._global_attributes = self._cdf.globalattsget()</code></pre>
+</details>
+<div class="desc"><p>Opens the specified file for reading.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>Name of CDF file to open.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>FileNotFound</code></dt>
+<dd>If the specified file is not found.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="sscws" href="index.html">sscws</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="sscws.cdf.Cdf" href="#sscws.cdf.Cdf">Cdf</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.cdf.Cdf.filename" href="#sscws.cdf.Cdf.filename">filename</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_b_gse_component" href="#sscws.cdf.Cdf.get_b_gse_component">get_b_gse_component</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_b_trace_data" href="#sscws.cdf.Cdf.get_b_trace_data">get_b_trace_data</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_b_trace_stop_altitude" href="#sscws.cdf.Cdf.get_b_trace_stop_altitude">get_b_trace_stop_altitude</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_coordinate_data" href="#sscws.cdf.Cdf.get_coordinate_data">get_coordinate_data</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_footpoint_regions" href="#sscws.cdf.Cdf.get_footpoint_regions">get_footpoint_regions</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_satellite_data" href="#sscws.cdf.Cdf.get_satellite_data">get_satellite_data</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_satellite_name" href="#sscws.cdf.Cdf.get_satellite_name">get_satellite_name</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_source_name" href="#sscws.cdf.Cdf.get_source_name">get_source_name</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_spacecraft_region" href="#sscws.cdf.Cdf.get_spacecraft_region">get_spacecraft_region</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_text_attributes" href="#sscws.cdf.Cdf.get_text_attributes">get_text_attributes</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_time" href="#sscws.cdf.Cdf.get_time">get_time</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_value" href="#sscws.cdf.Cdf.get_value">get_value</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_variable_data" href="#sscws.cdf.Cdf.get_variable_data">get_variable_data</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_variable_info" href="#sscws.cdf.Cdf.get_variable_info">get_variable_info</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.get_variable_names" href="#sscws.cdf.Cdf.get_variable_names">get_variable_names</a></code></li>
+<li><code><a title="sscws.cdf.Cdf.open" href="#sscws.cdf.Cdf.open">open</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1092 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>sscws.formatoptions API documentation</title>
+<meta name="description" content="Module defining classes to represent the output format option classes from
+&lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.&lt;br&gt; …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>sscws.formatoptions</code></h1>
+</header>
+<section id="section-intro">
+<p>Module defining classes to represent the output format option classes from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.<br></p>
+<p>Copyright &copy; 2013-2021 United States Government as represented by the
+National Aeronautics and Space Administration. No copyright is claimed in
+the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="sscws.formatoptions.CdfFormatOptions"><code class="flex name class">
+<span>class <span class="ident">CdfFormatOptions</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CdfFormatOptions(FormatOptions):
+
+    &#34;&#34;&#34;
+    Convenience class representing a FormatOptions object specifying
+    CDF format results.
+    &#34;&#34;&#34;
+    def __init__(self):
+        super().__init__(None, None, DistanceFormat.KM, None, None, None,
+                         None, True, None)</code></pre>
+</details>
+<div class="desc"><p>Convenience class representing a FormatOptions object specifying
+CDF format results.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="sscws.formatoptions.FormatOptions" href="#sscws.formatoptions.FormatOptions">FormatOptions</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="sscws.formatoptions.FormatOptions" href="#sscws.formatoptions.FormatOptions">FormatOptions</a></b></code>:
+<ul class="hlist">
+<li><code><a title="sscws.formatoptions.FormatOptions.cdf" href="#sscws.formatoptions.FormatOptions.cdf">cdf</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.date_format" href="#sscws.formatoptions.FormatOptions.date_format">date_format</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.degree_digits" href="#sscws.formatoptions.FormatOptions.degree_digits">degree_digits</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.degree_format" href="#sscws.formatoptions.FormatOptions.degree_format">degree_format</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.distance_digits" href="#sscws.formatoptions.FormatOptions.distance_digits">distance_digits</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.distance_format" href="#sscws.formatoptions.FormatOptions.distance_format">distance_format</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.lat_lon_format" href="#sscws.formatoptions.FormatOptions.lat_lon_format">lat_lon_format</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.lines_per_page" href="#sscws.formatoptions.FormatOptions.lines_per_page">lines_per_page</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.time_format" href="#sscws.formatoptions.FormatOptions.time_format">time_format</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.xml_element" href="#sscws.formatoptions.FormatOptions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="sscws.formatoptions.DateFormat"><code class="flex name class">
+<span>class <span class="ident">DateFormat</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DateFormat(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the DateFormat defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    YYYY_DDD = &#39;yyyy_ddd&#39;
+    YY_MM_DD = &#39;yy_mm_dd&#39;
+    YY_MMM_DD = &#39;yy_Mmm_dd&#39;
+    YY_CMMM_DD = &#39;yy_CMMM_dd&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the DateFormat defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.formatoptions.DateFormat.YYYY_DDD"><code class="name">var <span class="ident">YYYY_DDD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.formatoptions.DateFormat.YY_CMMM_DD"><code class="name">var <span class="ident">YY_CMMM_DD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.formatoptions.DateFormat.YY_MMM_DD"><code class="name">var <span class="ident">YY_MMM_DD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.formatoptions.DateFormat.YY_MM_DD"><code class="name">var <span class="ident">YY_MM_DD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.formatoptions.DegreeFormat"><code class="flex name class">
+<span>class <span class="ident">DegreeFormat</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DegreeFormat(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the DegreeFormat defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    DECIMAL = &#39;Decimal&#39;
+    MINUTES = &#39;Minutes&#39;
+    MINUTES_SECONDS = &#39;MinutesSeconds&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the DegreeFormat defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.formatoptions.DegreeFormat.DECIMAL"><code class="name">var <span class="ident">DECIMAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.formatoptions.DegreeFormat.MINUTES"><code class="name">var <span class="ident">MINUTES</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.formatoptions.DegreeFormat.MINUTES_SECONDS"><code class="name">var <span class="ident">MINUTES_SECONDS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.formatoptions.DistanceFormat"><code class="flex name class">
+<span>class <span class="ident">DistanceFormat</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DistanceFormat(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the DistanceFormat defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    RE = &#39;Re&#39;
+    KM = &#39;Km&#39;
+    INTEGER_KM = &#39;IntegerKm&#39;
+    SCIENTFIC_NOTATION_KM = &#39;ScientificNotationKm&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the DistanceFormat defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.formatoptions.DistanceFormat.INTEGER_KM"><code class="name">var <span class="ident">INTEGER_KM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.formatoptions.DistanceFormat.KM"><code class="name">var <span class="ident">KM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.formatoptions.DistanceFormat.RE"><code class="name">var <span class="ident">RE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.formatoptions.DistanceFormat.SCIENTFIC_NOTATION_KM"><code class="name">var <span class="ident">SCIENTFIC_NOTATION_KM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.formatoptions.FormatOptions"><code class="flex name class">
+<span>class <span class="ident">FormatOptions</span></span>
+<span>(</span><span>date_format: <a title="sscws.formatoptions.DateFormat" href="#sscws.formatoptions.DateFormat">DateFormat</a> = None,<br>time_format: <a title="sscws.formatoptions.TimeFormat" href="#sscws.formatoptions.TimeFormat">TimeFormat</a> = None,<br>distance_format: <a title="sscws.formatoptions.DistanceFormat" href="#sscws.formatoptions.DistanceFormat">DistanceFormat</a> = None,<br>distance_digits: int = None,<br>degree_format: <a title="sscws.formatoptions.DegreeFormat" href="#sscws.formatoptions.DegreeFormat">DegreeFormat</a> = None,<br>degree_digits: <a title="sscws.formatoptions.DegreeFormat" href="#sscws.formatoptions.DegreeFormat">DegreeFormat</a> = None,<br>lat_lon_format: <a title="sscws.formatoptions.LatLonFormat" href="#sscws.formatoptions.LatLonFormat">LatLonFormat</a> = None,<br>cdf: bool = None,<br>lines_per_page: int = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class FormatOptions:  # pylint: disable=too-many-instance-attributes
+    &#34;&#34;&#34;
+    Class representing a FormatOptions type from
+    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+
+    Parameters
+    ----------
+    date_format
+        Date format option.  If None, default is DateFormat.YYYY_DDD.
+    time_format
+        Time format option.  If None, default is TimeForamt.HH_HHHH.
+    distance_format
+        Distance format option.  If None, default is
+        DistanceForamt.INTEGER_KM.
+    distance_digits
+        Distance digits option.  If None, default is 1.
+    degree_format
+        Degree format option.  If None, default is DegreeFormat.DECIMAL.
+    degree_digits
+        Degree digits option.  If None, default is 1.
+    lat_lon_format
+        Latitude/Longitude format option.  If None, default is
+        LatLonFormat.LAT_90_LON_360.
+    cdf
+        CDF option.  If None, default is False.
+    lines_per_page
+        Lines per page option.  If None, default is 55.
+    &#34;&#34;&#34;
+    def __init__(
+            self,
+            date_format: DateFormat = None,
+            time_format: TimeFormat = None,
+            distance_format: DistanceFormat = None,
+            distance_digits: int = None,
+            degree_format: DegreeFormat = None,
+            degree_digits: DegreeFormat = None,
+            lat_lon_format: LatLonFormat = None,
+            cdf: bool = None,
+            lines_per_page: int = None
+        ):  # pylint: disable=too-many-arguments,too-many-branches
+
+        if date_format is None:
+            self._date_format = DateFormat.YYYY_DDD
+        else:
+            self._date_format = date_format
+
+        if time_format is None:
+            self._time_format = TimeFormat.HH_HHHH
+        else:
+            self._time_format = time_format
+
+        if distance_format is None:
+            self._distance_format = DistanceFormat.INTEGER_KM
+        else:
+            self._distance_format = distance_format
+
+        if distance_digits is None:
+            self._distance_digits = 1
+        else:
+            self._distance_digits = distance_digits
+
+        if degree_format is None:
+            self._degree_format = DegreeFormat.DECIMAL
+        else:
+            self._degree_format = degree_format
+
+        if degree_digits is None:
+            self._degree_digits = 1
+        else:
+            self._degree_digits = degree_digits
+
+        if lat_lon_format is None:
+            self._lat_lon_format = LatLonFormat.LAT_90_LON_360
+        else:
+            self._lat_lon_format = lat_lon_format
+
+        if cdf is None:
+            self._cdf = False
+        else:
+            self._cdf = cdf
+
+        if lines_per_page is None:
+            self._lines_per_page = 55
+        else:
+            self._lines_per_page = lines_per_page
+
+
+    @property
+    def date_format(self) -&gt; DateFormat:
+        &#34;&#34;&#34;
+        Gets the date_format value.
+
+        Returns
+        -------
+        str
+            date_format value.
+        &#34;&#34;&#34;
+        return self._date_format
+
+
+    @date_format.setter
+    def date_format(self, value: DateFormat):
+        &#34;&#34;&#34;
+        Sets the date_format value.
+
+        Parameters
+        ----------
+        value
+            date_format value.
+        &#34;&#34;&#34;
+        self._date_format = value
+
+
+    @property
+    def time_format(self) -&gt; TimeFormat:
+        &#34;&#34;&#34;
+        Gets the time_format value.
+
+        Returns
+        -------
+        str
+            time_format value.
+        &#34;&#34;&#34;
+        return self._time_format
+
+
+    @time_format.setter
+    def time_format(self, value: TimeFormat):
+        &#34;&#34;&#34;
+        Sets the time_format value.
+
+        Parameters
+        ----------
+        value
+            time_format value.
+        &#34;&#34;&#34;
+        self._time_format = value
+
+
+    @property
+    def distance_format(self) -&gt; DistanceFormat:
+        &#34;&#34;&#34;
+        Gets the distance_format value.
+
+        Returns
+        -------
+        str
+            distance_format value.
+        &#34;&#34;&#34;
+        return self._distance_format
+
+
+    @distance_format.setter
+    def distance_format(self, value: DistanceFormat):
+        &#34;&#34;&#34;
+        Sets the distance_format value.
+
+        Parameters
+        ----------
+        value
+            distance_format value.
+        &#34;&#34;&#34;
+        self._distance_format = value
+
+
+    @property
+    def distance_digits(self) -&gt; int:
+        &#34;&#34;&#34;
+        Gets the distance_digits value.
+
+        Returns
+        -------
+        str
+            distance_digits value.
+        &#34;&#34;&#34;
+        return self._distance_digits
+
+
+    @distance_digits.setter
+    def distance_digits(self, value: int):
+        &#34;&#34;&#34;
+        Sets the distance_digits value.
+
+        Parameters
+        ----------
+        value
+            distance_digits value.
+        &#34;&#34;&#34;
+        self._distance_digits = value
+
+
+    @property
+    def degree_format(self) -&gt; DegreeFormat:
+        &#34;&#34;&#34;
+        Gets the degree_format value.
+
+        Returns
+        -------
+        str
+            degree_format value.
+        &#34;&#34;&#34;
+        return self._degree_format
+
+
+    @degree_format.setter
+    def degree_format(self, value: DegreeFormat):
+        &#34;&#34;&#34;
+        Sets the degree_format value.
+
+        Parameters
+        ----------
+        value
+            degree_format value.
+        &#34;&#34;&#34;
+        self._degree_format = value
+
+
+    @property
+    def degree_digits(self) -&gt; int:
+        &#34;&#34;&#34;
+        Gets the degree_digits value.
+
+        Returns
+        -------
+        str
+            degree_digits value.
+        &#34;&#34;&#34;
+        return self._degree_digits
+
+
+    @degree_digits.setter
+    def degree_digits(self, value: int):
+        &#34;&#34;&#34;
+        Sets the degree_digits value.
+
+        Parameters
+        ----------
+        value
+            degree_digits value.
+        &#34;&#34;&#34;
+        self._degree_digits = value
+
+
+    @property
+    def lat_lon_format(self) -&gt; LatLonFormat:
+        &#34;&#34;&#34;
+        Gets the lat_lon_format value.
+
+        Returns
+        -------
+        str
+            lat_lon_format value.
+        &#34;&#34;&#34;
+        return self._lat_lon_format
+
+
+    @lat_lon_format.setter
+    def lat_lon_format(self, value: LatLonFormat):
+        &#34;&#34;&#34;
+        Sets the lat_lon_format value.
+
+        Parameters
+        ----------
+        value
+            lat_lon_format value.
+        &#34;&#34;&#34;
+        self._lat_lon_format = value
+
+
+    @property
+    def cdf(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Gets the cdf value.
+
+        Returns
+        -------
+        str
+            cdf value.
+        &#34;&#34;&#34;
+        return self._cdf
+
+
+    @cdf.setter
+    def cdf(self, value: bool):
+        &#34;&#34;&#34;
+        Sets the cdf value.
+
+        Parameters
+        ----------
+        value
+            cdf value.
+        &#34;&#34;&#34;
+        self._cdf = value
+
+
+    @property
+    def lines_per_page(self) -&gt; int:
+        &#34;&#34;&#34;
+        Gets the lines_per_page value.
+
+        Returns
+        -------
+        str
+            lines_per_page value.
+        &#34;&#34;&#34;
+        return self._lines_per_page
+
+
+    @lines_per_page.setter
+    def lines_per_page(self, value: int):
+        &#34;&#34;&#34;
+        Sets the lines_per_page value.
+
+        Parameters
+        ----------
+        value
+            lines_per_page value.
+        &#34;&#34;&#34;
+        self._lines_per_page = value
+
+
+    def xml_element(self) -&gt; ET:
+        &#34;&#34;&#34;
+        Produces the XML Element representation of this object.
+
+        Returns
+        -------
+        ET
+            XML Element represenation of this object.
+        &#34;&#34;&#34;
+
+        builder = ET.TreeBuilder()
+        builder.start(&#39;FormatOptions&#39;, {})
+        builder.start(&#39;DateFormat&#39;, {})
+        builder.data(self._date_format.value)
+        builder.end(&#39;DateFormat&#39;)
+        builder.start(&#39;TimeFormat&#39;, {})
+        builder.data(self._time_format.value)
+        builder.end(&#39;TimeFormat&#39;)
+        builder.start(&#39;DistanceFormat&#39;, {})
+        builder.data(self._distance_format.value)
+        builder.end(&#39;DistanceFormat&#39;)
+        builder.start(&#39;DistanceDigits&#39;, {})
+        builder.data(str(self._distance_digits))
+        builder.end(&#39;DistanceDigits&#39;)
+        builder.start(&#39;DegreeFormat&#39;, {})
+        builder.data(self._degree_format.value)
+        builder.end(&#39;DegreeFormat&#39;)
+        builder.start(&#39;DegreeDigits&#39;, {})
+        builder.data(str(self._degree_digits))
+        builder.end(&#39;DegreeDigits&#39;)
+        builder.start(&#39;LatLonFormat&#39;, {})
+        builder.data(self._lat_lon_format.value)
+        builder.end(&#39;LatLonFormat&#39;)
+        builder.start(&#39;Cdf&#39;, {})
+        builder.data(str(self._cdf).lower())
+        builder.end(&#39;Cdf&#39;)
+        builder.start(&#39;LinesPerPage&#39;, {})
+        builder.data(str(self._lines_per_page))
+        builder.end(&#39;LinesPerPage&#39;)
+        builder.end(&#39;FormatOptions&#39;)
+
+        return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Class representing a FormatOptions type from
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>date_format</code></strong></dt>
+<dd>Date format option.
+If None, default is DateFormat.YYYY_DDD.</dd>
+<dt><strong><code>time_format</code></strong></dt>
+<dd>Time format option.
+If None, default is TimeForamt.HH_HHHH.</dd>
+<dt><strong><code>distance_format</code></strong></dt>
+<dd>Distance format option.
+If None, default is
+DistanceForamt.INTEGER_KM.</dd>
+<dt><strong><code>distance_digits</code></strong></dt>
+<dd>Distance digits option.
+If None, default is 1.</dd>
+<dt><strong><code>degree_format</code></strong></dt>
+<dd>Degree format option.
+If None, default is DegreeFormat.DECIMAL.</dd>
+<dt><strong><code>degree_digits</code></strong></dt>
+<dd>Degree digits option.
+If None, default is 1.</dd>
+<dt><strong><code>lat_lon_format</code></strong></dt>
+<dd>Latitude/Longitude format option.
+If None, default is
+LatLonFormat.LAT_90_LON_360.</dd>
+<dt><strong><code>cdf</code></strong></dt>
+<dd>CDF option.
+If None, default is False.</dd>
+<dt><strong><code>lines_per_page</code></strong></dt>
+<dd>Lines per page option.
+If None, default is 55.</dd>
+</dl></div>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="sscws.formatoptions.CdfFormatOptions" href="#sscws.formatoptions.CdfFormatOptions">CdfFormatOptions</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="sscws.formatoptions.FormatOptions.cdf"><code class="name">prop <span class="ident">cdf</span> : bool</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def cdf(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Gets the cdf value.
+
+    Returns
+    -------
+    str
+        cdf value.
+    &#34;&#34;&#34;
+    return self._cdf</code></pre>
+</details>
+<div class="desc"><p>Gets the cdf value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>cdf value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.formatoptions.FormatOptions.date_format"><code class="name">prop <span class="ident">date_format</span> : <a title="sscws.formatoptions.DateFormat" href="#sscws.formatoptions.DateFormat">DateFormat</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def date_format(self) -&gt; DateFormat:
+    &#34;&#34;&#34;
+    Gets the date_format value.
+
+    Returns
+    -------
+    str
+        date_format value.
+    &#34;&#34;&#34;
+    return self._date_format</code></pre>
+</details>
+<div class="desc"><p>Gets the date_format value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>date_format value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.formatoptions.FormatOptions.degree_digits"><code class="name">prop <span class="ident">degree_digits</span> : int</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def degree_digits(self) -&gt; int:
+    &#34;&#34;&#34;
+    Gets the degree_digits value.
+
+    Returns
+    -------
+    str
+        degree_digits value.
+    &#34;&#34;&#34;
+    return self._degree_digits</code></pre>
+</details>
+<div class="desc"><p>Gets the degree_digits value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>degree_digits value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.formatoptions.FormatOptions.degree_format"><code class="name">prop <span class="ident">degree_format</span> : <a title="sscws.formatoptions.DegreeFormat" href="#sscws.formatoptions.DegreeFormat">DegreeFormat</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def degree_format(self) -&gt; DegreeFormat:
+    &#34;&#34;&#34;
+    Gets the degree_format value.
+
+    Returns
+    -------
+    str
+        degree_format value.
+    &#34;&#34;&#34;
+    return self._degree_format</code></pre>
+</details>
+<div class="desc"><p>Gets the degree_format value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>degree_format value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.formatoptions.FormatOptions.distance_digits"><code class="name">prop <span class="ident">distance_digits</span> : int</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def distance_digits(self) -&gt; int:
+    &#34;&#34;&#34;
+    Gets the distance_digits value.
+
+    Returns
+    -------
+    str
+        distance_digits value.
+    &#34;&#34;&#34;
+    return self._distance_digits</code></pre>
+</details>
+<div class="desc"><p>Gets the distance_digits value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>distance_digits value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.formatoptions.FormatOptions.distance_format"><code class="name">prop <span class="ident">distance_format</span> : <a title="sscws.formatoptions.DistanceFormat" href="#sscws.formatoptions.DistanceFormat">DistanceFormat</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def distance_format(self) -&gt; DistanceFormat:
+    &#34;&#34;&#34;
+    Gets the distance_format value.
+
+    Returns
+    -------
+    str
+        distance_format value.
+    &#34;&#34;&#34;
+    return self._distance_format</code></pre>
+</details>
+<div class="desc"><p>Gets the distance_format value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>distance_format value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.formatoptions.FormatOptions.lat_lon_format"><code class="name">prop <span class="ident">lat_lon_format</span> : <a title="sscws.formatoptions.LatLonFormat" href="#sscws.formatoptions.LatLonFormat">LatLonFormat</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def lat_lon_format(self) -&gt; LatLonFormat:
+    &#34;&#34;&#34;
+    Gets the lat_lon_format value.
+
+    Returns
+    -------
+    str
+        lat_lon_format value.
+    &#34;&#34;&#34;
+    return self._lat_lon_format</code></pre>
+</details>
+<div class="desc"><p>Gets the lat_lon_format value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>lat_lon_format value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.formatoptions.FormatOptions.lines_per_page"><code class="name">prop <span class="ident">lines_per_page</span> : int</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def lines_per_page(self) -&gt; int:
+    &#34;&#34;&#34;
+    Gets the lines_per_page value.
+
+    Returns
+    -------
+    str
+        lines_per_page value.
+    &#34;&#34;&#34;
+    return self._lines_per_page</code></pre>
+</details>
+<div class="desc"><p>Gets the lines_per_page value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>lines_per_page value.</dd>
+</dl></div>
+</dd>
+<dt id="sscws.formatoptions.FormatOptions.time_format"><code class="name">prop <span class="ident">time_format</span> : <a title="sscws.formatoptions.TimeFormat" href="#sscws.formatoptions.TimeFormat">TimeFormat</a></code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def time_format(self) -&gt; TimeFormat:
+    &#34;&#34;&#34;
+    Gets the time_format value.
+
+    Returns
+    -------
+    str
+        time_format value.
+    &#34;&#34;&#34;
+    return self._time_format</code></pre>
+</details>
+<div class="desc"><p>Gets the time_format value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>time_format value.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sscws.formatoptions.FormatOptions.xml_element"><code class="name flex">
+<span>def <span class="ident">xml_element</span></span>(<span>self) ‑> <module 'xml.etree.ElementTree' from '/usr/lib64/python3.9/xml/etree/ElementTree.py'></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xml_element(self) -&gt; ET:
+    &#34;&#34;&#34;
+    Produces the XML Element representation of this object.
+
+    Returns
+    -------
+    ET
+        XML Element represenation of this object.
+    &#34;&#34;&#34;
+
+    builder = ET.TreeBuilder()
+    builder.start(&#39;FormatOptions&#39;, {})
+    builder.start(&#39;DateFormat&#39;, {})
+    builder.data(self._date_format.value)
+    builder.end(&#39;DateFormat&#39;)
+    builder.start(&#39;TimeFormat&#39;, {})
+    builder.data(self._time_format.value)
+    builder.end(&#39;TimeFormat&#39;)
+    builder.start(&#39;DistanceFormat&#39;, {})
+    builder.data(self._distance_format.value)
+    builder.end(&#39;DistanceFormat&#39;)
+    builder.start(&#39;DistanceDigits&#39;, {})
+    builder.data(str(self._distance_digits))
+    builder.end(&#39;DistanceDigits&#39;)
+    builder.start(&#39;DegreeFormat&#39;, {})
+    builder.data(self._degree_format.value)
+    builder.end(&#39;DegreeFormat&#39;)
+    builder.start(&#39;DegreeDigits&#39;, {})
+    builder.data(str(self._degree_digits))
+    builder.end(&#39;DegreeDigits&#39;)
+    builder.start(&#39;LatLonFormat&#39;, {})
+    builder.data(self._lat_lon_format.value)
+    builder.end(&#39;LatLonFormat&#39;)
+    builder.start(&#39;Cdf&#39;, {})
+    builder.data(str(self._cdf).lower())
+    builder.end(&#39;Cdf&#39;)
+    builder.start(&#39;LinesPerPage&#39;, {})
+    builder.data(str(self._lines_per_page))
+    builder.end(&#39;LinesPerPage&#39;)
+    builder.end(&#39;FormatOptions&#39;)
+
+    return builder.close()</code></pre>
+</details>
+<div class="desc"><p>Produces the XML Element representation of this object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ET</code></dt>
+<dd>XML Element represenation of this object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.formatoptions.LatLonFormat"><code class="flex name class">
+<span>class <span class="ident">LatLonFormat</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LatLonFormat(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the LatLonFormat defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    LAT_90_LON_360 = &#39;Lat90Lon360&#39;
+    LAT_90_LON_180 = &#39;Lat90Lon180&#39;
+    LAT_90_SN_LON_180_WE = &#39;Lat90SnLon180We&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the LatLonFormat defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.formatoptions.LatLonFormat.LAT_90_LON_180"><code class="name">var <span class="ident">LAT_90_LON_180</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.formatoptions.LatLonFormat.LAT_90_LON_360"><code class="name">var <span class="ident">LAT_90_LON_360</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.formatoptions.LatLonFormat.LAT_90_SN_LON_180_WE"><code class="name">var <span class="ident">LAT_90_SN_LON_180_WE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="sscws.formatoptions.TimeFormat"><code class="flex name class">
+<span>class <span class="ident">TimeFormat</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TimeFormat(Enum):
+    &#34;&#34;&#34;
+    Enumerations representing the TimeFormat defined
+    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.
+    &#34;&#34;&#34;
+    HH_HHHH = &#39;hh_hhhh&#39;
+    HH_MM_SS = &#39;hh_mm_ss&#39;
+    HH_MM = &#39;hh_mm&#39;</code></pre>
+</details>
+<div class="desc"><p>Enumerations representing the TimeFormat defined
+in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sscws.formatoptions.TimeFormat.HH_HHHH"><code class="name">var <span class="ident">HH_HHHH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.formatoptions.TimeFormat.HH_MM"><code class="name">var <span class="ident">HH_MM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="sscws.formatoptions.TimeFormat.HH_MM_SS"><code class="name">var <span class="ident">HH_MM_SS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="sscws" href="index.html">sscws</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="sscws.formatoptions.CdfFormatOptions" href="#sscws.formatoptions.CdfFormatOptions">CdfFormatOptions</a></code></h4>
+</li>
+<li>
+<h4><code><a title="sscws.formatoptions.DateFormat" href="#sscws.formatoptions.DateFormat">DateFormat</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.formatoptions.DateFormat.YYYY_DDD" href="#sscws.formatoptions.DateFormat.YYYY_DDD">YYYY_DDD</a></code></li>
+<li><code><a title="sscws.formatoptions.DateFormat.YY_CMMM_DD" href="#sscws.formatoptions.DateFormat.YY_CMMM_DD">YY_CMMM_DD</a></code></li>
+<li><code><a title="sscws.formatoptions.DateFormat.YY_MMM_DD" href="#sscws.formatoptions.DateFormat.YY_MMM_DD">YY_MMM_DD</a></code></li>
+<li><code><a title="sscws.formatoptions.DateFormat.YY_MM_DD" href="#sscws.formatoptions.DateFormat.YY_MM_DD">YY_MM_DD</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.formatoptions.DegreeFormat" href="#sscws.formatoptions.DegreeFormat">DegreeFormat</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.formatoptions.DegreeFormat.DECIMAL" href="#sscws.formatoptions.DegreeFormat.DECIMAL">DECIMAL</a></code></li>
+<li><code><a title="sscws.formatoptions.DegreeFormat.MINUTES" href="#sscws.formatoptions.DegreeFormat.MINUTES">MINUTES</a></code></li>
+<li><code><a title="sscws.formatoptions.DegreeFormat.MINUTES_SECONDS" href="#sscws.formatoptions.DegreeFormat.MINUTES_SECONDS">MINUTES_SECONDS</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.formatoptions.DistanceFormat" href="#sscws.formatoptions.DistanceFormat">DistanceFormat</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.formatoptions.DistanceFormat.INTEGER_KM" href="#sscws.formatoptions.DistanceFormat.INTEGER_KM">INTEGER_KM</a></code></li>
+<li><code><a title="sscws.formatoptions.DistanceFormat.KM" href="#sscws.formatoptions.DistanceFormat.KM">KM</a></code></li>
+<li><code><a title="sscws.formatoptions.DistanceFormat.RE" href="#sscws.formatoptions.DistanceFormat.RE">RE</a></code></li>
+<li><code><a title="sscws.formatoptions.DistanceFormat.SCIENTFIC_NOTATION_KM" href="#sscws.formatoptions.DistanceFormat.SCIENTFIC_NOTATION_KM">SCIENTFIC_NOTATION_KM</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.formatoptions.FormatOptions" href="#sscws.formatoptions.FormatOptions">FormatOptions</a></code></h4>
+<ul class="two-column">
+<li><code><a title="sscws.formatoptions.FormatOptions.cdf" href="#sscws.formatoptions.FormatOptions.cdf">cdf</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.date_format" href="#sscws.formatoptions.FormatOptions.date_format">date_format</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.degree_digits" href="#sscws.formatoptions.FormatOptions.degree_digits">degree_digits</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.degree_format" href="#sscws.formatoptions.FormatOptions.degree_format">degree_format</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.distance_digits" href="#sscws.formatoptions.FormatOptions.distance_digits">distance_digits</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.distance_format" href="#sscws.formatoptions.FormatOptions.distance_format">distance_format</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.lat_lon_format" href="#sscws.formatoptions.FormatOptions.lat_lon_format">lat_lon_format</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.lines_per_page" href="#sscws.formatoptions.FormatOptions.lines_per_page">lines_per_page</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.time_format" href="#sscws.formatoptions.FormatOptions.time_format">time_format</a></code></li>
+<li><code><a title="sscws.formatoptions.FormatOptions.xml_element" href="#sscws.formatoptions.FormatOptions.xml_element">xml_element</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.formatoptions.LatLonFormat" href="#sscws.formatoptions.LatLonFormat">LatLonFormat</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.formatoptions.LatLonFormat.LAT_90_LON_180" href="#sscws.formatoptions.LatLonFormat.LAT_90_LON_180">LAT_90_LON_180</a></code></li>
+<li><code><a title="sscws.formatoptions.LatLonFormat.LAT_90_LON_360" href="#sscws.formatoptions.LatLonFormat.LAT_90_LON_360">LAT_90_LON_360</a></code></li>
+<li><code><a title="sscws.formatoptions.LatLonFormat.LAT_90_SN_LON_180_WE" href="#sscws.formatoptions.LatLonFormat.LAT_90_SN_LON_180_WE">LAT_90_SN_LON_180_WE</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sscws.formatoptions.TimeFormat" href="#sscws.formatoptions.TimeFormat">TimeFormat</a></code></h4>
+<ul class="">
+<li><code><a title="sscws.formatoptions.TimeFormat.HH_HHHH" href="#sscws.formatoptions.TimeFormat.HH_HHHH">HH_HHHH</a></code></li>
+<li><code><a title="sscws.formatoptions.TimeFormat.HH_MM" href="#sscws.formatoptions.TimeFormat.HH_MM">HH_MM</a></code></li>
+<li><code><a title="sscws.formatoptions.TimeFormat.HH_MM_SS" href="#sscws.formatoptions.TimeFormat.HH_MM_SS">HH_MM_SS</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>
