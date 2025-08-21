@@ -1,0 +1,189 @@
+/*
+ * NOSA HEADER START
+ *
+ * The contents of this file are subject to the terms of the NASA Open 
+ * Source Agreement (NOSA), Version 1.3 only (the "Agreement").  You may 
+ * not use this file except in compliance with the Agreement.
+ *
+ * You can obtain a copy of the agreement at
+ *   docs/NASA_Open_Source_Agreement_1.3.txt
+ * or 
+ *   http://cdaweb.gsfc.nasa.gov/WebServices/NASA_Open_Source_Agreement_1.3.txt.
+ *
+ * See the Agreement for the specific language governing permissions
+ * and limitations under the Agreement.
+ *
+ * When distributing Covered Code, include this NOSA HEADER in each
+ * file and include the Agreement file at 
+ * docs/NASA_Open_Source_Agreement_1.3.txt.  If applicable, add the 
+ * following below this NOSA HEADER, with the fields enclosed by 
+ * brackets "[]" replaced with your own identifying information: 
+ * Portions Copyright [yyyy] [name of copyright owner]
+ *
+ * NOSA HEADER END
+ *
+ * Copyright (c) 2007 United States Government as represented by 
+ * the National Aeronautics and Space Administration. No copyright is 
+ * claimed in the United States under Title 17, U.S.Code. All Other 
+ * Rights Reserved.
+ *
+ * $Id$
+ */
+
+using System;
+using System.Globalization;
+using System.Web.Services.Protocols;
+using System.Xml;
+
+
+class SscTest {
+
+   public static void Main(string[] args) {
+      
+      try {
+
+          System.Globalization.CultureInfo cultureInfo = 
+              new System.Globalization.CultureInfo("en-US", false);
+          System.Globalization.Calendar calendar = cultureInfo.Calendar;
+
+          // Create an instance of the Web service class.
+          SatelliteSituationCenterService ssc = 
+              new SatelliteSituationCenterService();
+
+          String defaultUserAgent = ssc.UserAgent;
+          ssc.UserAgent = "WsExample2.cs " + defaultUserAgent;
+
+          fileResult result = ssc.getPrivacyAndImportantNotices();
+
+          if (result.statusCode == 0) {
+
+              Console.WriteLine("getPrivacyAndImportantNotices() URLs:");
+
+              for (int i = 0; i < result.urls.Length; i++) {
+
+                  Console.WriteLine(result.urls[i]);
+              }
+              Console.WriteLine();
+          }
+          else {
+
+              Console.WriteLine(
+                  "getPrivacyAndImportantNotices() failed with statusCode = " +
+                  result.statusCode);
+          }
+
+          groundStationDescription[] stations = ssc.getAllGroundStations();
+
+          Console.WriteLine("getAllGroundStations() returned:");
+
+          for (int i = 0; i < stations.Length; i++) {
+
+              Console.WriteLine(
+                  "  " + stations[i].id + "  " + stations[i].latitude +
+                  "  " + stations[i].longitude + "  " + stations[i].name);
+          }
+          Console.WriteLine();
+
+          // Call the Web service method getAllSatellites.
+          satelliteDescription[] sats = ssc.getAllSatellites();
+
+          Console.WriteLine("getAllSatellites() returned:");
+
+          for (int i = 0; i < sats.Length; i++) {
+
+              Console.WriteLine(
+                  "  " + sats[i].id + "  " + sats[i].name + "  " +
+                  sats[i].resolution + "s " +
+                  ((System.DateTime)sats[i].startTime).ToString("r", cultureInfo) + " - " + 
+                  ((System.DateTime)sats[i].endTime).ToString("r", cultureInfo) + "  " +
+                  sats[i].geometry);
+
+          }
+          Console.WriteLine();
+
+          dataFileRequest dFileRequest = new dataFileRequest();
+          dFileRequest.beginTime = 
+              (new DateTime(2004, 11, 25, 0, 0, 0, 0, 
+                            calendar, DateTimeKind.Utc)).ToLocalTime();
+                                       // .NET 2.0 cannot serialize a UTC
+                                       //  time to XML so it must be 
+                                       //  set as a local time value
+          dFileRequest.beginTimeSpecified = true;
+          dFileRequest.endTime = 
+              (new DateTime(2004, 11, 26, 0, 0, 0, 0, 
+                            calendar, DateTimeKind.Utc)).ToLocalTime();
+          dFileRequest.endTimeSpecified = true;
+
+          satelliteSpecification polarSpec = new satelliteSpecification();
+          polarSpec.id = "polar";
+          polarSpec.resolutionFactor = 1;
+          dFileRequest.satellites = new satelliteSpecification[] {polarSpec};
+          bFieldModelOptions bModelOptions = new bFieldModelOptions();
+          dFileRequest.BFieldModelOptions = bModelOptions;
+          locationFilterOptions locFilterOptions = new locationFilterOptions();
+          dFileRequest.locationFilterOptions = locFilterOptions;
+          outputOptions outOptions = new outputOptions();
+          dFileRequest.outputOptions = outOptions;
+          regionFilterOptions regFilterOptions = new regionFilterOptions();
+          dFileRequest.regionFilterOptions = regFilterOptions;
+          formatOptions formOptions = new formatOptions();
+          dFileRequest.formatOptions = formOptions;
+
+          fileResult dataFileResult = ssc.getDataFiles(dFileRequest);
+          
+          Console.WriteLine(
+              "getDataFile result.statusCode = " + dataFileResult.statusCode);
+
+          if (dataFileResult.statusCode == 0) {
+
+              String[] urls = dataFileResult.urls;
+
+              for (int i = 0; i < urls.Length; i++) {
+
+                  Console.WriteLine("  " + urls[i]);
+              }
+              Console.WriteLine();
+          }
+
+          dataResult dResult = ssc.getData(dFileRequest);
+
+          Console.WriteLine(
+              "getData dResult.statusCode = " + dResult.statusCode);
+
+          if (result.statusCode == 0) {
+
+              satelliteData[] satData = dResult.data;
+
+              for (int i = 0; i < satData.Length; i++) {
+
+                  Console.WriteLine("Coordinate Data for " + satData[i].id);
+
+                  coordinateData[] coords = satData[i].coordinates;
+
+                  for (int j = 0; j < coords.Length; j++) {
+
+                      System.Nullable<double>[] x = coords[j].x;
+                      System.Nullable<double>[] y = coords[j].y;
+                      System.Nullable<double>[] z = coords[j].z;
+
+                      for (int k = 0; k < x.Length; k++) {
+
+                          Console.WriteLine(x[k] + ", " + y[k] + ", " + z[k]);
+                      }
+                  }
+                  Console.WriteLine();
+              }
+          }
+
+      }
+      catch (SoapException e) {
+
+          Console.WriteLine("Fault Code Namespace: " + e.Code.Namespace);
+          Console.WriteLine("Fault Code Name: " + e.Code.Name);
+          Console.WriteLine("Actor: " + e.Actor);
+          Console.WriteLine("Error Message: " + e.Message);
+          Console.WriteLine("Detail: " + e.Detail.OuterXml);
+      }
+  }  
+}
+
