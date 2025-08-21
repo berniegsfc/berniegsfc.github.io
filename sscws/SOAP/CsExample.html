@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>C# SSC Web Services Example</title>
+      <meta http-equiv="content-type" 
+          content="text/html; charset=iso-8859-1">
+      <meta http-equiv="Content-Security-Policy"
+          content="default-src 'none'; script-src https://dap.digitalgov.gov/ www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com/;" >
+      <meta name="orgcode" content="672">
+      <meta name="rno" content="Robert.M.Candey.1">
+      <meta name="content-owner" content="Bernard.T.Harris.1">
+      <meta name="webmaster" content="Tamara.J.Kovalick.1">
+      <meta name="description" content="The SSC Web services allow a software developer to use SSC services in their own application...">
+      <meta name="keyword" content="Satellite Situation Center,SSC,SSCWeb,SPDF,space physics data facility, science planning,satellite orbit plots, satellite orbits,orbit,space physics, earths magnetic fields,spacecraft location,satellite conjunctions,magnetic field line conjunctions,ephemeris, XML, Web services">
+<!--
+      <link REL="icon" HREF="nasaicon.png" TYPE="image/png">
+      <link REL="SHORTCUT ICON" HREF="favicon.ico">
+      <link rel="stylesheet" href="/css/common.css" type="text/css">
+      <link rel="stylesheet" href="/css/spdf_services.css" type="text/css">
+      <style type="text/css">
+            a.modellink {font-size:13px; font-style:oblique; font-weight:700;}
+            a.serviceName {color: #069; background-color: #fff;}
+
+            #sources        td.selected {color: #ffffff; background-color: #006699; text-decoration:none;}
+            #services       td.selected {padding: 2px; border: 1px dashed #069; text-decoration:none; font-size: 16px; color: #006699;}
+      </style>
+      <script type="text/javascript" id="_fed_an_ua_tag"
+           src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC">
+      </script>
+-->
+   </head>
+
+<!--
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" 
+        alink="#000088">
+-->
+     <div id="paper">
+
+<!--#include virtual="../header.html"-->
+
+
+<h1>C# SSC Web Services Example</h1>
+
+The Satellite Situation Center (SSC) Web services allow a software developer
+to use portions of the SSC software in their own application.&nbsp; The 
+following describes an example of how to utilize the SSC Web Services from
+a client program written in C# and utilizing the Web Services Enhancements
+(WSE) for Microsoft .NET framework.
+This example doesn't provide any useful, end-user functionality but is 
+intended merely as an example for developers of client applications to examine.
+
+<h2> Prerequisites</h2>
+
+One of the following two alternatives is required in order to compile and 
+execute the example program:
+<ul>
+  <li>Microsoft .NET Framework 2.0 (on any supported platform) <b>and</b></li>
+  <ul>
+    <li>Microsoft .NET Framework 2.0 SDK</li>
+    <li>Microsoft WSE 3.0</li>
+  </ul>
+  <li>Microsoft .NET Framework 3.0 (on any supported platform [included with
+      Vista]) <b>and</b></li>
+  <ul>
+    <li>Microsoft Windows Software Development Kit (SDK) for Windows Vista
+        (on any supported platform [there are non-Vista supported platforms])
+    </li>
+  </ul>
+</ul>
+
+<h2> Example</h2>
+
+The example C# program is contained in the file 
+<a href="WsExample.cs.txt" target="_blank"><code>WsExample.cs</code></a>.  
+In order to execute the program, save the 
+<a href="WsExample.cs.txt"><code>WsExample.cs</code> file</a> to your 
+computer <b>without the <code>.txt</code> extension</b>.
+
+<h2> Instructions</h2>
+
+The following instructions describe how to compile and execute the example 
+C# program:
+<ol>
+  <li>Open a .NET Framework SDK Command Prompt window and execute the
+      following commands.</li>
+  <li><code>wsdl https://sscweb.gsfc.nasa.gov/WS/ssc/2/SatelliteSituationCenterService?wsdl
+      </code></li>
+  <li><code>csc SatelliteSituationCenterService.cs WsExample.cs</code></li>
+  <li><code>WsExample</code></li>
+</ol>
+
+The example should produce output similar to the following:
+<pre>
+
+getPrivacyAndImportantNotices() URLs:
+https://www.nasa.gov/about/highlights/HP_Privacy.html
+
+getAllGroundStations() returned:
+  SPA  -89.99  -13.32  South Pole
+  SBF  -77.85  166.75  Scott Base
+  MCM  -77.85  166.7  McMurdo
+  SPL  -76  -84  Siple
+  HBA  -75.52  -26.6  Halley Bay
+  MZH  -70.43  40.2  Mizuho
+  SYO  -69.01  39.59  Syowa
+  MAF  -67.62  62.89  Mawson
+  FRZ  -62.08  -58.39  Ferraz
+  CCF  -43.83  172.68  Christchurch
+  ADF  -34.56  138.48  Adelaide
+  CTO  -33.95  18.47  Cape Town
+  AQF  -16.5  -71.5  Arequipa
+  HUA  -12.05  -75.34  Huancayo
+  JRO  -11.9  -76  Jicamarca
+  CIA  1.95  -157.3  Christmas Island
+  KGO  9.3  -5.4  Korhogo
+  GUA  13.58  144.87  Guam
+  ARO  18.3  -66.75  Arecibo
+  SJG  18.38  -66.12  San Juan
+  TEO  19.74  -260.81  Teoloyucan
+  HON  21.32  -158.06  Honolulu
+  FIT  28.07  -80.95  Florida Tech.
+  JAX  30.35  -81.6  Jacksonville Univ.
+  SLU  30.44  -269.27  SE Louisiana Univ.
+  TUC  32.25  -110.83  Tucson
+  USC  33.34  -81.46  Univ. S. Carolina
+  MUI  34.8  136.1  Shigaraki
+  LAL  35.88  -253.33  Los Alamos
+  KAK  36.23  140.19  Kakioka
+  DSO  36.25  -81.4  Dark Sky Obs.
+  BERK  37.881  -122.244  THM_Berkeley
+  ASH  37.95  58.11  Ashkhabad
+  FRD  38.2  -77.4  USGS Fredericksburg
+  ONW  38.43  141.47  Onagawa
+  AFA  39.01  -255.12  USAFA Colorado
+  APL  39.17  -76.88  Applied Physics Lab.
+  GDN  39.75  -105.16  Golden
+  UIL  40.1  -88.1  Urbana
+  PLA  40.13  -104.5  Platteville
+  BLD  40.13  -254.76  Boulder
+  BOU  40.14  -105.24  Boulder
+  CSL  40.59  -105.14  Ft Collins
+  TKT  41.33  69.62  Tashkent
+  USI  41.4  -111.5  Bear Lake
+  TFS  42.09  44.71  Tbilisi
+  WES  42.38  -71.32  Weston
+  PFP  42.4  -86.93  Peach Mountain
+  MLH  42.6  -71.48  Millstone Hill
+  DUM  43.12  -70.94  Durham
+  AAA  43.2  76.9  Alma-Ata
+  GTF  43.62  -71.95  Grafton Test Facility
+  CLK  44.7  -75  Clarkson University
+  OTT  45.4  -75.5  Ottawa
+  NKK  45.8  62.1  Novokazalinsk
+  STJ  47.59  -52.68  St. Johns
+  NEW  48.26  -117.12  Newport
+  VIC  48.52  -123.42  Victoria
+  KAPU  49.4  -82.4  THM_Kapuskasing
+  GLL  49.6  -97.1  Glenlea
+  KGD  49.82  73.08  Karaganda
+  DOU  50.1  4.6  Dourbes
+  PINA  50.3  -96  THM_Pinawa
+  KIV  50.72  30.3  Kiev
+  RDL  50.9  -93.5  Red Lake
+  GANG  51.9  -68.2  THM_Gangon
+  COF  52  15  Collm
+  SHF  52.16  -106.53  Saskatoon
+  IRT  52.46  104.04  Irkutsk
+  GBAY  53.3  -60.4  THM_Goose Bay
+  NIP  53.5  -103.7  Nipawin
+  PGEO  53.815  -122.828  THM_Prince George
+  ISL  53.88  -94.68  Island Lake
+  TPAS  53.994  -100.941  THM_Flin Flon/The Pas
+  MEA  54.62  -112.33  Meanook
+  KNG  54.7  20.62  Kaliningrad
+  ATHA  54.714  -113.314  THM_Athabasca
+  NVS  55.03  82.9  Novosibirsk
+  PBQ  55.3  -77.75  THM_Poste Baleine
+  ESK  55.32  -3.2  Eskdalemuir
+  MOS  55.48  37.31  Moscow
+  GILL  56.4  -94.6  THM_Gillam
+  TMK  56.47  84.93  Tomsk
+  NAIN  56.5  -61.7  THM_Nain
+  FMM  56.73  -111.38  Fort McMurray
+  SVD  56.73  61.07  Sverdlovsk
+  LYN  56.85  -101.07  Lynn Lake
+  SIT  57.05  -135.33  Sitka
+  BKC  57.68  -94.23  Back
+  RBL  58.22  -103.67  Rabbit Lake
+  FCC  58.8  -94.1  Fort Churchill
+  STM  59.5  18.2  Stockholm
+  UPP  59.8  17.6  Uppsala
+  LNN  59.95  30.71  Leningrad
+  FSMI  59.984  -111.842  THM_Fort Smith
+  WFP  60.06  -128.58  Watson Lake
+  MGD  60.12  151.02  Magadan
+  NUR  60.51  24.66  Nurmijarvi
+  WHOR  61.01  -135.223  THM_White Horse
+  EKP  61.1  -94.07  Eskimo Point
+  NAQ  61.1  -45.2  Narssarssuaq
+  AMU  61.24  -149.87  Anchorage
+  POD  61.6  90  Podk. Tunguska
+  FSIM  61.8  -121.2  THM_Fort Simpson
+  YAK  62.02  129.72  Yakutsk
+  TLK  62.3  -150.1  Talkeetna
+  FHF  62.32  26.61  Hankasalmi
+  GAK  62.4  -145.2  THM_HAARP/Gakona
+  YKC  62.4  -114.5  Yellowknife
+  RANK  62.828  -92.113  THM_Rankin Inlet
+  MCGR  62.953  -155.596  THM_Mcgrath
+  IQA  63.8  -68.6  Iqaluit
+  WHF  63.86  -22.02  Stokkseyri
+  EHF  63.86  -19.2  Pykkvibaerehf
+  DWC  64.07  -139.42  Dawson City
+  BLC  64.33  -96.03  Baker Lake
+  ARK  64.6  40.5  Arkhangelsk
+  LYS  64.62  18.77  Lycksele
+  HSF  64.67  -21.03  Husafell
+  EKAT  64.733  -110.67  THM_Lac de Gras/Ekati
+  CMO  64.85  -147.83  College
+  NOW  64.9  -125.5  Norman Wells
+  OUL  65.1  25.85  Oulu
+  COW  65.73  -111.25  Contwoyto Lake
+  IFJ  66.08  -23.13  Isafjordur
+  TJN  66.2  -17.12  Tjornes
+  FYU  66.56  -145.214  THM_Fort Yukon
+  PEL  66.9  24.08  Pello
+  KIA  66.9  -160.4  THM_Kiana
+  STF  67.02  -50.72  Sondrestrom
+  SOD  67.37  26.65  ECAT-Sodankyla
+  KIR  67.83  20.42  ECAT-Kiruna
+  MUO  68.02  23.53  Muonio
+  AVI  68.13  -145.57  Arctic Village
+  INUV  68.413  -133.77  THM_Inuvik
+  IVA  68.6  27.48  Ivalo
+  ALT  68.9  22.96  Alta
+  CPS  68.92  -179.48  Cape Schmidt
+  MMK  68.95  33.05  Murmansk
+  KAU  69.02  23.05  Kautokeino
+  KIL  69.05  20.7  Kilpisjarvi
+  CBB  69.2  -105  Cambridge Bay
+  GDH  69.24  -53.52  Godhavn
+  NOK  69.4  88.1  Norilsk
+  AMD  69.47  61.42  Amderma
+  TRO  69.66  18.95  ECAT-Tromso
+  KEV  69.76  27.01  Kevo
+  CPY  70.17  -124.72  Cape Parry
+  SOE  70.54  22.22  Soroya
+  BRW  71.3  -156.75  Barrow
+  TIK  71.58  129  Tixie Bay
+  SKG  71.9  82.1  Sopoch. Karga
+  SAH  72  -125  Sachs Harbor
+  DIK  73.54  80.56  Dixon Island
+  RES  74.7  -94.9  Resolute Bay
+  IZV  75.9  82.7  Izvestia
+  KOT  76  137.9  Kotelny
+  MBC  76.2  -119.4  Mould Bay
+  HRN  77  15.55  Hornsund
+  TFP  76.53  -68.44  Thule
+  THL  77.48  -69.17  Thule/Qaanaaq
+  UDN  77.5  82.3  Uedinenie
+  ESR  78.15  16.03  ECAT-Svalbard
+  VIZ  79.5  78.1  Vize
+  LNC  78.9  12  Ny Alesund
+  HIS  80.62  58.05  Heiss Island
+  NOC  81.6  -16.6  Nord
+  ALE  82.5  -62.5  Alert
+
+getAllSatellites() returned:
+  ace  ACE  720s Mon, 25 Aug 1997 20:00:00 GMT - Tue, 06 Mar 2007 15:23:59 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/ace_sc.x3d
+  active  Active  60s Thu, 28 Sep 1989 20:00:00 GMT - Fri, 04 Oct 1991 04:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/active_sc.x3d
+  akebono  Akebono  60s Wed, 22 Feb 1989 19:00:00 GMT - Sat, 31 Mar 2007 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/akebono_sc.x3d
+  apex  APEX-MAIN  60s Mon, 16 Dec 1991 19:00:00 GMT - Fri, 30 Apr 2004 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/apex_sc.x3d
+  astrid2  ASTRID II  60s Fri, 11 Dec 1998 19:00:00 GMT - Tue, 02 Apr 2002 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/astrid2_sc.x3d
+  cce  CCE (AMPTE/CCE)  60s Thu, 16 Aug 1984 20:00:00 GMT - Fri, 01 Jan 1988 03:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/cce_sc.x3d
+  champ  CHAMP  60s Wed, 08 Nov 2000 19:00:00 GMT - Sat, 17 Mar 2007 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/champ_sc.x3d
+  cluster1  Cluster-1  60s Wed, 09 Aug 2000 08:41:59 GMT - Thu, 31 Dec 2009 20:58:59 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/cluster1_sc.x3d
+  cluster2  Cluster-2  60s Sun, 16 Jul 2000 10:07:59 GMT - Thu, 31 Dec 2009 19:10:59 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/cluster2_sc.x3d
+  cluster3  Cluster-3  60s Sun, 16 Jul 2000 10:07:59 GMT - Thu, 31 Dec 2009 19:57:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/cluster3_sc.x3d
+  cluster4  Cluster-4  60s Wed, 09 Aug 2000 08:41:59 GMT - Thu, 31 Dec 2009 19:36:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/cluster4_sc.x3d
+  crres  CRRES  60s Wed, 25 Jul 1990 19:00:00 GMT - Wed, 04 Dec 1991 03:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/crres_sc.x3d
+  de1  DE-1  60s Mon, 03 Aug 1981 06:37:59 GMT - Sat, 02 Mar 1991 03:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/de1_sc.x3d
+  de2  DE-2  60s Mon, 03 Aug 1981 20:00:00 GMT - Sat, 19 Feb 1983 07:19:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/de2_sc.x3d
+  demeter  DEMETER  60s Mon, 30 Aug 2004 20:00:00 GMT - Mon, 19 Mar 2007 03:15:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/demeter_sc.x3d
+  dmspf10  DMSP-10  60s Sat, 01 Dec 1990 19:00:00 GMT - Sat, 11 Sep 1999 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/dmspf10_sc.x3d
+  dmspf11  DMSP-11  60s Thu, 28 Nov 1991 19:00:00 GMT - Mon, 08 Sep 2003 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/dmspf11_sc.x3d
+  dmspf12  DMSP-12  60s Thu, 15 Sep 1994 20:00:00 GMT - Mon, 08 Sep 2003 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/dmspf12_sc.x3d
+  dmspf13  DMSP-13  60s Wed, 12 Apr 1995 20:00:00 GMT - Sat, 30 Dec 2006 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/dmspf13_sc.x3d
+  dmspf14  DMSP-14  60s Sat, 19 Apr 1997 20:00:00 GMT - Sat, 30 Dec 2006 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/dmspf14_sc.x3d
+  dmspf15  DMSP-15  60s Sun, 12 Dec 1999 19:00:00 GMT - Sat, 30 Dec 2006 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/dmspf15_sc.x3d
+  dmspf16  DMSP-16  60s Fri, 17 Oct 2003 20:00:00 GMT - Sat, 30 Dec 2006 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/dmspf16_sc.x3d
+  dmspf8  DMSP-8  60s Sun, 31 Dec 1989 19:00:00 GMT - Tue, 13 Sep 1994 04:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/dmspf8_sc.x3d
+  dmspf9  DMSP-9  60s Sun, 31 Dec 1989 19:00:00 GMT - Sun, 01 Nov 1992 03:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/dmspf9_sc.x3d
+  doublestar1  Double Star 1  60s Sat, 03 Jan 2004 02:05:59 GMT - Wed, 10 Oct 2007 08:37:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/doublestar1_sc.x3d
+  doublestar2  Double Star 2  60s Thu, 16 Sep 2004 19:53:59 GMT - Mon, 31 Dec 2007 18:58:59 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/doublestar2_sc.x3d
+  equators  Equator-S  60s Fri, 12 Dec 1997 11:00:00 GMT - Thu, 24 Sep 1998 04:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/equators_sc.x3d
+  fast  FAST  60s Wed, 21 Aug 1996 20:00:00 GMT - Tue, 22 Dec 2009 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/fast_sc.x3d
+  freja  Freja  60s Tue, 06 Oct 1992 20:00:00 GMT - Wed, 10 May 2000 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/freja_sc.x3d
+  genesis  Genesis  3600s Sat, 11 Aug 2001 20:00:00 GMT - Tue, 07 Sep 2004 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/genesis_sc.x3d
+  geotail  Geotail  720s Sat, 25 Jul 1992 20:00:00 GMT - Fri, 31 Dec 2010 18:48:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/geotail_sc.x3d
+  gms3  GMS-3  60s Mon, 24 Mar 1986 20:00:00 GMT - Mon, 30 Jun 1986 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/gms3_sc.x3d
+  goes10  GOES-10  180s Wed, 17 Jun 1998 20:00:00 GMT - Thu, 30 Nov 2006 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/goes10_sc.x3d
+  goes11  GOES-11  180s Tue, 16 May 2000 20:00:00 GMT - Sat, 31 Mar 2007 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/goes11_sc.x3d
+  goes12  GOES-12  180s Wed, 14 Aug 2002 20:00:00 GMT - Wed, 14 Mar 2007 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/goes12_sc.x3d
+  goes13  GOES-13  180s Fri, 09 Jun 2006 20:00:00 GMT - Sat, 31 Mar 2007 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/goes13_sc.x3d
+  goes6  GOES-6  180s Tue, 30 Nov 1993 19:00:00 GMT - Mon, 01 May 1995 04:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/goes6_sc.x3d
+  goes7  GOES-7  180s Tue, 14 Apr 1987 20:00:00 GMT - Tue, 01 Dec 1998 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/goes7_sc.x3d
+  goes8  GOES-8  180s Thu, 21 Jul 1994 20:00:00 GMT - Fri, 30 Apr 2004 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/goes8_sc.x3d
+  goes9  GOES-9  180s Fri, 28 Jul 1995 20:00:00 GMT - Sat, 31 Dec 2005 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/goes9_sc.x3d
+  hawkeye  Hawkeye  180s Sat, 08 Jun 1974 20:00:00 GMT - Sun, 01 Jan 1978 03:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/hawkeye_sc.x3d
+  image  IMAGE  120s Sun, 26 Mar 2000 20:00:55 GMT - Mon, 31 Jul 2006 18:37:59 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/image_sc.x3d
+  imp7  IMP-7  720s Mon, 25 Sep 1972 20:00:00 GMT - Sat, 30 Sep 1978 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/imp7_sc.x3d
+  imp8  IMP-8  300s Mon, 29 Oct 1973 20:00:00 GMT - Thu, 31 Dec 2009 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/imp8_sc.x3d
+  interballaurora  Interball Aurora  60s Sun, 01 Sep 1996 20:00:00 GMT - Thu, 15 Jul 1999 04:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/interballaurora_sc.x3d
+  interballtail  Interball Tail  180s Thu, 03 Aug 1995 20:00:00 GMT - Tue, 10 Oct 2000 04:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/interballtail_sc.x3d
+  irm  IRM (AMPTE/IRM)  720s Tue, 11 Sep 1984 20:00:00 GMT - Sat, 30 Aug 1986 04:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/irm_sc.x3d
+  isee1  ISEE-1  720s Sat, 22 Oct 1977 20:00:00 GMT - Sat, 26 Sep 1987 02:35:59 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/isee1_sc.x3d
+  isee3  ISEE-3  720s Tue, 15 Aug 1978 23:43:59 GMT - Tue, 31 Jan 1984 18:55:59 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/isee3_sc.x3d
+  lanl01  LANL-01  180s Tue, 07 Jun 2005 07:00:00 GMT - Sun, 04 Mar 2007 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/lanl01_sc.x3d
+  lanl02  LANL-02  180s Tue, 07 Jun 2005 05:00:00 GMT - Sun, 04 Mar 2007 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/lanl02_sc.x3d
+  lanl89  LANL-89  180s Sun, 14 Mar 1993 20:00:00 GMT - Mon, 02 Apr 2001 22:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/lanl89_sc.x3d
+  lanl90  LANL-90  180s Thu, 19 May 1994 20:00:00 GMT - Wed, 09 Nov 2005 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/lanl90_sc.x3d
+  lanl91  LANL-91  180s Tue, 26 Oct 1993 22:00:00 GMT - Thu, 18 Nov 2004 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/lanl91_sc.x3d
+  lanl94  LANL-94  180s Sun, 31 Dec 1995 19:00:00 GMT - Sun, 04 Mar 2007 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/lanl94_sc.x3d
+  lanl97  LANL-97  180s Fri, 04 Jul 1997 19:00:00 GMT - Sun, 04 Mar 2007 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/lanl97_sc.x3d
+  microlab1  Microlab1  60s Fri, 31 Dec 1999 19:00:00 GMT - Fri, 29 Apr 2005 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/microlab1_sc.x3d
+  mir  MIR  60s Tue, 25 Jul 1995 20:00:00 GMT - Tue, 28 Nov 2000 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/mir_sc.x3d
+  moon  Moon  1728s Sun, 30 Jun 1991 20:00:00 GMT - Fri, 05 Jul 2013 19:31:11 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/moon_sc.x3d
+  moonapollo  Moon-Apollo-Era  1728s Tue, 31 Dec 1968 19:00:00 GMT - Sat, 31 Dec 1977 18:31:11 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/moonapollo_sc.x3d
+  msx  MSX  60s Wed, 24 Apr 1996 20:00:00 GMT - Wed, 03 Mar 1999 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/msx_sc.x3d
+  noaa12  NOAA-12  60s Wed, 15 May 1991 20:00:00 GMT - Fri, 01 May 1998 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/noaa12_sc.x3d
+  noaa14  NOAA-14  60s Fri, 13 Jan 1995 19:00:00 GMT - Fri, 30 Apr 2004 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/noaa14_sc.x3d
+  noaa15  NOAA-15  60s Mon, 25 May 1998 20:00:00 GMT - Sat, 31 Mar 2007 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/noaa15_sc.x3d
+  noaa16  NOAA-16  60s Tue, 26 Sep 2000 20:00:00 GMT - Sat, 31 Mar 2007 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/noaa16_sc.x3d
+  noaa17  NOAA-17  60s Mon, 24 Jun 2002 20:00:00 GMT - Sat, 31 Mar 2007 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/noaa17_sc.x3d
+  oersted  Oersted  60s Fri, 14 May 1999 20:00:00 GMT - Sun, 18 Mar 2007 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/oersted_sc.x3d
+  ogo6  OGO-6  60s Wed, 04 Jun 1969 20:00:00 GMT - Thu, 01 Jan 1970 03:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/ogo6_sc.x3d
+  ohzora  Ohzora  60s Sun, 19 Feb 1984 19:00:00 GMT - Sat, 12 Apr 1986 04:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/ohzora_sc.x3d
+  polar  Polar  180s Thu, 29 Feb 1996 19:00:00 GMT - Fri, 30 Nov 2007 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/polar_sc.x3d
+  reimei  Reimei  60s Wed, 24 Aug 2005 20:00:00 GMT - Sat, 17 Mar 2007 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/reimei_sc.x3d
+  sampex  SAMPEX  60s Fri, 03 Jul 1992 20:00:00 GMT - Fri, 31 Dec 2004 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/sampex_sc.x3d
+  scatha  SCATHA  60s Sun, 04 Feb 1979 19:00:00 GMT - Tue, 01 Jan 1991 03:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/scatha_sc.x3d
+  snoe  SNOE  60s Thu, 26 Feb 1998 19:00:00 GMT - Fri, 30 Apr 2004 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/snoe_sc.x3d
+  soho  SOHO  720s Mon, 04 Dec 1995 19:00:00 GMT - Sun, 18 Feb 2007 18:48:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/soho_sc.x3d
+  st5a  ST5-A  60s Wed, 22 Mar 2006 20:00:00 GMT - Sun, 27 Aug 2006 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/st5a_sc.x3d
+  st5b  ST5-B  60s Wed, 22 Mar 2006 20:00:00 GMT - Mon, 28 Aug 2006 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/st5b_sc.x3d
+  st5c  ST5-C  60s Wed, 22 Mar 2006 20:00:00 GMT - Mon, 28 Aug 2006 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/st5c_sc.x3d
+  stereoa  STEREO-A  720s Thu, 26 Oct 2006 20:00:00 GMT - Mon, 31 Dec 2007 18:48:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/stereoa_sc.x3d
+  stereob  STEREO-B  720s Thu, 26 Oct 2006 20:00:00 GMT - Mon, 31 Dec 2007 18:48:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/stereob_sc.x3d
+  themis1  THEMIS1  120s Fri, 19 Jan 2007 20:53:30 GMT - Sat, 04 Apr 2009 21:51:30 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/themis1_sc.x3d
+  themis2  THEMIS2  120s Fri, 19 Jan 2007 20:53:30 GMT - Sat, 04 Apr 2009 21:51:30 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/themis2_sc.x3d
+  themis3  THEMIS3  120s Fri, 19 Jan 2007 20:53:30 GMT - Sat, 04 Apr 2009 21:51:30 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/themis3_sc.x3d
+  themis4  THEMIS4  120s Fri, 19 Jan 2007 20:53:30 GMT - Sat, 04 Apr 2009 21:51:30 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/themis4_sc.x3d
+  themis5  THEMIS5  120s Fri, 19 Jan 2007 20:53:30 GMT - Sat, 04 Apr 2009 21:51:30 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/themis5_sc.x3d
+  timed  TIMED  60s Wed, 06 Feb 2002 19:00:00 GMT - Sat, 31 Mar 2007 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/timed_sc.x3d
+  uars  UARS  60s Thu, 19 Sep 1991 20:00:00 GMT - Wed, 10 May 2006 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/uars_sc.x3d
+  viking  Viking  60s Tue, 04 Mar 1986 19:00:00 GMT - Wed, 31 Dec 1986 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/viking_sc.x3d
+  wind  Wind  720s Tue, 15 Nov 1994 19:00:00 GMT - Tue, 15 May 2007 20:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/wind_sc.x3d
+  xmm  XMM  720s Thu, 01 Jun 2006 00:00:00 GMT - Sat, 30 Sep 2006 19:48:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/xmm_sc.x3d
+  yohkoh  Yohkoh (Solar-A)  60s Wed, 04 Sep 1991 20:00:00 GMT - Thu, 01 Jan 1998 19:00:00 GMT  http://sscweb.gsfc.nasa.gov/WebServices/resources/geometry/yohkoh_sc.x3d
+
+getDataFile result.statusCode = 0
+  http://sscweb.gsfc.nasa.gov/query_output/locator_server21339.txt
+
+getData dResult.statusCode = 0
+Coordinate Data for polar
+8577.97496022226, 52832.6748522901, -27678.4821351049
+8459.79186477662, 52950.7901495788, -27492.3800002645
+8341.46298261135, 53066.5892501609, -27303.5277560522
+8221.70346309996, 53179.4194558038, -27113.6337124229
+8101.78020478792, 53288.8122667421, -26922.3026981942
+7982.51806382342, 53395.1762385978, -26729.1381196586
+7862.27658286327, 53497.6835128231, -26534.9312675308
+7741.06547778025, 53597.4624727242, -26338.3730871965
+7619.24017526283, 53694.6885442247, -26140.3752746291
+7498.06200441807, 53787.7616669911, -25941.8582756355
+7375.45996921536, 53878.9995624577, -25740.9872868019
+7252.79304286364, 53965.7233767038, -25537.7601206697
+7129.86658383413, 54050.0752417715, -25334.0142422861
+7005.95672694955, 54130.5755493944, -25129.2309394015
+6882.34799368067, 54207.8659533366, -24921.6909647691
+6757.66036743765, 54282.3691229604, -24714.0327723341
+6633.26971627148, 54353.6713580688, -24503.6200956096
+6507.89760871163, 54421.1133560107, -24292.1678069253
+6381.90751504289, 54486.0081122313, -24079.280260924
+6256.10574350327, 54547.6420623179, -23865.8718152125
+6129.78235952379, 54605.6552022884, -23650.1071922018
+6003.2961580792, 54660.2244544949, -23432.9068376988
+5876.18882567518, 54712.245715243, -23214.2695125951
+5749.36576763928, 54759.93817406, -22994.1942685407
+5621.10645134033, 54804.6643357685, -22773.0815999843
+5493.49859065993, 54846.3604419936, -22550.1314663781
+5364.45165500135, 54885.0946678174, -22326.1439082698
+5236.50401285008, 54919.914227234, -22100.3188851116
+5107.11970262582, 54951.7682789574, -21873.4559632762
+4978.01840532884, 54979.2888872475, -21645.1555966646
+4847.83313867733, 55004.0233310932, -21416.7343506158
+4717.93843703803, 55025.5565913368, -21185.5590944516
+4587.8750140514, 55043.6453720961, -20952.9463935111
+4456.82263141327, 55057.8795976641, -20719.2962680678
+4326.77042177883, 55069.2727841135, -20484.7269359229
+4195.73096376342, 55076.8020573408, -20249.1184659919
+4064.16344139342, 55080.716393554, -20011.1555320438
+3931.9598241317, 55080.9559866924, -19773.0717186581
+3800.40293447415, 55078.1655055689, -19533.1504402218
+3668.67118098667, 55071.9396477585, -19291.793904467
+3535.94996714095, 55061.8554244099, -19049.3972825757
+3403.50676232946, 55047.4378800384, -18805.5632159073
+3270.79082319608, 55030.6531626811, -18561.2109111605
+3137.54540441864, 55010.249085331, -18314.5019549379
+3004.11340864405, 54985.277142086, -18067.6721192771
+2871.32517052644, 54957.2802251978, -17819.0065318487
+2737.54306418658, 54925.4242509989, -17569.3018066332
+2603.58391673288, 54890.133609173, -17318.1613499237
+2469.80438173211, 54851.5782999999, -17066.499993502
+2335.12528775552, 54808.0955436249, -16812.8802925942
+2200.62150325689, 54761.3570971509, -16558.7418794326
+2067.11579621956, 54711.7686658501, -16303.6869212018
+1931.89215749162, 54656.8395833754, -16047.0731645833
+1797.20984771261, 54599.9573885448, -15789.5411496121
+1662.07862589373, 54537.2548947552, -15530.0503159793
+1527.02639673721, 54472.3657979214, -15270.9595026162
+1391.89114426449, 54402.964090086, -15009.5146994096
+1257.3815871704, 54329.4083697846, -14747.5489964903
+1121.87290157586, 54251.9993987196, -14484.5432074329
+986.18263026584, 54171.1507870221, -14220.0999735973
+850.762123894243, 54085.9688781816, -13954.2192949833
+715.147410050286, 53996.2193791885, -13688.2177369298
+579.350667903713, 53903.03069427, -13420.7809215562
+443.724472725063, 53806.5812042655, -13152.8210190111
+308.000656262522, 53704.4917067446, -12883.8232177859
+172.911712089711, 53599.3764355799, -12612.9901389669
+36.0001522803083, 53489.9939720986, -12341.5152809992
+-99.0209231506734, 53375.9820379262, -12069.1238779615
+-234.689671129257, 53258.2916572873, -11796.6094080255
+-370.446515190638, 53136.089240663, -11521.7404740699
+-506.855358558255, 53010.2174187445, -11246.7506606742
+-642.191288942863, 52879.2932368057, -10971.2399475648
+-778.084349015841, 52743.6262634917, -10694.6896224912
+-913.345478360162, 52604.93355269, -10416.3051135526
+-1049.62556255607, 52461.2600661791, -10138.1959900842
+-1184.37345313297, 52312.7722658873, -9858.25206319646
+-1319.77296475983, 52160.6113630611, -9578.1867826931
+-1455.27914631558, 52002.8093443288, -9297.08079649588
+-1590.52485128102, 51840.6787942247, -9014.53798507323
+-1725.60456706814, 51675.2831832701, -8731.47584184061
+-1860.4381151745, 51504.4306146915, -8448.29125126284
+-1995.3818415136, 51327.9415863166, -8164.06814244926
+-2130.16044372625, 51148.1877336902, -7879.32413392131
+-2264.23098498563, 50963.2106945179, -7593.14377434256
+-2398.50425113703, 50773.6621443376, -7306.84096741835
+-2532.88990234869, 50578.4771066761, -7019.49964225798
+-2666.66570548309, 50379.1415841061, -6731.63741738298
+-2799.3782823864, 50174.7575533902, -6443.25648025167
+-2932.65189943945, 49965.6223424415, -6153.83593115478
+-3066.0417672381, 49750.8551208208, -5863.37529591722
+-3198.01313040894, 49531.213849277, -5573.31249348874
+-3330.55147451461, 49306.8299185592, -5282.21007909441
+-3462.85095886686, 49076.9884480327, -4990.98678525814
+-3594.44314854135, 48841.9151035003, -4698.32557246614
+-3725.44538436102, 48601.5669871787, -4406.45893156848
+-3856.56110627745, 48355.5738732847, -4113.554866163
+-3986.97699181626, 48104.3565289615, -3819.21226224736
+-4117.25049485573, 47848.7502448857, -3525.66532395502
+-4246.70664466112, 47585.7369137105, -3231.17071963823
+-4376.37863381854, 47318.1600715972, -2936.55523587891
+-4504.57986674029, 47044.621710296, -2641.32650497659
+-4633.03266852752, 46766.4969874, -2345.88494868959
+-4760.38647584324, 46481.1081598594, -2050.23016553242
+-4886.72257860437, 46190.651481466, -1753.96315627164
+-5013.68251464511, 45894.3060359492, -1457.88068026549
+-5138.69177921452, 45591.126063305, -1161.27839827258
+-5264.70240065672, 45282.9836510553, -865.043374999342
+-5388.7635105331, 44968.0066025758, -568.289092603785
+-5512.14515180272, 44646.6769354453, -271.411815996184
+-5634.77839681462, 44319.0296118056, 25.4026662395543
+-5757.14572462863, 43985.937767438, 322.247722570498
+-5878.31323713166, 43645.6296311036, 619.031552433932
+-5999.06889060673, 43297.7197438111, 915.264103641159
+-6118.74505152297, 42944.7808074157, 1211.92411340834
+-6237.15151175567, 42584.6615315859, 1508.33962437843
+-6354.29120662358, 42217.366034753, 1804.5106365515
+-6471.02420843949, 41842.4673886073, 2100.12969515107
+-6586.08436404765, 41461.7128029289, 2395.81021451579
+-6700.66412131704, 41073.3847148537, 2690.75578140965
+-6813.46158389002, 40677.0252404234, 2985.27351315046
+-6926.23005869007, 40273.9867563698, 3279.05615570446
+-7036.32670430862, 39863.3619257812, 3572.62443852398
+-7145.9108887311, 39445.1809316656, 3865.36644248519
+-7254.4282109537, 39018.6073914201, 4157.00709036403
+-7360.24073062202, 38584.464753583, 4448.34162488281
+-7465.77155311712, 38141.5329156834, 4738.0853194164
+-7569.04881435814, 37691.923700236, 5027.52246059413
+-7670.70770918477, 37233.0822070108, 5315.5830873496
+-7771.16107777845, 36765.9166474048, 5602.17548023614
+-7869.17793114086, 36289.9277518687, 5887.78866607135
+-7965.47261785151, 35804.7569599215, 6171.74953407415
+-8060.5291468011, 35311.2793906972, 6454.1505683882
+-8152.49146426509, 34808.194357718, 6735.02163464314
+-8242.66262675861, 34295.9602691908, 7014.05732014185
+-8331.05566696043, 33774.576224924, 7291.03438513949
+-8416.858594449, 33243.3270416185, 7566.01929448463
+-8499.68130097736, 32701.2937001545, 7838.65880910142
+-8580.42357153082, 32150.2603385435, 8108.95147012018
+-8658.28042252608, 31588.3931056585, 8376.63536485287
+-8733.18153291444, 31015.7275703664, 8641.52592649785
+-8805.47162365006, 30433.2113794566, 8903.34921223652
+-8874.38320448893, 29838.9918709068, 9161.93180973742
+-8939.68043988796, 29233.1849674654, 9417.17253261447
+-9002.03788212003, 28616.5754804362, 9668.63439623568
+-9060.251183594, 27987.5299101733, 9916.03184815588
+-9114.8981333818, 27346.8736072866, 10159.1928795499
+-9165.42606857729, 26693.7664222136, 10397.8421804377
+-9211.74098016299, 26028.2583962439, 10631.4821217624
+-9253.37077701961, 25349.4662750692, 10859.7959222513
+-9289.80931932813, 24656.5265380762, 11082.3773519249
+-9321.81059040979, 23951.296360434, 11298.8604856779
+-9347.97169610888, 23231.1214610562, 11508.8380724911
+-9368.6133344908, 22496.9667138238, 11711.7198261034
+-9383.56708478994, 21748.9113566667, 11906.8224932717
+-9391.38542343292, 20984.3260836282, 12093.8729514743
+-9392.69342263198, 20205.1378841848, 12271.9126374879
+-9386.76853208416, 19410.5861883276, 12439.9845559936
+-9372.80037867076, 18598.842373199, 12598.0485206612
+-9350.60922779937, 17771.1138525622, 12744.2306354745
+-9319.21959852918, 16925.6533071875, 12878.5706125887
+-9278.97043513339, 16063.4095401585, 13000.0308201013
+-9227.64588880342, 15182.1364791408, 13106.8561428304
+-9165.59610455341, 14283.8957379969, 13197.1318788752
+-9091.92684953882, 13366.8977439138, 13270.8582653232
+-9005.4821048397, 12430.6025199679, 13326.2007626818
+-8905.11437606667, 11475.5841948571, 13360.446403808
+-8789.93999430223, 10501.1661345257, 13372.7174398772
+-8658.17376120994, 9507.1242121179, 13359.304460195
+-8509.40724125752, 8493.66209731192, 13320.405228167
+-8341.58941879881, 7461.80274973529, 13250.4765048686
+-8153.16959308931, 6411.65454922979, 13147.9602004252
+-7942.38234871111, 5343.64768547442, 13009.2676085117
+-7707.45700232272, 4259.22908032687, 12831.0054209345
+-7446.27324055889, 3160.23879948796, 12608.9058989082
+-7156.41481062805, 2049.22565487552, 12337.8620547049
+-6835.72248533398, 929.391099468059, 12013.8812535219
+-6481.90118134564, -194.765116773449, 11631.1001568202
+-6092.79950696206, -1317.698680113, 11184.8869873075
+-5666.28383856127, -2432.53261115771, 10669.7750047578
+-5200.93917551398, -3530.40233605389, 10081.4926510876
+-4695.89339870914, -4601.15046248824, 9415.80802109613
+-4151.10261529958, -5632.68687005347, 8670.72107807779
+-3567.50271954433, -6611.51049750683, 7843.79786381347
+-2948.27765150509, -7523.90520099463, 6938.53184397019
+-2297.67106919053, -8356.12426054267, 5959.31961851653
+-1621.75945050082, -9096.00888578848, 4914.22234045487
+-927.663573102145, -9733.70814026028, 3813.82820933091
+-223.258367235375, -10263.1077061232, 2670.87031884189
+483.652577614955, -10681.737488282, 1498.92653299981
+1185.41671197386, -10990.7461382961, 311.477382472846
+1876.26270646681, -11195.4790090916, -879.060415131555
+2550.69748757922, -11302.2632052003, -2062.09673102555
+3205.05938258209, -11319.6359587796, -3229.04763343905
+3836.72775196193, -11256.7340902622, -4373.11191511883
+4444.14478839711, -11122.160023427, -5489.47946645153
+5026.19178838331, -10924.2974273603, -6574.97985268576
+5583.18707179138, -10671.9310123742, -7627.48700937204
+6115.78059011897, -10372.5588406317, -8646.13371583848
+6623.46008655771, -10030.9077865869, -9630.51035853778
+7108.49944070034, -9654.78370556473, -10581.0301180007
+7570.51563010749, -9247.7291561464, -11497.7666237869
+8011.17225440858, -8814.50068361366, -12381.7603931559
+8431.98521689316, -8358.81334045417, -13235.3229263644
+8832.76242386975, -7884.11250968112, -14057.0167193629
+9215.7774570654, -7392.6173058729, -14850.7508966224
+9581.27574070018, -6887.55465643787, -15615.9669744629
+9930.09662105863, -6370.74007194995, -16353.7803847208
+10263.3393904234, -5843.41382583396, -17066.1843969653
+10581.9843086287, -5307.87867946991, -17754.3364019183
+10886.4481035501, -4765.37829960486, -18418.3159720693
+11177.7389719001, -4216.97199526579, -19060.1163806918
+11456.5477931802, -3663.76811022531, -19680.7745993843
+11722.8835438457, -3106.87859307707, -20279.4138656205
+11977.9318667486, -2546.82816135971, -20858.9450840606
+12222.2201090925, -1984.46975197354, -21419.3263550908
+12456.1346032658, -1420.50415989582, -21961.6376251296
+12680.2988089968, -855.290269379705, -22486.7954688789
+12894.542442863, -289.581842980861, -22993.923142335
+13100.1249622028, 276.355983779894, -23485.8498531863
+13296.8248551027, 842.078190949458, -23961.6589674582
+13485.2212025795, 1407.31619584472, -24422.2692769472
+13665.7732636248, 1971.62847120039, -24868.6768695729
+13838.9261017244, 2535.01518278719, -25301.8005371318
+14004.4187709527, 3096.89979879328, -25720.7590717955
+14162.869865435, 3657.14447802995, -26126.4357503063
+14314.5578564399, 4215.66534650996, -26519.8224042112
+14460.0997837971, 4772.32382848695, -26901.797816792
+14599.1401456954, 5326.94357605039, -27271.447867528
+14732.0921808602, 5879.17250088278, -27629.7664568808
+14859.1202705686, 6429.09346943564, -27976.6738049087
+14980.5506443323, 6976.53418624769, -28313.1706115361
+15096.5085377899, 7521.44624144682, -28639.2124340595
+15207.1274464005, 8063.56166695209, -28954.8018155683
+15312.7185267032, 8603.14770112727, -29260.855182585
+15413.652257353, 9139.94256431434, -29558.3706919441
+15509.4613028857, 9673.71463044456, -29845.391623587
+15600.7398578994, 10204.6480819516, -30123.8371728753
+15687.5746937574, 10732.5640572426, -30393.702964892
+15770.0042228599, 11257.5929848418, -30654.9514749401
+15848.0782334618, 11779.4261039549, -30907.6203462599
+15922.2812153373, 12298.1931262098, -31152.5904310481
+15992.1282490155, 12813.7647361863, -31388.9808771076
+16058.5032076801, 13326.3586435098, -31618.5893187889
+16121.0501071937, 13835.7971227053, -31840.4967864797
+16179.729517281, 14341.9503510438, -32054.7435850534
+16235.0260717105, 14844.9479617571, -32262.2079050734
+16286.4989823635, 15344.5714691171, -32462.0115559761
+16335.0254755835, 15841.2573482674, -32655.9099168673
+16379.8168511844, 16334.3906164948, -32842.1449470074
+16421.6685220556, 16824.3676909639, -33022.5167052929
+16460.1791360667, 17311.100850624, -33196.1064591988
+16495.8747360315, 17794.6283071859, -33363.7887356343
+16528.2353233103, 18274.6936281259, -33524.7286013012
+16558.0918845946, 18751.8205077607, -33680.6799591096
+16584.7851781236, 19225.3473027133, -33829.8512629087
+16608.5786118664, 19695.6289417348, -33973.152732477
+16629.788254007, 20162.9326390041, -34111.5118501729
+16648.3566689864, 20626.6760165343, -34243.961302939
+16664.286752986, 21086.8570076273, -34370.505465692
+16677.406891563, 21544.5101643023, -34492.1029016552
+16688.6876513535, 21997.8831571746, -34608.7091681256
+16697.159518125, 22448.7284003349, -34720.3733198102
+16703.0716516445, 22896.0534558062, -34826.0879758656
+16706.9738442266, 23340.1329025585, -34927.7746376555
+16707.7909512929, 23781.5489193368, -35023.555772344
+16707.1225379151, 24218.8625370372, -35115.2649442387
+16704.1685682933, 24652.795095851, -35201.987558644
+16698.9217657163, 25084.4585098797, -35284.5983795566
+16691.5881675955, 25511.7225447806, -35362.3414238133
+16682.3716480843, 25936.921514099, -35435.7739952582
+16670.2924945766, 26358.4549621018, -35504.4985870169
+16656.9750702164, 26776.0110510303, -35569.0356246267
+16641.1699743783, 27191.2034064626, -35628.4629489957
+16624.0385343976, 27603.4917843574, -35684.6214517404
+16604.4854245334, 28011.2186728527, -35736.0675998817
+16583.1584083444, 28416.9367852693, -35784.2410256567
+16560.5902460961, 28818.6779697405, -35828.2273714571
+16535.5342447612, 29218.0586067367, -35867.1030556661
+16509.5915429957, 29613.6386700112, -35902.7060175085
+16480.6952864219, 30006.6268843422, -35934.5202063635
+16450.912559431, 30395.8153614766, -35963.0611986767
+16418.9993455337, 30782.8218243003, -35987.4146368398
+16385.0182672157, 31165.4427642921, -36007.9749270982
+16350.5259697819, 31545.569610245, -36024.8646621771
+16313.8795303176, 31922.3863655105, -36038.8790335262
+16275.5447111806, 32296.1240617368, -36048.7063248996
+16235.8764288162, 32666.9587674949, -36055.2608939057
+16194.1382075641, 33033.4115312016, -36058.0218408315
+16151.8029630709, 33398.4412143921, -36058.0304909272
+16107.396049708, 33759.0888219138, -36054.2459931175
+16062.0352412706, 34118.1399005834, -36046.7948408694
+16014.9600474986, 34472.983801307, -36036.4692732407
+15965.7271568804, 34824.5188273954, -36023.2634927894
+15915.9805611453, 35173.5614413176, -36006.3920062493
+15865.3435518947, 35518.805618751, -35986.2521722578
+15812.1018242844, 35861.6380038416, -35963.2330737934
+15757.52427083, 36201.5694859367, -35936.9407787855
+15702.8766943339, 36538.1119350011, -35906.9823035135
+15646.4244165378, 36871.5221464984, -35875.0632962933
+15587.8134513305, 37201.6254509105, -35840.2737744334
+15528.6868980883, 37529.2346823738, -35801.8136973924
+15468.6655985915, 37853.0481881648, -35760.0804238074
+15406.3945179482, 38174.6251627913, -35716.3870924488
+15344.4083052325, 38492.9928151997, -35669.9458391758
+15279.9039720754, 38807.874907961, -35619.7109638205
+15214.7722728147, 39120.2090017243, -35568.0364562293
+15148.3876379948, 39428.5718791137, -35512.1748686604
+15080.9330772941, 39735.2855283613, -35454.878023772
+15012.582310122, 40038.2021669652, -35394.3079823391
+14942.8866728928, 40338.2199998695, -35330.4613177946
+14872.2093757101, 40635.516095025, -35264.2645641472
+14799.7246898556, 40929.6828529638, -35196.1116534671
+14727.5195202903, 41220.6345181964, -35125.2025452133
+14653.1497779147, 41508.2837040065, -35051.4229223182
+14577.793662716, 41793.2099657718, -34975.2844604862
+14502.2734198797, 42075.8195484311, -34896.394650172
+14425.0329567512, 42354.2275940284, -34814.6338510413
+14346.7180539199, 42630.9867767712, -34731.4334196737
+14267.5013053324, 42903.9517440384, -34644.9602659355
+14187.7394623829, 43173.2988852684, -34556.1331223518
+14106.5462084647, 43440.8190575405, -34464.9476140057
+14023.986978146, 43704.3168328973, -34371.8098493678
+13941.2624258304, 43965.4989935276, -34275.9202620721
+13857.5466876633, 44223.9582141466, -34177.6727841888
+13772.4621606162, 44478.3945383458, -34077.4686750966
+13687.5685977017, 44730.6916650414, -33975.4314758716
+13600.5043341667, 44979.6874575875, -33870.5193870873
+13513.2752896477, 45226.366348217, -33762.8550014699
+13424.6723333135, 45469.0210001841, -33653.2305580764
+13335.4371233118, 45709.1313335157, -33542.1703831868
+13244.8545608463, 45946.3476240259, -33427.8418608424
+13154.4605744881, 46181.4221085353, -33311.675873448
+13062.6922100053, 46412.4732771012, -33193.5493541022
+12969.933821403, 46640.8047071918, -33073.0732198265
+12876.9806199356, 46865.694878425, -32951.1574533125
+12783.0349660104, 47087.8672567104, -32826.8872227767
+12688.0967049592, 47307.3167083545, -32700.2634765691
+12591.3433090587, 47523.6408517611, -32571.6830991512
+12494.861266993, 47736.75442918, -32440.3508990745
+12397.7401221011, 47947.3253273979, -32307.5790667592
+12300.4231494174, 48154.4531976509, -32173.3676022052
+12200.4926465457, 48359.1772027488, -32036.2851488321
+12101.6298912712, 48559.9701673891, -31897.3700795002
+12000.8631575149, 48758.7119842598, -31757.4127365661
+11900.0094938526, 48954.0653767766, -31613.7848384474
+11798.0499946577, 49146.6450108837, -31470.0338734267
+11696.0035106061, 49335.8392932164, -31322.6167281381
+11592.4931811535, 49522.0840671177, -31174.1577834219
+11488.3446626529, 49705.7860800541, -31024.2631072082
+11384.4611112762, 49886.2766505624, -30871.6127075932
+11279.5582514084, 50062.9238647485, -30717.9287842089
+11173.2140147305, 50237.7497650109, -30561.8864960598
+11066.6708483335, 50409.1312736191, -30404.404575671
+10959.5722796229, 50576.8985245921, -30244.5730403508
+10851.8298628737, 50742.1242433161, -30083.3018727909
+10743.0868949948, 50904.6331687374, -29919.6718662908
+10634.1460050899, 51063.6991027405, -29754.6114515594
+10524.5613266142, 51220.2241959029, -29588.110930413
+10414.4177837905, 51373.1345239192, -29419.256419418
+10303.6309343553, 51523.4993866367, -29248.962276183
+10191.4618734135, 51669.8451325958, -29076.714163369
+10079.8276662387, 51814.230497392, -28903.5473180287
+9966.83702893148, 51955.720451697, -28727.1072761391
+9853.17629070104, 52093.5421898963, -28550.5463548044
+9739.77706758779, 52228.1538874425, -28371.2340849841
+9624.90880391354, 52359.8209357685, -28190.8817290182
+9510.66107366093, 52488.449469714, -28008.6940954586
+9394.58518226357, 52613.9573859501, -27824.5481174028
+9278.30527944967, 52736.02735375, -27638.966407848
+9161.37662696478, 52855.5567664323, -27451.9477276858
+9045.06814754016, 52972.0482094607, -27263.0932957547
+8927.72913765044, 53084.6962772904, -27073.1992518524
+8809.38472252715, 53194.6292492784, -26880.9512181005
+8690.39337270113, 53302.0181176079, -26687.2657395659
+8571.19493488187, 53405.9688181212, -26492.1450037068
+8450.96362516986, 53506.0760917077, -26295.9824684179
+8330.99159654465, 53602.974663615, -26097.0676362927
+8210.72786185893, 53697.5043929477, -25897.634566085
+8088.63317114561, 53788.9151749202, -25696.2426772051
+7967.59160373275, 53876.3973303355, -25493.0155107307
+7845.07996763559, 53960.9275926401, -25288.7509197429
+7723.18049337546, 54042.428612031, -25082.6505769855
+7599.80635837076, 54120.9812915582, -24875.5110964311
+7476.22200147543, 54196.0962624417, -24666.9336969182
+7352.06748795534, 54267.5971505771, -24456.0005942714
+7227.62151390543, 54336.7309740526, -24244.55049265
+7103.04453994771, 54401.3565545579, -24030.7442137194
+6978.17372150844, 54463.6142883353, -23816.4165608973
+6851.47025885853, 54522.7496820684, -23600.1354126689
+6726.17201465645, 54578.1309381578, -23382.9333444542
+6599.86417880133, 54630.7992573113, -23163.378999672
+6472.8771630799, 54679.7963483696, -22943.7015879841
+6345.31883494334, 54725.1806763419, -22721.670186445
+6217.54559262231, 54767.1272028519, -22498.2013401218
+6089.91386008881, 54805.8108370462, -22274.2115940816
+5961.27290422918, 54841.7776111339, -22047.8695714734
+5833.2103474611, 54873.5861561386, -21821.0071233231
+5704.13615734793, 54902.6771127584, -21591.7880236879
+5574.37885714969, 54928.1019206471, -21362.4480446048
+5444.87373218246, 54950.3137548616, -21130.3562428591
+5314.68177079677, 54968.8633875625, -20898.1413742069
+5184.27583623494, 54983.9720934997, -20664.4907740536
+5053.29083018134, 54995.4718843941, -20428.4844707649
+4922.44793978478, 55003.7055898826, -20191.9589810421
+4790.5618722731, 55008.0982573765, -19954.3938793454
+4659.28049778903, 55009.4570762631, -19714.9935000528
+4527.31288947937, 55007.1501109773, -19475.4722413118
+4394.76943726241, 55001.226367958, -19233.5948052601
+4262.36202231091, 54992.045193962, -18991.1981827739
+4129.37785986866, 54979.2472530708, -18746.4480446103
+3995.70601092441, 54962.783818291, -18501.5743653646
+3862.63664746943, 54943.2865330321, -18254.8654085226
+3728.95980923358, 54919.053930614, -18007.1190271646
+3595.06262071483, 54891.3799198576, -17757.9325393876
+3461.29927734044, 54860.4433031197, -17508.2278135258
+3326.13445332262, 54825.4878738166, -17256.566456447
+3191.92589537468, 54787.6778892916, -17003.9885542973
+3057.10803259779, 54745.1276660743, -16750.3688527143
+2922.42636736807, 54699.3114981265, -16496.2326263295
+2787.15986417438, 54649.8875737656, -16239.7402226332
+2651.20372010691, 54596.7942924133, -15983.124277854
+2515.46253552202, 54539.3648750781, -15725.0730757472
+2379.93203305289, 54477.6027486881, -15465.5822413959
+2244.09595347588, 54413.474332589, -15205.5748822425
+2107.29041119502, 54344.4314622453, -14943.6091785879
+1971.05207178795, 54271.2308318659, -14681.1225752144
+1834.94683955766, 54194.7643837766, -14418.1167854051
+1698.25639332891, 54114.6865869126, -14152.7570057421
+1561.31033432451, 54030.044250572, -13887.276346629
+1424.57183531898, 53941.0692380976, -13620.356055271
+1287.96381719037, 53848.827943943, -13352.917051652
+1150.73965131167, 53751.8520167397, -13084.4406235153
+1013.28736654754, 53651.4350946825, -12814.5240889585
+876.401692494553, 53546.8564226123, -12544.0888421405
+738.540525553414, 53437.3684287779, -12271.6974382789
+601.604153988109, 53323.888734503, -11999.7038672233
+464.076682711362, 53206.8022924759, -11725.35364468
+326.288376150849, 53085.1509746604, -11450.8830168608
+189.066997885755, 52959.3338120649, -11175.892108876
+51.2247510049618, 52828.7818241143, -10899.8615889145
+-86.0262323508104, 52695.1958559161, -10621.9968850842
+-223.923918845229, 52555.7434149077, -10344.4075667093
+-360.795592812139, 52412.3606154415, -10064.9834449112
+-499.548768202319, 52264.7325301673, -9784.91706977166
+-636.47880040029, 52112.4492288569, -9503.93414955971
+-773.671384607991, 51955.5968590399, -9222.82816243798
+-911.486935250353, 51794.0105055973, -8940.68318289316
+-1049.10150750222, 51628.0870472468, -8657.10123273541
+-1186.15770162992, 51458.0062975939, -8373.00009614057
+-1323.03953532567, 51282.4564763108, -8088.77589263563
+-1459.72257905649, 51102.5744305122, -7803.11533807179
+-1597.02949405879, 50917.9539812167, -7516.41469735523
+-1733.80876777162, 50728.0428034209, -7230.51019642916
+-1870.74784016206, 50533.6253229281, -6942.25013774311
+-2006.77074171568, 50335.2156273063, -6654.38900559121
+-2143.80785672481, 50130.7696891071, -6365.88562009665
+-2279.38710933486, 49921.4926312878, -6075.54743117814
+-2416.05864013041, 49707.2452414421, -5785.48462771346
+-2550.9147621709, 49488.3413275416, -5494.50418544643
+-2686.43083217053, 49263.5749914579, -5203.79960280803
+-2821.31271267465, 49033.5717372852, -4911.65866910998
+-2956.46624133786, 48799.0043823384, -4619.39528805507
+-3091.01597342992, 48558.0719598312, -4327.0099338182
+-3225.37423247034, 48312.8068294723, -4033.18713479225
+-3359.5700128654, 48062.0813121739, -3739.24345631337
+-3492.338296806, 47805.3925754856, -3444.77840393783
+-3625.83993290312, 47542.8024762927, -3150.40655841427
+-3758.42774211196, 47275.1185903563, -2855.33170725749
+-3890.92549383592, 47001.9347988099, -2559.95113641306
+-4022.47399011741, 46723.6748837257, -2263.9584121483
+-4153.84607978113, 46437.7302754415, -1968.15076798773
+-4284.67377728311, 46147.6266389169, -1671.82277096964
+-4415.32859262095, 45849.842528674, -1375.67985405556
+-4544.99902264716, 45546.9950499502, -1079.01611010883
+-4674.51365222739, 45238.6865623736, -782.230392979138
+-4802.96098275604, 44923.1336386838, -485.415122783601
+-4929.95274569685, 44601.6336352428, -188.171919847395
+-5057.61491494354, 44274.2715308367, 108.79589763686
+-5184.13847715957, 43939.6951799506, 405.610068546621
+-5310.03815630491, 43598.7786243076, 702.454886251768
+-5435.27346487033, 43251.5312160012, 999.238404810167
+
+</pre>
+
+<!--#include virtual="/sscfooter.html"-->
+
+  </div>
+</body>
+</html>

@@ -553,15 +553,23 @@ Locations<br>
 </table>
 <br>
 <hr style="width: 100%; height: 2px;">
+
 <h3><a name="Get_WADL"></a>Get WADL</h3>
+
 This service provides the <a
  href="https://en.wikipedia.org/wiki/Web_Application_Description_Language"
  target="_blank">Web Application Description Language</a> (WADL) for these Web 
  services.<br>
+
 <h4>Example</h4>
+
+Here is a request 
+<a href="https://sscweb.gsfc.nasa.gov/WS/sscr/2/application.wadl">
+https://sscweb.gsfc.nasa.gov/WS/sscr/2/application.wadl</a> for the WADL.
+
+<!-- need sscweb to relax CSP for this iframe to work
 Below is an example client request to this service<!-- and the results-->.<br>
 <pre>$ curl https://sscweb.gsfc.nasa.gov/WS/sscr/2/application.wadl | xmllint --format -</pre>
-<!-- need sscweb to relax CSP for this iframe to work
 <iframe src="https://sscweb.gsfc.nasa.gov/WS/sscr/2/application.wadl" height="300" width="90%"></iframe>
 -->
 <!--
@@ -569,8 +577,6 @@ Below is an example client request to this service<!-- and the results-->.<br>
 <h3>Get Privacy</h3>
 <h3>Get Terms Of Use</h3>
 -->
-<br>
-<br>
 <h3><a name="Get_Observatories"></a>Get Observatories</h3>
 This service provides descriptions of the observatories that are
 available

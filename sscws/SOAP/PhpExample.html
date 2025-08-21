@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>PHP SSC Web Services Example</title>
+      <meta http-equiv="content-type" 
+          content="text/html; charset=iso-8859-1">
+      <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self'; script-src https://dap.digitalgov.gov/ www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com/;" >
+      <meta name="orgcode" content="672">
+      <meta name="rno" content="Robert.M.Candey.1">
+      <meta name="content-owner" content="Bernard.T.Harris.1">
+      <meta name="webmaster" content="Tamara.J.Kovalick.1">
+      <meta name="description" content="The SSC Web services allow a software developer to use SSC services in their own application...">
+      <meta name="keyword" content="Satellite Situation Center,SSC,SSCWeb,SPDF,space physics data facility, science planning,satellite orbit plots, satellite orbits,orbit,space physics, earths magnetic fields,spacecraft location,satellite conjunctions,magnetic field line conjunctions,ephemeris, XML, Web services">
+<!--
+      <link REL="icon" HREF="nasaicon.png" TYPE="image/png">
+      <link REL="SHORTCUT ICON" HREF="favicon.ico">
+      <link rel="stylesheet" href="/css/common.css" type="text/css">
+      <link rel="stylesheet" href="/css/spdf_services.css" type="text/css">
+      <style type="text/css">
+            a.modellink {font-size:13px; font-style:oblique; font-weight:700;}
+            a.serviceName {color: #069; background-color: #fff;}
+
+            #sources        td.selected {color: #ffffff; background-color: #006699; text-decoration:none;}
+            #services       td.selected {padding: 2px; border: 1px dashed #069; text-decoration:none; font-size: 16px; color: #006699;}
+      </style>
+      <script type="text/javascript" id="_fed_an_ua_tag"
+           src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC">
+      </script>
+-->
+   </head>
+
+<!--
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" 
+        alink="#000088">
+-->
+     <div id="paper">
+
+<!--#include virtual="../header.html"-->
+
+
+<h1>PHP SSC Web Services Example</h1>
+
+The Satellite Situation Center (SSC) Web services allow a software developer
+to use portions of the SSC software in their own application.&nbsp; The 
+following describes an example of how to utilize the SSC Web Services from
+a client program written in the <a href="http://php.net/">PHP</a> 
+programming language.
+This example doesn't provide any useful, end-user functionality but is 
+intended merely as an example for developers of client applications to examine.
+
+<h2> Prerequisites</h2>
+
+The following is required in order to execute the example program:
+<ul>
+  <li><a href="http://php.net/" target="_blank">PHP</a> 
+       5.0 or higher.</li>
+  <li><a href="http://php.net/manual/en/book.soap.php" target="_blank">
+      PHP SOAP Extension</a>.
+      This is included with PHP 5 but is only available if PHP was
+      configured with <code>--enable-soap</code>.  If you are using the
+      PHP installation from your operating system distribution (e.g.,
+      Red Hat Enterprise Linux), you may have to install the SOAP
+      extension from your distribution's software repository 
+      (e.g., yum install php-soap).  The exact details for meeting this
+      prerequisite vary depending upon your PHP installation and
+      operating system distribution.  This prerequisite is likely to
+      require additional prerequisites (e.g., php-xml).</li>
+  <li>The <a href="SscPhp.zip">SSC PHP WSDL classes</a> to generate
+      the classes yourself.</li>
+</ul>
+
+<h2> Example</h2>
+
+The example PHP program is contained in the file 
+<a href="WsExample.php.txt" target="_blank"><code>WsExample.php</code></a>.  
+In order to execute the program, save the 
+<a href="WsExample.php.txt"><code>WsExample.php</code> file</a> to your 
+computer where PHP is installed as <code>WsExample.php</code>.
+
+<h2> Instructions</h2>
+
+The following instructions describe how to execute the example PHP program
+using the <a href="http://php.net/manual/en/features.commandline.php">
+Command Line Interface</a> (CLI):
+<ol>
+  <li>Download and extract the <a href="SscPhp.zip">SSC PHP WSDL classes</a>.
+  </li>
+  <li>Download the <a href="WsExample.php.txt"><code>WsExample.php.txt</code> file</a>
+      and save it as <code>WsExample.php</code> in the same directory (folder) 
+      where the SSC PHP class files were extracted to.</li>
+  <li>Ensure that your PHP <code>include_path</code> contains the location 
+      where the above files were put.</li>
+  <li>Run the example:<pre>
+      $ php WsExample.php</pre></li>
+</ol>
+
+This should produce output similar to the following:
+<iframe src="PhpWsExampleOut.txt" height="300" width="90%"></iframe>
+
+
+<!--#include virtual="/sscfooter.html"-->
+
+  </div>
+</body>
+</html>

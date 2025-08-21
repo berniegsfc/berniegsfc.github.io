@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>SPDF - SSC Web Services</title>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <meta http-equiv="Content-Security-Policy"
+          content="default-src 'none'; script-src https://dap.digitalgov.gov/ https://www.google-analytics.com/; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com/;" >
+      <meta name="orgcode" content="672">
+      <meta name="rno" content="Robert.M.Candey.1">
+      <meta name="content-owner" content="Bernard.T.Harris.1">
+      <meta name="webmaster" content="Tamara.J.Kovalick.1">
+      <meta name="description" content="The SSC Web services allow a software developer to use SSC services in their own application...">
+      <meta name="keyword" content="Satellite Situation Center,SSC,SSCWeb,SPDF,space physics data facility, science planning,satellite orbit plots, satellite orbits,orbit,heliophysics,space physics, earths magnetic fields,spacecraft location,satellite conjunctions,magnetic field line conjunctions,ephemeris, XML, Web services">
+      <link REL="icon" HREF="nasaicon.png" TYPE="image/png">
+      <link REL="SHORTCUT ICON" HREF="favicon.ico">
+      <link rel="stylesheet" href="/css/common.css" type="text/css">
+      <link rel="stylesheet" href="/css/spdf_services.css" type="text/css">
+      <style type="text/css">
+            a.modellink {font-size:13px; font-style:oblique; font-weight:700;}
+            a.serviceName {color: #069; background-color: #fff;}
+
+            #sources        td.selected {color: #ffffff; background-color: #006699; text-decoration:none;}
+            #services       td.selected {padding: 2px; border: 1px dashed #069; text-decoration:none; font-size: 16px; color: #006699;}
+      </style>
+      <script type="text/javascript" id="_fed_an_ua_tag"
+           src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC">
+      </script>
+   </head>
+
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" 
+        alink="#000088">
+     <div id="paper">
+
+<!--#include virtual="../header.html"-->
+
+<!--
+WebServices.html is created from the WebServicesTemplate.html file during the
+automated building of this application's documentation.  Modifications should
+be made to the WebServicesTemplate.html file.
+-->
+
+<p>
+<font size="+1">
+<center><b>SSC 2.0 Web Services (Document-Literal)</b></center>
+</font>
+<p>
+<p>
+
+The Satellite Situation Center (SSC) Web services allow a software developer
+to use portions of the SSC software in their own application.&nbsp; If
+you are not a software developer and simply want to use the existing web
+interface to SSC, then return to the <a href="/">main
+SSCWeb page</a>.
+
+<!--
+<h2>Note</h2>
+
+<div style="margin-left: 40px;">
+<i>The version of Web services described here are not compatiable with the
+original, 1.x version of the SSC Web services.  This version 
+complies with the Web Service Interoperability (WS-I), Basic Profile 1.1 
+and uses a document-literal binding style.  The 1.x versions are not WS-I 
+compliant and uses an RPC-encoded binding style.  The 1.x
+ version is described at 
+<a href="1">SSC Web Services</a>.
+This version replaces the 1.x version which remains available until all 
+1.x clients have transitioned to this version.</i>
+</div>
+-->
+
+<h2> Description</h2>
+
+SSC is a system to cast geocentric spacecraft location information into
+a framework of (empirical) geophysical regions and mappings of spacecraft
+locations along lines of the Earth's magnetic field. This capability is
+one key to mission science planning (both single missions and coordinated
+observations of multiple spacecraft with ground-based investigations) and
+to subsequent multi-mission data analysis.
+
+<p>If you are developing an application that requires satellite location
+data based upon updated, predictive and definitive ephemeris for the satellites
+maintained at the SSC, then the SSC Web services can be used to avoid developing
+and maintaining this data and software yourself.&nbsp; The following describes
+how to utilize these services from your own application.
+
+<h2> Software Development Kit (SDK)</h2>
+
+The SSC Web services SDK consists of instructions and a library to allow
+a developer to utilize the SSC Web services.&nbsp; The SDK is 
+<a href="DevelopersKit.html">described here</a> and may be downloaded from 
+<a href="sscWebServicesJaxWsSdk-2.4.14.zip">here</a>.
+
+<h2> WSDL</h2>
+
+The Web Services Description Language (WSDL) is an XML language for describing
+Web services.&nbsp; The WSDL describing the SSC Web services is available
+at the following link:
+<ul>
+<li>
+<a href="/WS/ssc/2/SatelliteSituationCenterService?wsdl" target="_blank">WSDL</a>
+</li>
+</ul>
+
+<h2> Java<sup><font size=-1>TM</font></sup> API</h2>
+
+While the Web services are accessible from any language/run-time that support
+the Web services interface described by the above WSDL, the SSC Web services
+SDK contains a Java class library to simplify using the SSC Web services
+from a Java client.&nbsp; The description of this API is included in the
+SDK download file but may also be viewed online at the following link:
+<ul>
+<li>
+<a href="public/api/govframe.html" target="_blank">Description of Java API to 
+SSC Web services</a></li>
+</ul>
+This library was developed using JAX-WS and is included in the SDK described
+above.
+
+<!--
+<h2>
+Terms of Use/License</h2>
+???
+-->
+<h2> Examples</h2>
+
+The following are examples of client applications that utilize the SSC XML
+Web services.
+<ul>
+  <li>The <a href="//sscweb.gsfc.nasa.gov/tipsod/" target="_blank">SSC 4D Orbit 
+      Viewer</a> application.</li>
+  <li><a href="DevelopersKit.html#example">Java example</a> included in the 
+      SSC Web services SDK.</li>
+  <li><a href="CsExample.html">C# .NET/WSE example</a> included in the 
+      SSC Web services SDK.</li>
+  <li>An IDL <a href="ExelisIdlExample.html">example of calling the SSC
+      Web services from an IDL program</a>.</li>
+  <li>An <a href="PhpExample.html">example of calling the SSC 
+      Web services from a PHP script</a>.</li>
+  <li>An <a href="PerlExample.html">example of calling the SSC 
+      Web services from a Perl script</a>.</li>
+<!--
+  <li><a href="//heliophysicsdata.gsfc.nasa.gov/" target="_blank">Heliophysics Data Portal</a>
+      (HDP).</li>
+  <li><a href="http://vitmo.jhuapl.edu/" target="_blank">Virtual Ionosphere Thermosphere 
+      Mesosphere Observatory</a> (VITMO).</li>
+  <li>An <a href="JScriptExample.html">example of calling the SSC 
+      Web services from JavaScript</a> in an HTML page.</li>
+  <li>The <a href="http://nssdcftp.gsfc.nasa.gov/selected_software/visbard"
+             target="_blank">Visual System for Browsing, Analysis, and
+       Retrieval of Data</a> (ViSBARD)</li>
+-->
+</ul>
+
+<h2>Questions/Comments</h2>
+
+<p>Questions or comments concerning these Web services should be sent to
+<a href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com?subject=SSC%20Web%20Services%20Feedback">SSC Feedback</a>.</p>
+
+<!--#include virtual="/sscfooter.html"-->
+
+  </div>
+</body>
+</html>

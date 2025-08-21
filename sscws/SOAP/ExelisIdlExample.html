@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>IDL SSC Web Services Example</title>
+      <meta http-equiv="content-type" 
+          content="text/html; charset=iso-8859-1">
+      <meta http-equiv="Content-Security-Policy"
+          content="default-src 'none'; script-src https://dap.digitalgov.gov/ www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com/;" >
+      <meta name="orgcode" content="672">
+      <meta name="rno" content="Robert.M.Candey.1">
+      <meta name="content-owner" content="Bernard.T.Harris.1">
+      <meta name="webmaster" content="Tamara.J.Kovalick.1">
+      <meta name="description" content="The SSC Web services allow a software developer to use SSC services in their own application...">
+      <meta name="keyword" content="Satellite Situation Center,SSC,SSCWeb,SPDF,space physics data facility, science planning,satellite orbit plots, satellite orbits,orbit,space physics, earths magnetic fields,spacecraft location,satellite conjunctions,magnetic field line conjunctions,ephemeris, XML, Web services">
+<!--
+      <link REL="icon" HREF="nasaicon.png" TYPE="image/png">
+      <link REL="SHORTCUT ICON" HREF="favicon.ico">
+      <link rel="stylesheet" href="/css/common.css" type="text/css">
+      <link rel="stylesheet" href="/css/spdf_services.css" type="text/css">
+      <style type="text/css">
+            a.modellink {font-size:13px; font-style:oblique; font-weight:700;}
+            a.serviceName {color: #069; background-color: #fff;}
+
+            #sources        td.selected {color: #ffffff; background-color: #006699; text-decoration:none;}
+            #services       td.selected {padding: 2px; border: 1px dashed #069; text-decoration:none; font-size: 16px; color: #006699;}
+      </style>
+      <script type="text/javascript" id="_fed_an_ua_tag"
+           src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC">
+      </script>
+-->
+   </head>
+
+<!--
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" 
+        alink="#000088">
+-->
+     <div id="paper">
+
+<!--#include virtual="../header.html"-->
+
+<h1>IDL SSC Web Services Example</h1>
+
+The Satellite Situation Center (SSC) Web services allow a software
+developer to use portions of the SSC software in their own application. The
+following describes an example of how to utilize the SSC Web Services from
+a client program written in the 
+<a href="https://www.nv5geospatialsoftware.com/Products/IDL" target="_blank">Iteractive Data Language</a> (IDL) programming language.
+This example doesn't provide any useful, end-user functionality but is
+intended merely as an example for developers of client applications to
+examine.
+<h2> Prerequisites</h2>
+The following is required in order to execute the example program:
+<ul>
+  <li>IDL 6.4 or higher on a platform that supports the IDL-Java bridge.</li>
+    <ul>
+      <li>6.0 is actually the minimum version but the IDL-Java bridge works
+          better in later versions.</li>
+      <li>Refer to the IDL product documentation for the list of
+          supported platforms.</li>
+      <li>Refer to the IDL product documentation for the procedure to
+          configure your IDL installation to support the IDL-Java
+          bridge feature.  You must ensure that IDL is properly configured 
+          to support the IDL-Java bridge.</li>
+    </ul>
+  <li>Java Standard Edition (SE) 6 (1.6) Runtime Environment (JRE) or 
+      higher.</li>
+    <ul>
+      <li>Java SE 1.4.1 is actually the minimum version.  However, if a
+          version of Java less than 1.6 is used, a lot of extra work is
+          required.  A description of the extra work is beyond the scope
+          of this document.</li>
+    </ul>
+  <li>The <a href="DevelopersKit.html"> SSC Web services SDK</a>.</li>
+</ul>
+
+<h2> Example</h2>
+
+The example IDL program is contained in the file 
+<a href="WsExample.pro" target="_blank"> WsExample.pro</a>. In order to 
+execute the program, save the 
+<a href="WsExample.pro">WsExample.pro file</a> to your computer where IDL
+is installed.
+
+<h2> Instructions</h2>
+
+The following instructions describe how to execute the example IDL
+program:
+<ol>
+  <li>Follow the procedures for configuring the IDL-Java bridge
+provided with the IDL software.
+    <ul>
+      <li>The installation of IDL may automatically take care of all
+configuration issues but it is worth verifying the configuration and
+verifying that at least one of IDL-Java bridge examples provided with
+IDL functions correctly. Refer to the IDL documentation 
+<i>Programmer's Guides/IDL Connectivity Bridges/Importing Into IDL/Using 
+Java Objects in IDL/Initializing the IDL-Java Bridge</i>.</li>
+    </ul>
+  </li>
+  <li>Include the <code>sscWebServicesJaxWs-client.jar</code>
+file in your <code>CLASSPATH</code>. The specific procedure for
+accomplishing this varies depending upon the development environment
+(e.g., Unix or Microsoft windows) and the developer's preference (i.e.,
+global environement variables or the <code>idljavabrc</code>
+configuration file).
+    <ul>
+      <li>The <code>sscWebServicesJaxWs-client.jar</code> file is available
+          for <a href="WebServices.html#Download"> download</a> in the 
+          <a href="DevelopersKit.html"> SSC Web services SDK</a>.</li>
+    </ul>
+  </li>
+  <li>Start the IDL environment.</li>
+  <li>Compile the WsExample.pro program.</li>
+  <li>Execute the WsExample procedure and compare the output with what
+      you expected from examining the IDL source code.</li>
+  <ul>
+    <li>Note that the example outputs both text (satellite and ground
+        station description information) and an <code>iPLOT</code>
+        window (containing the 3D orbit plots).  You should examine both
+        output destinations.</li>
+    <li>This example doesn't provide any useful, end-user functionality 
+        but is intended merely as an example for developers of client 
+        applications.  It doesn't allow a user to select the set of
+        satellites or enter a time range and no attempt was made to
+        make the plot pretty (e.g., labels, legends, etc.).</li>
+  </ul>
+</ol>
+
+<!--#include virtual="/sscfooter.html"-->
+
+  </div>
+</body>
+</html>

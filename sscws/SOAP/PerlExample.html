@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Perl SSC Web Services Example</title>
+      <meta http-equiv="content-type" 
+          content="text/html; charset=iso-8859-1">
+      <meta http-equiv="Content-Security-Policy"
+          content="default-src 'none'; script-src https://dap.digitalgov.gov/ www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com/;" >
+      <meta name="orgcode" content="672">
+      <meta name="rno" content="Robert.M.Candey.1">
+      <meta name="content-owner" content="Bernard.T.Harris.1">
+      <meta name="webmaster" content="Tamara.J.Kovalick.1">
+      <meta name="description" content="The SSC Web services allow a software developer to use SSC services in their own application...">
+      <meta name="keyword" content="Satellite Situation Center,SSC,SSCWeb,SPDF,space physics data facility, science planning,satellite orbit plots, satellite orbits,orbit,space physics, earths magnetic fields,spacecraft location,satellite conjunctions,magnetic field line conjunctions,ephemeris, XML, Web services">
+<!--
+      <link REL="icon" HREF="nasaicon.png" TYPE="image/png">
+      <link REL="SHORTCUT ICON" HREF="favicon.ico">
+      <link rel="stylesheet" href="/css/common.css" type="text/css">
+      <link rel="stylesheet" href="/css/spdf_services.css" type="text/css">
+      <style type="text/css">
+            a.modellink {font-size:13px; font-style:oblique; font-weight:700;}
+            a.serviceName {color: #069; background-color: #fff;}
+
+            #sources        td.selected {color: #ffffff; background-color: #006699; text-decoration:none;}
+            #services       td.selected {padding: 2px; border: 1px dashed #069; text-decoration:none; font-size: 16px; color: #006699;}
+      </style>
+      <script type="text/javascript" id="_fed_an_ua_tag"
+           src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC">
+      </script>
+-->
+   </head>
+
+<!--
+   <body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" 
+        alink="#000088">
+-->
+     <div id="paper">
+
+<!--#include virtual="../header.html"-->
+
+
+<h1>Perl SSC Web Services Example</h1>
+
+
+The Satellite Situation Center (SSC) Web services allow a software developer
+to use portions of the SSC software in their own application.&nbsp; The 
+following describes an example of how to utilize the SSC Web Services from
+a client program written in the <a href="https://www.perl.org/">Perl</a> 
+programming language.
+This example doesn't provide any useful, end-user functionality but is 
+intended merely as an example for developers of client applications to examine.
+
+<h2> Prerequisites</h2>
+
+The following is required in order to execute the example program:
+<ul>
+  <li><a href="https://www.perl.org/" target="_blank">Perl</a> 
+       5.004 or higher.</li>
+  <li><a href="https://metacpan.org/pod/SOAP::Lite" target="_blank">
+      SOAP::Lite for Perl</a> version 0.55 or higher.</li>
+</ul>
+
+<h2> Example</h2>
+
+The example Perl program is contained in the file 
+<a href="WsExample.pl" target="_blank"><code>WsExample.pl</code></a>.  
+In order to execute the program, save the 
+<a href="WsExample.pl"><code>WsExample.pl</code> file</a> to your computer 
+where Perl is installed.
+
+<h2> Instructions</h2>
+
+The following instructions describe how to execute the example Perl program:
+<ol>
+  <li>On UNIX like systems:
+    <ol>
+      <li>Edit the <code>WsExample.pl</code> file and verify that the first
+          line of the file (the #! [shebang] line) is correct for your
+          system's configuration.</li>
+      <li>Make the file executable (<code>chmod +x WsExample.pl</code>).</li>
+      <li>Execute the program (<code>./WsExample.pl</code>) and compare the 
+          output with what you expected from examining the Perl source 
+          code.</li>
+    </ol>
+  </li>
+  <li>On non-UNIX like systems:
+    <ol>
+      <li>Execute the program (e.g., <code>Perl WsExample.pl</code>) using
+          the appropriate procedure and compare the 
+          output with what you expected from examining the Perl source 
+          code.</li>
+    </ol>
+  </li>
+</ol>
+
+
+<!--#include virtual="/sscfooter.html"-->
+
+  </div>
+</body>
+</html>
