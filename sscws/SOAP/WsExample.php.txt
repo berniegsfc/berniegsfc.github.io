@@ -1,0 +1,172 @@
+<?php 
+/*
+ * NOSA HEADER START
+ *
+ * The contents of this file are subject to the terms of the NASA Open 
+ * Source Agreement (NOSA), Version 1.3 only (the "Agreement").  You may 
+ * not use this file except in compliance with the Agreement.
+ *
+ * You can obtain a copy of the agreement at
+ *   docs/NASA_Open_Source_Agreement_1.3.txt
+ * or 
+ *   http://sscweb.gsfc.nasa.gov/WebServices/NASA_Open_Source_Agreement_1.3.txt.
+ *
+ * See the Agreement for the specific language governing permissions
+ * and limitations under the Agreement.
+ *
+ * When distributing Covered Code, include this NOSA HEADER in each
+ * file and include the Agreement file at 
+ * docs/NASA_Open_Source_Agreement_1.3.txt.  If applicable, add the 
+ * following below this NOSA HEADER, with the fields enclosed by 
+ * brackets "[]" replaced with your own identifying information: 
+ * Portions Copyright [yyyy] [name of copyright owner]
+ *
+ * NOSA HEADER END
+ *
+ * Copyright (c) 2009-2010 United States Government as represented by 
+ * the National Aeronautics and Space Administration. No copyright is 
+ * claimed in the United States under Title 17, U.S.Code. All Other 
+ * Rights Reserved.
+ *
+ * $Id: WsExample.php,v 1.1.2.2 2010/11/19 17:42:02 bharris Exp $
+ */
+
+/*
+ * NOTE: Although not required by this simple example, clients that
+ *   make more significant requests may need to change the default
+ *   values of the PHP default_socket_timeout and max_execution_time
+ *   runtime configuration parameters.  These values may be set in
+ *   the php.ini file, by calling the ini_set function, or by setting
+ *   the SoapClient::SoapClient default_socket_timeout option.  
+ *   Changing these values may be less necessary after the SSC server
+ *   is upgraded in 2011.
+ */
+
+/*
+ * The following required class was generated from the WSDL using 
+ * wsdl2php (http://sourceforge.net/projects/wsdl2php/).
+ */
+require_once 'SatelliteSituationCenterService.php';
+
+    $endpoint = "http://sscweb.gsfc.nasa.gov/WS/ssc/2/SatelliteSituationCenterService?WSDL";
+                                       // SSC Web service endpoint URL
+    $soapOptions = 
+        array("trace" => 1, 
+            "user_agent" => "WsExample.php PHP-SOAP/" . phpversion(),
+            "default_socket_timeout" => 300);
+                                       // Web service options
+
+    $ssc = new SatelliteSituationCenterService($endpoint, $soapOptions);
+                                       // the SSC Web service
+
+    $result = $ssc->getAllSatellites(new getAllSatellites());
+                                       // result of Web service call
+
+//    echo "REQUEST HEADERS:\n" . $ssc->__getLastRequestHeaders() . "\n";
+//    var_dump ($result);
+
+    echo "getAllSatellites() returned:\n";
+
+    foreach ($result->return as $sat) {
+
+        echo "  $sat->id  $sat->name  $sat->startTime - $sat->endTime  $sat->resolution\n";
+    }
+
+    $result = $ssc->getAllGroundStations(new getAllGroundStations());
+
+    echo "getAllGroundStations() returned:\n";
+
+    foreach ($result->return as $station) {
+
+        echo "  $station->id  $station->name  $station->latitude  $station->longitude\n";
+    }
+
+
+    $dRequest = new dataRequest();
+
+//  PHP >= 5.2.0
+//    $dRequest->beginTime = new DateTime('2007-06-19 00:00:00', DateTimeZone.UTC);
+    $dRequest->beginTime = '2007-06-19T00:00:00Z';
+    $dRequest->endTime = '2007-06-19T01:00:00Z';
+
+    $fast = new satelliteSpecification();
+    $fast->id = 'fast';
+    $fast->resolutionFactor = 2;
+    $moon = new satelliteSpecification();
+    $moon->id = 'moon';
+    $moon->resolutionFactor = 2;
+
+    $dRequest->satellites = array($fast, $moon);
+
+//    $locationFilter = new locationFilter();
+//    $locationFilter->mimimum = true;
+//    $locationFilter->maximum = true;
+//    $locationFilter->lowerLimit = -100.0;
+//    $locationFilter->upperLimit = 100.0;
+
+    $xSmCoordOptions = new filteredCoordinateOptions();
+    $xSmCoordOptions->component = 'X';
+    $xSmCoordOptions->coordinateSystem = 'SM';
+//    $xSmCoordOptions->filter = $locationFilter;
+
+    $ySmCoordOptions = new filteredCoordinateOptions();
+    $ySmCoordOptions->component = 'Y';
+    $ySmCoordOptions->coordinateSystem = 'SM';
+//    $ySmCoordOptions->filter = $locationFilter;
+
+    $zSmCoordOptions = new filteredCoordinateOptions();
+    $zSmCoordOptions->component = 'Z';
+    $zSmCoordOptions->coordinateSystem = 'SM';
+//    $ySmCoordOptions->filter = $locationFilter;
+
+    $outOptions = new outputOptions();
+    $outOptions->allLocationFilters = true;
+    $outOptions->coordinateOptions = 
+        array($xSmCoordOptions, $ySmCoordOptions, $zSmCoordOptions);
+
+    $dRequest->outputOptions = $outOptions;
+
+//    var_dump($dRequest);
+
+    $getData = new getData();
+    $getData->arg0 = $dRequest;
+
+//    var_dump ($getData);
+
+    try {
+        $result = $ssc->getData($getData);
+    }
+    catch (SoapFault $e) {
+
+        echo "REQUEST:\n" . $ssc->__getLastRequest() . "\n";
+        return;
+    }
+
+//    echo "REQUEST:\n" . $ssc->__getLastRequest() . "\n";
+//    var_dump ($result);
+
+    echo "getData() returned:\n";
+    $return = $result->return;
+    echo "statusCode = $return->statusCode\n";
+    echo "statusSubCode = $return->statusSubCode\n";
+
+    foreach ($return->data as $satData) {
+
+        echo "id = $satData->id\n";
+
+        $coords = $satData->coordinates;
+
+        echo "coordinateSystem = $coords->coordinateSystem\n";
+
+        $xs = $coords->x;
+        $ys = $coords->y;
+        $zs = $coords->z;
+        $times = $satData->time;
+
+        for ($i = 0; $i < sizeof($xs); $i++) {
+
+            echo "  $times[$i] $xs[$i], $ys[$i], $zs[$i]\n";
+        }
+    }
+
+?>
