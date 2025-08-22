@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<!--
+  <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'unsafe-inline' 'self' https://dap.digitalgov.gov/ https://www.google-analytics.com/ https://code.jquery.com/; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com/ https://www.python.org/;" >
+-->
+  <title>Getting Started With The sscws Python Library</title>
+  <meta content="Bernie Harris" name="author">
+  <meta name="orgcode" content="672">
+  <meta name="description"
+ content="The SSC Web services allow a software developer to use SSC services in their own application...">
+  <meta name="keywords"
+ content="science, data, sscweb, coordinated data analysis, multi-mission, multi-instrument, space physics, XML, Web services">
+<!--
+  <meta name="rno" content="Robert.M.Candey.1">
+  <meta name="content-owner" content="Tamara.J.Kovalick.1">
+  <meta name="webmaster" content="Tamara.J.Kovalick.1">
+  <link rel="icon" href="nasaicon.png" type="image/png">
+  <link rel="SHORTCUT ICON" href="favicon.ico">
+  <link rel="stylesheet" href="/css/common.css" type="text/css">
+  <link rel="stylesheet" href="/css/spdf_services.css" type="text/css">
+  <style type="text/css">	
+	        a.modellink {font-size:13px; font-style:oblique; font-weight:700;} 
+	   	a.serviceName {color: #069; background-color: #fff;}
+		table td {border: thin solid black}
+
+	   	#sources	td.selected {color: #ffffff; background-color: #006699; text-decoration:none;} 
+   	  	#services	td.selected {padding: 2px; border: 1px dashed #069; text-decoration:none; font-size: 16px; color: #006699;} 
+  </style>
+  <script type="text/javascript" id="_fed_an_ua_tag"
+           src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC">
+  </script>
+-->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "description": "Python code snippets to access SPDF data.",
+    "creator": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Space Physics Data Facility",
+        "email": "NASA-SPDF-Support@nasa.onmicrosoft.com",
+        "keywords": [
+            "heliophysics",
+            "space physics",
+            "spdf"
+        ],
+        "parentOrganization": {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Goddard Space Flight Center",
+            "keywords": [
+                "nasa"
+            ],
+            "parentOrganization": {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "National Aeronautics and Space Administration",
+                "keywords": [
+                    "nasa"
+                ]
+            }
+        }
+    },
+    "keywords": [
+        "heliophysics",
+        "space physics",
+        "spdf",
+        "spacecraft position",
+        "geomagnetic field models"
+    ],
+    "codeSampleType": "code snippet",
+    "programmingLanguage": [
+        {
+            "@context": "https://schema.org",
+            "@type": "ComputerLanguage",
+            "name": "Python"
+        }
+    ],
+    "runtimePlatform": "Python3"
+}
+</script>
+  <script type="text/javascript"
+      src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+  <script type="text/javascript" src="CopyText.js">
+  </script>
+</head>
+<!--
+<body alink="#000088" bgcolor="#ffffff" link="#0000ff" text="#000000"
+ vlink="#ff0000">
+-->
+<div id="paper">
+<!--#include virtual="../../header.html"-->
+
+<h1>Getting Started With The sscws Python Library</h1>
+
+<h2>Introduction</h2>
+
+The following information is intended to help someone begin using the 
+<a href="https://pypi.org/project/sscws/" target="_blank">sscws</a> Python 
+library to access information from the 
+<a href="https://sscweb.gsfc.nasa.gov/about.html">Satellite Situation Center</a>
+in a Python program.
+This information will focus on only a few different Python environments
+but may also be helpful in the numerous other Python environments that
+are not explicitly covered.  The environments described here include the
+following:
+<ul>
+  <li><a href="#venv">Basic Virtual Environment</a> (venv)</li>
+  <li><a href="#notebook">Jupyter Notebook</a></li>
+  <li><a href="#thonny">Thonny IDE</a></li>
+<!--
+  <li><a href="#anaconda">Anaconda</a></li>
+-->
+</ul>
+
+<h2 id="venv">Basic Virtual Environment</h2>
+
+This section contains information on getting start with the
+<a href="https://pypi.org/project/sscws/" target="_blank">sscws</a>
+library in a Python 3.3 or higher 
+<a href="https://docs.python.org/3/library/venv.html" target="_blank">venv</a>
+lightweight virtual environment.
+
+<h3>Linux/macOS</h3>
+
+<p>Most Linux distributions have Python installed.  But if the Linux 
+distribution you use does not, it is usually available from the 
+distribution's standard repository and can be installed following the 
+usual procedures for installing optional software.</p>
+
+<p>For macOS, obtain and install Python from 
+<a href="https://www.python.org/" target="_blank">https://www.python.org/</a>
+or an approved source for an enterprised-managed computer.</p>
+
+On a Linux/Mac computer, copy and paste the following into a shell window.
+
+<textarea rows="8" cols="80" readonly="readonly" id="venv_posix_commands">
+cd ~/Downloads
+mkdir sscws
+cd sscws
+python3 -m venv sscws
+source sscws/bin/activate
+pip install sscws matplotlib
+curl -sOJ "https://sscweb.gsfc.nasa.gov/WS/sscr/2/observatories/iss/clientLibraryExample/sscwspy"
+python3 sscws_iss_example.py
+</textarea><br>
+<!-- the following onclick requires a CSP with script-src 'unsafe-inline' -->
+<button onclick="copyText('venv_posix_commands')">Copy commands to clipboard
+</button><br><br>
+You should see the output from the <code>sscws_iss_example.py</code> example
+and a window with a 3D plot of the ISS orbit.  You can modify 
+<code>sscws_iss_example.py</code> yourself or write your own code that
+uses the <code>sscws</code> library to access 
+<a href="https://sscweb.gsfc.nasa.gov/" target="_blank">SSC</a> data.</br><br>
+When you no longer want the example code and environment, do the following
+in the shell window<br>
+<textarea rows="3" cols="80" readonly="readonly" id="venv_posix_delete">
+deactivate
+cd
+rm -rf ~/Downloads/sscws
+</textarea><br>
+<button onclick="copyText('venv_posix_delete')">Copy commands to clipboard
+</button><br><br>
+<h3>Microsoft Windows</h3>
+On a Microsoft computer with python from the 
+<a href="https://www.microsoft.com/en-us/search?q=python" target="_blank">
+Microsoft App Store</a> or
+<a href="https://www.python.org/" target="_blank">https://www.python.org/</a>
+installed, copy and paste the following into a 
+<code>Command Prompt</code> window.<br>
+<textarea rows="8" cols="80" readonly="readonly" id="venv_win_commands">
+cd Downloads
+mkdir sscws
+cd sscws
+python -m venv sscws
+sscws\Scripts\activate.bat
+pip install sscws matplotlib
+curl -sOJ "https://sscweb.gsfc.nasa.gov/WS/sscr/2/observatories/iss/clientLibraryExample/sscwspy"
+python sscws_iss_example.py
+</textarea><br>
+<button onclick="copyText('venv_win_commands')">Copy commands to clipboard
+</button><br><br>
+When you no longer want the example code and environment, do the following
+in the <code>Command Prompt</code> window<br>
+<textarea rows="3" cols="80" readonly="readonly" id="venv_win_delete">
+sscws\Scripts\deactivate.bat
+cd ..
+rmdir  sscws /s
+</textarea><br>
+<button onclick="copyText('venv_win_delete')">Copy commands to clipboard
+</button><br><br>
+<hr><br>
+
+<h2 id="notebook">Jupyter Notebook</h2>
+This section contains information on getting start with the
+<a href="https://pypi.org/project/sscws/" target="_blank">sscws</a>
+library in a Python
+<a href="https://jupyter.org/" target="_blank">Jupyter</a> notebook 
+environment.  The following will give you run/modify access to the 
+example notebooks shown 
+<a href="../#Jupyter_Notebook_Examples" target="_blank">here</a>.
+<br><br>
+<h3>Linux/macOS</h3>
+On a Linux/Mac computer, copy and paste the following into a shell window.
+<textarea rows="8" cols="80" readonly="readonly" id="jupyter_posix_commands">
+cd Downloads
+mkdir sscws-nb
+cd sscws-nb
+python3 -m venv sscws-nb
+source sscws-nb/bin/activate
+pip install sscws matplotlib notebook
+curl -sOJ "https://sscweb.gsfc.nasa.gov/WebServices/REST/jupyter/SscWs{Example,BTraceExample,RadialConjunction,ConjunctionExample}.ipynb"
+python3 -m notebook
+</textarea><br>
+<button onclick="copyText('jupyter_posix_commands')">Copy commands to clipboard
+</button><br><br>
+This may take some time to complete.  Once it does, you should see the jupyter
+<a href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html#notebook-dashboard" target="_blank">notebook dashboard</a>
+ in your browser with the SSC
+example notebook files.  Select one of the SSC examples in the notebook to 
+run/edit.  It should look similar to 
+<a href="../jupyter/SscWsExample.html" target="_blank">this page</a> 
+except that it will be editable.  Select the <code>Cell/Run All</code>
+menu item to execute the entire notebook.  You can modify any of the
+example notebooks or write your own.<br><br>
+When you no longer want the example code and environment, 
+<code>Quit</code> the notebook and do the following in the shell window<br>
+<textarea rows="3" cols="80" readonly="readonly" id="jupyter_posix_delete">
+deactivate
+cd
+rm -rf ~/Downloads/sscws-nb
+</textarea><br>
+<button onclick="copyText('jupyter_posix_delete')">Copy commands to clipboard
+</button><br><br>
+<h3>Microsoft Windows</h3>
+On a Microsoft computer with python from the 
+<a href="https://www.microsoft.com/en-us/search?q=python" target="_blank">
+Microsoft App Store</a> or
+<a href="https://www.python.org/" target="_blank">https://www.python.org/</a>
+installed, copy and paste the following into a 
+<code>Command Prompt</code> window.<br>
+<textarea rows="8" cols="80" readonly="readonly" id="jupyter_win_commands">
+cd Downloads
+mkdir sscws-nb
+cd sscws-nb
+python -m venv sscws-nb
+sscws-nb\Scripts\activate.bat
+pip install sscws matplotlib notebook
+curl -sOJ "https://sscweb.gsfc.nasa.gov/WebServices/REST/jupyter/SscWs{Example,BTraceExample,RadialConjunction,ConjunctionExample}.ipynb"
+python -m notebook
+</textarea><br>
+<button onclick="copyText('jupyter_win_commands')">Copy commands to clipboard
+</button><br><br>
+This may take some time to complete.  Once it does, you should see the jupyter
+<a href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html#notebook-dashboard" target="_blank">notebook dashboard</a>
+notebook dashboard</a> in your browser with the SSC
+example notebook files.  Select one of the SSC examples in the notebook to 
+run/edit.  It should look similar to 
+<a href="../jupyter/SscWsExample.html" target="_blank">this page</a> 
+except that it will be editable.  Select the <code>Cell/Run All</code>
+menu item to execute the entire notebook.<br><br>
+When you no longer want the example code and environment,
+<code>Quit</code> the notebook and do the following in the 
+<code>Command Prompt</code> window<br>
+<textarea rows="3" cols="80" readonly="readonly" id="jupyter_win_delete">
+deactivate
+cd ..
+rmdir sscws-nb /s
+</textarea><br>
+<button onclick="copyText('jupyter_win_delete')">Copy commands to clipboard
+</button><br><br>
+<hr><br>
+
+<h2 id="thonny">Thonny IDE</h2>
+This section contains information on using the
+<a href="https://pypi.org/project/sscws/" target="_blank">sscws</a>
+library in a <a href="https://thonny.org/">Thonny</a> Integrated 
+Development Environment (IDE).  Thonny is one of many Python IDEs.
+It is available for installation on
+Microsoft Windows, Apple macOS, and many Linux distributions.  On a
+computer with Thonny installed, merely click
+<a href="https://sscweb.gsfc.nasa.gov/WS/sscr/2/observatories/iss/clientLibraryExample/sscwsPy?mediaType=octet" 
+target="_blank">
+here</a> to download the <code>sscws</code> example code from this
+<a href="https://sscweb.gsfc.nasa.gov/WS/sscr/2/observatories/iss/clientLibraryExample/sscwsPy" 
+target="_blank">page</a>.  Depending upon the configuration of your computer,
+Thonny will automatically start with the example code or you may be
+asked which application should handle the file.  If asked, select Thonny
+as the application to open the file with.
+Before attempting to run the code, do the following:
+<ol>
+  <li>From the <code>Tools</code> menu, select <code>Options</code>.</li>
+  <li>Select the <code>Interpreter</code> tab.</li>
+      <img src="ThonnyOptions.png" 
+           alt="Thonny Options window">
+  <li>Select the <code>New virtual environment</code> link at the bottom
+      of the tab.</li>
+  <li>On the file chooser window, create a new folder name, for example, 
+      "sscws" and select it.  It will take a few seconds to create.</li>
+  <li>Select <code>ok</code> to close the Thonny options window.</li>
+  <li>From the <code>Tools</code> menu, 
+      select <code>Manage packages</code>.</li>
+      <img src="ThonnyManagePackages.png" 
+           alt="Thonny Manage packages window">
+  <li>Enter <code>sscws</code> in the search field and click the
+      <code>Search on PyPI</code> button.</li>
+  <li>Click the <code>Install</code> button to install the 
+      <code>sscws</code> package.</li>
+</ol>
+Now you can close the <code>Manage packages</code> window and select the
+<code>Run</code> button.  That should result in the following<br><br>
+<img src="ThonnySscIssExample.png" alt="execution of sscws example code">
+<br><br>
+<hr><br>
+
+<!--
+<h2 id="anaconda">Anaconda</h2>
+
+This section contains information on getting start with the
+<a href="https://pypi.org/project/sscws/" target="_blank">sscws</a>
+library in an 
+<a href="https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)" 
+   target="_blank">Anaconda</a> environment. Anaconda is a distribution 
+of the Python and R programming languages for scientific computing.<br>
+
+<h3 id="anaconda_example">Simple Example</h3>
+Use the following procedure to run the simple <code>sscws</code>
+example.
+<ol>
+  <li>Open the <code>Anaconda Navigator</code></li>
+  <li>Select <code>Environments</code> from the options on the left.</li>
+  <li>Select <code>Create</code> at the bottom of the list of 
+      environments.</li>
+  <li>Enter a name such as <code>ssc</code> and select create.</li>
+  <li>Select the <code>ssc</code> environment and select the triangle
+      at the right side of the environment.
+      <img height="507" width="713" src="AnacondaNavigator.png" 
+           alt="Anaconda Navigator">
+  </li>
+  <li>Select <code>Open Terminal</code> from the menu.</li>
+  <li>In the <code>anaconda terminal window</code>, copy and past the following:
+    <textarea rows="6" cols="80" readonly="readonly" id="anaconda_win_commands">
+cd Downloads
+mkdir sscws
+cd sscws
+pip install sscws matplotlib
+curl -sOJ "https://sscweb.gsfc.nasa.gov/WS/sscr/2/observatories/iss/clientLibraryExample/sscwspy"
+python sscws_iss_example.py
+    </textarea><br>
+    <button onclick="copyText('anaconda_win_commands')">Copy commands to 
+    clipboard </button><br><br>
+    When you no longer want the example code and environment, do the following
+    in the <code>anaconda terminal window</code> window<br>
+    <textarea rows="2" cols="80" readonly="readonly" id="anaconda_win_delete">
+cd ..
+rmdir  sscws /s
+    </textarea><br>
+    <button onclick="copyText('anaconda_win_delete')">Copy commands to clipboard
+    </button>
+  </li>
+</ol>
+
+<h3 id="anaconda_notebook">Jupyter Notebook Examples</h3>
+Use the following procedure to run the <code>sscws</code>Jupyter notebook 
+examples.
+<ol>
+  <li>Open the <code>Anaconda Navigator</code></li>
+  <li>Select <code>Environments</code> from the options on the left.</li>
+  <li>Select <code>Create</code> at the bottom of the list of 
+      environments.</li>
+  <li>Enter a name such as <code>ssc</code> and select create.</li>
+  <li>Select the <code>ssc</code> environment and select the triangle
+      at the right side of the environment.
+      <img height="507" width="713" src="AnacondaNavigator.png" 
+           alt="Anaconda Navigator">
+  </li>
+  <li>Select <code>Open Terminal</code> from the menu.</li>
+  <li>In the <code>anaconda terminal window</code>, copy and past the following:
+    <textarea rows="6" cols="80" readonly="readonly" id="anaconda_nb_win_commands">
+cd Downloads
+mkdir sscws-nb
+cd sscws-nb
+pip install sscws matplotlib notebook
+curl -sOJ "https://sscweb.gsfc.nasa.gov/WebServices/REST/jupyter/SscWs{Example,BTraceExample,RadialConjunction,ConjunctionExample}.ipynb"
+python -m notebook
+    </textarea><br>
+    <button onclick="copyText('anaconda_nb_win_commands')">Copy commands to 
+    clipboard </button><br><br>
+    When you no longer want the example code and environment, do the following
+    in the <code>anaconda terminal window</code> window<br>
+    <textarea rows="2" cols="80" readonly="readonly" id="anaconda_nb_win_delete">
+cd ..
+rmdir  sscws-nb /s
+    </textarea><br>
+    <button onclick="copyText('anaconda_nb_win_delete')">Copy commands to clipboard
+    </button>
+  </li>
+</ol>
+-->
+
+<h2>Questions/Comments</h2>
+<p>Questions or comments concerning these Web services should be sent
+to <a
+ href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com?subject=SSC%20Web%20Service%20Feedback">SSC
+Feedback</a>.</p>
+<!--#include virtual="/sscfooter.html"--> </div>
+</body>
+</html>
