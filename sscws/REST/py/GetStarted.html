@@ -213,7 +213,7 @@ mkdir sscws-nb
 cd sscws-nb
 python3 -m venv sscws-nb
 source sscws-nb/bin/activate
-pip install sscws matplotlib notebook
+pip install sscws matplotlib cdasws notebook
 curl -sOJ "https://sscweb.gsfc.nasa.gov/WebServices/REST/jupyter/SscWs{Example,BTraceExample,RadialConjunction,ConjunctionExample}.ipynb"
 python3 -m notebook
 </textarea><br>
@@ -250,7 +250,7 @@ mkdir sscws-nb
 cd sscws-nb
 python -m venv sscws-nb
 sscws-nb\Scripts\activate.bat
-pip install sscws matplotlib notebook
+pip install sscws matplotlib cdasws notebook
 curl -sOJ "https://sscweb.gsfc.nasa.gov/WebServices/REST/jupyter/SscWs{Example,BTraceExample,RadialConjunction,ConjunctionExample}.ipynb"
 python -m notebook
 </textarea><br>
@@ -274,9 +274,10 @@ rmdir sscws-nb /s
 </textarea><br>
 <button onclick="copyText('jupyter_win_delete')">Copy commands to clipboard
 </button><br><br>
-<hr><br>
+<hr>
 
 <h2 id="thonny">Thonny IDE</h2>
+
 This section contains information on using the
 <a href="https://pypi.org/project/sscws/" target="_blank">sscws</a>
 library in a <a href="https://thonny.org/">Thonny</a> Integrated 
