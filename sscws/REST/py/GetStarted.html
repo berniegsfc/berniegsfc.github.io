@@ -10,9 +10,9 @@
   <meta content="Bernie Harris" name="author">
   <meta name="orgcode" content="672">
   <meta name="description"
- content="The SSC Web services allow a software developer to use SSC services in their own application...">
+ content="NASA's SSC Web services allow a software developer to use SSC services in their own application...">
   <meta name="keywords"
- content="science, data, sscweb, coordinated data analysis, multi-mission, multi-instrument, space physics, XML, Web services">
+ content="nasa, science, data, sscweb, coordinated data analysis, multi-mission, multi-instrument, space physics, XML, Web services">
 <!--
   <meta name="rno" content="Robert.M.Candey.1">
   <meta name="content-owner" content="Tamara.J.Kovalick.1">
@@ -102,7 +102,7 @@
 
 The following information is intended to help someone begin using the 
 <a href="https://pypi.org/project/sscws/" target="_blank">sscws</a> Python 
-library to access information from the 
+library to access information from NASA's 
 <a href="https://sscweb.gsfc.nasa.gov/about.html">Satellite Situation Center</a>
 in a Python program.
 This information will focus on only a few different Python environments
@@ -137,9 +137,10 @@ usual procedures for installing optional software.</p>
 <a href="https://www.python.org/" target="_blank">https://www.python.org/</a>
 or an approved source for an enterprised-managed computer.</p>
 
-On a Linux/Mac computer, copy and paste the following into a shell window.
+On a Linux/Mac computer, copy and paste the following into a terminal/shell 
+window.
 
-<textarea rows="8" cols="80" readonly="readonly" id="venv_posix_commands">
+<textarea rows="9" cols="80" readonly="readonly" id="venv_posix_commands">
 cd ~/Downloads
 mkdir sscws
 cd sscws
@@ -166,37 +167,43 @@ rm -rf ~/Downloads/sscws
 </textarea><br>
 <button onclick="copyText('venv_posix_delete')">Copy commands to clipboard
 </button><br><br>
+
 <h3>Microsoft Windows</h3>
-On a Microsoft computer with python from the 
-<a href="https://www.microsoft.com/en-us/search?q=python" target="_blank">
-Microsoft App Store</a> or
+
+On a Microsoft computer, install python from the 
+<a href="https://www.microsoft.com/en-us/search/shop?q=python+3.13" target="_blank">
+Microsoft App Store</a>,
 <a href="https://www.python.org/" target="_blank">https://www.python.org/</a>
-installed, copy and paste the following into a 
-<code>Command Prompt</code> window.<br>
-<textarea rows="8" cols="80" readonly="readonly" id="venv_win_commands">
+, or an approved source for an enterprised-managed computer.
+
+Then, copy and paste the following into a 
+<code>Terminal</code> (PowerShell) window.<br>
+<textarea rows="9" cols="80" readonly="readonly" id="venv_win_commands">
 cd Downloads
 mkdir sscws
 cd sscws
 python -m venv sscws
 sscws\Scripts\activate.bat
 pip install sscws matplotlib
-curl -sOJ "https://sscweb.gsfc.nasa.gov/WS/sscr/2/observatories/iss/clientLibraryExample/sscwspy"
+C:\Windows\System32\curl -s -O -J "https://sscweb.gsfc.nasa.gov/WS/sscr/2/observatories/iss/clientLibraryExample/sscwspy"
 python sscws_iss_example.py
 </textarea><br>
 <button onclick="copyText('venv_win_commands')">Copy commands to clipboard
 </button><br><br>
 When you no longer want the example code and environment, do the following
-in the <code>Command Prompt</code> window<br>
+in the <code>Terminal</code> (PowerShell) window<br>
 <textarea rows="3" cols="80" readonly="readonly" id="venv_win_delete">
 sscws\Scripts\deactivate.bat
 cd ..
-rmdir  sscws /s
+Remove-Item -Path "sscws" -Recurse -Force
 </textarea><br>
 <button onclick="copyText('venv_win_delete')">Copy commands to clipboard
 </button><br><br>
-<hr><br>
+
+<hr>
 
 <h2 id="notebook">Jupyter Notebook</h2>
+
 This section contains information on getting start with the
 <a href="https://pypi.org/project/sscws/" target="_blank">sscws</a>
 library in a Python
@@ -205,9 +212,13 @@ environment.  The following will give you run/modify access to the
 example notebooks shown 
 <a href="../#Jupyter_Notebook_Examples" target="_blank">here</a>.
 <br><br>
+
 <h3>Linux/macOS</h3>
-On a Linux/Mac computer, copy and paste the following into a shell window.
-<textarea rows="8" cols="80" readonly="readonly" id="jupyter_posix_commands">
+
+On a Linux/Mac computer with Python installed, copy and paste the 
+following into a terminal/shell window.
+
+<textarea rows="9" cols="80" readonly="readonly" id="jupyter_posix_commands">
 cd Downloads
 mkdir sscws-nb
 cd sscws-nb
@@ -219,6 +230,7 @@ python3 -m notebook
 </textarea><br>
 <button onclick="copyText('jupyter_posix_commands')">Copy commands to clipboard
 </button><br><br>
+
 This may take some time to complete.  Once it does, you should see the jupyter
 <a href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html#notebook-dashboard" target="_blank">notebook dashboard</a>
  in your browser with the SSC
@@ -229,7 +241,8 @@ except that it will be editable.  Select the <code>Cell/Run All</code>
 menu item to execute the entire notebook.  You can modify any of the
 example notebooks or write your own.<br><br>
 When you no longer want the example code and environment, 
-<code>Quit</code> the notebook and do the following in the shell window<br>
+<code>Quit</code> the notebook and do the following in the terminal/shell 
+window<br>
 <textarea rows="3" cols="80" readonly="readonly" id="jupyter_posix_delete">
 deactivate
 cd
@@ -237,25 +250,24 @@ rm -rf ~/Downloads/sscws-nb
 </textarea><br>
 <button onclick="copyText('jupyter_posix_delete')">Copy commands to clipboard
 </button><br><br>
+
 <h3>Microsoft Windows</h3>
-On a Microsoft computer with python from the 
-<a href="https://www.microsoft.com/en-us/search?q=python" target="_blank">
-Microsoft App Store</a> or
-<a href="https://www.python.org/" target="_blank">https://www.python.org/</a>
-installed, copy and paste the following into a 
-<code>Command Prompt</code> window.<br>
-<textarea rows="8" cols="80" readonly="readonly" id="jupyter_win_commands">
+
+On a Microsoft computer with python installed, copy and paste the following 
+into a <code>Terminal</code> (PowerShell) window.<br>
+<textarea rows="9" cols="80" readonly="readonly" id="jupyter_win_commands">
 cd Downloads
 mkdir sscws-nb
 cd sscws-nb
 python -m venv sscws-nb
 sscws-nb\Scripts\activate.bat
 pip install sscws matplotlib xarray cdflib cdasws notebook
-curl -sOJ "https://sscweb.gsfc.nasa.gov/WebServices/REST/jupyter/SscWs{Example,BTraceExample,RadialConjunction,ConjunctionExample}.ipynb"
+C:\Windows\System32\curl -s -O -J "https://sscweb.gsfc.nasa.gov/WebServices/REST/jupyter/SscWs{Example,BTraceExample,RadialConjunction,ConjunctionExample}.ipynb"
 python -m notebook
 </textarea><br>
 <button onclick="copyText('jupyter_win_commands')">Copy commands to clipboard
 </button><br><br>
+
 This may take some time to complete.  Once it does, you should see the jupyter
 <a href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html#notebook-dashboard" target="_blank">notebook dashboard</a>
 notebook dashboard</a> in your browser with the SSC
@@ -266,11 +278,11 @@ except that it will be editable.  Select the <code>Cell/Run All</code>
 menu item to execute the entire notebook.<br><br>
 When you no longer want the example code and environment,
 <code>Quit</code> the notebook and do the following in the 
-<code>Command Prompt</code> window<br>
+<code>Terminal</code> (PowerShell) window<br>
 <textarea rows="3" cols="80" readonly="readonly" id="jupyter_win_delete">
 deactivate
 cd ..
-rmdir sscws-nb /s
+Remove-Item -Path "sscws-nb" -Recurse -Force
 </textarea><br>
 <button onclick="copyText('jupyter_win_delete')">Copy commands to clipboard
 </button><br><br>
