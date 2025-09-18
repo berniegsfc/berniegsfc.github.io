@@ -37,11 +37,6 @@
 -->
 <div id="paper"> <!--#include virtual="header.html"-->
 
-<!--
-WebServices.html is created from the WebServicesTemplate.html file during the
-automated building of this application's documentation.  Modifications should
-be made to the WebServicesTemplate.html file.
--->
 
 <section>
     <div style="background-image:url(https://sscweb.gsfc.nasa.gov/images/SSCWebHeader.png); background-size: cover; height: 100px; width: 100%">
@@ -51,13 +46,20 @@ be made to the WebServicesTemplate.html file.
 <h1>SSC Web Services</h1>
 
 <p>The Satellite Situation Center (SSC) Web services allow a software
-developer
-to use portions of the SSC software in their own application.&nbsp; If
-you are not a software developer and simply want to use the existing
+developer to use portions of the SSC software in their own application.
+If you are not a software developer and simply want to use the existing
 web interface to SSC, then return to the 
-<a href="/index.html">main SSCWeb page</a>.
+<a href="https://sscweb.gsfc.nasa.gov/index.html">main SSCWeb page</a>.
 </p>
+
+<p>
+Note: These pages on <code>github.io</code> are more up to date, more
+functional, and more LLM-friendly than the corresponding
+<a href="https://sscweb.gsfc.nasa.gov/WebServices" target="_blank">SSC Web Services</a> pages.
+</p>
+
 <h2> Description</h2>
+
 <p>SSC is a system to cast geocentric spacecraft location information
 into a framework of (empirical) geophysical regions and mappings of spacecraft
 locations along lines of the Earth's magnetic field. This capability is
@@ -65,23 +67,12 @@ one key to mission science planning (both single missions and
 coordinated observations of multiple spacecraft with ground-based 
 investigations) and to subsequent multi-mission data analysis.</p>
 <p>If you are developing an application that requires satellite
-location
-data based upon updated, predictive and definitive ephemeris for the
-satellites
-maintained at the SSC, then the SSC Web services can be used to avoid
-developing
-and maintaining this data and software yourself.&nbsp; The following
-describes
-how to utilize these services from your own application.</p>
+location data based upon updated, predictive and definitive ephemeris for the
+satellites maintained at the SSC, then the SSC Web services can be used to avoid
+developing and maintaining this data and software yourself.&nbsp; The following
+describes how to utilize these services from your own application.</p>
 
 <h2>Network Protocol Support</h2>
-
-<!-- As of 1/18/17, ipv6-test.com doesn't provide their png file through
-     https.  This causes a mix-mode content issue so don't bother with this.
-<a href='http://ipv6-test.com/validate.php?url=referer'>
-<img src='http://ipv6-test.com/button-ipv6-big.png'
- alt='ipv6 ready' title='ipv6 ready' border='0' align="right"/></a>
--->
 
 The following web services are currently available over 
 <a href="https://en.wikipedia.org/wiki/HTTPS" target="_blank">HTTPS</a>
