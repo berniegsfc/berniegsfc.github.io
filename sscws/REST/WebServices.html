@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Security-Policy"
-      content="frame-ancestors 'self' https://sscweb.gsfc.nasa.gov;" >
 <!--
   <meta http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' https://dap.digitalgov.gov/ https://www.google-analytics.com/ https://code.jquery.com/; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com/ https://www.python.org/ https://binder.opensci.2i2c.cloud/ https://anaconda.org/ https://img.shields.io/;" >
@@ -577,12 +575,12 @@ Here is a request
 <a href="https://sscweb.gsfc.nasa.gov/WS/sscr/2/application.wadl" target="_blank">
 https://sscweb.gsfc.nasa.gov/WS/sscr/2/application.wadl</a> for the WADL.
 
-<!-- need sscweb to relax CSP for this iframe to work
-Below is an example client request to this service<!-- and the results-->.<br>
 <pre>$ curl https://sscweb.gsfc.nasa.gov/WS/sscr/2/application.wadl | xmllint --format -</pre>
-<iframe src="https://sscweb.gsfc.nasa.gov/WS/sscr/2/application.wadl" height="300" width="90%"></iframe>
 
+<!-- need sscweb to relax CSP for this iframe to work
+<iframe src="https://sscweb.gsfc.nasa.gov/WS/sscr/2/application.wadl" height="300" width="90%"></iframe>
 -->
+
 <!--
 <h3>Get About</h3>
 <h3>Get Privacy</h3>
