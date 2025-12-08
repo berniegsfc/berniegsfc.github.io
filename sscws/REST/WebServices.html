@@ -69,7 +69,7 @@ If you are not a software developer and simply want to use the existing web
 (HTML) interface to SSC, then return to the <a href="https://sscweb.gsfc.nasa.gov/">main SSCWeb page</a>.
 
 If you are developing software that requires the type of information
-available at SSC, the the SSC Web services
+available at SSC, then these SSC Web services
 will provide a convenient API to the information.
 This document is organized as follows:
 <ul>
@@ -606,7 +606,7 @@ response.<br>
     <tr>
       <th style="vertical-align: top;">Partial Path<br>
       </th>
-      <td style="vertical-align: top;">/observatories<br>
+      <td style="vertical-align: top;">/observatories?id={id}<br>
       </td>
       <td style="vertical-align: top;"><br>
       </td>
@@ -695,6 +695,14 @@ Likely Response Codes<br>
   </tbody>
 </table>
 <br>
+Where:
+<ul>
+  <li>{id} = observatory identifiers for which information is 
+      being requested.  The values must be from those returned by 
+      <a href="#Get_Observatories">Get Observatories</a>. If
+      no identifiers are given, all observatory descriptions
+      are returned.</li>
+</ul>
 <br>
 <h3><a name="Get_Client_Example"></a>Get Client Example</h3>
 This service provides example client code to retrieve data for an observatory.
