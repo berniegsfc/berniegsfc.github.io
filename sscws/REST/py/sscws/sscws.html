@@ -213,10 +213,17 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 
 
     def get_observatories(
-            self
+            self,
+            obs_ids: Optional[List[str]] = None
         ) -&gt; Dict:
         &#34;&#34;&#34;
         Gets a description of the available SSC observatories.
+
+        Parameters
+        ----------
+        obs_ids
+            Optional list of observatory identifiers to get.  If none
+            are given, all are returned.
 
         Returns
         -------
@@ -226,6 +233,10 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
             with the addition of the following key/values:&lt;br&gt;
             - HttpStatus: with the value of the HTTP status code.
               Successful == 200.&lt;br&gt;
+            When HttpStatus == 200:&lt;br&gt;
+            - Observatories: containing a List of Dictionaries describing
+              each observatory (keys: Id, Name, Resolution, StartTime,
+              EndTime, ResourceId).&lt;br&gt;
             When HttpStatus != 200:&lt;br&gt;
             - HttpText: containing a string representation of the HTTP
               entity body.&lt;br&gt;
@@ -236,8 +247,12 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
             - ErrorDescription: value from HttpText.&lt;br&gt;
         &#34;&#34;&#34;
         url = self._endpoint + &#39;observatories&#39;
+        params = []
 
-        self.logger.debug(&#39;request url = %s&#39;, url)
+        if obs_ids is None:
+            obs_ids = []
+        for obs_id in obs_ids:
+            params.append((&#39;id&#39;, obs_id))
 
         headers = None
         if self._cache[&#39;Observatories&#39;][&#39;ETag&#39;] is not None:
@@ -246,13 +261,18 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
             }
 
         response = self._session.get(url, timeout=self._timeout,
-                                     headers=headers)
+                                     headers=headers, params=params)
+
+        #self.logger.debug(f&#39;url = {response.url}, &#39;\
+        #    &#39;status = {response.status_code}&#39;)
 
         if response.status_code == 304:
             return self._cache[&#39;Observatories&#39;][&#39;Value&#39;]
 
         status = self.__get_status(response)
         if response.status_code != 200:
+            self.logger.warning(&#39;%s failed with status %d&#39;, response.url,
+                                response.status_code)
             return status
 
         observatory_response = ET.fromstring(response.text)
@@ -431,6 +451,8 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
             with the addition of the following key/values:&lt;br&gt;
             - HttpStatus: with the value of the HTTP status code.
               Successful == 200.&lt;br&gt;
+            When HttpStatus == 200:&lt;br&gt;
+            - Data: List of SatelliteData dictionaries.&lt;br&gt;
             When HttpStatus != 200:&lt;br&gt;
             - HttpText: containing a string representation of the HTTP
               entity body.&lt;br&gt;
@@ -595,6 +617,7 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
         ----------
         results
             results to get locations from.
+
         Returns
         -------
         Dict
@@ -636,6 +659,45 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
                 self.logger.error(&#39;CDF file has been retained.&#39;)
                 raise
         return locations_result
+
+
+    def get_client_library_example(
+            self,
+            obs_id: str,
+            language: str = &#39;Python&#39;
+        ) -&gt; str:
+        &#34;&#34;&#34;
+        Gets client library example code for the given observatory and
+        programming language.
+
+        Parameters
+        ----------
+        observatory
+            The observatory to use in the example code.  It must be an Id
+            returned by get_observatories.
+        language
+            The programming language of the example code.  It must be 
+            either Python or IDL.
+
+        Returns
+        -------
+        str
+            Requested client library example code.
+        &#34;&#34;&#34;
+        library = &#39;sscwsPy&#39;
+        if language.lower() == &#39;idl&#39;:
+            library = &#39;sscwsIdl&#39;
+
+        response = requests.get(self._endpoint + &#39;observatories/&#39; +
+            obs_id + &#39;/clientLibraryExample/&#39; + library,
+            timeout=self._timeout)
+
+        if response.status_code != 200:
+            self.logger.warning(&#39;%s failed with status %d&#39;, response.url,
+                                response.status_code)
+            return None
+
+        return response.text
 
 
     @staticmethod
@@ -1456,6 +1518,71 @@ to the SscWs server.</p>
 <dd>name of tempory file or None if there was an error.</dd>
 </dl></div>
 </dd>
+<dt id="sscws.sscws.SscWs.get_client_library_example"><code class="name flex">
+<span>def <span class="ident">get_client_library_example</span></span>(<span>self, obs_id: str, language: str = 'Python') ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_client_library_example(
+        self,
+        obs_id: str,
+        language: str = &#39;Python&#39;
+    ) -&gt; str:
+    &#34;&#34;&#34;
+    Gets client library example code for the given observatory and
+    programming language.
+
+    Parameters
+    ----------
+    observatory
+        The observatory to use in the example code.  It must be an Id
+        returned by get_observatories.
+    language
+        The programming language of the example code.  It must be 
+        either Python or IDL.
+
+    Returns
+    -------
+    str
+        Requested client library example code.
+    &#34;&#34;&#34;
+    library = &#39;sscwsPy&#39;
+    if language.lower() == &#39;idl&#39;:
+        library = &#39;sscwsIdl&#39;
+
+    response = requests.get(self._endpoint + &#39;observatories/&#39; +
+        obs_id + &#39;/clientLibraryExample/&#39; + library,
+        timeout=self._timeout)
+
+    if response.status_code != 200:
+        self.logger.warning(&#39;%s failed with status %d&#39;, response.url,
+                            response.status_code)
+        return None
+
+    return response.text</code></pre>
+</details>
+<div class="desc"><p>Gets client library example code for the given observatory and
+programming language.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>observatory</code></strong></dt>
+<dd>The observatory to use in the example code.
+It must be an Id
+returned by get_observatories.</dd>
+<dt><strong><code>language</code></strong></dt>
+<dd>The programming language of the example code.
+It must be
+either Python or IDL.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Requested client library example code.</dd>
+</dl></div>
+</dd>
 <dt id="sscws.sscws.SscWs.get_conjunctions"><code class="name flex">
 <span>def <span class="ident">get_conjunctions</span></span>(<span>self,<br>query: <a title="sscws.request.QueryRequest" href="request.html#sscws.request.QueryRequest">QueryRequest</a>) ‑> Dict</span>
 </code></dt>
@@ -1757,6 +1884,8 @@ HttpStatus):<br>
         with the addition of the following key/values:&lt;br&gt;
         - HttpStatus: with the value of the HTTP status code.
           Successful == 200.&lt;br&gt;
+        When HttpStatus == 200:&lt;br&gt;
+        - Data: List of SatelliteData dictionaries.&lt;br&gt;
         When HttpStatus != 200:&lt;br&gt;
         - HttpText: containing a string representation of the HTTP
           entity body.&lt;br&gt;
@@ -1814,6 +1943,8 @@ If None, default is CoordinateSystem.GSE.</dd>
 with the addition of the following key/values:<br>
 - HttpStatus: with the value of the HTTP status code.
 Successful == 200.<br>
+When HttpStatus == 200:<br>
+- Data: List of SatelliteData dictionaries.<br>
 When HttpStatus != 200:<br>
 - HttpText: containing a string representation of the HTTP
 entity body.<br>
@@ -2022,6 +2153,7 @@ cdflib module to be installed.</p>
     ----------
     results
         results to get locations from.
+
     Returns
     -------
     Dict
@@ -2090,7 +2222,7 @@ HttpStatus):<br>
 </dl></div>
 </dd>
 <dt id="sscws.sscws.SscWs.get_observatories"><code class="name flex">
-<span>def <span class="ident">get_observatories</span></span>(<span>self) ‑> Dict</span>
+<span>def <span class="ident">get_observatories</span></span>(<span>self, obs_ids: List[str] | None = None) ‑> Dict</span>
 </code></dt>
 <dd>
 <details class="source">
@@ -2098,10 +2230,17 @@ HttpStatus):<br>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def get_observatories(
-        self
+        self,
+        obs_ids: Optional[List[str]] = None
     ) -&gt; Dict:
     &#34;&#34;&#34;
     Gets a description of the available SSC observatories.
+
+    Parameters
+    ----------
+    obs_ids
+        Optional list of observatory identifiers to get.  If none
+        are given, all are returned.
 
     Returns
     -------
@@ -2111,6 +2250,10 @@ HttpStatus):<br>
         with the addition of the following key/values:&lt;br&gt;
         - HttpStatus: with the value of the HTTP status code.
           Successful == 200.&lt;br&gt;
+        When HttpStatus == 200:&lt;br&gt;
+        - Observatories: containing a List of Dictionaries describing
+          each observatory (keys: Id, Name, Resolution, StartTime,
+          EndTime, ResourceId).&lt;br&gt;
         When HttpStatus != 200:&lt;br&gt;
         - HttpText: containing a string representation of the HTTP
           entity body.&lt;br&gt;
@@ -2121,8 +2264,12 @@ HttpStatus):<br>
         - ErrorDescription: value from HttpText.&lt;br&gt;
     &#34;&#34;&#34;
     url = self._endpoint + &#39;observatories&#39;
+    params = []
 
-    self.logger.debug(&#39;request url = %s&#39;, url)
+    if obs_ids is None:
+        obs_ids = []
+    for obs_id in obs_ids:
+        params.append((&#39;id&#39;, obs_id))
 
     headers = None
     if self._cache[&#39;Observatories&#39;][&#39;ETag&#39;] is not None:
@@ -2131,13 +2278,18 @@ HttpStatus):<br>
         }
 
     response = self._session.get(url, timeout=self._timeout,
-                                 headers=headers)
+                                 headers=headers, params=params)
+
+    #self.logger.debug(f&#39;url = {response.url}, &#39;\
+    #    &#39;status = {response.status_code}&#39;)
 
     if response.status_code == 304:
         return self._cache[&#39;Observatories&#39;][&#39;Value&#39;]
 
     status = self.__get_status(response)
     if response.status_code != 200:
+        self.logger.warning(&#39;%s failed with status %d&#39;, response.url,
+                            response.status_code)
         return status
 
     observatory_response = ET.fromstring(response.text)
@@ -2176,6 +2328,13 @@ HttpStatus):<br>
     return result</code></pre>
 </details>
 <div class="desc"><p>Gets a description of the available SSC observatories.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>obs_ids</code></strong></dt>
+<dd>Optional list of observatory identifiers to get.
+If none
+are given, all are returned.</dd>
+</dl>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>Dict</code></dt>
@@ -2184,6 +2343,10 @@ HttpStatus):<br>
 with the addition of the following key/values:<br>
 - HttpStatus: with the value of the HTTP status code.
 Successful == 200.<br>
+When HttpStatus == 200:<br>
+- Observatories: containing a List of Dictionaries describing
+each observatory (keys: Id, Name, Resolution, StartTime,
+EndTime, ResourceId).<br>
 When HttpStatus != 200:<br>
 - HttpText: containing a string representation of the HTTP
 entity body.<br>
@@ -2216,6 +2379,7 @@ HttpStatus):<br>
 <ul class="">
 <li><code><a title="sscws.sscws.SscWs.close" href="#sscws.sscws.SscWs.close">close</a></code></li>
 <li><code><a title="sscws.sscws.SscWs.download" href="#sscws.sscws.SscWs.download">download</a></code></li>
+<li><code><a title="sscws.sscws.SscWs.get_client_library_example" href="#sscws.sscws.SscWs.get_client_library_example">get_client_library_example</a></code></li>
 <li><code><a title="sscws.sscws.SscWs.get_conjunctions" href="#sscws.sscws.SscWs.get_conjunctions">get_conjunctions</a></code></li>
 <li><code><a title="sscws.sscws.SscWs.get_example_time_interval" href="#sscws.sscws.SscWs.get_example_time_interval">get_example_time_interval</a></code></li>
 <li><code><a title="sscws.sscws.SscWs.get_ground_stations" href="#sscws.sscws.SscWs.get_ground_stations">get_ground_stations</a></code></li>
