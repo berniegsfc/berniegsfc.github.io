@@ -1,0 +1,570 @@
+openapi: 3.0.0
+info:
+  title: NASA's Satellite Situation Center (SSC) Web Services
+  contact:
+    name: SPDF Support
+    url: https://berniegsfc.github.io/sscws/REST/
+    email: NASA-SPDF-Support@nasa.onmicrosoft.com
+  version: 1.x
+externalDocs:
+  description: SSC Web Service Schema
+  url: https://berniegsfc.github.io/sscws/REST/SSC.xsd
+servers:
+- url: https://sscweb.gsfc.nasa.gov/WS/sscr/2
+  description: SSC Web Service
+paths:
+  /WS/sscr/2/conjunctions:
+    post:
+      summary: Provides a conjunction query capability.
+      operationId: getConjunctions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QueryRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/QueryRequest"
+      responses:
+        "304":
+          description: Not Modified
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too Many Requests
+        "503":
+          description: Service Unavailable
+        default:
+          description: Conjunction query results.
+          content:
+            application/xml:
+              schema:
+                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("QueryResult"))
+            application/json:
+              schema:
+                exclusiveMaximum: false
+                exclusiveMinimum: false
+                minLength: 0
+                uniqueItems: false
+                maxProperties: 0
+                minProperties: 0
+                type: object
+                nullable: false
+                readOnly: false
+                writeOnly: false
+                deprecated: false
+      deprecated: false
+  /WS/sscr/2/echoDataRequest:
+    post:
+      summary: Resource to allow a client to convert a DataRequest from XML to JSON
+        or from JSON to XML.
+      operationId: echoRequest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DataRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/DataRequest"
+      responses:
+        "415":
+          description: Unsupported Media Type
+        default:
+          description: Requested representation of the given request.
+          content:
+            application/xml:
+              schema:
+                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("DataRequest"))
+            application/json:
+              schema:
+                exclusiveMaximum: false
+                exclusiveMinimum: false
+                minLength: 0
+                uniqueItems: false
+                maxProperties: 0
+                minProperties: 0
+                type: object
+                properties:
+                  outputOptions: {}
+                  regionFilterOptions: {}
+                  locationFilterOptions: {}
+                  formatOptions: {}
+                  satellites:
+                    items:
+                      type: object
+                  description: {}
+                  timeInterval: {}
+                  bFieldModel: {}
+                nullable: false
+                readOnly: false
+                writeOnly: false
+                deprecated: false
+                allOf:
+                - $ref: "#/components/schemas/LocationRequest"
+                - $ref: "#/components/schemas/LocationRequest"
+                - $ref: "#/components/schemas/LocationRequest"
+      deprecated: false
+  /WS/sscr/2/echoGraphRequest:
+    post:
+      summary: Resource to allow a client to convert a GraphRequest from XML to JSON
+        or from JSON to XML.
+      operationId: echoRequest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GraphRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/GraphRequest"
+      responses:
+        "415":
+          description: Unsupported Media Type
+        default:
+          description: Requested representation of the given request.
+          content:
+            application/xml:
+              schema:
+                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("GraphRequest"))
+            application/json:
+              schema:
+                exclusiveMaximum: false
+                exclusiveMinimum: false
+                minLength: 0
+                uniqueItems: false
+                maxProperties: 0
+                minProperties: 0
+                type: object
+                properties:
+                  graphOptions: {}
+                  satellites:
+                    items:
+                      type: object
+                  description: {}
+                  timeInterval: {}
+                  bFieldModel: {}
+                nullable: false
+                readOnly: false
+                writeOnly: false
+                deprecated: false
+                allOf:
+                - $ref: "#/components/schemas/LocationRequest"
+                - $ref: "#/components/schemas/LocationRequest"
+                - $ref: "#/components/schemas/LocationRequest"
+      deprecated: false
+  /WS/sscr/2/echoQueryRequest:
+    post:
+      summary: Resource to allow a client to convert a QueryRequest from XML to JSON
+        or from JSON to XML.
+      operationId: echoRequest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QueryRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/QueryRequest"
+      responses:
+        "415":
+          description: Unsupported Media Type
+        default:
+          description: Requested representation of the given request.
+          content:
+            application/xml:
+              schema:
+                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("QueryRequest"))
+            application/json:
+              schema:
+                exclusiveMaximum: false
+                exclusiveMinimum: false
+                minLength: 0
+                uniqueItems: false
+                maxProperties: 0
+                minProperties: 0
+                type: object
+                properties:
+                  request: {}
+                nullable: false
+                readOnly: false
+                writeOnly: false
+                deprecated: false
+      deprecated: false
+  /WS/sscr/2/graphs:
+    post:
+      operationId: getGraphs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GraphRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/GraphRequest"
+      responses:
+        default:
+          description: Default Response.
+          content:
+            application/xml:
+              schema:
+                type: object
+            application/json:
+              schema:
+                type: object
+  /WS/sscr/2/groundStations:
+    get:
+      summary: Gets descriptions of the ground stations that are available from this
+        web service.
+      operationId: getAllGroundStations
+      responses:
+        "304":
+          description: Not Modified
+        "406":
+          description: Not Acceptable
+        default:
+          description: Descriptions of all ground stations.
+          content:
+            application/xml:
+              schema:
+                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("GroundStationDescription"))
+            application/json:
+              schema:
+                exclusiveMaximum: false
+                exclusiveMinimum: false
+                minLength: 0
+                uniqueItems: false
+                maxProperties: 0
+                minProperties: 0
+                type: object
+                nullable: false
+                readOnly: false
+                writeOnly: false
+                deprecated: false
+      deprecated: false
+  /WS/sscr/2/kml:
+    post:
+      operationId: getKmlFiles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/KmlRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/KmlRequest"
+      responses:
+        default:
+          description: Default Response.
+          content:
+            application/xml:
+              schema:
+                type: object
+            application/json:
+              schema:
+                type: object
+  /WS/sscr/2/locations:
+    post:
+      summary: Provides various information about a set of satellites.
+      operationId: getData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DataRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/DataRequest"
+      responses:
+        "304":
+          description: Not Modified
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too Many Requests
+        "503":
+          description: Service Unavailable
+        default:
+          description: Various information about a set of satellites.
+          content:
+            application/xml:
+              schema:
+                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("DataResult"))
+            application/json:
+              schema:
+                exclusiveMaximum: false
+                exclusiveMinimum: false
+                minLength: 0
+                uniqueItems: false
+                maxProperties: 0
+                minProperties: 0
+                type: object
+                nullable: false
+                readOnly: false
+                writeOnly: false
+                deprecated: false
+      deprecated: false
+  ? '/WS/sscr/2/locations/{objects}/{start: [0-9]{4}(((0[1-9])|(1[0-2]))(([0-2][0-9])|(3[0-1]))?)?T((([0-1][0-9])|(2[0-4]))(([0-5][0-9])(([0-5][0-9])|(60))?)?)?Z},{end:
+    [0-9]{4}(((0[1-9])|(1[0-2]))(([0-2][0-9])|(3[0-1]))?)?T((([0-1][0-9])|(2[0-4]))(([0-5][0-9])(([0-5][0-9])|(60))?)?)?Z}/{coordSystems}'
+  : get:
+      summary: Provides various information about a set of satellites.
+      operationId: getData
+      parameters:
+      - name: objects
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: end
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: coordSystems
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: output
+        in: query
+        schema:
+          type: string
+      - name: resolutionFactor
+        in: query
+        schema:
+          type: integer
+          default: "1"
+      responses:
+        "304":
+          description: Not Modified
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too Many Requests
+        "503":
+          description: Service Unavailable
+        default:
+          description: Various information about a set of satellites.
+          content:
+            application/xml:
+              schema:
+                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("DataResult"))
+            application/json:
+              schema:
+                exclusiveMaximum: false
+                exclusiveMinimum: false
+                minLength: 0
+                uniqueItems: false
+                maxProperties: 0
+                minProperties: 0
+                type: object
+                nullable: false
+                readOnly: false
+                writeOnly: false
+                deprecated: false
+      deprecated: false
+  /WS/sscr/2/observatories:
+    get:
+      summary: Gets descriptions of the observatories that are available from this
+        web service.
+      operationId: getObservatories
+      parameters:
+      - name: id
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "304":
+          description: Not Modified
+        "406":
+          description: Not Acceptable
+        default:
+          description: Descriptions of all observatories.
+          content:
+            application/xml:
+              schema:
+                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("ObservatoryResponse"))
+            application/json:
+              schema:
+                exclusiveMaximum: false
+                exclusiveMinimum: false
+                minLength: 0
+                uniqueItems: false
+                maxProperties: 0
+                minProperties: 0
+                nullable: false
+                readOnly: false
+                writeOnly: false
+                deprecated: false
+      deprecated: false
+  ? '/WS/sscr/2/observatories/{object: [a-z][a-z0-9]*}/clientLibraryExample/{library
+    : (?:(sscws)([Pp]y|[Ii]dl))?(?:,(?:(sscws)([Pp]y|[Ii]dl)))?}'
+  : get:
+      operationId: getClientLibraryExample
+      parameters:
+      - name: library
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: mediaType
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default Response.
+          content:
+            text/plain:
+              schema:
+                type: object
+            text/x-python:
+              schema:
+                type: object
+            text/x-idl:
+              schema:
+                type: object
+            application/octet-stream:
+              schema:
+                type: object
+            application/xhtml+xml:
+              schema:
+                type: object
+  /WS/sscr/2/spaseObservatories:
+    get:
+      summary: Gets descriptions of the SPASE observatories that are available from
+        this web service.
+      operationId: getAllSpaseObservatories
+      responses:
+        "406":
+          description: Not Acceptable
+        default:
+          description: Descriptions of all SPASE observatories.
+          content:
+            application/xml:
+              schema:
+                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("ObservatoryResponse"))
+            application/json:
+              schema:
+                exclusiveMaximum: false
+                exclusiveMinimum: false
+                minLength: 0
+                uniqueItems: false
+                maxProperties: 0
+                minProperties: 0
+                type: object
+                nullable: false
+                readOnly: false
+                writeOnly: false
+                deprecated: false
+      deprecated: false
+endpoints:
+  /WS/sscr/2:
+  - /WS/sscr/2/conjunctions
+  - /WS/sscr/2/echoDataRequest
+  - /WS/sscr/2/echoGraphRequest
+  - /WS/sscr/2/echoQueryRequest
+  - /WS/sscr/2/graphs
+  - /WS/sscr/2/groundStations
+  - /WS/sscr/2/kml
+  - /WS/sscr/2/locations
+  - "/WS/sscr/2/locations/{objects}/{start: [0-9]{4}(((0[1-9])|(1[0-2]))(([0-2][0-9])|(3[0-1]))?)?T((([0-1][0-9])|(2[0-4]))(([0-5][0-9])(([0-5][0-9])|(60))?)?)?Z},{end:\
+    \ [0-9]{4}(((0[1-9])|(1[0-2]))(([0-2][0-9])|(3[0-1]))?)?T((([0-1][0-9])|(2[0-4]))(([0-5][0-9])(([0-5][0-9])|(60))?)?)?Z}/{coordSystems}"
+  - /WS/sscr/2/observatories
+  - "/WS/sscr/2/observatories/{object: [a-z][a-z0-9]*}/clientLibraryExample/{library\
+    \ : (?:(sscws)([Pp]y|[Ii]dl))?(?:,(?:(sscws)([Pp]y|[Ii]dl)))?}"
+  - /WS/sscr/2/spaseObservatories
+components:
+  schemas:
+    DataRequest:
+      type: object
+      properties:
+        outputOptions: {}
+        regionFilterOptions: {}
+        locationFilterOptions: {}
+        formatOptions: {}
+        satellites:
+          items:
+            type: object
+        description: {}
+        timeInterval: {}
+        bFieldModel: {}
+        dataRequestEntity: {}
+      allOf:
+      - $ref: "#/components/schemas/LocationRequest"
+    GraphRequest:
+      type: object
+      properties:
+        graphOptions: {}
+        satellites:
+          items:
+            type: object
+        description: {}
+        timeInterval: {}
+        bFieldModel: {}
+      allOf:
+      - $ref: "#/components/schemas/LocationRequest"
+    KmlRequest:
+      type: object
+      properties:
+        trajectory:
+          type: boolean
+        northBFieldTraceFootpoint:
+          type: boolean
+        southBFieldTraceFootpoint:
+          type: boolean
+        satellites:
+          items:
+            type: object
+        description: {}
+        timeInterval: {}
+        bFieldModel: {}
+      allOf:
+      - $ref: "#/components/schemas/LocationRequest"
+    LocationRequest:
+      type: object
+      properties:
+        satellites:
+          items:
+            type: object
+        description: {}
+        timeInterval: {}
+        bFieldModel: {}
+      allOf:
+      - $ref: "#/components/schemas/Request"
+      - $ref: "#/components/schemas/Request"
+      - $ref: "#/components/schemas/Request"
+    QueryRequest:
+      type: object
+      properties:
+        request: {}
+    Request:
+      type: object
+      properties:
+        description: {}
+        timeInterval: {}
+        bFieldModel: {}
