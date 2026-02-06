@@ -5,7 +5,7 @@ info:
     name: SPDF Support
     url: https://berniegsfc.github.io/sscws/REST/
     email: NASA-SPDF-Support@nasa.onmicrosoft.com
-  version: 1.x
+  version: 2.x
 externalDocs:
   description: SSC Web Service Schema
   url: https://berniegsfc.github.io/sscws/REST/SSC.xsd
