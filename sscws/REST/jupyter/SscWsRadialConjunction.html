@@ -12,9 +12,15 @@
     "creator": {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": "https://spdf.gsfc.nasa.gov/#organization",
+        "url": "https://spdf.gsfc.nasa.gov/",
         "name": "Space Physics Data Facility",
         "email": "NASA-SPDF-Support@nasa.onmicrosoft.com",
-        "keywords": ["heliophysics", "space physics", "spdf", "SSCWeb", "sscws", "heliophysics data", "ephemeris", "Earth magnetic field"],
+        "sameAs": [
+            "https://www.re3data.org/repository/r3d100010168",
+            "https://ror.org/00ryjtt64"
+        ],
+        "keywords": ["heliophysics", "space physics", "SPDF", "SSCWeb", "sscws", "heliophysics data", "HDRL", "ephemeris", "Earth magnetic field"],
         "parentOrganization": {
             "@context": "https://schema.org",
             "@type": "Organization",
@@ -32,7 +38,7 @@
             }
         }
     },
-    "keywords": ["heliophysics", "space physics", "spdf", "SSCWeb", "sscws", "heliophysics data", "ephemeris", "Earth magnetic field"],
+    "keywords": ["heliophysics", "space physics", "SPDF", "SSCWeb", "sscws", "heliophysics data", "HDRL", "ephemeris", "Earth magnetic field"],
     "codeSampleType": "code snippet",
     "programmingLanguage": {
         "@context": "https://schema.org",
@@ -14297,7 +14303,7 @@ a.anchor-link {
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <div class="jp-Cell-inputWrapper" tabindex="0"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="sscws-Conjunction-Example-Jupyter-Notebook">sscws Conjunction Example Jupyter Notebook<a class="anchor-link" href="#sscws-Conjunction-Example-Jupyter-Notebook">¶</a></h1><p>This <a href="https://jupyter.org">Jupyter notebook</a> demonstrates using the <a href="https://pypi.org/project/sscws/">sscws</a> Python package to find radial traced satellite conjunctions with a ground location.  This notebook contains the following sections:</p>
+<h1 id="sscws-Conjunction-Example-Jupyter-Notebook">sscws Conjunction Example Jupyter Notebook<a class="anchor-link" href="#sscws-Conjunction-Example-Jupyter-Notebook">¶</a></h1><p>This <a href="https://jupyter.org">Jupyter notebook</a> demonstrates using the <a href="https://pypi.org/project/sscws/">sscws</a> Python package to find radial traced satellite conjunctions with a ground location using NASA's <a href="https://sscweb.gsfc.nasa.gov/">Satellite Situation Center</a> (SSC).  This notebook contains the following sections:</p>
 <ol>
 <li><a href="#Prerequisites">Prerequisites</a></li>
 <li><a href="#Setup">Setup</a></li>
@@ -14471,4 +14477,9 @@ a.anchor-link {
 </div>
 </div>
 </body>
+<script>
+    const lastUpdated = document.getElementById("last-updated");
+    const lastModified = new Date(document.lastModified);
+    lastUpdated.innerText = lastModified.toISOString().split("T")[0];
+  </script>
 </html>
