@@ -39,7 +39,7 @@ el.replaceWith(d);
 <section id="section-intro">
 <p>Module defining classes to related to filter options from
 <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.<br></p>
-<p>Copyright &copy; 2013-2023 United States Government as represented by the
+<p>Copyright &copy; 2013-2026 United States Government as represented by the
 National Aeronautics and Space Administration. No copyright is claimed in
 the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 </section>
@@ -620,7 +620,7 @@ def magnetic_field_strength(self) -&gt; LocationFilter:
 </dd>
 <dt id="sscws.filteroptions.MappedRegionFilterOptions"><code class="flex name class">
 <span>class <span class="ident">MappedRegionFilterOptions</span></span>
-<span>(</span><span>cusp: <a title="sscws.outputoptions.LocationFilter" href="outputoptions.html#sscws.outputoptions.LocationFilter">LocationFilter</a> = None,<br>cleft: <a title="sscws.outputoptions.LocationFilter" href="outputoptions.html#sscws.outputoptions.LocationFilter">LocationFilter</a> = None,<br>auroral_oval: <a title="sscws.outputoptions.LocationFilter" href="outputoptions.html#sscws.outputoptions.LocationFilter">LocationFilter</a> = None,<br>polar_cap: <a title="sscws.outputoptions.LocationFilter" href="outputoptions.html#sscws.outputoptions.LocationFilter">LocationFilter</a> = None,<br>mid_latitude: <a title="sscws.outputoptions.LocationFilter" href="outputoptions.html#sscws.outputoptions.LocationFilter">LocationFilter</a> = None,<br>low_latitude: bool = None)</span>
+<span>(</span><span>cusp: <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a> = None,<br>cleft: <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a> = None,<br>auroral_oval: <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a> = None,<br>polar_cap: <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a> = None,<br>mid_latitude: <a title="sscws.regions.HemisphereRegions" href="regions.html#sscws.regions.HemisphereRegions">HemisphereRegions</a> = None,<br>low_latitude: bool = None)</span>
 </code></dt>
 <dd>
 <details class="source">
@@ -648,11 +648,11 @@ def magnetic_field_strength(self) -&gt; LocationFilter:
         Low-Latitude region.
     &#34;&#34;&#34;
     def __init__(self,
-                 cusp: LocationFilter = None,
-                 cleft: LocationFilter = None,
-                 auroral_oval: LocationFilter = None,
-                 polar_cap: LocationFilter = None,
-                 mid_latitude: LocationFilter = None,
+                 cusp: HemisphereRegions = None,
+                 cleft: HemisphereRegions = None,
+                 auroral_oval: HemisphereRegions = None,
+                 polar_cap: HemisphereRegions = None,
+                 mid_latitude: HemisphereRegions = None,
                  low_latitude: bool = None,
                  ):  # pylint: disable=too-many-arguments
 
@@ -1116,7 +1116,7 @@ def polar_cap(self) -&gt; LocationFilter:
 </dd>
 <dt id="sscws.filteroptions.RegionFilterOptions"><code class="flex name class">
 <span>class <span class="ident">RegionFilterOptions</span></span>
-<span>(</span><span>space_regions: bool = None,<br>radial_trace_regions: bool = None,<br>magnetic_trace_regions: bool = None)</span>
+<span>(</span><span>space_regions: <a title="sscws.filteroptions.SpaceRegionsFilterOptions" href="#sscws.filteroptions.SpaceRegionsFilterOptions">SpaceRegionsFilterOptions</a> = None,<br>radial_trace_regions: <a title="sscws.filteroptions.MappedRegionFilterOptions" href="#sscws.filteroptions.MappedRegionFilterOptions">MappedRegionFilterOptions</a> = None,<br>magnetic_trace_regions: <a title="sscws.filteroptions.MappedRegionFilterOptions" href="#sscws.filteroptions.MappedRegionFilterOptions">MappedRegionFilterOptions</a> = None)</span>
 </code></dt>
 <dd>
 <details class="source">
@@ -1138,9 +1138,9 @@ def polar_cap(self) -&gt; LocationFilter:
         Specifies the magnetic trace region filter options.
     &#34;&#34;&#34;
     def __init__(self,
-                 space_regions: bool = None,
-                 radial_trace_regions: bool = None,
-                 magnetic_trace_regions: bool = None):
+                 space_regions: SpaceRegionsFilterOptions = None,
+                 radial_trace_regions: MappedRegionFilterOptions = None,
+                 magnetic_trace_regions: MappedRegionFilterOptions = None):
 
         self._space_regions = space_regions
         self._radial_trace_regions = radial_trace_regions
@@ -1148,20 +1148,20 @@ def polar_cap(self) -&gt; LocationFilter:
 
 
     @property
-    def space_regions(self) -&gt; bool:
+    def space_regions(self) -&gt; SpaceRegionsFilterOptions:
         &#34;&#34;&#34;
         Gets the space_regions value.
 
         Returns
         -------
-        bool
+        SpaceRegionsFilterOptions
             space_regions value.
         &#34;&#34;&#34;
         return self._space_regions
 
 
     @space_regions.setter
-    def space_regions(self, value: bool):
+    def space_regions(self, value: SpaceRegionsFilterOptions):
         &#34;&#34;&#34;
         Sets the space_regions value.
 
@@ -1174,20 +1174,20 @@ def polar_cap(self) -&gt; LocationFilter:
 
 
     @property
-    def radial_trace_regions(self) -&gt; bool:
+    def radial_trace_regions(self) -&gt; MappedRegionFilterOptions:
         &#34;&#34;&#34;
         Gets the radial_trace_regions value.
 
         Returns
         -------
-        bool
+        MappedRegionFilterOptions
             radial_trace_regions value.
         &#34;&#34;&#34;
         return self._radial_trace_regions
 
 
     @radial_trace_regions.setter
-    def radial_trace_regions(self, value: bool):
+    def radial_trace_regions(self, value: MappedRegionFilterOptions):
         &#34;&#34;&#34;
         Sets the radial_trace_regions value.
 
@@ -1200,20 +1200,20 @@ def polar_cap(self) -&gt; LocationFilter:
 
 
     @property
-    def magnetic_trace_regions(self) -&gt; bool:
+    def magnetic_trace_regions(self) -&gt; MappedRegionFilterOptions:
         &#34;&#34;&#34;
         Gets the magnetic_trace_regions value.
 
         Returns
         -------
-        bool
+        MappedRegionFilterOptions
             magnetic_trace_regions value.
         &#34;&#34;&#34;
         return self._magnetic_trace_regions
 
 
     @magnetic_trace_regions.setter
-    def magnetic_trace_regions(self, value: bool):
+    def magnetic_trace_regions(self, value: MappedRegionFilterOptions):
         &#34;&#34;&#34;
         Sets the magnetic_trace_regions value.
 
@@ -1269,20 +1269,20 @@ def polar_cap(self) -&gt; LocationFilter:
 </dl></div>
 <h3>Instance variables</h3>
 <dl>
-<dt id="sscws.filteroptions.RegionFilterOptions.magnetic_trace_regions"><code class="name">prop <span class="ident">magnetic_trace_regions</span> : bool</code></dt>
+<dt id="sscws.filteroptions.RegionFilterOptions.magnetic_trace_regions"><code class="name">prop <span class="ident">magnetic_trace_regions</span> : <a title="sscws.filteroptions.MappedRegionFilterOptions" href="#sscws.filteroptions.MappedRegionFilterOptions">MappedRegionFilterOptions</a></code></dt>
 <dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@property
-def magnetic_trace_regions(self) -&gt; bool:
+def magnetic_trace_regions(self) -&gt; MappedRegionFilterOptions:
     &#34;&#34;&#34;
     Gets the magnetic_trace_regions value.
 
     Returns
     -------
-    bool
+    MappedRegionFilterOptions
         magnetic_trace_regions value.
     &#34;&#34;&#34;
     return self._magnetic_trace_regions</code></pre>
@@ -1290,24 +1290,24 @@ def magnetic_trace_regions(self) -&gt; bool:
 <div class="desc"><p>Gets the magnetic_trace_regions value.</p>
 <h2 id="returns">Returns</h2>
 <dl>
-<dt><code>bool</code></dt>
+<dt><code><a title="sscws.filteroptions.MappedRegionFilterOptions" href="#sscws.filteroptions.MappedRegionFilterOptions">MappedRegionFilterOptions</a></code></dt>
 <dd>magnetic_trace_regions value.</dd>
 </dl></div>
 </dd>
-<dt id="sscws.filteroptions.RegionFilterOptions.radial_trace_regions"><code class="name">prop <span class="ident">radial_trace_regions</span> : bool</code></dt>
+<dt id="sscws.filteroptions.RegionFilterOptions.radial_trace_regions"><code class="name">prop <span class="ident">radial_trace_regions</span> : <a title="sscws.filteroptions.MappedRegionFilterOptions" href="#sscws.filteroptions.MappedRegionFilterOptions">MappedRegionFilterOptions</a></code></dt>
 <dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@property
-def radial_trace_regions(self) -&gt; bool:
+def radial_trace_regions(self) -&gt; MappedRegionFilterOptions:
     &#34;&#34;&#34;
     Gets the radial_trace_regions value.
 
     Returns
     -------
-    bool
+    MappedRegionFilterOptions
         radial_trace_regions value.
     &#34;&#34;&#34;
     return self._radial_trace_regions</code></pre>
@@ -1315,24 +1315,24 @@ def radial_trace_regions(self) -&gt; bool:
 <div class="desc"><p>Gets the radial_trace_regions value.</p>
 <h2 id="returns">Returns</h2>
 <dl>
-<dt><code>bool</code></dt>
+<dt><code><a title="sscws.filteroptions.MappedRegionFilterOptions" href="#sscws.filteroptions.MappedRegionFilterOptions">MappedRegionFilterOptions</a></code></dt>
 <dd>radial_trace_regions value.</dd>
 </dl></div>
 </dd>
-<dt id="sscws.filteroptions.RegionFilterOptions.space_regions"><code class="name">prop <span class="ident">space_regions</span> : bool</code></dt>
+<dt id="sscws.filteroptions.RegionFilterOptions.space_regions"><code class="name">prop <span class="ident">space_regions</span> : <a title="sscws.filteroptions.SpaceRegionsFilterOptions" href="#sscws.filteroptions.SpaceRegionsFilterOptions">SpaceRegionsFilterOptions</a></code></dt>
 <dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@property
-def space_regions(self) -&gt; bool:
+def space_regions(self) -&gt; SpaceRegionsFilterOptions:
     &#34;&#34;&#34;
     Gets the space_regions value.
 
     Returns
     -------
-    bool
+    SpaceRegionsFilterOptions
         space_regions value.
     &#34;&#34;&#34;
     return self._space_regions</code></pre>
@@ -1340,7 +1340,7 @@ def space_regions(self) -&gt; bool:
 <div class="desc"><p>Gets the space_regions value.</p>
 <h2 id="returns">Returns</h2>
 <dl>
-<dt><code>bool</code></dt>
+<dt><code><a title="sscws.filteroptions.SpaceRegionsFilterOptions" href="#sscws.filteroptions.SpaceRegionsFilterOptions">SpaceRegionsFilterOptions</a></code></dt>
 <dd>space_regions value.</dd>
 </dl></div>
 </dd>

@@ -41,7 +41,7 @@ el.replaceWith(d);
 <p>Module for accessing the Satellite Situation Center (SSC) web services
 <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/.">https://sscweb.gsfc.nasa.gov/WebServices/REST/.</a>
 <br></p>
-<p>Copyright &copy; 2013-2025 United States Government as represented by the
+<p>Copyright &copy; 2013-2026 United States Government as represented by the
 National Aeronautics and Space Administration. No copyright is claimed in
 the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 </section>
@@ -688,9 +688,11 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
         if language.lower() == &#39;idl&#39;:
             library = &#39;sscwsIdl&#39;
 
-        response = requests.get(self._endpoint + &#39;observatories/&#39; +
-            obs_id + &#39;/clientLibraryExample/&#39; + library,
-            timeout=self._timeout)
+        url = self._endpoint + &#39;observatories/&#39; + \
+            obs_id + &#39;/clientLibraryExample/&#39; + library
+
+        # Do not use session headers (Accept: Application/xml)
+        response = requests.get(url, timeout=self._timeout)
 
         if response.status_code != 200:
             self.logger.warning(&#39;%s failed with status %d&#39;, response.url,
@@ -1553,9 +1555,11 @@ to the SscWs server.</p>
     if language.lower() == &#39;idl&#39;:
         library = &#39;sscwsIdl&#39;
 
-    response = requests.get(self._endpoint + &#39;observatories/&#39; +
-        obs_id + &#39;/clientLibraryExample/&#39; + library,
-        timeout=self._timeout)
+    url = self._endpoint + &#39;observatories/&#39; + \
+        obs_id + &#39;/clientLibraryExample/&#39; + library
+
+    # Do not use session headers (Accept: Application/xml)
+    response = requests.get(url, timeout=self._timeout)
 
     if response.status_code != 200:
         self.logger.warning(&#39;%s failed with status %d&#39;, response.url,
