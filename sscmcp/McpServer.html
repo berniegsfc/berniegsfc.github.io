@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>SSC MCP Server</title>
+  <meta content="Bernie Harris" name="author">
+  <meta name="orgcode" content="672">
+  <meta name="description"
+ content="NASA's SSC Web services allow a software developer to use SSC services in their own application...">
+  <meta name="keywords"
+ content="NASA, science, data, sscweb, coordinated data analysis, multi-mission, multi-instrument, space physics, XML, Web services">
+</head>
+
+<section>
+    <div style="background-image:url(https://sscweb.gsfc.nasa.gov/images/SSCWebHeader.png); background-size: cover; height: 100px; width: 100%">
+    </div>
+</section>
+
+<h1>SSC MCP Server</h1>
+
+<h2 id="Introduction">Introduction </h2>
+
+<p>The <a href="https://sscweb.gsfc.nasa.gov/">Satellite Situation Center</a> 
+(SSC) <a href="https://en.wikipedia.org/wiki/Model_Context_Protocol" 
+target="_blank">Model Context Protocol</a> (MCP) server connects AI tools 
+to SSC.  This gives <a href="https://en.wikipedia.org/wiki/AI_agent"
+target="_blank">AI agents</a>, assistants, and chatbots access to SSC 
+information (satellite location and Earth magnetic field model) and
+functions (conjunction queries).</p>
+
+<h2 id="Access">Access</h2>
+
+<p>The SSC MCP server is publicly accessible on the Internet.  A user does
+not have to install the MCP server on their own computer.</p>
+
+<h3 id="Prerequisites">Prerequisites</h3>
+
+<p>This section describes the prerequisites for accessing SSC through the MCP
+server with an AI agent><p>
+<ol>
+  <li>An AI agent that supports remote MCP servers.</li>
+  <li>An LLM API access key.  The user is responsible for obtaining this 
+      and any associated costs.</li>
+</ol>
+
+<h3 id="Configuration">Configuration</h3>
+
+<p>This section describe the necessary configuration of your AI agent.
+The details will vary for different agents but will include the following 
+information.
+<ol>
+  <li>LLM API access key.</li>
+  <li>LLM base URL.</li>
+  <li>AI model.</li>
+  <li>SSC MCP Server URL: https://sscweb.gsfc.nasa.gov/mcp</li>
+</ol>
+</p>
+<p>
+<b>Note:</b> NASA employees and contractors may use the 
+<a href="#Contact">support link</a> below for additional help with items 1 and 2
+above.
+</p>
+
+<h2 id="Example_Use">Example Use</h2>
+
+<p>This section contains examples of interacting with SSC through an AI
+agent and the SSC MCP server.</p>
+
+<pre>
+agent > display the GSE coordinates of the international space station from 2026-01-01T00:00:00Z to 2026-01-01T00:20:00Z.  Include the distance
+to the bow shock, the magnetic field strength, and the corresponding magnetoshere space region
+...
+
+          ┌────────────────────────────| Elicitation Request |─────────────────────────────┐
+          │                                                                                │
+          │                                                                                │
+          │  Agent:      agent                                                             │
+          │  MCP Server: localhost_8480_mcp                                                │
+          │                                                                                │
+          │  Select a magnetic field model.                                                │
+          │                                                                                │
+          │  InternalBFieldModel - Internal magnetic field model                           │
+          │  ┌──────────────────────────────────────────────────────────────────────────┐  │
+          │  │(*) IGRF                                                                 ^│  │
+          │  │( ) SimpleDipole                                                         v│  │
+          │  └──────────────────────────────────────────────────────────────────────────┘  │
+          │                                                                                │
+          │  ExternalBFieldModelName - External magnetic field model                       │
+          │  ┌──────────────────────────────────────────────────────────────────────────┐  │
+          │  │( ) Tsyganenko96BFieldModel                                              ^│  │
+          │  │(*) Tsyganenko89cBFieldModel                                              │  │
+          │  │( ) Tsyganenko87BFieldModel                                              v│  │
+          │  └──────────────────────────────────────────────────────────────────────────┘  │
+          │                                                                                │
+          │  Trace Stop Altitude - Stop altitude for downward tracing field lines (min 0)  │
+          │  ┌──────────────────────────────────────────────────────────────────────────┐  │
+          │  │100                                                                       │  │
+          │  └──────────────────────────────────────────────────────────────────────────┘  │
+          │                                                                                │
+          │                                                                                │
+          │  <  Accept  >  < Decline  >  <  Cancel  >  <Cancel All>                        │
+          │                                                                                │
+          └────────────────────────────────────────────────────────────────────────────────┘
+ <TAB>/↑↓→← navigate. <ENTER> submit. <Ctrl+J> insert new line. <ESC> cancel. <Cancel All> Auto-Cancel further elicitations from this Server. 
+
+ 
+          ┌─────────────────────| Elicitation Request |─────────────────────┐
+          │                                                                 │
+          │                                                                 │
+          │  Agent:      agent                                              │
+          │  MCP Server: localhost_8480_mcp                                 │
+          │                                                                 │
+          │  Select the Tsyganenko89c magnetic field model key parameters.  │
+          │                                                                 │
+          │  Tsyganenko89cKp - Tsyganenko89c key parameters.                │
+          │  ┌────────────────────────────────────────────────────┐         │
+          │  │( ) KP0_0                                          ^│         │
+          │  │( ) KP1_1_1                                         │         │
+          │  │( ) KP2_2_2                                         │         │
+          │  │(*) KP3_3_3                                        v│         │
+          │  └────────────────────────────────────────────────────┘         │
+          │                                                                 │
+          │                                                                 │
+          │  <  Accept  >  < Decline  >  <  Cancel  >  <Cancel All>         │
+          │                                                                 │
+          │                                                                 │
+          │                                                                 │
+          │                                                                 │
+          │                                                                 │
+          │                                                                 │
+          │                                                                 │
+          │                                                                 │
+          │                                                                 │
+          │                                                                 │
+          └─────────────────────────────────────────────────────────────────┘
+ <TAB>/↑↓→← navigate. <ENTER> submit. <Ctrl+J> insert new line. <ESC> cancel. <Cancel All> Auto-Cancel further elicitations from this Server.              
+...
+
+▎◀ agent ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Here are the GSE coordinates of the International Space Station (ISS) from 2026-01-01T00:00:00Z to 2026-01-01T00:20:00Z (in 1-minute            
+increments), with bow shock distance, magnetic field strength, and magnetosphere space region:                                                  
+
+                                                                                                                               
+ Time (UTC)            X (GSE)  Y (GSE)  Z (GSE)  Bow Shock Distance (km)  Magnetic Field Strength (nT)  Magnetosphere Region  
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+ 2026-01-01T00:00:00Z  5446.6   1851.3   -3625.5  -85365.8                 42417.5                       DaysidePlasmasphere   
+ 2026-01-01T00:01:00Z  5209.2   2218.4   -3765.2  -85620.6                 41318.3                       DaysidePlasmasphere   
+ 2026-01-01T00:02:00Z  4948.0   2575.4   -3887.7  -85897.0                 40076.6                       DaysidePlasmasphere   
+ 2026-01-01T00:03:00Z  4664.3   2920.7   -3992.5  -86194.1                 38697.5                       DaysidePlasmasphere   
+ 2026-01-01T00:04:00Z  4359.3   3252.7   -4079.0  -86510.6                 37191.3                       DaysidePlasmasphere   
+ 2026-01-01T00:05:00Z  4034.5   3569.9   -4146.9  -86845.7                 35575.0                       DaysidePlasmasphere   
+ 2026-01-01T00:06:00Z  3691.3   3870.9   -4195.9  -87198.1                 33872.9                       DaysidePlasmasphere   
+ 2026-01-01T00:07:00Z  3331.2   4154.3   -4225.7  -87566.4                 32117.2                       DaysidePlasmasphere   
+ 2026-01-01T00:08:00Z  2956.0   4418.8   -4236.2  -87949.3                 30346.1                       DaysidePlasmasphere   
+ 2026-01-01T00:09:00Z  2567.3   4663.1   -4227.3  -88345.4                 28601.2                       DaysidePlasmasphere   
+ 2026-01-01T00:10:00Z  2166.8   4886.2   -4199.1  -88753.2                 26924.5                       DaysidePlasmasphere   
+ 2026-01-01T00:11:00Z  1756.5   5087.0   -4151.7  -89170.9                 25354.9                       DaysidePlasmasphere   
+ 2026-01-01T00:12:00Z  1338.1   5264.6   -4085.3  -89597.0                 23926.5                       DaysidePlasmasphere   
+ 2026-01-01T00:13:00Z  913.6    5418.2   -4000.2  -90029.6                 22667.9                       DaysidePlasmasphere   
+ 2026-01-01T00:14:00Z  484.9    5547.1   -3896.8  -90466.9                 21602.4                       DaysidePlasmasphere   
+ 2026-01-01T00:15:00Z  54.0     5650.7   -3775.5  -90907.1                 20748.1                       NightsidePlasmasphere 
+ 2026-01-01T00:16:00Z  -377.2   5728.5   -3637.0  -91348.1                 20117.1                       NightsidePlasmasphere 
+ 2026-01-01T00:17:00Z  -806.6   5780.0   -3481.8  -91787.9                 19713.9                       NightsidePlasmasphere 
+ 2026-01-01T00:18:00Z  -1232.4  5805.2   -3310.6  -92224.5                 19534.0                       NightsidePlasmasphere 
+ 2026-01-01T00:19:00Z  -1652.6  5803.8   -3124.3  -92655.7                 19563.4                       NightsidePlasmasphere 
+ 2026-01-01T00:20:00Z  -2065.2  5775.9   -2923.7  -93079.4                 19780.7                       NightsidePlasmasphere 
+                                                                                                                               
+
+ • X, Y, Z values are in GSE coordinates (km).                                                                                                  
+ • "Bow Shock Distance" is negative, representing the ISS is inside the magnetosphere (distance from the bow shock).                            
+ • "Magnetosphere Region" transitions from DaysidePlasmasphere to NightsidePlasmasphere.                                                        
+ • "Magnetic Field Strength" is given in nanotesla (nT).                                                                                        
+
+Let me know if you would like additional details or a visualization!   
+
+</pre>
+
+
+<h2 id="Contact">Questions/Comments</h2>
+
+<p>Questions or comments concerning this server should be sent to 
+<a href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com?subject=SSC%20MCP%20Server%0As%20Feedback">SSC Feedback</a>.</p>
+</body>
+</html>
