@@ -14581,7 +14581,7 @@ Time                              B Strength GSE
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># add a duplicate option to cause an error</span>
-<span class="n">coord_options</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">CoordinateOptions</span><span class="p">(</span><span class="n">CoordinateSystem</span><span class="o">.</span><span class="n">GSE</span><span class="p">,</span> <span class="n">CoordinateComponent</span><span class="o">.</span><span class="n">LAT</span><span class="p">))</span>
+<span class="n">output_options</span><span class="o">.</span><span class="n">coordinate_options</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">CoordinateOptions</span><span class="p">(</span><span class="n">CoordinateSystem</span><span class="o">.</span><span class="n">GSE</span><span class="p">,</span> <span class="n">CoordinateComponent</span><span class="o">.</span><span class="n">LAT</span><span class="p">))</span>
 
 <span class="n">loc_request</span> <span class="o">=</span> <span class="n">DataRequest</span><span class="p">(</span><span class="s1">'themisa b-trace locator request.'</span><span class="p">,</span>
                           <span class="n">TimeInterval</span><span class="p">(</span><span class="s1">'2020-10-02T00:00:00Z'</span><span class="p">,</span>
