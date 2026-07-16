@@ -1,0 +1,1917 @@
+
+
+<!--
+ NOSA HEADER START
+
+ The contents of this file are subject to the terms of the NASA Open 
+ Source Agreement (NOSA), Version 1.3 only (the "Agreement").  You may 
+ not use this file except in compliance with the Agreement.
+
+ You can obtain a copy of the agreement at
+   docs/NASA_Open_Source_Agreement_1.3.txt
+ or 
+   https://cdaweb.gsfc.nasa.gov/WebServices/NASA_Open_Source_Agreement_1.3.txt.
+
+ See the Agreement for the specific language governing permissions
+ and limitations under the Agreement.
+
+ When distributing Covered Code, include this NOSA HEADER in each
+ file and include the Agreement file at 
+ docs/NASA_Open_Source_Agreement_1.3.txt.  If applicable, add the 
+ following below this NOSA HEADER, with the fields enclosed by 
+ brackets "[]" replaced with your own identifying information: 
+ Portions Copyright [yyyy] [name of copyright owner]
+
+ NOSA HEADER END
+
+ Copyright (c) 2009-2023 United States Government as represented by 
+ the National Aeronautics and Space Administration. No copyright is 
+ claimed in the United States under Title 17, U.S.Code. All Other 
+ Rights Reserved.
+
+-->
+
+<!-- 
+  Note: Many of the top-level elements that are reponses (not requests)
+      should probably be changed to complexType definitions to provide 
+      more flexibility and consistency.
+-->
+
+<!-- Coordinated Data Analysis System (CDAS) RESTful Web service schema -->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://cdaweb.gsfc.nasa.gov/schema"
+    xmlns="http://cdaweb.gsfc.nasa.gov/schema"
+    xmlns:cdf="http://cdf.gsfc.nasa.gov"
+    elementFormDefault="qualified">
+
+  <xsd:import namespace="http://cdf.gsfc.nasa.gov" schemaLocation="cdf.xsd" />
+
+  <xsd:element name="Dataviews">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        CDAS Dataviews.
+        The outermost container or envelope for CDAS dataview
+        descriptions.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="DataviewDescription"
+               minOccurs="1" maxOccurs="unbounded" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="DataviewDescription">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Description of a CDAS dataview.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Id" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Dataview identifier.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="EndpointAddress" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              URL to access this dataview.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Title" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Dataview title.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Subtitle" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Dataview sub-title text.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Overview" type="xsd:string"
+               minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Dataview overview text.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="UnderConstruction" type="xsd:boolean"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Flag indicating whether this dataview is undergoing
+              preliminary construction.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="NoticeUrl" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              URL to any notices associated with this dataview.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="PublicAccess" type="xsd:boolean"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Flag indicating whether access to this dataview requires
+              authentication.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="ObservatoryGroups">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        The outermost container or envelope for CDAS ObservatoryGroup
+        descriptions.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="ObservatoryGroupDescription"
+               minOccurs="1" maxOccurs="unbounded" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="ObservatoryGroupDescription">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Describes an observatory group.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Name" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Name of observatory group.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="ObservatoryId" type="xsd:string"
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              List of identifiers for observatories that belong to this
+              group.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="InstrumentTypes">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        The outermost container or envelope for CDAS InstrumentType
+        descriptions.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="InstrumentTypeDescription"
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              List of instrument type descriptions.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="InstrumentTypeDescription">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Describes an instrument type.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Name" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Name of instrument type.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="Instruments">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        The outermost container or envelope for CDAS Instrument
+        descriptions.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="InstrumentDescription"
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              List of instruments.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="InstrumentDescription">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Describes an instrument.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Name" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Name of instrument.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="ShortDescription" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Short description of instrument.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="LongDescription" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Short description of instrument.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="Observatories">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        The outermost container or envelope for CDAS Observatory
+        descriptions.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ObservatoryDescription" 
+                     type="ObservatoryDescription"
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Short description of instrument.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:complexType name="ObservatoryDescription">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Description of observatory.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name" type="xsd:string"
+             minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Name of observatory.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ShortDescription" type="xsd:string"
+             minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Short description of observatory.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LongDescription" type="xsd:string"
+             minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Long description of observatory.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="ObservatoryGroupInstruments">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        The outermost container or envelope for CDAS 
+        ObservatoryGroupInstrument descriptions.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="ObservatoryGroupInstrumentDescription"
+               minOccurs="1" maxOccurs="unbounded" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="ObservatoryGroupInstrumentDescription">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Describes an observatory group.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Name" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Name of observatory group.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="ObservatoryInstruments" 
+               type="ObservatoryInstrumentDescription"
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              List of observatories that belong to this group.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:complexType name="ObservatoryInstrumentDescription">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Description of observatory that includes its instruments.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="ObservatoryDescription">
+        <xsd:sequence>
+          <xsd:element ref="InstrumentDescription"
+                 minOccurs="1" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">
+                List of instruments.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="Datasets">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        The outermost container or envelope for CDAS Dataset
+        descriptions.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="DatasetDescription"
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              List of dataset descriptions.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="DatasetDescription">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Dataset description.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Id" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Dataset identifier.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Doi" type="xsd:string"
+               minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Digital object identifier (DOI) for dataset.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="SpaseResourceId" type="xsd:string"
+               minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              SPASE (https://spase-group.org/) NumericalData/ResourceID 
+              for dataset.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Observatory" type="xsd:string"
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Source of data.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Instrument" type="xsd:string"
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Instrument that measured the data.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="ObservatoryGroup" type="xsd:string"
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Observatory group to which this data belongs.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="InstrumentType" type="xsd:string"
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Instrument type from which this data was measured.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Label" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Dataset label.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="TimeInterval" 
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Time range of data contained in this dataset.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="PiName" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Name of principal investigator (PI) for this dataset.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="PiAffiliation" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              PI affiliation.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Notes" type="xsd:anyURI"
+               minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              URL to notes about this dataset.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="DatasetLink"
+               minOccurs="0" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Links to additional information about this dataset.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="AdditionalMetadata"
+               minOccurs="0" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              URL to additional metadata about this dataset.  Whereas
+              DatasetLink above general points to unstructured text, this
+              link is intended to point to metadata that is easily
+              interpreted by software.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+<!--
+        <xsd:element name="AdditionalMetadata" type="xsd:anyURI"
+               minOccurs="0" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              URL to additional metadata about this dataset.  Whereas
+              DatasetLink above general points to unstructured text, this
+              link is intended to point to metadata that is easily
+              interpreted by software. For example, 
+      https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0JSONS/*_00000000_v01.json
+      https://cdaweb.gsfc.nasa.gov/registry/hdp/Spase.xql?id=… 
+      https://heliophysicsdata.gsfc.nasa.gov/WS/hdp/1/Spase?ResourceID=… 
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+-->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="DatasetLink">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Link to additional information about a dataset.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Title" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Title of link.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Text" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Text associated with link.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Url" type="xsd:anyURI"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              URL of link.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="AdditionalMetadata">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        URL to additional metadata about this dataset.  Whereas
+        DatasetLink above generally points to unstructured text, this
+        link is intended to point to metadata that is easily
+        interpreted by software. 
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:simpleContent>
+        <xsd:extension base="xsd:anyURI">
+          <xsd:attribute name="Type" type="enumMetadataType" 
+            use="required" />
+        </xsd:extension>
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:simpleType name="enumMetadataType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Type of AdditionalMetadata.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="SPASE">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Space Physics Archive Search and Extract (SPASE)
+            https://spase-group.org/
+            metadata.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SPDF_SKT_CDF">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+             Space Physics Data Facility (SPDF)/
+             (ISTP) master skeleton Common Data Format (CDF) 
+             https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/00readme.txt
+              metadata. 
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:element name="Inventory">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Coordinated Data Analysis System (CDAS) Inventory.
+        The outermost container or envelope for CDAS inventory
+        descriptions.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="InventoryDescription" 
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Inventory descriptions.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="InventoryDescription">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Description of inventory.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Id" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Dataset identifier.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="TimeInterval" 
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Time interval for which data is available.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="TimeInterval">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Time interval.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Start" type="xsd:dateTime"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Begining time of interval.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="End" type="xsd:dateTime"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Ending time of interval.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="Variables">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Coordinated Data Analysis System (CDAS) Variables.
+        The outermost container or envelope for CDAS Variable
+        descriptions.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="VariableDescription" 
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              List of variable descriptions.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="VariableDescription">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Description of a variable.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Name" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Variable's name.  Note that a few CDAS datasets contain
+              variables with names containing unusual characters
+              (for example, '&gt;', '*', '%', '/', ...).  Any such
+              characters will be properly XML escaped in the XML
+              returned by CDAS.  These variable names may require 
+              additional special handling by software consuming this
+              XML.  For example, the variable names containing
+              RFC 3986 reserved characters will need to be URL
+              encoded if the values are used as URL query parameters.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="ShortDescription" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Short description of variable.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="LongDescription" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Long description of variable.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Parent" type="xsd:string"
+               minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Name of parent variable.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Children" type="xsd:string"
+               minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Names of child variables.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+<!-- If defined as a type first, xjc doesn't annotate DataRequest
+     with an @XmlRootElement annotation so JAXB can't marshal it.
+     But this is only an issue if we want to marshal an input item
+     and we usually don't.
+  <xsd:element name="DataRequest" type="DataRequest" />
+  <xsd:complexType name="DataRequest">
+-->
+  <xsd:element name="DataRequest">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+          A request to CDAS for data.  The data may be represented in a
+          number of different forms (e.g., CDF file, graph [png], plain
+          text, etc.).  The different representations may support 
+          different options (e.g., only CDF supports different CDF
+          versions).
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+<!--  
+This could replace the TimeInterval in each DataRequestEntity
+but can limit the number of intervals in the case of a
+TextRequest and GraphRequest
+        <xsd:element ref="TimeInterval" 
+            minOccurs="1" maxOccurs="unbounded" />
+-->
+        <xsd:element ref="DataRequestEntity" 
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Actual subtype entity of this data request.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="DataRequestEntity" 
+      type="xsd:anyType" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Abstract data request entity.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="TextRequest" 
+            substitutionGroup="DataRequestEntity">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        A request to CDAS for the textual representation of data.  
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="TimeInterval" 
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Time interval of data being requested.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="DatasetRequest" 
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Dataset specific information.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="Compression" 
+            minOccurs="0" maxOccurs="4">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              File Compression.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Format" type="enumTextFormat"
+            minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Text format.  No value indicates Plain.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="BinData"
+            minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Compute uniformly spaced binned data for
+              scalar/vector/spectrogram data.  No value indicates not to
+              compute binned data.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="BinData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Compute uniformly spaced binned data for
+        scalar/vector/spectrogram data.  See
+        https://cdaweb.gsfc.nasa.gov/CDAWeb_Binning_readme.html
+        for more details.  No value indicates not to
+        compute binned data.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Interval" type="xsd:double"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Binning interval (seconds).
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="InterpolateMissingValues" type="xsd:boolean"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Whether to interpolate missing values.  If false, a fill
+              value will be used.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="SigmaMultiplier" type="xsd:unsignedInt"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Standard deviation multiplier used for rejecting data.  If
+              less than 1, spike removal is skipped.  4 is less aggressive.
+              6 is more aggressive.  See 
+              https://hpde.gsfc.nasa.gov/CleanAlgorithm.pdf for details.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="OverrideDefaultBinning" type="xsd:boolean"
+            default="false" minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Flag indicating whether to bin the data of variables
+              beyond the default variable set (those with the ALLOW_BIN 
+              attribute set).
+              false, default binning (variables with ALLOW_BIN set).
+              true, bin additional variables beyond just those with
+              ALLOW_BIN set.
+              This option is currently ignored with GraphRequests.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="Compression" type="enumCompression">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        File Compression option.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:simpleType name="enumCompression">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        File Compression option.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Uncompressed">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Plain, uncompressed file format.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Gzip">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            GNU zip compression file format.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Bzip2">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            bzip2 compression file format.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Zip">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            zip compression file format.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="enumTextFormat">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Text format.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Plain">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Plain, human readable format.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="CSV">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Comma Separated Values.  Deprecated.  Use CSV1 below.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="CSV1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Comma Separated Values with text header.  This is equivalent
+            to CSV above.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="CSV2">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Comma Separated Values with JSON header in a separate file.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:element name="CdfRequest" 
+            substitutionGroup="DataRequestEntity">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+          A request to CDAS for CDF data.  
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="TimeInterval" 
+          minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Time intervals of data being requested.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="DatasetRequest" 
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Dataset specific information.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="CdfVersion" 
+            minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              CDF file format version.  If not specified, the default
+              will be used.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="CdfFormat" 
+            minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              CDF file format.  If not specified, the default (Binary)
+              will be used.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="BinData"
+            minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Compute uniformly spaced binned data for
+              scalar/vector/spectrogram data.  No value indicates not to
+              compute binned data.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="DatasetRequest">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+          A request to CDAS which specifies dataset information.  
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="DatasetId" 
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Dataset identifier.  This may be a traditional CDAS 
+              dataset identifier, Digital Object Identifier (DOI),
+              or a SPASE ResourceID value.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="VariableName" 
+          minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Names of variables.  If "ALL-VARIABLES" is specified as 
+              the first (only) name in a CdfRequest, then all variables 
+              will be included in the resulting CDF.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="DatasetId" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        CDAS dataset identifier.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="VariableName" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        CDAS dataset variable name.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="CdfVersion" type="xsd:int">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        CDF file format version of result file.  Currently, the values
+        "2" and "3" are supported with 3 being the default.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="CdfFormat" type="enumCdfFormat">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        CDF format option.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:simpleType name="enumCdfFormat">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        CDF format option.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Binary">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Traditional CDF binary format.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="CDFML">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            XML representation of CDF.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="GzipCDFML">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            gzip compressed XML representation of CDF.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ZipCDFML">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            zip compressed XML representation of CDF.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ICDFML">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Inline (not in a file) XML representation of CDF.
+            Note: Large data requests should be CDFML (a file) and
+            NOT use this format.  Large request of this format
+            will fail after wasting resources.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="IcdfmlJson">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Inline (not in a file) JSON representation of CDFML.
+            This option is equivalent to ICDFML with the Accept
+            HTTP header set to "application/json".  It is intended
+            for clients that are unable to set the HTTP Accept header.
+            Note: Large request of this format may fail due to
+            excessive memory use.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="CdfJson">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Inline JSON representation of CDF as produced by the CDF2Json
+            (https://cdf.gsfc.nasa.gov/html/cdfjson.html) tool with the
+            addition of a root-level attribute named cdasStatus and a value
+            of an object containing attributes named statuses, messages,
+            warnings, and errors each of which have values of an array of
+            strings.  For example,
+            {"ac_h3_mfi_20230101_v03.cdf":{...},
+             "cdasStatus":{"statuses":[...],"messages":[...],
+                           "warnings":[],"errors":[]}}
+            If a CDF was not produced, the JSON will only contain the
+            cdasStatus attribute with the reason a CDF could not be produced.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NetCdf">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            netcdf (http://www.unidata.ucar.edu/software/netcdf/)
+            representation of CDF.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:element name="GraphRequest" 
+            substitutionGroup="DataRequestEntity" >
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        A request to CDAS for a graphical representation of data.  
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="TimeInterval" 
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Time intervals of data being requested.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="DatasetRequest" 
+            minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Dataset specific information.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:choice>
+          <xsd:element ref="GraphOptions" 
+              minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">
+                Graph options.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <!--  ++++++++++++++++++++++++++++++++++++++++++
+             The following GraphOption element is only supported for
+             backward compatibility with older clients.  New clients
+             should use the GraphOptions above.
+                ++++++++++++++++++++++++++++++++++++++++++  -->
+          <xsd:element ref="GraphOption" 
+              minOccurs="0" maxOccurs="3">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">
+                Deprecated graph options.  New clients should use
+                GraphOptions choice above.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <!--  ++++++++++++++++++++++++++++++++++++++++++  -->
+        </xsd:choice>
+        <xsd:element ref="ImageFormat" 
+            minOccurs="0" maxOccurs="4">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Image format options.  If none are specified, PNG is 
+              assumed.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="BinData"
+            minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Compute uniformly spaced binned data for
+              scalar/vector/spectrogram data.  No value indicates 
+              not to compute binned data.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="GraphOptions">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Graph options.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="CoarseNoiseFilter" 
+            minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Use coarse noise filtering to remove values outside 3 
+              deviations from mean of all values in the plotted time 
+              interval.
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType />
+        </xsd:element>
+        <xsd:element name="XAxisWidthFactor" type="XAxisWidthFactor"
+            default="3" minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Multiply the X-axis width for time-series and 
+              spectrogram by the given value.  For example,
+              if the standard width is 320 pixels and factor is 3, 
+              then the width of the X-axis will be 960.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="YAxisHeightFactor" type="YAxisHeightFactor"
+            default="2" minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Multiply the Y-axis height for time-series and 
+              spectrogram by the given value.  For example,
+              if the standard height is 100 pixels and factor is 2, 
+              then the height of the Y-axis will be 200.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Combine" 
+            minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Combine all time-series and spectrogram plots, for all 
+              requested datasets, into one plot file.
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType />
+        </xsd:element>
+        <xsd:element ref="Overplot" 
+            minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Overplot option.  This option requests that vector 
+              quantities and/or corresponding variables from related
+              datasets be plotted on the same graph.  For example,
+              include this option to have all components of the
+              tha_fgm_gsm vector variable (from the THA_L2_FGM dataset)
+              plotted on the same graph.  Another example involving
+              related variables in multiple datasets is the 
+              B_Ion variables from the RBSPA_REL03_ECT-HOPE-SCI-L2SA
+              and RBSPB_REL03_ECT-HOPE-SCI-L2SA datasets plotted on the
+              same graph.
+              NOTE: These web services do not currently return 
+              sufficient metadata for a client to reliably request 
+              this option.  For example, the returned
+              VariableDescription does not contain dimension 
+              information or information describing a relationship 
+              between a variable in another dataset.  But some clients 
+              may have this information from another source (for 
+              example, from a Space Physics Archive Search and Extract 
+              [SPASE] description).  Requesting this option when there 
+              are no vector variables or related variables from 
+              different datasets will result in the same graphs being 
+              produced as when the option is not included.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:simpleType name="XAxisWidthFactor">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        X-axis widthmultiplication factor.
+        For example if the standard height is 320 pixels
+        and factor is 3, then the width of the X-axis
+        will be 960.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:integer">
+      <xsd:minInclusive value="1" />
+      <xsd:maxInclusive value="6" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="YAxisHeightFactor">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Y-axis height multiplication factor.
+        For example if the standard height is 100 pixels
+        and factor is 2, then the height of the Y-axis
+        will be 200.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:integer">
+      <xsd:minInclusive value="1" />
+      <xsd:maxInclusive value="6" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:element name="Overplot" type="enumOverplot">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Overplot option.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:simpleType name="enumOverplot">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Overplot option.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="None">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Indicates that no overplotted is requested.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="VectorComponents">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Indicates that vector components should be overplotted.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="IdenticalMissionVariables">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Indicates that identical mission variables should be 
+            overplotted.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:element name="GraphOption" type="enumGraphOption">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Deprecated graph options.  New clients should use
+        GraphOptions choice above.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:simpleType name="enumGraphOption">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Graphing option.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="CoarseNoiseFilter">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Use coarse noise filtering to remove values outside 3 
+            deviations from mean of all values in the plotted time 
+            interval.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="DoubleHeightYAxis">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Double the Y-axis height for time-series and spectrogram 
+            plots.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="CombineGraphs">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Combine all time-series and spectrogram plots, for all 
+            requested datasets, into one plot file.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:element name="ImageFormat" type="enumImageFormat">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Format of graph image.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:simpleType name="enumImageFormat">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Format of graph image.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="GIF">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Graphics Interchange Format.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PNG">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Portable Network Graphics format.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PS">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Postscript.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PDF">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            Portable Document Format.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:element name="ThumbnailRequest" 
+            substitutionGroup="DataRequestEntity">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        A request to CDAS for the full size image of a thumbnail image.  
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="ThumbnailDescriptionEntity" 
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Thumbnail description entity.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Thumbnail" type="xsd:int"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Number of thumbnail whose full size image is being requested.
+              Thumbnail images are counted beginning at one (not zero).
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="ImageFormat" 
+            minOccurs="0" maxOccurs="2">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Format of full size image.  Valid values are PNG and GIF
+              with PNG being the default if no value is specified.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+
+  <xsd:element name="AudioRequest" 
+            substitutionGroup="DataRequestEntity">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        A request to CDAS for the audio representation of data.  
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="TimeInterval" 
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Time interval of data being requested.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="DatasetRequest" 
+            minOccurs="1" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Dataset specific information.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="BinData"
+            minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Compute uniformly spaced binned data for
+              scalar/vector/spectrogram data.  No value indicates not to
+              compute binned data.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+
+<!-- If defined as a type first, xjc doesn't annotate DataResult
+     with an @XmlRootElement annotation so JAXB can't marshal it
+  <xsd:element name="DataResult" type="DataResult" />
+  <xsd:complexType name="DataResult">
+-->
+  <xsd:element name="DataResult">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Response to a DataRequest.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="FileDescription" 
+              minOccurs="1" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">
+                Description of the file that was requested.  This element
+                results from a CdfRequest with CdfFormat != ICDFML.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+
+          <xsd:element ref="cdf:CDF"
+              minOccurs="1" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">
+                Requested data in a CDFML representation.  This element
+                results from a CdfRequest with CdfFormat == ICDFML.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:choice>
+        <xsd:element name="Message" type="xsd:string"
+            minOccurs="0" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Informational messages about the request.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Warning" type="xsd:string"
+            minOccurs="0" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Warning messages about the request.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Status" type="xsd:string"
+            minOccurs="0" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Status messages about the request.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Error" type="xsd:string"
+            minOccurs="0" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Error messages about the request.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="FileDescription">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Description of a file.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Name" type="xsd:string"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Name of file (usually a URL).
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="MimeType" type="xsd:string"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              MIME type of file.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="StartTime" type="xsd:dateTime"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Start time of data contained with the file.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="EndTime" type="xsd:dateTime"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              End time of data contained with the file.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Length" type="xsd:long"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Length of file in bytes.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="LastModified" type="xsd:dateTime"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Time when the file was last modified.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="ThumbnailDescription" 
+            minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              If the request returned a thumbnail image, then this
+              describes the thumbnails.  Subsequent requests for a
+              full size image of a thumbnail must include this value
+              or the ThumbnailId value.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="ThumbnailId" 
+            minOccurs="0" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              If the request returned a thumbnail image, then this
+              value identifies the collection of thumbnail images.  
+              Subsequent requests for a full size image of a thumbnail 
+              from the collection must include this value
+              or the corresponding ThumbnailDescription value.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="ThumbnailDescriptionEntity" 
+      type="xsd:anyType" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Abstract description of a collection of thumbnail images.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="ThumbnailDescription"
+            substitutionGroup="ThumbnailDescriptionEntity">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Description of a collection of thumbnail images.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Type" type="xsd:string"
+            minOccurs="1" maxOccurs="1" />
+        <xsd:element name="Name" type="xsd:string"
+            minOccurs="1" maxOccurs="1" />
+        <xsd:element name="Dataset" type="xsd:string"
+            minOccurs="1" maxOccurs="1" />
+        <xsd:element ref="TimeInterval" 
+            minOccurs="1" maxOccurs="1" />
+        <xsd:element name="VarName" type="xsd:string"
+            minOccurs="1" maxOccurs="1" />
+        <xsd:element name="Options" type="xsd:long"
+            minOccurs="1" maxOccurs="1" />
+        <xsd:element name="NumFrames" type="xsd:int"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Number of thumbnail images.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="NumRows" type="xsd:int"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Number of rows of thumbnail images.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="NumCols" type="xsd:int"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Number of columns of thumbnail images.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="TitleHeight" type="xsd:int"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Height (in pixels) of title on the image containing
+              the thumbnails.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="ThumbnailHeight" type="xsd:int"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Height (in pixels) of each thumbnail image.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="ThumbnailWidth" type="xsd:int"
+            minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              Width (in pixels) of each thumbnail image.
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="StartRecord" type="xsd:int"
+            minOccurs="1" maxOccurs="1" />
+        <xsd:element name="MyScale" type="xsd:double"
+            minOccurs="1" maxOccurs="1" />
+        <xsd:element name="XyStep" type="xsd:double"
+            minOccurs="1" maxOccurs="1" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="ThumbnailId" type="xsd:string"
+            substitutionGroup="ThumbnailDescriptionEntity">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        Identifies of a collection of thumbnail images.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+</xsd:schema>
