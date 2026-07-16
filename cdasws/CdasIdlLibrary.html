@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type"
+      content="text/html; charset=utf-8">
+  <title>IDL CDAWeb Access</title>
+  <meta content="Bernie Harris" name="author">
+  <meta name="orgcode" content="672">
+  <meta name="description"
+ content="The CDAS Web services allow a software developer to use CDAS services in their own application...">
+  <meta name="keywords"
+ content="science, data, CDAWeb, coordinated data analysis, multi-mission, multi-instrument, space physics, XML, Web services">
+<!--
+  <meta name="rno" content="Robert.M.Candey.1">
+  <meta name="content-owner" content="Tamara.J.Kovalick.1">
+  <meta name="webmaster" content="Tamara.J.Kovalick.1">
+  <link rel="icon" href="nasaicon.png" type="image/png">
+  <link rel="SHORTCUT ICON" href="favicon.ico">
+  <link rel="stylesheet" href="/css/common.css" type="text/css">
+  <link rel="stylesheet" href="/css/spdf_services.css" type="text/css">
+  <style type="text/css">
+                a.modellink {font-size:13px; font-style:oblique; font-weight:700;}
+                a.serviceName {color: #069; background-color: #fff;}
+                table td {border: thin solid black}
+
+                #sources        td.selected {color: #ffffff; background-color: #006699; text-decoration:none;}
+                #services       td.selected {padding: 2px; border: 1px dashed #069; text-decoration:none; font-size: 16px; color: #006699;}
+      </style>
+      <script type="text/javascript" id="_fed_an_ua_tag"
+           src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC">
+      </script>
+-->
+<script type="application/ld+json">
+
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "description": "Python and IDL code snippets to access SPDF data.",
+    "creator": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Space Physics Data Facility",
+        "email": "NASA-SPDF-Support@nasa.onmicrosoft.com",
+        "keywords": [
+            "heliophysics",
+            "space physics",
+            "spdf"
+        ],
+        "parentOrganization": {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Goddard Space Flight Center",
+            "keywords": [
+                "nasa"
+            ],
+            "parentOrganization": {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "National Aeronautics and Space Administration",
+                "keywords": [
+                    "nasa"
+                ]
+            }
+        }
+    },
+    "keywords": [
+        "heliophysics",
+        "space physics",
+        "spdf",
+        "heliophysics data"
+    ],
+    "codeSampleType": "code snippet",
+    "programmingLanguage": [
+        {
+            "@context": "https://schema.org",
+            "@type": "ComputerLanguage",
+            "name": "IDL"
+        }
+    ],
+    "runtimePlatform": "IDL8"
+}
+      <script type="text/javascript">
+          function copyCode(id) {
+            var code = document.getElementById(id);
+            code.select();
+            code.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+          }
+     </script>
+</head>
+<!--
+<body alink="#000088" bgcolor="#ffffff" link="#0000ff" text="#000000"
+ vlink="#ff0000">
+<div id="paper">
+-->
+<!--#include virtual="../header.html"-->
+
+<h1>Accessing CDAWeb Data From IDL</h1>
+
+This page describes an IDL library that provides easy access to <a
+ href="https://cdaweb.gsfc.nasa.gov/" target="_blank">CDAWeb</a> data from an <a
+ href="https://en.wikipedia.org/wiki/Interactive_Data_Language" target="_blank">IDL</a>
+program.&nbsp; With this library, an IDL user can retrieve data from
+CDAWeb by entering a <a href="#One-line_Data_Access">single IDL command</a>.&nbsp;
+The data is automatically downloaded and read into an IDL structure
+(with its associated metadata/documentation) in the user's local IDL
+environment.&nbsp; The user can then write their own IDL code to
+analyze or visualize the data.&nbsp; This is further illustrated with
+an <a href="#IDL_Jupyter_Notebook_Example">IDL Jupyter</a> 
+notebook example.&nbsp; There is also a <a
+ href="#GUI_Data_Access">GUI program</a> to make discovering and
+retrieving CDAWeb data even easier.&nbsp; Finally, there is an <a
+ href="#More_complete_CDAWeb_Access_Example_">example program</a> that
+demonstrates many of the lower-level calls for those who want to
+incorporate CDAWeb data access into a larger IDL program.<br>
+
+<h2 id="preparation">Preparation</h2>
+<ol>
+  <li>Determine if you need the
+      <a href="https://cdf.gsfc.nasa.gov/html/cdf_patch_for_idl.html" target="_blank">
+      CDF patch for IDL</a>.
+<!--
+    <ul>
+      <li>At the IDL command prompt, type <code>help, /dlm, 'cdf'</code>.</li>
+      <li>If the output shows version 3.4 or higher, you do not need the
+          patch.</li>
+      <li>If the output shows a version less than 3.4, download and install the
+          <a href="https://cdf.gsfc.nasa.gov/html/cdf_patch_for_idl.html" target="_blank">
+          CDF patch for IDL</a>.</li>
+    </ul>
+-->
+  </li>
+  <li>Download <code><a href="spdfcdas.sav">spdfcdas.sav</a></code></li>
+  <li>Start IDL 8.4 or higher.</li>
+  <li><code>IDL&gt; restore, 'spdfcdas.sav', /skip_existing</code></li>
+</ol>
+
+<h2 id="pkg_install">IDL Package Installation (alternative installation procedure)</h2>
+If you are using IDL version 8.7.1 or higher, you may install the
+SPDF_CDAS package by doing the following in an IDL session:<br><br>
+<!--
+<ol>
+  <li>Start IDL 8.7.1 or higher.</li>
+  <li><code>IDL&gt; ipm, /install, 'https://cdaweb.gsfc.nasa.gov/WebServices/REST/SPDF_CDAS.zip'</code></li>
+  <li><code>IDL&gt; restore, !package_path + '/SPDF_CDAS/spdfcdas.sav'</code></li>
+</ol>
+-->
+<textarea rows="3" cols="80" id="ipmCode" style="overflow-x: scroll;">
+ipm, /install, 'https://cdaweb.gsfc.nasa.gov/WebServices/REST/SPDF_CDAS.zip'
+restore, !package_path + '/SPDF_CDAS/spdfcdas.sav'
+</textarea><br>
+<button onclick="copyCode('ipmCode')">Copy Code</button><br>
+
+<h2><a name="One-line_Data_Access"></a>"One-line" Data Access</h2>
+To retrieve data from the AC_H2_MFI dataset into the IDL variable "d", do the
+following in an IDL session:<br><br>
+<!--
+<ol>
+  <li><code>IDL&gt; d = spdfgetdata('AC_H2_MFI', ['Magnitude' ,
+'BGSEc'], ['2009-06-01T00:00:00.000Z', '2009-06-03T00:00:00.000Z'])</code></li>
+</ol>
+-->
+<textarea rows="3" cols="80" id="getDataCode" style="overflow-x: scroll;">
+d = spdfgetdata('AC_H2_MFI', ['Magnitude' , 'BGSEc'], ['2009-06-01T00:00:00.000Z', '2009-06-03T00:00:00.000Z'])
+</textarea><br>
+<button onclick="copyCode('getDataCode')">Copy Code</button><br><br>
+
+Notes:<br>
+<ul>
+  <li><code>Epoch</code> values are returned in <code>d.epoch.dat</code></li>
+  <li><code>Magnitude</code> values are in <code>d.magnitude.dat</code></li>
+  <li><code>BGSEc</code> values are in <code>d.bgsec.dat</code></li>
+  <li>The GUI Data Access section below allows the user to easily
+discover the values that are required to make the above call.<br>
+    <code></code></li>
+  <li>View <a
+ href="idl/api/spdfgetdata.html#SpdfGetData" target="_blank">spdfGetData
+documentation</a> for more information.<br>
+    <br>
+  </li>
+</ul>
+
+<h2 id="IDL_Jupyter_Notebook_Example">IDL Jupyter Notebook Example</h2><br>
+
+Use of this IDL library to access CDAWeb data if further illustrated in this
+<a href="https://www.nv5geospatialsoftware.com/docs/IDL_Kernel.html"
+target="_blank">IDL Jupyter</a> 
+<a href="jupyter/CdasWsIdlExample.html" target="_blank">notebook example</a> (
+<a href="jupyter/CdasWsIdlExample.ipynb" download>ipynb file</a>).
+<br><br>
+
+<h2><a name="GUI_Data_Access"></a>GUI Data Access</h2><br>
+
+The purpose of this GUI is to allow the user to retrieve data from
+CDAWeb into their local IDL environment without having to know the
+values of the parameters (e.g., <code>AC_K2_MFI, Magnitude, BGSEc</code>,
+etc.) to
+the<code> spdfGetData </code>function.&nbsp; Once the user selects the
+data they want from CDAWeb, this program can retrieve the data and
+place it in an IDL structure.&nbsp; The user can then
+enter any IDL commands to analyze, alter, or visualize the data.<br>
+<ol>
+  <li><code>IDL&gt; spdfcdawebchooser</code></li>
+  <li>Change the dataview if you wish</li>
+  <li>Select one or more <code>Mission Groups</code> (e.g., ACE)<br>
+  </li>
+  <li>Select one or more <code>Instrument Types</code> (e.g., Magnetic
+Fields)<br>
+  </li>
+  <li>Select the<code> Find Datasets </code>button</li>
+  <li>Select one or more variables from a single dataset (e.g.,
+AC_K2_MFI: Magnitude, BGSEc)<br>
+  </li>
+  <li>Enter a<code> Start </code>and<code> Stop </code>time</li>
+  <li>Change the variable name if you wish<br>
+  </li>
+  <li>Select the<code> Get Data </code>button</li>
+  <li><code>IDL&gt; help, data.<span style="font-style: italic;">varname</span>.dat,
+/struct </code>; where <span style="font-style: italic;">varname</span>
+is the name of a selected variable (e.g., <code>data.magnitude.data</code>)<br>
+  </li>
+  <li>Perform any IDL operations on the data that you want (e.g. <code>plot,
+data.magnitude.dat</code>)<br>
+  </li>
+</ol>
+Notes:<br>
+<ul>
+  <li>If instead of reading the data into the current IDL environment,
+if you just want the IDL code to perform the operation so it can be
+incorporated into some other IDL program, replace step 9 above with the
+selection of the<code> Show IDL </code>button.</li>
+</ul>
+<h2><a name="More_complete_CDAWeb_Access_Example_"></a>"More complete"
+CDAWeb Access Example<br>
+</h2>
+<ol>
+  <li><code>IDL&gt; spdfcdaswsexample</code></li>
+</ol>
+Notes:<br>
+<ul>
+  <li>View <a
+ href="idl/api/spdfcdaswsexample.html" target="_blank">spdfcdaswsexample
+documentation</a>.</li>
+  <li>View <a
+ href="idl/public/" target="_blank">simplified API documentation</a>.</li>
+  <li>View <a href="idl/api/" target="_blank">complete API documentation</a>.</li>
+  <li>Get the <a href="SpdfCdas-1.8.24.tar.gz">source code</a>.
+    <ul>
+      <li><a href="https://spdf.gsfc.nasa.gov/CDAWlib.html" target="_blank">CDAWlib</a>.</li>
+    </ul>
+  </li>
+</ul>
+<br>
+<!--#include virtual="/cdawfooter.html"--> </div>
+</body>
+</html>
