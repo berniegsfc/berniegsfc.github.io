@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DataRequest xmlns="http://cdaweb.gsfc.nasa.gov/schema">
+  <CdfRequest>
+    <TimeInterval>
+      <Start>2009-08-17T00:00:00.000Z</Start>
+        <End>2009-08-18T00:00:00.000Z</End>
+    </TimeInterval>
+    <DatasetRequest>
+      <DatasetId>AC_OR_SSC</DatasetId>
+      <VariableName>XYZ_GSE</VariableName>
+    </DatasetRequest>
+    <CdfVersion>3</CdfVersion>
+    <CdfFormat>CDFML</CdfFormat>
+<!--
+    <CdfFormat>ZipCDFML</CdfFormat>
+    <CdfFormat>GzipCDFML</CdfFormat>
+-->
+  </CdfRequest>
+</DataRequest>
+
