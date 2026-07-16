@@ -326,7 +326,7 @@ Script</a></li>
   </ul>
   <li><a href="https://en.wikipedia.org/wiki/XQuery" target="_blank">XQuery</a></li>
   <ul>
-    <li><a href="https://cdaweb.gsfc.nasa.gov/HAPI/cdasws.xql" target="_blank">cdasws.xql</a> is a partial XQuery implementation of these web services.</li>
+    <li><a href="https://cdaweb.gsfc.nasa.gov/WebServices/HAPI/cdasws.xql" target="_blank">cdasws.xql</a> is a partial XQuery implementation of these web services.</li>
 <!--
     <li><a href="http://expath.org/modules/http-client/" target="_blank">EXPath HTTP Client</a> is an XQuery HTTP client libraray.</li>
 -->
@@ -708,14 +708,19 @@ thumbnailId={id}&amp;thumbnail={num}</td>
 </table>
 <br>
 <hr style="width: 100%; height: 2px;">
+
 <h3 id="Get_WADL">Get WADL</h3>
 This service provides the <a
  href="https://en.wikipedia.org/wiki/Web_Application_Description_Language">Web
 Application Description Language</a> (WADL) for these Web services.<br>
+
 <h4>Example</h4>
-Below is an example client request to this service and the results.<br>
-<pre>$ curl https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/application.wadl?detail | xmllint --format -<br><br></pre>
-<iframe src="cdas.wadl.txt" height="300" width="90%"></iframe>
+
+Here is a request
+<a href="https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/application.wadl?detail" target="_blank">https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/application.wadl?detail</a>
+for the WADL.
+<pre>$ curl https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/application.wadl?detail | xmllint --format -</pre>
+
 <!--
 <h3>Get About</h3>
 <h3>Get Privacy</h3>
