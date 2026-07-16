@@ -1,0 +1,296 @@
+;
+; NOSA HEADER START
+;
+; The contents of this file are subject to the terms of the NASA Open
+; Source Agreement (NOSA), Version 1.3 only (the "Agreement").  You may
+; not use this file except in compliance with the Agreement.
+;
+; You can obtain a copy of the agreement at
+;   docs/NASA_Open_Source_Agreement_1.3.txt
+; or
+;   https://cdaweb.gsfc.nasa.gov/WebServices/NASA_Open_Source_Agreement_1.3.txt.
+;
+; See the Agreement for the specific language governing permissions
+; and limitations under the Agreement.
+;
+; When distributing Covered Code, include this NOSA HEADER in each
+; file and include the Agreement file at
+; docs/NASA_Open_Source_Agreement_1.3.txt.  If applicable, add the
+; following below this NOSA HEADER, with the fields enclosed by
+; brackets "[]" replaced with your own identifying information:
+; Portions Copyright [yyyy] [name of copyright owner]
+;
+; NOSA HEADER END
+;
+; Copyright (c) 2010-2023 United States Government as represented by the
+; National Aeronautics and Space Administration. No copyright is claimed
+; in the United States under Title 17, U.S.Code. All Other Rights Reserved.
+;
+;
+
+
+;+
+; This file contains a procedure-oriented wrapper that integrates
+; functionality from the SpdfCdas class (IDL client interface to
+; <a href="https://cdaweb.gsfc.nasa.gov/WebServices">
+; Coordinated Data Analysis System Web Services</a> (CDAS WSs))
+; and the 
+; <a href="https://spdf.gsfc.nasa.gov/CDAWlib.html">CDAWlib</a>
+; library.
+;
+; @copyright Copyright (c) 2010-2023 United States Government as 
+;     represented by the National Aeronautics and Space 
+;     Administration. No copyright is claimed in the United States 
+;     under Title 17, U.S.Code. All Other Rights Reserved.
+;
+; @author B. Harris
+;-
+
+
+;+
+; This function is an example of a callback_function for the
+; spdfGetData function.
+;
+; @param statusInfo {in} {type=strarr}
+; @param progressInfo {in} {type=lon64arr}
+; @param callbackData {in} {type=reference}
+; @returns a continue flag.  A return value of zero indicates that
+;     the operation should be cancelled.  A return value of one 
+;     indicates that the operation should continue.
+;-
+function SpdfGetDataCallback, $
+    statusInfo, progressInfo, callbackData
+    compile_opt idl2
+
+    print, 'spdfGetDataCallback: statusInfo:', statusInfo
+
+    if progressInfo[0] eq 1 then begin
+
+        percentComplete = $
+            double(progressInfo[2]) / progressInfo[1] * 100.0
+
+        print, progressinfo[2], progressInfo[1], percentComplete, $
+            format='(%"spdfGetDataCallback: (%d) bytes of (%d) complete (%f%%)")'
+    endif
+
+    return, 1
+end
+
+
+;+
+; This function gets data from <a href="https://www.nasa.gov/">NASA</a>'s
+; <a href="https://spdf.gsfc.nasa.gov/">Space Physics Data Facility</a>
+; <a href="https://cdaweb.gsfc.nasa.gov/">Coordinated Data Analysis 
+; System</a> and returns it in a 
+; <a href="https://spdf.gsfc.nasa.gov/CDAWlib.html">CDAWlib</a>
+; structure..
+; <br>
+;  Notes: <ul>
+;    <li>If any one of the <code>binInterval, binInterpolateMissingValues,
+;    binSigmaMultiplier, or binOverrideDefaultBinning</code> keyword 
+;    parameters is set, 
+;    <a href="https://cdaweb.gsfc.nasa.gov/CDAWeb_Binning_readme.html">
+;    binning of the data</a>
+;    will be requested with the default values for any missing
+;    <code>bin*</code> keyword values.  If no <code>bin*</code> keyword 
+;    parameters are set, binning of the data will not be requested.</li>
+;    <li>A few datasets in CDAS contain variables with names that cannot
+;     be used as tag names an IDL structure.  In those cases, the
+;     tag name in this structure will be a modification of the
+;     actual CDF variable name.  For example, if you requested the
+;     'H+' variable from the 'FA_K0_TMS' dataset, the 'H+' values
+;     will be returned in a structure under the tag name 'H$'.</li>
+; </ul>
+;
+; @param dataset {in} {type=string}
+;            name of dataset to get data from.
+; @param variables {in} {out} {type=strarr}
+;            On entry, names of variables whose values are to be gotten.
+;            If the first (only) name is "ALL-VARIABLES", then the 
+;            resulting CDF will contain all variables.
+;            On exit, names of variables actually read (may be more 
+;            than requested).
+; @param timeSpans {in} {type=strarr(n, 2)}
+;            ISO 8601 format strings of the start and stop times of the
+;            data to get.
+; @keyword binInterval {in} {optional} {type=double} {default=60.0D}
+;            binning interval (seconds).
+; @keyword binInterpolateMissingValues {in} {optional} {type=byte} 
+;            {default=1}
+;            flag indicating whether to interpolate missing values.
+; @keyword binSigmaMultiplier {in} {optional} {type=int} {default=0}
+;            standard deviation multiplier used for rejecting data.
+; @keyword binOverrideDefaultBinning {in} {optional} {type=byte}
+;            {default=0}
+;            flag indicating whether to override the default selection
+;            of variables to bin.  0 = use default selection (only
+;            variables with the ALLOW_BIN attribute set).  1 = bin
+;            additional variables beyond just those with the ALLOW_BIN
+;            attribute set.
+; @keyword dataview {in} {optional} {type=string} {default='sp_phys'}
+;            name of dataview containing the dataset.
+; @keyword endpoint {in} {optional} {type=string}
+;            {default='https://cdaweb.gsfc.nasa.gov/WS/cdasr/1'}
+;            URL of CDAS web service.
+; @keyword keepfiles {in} {optional} {type=boolean} {default=false}
+;            The KEEPFILES keyword causes SpdfGetData to retain the
+;            downloaded data files.  Normally these files are deleted
+;            after the data is read into the IDL environment.
+; @keyword quiet {in} {optional} {type=boolean} {default=false}
+;            SpdfGetData normally prints an error message if no data is
+;            found.  If QUIET is set, no error messages is printed.
+; @keyword verbose {in} {optional} {type=boolean} {default=false}
+;            The VERBOSE keyword causes SpdfGetData to print additional
+;            status, debugging, and usage information.
+; @keyword callback_function {in} {optional} {type=string}
+;            this keyword value is the name of the IDL function that
+;            is to be called during this retrieval operation.  The 
+;            callbacks provide feedback to the user about the ongoing 
+;            operation, as well as provide a method to cancel an 
+;            ongoing operation. If this keyword is not set, no
+;            callback to the caller is made.  For information on 
+;            creating a callback function, see "Using Callbacks with 
+;            the IDLnetURL Object" in the IDL documentation.
+; @keyword callback_data {in} {optional} {type=reference}
+;            this keyword value contains data that is passed to the 
+;            caller when a callback is made. The data contained in 
+;            this variable is defined and set by the caller. The 
+;            variable is passed, unmodified, directly to the caller 
+;            as a parameter in the callback function. If this keyword
+;            is not set, the corresponding callback parameter's value
+;            is undefined.
+; @keyword sslVerifyPeer {in} {optional} {type=int} 
+;            {default=spdfGetDefaultSslVerify()}
+;            Specifies whether the authenticity of the peer's SSL
+;            certificate should be verified.  When 0, the connection 
+;            succeeds regardless of what the peer SSL certificate 
+;            contains.
+; @returns structure containing requested data.
+; @examples
+;   <pre>
+;     d = spdfgetdata('AC_H2_MFI', ['Magnitude', 'BGSEc'], $
+;           ['2013-01-01T00:00:00.000Z', '2013-01-03T00:00:00.000Z'], $
+;           /VERBOSE)
+;
+;     The Epoch values are returned in d.epoch.dat
+;     The Magnitude values are in d.magnitude.dat
+;     The BGSEc values are in d.bgsec.dat
+; 
+;    To see further info. about each variable type 
+;        help, /struct, d."variablename"
+;    To make a plot with the CDAWlib s/w type 
+;        s = plotmaster(d, /AUTO, /CDAWEB, /GIF, /SMOOTH, /SLOW)
+;   </pre>
+;-
+function SpdfGetData, $
+    dataset, $
+    variables, $
+    timeSpans, $
+    binInterval = binInterval, $
+    binInterpolateMissingValues = binInterpolateMissingValues, $
+    binSigmaMultiplier = binSigmaMultiplier, $
+    binOverrideDefaultBinning = binOverrideDefaultBinning, $
+    dataview = dataview, $
+    endpoint = endpoint, $
+    keepfiles = keepfiles, $
+    quiet = quiet, $
+    verbose = verbose, $
+    callback_function = callback_function, $
+    callback_data = callback_data, $
+    sslVerifyPeer = sslVerifyPeer
+    compile_opt idl2
+
+    if ~obj_valid(httpErrorReporter) then begin
+
+        httpErrorReporter = obj_new('SpdfHttpErrorReporter')
+    endif
+
+    if ~keyword_set(dataview) then begin
+
+        dataview = 'sp_phys'
+    end
+
+    cdas = $
+        obj_new('SpdfCdas', $
+            endpoint = endpoint, $
+            userAgent = 'SpdfGetData', $
+            defaultDataview = dataview, $
+            sslVerifyPeer = sslVerifyPeer)
+
+    sizeTimeSpans = size(timeSpans)
+
+    if sizeTimeSpans[0] eq 1 and sizeTimeSpans[1] eq 2 then begin
+
+        timeIntervals = $
+            [obj_new('SpdfTimeInterval', timeSpans[0], timeSpans[1])]
+
+    endif else begin
+        if sizeTimeSpans[0] eq 2 then begin
+
+            timeIntervals = objarr(sizeTimeSpans[1])
+
+            for i = 0, sizeTimeSpans[1] - 1 do begin
+
+                timeIntervals[i] = $
+                    obj_new('SpdfTimeInterval', $
+                        timeSpans[0, i], timeSpans[1, i])
+            endfor
+        endif else begin
+
+            if ~keyword_set(quiet) then begin
+
+                print, 'Error: timeSpans parameter must be strarr(n, 2)'
+                print, 'Error: size(timeSpans) = ', sizeTimeSpans
+            endif
+            obj_destroy, cdas
+
+            return, obj_new()
+        endelse
+    endelse
+
+    if keyword_set(binInterval) or $
+       keyword_set(binInterpolateMissingValues) or $
+       keyword_set(binSigmaMultiplier) or $
+       keyword_set(binOverrideDefaultBinning) then begin
+
+        if ~keyword_set(binInterval) then binInterval = 60.0D
+        if ~keyword_set(binInterpolateMissingValues) then $
+            binInterpolateMissingValues = 1B
+        if ~keyword_set(binSigmaMultiplier) then binSigmaMultiplier = 0L
+        if ~keyword_set(binOverrideDefaultBinning) then binOverrideDefaultBinning = 0B
+
+        binData = obj_new('SpdfBinData', binInterval, $
+                      binInterpolateMissingValues, binSigmaMultiplier, $
+                      binOverrideDefaultBinning)
+    endif
+
+    data = cdas->getCdawlibData( $
+               timeIntervals, dataset, variables, $
+               binData = binData, $
+               httpErrorReporter = httpErrorReporter, $
+               keepfiles = keepfiles, $
+               quiet = quiet, $
+               verbose = verbose, $
+               callback_function = callback_function, $
+               callback_data = callback_data)
+
+    obj_destroy, timeIntervals
+    obj_destroy, cdas
+
+    if keyword_set(verbose) then begin
+
+        print, 'Data values are returned in the data structure in each variables .dat tag member. '
+        print, '   '
+        print, "For example - for the call d = spdfgetdata('AC_H2_MFI', ['Magnitude', 'BGSEc'], ['2013-01-01T00:00:00.000Z', '2013-01-03T00:00:00.000Z'])"
+        print, '   '
+        print, 'The Epoch values are returned in d.epoch.dat'
+        print, 'the Magnitude values are in d.magnitude.dat'
+        print, 'and the BGSEc values are in d.bgsec.dat'
+        print, '   '
+        print, 'To see further info. about each variable type help, /struct, d."variablename"'
+        print, 'To make a plot with the CDAWlib s/w type s = plotmaster(d, /AUTO, /CDAWEB, /GIF, /SMOOTH, /SLOW)
+
+    endif
+
+    return, data
+end
