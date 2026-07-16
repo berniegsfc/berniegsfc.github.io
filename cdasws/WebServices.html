@@ -1,0 +1,2589 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type"
+      content="text/html; charset=utf-8">
+<!--
+  <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://dap.digitalgov.gov/ https://www.google-analytics.com/ https://code.jquery.com/; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.python.org/ https://www.google-analytics.com/ https://binder.opensci.2i2c.cloud/ https://anaconda.org/ https://img.shields.io/ https://hdrl.gsfc.nasa.gov/;" >
+-->
+  <title>CDAS RESTful Web Services</title>
+  <meta content="Bernie Harris" name="author">
+  <meta name="orgcode" content="672">
+  <meta name="description"
+ content="The CDAS Web services allow a software developer to use CDAS services in their own application...">
+  <meta name="keywords"
+ content="science, data, CDAWeb, coordinated data analysis, multi-mission, multi-instrument, heliophysics, space physics, XML, Web services, HDRL, HelioCloud">
+<!--
+  <meta name="rno" content="Robert.M.Candey.1">
+  <meta name="content-owner" content="Tamara.J.Kovalick.1">
+  <meta name="webmaster" content="Tamara.J.Kovalick.1">
+  <link rel="icon" href="nasaicon.png" type="image/png">
+  <link rel="SHORTCUT ICON" href="favicon.ico">
+  <link rel="stylesheet" href="/css/common.css" type="text/css">
+  <link rel="stylesheet" href="/css/spdf_services.css" type="text/css">
+  <style type="text/css">	
+	        a.modellink {font-size:13px; font-style:oblique; font-weight:700;} 
+	   	a.serviceName {color: #069; background-color: #fff;}
+		table td {border: thin solid black}
+
+	   	#sources	td.selected {color: #ffffff; background-color: #006699; text-decoration:none;} 
+   	  	#services	td.selected {padding: 2px; border: 1px dashed #069; text-decoration:none; font-size: 16px; color: #006699;} 
+  </style>
+  <script type="text/javascript" id="_fed_an_ua_tag"
+           src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC">
+  </script>
+  <script type="text/javascript"
+      src="https://code.jquery.com/jquery-3.1.0.min.js">
+  </script>
+  <script type="text/javascript" src="WebServices.js">
+  </script>
+-->
+</head>
+<!--
+<body alink="#000088" bgcolor="#ffffff" link="#0000ff" text="#000000"
+ vlink="#ff0000">
+<div id="paper">
+-->
+<!--#include virtual="header.html"-->
+
+<section>
+    <div style="background-image:url(https://cdaweb.gsfc.nasa.gov/images/cdaWebHeader.png); background-size: cover; height: 100px; width: 100%">
+    </div>
+</section>
+
+<h1>CDAS RESTful Web Services</h1>
+
+<table style="width: 80%; text-align: left;" align="center" border="1"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr align="center">
+      <th style="background-color: rgb(255, 255, 204); vertical-align: top;">
+          Notice
+      </th>
+    </tr>
+    <tr>
+      <td style="background-color: rgb(255, 255, 204); vertical-align: top;">
+      For two decades, there was also a Simple Object Access Protocol
+      (<a href="https://en.wikipedia.org/wiki/SOAP">SOAP</a>)
+      version of the CDAS web services, but they were 
+      eliminated in March 2024 due to lack of computer industry support.
+      </td>
+    </tr>
+  </tbody>
+</table>
+</p>
+<h2>Introduction </h2>
+The <a href="https://cdaweb.gsfc.nasa.gov">Coordinated Data Analysis System</a> (CDAS) 
+supports simultaneous multi-mission, multi-instrument selection and 
+comparison of science data among a wide range of current space 
+missions.&nbsp; While CDAWeb provides access to this data through an 
+HTML-based user interface, these Web services provides a
+<a href="https://en.wikipedia.org/wiki/Web_api">(Web)</a>
+<a href="https://en.wikipedia.org/wiki/API">application programmming interface
+</a>(API) to CDAS.  
+
+If you are not a software developer and simply want to use the existing web 
+(HTML) interface to CDAS, then return to the 
+<a href="https://cdaweb.gsfc.nasa.gov/">main CDAWeb page</a>.
+
+If you are developing software that requires science data from any of the 
+<a href="https://cdaweb.gsfc.nasa.gov/misc/Notes.html" target="_blank">
+CDAWeb datasets</a>, then the CDAS Web services will provide access to 
+the data without having to explicitly find,
+download, and read the data files.  This document is organized as follows:
+<ul>
+  <li><a href="#Simple_Access_Mechanisms">Simple Access Mechanisms</a></li>
+  <li><a href="#Example_URLs">Example URLs</a></li>
+  <li><a href="#Technical_Details">Technical Details</a></li>
+</ul>
+
+<p>
+Note: These pages on <code>github.io</code> are more up to date, more
+functional, and more LLM-friendly than the corresponding
+<a href="https://cdaweb.gsfc.nasa.gov/WebServices/REST" target="_blank">CDAS Web Services</a> pages.
+</p>
+
+<h3 id="Simple_Access_Mechanisms">Simple Access Mechanisms</h3>
+
+This section describes simple, high-level, mechanisms for accessing CDAS 
+data through these web services from various programming languages.  If 
+these do not meet your needs, you may be interested the 
+<a href="#Technical_Details">low-level details</a> instead.
+
+<ul>
+  <li id="Python_Client_Libraries"><img width="100px" height="auto" style="vertical-align: middle" src="https://www.python.org/static/community_logos/python-logo-generic.svg" alt="Python"></img></li>
+  <ul>
+    <li>
+      <div style="display: flex">
+        <a href="py/cdasws" target="_blank">cdasws</a>&nbsp; is a Python module to easily access CDAS data (<a href="py/FAQ.html" target="_blank">FAQ</a>).&nbsp; <img src="https://img.shields.io/pypi/pyversions/cdasws" />
+      </div>
+      <ul>
+        <li>
+          <div style="display: flex"> cdasws at &nbsp;
+          <a href="https://pypi.org/project/cdasws/" target="_blank"> <img src="https://img.shields.io/pypi/v/cdasws.svg?label=PyPI" /> </a>
+          </div>
+        </li>
+        <li>
+          <div style="display: flex"> cdasws at &nbsp;
+          <a href="https://anaconda.org/conda-forge/cdasws" target="_blank"> <img src="https://anaconda.org/conda-forge/cdasws/badges/version.svg" /> </a>
+          </div>
+        </li>
+        <li id="Jupyter_Notebook_Examples">
+<!-- Use
+    binder.org (and static.binder.org for badge) OR
+    binder.opensci.2i2c.cloud
+    in this notebook section and CSP above
+ -->
+          <div style="display: flex">Jupyter Notebook Examples:&nbsp;
+            <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main"
+               target="_blank">
+              <img alt="launch binder"
+                  src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+            </a>
+          </div>
+          <ul>
+            <li id="CdasWsDataRetrieval">
+                <a href="jupyter/CdasWsDataRetrieval.html" target="_blank">
+                Data Retrieval</a> into SpacePy DataModel, xarray.Dataset, and Pandas DataFrame
+                 (<a href="jupyter/CdasWsDataRetrieval.ipynb" download>ipynb file</a>).
+                <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsDataRetrieval.ipynb"
+                    target="_blank">
+                  <img alt="launch binder"
+                       src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+                </a>
+            </li>
+            <li id="CdasWsBinningExample">
+                <a href="jupyter/CdasWsBinningExample.html" target="_blank">
+                CDAWeb Binning Example</a> (with SpacePy DataModel results)
+                 (<a href="jupyter/CdasWsBinningExample.ipynb" download>ipynb file</a>).
+                <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsBinningExample.ipynb"
+                    target="_blank">
+                  <img alt="launch binder"
+                       src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+                </a>
+            </li>
+            <li id="CdasWsNetCdfExample">
+                <a href="jupyter/CdasWsNetCdfExample.html" target="_blank">
+                NetCDF Example</a> (with xarray.Dataset results)
+                 (<a href="jupyter/CdasWsNetCdfExample.ipynb" download>ipynb file</a>).
+                <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsNetCdfExample.ipynb"
+                    target="_blank">
+                  <img alt="launch binder"
+                       src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+                </a>
+            </li>
+            <li id="CdasWsGraphExample">
+                <a href="jupyter/CdasWsGraphExample.html" target="_blank">
+                CDAWlib Graph Example</a> 
+                 (<a href="jupyter/CdasWsGraphExample.ipynb" download>ipynb file</a>).
+                <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsGraphExample.ipynb"
+                    target="_blank">
+                  <img alt="launch binder"
+                       src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+                </a>
+            </li>
+            <li id="CdasWsAudioExample">
+                <a href="jupyter/CdasWsAudioExample.html" target="_blank">
+                CDAWlib Audio Example</a> 
+                 (<a href="jupyter/CdasWsAudioExample.ipynb" download>ipynb file</a>).
+                <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsAudioExample.ipynb"
+                    target="_blank">
+                  <img alt="launch binder"
+                       src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+                </a>
+            </li>
+            <li id="SscWsConjunctionExample">
+                <a href="https://berniegsfc.github.io/sscws/REST/jupyter/SscWsConjunctionExample.html#Setup-For-Access-To-CDAWeb-Data"
+                   target="_blank">Magnetic Field Line Conjunction Example</a>
+                (<a href="https://berniegsfc.github.io/sscws/REST/jupyter/SscWsConjunctionExample.ipynb" download>ipynb file</a>)
+                with related data retrieval/plotting using cdasws.
+                <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/sscws-notebooks/main?labpath=SscWsConjunctionExample.ipynb"
+                   target="_blank">
+                  <img alt="launch binder"
+                    src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+                </a>
+            </li>
+            <li id="HdpWsExampleWithCdasWs">
+              <a href="https://heliophysicsdata.gsfc.nasa.gov/WebServices/jupyter/HdpWsExampleWithCdasWs.html" 
+                 target="_blank">Example of finding the data</a> with
+              <a href="https://heliophysicsdata.gsfc.nasa.gov/WebServices/" 
+                 target="_blank">hdpws</a> 
+             (<a href="https://heliophysicsdata.gsfc.nasa.gov/WebServices/jupyter/HdpWsExampleWithCdasWs.ipynb" download>ipynb file</a>)
+              and then retrieving the data with cdasws.
+              <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/hdpws-notebooks/main?labpath=HdpWsExampleWithCdasWs.ipynb"
+             target="_blank">
+                <img alt="launch binder"
+                  src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li id="heliocloud">
+          <div style="display:flex; align-items: center">
+            <a href="https://heliocloud.org" target="_blank">
+              <img src="https://cdaweb.gsfc.nasa.gov/logos/HelioCloud.png" width="100" height="auto" 
+                   alt="HelioCloud" />
+            </a>
+            cdasws is included in the HelioCloud "base image", so 
+            no installation is required to use it there.
+          </div>
+        </li>
+        <li id="WS_Client_Examples">
+          These <a href="#Get_Client_Example">web services themselves</a>
+          can produce example Python and IDL&reg; source code.  For 
+          example, here is
+          <a href="https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/dataviews/sp_phys/datasets/AC_H2_MFI/clientLibraryExample/"
+           target="_blank">example client code</a> to get data from the
+          <a href="https://cdaweb.gsfc.nasa.gov/misc/NotesA.html#AC_H2_MFI"
+           target="_blank">AC_H2_MFI</a> dataset.
+        </li>
+      </ul>
+    </li>
+    <li><a href="https://pypi.python.org/pypi/ai.cdas" target="_blank">
+       ai.cdas</a> is another Python library to access CDAS data.</li>
+  </ul>
+  <li><a href="https://www.nv5geospatialsoftware.com/Products/IDL"
+    target="_blank">NV5 Geospatial Interactive Data Language (IDL&reg;)</a></li>
+  <ul>
+    <li><a href="CdasIdlLibrary.html">
+       SPDF CDAS IDL&reg; Web Service Library</a>.  This library makes it
+       easy to call these web services from IDL code.  The library
+       contains several complete example clients (e.g., spdfwsexample, 
+       spdfcdawebchooser, spdfgetdata, and an IDL Jupyter notebook).
+    </li>
+<!--
+    <li>IDLnetURL</li>
+    <li>IDLffXMLDOM</li>
+-->
+  </ul>
+  <li>Unix <a href="https://en.wikipedia.org/wiki/Shell_script" target="_blank">Shell
+Script</a></li>
+  <ul>
+    <li><a href="WsExample.sh">Shell Script Example</a>.&nbsp; This
+      example should run on most 
+      <a href="https://en.wikipedia.org/wiki/Unix-like"> Unix-like</a> 
+      (e.g., macOS, Linux, Windows Subsystem for Linux, etc.) 
+      platforms that have <code>curl</code>,
+      <code>xsltproc</code>, and <code>xmllint</code>. 
+      To install the prerequisite software on debian/ubuntu based Linux
+      distributions, do
+      <ul>
+        <li><code>$ sudo apt install libxml2-utils</code></li>
+        <li><code>$ sudo apt install xsltproc</code></li>
+      </ul>
+      To install the prerequisite software on rpm based Linux
+      distributions, do
+      <ul>
+        <li><code>$ sudo dnf install libxml2</code></li>
+        <li><code>$ sudo dnf install libxslt</code></li>
+      </ul>
+      Here is the <a href="WsExample.txt">output from running the example</a>.
+    </li>
+  </ul>
+  <li>Java</li>
+  <ul>
+    <li id="JAX-RS_Example">JAX-RS Example.  This example
+      demonstrates sending a POST request and receiving the response
+      without writing any serialization/deserialization and data binding
+      code.
+      <ul>
+        <li><a href="JaxRsExamples_ee8.tar.gz" target="_blank">Java EE 8 version</a>.
+        <li><a href="JaxRsExamples.tar.gz" target="_blank">Jakarta EE 10 version</a>.
+      </ul>
+      To run this example, do the following:
+      <ol>
+        <li>Download the version you want.</li>
+        <li>untar the files.</li>
+        <li>cd JaxRsExamples/java</li>
+        <li>mvn compile</li>
+        <li>mvn exec:java</li>
+      </ol>
+    </li>
+<!--
+    <li><code>java.net.http.HttpClient</code></li>
+    <li>JAX-RS client API (<code>jakarta.ws.rs.client</code>)</li>
+-->
+  </ul>
+  <li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">
+      JavaScript</a></li>
+  <ul>
+    <li>JavaScript Example.  This 
+      JavaScript/<a href="https://jquery.com/" target="_blank">jQuery</a>
+      <a href="js/Example1.html" target="_blank">example</a> demonstrates 
+         how to request and recieve data from CDAS.</li>
+    <li><a href="https://jquery.com/" target="_blank">jQuery</a><a
+ href="https://api.jquery.com/category/ajax/" target="_blank">.ajax()</a>
+    </li>
+    <li><a href="https://en.wikipedia.org/wiki/Node.js" target="_blank">
+      Node.js</a> Example.  This example is the Node.js equivalent of
+      the preceding JavaScript example.  Simply download the 
+      <a href="js/CdasNodeExample.js" target="_blank">example</a> and run 
+    <ul>
+      <li><code>node CdasNodeExample.js</code></li>
+    </ul>
+  </li>
+  </ul>
+  <li><a href="https://en.wikipedia.org/wiki/XQuery" target="_blank">XQuery</a></li>
+  <ul>
+    <li><a href="https://cdaweb.gsfc.nasa.gov/HAPI/cdasws.xql" target="_blank">cdasws.xql</a> is a partial XQuery implementation of these web services.</li>
+<!--
+    <li><a href="http://expath.org/modules/http-client/" target="_blank">EXPath HTTP Client</a> is an XQuery HTTP client libraray.</li>
+-->
+  </ul>
+<!--
+  <li>C/C++</li>
+  <ul>
+    <li><a href="https://curl.haxx.se/" target="_blank">libcurl</a></li>
+    <li><a href="http://www.xmlsoft.org/" target="_blank">libxml</a></li>
+  </ul>
+-->
+</ul>
+
+<h2 id="Example_URLs">Example URLs</h2>
+
+The following are example URLs. 
+<ul>
+  <li>Get a CDF file containing the variables Magnitude and BGSEc data from 
+    the AC_H2_MFI dataset in the time range of 2009-06-01T00:00:00 to
+    2009-06-03T00:00:00.
+    <ul>
+      <li><a href="https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/dataviews/sp_phys/datasets/AC_H2_MFI/data/20090601T000000Z,20090603T000000Z/Magnitude,BGSEc?format=cdf" target="_blank">https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/dataviews/sp_phys/datasets/AC_H2_MFI/data/20090601T000000Z,20090603T000000Z/Magnitude,BGSEc?format=cdf
+</a>
+    </ul>
+  </li>
+  <li>Get a listing containing the variables Magnitude and BGSEc data from 
+    the AC_H2_MFI dataset in the time range of 2009-06-01T00:00:00 to
+    2009-06-03T00:00:00.
+    <ul>
+      <li><a href="https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/dataviews/sp_phys/datasets/AC_H2_MFI/data/20090601T000000Z,20090603T000000Z/Magnitude,BGSEc?format=text" target="_blank">https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/dataviews/sp_phys/datasets/AC_H2_MFI/data/20090601T000000Z,20090603T000000Z/Magnitude,BGSEc?format=text
+</a>
+    </ul>
+  </li>
+  <li>Get a plot containing the variables Magnitude and BGSEc data from 
+    the AC_H2_MFI dataset in the time range of 2009-06-01T00:00:00 to
+    2009-06-03T00:00:00.
+    <ul>
+      <li><a href="https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/dataviews/sp_phys/datasets/AC_H2_MFI/data/20090601T000000Z,20090603T000000Z/Magnitude,BGSEc?format=gif" target="_blank">https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/dataviews/sp_phys/datasets/AC_H2_MFI/data/20090601T000000Z,20090603T000000Z/Magnitude,BGSEc?format=gif
+</a>
+    </ul>
+  </li>
+</ul>
+
+
+<h2 id="Technical_Details">Technical Details</h2>
+
+This section contains a more detailed description of the CDAS web service 
+interface.  These details are only relevant if the high-level mechanisms 
+described above are insufficient for your use.  For example, if you are
+using a programming language other than Python, IDL, or Java.  This
+section is organized as follows:
+
+<ul>
+  <li><a href="#Target_Audience">Target Audience</a></li>
+  <li><a href="#Overview">Overview</a></li>
+  <li><a href="#Web_Services">Web Services</a></li>
+</ul>
+<h2 id="Target_Audience">Target Audience</h2>
+
+This document assumes that the reader is familar with RESTful Web
+service and <a href="https://tools.ietf.org/html/rfc2616">Hypertext
+Transfer Protocol</a> (HTTP) technology.<br>
+
+<h2 id="Overview">Overview</h2>
+
+To access these web services, a client merely needs the ability to send
+and receive HTTP requests and responses as well as the ability to
+interpret XML or JSON messages.&nbsp; Most programming languages and
+environments have these capabilities.&nbsp; In fact, most programming
+environments have several, competing implementations of these
+capabilities.<br>
+This section contains an overview of these Web services.
+
+<h2>Network Protocol Support</h2>
+
+The following web services are currently available over
+<a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol"
+ target="_blank">HTTP/1.1</a> with
+<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security"
+ target="_blank">TLS</a> and both IPv4 and
+<a href="https://en.wikipedia.org/wiki/IPv6" target="_blank">IPv6</a>.
+Additional information about accessing these web services over HTTPS is
+available at
+<a href="https://sscweb.gsfc.nasa.gov/WebServices/https.html">HTTPS SPDF web
+services</a>.
+
+<h3 id="Entity_Body_Representations">Entity-Body Representations</h3>
+The <a href="https://tools.ietf.org/html/rfc2616#section-4.3">HTTP
+entity-body</a> for both the request and response messages of these
+services is described by a <a
+ href="https://en.wikipedia.org/wiki/XML_Schema_%28W3C%29">W3C XML schema</a>
+<a href="CDAS.xsd">document</a> (<a href="CDAS_xsd.svg">diagram</a>).&nbsp; 
+The detailed description of each service describes the
+specific XML element from the schema that is an entity-body for the
+specific request or response message of the service.&nbsp; In addition
+to the XML representation of the entity-body, all the services can
+return the entity-body in a <span style="font-style: italic;">mapped
+(with root unwrapping)</span> <a
+ href="https://en.wikipedia.org/wiki/Json">JSON</a> representation of
+the XML object.&nbsp; A client can express their preference for a
+specific entity-body representation (XML or JSON) by setting the HTTP
+accept header (to "application/xml" or "application/json").&nbsp;
+Examples of JSON requests and responses are 
+<a href="json/Json.html" target="_blank">described here</a>.
+<br>
+
+<h3 id="Error_Responses">Error Responses</h3>
+This section provides a general description of error responses (i.e., a
+reponse with
+a code other than 200) that may be returned by any of the web
+services.&nbsp; More details about the error response of specific
+services are provided in the specific service's description.<br>
+<br>
+<span style="font-weight: bold;"></span>Any entity-body returned within
+an error response will be XHTML (or a JSON representation of
+XHTML) that contains a more detailed description of the error.&nbsp;
+Whether the entity-body is XHTML or JSON depends upon the HTTP Accept
+header in the request.&nbsp;
+Not all error responses will contain an entity-body.&nbsp; A client may
+simply display the XHTML or access the more detailed error message
+within the XHTML at&nbsp; <code>//p[class='ErrorMessage']/text() and</code>&nbsp;
+<code>//p[class='ErrorDescription']/text().</code><br>
+<!--
+within the JSON object at property <code>response.body.p.$</code>.<br>
+-->
+<br>
+Note that error responses may also be generated by software components
+other than the web services software described here in response to
+requests intended for these web services.&nbsp; For example, a request
+with an invalid URI path may result in a response (e.g., 404) that is
+generated by the application server instead of by the web service
+software.&nbsp; In fact, different invalid URI paths may result in an
+error response being generated by a proxy server, the application
+firewall, the web application server, the web service framework, or the
+web service implementation
+itself.&nbsp; The entity-body in an error response will vary depending
+upon the software component that generates the response.&nbsp; A client
+must be prepared to deal with these differences.&nbsp; The above
+description of an entity-body in an error response only describes those
+generated by the web service implementation itself.&nbsp; At the time
+this documentation was written, the entity-body returned in an error
+response from both these web services and the application server
+hosting them were similar.&nbsp; The&nbsp; <code>//p[class='ErrorMessage']/text()
+</code>value described above is accessible by<code> //p[2]/text() </code>in
+the error response from both these web services and their hosting
+application server.&nbsp; Likewise, the <code>//p[class='ErrorDescription']/text()
+</code>value described above is accessible by<code> //p[3]/text() </code>in
+the error response from both these web services and their hosting
+application server. <br>
+
+<h3 id="Cross_Origin_Resource_Sharing">Cross-Origin Resource Sharing</h3>
+These web services implement the <a
+ href="https://www.w3.org/TR/access-control/">Cross-Origin
+Resource Sharing</a> (CORS) mechanism to allow JavaScript 
+<a href="https://en.wikipedia.org/wiki/AJAX">AJAX</a> calls from
+within a browser from any domain.&nbsp; 
+<br>
+
+<!--
+<h3>JavaScript Client Library</h3>
+<ul>
+  <li>A JavaScript library is being made available for JavaScript
+clients that want to use it.&nbsp; The library simplifies calling these
+Web services and shields the client from lower-level details and
+browser
+specific optimizations.&nbsp; See the <a href="js/index.html">library's
+documentation</a> for more details.&nbsp; The JSON issue described
+above has hindered work on this library.&nbsp; The library can be
+implemented with XML instead if there is sufficient interest in the
+library.<br>
+  </li>
+</ul>
+-->
+
+<h2 id="Web_Services">Web Services</h2>
+
+They are implement as
+<a href="https://en.wikipedia.org/wiki/Representational_State_Transfer">
+Representational State Transfer</a> (REST) style web services and are
+described below.
+
+The table below summarizes the services which are available.&nbsp; Only the
+last part of the URL's path is shown in the table.&nbsp; The beginning part
+of the URL is
+<div id="endpoint" style="font-family: monospace; text-align: center"></div>
+The table contains links to more detail descriptions of each operation.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <caption><span style="font-weight: bold;">Web Services</span><br>
+  </caption> <tbody>
+    <tr>
+      <th style="vertical-align: top;">Category<br>
+      </th>
+      <th style="vertical-align: top;">Operation<br>
+      </th>
+      <th style="vertical-align: top;">Implementation<br>
+      </th>
+      <th style="vertical-align: top;">Details<br>
+      </th>
+    </tr>
+    <tr>
+      <td colspan="1" rowspan="11" style="vertical-align: top;">Metadata<br>
+      </td>
+      <td style="vertical-align: top;">Get WADL<br>
+      </td>
+      <td style="vertical-align: top;">GET /application.wadl<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_WADL">Details</a><br>
+      </td>
+    </tr>
+<!--
+    <tr>
+      <td style="vertical-align: top;">Get About Info.<br>
+      </td>
+      <td style="vertical-align: top;">GET /about<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get Privacy Info.<br>
+      </td>
+      <td style="vertical-align: top;">GET /privacy<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get Term Of Use Info.<br>
+      </td>
+      <td style="vertical-align: top;">Get /termsOfUse<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+-->
+    <tr>
+      <td style="vertical-align: top;">Get Dataviews<br>
+      </td>
+      <td style="vertical-align: top;">GET /dataviews<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Dataviews">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get ObservatoryGroups<br>
+      </td>
+      <td style="vertical-align: top;">GET
+/dataviews/{dataview}/observatoryGroups?<br>
+instrumentType={instrumentType}<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Observatory_Groups">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get InstrumentTypes<br>
+      </td>
+      <td style="vertical-align: top;">GET
+/dataviews/{dataview}/instrumentTypes?<br>
+observatory={observatory}&amp;<br>
+observatoryGroup={observatoryGroup}<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Instrument_Types">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get Instruments<br>
+      </td>
+      <td style="vertical-align: top;">GET
+/dataviews/{dataview}/instruments?<br>
+observatory={observatory}&amp;<br>
+instrumentType={instrumentType}<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Instruments">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get Observatories<br>
+      </td>
+      <td style="vertical-align: top;">GET
+/dataviews/{dataview}/observatories?<br>
+instrument={instrument}&amp;<br>
+instrumentType={instrumentType}<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Observatories">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get ObservatoryGroupsAndInstruments</td>
+      <td style="vertical-align: top;">GET
+/dataviews/{dataview}/observatoryGroupsAndInstruments?<br>
+instrumentType={instrumentType}<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Observatory_Groups_And_Instruments">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get Dataset<br>
+      </td>
+      <td style="vertical-align: top;">GET
+/dataviews/{dataview}/datasets?<br>
+observatoryGroup={observatoryGroup}&amp;<br>
+instrumentType={instrumentType}&amp;<br>
+observatory={observatory}&amp;<br>
+instrument={instrument}&amp;<br>
+startDate={startDate}&amp;<br>
+stopDate={stopDate}&amp;<br>
+id={id}&amp;<br>
+idPattern={idPattern}&amp;<br>
+labelPattern={labelPattern}&amp;<br>
+notesPattern={notesPattern}<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Datasets">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get Inventory<br>
+      </td>
+      <td style="vertical-align: top;">GET
+/dataviews/{dataview}/datasets/{dataset}/inventory/<br>
+      {start-time},{end-time}
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Inventory">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Get Variables<br>
+      </td>
+      <td style="vertical-align: top;">GET
+/dataviews/{dataview}/datasets/{dataset}/variables<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Variables">Details</a><br>
+      </td>
+    </tr>
+<!--  -->
+    <tr>
+      <td style="vertical-align: top;">Get Client Example<br>
+      </td>
+      <td style="vertical-align: top;">GET
+/dataviews/{dataview}/datasets/{dataset}/clientLibraryExample/{library}?mediaType={mediaType}<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Client_Example">Details</a><br>
+      </td>
+    </tr>
+<!-- -->
+    <tr>
+      <td colspan="1" rowspan="3" style="vertical-align: top;">Data<br>
+      <br>
+      <br>
+      </td>
+      <td colspan="1" rowspan="3" style="vertical-align: top;">Get Data<br>
+      </td>
+      <td style="vertical-align: top;">POST
+/dataviews/{dataview}/datasets<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#Get_Data_POST">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">GET
+/dataviews/{dataview}/datasets/{dataset}/data/<br>
+{start-time},{stop-time}/<br>
+{var1},{varn}?format={format}&amp;<br>
+options={options}&amp;<br>
+cdfVersion={cdfVersion}&amp;<br>
+thumbnailId={id}&amp;thumbnail={num}</td>
+      <td style="vertical-align: top;"><a href="#Get_Data_GET">Details</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">GET
+/dataviews/{dataview}/datasets/{dataset}/orig_data/<br>
+{start-time},{stop-time}/</td>
+      <td style="vertical-align: top;"><a href="#Get_Original_Data_GET">Details</a><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h3 id="Get_WADL">Get WADL</h3>
+This service provides the <a
+ href="https://en.wikipedia.org/wiki/Web_Application_Description_Language">Web
+Application Description Language</a> (WADL) for these Web services.<br>
+<h4>Example</h4>
+Below is an example client request to this service and the results.<br>
+<pre>$ curl https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/application.wadl?detail | xmllint --format -<br><br></pre>
+<iframe src="cdas.wadl.txt" height="300" width="90%"></iframe>
+<!--
+<h3>Get About</h3>
+<h3>Get Privacy</h3>
+<h3>Get Terms Of Use</h3>
+-->
+<p></p>
+<h3 id="Get_Dataviews">Get Dataviews</h3>
+This service provides descriptions of the dataviews that are available
+from CDAS.&nbsp; The following table describes the HTTP request and
+response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;">As specified by Dataviews in <a
+ href="CDAS.xsd">CDAS.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of Dataviews
+in CDAS.xsd<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Most
+Likely Response Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4>Example</h4>
+An example client request and <a href="WsExample.txt">response</a> is
+provided in <a href="WsExample.sh">WsExample.sh</a>.<br>
+<br>
+<h3 id="Get_Observatory_Groups">Get Observatory Groups</h3>
+This service provides descriptions of the observatory groups that are
+available
+from CDAS.&nbsp; The following table describes the HTTP request and
+response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews/{dataview}/observatoryGroups?<br>
+instrumentType={instrumentType}<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;">As specified by
+ObservatoryGroups in <a href="CDAS.xsd">CDAS.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of ObservatoryGroups
+in CDAS.xsd<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Most
+Likely Response Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Where:<br>
+<ul>
+  <li>{instrumentType} = an instrument type value (<code>/InstrumentTypes/InstrumentTypeDescription/Name</code>)
+from those returned by a <a
+ href="WebServices.html#Get_Instrument_Types">Get InstrumentTypes</a>
+request.&nbsp; Omitting this parameter indicates that no observatories
+are eliminated based upon their instrumentType value.</li>
+</ul>
+<br>
+<h3 id="Get_Instrument_Types">Get Instrument Types</h3>
+This service provides descriptions of the instrument types that are
+available
+from CDAS.&nbsp; The following table describes the HTTP request and
+response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews/{dataview}/instrumentTypes?<br>
+observatory={observatory}&amp;<br>
+observatoryGroup={observatoryGroup}<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;">As specified by InstrumentTypes
+in <a href="CDAS.xsd">CDAS.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of
+InstrumentTypes
+in CDAS.xsd<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Most
+Likely Response Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Where:<br>
+<ul>
+  <li>{observatory} = an observatory value (<code>/Observatories/ObservatoryDescription/Name</code>)
+from those returned by a <a href="WebServices.html#Get_Observatories">Get
+Observatories</a> request.&nbsp; Omitting this parameter indicates that
+no instrumentTypes are eliminated based upon their observatory value.</li>
+  <li>{observatoryGroup} = an observatory group value (<code>/ObservatoryGroups/ObservatoryGroupDescription/Name</code>)
+from those returned by a <a
+ href="WebServices.html#Get_Observatory_Groups">Get ObservatoryGroups</a>
+request.&nbsp; Omitting this parameter indicates that no
+instrumentTypes are eliminated based upon their observatoryGroup value.<br>
+  </li>
+</ul>
+<br>
+<h3 id="Get_Instruments">Get Instruments</h3>
+This service provides descriptions of the instrument that are available
+from CDAS.&nbsp; The following table describes the HTTP request and
+response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews/{dataview}/instruments?<br>
+observatory={observatory}&amp;<br>instrumentType={instrumentType}<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;">As specified by Instruments in <a
+ href="CDAS.xsd">CDAS.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of
+Instruments
+in CDAS.xsd<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Most
+Likely Response Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Where:<br>
+<ul>
+  <li>{observatory} = an observatory value 
+      (<code>/Observatories/ObservatoryDescription/Name</code>)
+      from those returned by a <a href="#Get_Observatories">Get
+      Observatories</a> request.&nbsp; Omitting this parameter indicates that
+      no instruments are eliminated based upon their observatory value.</li>
+  <li>{instrumentType} = an instrument type value 
+      (<code>/InstrumentTypes/InstrumentTypeDescription/Name</code>)
+      from those returned by a <a href="#Get_Instrument_Types">Get 
+      Instrument Types</a> request.&nbsp; Omitting this parameter indicates
+      that no instruments are eliminated based upon their instrument type.</li>
+<!--
+  <li>{observatoryGroup} = an observatory group value (<code>/ObservatoryGroups/ObservatoryGroupDescription/Name</code>)
+from those returned by a <a
+ href="WebServices.html#Get_Observatory_Groups">Get ObservatoryGroups</a>
+request.&nbsp; Omitting this parameter indicates that no instruments
+are eliminated based upon their observatoryGroup value.<br>
+  </li>
+-->
+</ul>
+<br>
+<h3 id="Get_Observatories">Get Observatories</h3>
+This service provides descriptions of the observatories that are
+available
+from CDAS.&nbsp; The following table describes the HTTP request and
+response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews/{dataview}/observatories?<br>
+instrument={instrument}&amp;<br>
+instrumentType={instrumentType}<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;">As specified by Observatories in
+      <a href="CDAS.xsd">CDAS.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of
+Observatories
+in CDAS.xsd<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Most
+Likely Response Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Where:<br>
+<ul>
+  <li>{instrument} = an instrument value (<code>/Instruments/InstrumentDescription/Name</code>)
+from those returned by a <a href="WebServices.html#Get_Instruments">Get
+Instruments</a> request.&nbsp; Omitting this parameter indicates that
+no observatories are eliminated based upon their instrument value.</li>
+  <li>{instrumentType} = an instrument type value (<code>/InstrumentTypes/InstrumentTypeDescription/Name</code>)
+from those returned by a <a
+ href="WebServices.html#Get_Instrument_Types">Get InstrumentTypes</a>
+request.&nbsp; Omitting this parameter indicates that no observatories
+are eliminated based upon their instrumentType value.</li>
+</ul>
+<br>
+<h3 id="Get_Observatory_Groups_And_Instruments">Get Observatory Groups and Instruments</h3>
+This service provides descriptions of the observatory groups (and associated
+instruments) that are available from CDAS.&nbsp; This is a 
+convenience/performance alternative to making multiple calls to 
+<a href="#Get_Observatory_Groups">Get Observatory Groups</a>,
+<a href="#Get_Observatories">Get Observatories</a>, and
+<a href="#Get_Instruments">Get Instruments</a>.&nbsp; The following table 
+describes the HTTP request and response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews/{dataview}/observatoryGroupsAndInstruments?<br>
+instrumentType={instrumentType}<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;">As specified by
+ObservatoryGroupInstruments in <a href="CDAS.xsd">CDAS.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of Dataviews
+in CDAS.xsd<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Most
+Likely Response Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Where:<br>
+<ul>
+  <li>{instrumentType} = an instrument type value (<code>/InstrumentTypes/InstrumentTypeDescription/Name</code>)
+from those returned by a <a
+ href="WebServices.html#Get_Instrument_Types">Get InstrumentTypes</a>
+request.&nbsp; Omitting this parameter indicates that no observatories
+are eliminated based upon their instrumentType value.</li>
+</ul>
+<br>
+<h3 id="Get_Datasets">Get Datasets</h3>
+This service provides descriptions of the datasets that are available
+from CDAS.&nbsp; The following table describes the HTTP request and
+response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews/{dataview}/datasets?<br>
+observatoryGroup={observatoryGroup}&amp;<br>
+instrumentType={instrumentType}&amp;<br>
+observatory={observatory}&amp;<br>
+instrument={instrument}&amp;<br>
+startDate={startDate}&amp;<br>
+stopDate={stopDate}&amp;<br>
+id={id}&amp;<br>
+idPattern={idPattern}&amp;<br>
+labelPattern={labelPattern}&amp;<br>
+notesPattern={notesPattern}<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;">As specified by Datasets in <a
+ href="CDAS.xsd">CDAS.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of Datasets
+in CDAS.xsd<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="4" style="vertical-align: top;">Most
+Likely Response Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">404<br>
+      </td>
+      <td style="vertical-align: top;">Not Found<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Where:<br>
+<ul>
+  <li>{observatoryGroup} = an observatory group value (<code>/ObservatoryGroups/ObservatoryGroupDescription/Name</code>)
+from those returned by a <a href="#Get_Observatory_Groups">Get
+ObservatoryGroups</a> request.&nbsp; Omitting this parameter indicates
+that no datasets are eliminated based upon their observatoryGroup value.<br>
+  </li>
+  <li>{instrumentType} = an instrument type value (<code>/InstrumentTypes/InstrumentTypeDescription/Name</code>)
+from those returned by a <a href="#Get_Instrument_Types">Get
+InstrumentTypes</a> request.&nbsp; Omitting this parameter indicates
+that no datasets are eliminated based upon their instrumentType value.</li>
+  <li>{observatory} = an observatory name value (<code>/Observatories/ObservatoryDescription/Name</code>)
+from those returned by a <a href="#Get_Observatories">Get Observatories</a>
+request.&nbsp; Omitting this parameter indicates that no datasets are
+eliminated based upon their observatory value.</li>
+  <li>{instrument} = an instrument value (<code>/Instruments/InstrumentDescription/Name</code>)
+from those returned by a <a href="#Get_Instruments">Get Instruments</a>
+request.&nbsp; Omitting this parameter indicates that no datasets are
+eliminated based upon their instrument value.</li>
+  <li>{startDate} = a basic format (minimal number of separators) <a
+ href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> date
+specifying the start of a time interval (e.g., 20000101T000000Z).&nbsp;
+If this parameter is ommited, the time interval will begin infinitely
+in the past.</li>
+  <li>{stopDate} = a basic format (minimal number of separators) <a
+ href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> date
+specifying the end of a time interval (e.g., 20100101T000000Z).&nbsp;
+If this parameter is omitted, the time interval will end infinitely in
+the future.</li>
+  <li>{id} = a dataset identifier.  The value may be a CDAS (e.g., AC_H2_MFI),
+    <a href="https://en.wikipedia.org/wiki/Digital_object_identifier">DOI</a>
+    (e.g., 10.48322/fh85-fj47), or <a href="https://spase-group.org/">SPASE</a>
+    [ResourceID] (e.g., spase://NASA/NumericalData/ACE/MAG/L2/PT1H) 
+    identifier.</li>
+  <li>{idPattern} = a <code>java.util.regex</code> compatible <a
+ href="https://en.wikipedia.org/wiki/Regex">regular expression</a> that
+must match the dataset's CDAS identifier value.&nbsp; Omitting this
+parameter is equivalent to "<code>.*</code>".</li>
+  <li>{labelPattern} = a <code>java.util.regex</code> compatible <a
+ href="https://en.wikipedia.org/wiki/Regex">regular expression</a> that
+must match the dataset's CDAS label text.&nbsp; Omitting this
+parameter is equivalent to "<code>.*</code>".&nbsp; Embedded matching
+flag expressions (e.g., <code>(?i)</code> for case insensitive match
+mode) are supported and likely to be useful in this case.</li>
+  <li>{notesPattern} = a <code>java.util.regex</code> compatible <a
+ href="https://en.wikipedia.org/wiki/Regex">regular expression</a> that
+must match the dataset's CDAS notes text.&nbsp; Omitting this
+parameter is equivalent to "<code>.*</code>".&nbsp; Embedded matching
+flag expressions (e.g., <code>(?s)</code> for dotall match mode) are
+supported and likely to be useful in this case.</li>
+</ul>
+Additionally<br>
+<ul>
+  <li>The startDate and stopDate query parameters specify an inclusive
+time interval such that all datasets returned have at least a portion
+of their data
+within the specified interval.</li>
+  <li>The observatoryGroup, instrumentType, observatory, and instrument query paramereters can only be included in the following combinations:
+    <ul>
+      <li>observatoryGroup, instrumentType</li>
+      <li>instrumentType, observatory</li>
+      <li>observatoryGroup, instrument</li>
+      <li>observatory, instrument</li>
+    </ul>
+    Any of these combinations can include the other query parameters.  For
+    example, <code>observatoryGroup=THEMIS&amp;instrumentType=Magnetic%20Fields%20(space)&amp;startDate=20160101T000000Z&amp;endData=20160102T000000Z</code> 
+    is valid but
+    <code>observatoryGroup=THEMIS&amp;instrumentType=Magnetic%20Fields%20(space)&amp;instrument=L2</code>
+     is not valid.
+  </li>
+  <li>The conditions specified by distinct query parameters are
+logically ANDed together.&nbsp; Different values for the same query
+parameter are ORed together (e.g., observatory=C1&amp;observatory=C2
+means observatory is C1 or C2).&nbsp; There are no provisions for
+expressing
+more general logical relationships (e.g., OR, NOT, grouping) between
+the query parameters (e.g., labelPattern OR notesPattern).&nbsp;
+Individual query parameter values may support complex logical operators
+within the query parameter.&nbsp; That is, those parameter values which
+are regular expressions do support all the logical operators supported
+the<code> java.util.regex</code> expression (e.g., notesPattern="<code>(?s)(?i).*apollo(12|15).*</code>").<br>
+  </li>
+</ul>
+<h3 id="Get_Inventory">Get Inventory</h3>
+This service provides descriptions of the data inventory that is
+available within a dataset.&nbsp; The following table describes the
+HTTP request and response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews/{dataview}/datasets/{dataset}/inventory/<br>
+         {start-time},{end-time}<br>
+        <span style="font-style: italic;">see notes below for further details
+        </span>
+      </td.
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"><br>
+      </span></td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      <br>
+      </th>
+      <td style="vertical-align: top;">Content-Type: application/xml<br>
+      </td>
+      <td style="vertical-align: top;">As specified by Inventory from <a
+ href="CDAS.xsd">CDAS.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of
+Inventory<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="5" style="vertical-align: top;">Most Likely Reponse Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">404<br>
+      </td>
+      <td style="vertical-align: top;">Not Found<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">415<br>
+      </td>
+      <td style="vertical-align: top;">Unsupported Media Type<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3>Notes:</h3>
+<ul>
+  <li>The path parameters are described below: </li>
+  <ul>
+    <li>The {dataview} value is one returned by 
+        <a href="#Get_Dataviews">Get Dataviews</a>.</li>
+    <li>The {dataset} value is one returned by 
+        <a href="#Get_Datasets">Get Datasets</a>.</li>
+    <li>The {start-time} and {end-time} values define the time interval
+        for which the inventory is requested.  Both values must conform
+        to the basic (minimal number of separators) ISO 8601 format
+        (for example, 20190101T000000Z).&nbsp; 
+        Extended ISO 8601 format is not allowed.  When a time interval
+        is specified, all inventory intervals within or partially 
+        overlapping the specified time interval are returned.   If no time 
+        interval is specified, the entire inventory for the dataset will 
+        be returned.</li>
+  </ul>
+  <li>The returned intervals are not guarenteed to contain valid 
+      (non-fill) data for any specific variable.</li>
+</ul>
+<br>
+<h3 id="Get_Variables">Get Variables</h3>
+This service provides descriptions of the variables that is available
+from a dataset.&nbsp; The following table describes the HTTP request
+and response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews/{dataview}/datasets/{dataset}/variables</td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"><br>
+      </span></td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      <br>
+      </th>
+      <td style="vertical-align: top;">Content-Type: application/xml<br>
+      </td>
+      <td style="vertical-align: top;">As specified by Variables from <a
+ href="CDAS.xsd">CDAS.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of Variables<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="5"style="vertical-align: top;">Most Likely Reponse Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">404<br>
+      </td>
+      <td style="vertical-align: top;">Not Found<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">415<br>
+      </td>
+      <td style="vertical-align: top;">Unsupported Media Type<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<!--  -->
+<h3 id="Get_Client_Example">Get Client Example</h3>
+This service provides example client code to retrieve data
+from a dataset.&nbsp; The following table describes the HTTP request
+and response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews/{dataview}/datasets/{dataset}/clientLibraryExample/{library}?mediaType={mediaType}</td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="6" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="5" style="vertical-align: top;">Accept<br>
+      </td>
+      <td style="vertical-align: top;">application/xhtml+xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/octet-stream<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">text/plain</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">text/x-python</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">text/x-idl</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"><br>
+      </span></td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      <br>
+      </th>
+      <td style="vertical-align: top;">Content-Type: application/xhtml+xml<br>
+      </td>
+      <td style="vertical-align: top;">
+        An XHTML page containing example code for the specified client 
+        library to retrieve data from the specified dataset.
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: text/plain, text/x-python, text/x-idl, application/octet-stream
+      </td>
+      <td style="vertical-align: top;">
+        Example code for the specified client 
+        library to retrieve data from the specified dataset.
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="5"style="vertical-align: top;">Most Likely Reponse Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">404<br>
+      </td>
+      <td style="vertical-align: top;">Not Found<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3>Notes:</h3>
+<ul>
+  <li>The path parameters are described below: </li>
+  <ul>
+    <li>The {dataview} value is one returned by 
+        <a href="#Get_Dataviews">Get Dataviews</a>.</li>
+    <li>The {dataset} value is one returned by 
+        <a href="#Get_Datasets">Get Datasets</a>.</li>
+    <li>The {library} value is a comma separated list of these values:
+        cdaswsPy,cdaswsIdl.  If no {library} values are specified
+        and the Accept HTTP header value indicates a peference for XHTML, 
+        then example code for all known libraries are included.  If no
+        {library} value is specified and the Accept HTTP header value
+        is absent or indicates a preference for text/plain, the code is
+        returned for the cdaswsPy library.</li>
+    <li>The optional {mediaType} query parameter overrides the HTTP Accept
+        header value for those cases where it is difficult or impossible
+        for the client to set the HTTP header.  The valid values are as
+        follows:
+        <table border="1" cellpadding="2" cellspacing="2">
+          <tr><th>Value</th><th>Corresponding MIME Type</th></tr>
+          <tr><td>octet</td><td>application/octet-stream</td></tr>
+          <tr><td>plain</td><td>text/plain</td></tr>
+          <tr><td>python</td><td>text/x-python</td></tr>
+          <tr><td>idl</td><td>text/x-idl</td></tr>
+        </table>
+    </li>
+  </ul>
+</ul>
+<!-- -->
+<br>
+<h3 id="Get_Data_POST">Get Data (POST)</h3>
+
+<p>This service provides data from a dataset.&nbsp; The data is available 
+in various representations (CDF, text, graph).</p>
+
+<p><b>Note:</b> In the case of a request for a non-original (that is, 
+subsetted/supersetted) CDF (or CDFML) file involving a dataset whose 
+variable names are not legal
+<a href="https://www.nv5geospatialsoftware.com/Products/IDL" 
+   target="_blank">IDL</a>
+variable names, the variable names in the resulting CDF (or CDFML) file
+will have their names changed to legal IDL variable names.  For example, a
+request for a subsetted FA_K0_TMS CDF file will result in a file where the
+original <code>H+</code> variable name has been changed to <code>H$</code>.</p>
+
+The following table describes the HTTP request and response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">POST<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews/{dataview}/datasets/</td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      <br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since</td>
+      <td style="vertical-align: top;">
+      Only return the data if the underlying files have been
+      modified since the specified date.
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">As specified by DataRequest in <a
+ href="CDAS.xsd">CDAS.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      <br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span>As
+specified by DataResult in <a href="CDAS.xsd">CDAS.xsd</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of DataResult<br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="7" style="vertical-align: top;">Most Likely Reponse Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">404<br>
+      </td>
+      <td style="vertical-align: top;">Not Found<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">415<br>
+      </td>
+      <td style="vertical-align: top;">Unsupported Media Type<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">429<br>
+      </td>
+      <td style="vertical-align: top;">Too Many Requests.  Check Retry-After header value.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">503<br>
+      </td>
+      <td style="vertical-align: top;">Service Unavailable.  Check Retry-After header value.<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4>Example</h4>
+Below is an example client request to this service and the results.<br>
+<pre>$ curl --silent -H "Content-Type: application/xml" \
+    -H "Accept: application/xml" \
+    --data-ascii @Request.xml \
+    https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/dataviews/sp_phys/datasets \
+    | xmllint --format -<br></pre>
+Where Request.xml is<br>
+<iframe src="CdfmlRequest.xml.txt" height="300" width="90%"></iframe>
+<br><br>
+
+<h3 id="Get_Data_GET">Get Data (GET)</h3>
+
+<p>This service provides data from a dataset.&nbsp; The data is available 
+in various representations (CDF, text, graph).&nbsp; This operation offers 
+a subset of the features available in
+the <a href="#Get_Data_POST">corresponding POST operation</a>.&nbsp; 
+
+<p><b>Note:</b> In the case of a request for a non-original (that is, 
+subsetted/supersetted) CDF (or CDFML) file involving a dataset whose 
+variable names are not legal
+<a href="https://www.nv5geospatialsoftware.com/Products/IDL" 
+target="_blank">IDL</a>
+variable names, the variable names in the resulting CDF (or CDFML) file
+will have their names changed to legal IDL variable names.  For example, a
+request for a subsetted FA_K0_TMS CDF file will result in a file where the
+original <code>H+</code> variable name has been changed to <code>H$</code>.</p>
+
+The following table describes the HTTP request and response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews/{dataview}/datasets/{dataset}/data/<br>
+{start-time},{stop-time}/<br>
+{var1},{varn}?format={format}&amp;<br>
+options={options}&amp;<br>
+cdfVersion={cdfVersion}&amp;<br>
+&amp;thumbnailId={id}&amp;thumbnail={num}<br>
+      <span style="font-style: italic;">see notes below for further
+details</span><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      <br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since</td>
+      <td style="vertical-align: top;">
+      Only return the data if the underlying files have been
+      modified since the specified date.
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      <br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span>As
+specified by DataResult in <a href="CDAS.xsd">CDAS.xsd</a> </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of
+DataResult </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="8" style="vertical-align: top;">Most Likely Reponse Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">400<br>
+      </td>
+      <td style="vertical-align: top;">Bad Request (refer to
+entity-body for specifics)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">404<br>
+      </td>
+      <td style="vertical-align: top;">Not Found<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">415<br>
+      </td>
+      <td style="vertical-align: top;">Unsupported Media Type<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">429<br>
+      </td>
+      <td style="vertical-align: top;">Too Many Requests.  Check Retry-After header value.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">503<br>
+      </td>
+      <td style="vertical-align: top;">Service Unavailable.  Check Retry-After header value.<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h3>Notes:</h3>
+<ul>
+  <li>This GET operation offers a subset of the features available in
+the <a href="#Get_Data_POST">corresponding POST operation</a>.&nbsp;
+It is intended for cases where the POST operation is not
+practical.&nbsp; The specific limitations are as follows:
+    <ul>
+      <li>Does not support SPASE ResourceIDs in place of CDAS dataset
+names.</li>
+      <li>Does not support multi-dataset resources.</li>
+      <li>Does not accept multiple time intervals.</li>
+      <li>Does not support output of CDFML.</li>
+      <li>Does not support compressed output options.</li>
+      <li>Does not support newer GraphOptions.</li>
+      <li>Does not support 
+       <a href="https://cdaweb.gsfc.nasa.gov/CDAWeb_Binning_readme.html" target="_blank">data "binning"</a>.</li>
+    </ul>
+    If you need any of these capabilities, use the 
+    <a href="#Get_Data_POST">corresponding POST operation</a>.
+  </li>
+  <li><code>start-time </code>is the beginning time of an interval in
+basic (minimal
+number of separators) ISO 8601 format (for example, 20090817T000000Z).&nbsp; 
+Extended ISO 8601 format is not allowed.</li>
+  <li><code>stop-time </code>is the ending time of an interval in
+basic (minimal
+number of separators) ISO 8601 format.&nbsp; Extended ISO 8601 format
+is not allowed.</li>
+  <li><code>var1,varn</code> are the comma separated list of variable
+names identifying the data to get. The names should be from those
+returned by the <a href="#Get_Variables">Get Variables operation</a>.
+Note that the names of some variables in a few CDAS datasets contain
+<a href="https://tools.ietf.org/html/rfc3986#section-2.2" target="_blank">
+RFC 3986 reserved characters</a> and must be URL encoded.
+At least one variable name must be specified when <code>format=text</code>,
+    <code>format=gif</code>, <code>format=png</code>, <code>format=ps</code>,
+or <code>format=pdf</code>. When <code>format=cdf</code>, you may use
+    <code>ALL-VARIABLES</code> instead of specifying all the individual
+variable names. </li>
+  <li><code>format </code>is the output representation of the
+requested data:</li>
+  <ul>
+    <li><code>cdf </code>requests the data in the binary 
+        <a href="https://cdf.gsfc.nasa.gov/" target="_blank">CDF</a> file
+        format (any other format options are ignored).
+    </li>
+    <li><code>text </code>requests the data in an ASCII text
+representation (any other format options are ignored).<br>
+    </li>
+    <li><code>csv </code>requests the data in a Comma Separated Values
+(CSV) representation (any other format options are ignored).
+    </li>
+    <li><code>nc </code>requests the data in the binary 
+        <a href="https://www.unidata.ucar.edu/software/netcdf/"
+         target="_blank">netcdf</a>
+         file format (any other format options are ignored).
+    </li>
+    <li><code>audio </code>requests the data in an audio representation 
+        (any other format options are ignored).
+    </li>
+    <li>Request the data in a graphical representation.&nbsp; The
+actual format value is any or all of the following:<br>
+    </li>
+    <ul>
+      <li>gif<br>
+      </li>
+      <li>png<br>
+      </li>
+      <li>ps<br>
+      </li>
+      <li>pdf<br>
+      </li>
+    </ul>
+    <li><code>icdfml</code> requests the data be returned as a 
+        <a href="https://cdf.gsfc.nasa.gov/html/cdfml.html" target="_blank">CDFML</a>
+        representation within the HTTP response.  Whereas the above formats 
+        return a URL to an external file containing the requested data, this 
+        HTTP response will contain the actual requested data.
+    </li>
+    <li><code>json</code> requests the data be returned as a 
+        <a href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a>
+        representation of
+        <a href="https://cdf.gsfc.nasa.gov/html/cdfml.html" target="_blank">CDFML</a>
+        within the HTTP response.  This is equivalent to requesting 
+        <code>icdfml</code> and setting the HTTP <code>Accept</code> header to
+        <code>application/json</code>.  This option is provided as a
+        convenience for clients for which setting the HTTP 
+        <code>Accept</code> header is difficult.
+    </li>
+    <li><code>cdfjson</code> requests the data be returned in the response
+        body as a JSON representation of CDF as produced by the 
+        <a href="https://cdf.gsfc.nasa.gov/html/cdfjson.html" target="_blank">
+        CDF2Json</a> tool with the addition of a root-level attribute 
+        named cdasStatus and a value of an object containing attributes 
+        named statuses, messages, warnings, and errors each of which have 
+        values of an array of strings. 
+    </li>
+  </ul>
+  <li><code>cdfVersion </code>is the CDF file version that any created
+CDF files should be (2 or 3).&nbsp; This value is ignored for any<code>
+format </code>value other than CDF.<br>
+  </li>
+  <li><code>options </code>is an integer with the following values:</li>
+  <ul>
+    <li>1 = use coarse noise filtering to remove values outside 3
+deviations from mean of all <br>
+values in the plotted time interval</li>
+    <li>2 = double the Y-axis height for time-series and
+spectrogram plots</li>
+    <li>3 = both options 1 and 2.</li>
+  </ul>
+  <li><code>thumbnailId </code>is the value that was returned by a
+previous call
+that returned an image of thumbnail images.&nbsp; This parameter should
+not be given for calls that are not requesting the expansion of a
+thumbnail image.<br>
+  </li>
+  <li><code>thumbnail </code>is the number of the thumbnail whose
+expanded image is
+now being requested.&nbsp; Thumbnail images are counted beginning at
+one
+(not zero).&nbsp; This parameter should not be given for calls
+that are not requesting the expansion of a thumbnail image.</li>
+</ul>
+<br>
+<h3 id="Get_Original_Data_GET">Get Original Data (GET)</h3>
+
+This service provides original data files from a dataset.&nbsp; Original 
+data files may lack updated meta-data and virtual variable values contained 
+in files obtained from the other Get Data services.  The following table 
+describes the HTTP request and response.<br>
+<br>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">HTTP Method<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">GET<br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">URI<br>
+      </th>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">/dataviews/{dataview}/datasets/{dataset}/orig_data/<br>
+{start-time},{stop-time}/<br>
+      <span style="font-style: italic;">see notes below for further
+details</span><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="3" style="vertical-align: top;">Significant
+Request Headers<br>
+      </th>
+      <td colspan="1" rowspan="2" style="vertical-align: top;">Accept<br>
+      <br>
+      </td>
+      <td style="vertical-align: top;">application/xml<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">application/json</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">If-Modified-Since</td>
+      <td style="vertical-align: top;">
+      Only return the data if the underlying files have been
+      modified since the specified date.
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Request Entity<br>
+      </th>
+      <td style="vertical-align: top;">none<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Significant Response Headers<br>
+      </th>
+      <td style="vertical-align: top;">Last-Modified<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2" style="vertical-align: top;">Response
+Entity<br>
+      <br>
+      </th>
+      <td style="vertical-align: top;">Content-Type:
+application/xml<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;"></span>As
+specified by DataResult in <a href="CDAS.xsd">CDAS.xsd</a> </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Content-Type: application/json<br>
+      </td>
+      <td style="vertical-align: top;">JSON representation of
+DataResult </td>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="6" style="vertical-align: top;">Most Likely Reponse Codes<br>
+      </th>
+      <td style="vertical-align: top;">200<br>
+      </td>
+      <td style="vertical-align: top;">Ok<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">304<br>
+      </td>
+      <td style="vertical-align: top;">Not Modified<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">400<br>
+      </td>
+      <td style="vertical-align: top;">Bad Request (refer to
+entity-body for specifics)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">404<br>
+      </td>
+      <td style="vertical-align: top;">Not Found<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">406<br>
+      </td>
+      <td style="vertical-align: top;">Not Acceptable<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">415<br>
+      </td>
+      <td style="vertical-align: top;">Unsupported Media Type<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h3>Notes:</h3>
+<ul>
+  <li>This GET operation offers a subset of the features available in
+the <a href="WebServices.html#Get_Data_POST">corresponding POST
+operation</a>.&nbsp;
+It is intended for cases where the POST operation is not
+practical.&nbsp; The specific limitations are as follows:<br>
+  </li>
+  <ul>
+    <li>Does not support SPASE ResourceIDs in place of CDAS dataset
+names.</li>
+    <li>Does not support multi-dataset resources.</li>
+    <li>Does not accept multiple time intervals.</li>
+    <li>Returned files lack updated or enhanced meta-data.</li>
+    <li>Returned files do not contain virtual variable values.</li>
+  </ul>
+  <li><code>start-time </code>is the beginning time of an interval in
+      basic (minimal number of separators) ISO 8601 format.&nbsp; Extended 
+      ISO 8601 format is not allowed.</li>
+  <li><code>stop-time </code>is the ending time of an interval in
+      basic (minimal number of separators) ISO 8601 format.&nbsp; Extended 
+      ISO 8601 format is not allowed.</li>
+</ul>
+<h2>Questions/Comments</h2>
+<p>Questions or comments concerning these Web services should be sent
+to
+<a
+ href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com?subject=CDAS%20Web%20Service%0As%20Feedback">CDAS
+Feedback</a>.</p>
+<!--#include virtual="/cdawfooter.html"--> </div>
+</body>
+</html>
+
