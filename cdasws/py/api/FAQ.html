@@ -1,0 +1,209 @@
+<h2>FAQ</h2>
+<p>This document contains frequently asked questions (FAQs) about the cdasws
+Python library.</p>
+<ol>
+<li>
+<p>Does the cdasws library support HTTP persistent connections? Yes.  The
+cdasws library uses the python 
+<a href="https://pypi.org/project/requests/">requests library</a> 
+including its support of persistent connections and urllib3's connection
+pooling.</p>
+</li>
+<li>
+<p>Does the cdasws client library support caching and HTTP conditional GETs?
+Yes, if the optional <a href="https://pypi.org/project/requests-cache/">requests-cache</a> library is installed.</p>
+</li>
+<li>
+<p>Does the cdasws library support the existing CDAS web service requests
+that produce higher-level products such as plots, movies/animations, CSV, 
+netCDF, audio, and CDFML?  Yes.</p>
+</li>
+<li>
+<p>How does this library differ from the 
+<a href="https://github.com/hapi-server/data-specification">Heliophysics Application Programming Interface</a> (HAPI) 
+<a href="https://github.com/hapi-server/client-python">client python library</a>
+and the <a href="https://pypi.org/project/ai.cdas/">ai.cdas python library</a>?
+The CDAS web services and the HAPI service are fundamentally different
+services which can provide functionally similar access to the CDAS data.
+The following table summarizes the different features of the libraries
+for accessing data from NASA's 
+<a href="https://cdaweb.sci.gsfc.nasa.gov">Coordinated Data Analysis System</a> 
+repository.</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Feature Support</th>
+<th>cdasws</th>
+<th>ai.cdas</th>
+<th>hapi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://spacepy.github.io/datamodel.html">SpacePy datamodel</a></td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html">xarray.Dataset</a></td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">pandas.DataFrame</a></td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Includes all source<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup> and ISTP/SPDF metadata</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Datasets with multiple time variables (resolutions)</td>
+<td>yes</td>
+<td>yes</td>
+<td>no<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup></td>
+</tr>
+<tr>
+<td>Muliple time intervals in a single request</td>
+<td>yes</td>
+<td>?</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Streaming data reception</td>
+<td>no</td>
+<td>no</td>
+<td>no<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>Binary data transfer</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Compressed data transfer</td>
+<td>yes</td>
+<td>yes</td>
+<td>no<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></td>
+</tr>
+<tr>
+<td>Access to cdaweb netCDF data sets</td>
+<td>yes</td>
+<td>yes</td>
+<td>no<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></td>
+</tr>
+<tr>
+<td>Access to non-cdaweb data sets</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Search server datasets (e.g., by instrument type)</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Data gap information</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="https://cdaweb.gsfc.nasa.gov/CDAWeb_Binning_readme.html">Data binning</a></td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>CDAWeb plotting, movies, audification, etc.</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Dependent upon CDF (C) library</td>
+<td>no<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+<td>no<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
+<td>no</td>
+</tr>
+<tr>
+<td>Access by Digital Object Identifiers(DOIs)</td>
+<td>yes</td>
+<td>?</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Access by SPASE Resource Identifiers</td>
+<td>yes</td>
+<td>?</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Although the HAPI protocol was specifically designed for data
+streaming, at this time, the HAPI python client library does not support 
+streaming data reception.  That is, the library waits until all data has
+been received before returning any of it to the caller.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>A client that does not call the get_data method or one that wants the 
+data returned in an xarray.Dataset is not dependent upon the CDF C library 
+(or SpacePy).  However, to return data in the SpacePy
+data model, the get_data method is dependent on
+<a href="https://pythonhosted.org/SpacePy/pycdf.html#module-spacepy.pycdf">pycdf</a>
+which is dependent upon the <a href="https://cdf.gsfc.nasa.gov/">cdf</a> C library.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>ai.cdas can be used with or without CDF. CDF can be avoided by 
+transfering the data in an ASCII representation.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>At this time, cdaweb's HAPI server does not support access to
+datasets with netCDF files (for example, FORMOSAT5_AIP_IDN, GOLD_L2_NMAX,
+GOLD_L2_ON2, GOLD_L2_TDISK, ICON_L2-7_IVM-A, PMC-TURBO_L1_BOLIDE_VBC).
+This is a current limitation of the cdaweb HAPI server and not of the
+HAPI protocol.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>HAPI is a streaming protocol which for HTTP 1.1, requires chunked
+transfer encoding.  When chunked transfer encoding is combined with HTTP
+compression, the content stream is first compressed, then chunked; so the 
+chunk encoding itself is not compressed, and the data in each chunk is 
+not compressed individually. The client then decodes the stream 
+by concatenating the chunks and uncompressing the result. So the use of
+HTTP compression defeats the purpose of the streaming. Although compression
+is technically possible.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>All source metadata includes project specific metadata.  For example,
+the metadata below shows a few additional values for the 
+MMS1_EDP_FAST_L2_DCE dataset that is only available through the cdasw API:
+<code>DATA_VERSION:                v3.0.0
+CALIBRATION_FILE:            /mms/itfhome/mms-fieldspro/cal/mms1_edp_fast...
+GENERATION_DATE:             20230308
+GENERATED_BY:                IRFU Matlab v1.10.0 and LASP IDL v8.4 while ...
+SKELETON_VERSION:            v0.0.8
+PARENTS:                     ['CDF&gt;mms1_edp_fast_l2pre_dce_20230204_v3.0....
+CDAWEB_PARENTS:              ['mms1_edp_fast_l2_dce_00000000_v01', 'mms1_...
+...</code>&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>Such datasets need to be split into multiple HAPI datasets.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
