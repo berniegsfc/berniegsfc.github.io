@@ -22,7 +22,7 @@
 ;
 ; NOSA HEADER END
 ;
-; Copyright (c) 2010-2025 United States Government as represented by the
+; Copyright (c) 2010-2026 United States Government as represented by the
 ; National Aeronautics and Space Administration. No copyright is claimed
 ; in the United States under Title 17, U.S.Code. All Other Rights 
 ; Reserved.
@@ -38,7 +38,7 @@
 ; <a href="https://cdaweb.gsfc.nasa.gov/">Coordinated Data Analysis 
 ; System</a> (CDAS).
 ;
-; @copyright Copyright (c) 2010-2025 United States Government as 
+; @copyright Copyright (c) 2010-2026 United States Government as 
 ;     represented by the National Aeronautics and Space Administration.
 ;     No copyright is claimed in the United States under Title 17, 
 ;     U.S.Code. All Other Rights Reserved.
@@ -83,7 +83,8 @@ function SpdfCdas::init, $
     self.endpoint = 'https://cdaweb.gsfc.nasa.gov/WS/cdasr/1'
     self.version = '%VERSION*'
     self.currentVersionUrl = $
-        'https://cdaweb.gsfc.nasa.gov/WebServices/REST/spdfCdasVersion.txt'
+        'https://berniegsfc.github.io/cdasws/spdfCdasVersion.txt'
+;        'https://cdaweb.gsfc.nasa.gov/WebServices/REST/spdfCdasVersion.txt'
 
     if keyword_set(endpoint) then self.endpoint = endpoint
 
