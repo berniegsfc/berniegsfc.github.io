@@ -1,0 +1,2824 @@
+openapi: 3.0.0
+info:
+  title: Coordinated Data Analysis System Web Services
+  contact:
+    name: CDAS Web Services
+    url: https://berniegsfc.github.io/cdasws
+    email: NASA-SPDF-Support@nasa.gov
+  version: 1.x
+externalDocs:
+  description: CDAS Web Service Schema
+  url: https://berniegsfc.github.io/cdasws/CDAS.xsd
+servers:
+- url: https://cdaweb.gsfc.nasa.gov/
+  description: CDAS Web Service
+paths:
+  /WS/cdasr/1/dataviews:
+    get:
+      summary: Gets descriptions of the dataviews that are available from CDAS.
+      operationId: getDataviews
+      responses:
+        "304":
+          description: Not Modified
+        "406":
+          description: Not Acceptable
+        default:
+          description: Descriptions of all dataviews.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Dataviews"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dataviews"
+      deprecated: false
+  ? '/WS/cdasr/1/dataviews/{dataview : [a-zA-Z][a-zA-Z_0-9]*}/datasets/{dataset :
+    [a-zA-Z][a-zA-Z_\-0-9]*|(?:https:%2F%2Fdoi\.org%2F)?10\.\d+%2F[-a-zA-Z0-9]+}/clientLibraryExample/{library
+    : (?:(cdasws)([Pp]y|[Ii]dl))?(?:,(?:(cdasws)([Pp]y|[Ii]dl)))?}'
+  : get:
+      summary: Gets example program code demonstrating client access to the dataset's
+        data.
+      operationId: getClientLibraryExample
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dataset
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: library
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: mediaType
+        in: query
+        schema:
+          type: string
+      - name: version
+        in: query
+        schema:
+          type: integer
+          default: "0"
+      responses:
+        "304":
+          description: Not Modified
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        default:
+          description: An example code.
+          content:
+            text/plain: {}
+            application/octet-stream: {}
+            application/xhtml+xml:
+              schema:
+                $ref: "#/components/schemas/Html"
+            text/x-python:
+              schema:
+                type: object
+            text/x-idl:
+              schema:
+                type: object
+      deprecated: false
+  '/WS/cdasr/1/dataviews/{dataview: [a-zA-Z][a-zA-Z_0-9]*}/datasets':
+    get:
+      summary: Gets descriptions of datasets.
+      operationId: getDatasets
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: observatoryGroup
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: instrumentType
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: observatory
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: instrument
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: startDate
+        in: query
+        schema:
+          type: string
+      - name: stopDate
+        in: query
+        schema:
+          type: string
+      - name: id
+        in: query
+        schema:
+          type: string
+      - name: idPattern
+        in: query
+        schema:
+          type: string
+          default: .*
+      - name: labelPattern
+        in: query
+        schema:
+          type: string
+          default: .*
+      - name: notesPattern
+        in: query
+        schema:
+          type: string
+          default: .*
+      responses:
+        "304":
+          description: Not Modified
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        default:
+          description: Descriptions of datasets.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Datasets"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Datasets"
+      deprecated: false
+    post:
+      summary: Creates various representations of the data within the specified dataset.
+      operationId: getData
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DataRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/DataRequest"
+      responses:
+        "304":
+          description: Not Modified
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too Many Requests
+        "503":
+          description: Service Unavailable
+        default:
+          description: Various representations of the data within the specified dataset.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/DataResult"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DataResult"
+      deprecated: false
+  ? '/WS/cdasr/1/dataviews/{dataview: [a-zA-Z][a-zA-Z_0-9]*}/datasets/{dataset: [a-zA-Z][a-zA-Z_\-0-9]*|(?:https:%2F%2Fdoi\.org%2F)?10\.\d+%2F[-a-zA-Z0-9]+}/data/{start:
+    [0-9]{4}(((0[1-9])|(1[0-2]))(([0-2][0-9])|(3[0-1]))?)?T((([0-1][0-9])|(2[0-4]))(([0-5][0-9])(([0-5][0-9])|(60))?)?)?Z},{end:
+    [0-9]{4}(((0[1-9])|(1[0-2]))(([0-2][0-9])|(3[0-1]))?)?T((([0-1][0-9])|(2[0-4]))(([0-5][0-9])(([0-5][0-9])|(60))?)?)?Z}/{vars}'
+  : get:
+      summary: Gets/creates various representations of the data within the specified
+        dataset.
+      operationId: getData
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dataset
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: end
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: vars
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: options
+        in: query
+        schema:
+          type: integer
+      - name: cdfVersion
+        in: query
+        schema:
+          type: integer
+      - name: thumbnailId
+        in: query
+        schema:
+          type: string
+      - name: thumbnail
+        in: query
+        schema:
+          type: integer
+      responses:
+        "304":
+          description: Not Modified
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "415":
+          description: Unsupported Media Type
+        "429":
+          description: Too Many Requests
+        "503":
+          description: Service Unavailable
+        default:
+          description: Various representations of the data within the specified dataset.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/DataResult"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DataResult"
+      deprecated: false
+  ? '/WS/cdasr/1/dataviews/{dataview: [a-zA-Z][a-zA-Z_0-9]*}/datasets/{dataset: [a-zA-Z][a-zA-Z_\-0-9]*|(?:https:%2F%2Fdoi\.org%2F)?10\.\d+%2F[-a-zA-Z0-9]+}/inventory'
+  : get:
+      summary: Gets data inventory information.
+      operationId: getInventory
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dataset
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "304":
+          description: Not Modified
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "415":
+          description: Unsupported Media Type
+        default:
+          description: Data inventory information.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Inventory"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Inventory"
+      deprecated: false
+  ? '/WS/cdasr/1/dataviews/{dataview: [a-zA-Z][a-zA-Z_0-9]*}/datasets/{dataset: [a-zA-Z][a-zA-Z_\-0-9]*|(?:https:%2F%2Fdoi\.org%2F)?10\.\d+%2F[-a-zA-Z0-9]+}/inventory/{start:
+    [0-9]{4}(((0[1-9])|(1[0-2]))(([0-2][0-9])|(3[0-1]))?)?T((([0-1][0-9])|(2[0-4]))(([0-5][0-9])(([0-5][0-9])|(60))?)?)?Z},{end:
+    [0-9]{4}(((0[1-9])|(1[0-2]))(([0-2][0-9])|(3[0-1]))?)?T((([0-1][0-9])|(2[0-4]))(([0-5][0-9])(([0-5][0-9])|(60))?)?)?Z}'
+  : get:
+      summary: Gets data inventory information.
+      operationId: getInventory
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dataset
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: end
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "304":
+          description: Not Modified
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "415":
+          description: Unsupported Media Type
+        default:
+          description: Data inventory information.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Inventory"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Inventory"
+      deprecated: false
+  ? '/WS/cdasr/1/dataviews/{dataview: [a-zA-Z][a-zA-Z_0-9]*}/datasets/{dataset: [a-zA-Z][a-zA-Z_\-0-9]*|(?:https:%2F%2Fdoi\.org%2F)?10\.\d+%2F[-a-zA-Z0-9]+}/orig_data/{start:
+    [0-9]{4}(((0[1-9])|(1[0-2]))(([0-2][0-9])|(3[0-1]))?)?T((([0-1][0-9])|(2[0-4]))(([0-5][0-9])(([0-5][0-9])|(60))?)?)?Z},{end:
+    [0-9]{4}(((0[1-9])|(1[0-2]))(([0-2][0-9])|(3[0-1]))?)?T((([0-1][0-9])|(2[0-4]))(([0-5][0-9])(([0-5][0-9])|(60))?)?)?Z}'
+  : get:
+      summary: Gets original data files from a dataset.
+      operationId: getData
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dataset
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: end
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "304":
+          description: Not Modified
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "415":
+          description: Unsupported Media Type
+        default:
+          description: Original data files from a dataset.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/DataResult"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DataResult"
+      deprecated: false
+  ? '/WS/cdasr/1/dataviews/{dataview: [a-zA-Z][a-zA-Z_0-9]*}/datasets/{dataset: [a-zA-Z][a-zA-Z_\-0-9]*|(?:https:%2F%2Fdoi\.org%2F)?10\.\d+%2F[-a-zA-Z0-9]+}/variables'
+  : get:
+      summary: Gets dataset variable information.
+      operationId: getVariables
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: dataset
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "304":
+          description: Not Modified
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "415":
+          description: Unsupported Media Type
+        default:
+          description: Dataset variable information.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Variables"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Variables"
+      deprecated: false
+  '/WS/cdasr/1/dataviews/{dataview: [a-zA-Z][a-zA-Z_0-9]*}/instrumentTypes':
+    get:
+      summary: Gets descriptions of instrument types.
+      operationId: getInstrumentTypes
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: observatory
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: observatoryGroup
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "304":
+          description: Not Modified
+        "406":
+          description: Not Acceptable
+        default:
+          description: Descriptions of instrument types.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/InstrumentTypes"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstrumentTypes"
+      deprecated: false
+  '/WS/cdasr/1/dataviews/{dataview: [a-zA-Z][a-zA-Z_0-9]*}/instruments':
+    get:
+      summary: Gets descriptions of instruments.
+      operationId: getInstruments
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: observatory
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: instrumentType
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "304":
+          description: Not Modified
+        "406":
+          description: Not Acceptable
+        default:
+          description: Descriptions of instruments.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Instruments"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Instruments"
+      deprecated: false
+  '/WS/cdasr/1/dataviews/{dataview: [a-zA-Z][a-zA-Z_0-9]*}/observatories':
+    get:
+      summary: Gets descriptions of observatories.
+      operationId: getObservatories
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instrument
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: instrumentType
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "304":
+          description: Not Modified
+        "406":
+          description: Not Acceptable
+        default:
+          description: Descriptions of observatories.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Observatories"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Observatories"
+      deprecated: false
+  '/WS/cdasr/1/dataviews/{dataview: [a-zA-Z][a-zA-Z_0-9]*}/observatoryGroups':
+    get:
+      summary: Gets descriptions of all the observatory groups.
+      operationId: getObservatoryGroups
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instrumentType
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "304":
+          description: Not Modified
+        "406":
+          description: Not Acceptable
+        default:
+          description: Descriptions of all observatory groups.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ObservatoryGroups"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ObservatoryGroups"
+      deprecated: false
+  '/WS/cdasr/1/dataviews/{dataview: [a-zA-Z][a-zA-Z_0-9]*}/observatoryGroupsAndInstruments':
+    get:
+      summary: Gets descriptions (including instruments) of all the observatory groups.
+      operationId: getObservatoryGroupsAndInstruments
+      parameters:
+      - name: dataview
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instrumentType
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "304":
+          description: Not Modified
+        "406":
+          description: Not Acceptable
+        default:
+          description: Descriptions (including instruments) of all observatory groups.
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ObservatoryGroupInstrumentDescription"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ObservatoryGroupInstrumentDescription"
+      deprecated: false
+  /WS/cdasr/1/echoDataRequest:
+    post:
+      summary: Echos the given DataRequest with a different representation.
+      operationId: echoDataRequest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DataRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/DataRequest"
+      responses:
+        "406":
+          description: Not Acceptable
+        "415":
+          description: Unsupported Media Type
+        default:
+          description: Various DataRequest representations.
+          content:
+            application/xml:
+              schema:
+              $ref: "#/components/schemas/DataRequest"
+            application/json:
+              schema:
+              $ref: "#/components/schemas/DataRequest"
+      deprecated: false
+components:
+  schemas:
+    ObservatoryDescription:
+      type: object
+      description: Description of observatory.
+      properties:
+        Name:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        ShortDescription:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        LongDescription:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - Name
+      - ShortDescription
+      - LongDescription
+      xml:
+        name: ObservatoryDescription
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    ObservatoryInstrumentDescription:
+      type: object
+      description: Description of observatory that includes its instruments.
+      properties:
+        Name:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        ShortDescription:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        LongDescription:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        InstrumentDescription:
+          type: object
+          properties:
+            Name:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            ShortDescription:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            LongDescription:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Name
+          - ShortDescription
+          - LongDescription
+      required:
+      - Name
+      - ShortDescription
+      - LongDescription
+      - InstrumentDescription
+      xml:
+        name: ObservatoryInstrumentDescription
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    enumMetadataType:
+      type: string
+      description: Type of AdditionalMetadata.
+      enum:
+      - SPASE
+      - SPDF_SKT_CDF
+      xml:
+        name: enumMetadataType
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    enumCompression:
+      type: string
+      description: File Compression option.
+      enum:
+      - Uncompressed
+      - Gzip
+      - Bzip2
+      - Zip
+      xml:
+        name: enumCompression
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    enumTextFormat:
+      type: string
+      description: Text format.
+      enum:
+      - Plain
+      - CSV
+      - CSV1
+      - CSV2
+      xml:
+        name: enumTextFormat
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    enumCdfFormat:
+      type: string
+      description: CDF format option.
+      enum:
+      - Binary
+      - CDFML
+      - GzipCDFML
+      - ZipCDFML
+      - ICDFML
+      - IcdfmlJson
+      - CdfJson
+      - NetCdf
+      xml:
+        name: enumCdfFormat
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    XAxisWidthFactor:
+      type: string
+      description: X-axis widthmultiplication factor. For example if the standard
+        height is 320 pixels and factor is 3, then the width of the X-axis will be
+        960.
+      minimum: 1
+      maximum: 6
+      xml:
+        name: XAxisWidthFactor
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    YAxisHeightFactor:
+      type: string
+      description: Y-axis height multiplication factor. For example if the standard
+        height is 100 pixels and factor is 2, then the height of the Y-axis will be
+        200.
+      minimum: 1
+      maximum: 6
+      xml:
+        name: YAxisHeightFactor
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    enumOverplot:
+      type: string
+      description: Overplot option.
+      enum:
+      - None
+      - VectorComponents
+      - IdenticalMissionVariables
+      xml:
+        name: enumOverplot
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    enumGraphOption:
+      type: string
+      description: Graphing option.
+      enum:
+      - CoarseNoiseFilter
+      - DoubleHeightYAxis
+      - CombineGraphs
+      xml:
+        name: enumGraphOption
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    enumImageFormat:
+      type: string
+      description: Format of graph image.
+      enum:
+      - GIF
+      - PNG
+      - PS
+      - PDF
+      xml:
+        name: enumImageFormat
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    Dataviews:
+      type: object
+      properties:
+        DataviewDescription:
+          type: object
+          properties:
+            Id:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            EndpointAddress:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Title:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Subtitle:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Overview:
+              x-nullable: true
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            UnderConstruction:
+              type: boolean
+              xml:
+                name: boolean
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            NoticeUrl:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            PublicAccess:
+              type: boolean
+              xml:
+                name: boolean
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Id
+          - EndpointAddress
+          - Title
+          - Subtitle
+          - UnderConstruction
+          - NoticeUrl
+          - PublicAccess
+      required:
+      - DataviewDescription
+    DataviewDescription:
+      type: object
+      properties:
+        Id:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        EndpointAddress:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Title:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Subtitle:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Overview:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        UnderConstruction:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        NoticeUrl:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        PublicAccess:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - Id
+      - EndpointAddress
+      - Title
+      - Subtitle
+      - UnderConstruction
+      - NoticeUrl
+      - PublicAccess
+    ObservatoryGroups:
+      type: object
+      properties:
+        ObservatoryGroupDescription:
+          type: object
+          properties:
+            Name:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            ObservatoryId:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Name
+          - ObservatoryId
+      required:
+      - ObservatoryGroupDescription
+    ObservatoryGroupDescription:
+      type: object
+      properties:
+        Name:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        ObservatoryId:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - Name
+      - ObservatoryId
+    InstrumentTypes:
+      type: object
+      properties:
+        InstrumentTypeDescription:
+          type: object
+          properties:
+            Name:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Name
+      required:
+      - InstrumentTypeDescription
+    InstrumentTypeDescription:
+      type: object
+      properties:
+        Name:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - Name
+    Instruments:
+      type: object
+      properties:
+        InstrumentDescription:
+          type: object
+          properties:
+            Name:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            ShortDescription:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            LongDescription:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Name
+          - ShortDescription
+          - LongDescription
+      required:
+      - InstrumentDescription
+    InstrumentDescription:
+      type: object
+      properties:
+        Name:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        ShortDescription:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        LongDescription:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - Name
+      - ShortDescription
+      - LongDescription
+    Observatories:
+      type: object
+      properties:
+        ObservatoryDescription:
+          $ref: '#/components/schemas/ObservatoryDescription'
+      required:
+      - ObservatoryDescription
+    ObservatoryGroupInstruments:
+      type: object
+      properties:
+        ObservatoryGroupInstrumentDescription:
+          type: object
+          properties:
+            Name:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            ObservatoryInstruments:
+              $ref: '#/components/schemas/ObservatoryInstrumentDescription'
+          required:
+          - Name
+          - ObservatoryInstruments
+      required:
+      - ObservatoryGroupInstrumentDescription
+    ObservatoryGroupInstrumentDescription:
+      type: object
+      properties:
+        Name:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        ObservatoryInstruments:
+          $ref: '#/components/schemas/ObservatoryInstrumentDescription'
+      required:
+      - Name
+      - ObservatoryInstruments
+    Datasets:
+      type: object
+      properties:
+        DatasetDescription:
+          type: object
+          properties:
+            Id:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Doi:
+              x-nullable: true
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            SpaseResourceId:
+              x-nullable: true
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Observatory:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Instrument:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            ObservatoryGroup:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            InstrumentType:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Label:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            TimeInterval:
+              type: object
+              properties:
+                Start:
+                  type: string
+                  format: date-time
+                  xml:
+                    name: dateTime
+                    namespace: http://cdaweb.gsfc.nasa.gov/schema
+                End:
+                  type: string
+                  format: date-time
+                  xml:
+                    name: dateTime
+                    namespace: http://cdaweb.gsfc.nasa.gov/schema
+              required:
+              - Start
+              - End
+            PiName:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            PiAffiliation:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Notes:
+              type: string
+              format: uri
+              x-nullable: true
+              xml:
+                name: anyURI
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            DatasetLink:
+              type: object
+              properties:
+                Title:
+                  xml:
+                    name: string
+                    namespace: http://cdaweb.gsfc.nasa.gov/schema
+                Text:
+                  xml:
+                    name: string
+                    namespace: http://cdaweb.gsfc.nasa.gov/schema
+                Url:
+                  type: string
+                  format: uri
+                  xml:
+                    name: anyURI
+                    namespace: http://cdaweb.gsfc.nasa.gov/schema
+              required:
+              - Title
+              - Text
+              - Url
+              x-nullable: true
+            AdditionalMetadata:
+              type: object
+              properties:
+                Type:
+                  type: string
+                  description: Type of AdditionalMetadata.
+                  enum:
+                  - SPASE
+                  - SPDF_SKT_CDF
+                  xml:
+                    name: Type
+                    namespace: http://cdaweb.gsfc.nasa.gov/schema
+                    attribute: true
+              required:
+              - Type
+              x-nullable: true
+          required:
+          - Id
+          - Observatory
+          - Instrument
+          - ObservatoryGroup
+          - InstrumentType
+          - Label
+          - TimeInterval
+          - PiName
+          - PiAffiliation
+      required:
+      - DatasetDescription
+    DatasetDescription:
+      type: object
+      properties:
+        Id:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Doi:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        SpaseResourceId:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Observatory:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Instrument:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        ObservatoryGroup:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        InstrumentType:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Label:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        TimeInterval:
+          type: object
+          properties:
+            Start:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            End:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Start
+          - End
+        PiName:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        PiAffiliation:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Notes:
+          type: string
+          format: uri
+          x-nullable: true
+          xml:
+            name: anyURI
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        DatasetLink:
+          type: object
+          properties:
+            Title:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Text:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Url:
+              type: string
+              format: uri
+              xml:
+                name: anyURI
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Title
+          - Text
+          - Url
+          x-nullable: true
+        AdditionalMetadata:
+          type: object
+          properties:
+            Type:
+              type: string
+              description: Type of AdditionalMetadata.
+              enum:
+              - SPASE
+              - SPDF_SKT_CDF
+              xml:
+                name: Type
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+                attribute: true
+          required:
+          - Type
+          x-nullable: true
+      required:
+      - Id
+      - Observatory
+      - Instrument
+      - ObservatoryGroup
+      - InstrumentType
+      - Label
+      - TimeInterval
+      - PiName
+      - PiAffiliation
+    DatasetLink:
+      type: object
+      properties:
+        Title:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Text:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Url:
+          type: string
+          format: uri
+          xml:
+            name: anyURI
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - Title
+      - Text
+      - Url
+    AdditionalMetadata:
+      type: object
+      properties:
+        Type:
+          type: string
+          description: Type of AdditionalMetadata.
+          enum:
+          - SPASE
+          - SPDF_SKT_CDF
+          xml:
+            name: Type
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+            attribute: true
+      required:
+      - Type
+    Inventory:
+      type: object
+      properties:
+        InventoryDescription:
+          type: object
+          properties:
+            Id:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            TimeInterval:
+              type: object
+              properties:
+                Start:
+                  type: string
+                  format: date-time
+                  xml:
+                    name: dateTime
+                    namespace: http://cdaweb.gsfc.nasa.gov/schema
+                End:
+                  type: string
+                  format: date-time
+                  xml:
+                    name: dateTime
+                    namespace: http://cdaweb.gsfc.nasa.gov/schema
+              required:
+              - Start
+              - End
+          required:
+          - Id
+          - TimeInterval
+      required:
+      - InventoryDescription
+    InventoryDescription:
+      type: object
+      properties:
+        Id:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        TimeInterval:
+          type: object
+          properties:
+            Start:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            End:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Start
+          - End
+      required:
+      - Id
+      - TimeInterval
+    TimeInterval:
+      type: object
+      properties:
+        Start:
+          type: string
+          format: date-time
+          xml:
+            name: dateTime
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        End:
+          type: string
+          format: date-time
+          xml:
+            name: dateTime
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - Start
+      - End
+    Variables:
+      type: object
+      properties:
+        VariableDescription:
+          type: object
+          properties:
+            Name:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            ShortDescription:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            LongDescription:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Parent:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Children:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Name
+          - ShortDescription
+          - LongDescription
+          - Parent
+          - Children
+      required:
+      - VariableDescription
+    VariableDescription:
+      type: object
+      properties:
+        Name:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        ShortDescription:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        LongDescription:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Parent:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Children:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - Name
+      - ShortDescription
+      - LongDescription
+      - Parent
+      - Children
+    DataRequest:
+      type: object
+      properties:
+        DataRequestEntity:
+          type: object
+          properties:
+            null:
+              x-nullable: true
+          xml:
+            name: anyType
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - DataRequestEntity
+    DataRequestEntity:
+      $ref: '#/components/schemas/{http://www.w3.org/2001/XMLSchema}anyType'
+    TextRequest:
+      type: object
+      properties:
+        TimeInterval:
+          type: object
+          properties:
+            Start:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            End:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Start
+          - End
+        DatasetRequest:
+          type: object
+          properties:
+            DatasetId:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            VariableName:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - DatasetId
+          - VariableName
+        Compression:
+          type: array
+          maxItems: 4
+          items:
+            $ref: '#/components/schemas/enumCompression'
+        Format:
+          $ref: '#/components/schemas/enumTextFormat'
+        BinData:
+          type: object
+          properties:
+            Interval:
+              type: number
+              format: double
+              xml:
+                name: double
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            InterpolateMissingValues:
+              type: boolean
+              xml:
+                name: boolean
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            SigmaMultiplier:
+              type: string
+              maximum: 4294967295
+              xml:
+                name: unsignedInt
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            OverrideDefaultBinning:
+              type: boolean
+              x-nullable: true
+              xml:
+                name: boolean
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Interval
+          - InterpolateMissingValues
+          - SigmaMultiplier
+          x-nullable: true
+      required:
+      - TimeInterval
+      - DatasetRequest
+    BinData:
+      type: object
+      properties:
+        Interval:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        InterpolateMissingValues:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        SigmaMultiplier:
+          type: string
+          maximum: 4294967295
+          xml:
+            name: unsignedInt
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        OverrideDefaultBinning:
+          type: boolean
+          x-nullable: true
+          xml:
+            name: boolean
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - Interval
+      - InterpolateMissingValues
+      - SigmaMultiplier
+    Compression:
+      $ref: '#/components/schemas/enumCompression'
+    CdfRequest:
+      type: object
+      properties:
+        TimeInterval:
+          type: object
+          properties:
+            Start:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            End:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Start
+          - End
+        DatasetRequest:
+          type: object
+          properties:
+            DatasetId:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            VariableName:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - DatasetId
+          - VariableName
+        CdfVersion:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          x-nullable: true
+          xml:
+            name: int
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        CdfFormat:
+          $ref: '#/components/schemas/enumCdfFormat'
+        BinData:
+          type: object
+          properties:
+            Interval:
+              type: number
+              format: double
+              xml:
+                name: double
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            InterpolateMissingValues:
+              type: boolean
+              xml:
+                name: boolean
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            SigmaMultiplier:
+              type: string
+              maximum: 4294967295
+              xml:
+                name: unsignedInt
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            OverrideDefaultBinning:
+              type: boolean
+              x-nullable: true
+              xml:
+                name: boolean
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Interval
+          - InterpolateMissingValues
+          - SigmaMultiplier
+          x-nullable: true
+      required:
+      - TimeInterval
+      - DatasetRequest
+    DatasetRequest:
+      type: object
+      properties:
+        DatasetId:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        VariableName:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - DatasetId
+      - VariableName
+    DatasetId:
+      xml:
+        name: string
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    VariableName:
+      xml:
+        name: string
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    CdfVersion:
+      type: string
+      minimum: -2147483648
+      maximum: 2147483647
+      xml:
+        name: int
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
+    CdfFormat:
+      $ref: '#/components/schemas/enumCdfFormat'
+    GraphRequest:
+      type: object
+      properties:
+        TimeInterval:
+          type: object
+          properties:
+            Start:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            End:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Start
+          - End
+        DatasetRequest:
+          type: object
+          properties:
+            DatasetId:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            VariableName:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - DatasetId
+          - VariableName
+        ImageFormat:
+          type: array
+          maxItems: 4
+          items:
+            $ref: '#/components/schemas/enumImageFormat'
+        BinData:
+          type: object
+          properties:
+            Interval:
+              type: number
+              format: double
+              xml:
+                name: double
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            InterpolateMissingValues:
+              type: boolean
+              xml:
+                name: boolean
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            SigmaMultiplier:
+              type: string
+              maximum: 4294967295
+              xml:
+                name: unsignedInt
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            OverrideDefaultBinning:
+              type: boolean
+              x-nullable: true
+              xml:
+                name: boolean
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Interval
+          - InterpolateMissingValues
+          - SigmaMultiplier
+          x-nullable: true
+      required:
+      - TimeInterval
+      - DatasetRequest
+      oneOf:
+      - type: object
+        properties:
+          GraphOptions:
+            type: object
+            properties:
+              CoarseNoiseFilter:
+                type: object
+                x-nullable: true
+              XAxisWidthFactor:
+                $ref: '#/components/schemas/XAxisWidthFactor'
+              YAxisHeightFactor:
+                $ref: '#/components/schemas/YAxisHeightFactor'
+              Combine:
+                type: object
+                x-nullable: true
+              Overplot:
+                $ref: '#/components/schemas/enumOverplot'
+            x-nullable: true
+      - type: object
+        properties:
+          GraphOption:
+            type: array
+            maxItems: 3
+            items:
+              $ref: '#/components/schemas/enumGraphOption'
+    GraphOptions:
+      type: object
+      properties:
+        CoarseNoiseFilter:
+          type: object
+          x-nullable: true
+        XAxisWidthFactor:
+          $ref: '#/components/schemas/XAxisWidthFactor'
+        YAxisHeightFactor:
+          $ref: '#/components/schemas/YAxisHeightFactor'
+        Combine:
+          type: object
+          x-nullable: true
+        Overplot:
+          $ref: '#/components/schemas/enumOverplot'
+    Overplot:
+      $ref: '#/components/schemas/enumOverplot'
+    GraphOption:
+      $ref: '#/components/schemas/enumGraphOption'
+    ImageFormat:
+      $ref: '#/components/schemas/enumImageFormat'
+    ThumbnailRequest:
+      type: object
+      properties:
+        ThumbnailDescriptionEntity:
+          $ref: '#/components/schemas/{http://www.w3.org/2001/XMLSchema}anyType'
+        Thumbnail:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        ImageFormat:
+          type: array
+          maxItems: 2
+          items:
+            $ref: '#/components/schemas/enumImageFormat'
+      required:
+      - ThumbnailDescriptionEntity
+      - Thumbnail
+    AudioRequest:
+      type: object
+      properties:
+        TimeInterval:
+          type: object
+          properties:
+            Start:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            End:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Start
+          - End
+        DatasetRequest:
+          type: object
+          properties:
+            DatasetId:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            VariableName:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - DatasetId
+          - VariableName
+        BinData:
+          type: object
+          properties:
+            Interval:
+              type: number
+              format: double
+              xml:
+                name: double
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            InterpolateMissingValues:
+              type: boolean
+              xml:
+                name: boolean
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            SigmaMultiplier:
+              type: string
+              maximum: 4294967295
+              xml:
+                name: unsignedInt
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            OverrideDefaultBinning:
+              type: boolean
+              x-nullable: true
+              xml:
+                name: boolean
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Interval
+          - InterpolateMissingValues
+          - SigmaMultiplier
+          x-nullable: true
+      required:
+      - TimeInterval
+      - DatasetRequest
+    DataResult:
+      type: object
+      properties:
+        Message:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Warning:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Status:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Error:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      oneOf:
+      - type: object
+        properties:
+          FileDescription:
+            type: object
+            properties:
+              Name:
+                xml:
+                  name: string
+                  namespace: http://cdaweb.gsfc.nasa.gov/schema
+              MimeType:
+                xml:
+                  name: string
+                  namespace: http://cdaweb.gsfc.nasa.gov/schema
+              StartTime:
+                type: string
+                format: date-time
+                xml:
+                  name: dateTime
+                  namespace: http://cdaweb.gsfc.nasa.gov/schema
+              EndTime:
+                type: string
+                format: date-time
+                xml:
+                  name: dateTime
+                  namespace: http://cdaweb.gsfc.nasa.gov/schema
+              Length:
+                type: string
+                minimum: -9223372036854775808
+                maximum: 9223372036854775807
+                xml:
+                  name: long
+                  namespace: http://cdaweb.gsfc.nasa.gov/schema
+              LastModified:
+                type: string
+                format: date-time
+                xml:
+                  name: dateTime
+                  namespace: http://cdaweb.gsfc.nasa.gov/schema
+              ThumbnailDescription:
+                type: object
+                properties:
+                  Type:
+                    xml:
+                      name: string
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  Name:
+                    xml:
+                      name: string
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  Dataset:
+                    xml:
+                      name: string
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  TimeInterval:
+                    type: object
+                    properties:
+                      Start:
+                        type: string
+                        format: date-time
+                        xml:
+                          name: dateTime
+                          namespace: http://cdaweb.gsfc.nasa.gov/schema
+                      End:
+                        type: string
+                        format: date-time
+                        xml:
+                          name: dateTime
+                          namespace: http://cdaweb.gsfc.nasa.gov/schema
+                    required:
+                    - Start
+                    - End
+                  VarName:
+                    xml:
+                      name: string
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  Options:
+                    type: string
+                    minimum: -9223372036854775808
+                    maximum: 9223372036854775807
+                    xml:
+                      name: long
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  NumFrames:
+                    type: string
+                    minimum: -2147483648
+                    maximum: 2147483647
+                    xml:
+                      name: int
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  NumRows:
+                    type: string
+                    minimum: -2147483648
+                    maximum: 2147483647
+                    xml:
+                      name: int
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  NumCols:
+                    type: string
+                    minimum: -2147483648
+                    maximum: 2147483647
+                    xml:
+                      name: int
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  TitleHeight:
+                    type: string
+                    minimum: -2147483648
+                    maximum: 2147483647
+                    xml:
+                      name: int
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  ThumbnailHeight:
+                    type: string
+                    minimum: -2147483648
+                    maximum: 2147483647
+                    xml:
+                      name: int
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  ThumbnailWidth:
+                    type: string
+                    minimum: -2147483648
+                    maximum: 2147483647
+                    xml:
+                      name: int
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  StartRecord:
+                    type: string
+                    minimum: -2147483648
+                    maximum: 2147483647
+                    xml:
+                      name: int
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  MyScale:
+                    type: number
+                    format: double
+                    xml:
+                      name: double
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  XyStep:
+                    type: number
+                    format: double
+                    xml:
+                      name: double
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                required:
+                - Type
+                - Name
+                - Dataset
+                - TimeInterval
+                - VarName
+                - Options
+                - NumFrames
+                - NumRows
+                - NumCols
+                - TitleHeight
+                - ThumbnailHeight
+                - ThumbnailWidth
+                - StartRecord
+                - MyScale
+                - XyStep
+                x-nullable: true
+              ThumbnailId:
+                x-nullable: true
+                xml:
+                  name: string
+                  namespace: http://cdaweb.gsfc.nasa.gov/schema
+            required:
+            - Name
+            - MimeType
+            - StartTime
+            - EndTime
+            - Length
+            - LastModified
+        required:
+        - FileDescription
+      - type: object
+        properties:
+          CDF:
+            type: object
+            properties:
+              cdfFileInfo:
+                type: object
+                properties:
+                  fileFormat:
+                    type: string
+                    enum:
+                    - SINGLE
+                    - MULTI
+                    xml:
+                      name: fileFormat
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                      attribute: true
+                  compression:
+                    type: string
+                    enum:
+                    - NONE
+                    - RLE
+                    - HUFFMAN
+                    - AHUFFMAN
+                    - GZIP.1
+                    - GZIP.2
+                    - GZIP.3
+                    - GZIP.4
+                    - GZIP.5
+                    - GZIP.6
+                    - GZIP.7
+                    - GZIP.8
+                    - GZIP.9
+                    xml:
+                      name: compression
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                      attribute: true
+                  majority:
+                    type: string
+                    enum:
+                    - ROW
+                    - COLUMN
+                    xml:
+                      name: majority
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                      attribute: true
+                  encoding:
+                    type: string
+                    enum:
+                    - HOST
+                    - NETWORK
+                    - VAX
+                    - ALPHAVMSd
+                    - ALPHAVMSg
+                    - ALPHAVMSi
+                    - ALPHAOSF1
+                    - ALPHAOSF1
+                    - SUN
+                    - SGI
+                    - DECSTATION
+                    - IBMRS
+                    - HP
+                    - IBMPC
+                    - NeXT
+                    - MAC
+                    - ARM_LITTLE
+                    - ARM_BIG
+                    - IA64VMSi
+                    - IA64VMSd
+                    - IA64VMSg
+                    xml:
+                      name: encoding
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                      attribute: true
+                  negToPosFp0:
+                    type: string
+                    enum:
+                    - ENABLE
+                    - DISABLE
+                    xml:
+                      name: negToPosFp0
+                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                      attribute: true
+                x-nullable: true
+              cdfGAttributes:
+                type: object
+                properties:
+                  attribute:
+                    type: object
+                    properties:
+                      entry:
+                        type: object
+                        properties:
+                          entryNum:
+                            type: string
+                            xml:
+                              name: entryNum
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          cdfDatatype:
+                            type: string
+                            enum:
+                            - CDF_CHAR
+                            - CDF_UCHAR
+                            - CDF_BYTE
+                            - CDF_INT1
+                            - CDF_UINT1
+                            - CDF_INT2
+                            - CDF_UINT2
+                            - CDF_INT4
+                            - CDF_UINT4
+                            - CDF_INT8
+                            - CDF_REAL4
+                            - CDF_FLOAT
+                            - CDF_REAL8
+                            - CDF_DOUBLE
+                            - CDF_EPOCH
+                            - CDF_EPOCH16
+                            - CDF_TIME_TT2000
+                            xml:
+                              name: cdfDatatype
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                        required:
+                        - cdfDatatype
+                        x-nullable: true
+                      name:
+                        xml:
+                          name: name
+                          namespace: http://cdaweb.gsfc.nasa.gov/schema
+                          attribute: true
+                    required:
+                    - name
+                required:
+                - attribute
+                x-nullable: true
+              cdfVariables:
+                type: object
+                properties:
+                  variable:
+                    type: object
+                    properties:
+                      cdfVarInfo:
+                        type: object
+                        properties:
+                          cdfDatatype:
+                            type: string
+                            enum:
+                            - CDF_CHAR
+                            - CDF_UCHAR
+                            - CDF_BYTE
+                            - CDF_INT1
+                            - CDF_UINT1
+                            - CDF_INT2
+                            - CDF_UINT2
+                            - CDF_INT4
+                            - CDF_UINT4
+                            - CDF_INT8
+                            - CDF_REAL4
+                            - CDF_FLOAT
+                            - CDF_REAL8
+                            - CDF_DOUBLE
+                            - CDF_EPOCH
+                            - CDF_EPOCH16
+                            - CDF_TIME_TT2000
+                            xml:
+                              name: cdfDatatype
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          dim:
+                            type: string
+                            xml:
+                              name: dim
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          dimSizes:
+                            xml:
+                              name: dimSizes
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          numElements:
+                            type: string
+                            xml:
+                              name: numElements
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          dimVariances:
+                            xml:
+                              name: dimVariances
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          recVariance:
+                            type: string
+                            enum:
+                            - VARY
+                            - NOVARY
+                            xml:
+                              name: recVariance
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          compression:
+                            type: string
+                            enum:
+                            - NONE
+                            - RLE
+                            - HUFFMAN
+                            - AHUFFMAN
+                            - GZIP.1
+                            - GZIP.2
+                            - GZIP.3
+                            - GZIP.4
+                            - GZIP.5
+                            - GZIP.6
+                            - GZIP.7
+                            - GZIP.8
+                            - GZIP.9
+                            xml:
+                              name: compression
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          reservePercent:
+                            type: string
+                            xml:
+                              name: reservePercent
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          sparseRecords:
+                            type: string
+                            enum:
+                            - NONE
+                            - PAD
+                            - PREV
+                            xml:
+                              name: sparseRecords
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          numInitialRecords:
+                            type: string
+                            xml:
+                              name: numInitialRecords
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          numRecordsAllocate:
+                            type: string
+                            xml:
+                              name: numRecordsAllocate
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          cacheSize:
+                            type: string
+                            xml:
+                              name: cacheSize
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          padValue:
+                            xml:
+                              name: padValue
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          blockingFactor:
+                            type: string
+                            xml:
+                              name: blockingFactor
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                        required:
+                        - cdfDatatype
+                        - dim
+                        - numElements
+                        - recVariance
+                      cdfVAttributes:
+                        type: object
+                        properties:
+                          attribute:
+                            type: object
+                            properties:
+                              entry:
+                                type: object
+                                properties:
+                                  entryNum:
+                                    type: string
+                                    xml:
+                                      name: entryNum
+                                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                                      attribute: true
+                                  cdfDatatype:
+                                    type: string
+                                    enum:
+                                    - CDF_CHAR
+                                    - CDF_UCHAR
+                                    - CDF_BYTE
+                                    - CDF_INT1
+                                    - CDF_UINT1
+                                    - CDF_INT2
+                                    - CDF_UINT2
+                                    - CDF_INT4
+                                    - CDF_UINT4
+                                    - CDF_INT8
+                                    - CDF_REAL4
+                                    - CDF_FLOAT
+                                    - CDF_REAL8
+                                    - CDF_DOUBLE
+                                    - CDF_EPOCH
+                                    - CDF_EPOCH16
+                                    - CDF_TIME_TT2000
+                                    xml:
+                                      name: cdfDatatype
+                                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                                      attribute: true
+                                required:
+                                - cdfDatatype
+                                x-nullable: true
+                              name:
+                                xml:
+                                  name: name
+                                  namespace: http://cdaweb.gsfc.nasa.gov/schema
+                                  attribute: true
+                            required:
+                            - name
+                        required:
+                        - attribute
+                        x-nullable: true
+                      cdfVarData:
+                        type: object
+                        properties:
+                          record:
+                            type: object
+                            properties:
+                              element:
+                                type: object
+                                properties:
+                                  index:
+                                    xml:
+                                      name: index
+                                      namespace: http://cdaweb.gsfc.nasa.gov/schema
+                                      attribute: true
+                                required:
+                                - index
+                              recNum:
+                                type: string
+                                xml:
+                                  name: recNum
+                                  namespace: http://cdaweb.gsfc.nasa.gov/schema
+                                  attribute: true
+                              elementDelimiter:
+                                xml:
+                                  name: elementDelimiter
+                                  namespace: http://cdaweb.gsfc.nasa.gov/schema
+                                  attribute: true
+                            required:
+                            - element
+                        required:
+                        - record
+                        x-nullable: true
+                      name:
+                        xml:
+                          name: name
+                          namespace: http://cdaweb.gsfc.nasa.gov/schema
+                          attribute: true
+                    required:
+                    - cdfVarInfo
+                    - name
+                required:
+                - variable
+                x-nullable: true
+              orphanAttributes:
+                type: object
+                properties:
+                  attribute:
+                    type: object
+                    properties:
+                      entry:
+                        type: object
+                        properties:
+                          entryNum:
+                            type: string
+                            xml:
+                              name: entryNum
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                          cdfDatatype:
+                            type: string
+                            enum:
+                            - CDF_CHAR
+                            - CDF_UCHAR
+                            - CDF_BYTE
+                            - CDF_INT1
+                            - CDF_UINT1
+                            - CDF_INT2
+                            - CDF_UINT2
+                            - CDF_INT4
+                            - CDF_UINT4
+                            - CDF_INT8
+                            - CDF_REAL4
+                            - CDF_FLOAT
+                            - CDF_REAL8
+                            - CDF_DOUBLE
+                            - CDF_EPOCH
+                            - CDF_EPOCH16
+                            - CDF_TIME_TT2000
+                            xml:
+                              name: cdfDatatype
+                              namespace: http://cdaweb.gsfc.nasa.gov/schema
+                              attribute: true
+                        required:
+                        - cdfDatatype
+                        x-nullable: true
+                      name:
+                        xml:
+                          name: name
+                          namespace: http://cdaweb.gsfc.nasa.gov/schema
+                          attribute: true
+                    required:
+                    - name
+                required:
+                - attribute
+                x-nullable: true
+              name:
+                xml:
+                  name: name
+                  namespace: http://cdaweb.gsfc.nasa.gov/schema
+                  attribute: true
+            required:
+            - name
+        required:
+        - CDF
+    FileDescription:
+      type: object
+      properties:
+        Name:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        MimeType:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        StartTime:
+          type: string
+          format: date-time
+          xml:
+            name: dateTime
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        EndTime:
+          type: string
+          format: date-time
+          xml:
+            name: dateTime
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Length:
+          type: string
+          minimum: -9223372036854775808
+          maximum: 9223372036854775807
+          xml:
+            name: long
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        LastModified:
+          type: string
+          format: date-time
+          xml:
+            name: dateTime
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        ThumbnailDescription:
+          type: object
+          properties:
+            Type:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Name:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Dataset:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            TimeInterval:
+              type: object
+              properties:
+                Start:
+                  type: string
+                  format: date-time
+                  xml:
+                    name: dateTime
+                    namespace: http://cdaweb.gsfc.nasa.gov/schema
+                End:
+                  type: string
+                  format: date-time
+                  xml:
+                    name: dateTime
+                    namespace: http://cdaweb.gsfc.nasa.gov/schema
+              required:
+              - Start
+              - End
+            VarName:
+              xml:
+                name: string
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            Options:
+              type: string
+              minimum: -9223372036854775808
+              maximum: 9223372036854775807
+              xml:
+                name: long
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            NumFrames:
+              type: string
+              minimum: -2147483648
+              maximum: 2147483647
+              xml:
+                name: int
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            NumRows:
+              type: string
+              minimum: -2147483648
+              maximum: 2147483647
+              xml:
+                name: int
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            NumCols:
+              type: string
+              minimum: -2147483648
+              maximum: 2147483647
+              xml:
+                name: int
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            TitleHeight:
+              type: string
+              minimum: -2147483648
+              maximum: 2147483647
+              xml:
+                name: int
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            ThumbnailHeight:
+              type: string
+              minimum: -2147483648
+              maximum: 2147483647
+              xml:
+                name: int
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            ThumbnailWidth:
+              type: string
+              minimum: -2147483648
+              maximum: 2147483647
+              xml:
+                name: int
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            StartRecord:
+              type: string
+              minimum: -2147483648
+              maximum: 2147483647
+              xml:
+                name: int
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            MyScale:
+              type: number
+              format: double
+              xml:
+                name: double
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            XyStep:
+              type: number
+              format: double
+              xml:
+                name: double
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Type
+          - Name
+          - Dataset
+          - TimeInterval
+          - VarName
+          - Options
+          - NumFrames
+          - NumRows
+          - NumCols
+          - TitleHeight
+          - ThumbnailHeight
+          - ThumbnailWidth
+          - StartRecord
+          - MyScale
+          - XyStep
+          x-nullable: true
+        ThumbnailId:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - Name
+      - MimeType
+      - StartTime
+      - EndTime
+      - Length
+      - LastModified
+    ThumbnailDescriptionEntity:
+      $ref: '#/components/schemas/{http://www.w3.org/2001/XMLSchema}anyType'
+    ThumbnailDescription:
+      type: object
+      properties:
+        Type:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Name:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Dataset:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        TimeInterval:
+          type: object
+          properties:
+            Start:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+            End:
+              type: string
+              format: date-time
+              xml:
+                name: dateTime
+                namespace: http://cdaweb.gsfc.nasa.gov/schema
+          required:
+          - Start
+          - End
+        VarName:
+          xml:
+            name: string
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        Options:
+          type: string
+          minimum: -9223372036854775808
+          maximum: 9223372036854775807
+          xml:
+            name: long
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        NumFrames:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        NumRows:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        NumCols:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        TitleHeight:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        ThumbnailHeight:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        ThumbnailWidth:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        StartRecord:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        MyScale:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+        XyStep:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://cdaweb.gsfc.nasa.gov/schema
+      required:
+      - Type
+      - Name
+      - Dataset
+      - TimeInterval
+      - VarName
+      - Options
+      - NumFrames
+      - NumRows
+      - NumCols
+      - TitleHeight
+      - ThumbnailHeight
+      - ThumbnailWidth
+      - StartRecord
+      - MyScale
+      - XyStep
+    ThumbnailId:
+      xml:
+        name: string
+        namespace: http://cdaweb.gsfc.nasa.gov/schema
