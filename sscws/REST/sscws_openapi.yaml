@@ -4,13 +4,13 @@ info:
   contact:
     name: SPDF Support
     url: https://berniegsfc.github.io/sscws/REST/
-    email: NASA-SPDF-Support@nasa.onmicrosoft.com
+    email: NASA-SPDF-Support@nasa.gov
   version: 2.x
 externalDocs:
   description: SSC Web Service Schema
   url: https://berniegsfc.github.io/sscws/REST/SSC.xsd
 servers:
-- url: https://sscweb.gsfc.nasa.gov/WS/sscr/2
+- url: https://sscweb.gsfc.nasa.gov/
   description: SSC Web Service
 paths:
   /WS/sscr/2/conjunctions:
@@ -43,7 +43,7 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("QueryResult"))
+                $ref: '#/components/schemas/QueryResult'
             application/json:
               schema:
                 exclusiveMaximum: false
@@ -79,7 +79,7 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("DataRequest"))
+                $ref: '#/components/schemas/DataRequest'
             application/json:
               schema:
                 exclusiveMaximum: false
@@ -130,7 +130,7 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("GraphRequest"))
+                $ref: '#/components/schemas/GraphRequest'
             application/json:
               schema:
                 exclusiveMaximum: false
@@ -178,7 +178,7 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("QueryRequest"))
+                $ref: '#/components/schemas/QueryRequest'
             application/json:
               schema:
                 exclusiveMaximum: false
@@ -231,7 +231,7 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("GroundStationDescription"))
+                $ref: '#/components/schemas/GroundStationDescription'
             application/json:
               schema:
                 exclusiveMaximum: false
@@ -297,7 +297,7 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("DataResult"))
+                $ref: '#/components/schemas/DataResult'
             application/json:
               schema:
                 exclusiveMaximum: false
@@ -365,7 +365,7 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("DataResult"))
+                $ref: '#/components/schemas/DataResult'
             application/json:
               schema:
                 exclusiveMaximum: false
@@ -402,7 +402,7 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("ObservatoryResponse"))
+                $ref: '#/components/schemas/ObservatoryResponse'
             application/json:
               schema:
                 exclusiveMaximum: false
@@ -467,7 +467,7 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd#xpointer(name("ObservatoryResponse"))
+                $ref: '#/components/schemas/ObservatoryResponse'
             application/json:
               schema:
                 exclusiveMaximum: false
@@ -500,71 +500,2486 @@ endpoints:
   - /WS/sscr/2/spaseObservatories
 components:
   schemas:
+    SatelliteDescription:
+      type: object
+      description: SatelliteDescription type.
+      properties:
+        Id:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Name:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Resolution:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        StartTime:
+          type: string
+          format: date-time
+          xml:
+            name: dateTime
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        EndTime:
+          type: string
+          format: date-time
+          xml:
+            name: dateTime
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Geometry:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        TrajectoryGeometry:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Id
+      - Name
+      - Resolution
+      - StartTime
+      - EndTime
+      - Geometry
+      - TrajectoryGeometry
+      xml:
+        name: SatelliteDescription
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    ObservatoryDescription:
+      type: object
+      description: SSC Observatory type.
+      properties:
+        Id:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Name:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Resolution:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        StartTime:
+          type: string
+          format: date-time
+          xml:
+            name: dateTime
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        EndTime:
+          type: string
+          format: date-time
+          xml:
+            name: dateTime
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Geometry:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        TrajectoryGeometry:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        ResourceId:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        GroupId:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Id
+      - Name
+      - Resolution
+      - StartTime
+      - EndTime
+      - Geometry
+      - TrajectoryGeometry
+      - ResourceId
+      xml:
+        name: ObservatoryDescription
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Request:
+      type: object
+      description: SSC request base type.
+      properties:
+        Description:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        TimeInterval:
+          $ref: '#/components/schemas/TimeInterval'
+        BFieldModel:
+          $ref: '#/components/schemas/BFieldModel'
+      required:
+      - TimeInterval
+      xml:
+        name: Request
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    LocationRequest:
+      type: object
+      description: SSC query request type.
+      properties:
+        Description:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        TimeInterval:
+          $ref: '#/components/schemas/TimeInterval'
+        BFieldModel:
+          $ref: '#/components/schemas/BFieldModel'
+        Satellites:
+          $ref: '#/components/schemas/SatelliteSpecification'
+      required:
+      - TimeInterval
+      - Satellites
+      xml:
+        name: LocationRequest
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    SatelliteSpecification:
+      type: object
+      description: Satellite specification type.
+      properties:
+        Id:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        ResolutionFactor:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Id
+      - ResolutionFactor
+      xml:
+        name: SatelliteSpecification
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    OutputOptions:
+      type: object
+      description: Data request output options.
+      properties:
+        AllLocationFilters:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        CoordinateOptions:
+          $ref: '#/components/schemas/FilteredCoordinateOptions'
+        RegionOptions:
+          $ref: '#/components/schemas/RegionOptions'
+        ValueOptions:
+          $ref: '#/components/schemas/ValueOptions'
+        DistanceFromOptions:
+          $ref: '#/components/schemas/DistanceFromOptions'
+        MinMaxPoints:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        BFieldTraceOptions:
+          $ref: '#/components/schemas/BFieldTraceOptions'
+      required:
+      - AllLocationFilters
+      - CoordinateOptions
+      - MinMaxPoints
+      xml:
+        name: OutputOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    CoordinateOptions:
+      type: object
+      description: Coordinate system component options.
+      properties:
+        CoordinateSystem:
+          $ref: '#/components/schemas/CoordinateSystem'
+        Component:
+          $ref: '#/components/schemas/CoordinateComponent'
+      required:
+      - CoordinateSystem
+      - Component
+      xml:
+        name: CoordinateOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    RegionOptions:
+      type: object
+      description: Listing options for regions. "Regions" denotes a naming convention
+        of three dimensional and two dimensional zones that are associated with a
+        spacecraft's location for a particular point in time. The RegionOptions provides
+        a means to specify the type(s) of regions that can be generated as output.
+        All four region types can be associated with a spacecraft at any given time.
+        A description of these regions is available at the http://sscweb.gsfc.nasa.gov/help/Lregions_shp.html.
+      properties:
+        Spacecraft:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        RadialTracedFootpoint:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        NorthBTracedFootpoint:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        SouthBTracedFootpoint:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Spacecraft
+      - RadialTracedFootpoint
+      - NorthBTracedFootpoint
+      - SouthBTracedFootpoint
+      xml:
+        name: RegionOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    ValueOptions:
+      type: object
+      description: Value listing options.
+      properties:
+        RadialDistance:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        BFieldStrength:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        DipoleLValue:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        DipoleInvLat:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - RadialDistance
+      - BFieldStrength
+      - DipoleLValue
+      - DipoleInvLat
+      xml:
+        name: ValueOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    DistanceFromOptions:
+      type: object
+      description: '"Distance from" listing options.'
+      properties:
+        NeutralSheet:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        BowShock:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MPause:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        BGseXYZ:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - NeutralSheet
+      - BowShock
+      - MPause
+      - BGseXYZ
+      xml:
+        name: DistanceFromOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    BFieldTraceOptions:
+      type: object
+      description: B-field trace listing options.
+      properties:
+        CoordinateSystem:
+          $ref: '#/components/schemas/CoordinateSystem'
+        Hemisphere:
+          $ref: '#/components/schemas/Hemisphere'
+        FootpointLatitude:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        FootpointLongitude:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        FieldLineLength:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - CoordinateSystem
+      - Hemisphere
+      - FootpointLatitude
+      - FootpointLongitude
+      - FieldLineLength
+      xml:
+        name: BFieldTraceOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Hemisphere:
+      type: string
+      description: Hemisphere region.
+      enum:
+      - South
+      - North
+      xml:
+        name: Hemisphere
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    FilteredCoordinateOptions:
+      type: object
+      description: Coordinate system component options that include location filters.
+      properties:
+        CoordinateSystem:
+          $ref: '#/components/schemas/CoordinateSystem'
+        Component:
+          $ref: '#/components/schemas/CoordinateComponent'
+        Filter:
+          $ref: '#/components/schemas/LocationFilter'
+      required:
+      - CoordinateSystem
+      - Component
+      xml:
+        name: FilteredCoordinateOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    RegionFilterOptions:
+      type: object
+      description: Data request region filter options.
+      properties:
+        SpaceRegions:
+          $ref: '#/components/schemas/SpaceRegionsFilterOptions'
+        RadialTraceRegions:
+          $ref: '#/components/schemas/MappedRegionFilterOptions'
+        MagneticTraceRegions:
+          $ref: '#/components/schemas/MappedRegionFilterOptions'
+      required:
+      - SpaceRegions
+      - RadialTraceRegions
+      - MagneticTraceRegions
+      xml:
+        name: RegionFilterOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    SpaceRegionsFilterOptions:
+      type: object
+      description: Space regions filter options.
+      properties:
+        InterplanetaryMedium:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        DaysideMagnetosheath:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        NightsideMagnetosheath:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        DaysideMagnetosphere:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        NightsideMagnetosphere:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        PlasmaSheet:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        TailLobe:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        HighLatitudeBoundaryLayer:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        LowLatitudeBoundaryLayer:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        DaysidePlasmasphere:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        NightsidePlasmasphere:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - InterplanetaryMedium
+      - DaysideMagnetosheath
+      - NightsideMagnetosheath
+      - DaysideMagnetosphere
+      - NightsideMagnetosphere
+      - PlasmaSheet
+      - TailLobe
+      - HighLatitudeBoundaryLayer
+      - LowLatitudeBoundaryLayer
+      - DaysidePlasmasphere
+      - NightsidePlasmasphere
+      xml:
+        name: SpaceRegionsFilterOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    MappedRegionFilterOptions:
+      type: object
+      description: Space regions filter options.
+      properties:
+        Cusp:
+          $ref: '#/components/schemas/HemisphereOptions'
+        Cleft:
+          $ref: '#/components/schemas/HemisphereOptions'
+        AuroralOval:
+          $ref: '#/components/schemas/HemisphereOptions'
+        PolarCap:
+          $ref: '#/components/schemas/HemisphereOptions'
+        MidLatitude:
+          $ref: '#/components/schemas/HemisphereOptions'
+        LowLatitude:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Cusp
+      - Cleft
+      - AuroralOval
+      - PolarCap
+      - MidLatitude
+      - LowLatitude
+      xml:
+        name: MappedRegionFilterOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    HemisphereOptions:
+      type: object
+      description: Hemisphere listing options.
+      properties:
+        North:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        South:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - North
+      - South
+      xml:
+        name: HemisphereOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    LocationFilterOptions:
+      type: object
+      description: Data request location filter options.
+      properties:
+        AllFilters:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        DistanceFromCenterOfEarth:
+          $ref: '#/components/schemas/LocationFilter'
+        MagneticFieldStrength:
+          $ref: '#/components/schemas/LocationFilter'
+        DistanceFromNeutralSheet:
+          $ref: '#/components/schemas/LocationFilter'
+        DistanceFromBowShock:
+          $ref: '#/components/schemas/LocationFilter'
+        DistanceFromMagnetopause:
+          $ref: '#/components/schemas/LocationFilter'
+        DipoleLValue:
+          $ref: '#/components/schemas/LocationFilter'
+        DipoleInvariantLatitude:
+          $ref: '#/components/schemas/LocationFilter'
+      required:
+      - AllFilters
+      - DistanceFromCenterOfEarth
+      - MagneticFieldStrength
+      - DistanceFromNeutralSheet
+      - DistanceFromBowShock
+      - DistanceFromMagnetopause
+      - DipoleLValue
+      - DipoleInvariantLatitude
+      xml:
+        name: LocationFilterOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    LocationFilter:
+      type: object
+      description: Location filter listing options.
+      properties:
+        Minimum:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Maximum:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        LowerLimit:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        UpperLimit:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Minimum
+      - Maximum
+      xml:
+        name: LocationFilter
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    GraphOptions:
+      type: object
+      description: Abstract SSC graphing options.
+      xml:
+        name: GraphOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    OrbitGraphOptions:
+      type: object
+      description: SSC orbit graphing request options.
+      properties:
+        CoordinateSystem:
+          $ref: '#/components/schemas/CoordinateSystem'
+        Combined:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        XyView:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        XzView:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        YzView:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        XrView:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        SunToRight:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        ManualScale:
+          $ref: '#/components/schemas/GraphScale'
+        EvenAxesScale:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        ShowBowShockMagnetopause:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        SolarWindPressure:
+          type: number
+          format: float
+          x-nullable: true
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        ImfBz:
+          type: number
+          format: float
+          x-nullable: true
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        FormatOptions:
+          $ref: '#/components/schemas/GraphFormatOptions'
+      required:
+      - CoordinateSystem
+      - Combined
+      - XyView
+      - XzView
+      - YzView
+      - XrView
+      - SunToRight
+      - EvenAxesScale
+      - ShowBowShockMagnetopause
+      xml:
+        name: OrbitGraphOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    GraphScale:
+      type: object
+      description: Manual scale values for an SSC graphing request.
+      properties:
+        MinX:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MaxX:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MinY:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MaxY:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MinZ:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MaxZ:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MinR:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MaxR:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - MinX
+      - MaxX
+      - MinY
+      - MaxY
+      - MinZ
+      - MaxZ
+      - MinR
+      - MaxR
+      xml:
+        name: GraphScale
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    GraphFormatOptions:
+      type: object
+      description: Manual scale values for an SSC graphing request.
+      properties:
+        CustomLabelOptions:
+          $ref: '#/components/schemas/GraphLabelOptions'
+        CharSize:
+          type: number
+          format: float
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        SymbolSize:
+          type: number
+          format: float
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - CharSize
+      - SymbolSize
+      xml:
+        name: GraphFormatOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    GraphLabelOptions:
+      type: object
+      description: Custom label options for an SSC graph request.
+      properties:
+        DayOfYearLabelFrequency:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MonthDayOfMonthLabel:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        HourLabelFrequency:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        HourTickMarkFrequency:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MinuteLabelFrequency:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MinuteTickMarkFrequency:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - DayOfYearLabelFrequency
+      - MonthDayOfMonthLabel
+      - HourLabelFrequency
+      - HourTickMarkFrequency
+      - MinuteLabelFrequency
+      - MinuteTickMarkFrequency
+      xml:
+        name: GraphLabelOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    MapProjectionGraphOptions:
+      type: object
+      description: SSC map projection graphing request options.
+      properties:
+        Trace:
+          $ref: '#/components/schemas/MapProjectionTrace'
+        CoordinateSystem:
+          $ref: '#/components/schemas/ProjectionCoordinateSystem'
+        ShowContinents:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Projection:
+          $ref: '#/components/schemas/MapProjection'
+        GroundStations:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MapLimits:
+          $ref: '#/components/schemas/MapLimits'
+        PolarMapOrientation:
+          $ref: '#/components/schemas/PolarMapOrientation'
+        LongitudeVerticalDown:
+          type: number
+          format: float
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Title:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        FormatOptions:
+          $ref: '#/components/schemas/GraphFormatOptions'
+      required:
+      - Trace
+      - CoordinateSystem
+      - ShowContinents
+      - Projection
+      - MapLimits
+      - PolarMapOrientation
+      - LongitudeVerticalDown
+      - Title
+      xml:
+        name: MapProjectionGraphOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    MapProjectionTrace:
+      type: string
+      description: Mapped projection trace options supported by SSC.
+      enum:
+      - BFieldNorth
+      - BFieldSouth
+      - Radial
+      xml:
+        name: MapProjectionTrace
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    CoordinateSystem:
+      type: string
+      description: Coordinate System enumeration.
+      enum:
+      - Geo
+      - Gm
+      - Gse
+      - Gsm
+      - Sm
+      - GeiTod
+      - GeiJ2000
+      xml:
+        name: CoordinateSystem
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    ProjectionCoordinateSystem:
+      type: string
+      description: Enumeration representing the different coordinate systems supported
+        by SSC mapped projection graphs.
+      enum:
+      - Geo
+      - Gm
+      - Sm
+      xml:
+        name: ProjectionCoordinateSystem
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    MapProjection:
+      type: string
+      description: Enumeration representing the map projections supported by SSC.
+      enum:
+      - Azimuthal
+      - Cylindrical
+      - Mercator
+      - Molleweide
+      - Orthographic
+      - Stereographic
+      xml:
+        name: MapProjection
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    MapLimits:
+      type: object
+      description: Map limit values for an SSC graphing request.
+      properties:
+        MinLatitude:
+          type: number
+          format: float
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MaxLatitude:
+          type: number
+          format: float
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MinLongitude:
+          type: number
+          format: float
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MaxLongitude:
+          type: number
+          format: float
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - MinLatitude
+      - MaxLatitude
+      - MinLongitude
+      - MaxLongitude
+      xml:
+        name: MapLimits
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    PolarMapOrientation:
+      type: string
+      description: Enumeration representing the polar map orientations supported by
+        SSC.
+      enum:
+      - Equatorial
+      - NorthPole
+      - SouthPole
+      xml:
+        name: PolarMapOrientation
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    TimeSeriesGraphOptions:
+      type: object
+      description: SSC time series graphing request options.
+      properties:
+        CoordinateOptions:
+          $ref: '#/components/schemas/CoordinateOptions'
+        ValueOptions:
+          $ref: '#/components/schemas/ValueOptions'
+        DistanceFromOptions:
+          $ref: '#/components/schemas/DistanceFromOptions'
+        BFieldTraceOptions:
+          $ref: '#/components/schemas/BFieldTraceOptions'
+      required:
+      - CoordinateOptions
+      - ValueOptions
+      - DistanceFromOptions
+      - BFieldTraceOptions
+      xml:
+        name: TimeSeriesGraphOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    QueryRequestType:
+      type: object
+      description: SSC query request type.
+      properties:
+        Description:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        TimeInterval:
+          $ref: '#/components/schemas/TimeInterval'
+        BFieldModel:
+          $ref: '#/components/schemas/BFieldModel'
+        ExecuteOptions:
+          $ref: '#/components/schemas/ExecuteOptions'
+        ResultOptions:
+          $ref: '#/components/schemas/ResultOptions'
+        ConditionOperator:
+          $ref: '#/components/schemas/ConditionOperator'
+        Conditions:
+          type: array
+          minItems: 1
+          maxItems: 9
+          items:
+            $ref: '#/components/schemas/Condition'
+      required:
+      - TimeInterval
+      - ExecuteOptions
+      - ResultOptions
+      - ConditionOperator
+      - Conditions
+      xml:
+        name: QueryRequestType
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    ExecuteOptions:
+      type: object
+      description: Query execution options.
+      properties:
+        WaitForResult:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        ResultEmailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+      required:
+      - WaitForResult
+      xml:
+        name: ExecuteOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    EmailAddress:
+      type: string
+      description: An addr-spec as defined in RFC 5322.
+      xml:
+        name: EmailAddress
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    ResultOptions:
+      type: object
+      description: Query result options.
+      properties:
+        IncludeQueryInResult:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        QueryResultType:
+          $ref: '#/components/schemas/QueryResultType'
+        FormatOptions:
+          $ref: '#/components/schemas/FormatOptions'
+        TraceCoordinateSystem:
+          $ref: '#/components/schemas/TraceCoordinateSystem'
+        SubSatelliteCoordinateSystem:
+          $ref: '#/components/schemas/CoordinateSystem'
+        SubSatelliteCoordinateSystemType:
+          $ref: '#/components/schemas/CoordinateSystemType'
+      required:
+      - IncludeQueryInResult
+      - QueryResultType
+      - TraceCoordinateSystem
+      - SubSatelliteCoordinateSystem
+      - SubSatelliteCoordinateSystemType
+      xml:
+        name: ResultOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    QueryResultType:
+      type: string
+      description: Query result representation enumeration.
+      enum:
+      - Xml
+      - Listing
+      xml:
+        name: QueryResultType
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    FormatOptions:
+      type: object
+      description: Listing Query result format options.
+      properties:
+        DateFormat:
+          $ref: '#/components/schemas/DateFormat'
+        TimeFormat:
+          $ref: '#/components/schemas/TimeFormat'
+        DistanceFormat:
+          $ref: '#/components/schemas/DistanceFormat'
+        DistanceDigits:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          x-nullable: true
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        DegreeFormat:
+          $ref: '#/components/schemas/DegreeFormat'
+        DegreeDigits:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          x-nullable: true
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        LatLonFormat:
+          $ref: '#/components/schemas/LatLonFormat'
+        Cdf:
+          type: boolean
+          x-nullable: true
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        LinesPerPage:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - DateFormat
+      - TimeFormat
+      - DistanceFormat
+      - DegreeFormat
+      - LatLonFormat
+      - LinesPerPage
+      xml:
+        name: FormatOptions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    TimeInterval:
+      type: object
+      description: Time interval.
+      properties:
+        Start:
+          type: string
+          format: date-time
+          xml:
+            name: dateTime
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        End:
+          type: string
+          format: date-time
+          xml:
+            name: dateTime
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Start
+      - End
+      xml:
+        name: TimeInterval
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    BFieldModel:
+      type: object
+      description: Magnetic field Model.
+      properties:
+        InternalBFieldModel:
+          $ref: '#/components/schemas/InternalBFieldModel'
+        ExternalBFieldModel:
+          $ref: '#/components/schemas/ExternalBFieldModel'
+        TraceStopAltitude:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - InternalBFieldModel
+      - TraceStopAltitude
+      xml:
+        name: BFieldModel
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    InternalBFieldModel:
+      type: string
+      description: Internal B-Field Model enumeration.
+      enum:
+      - IGRF
+      - IGRF-10
+      - SimpleDipole
+      xml:
+        name: InternalBFieldModel
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    ExternalBFieldModel:
+      type: object
+      description: Abstract External B-Field Model type.
+      xml:
+        name: ExternalBFieldModel
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Tsyganenko96BFieldModel:
+      type: object
+      description: Tsyganenko 96 external B-Field model.
+      properties:
+        SolarWindPressure:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        DstIndex:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        ByImf:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        BzImf:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - SolarWindPressure
+      - DstIndex
+      - ByImf
+      - BzImf
+      xml:
+        name: Tsyganenko96BFieldModel
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Tsyganenko89cBFieldModel:
+      type: object
+      description: Tsyganenko 89c external B-Field model.
+      properties:
+        KeyParameterValues:
+          $ref: '#/components/schemas/Tsyganenko89cKp'
+      required:
+      - KeyParameterValues
+      xml:
+        name: Tsyganenko89cBFieldModel
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Tsyganenko89cKp:
+      type: string
+      description: Tsyganenko89c key parameter values enumeration.
+      enum:
+      - KP0_0
+      - KP1_1_1
+      - KP2_2_2
+      - KP3_3_3
+      - KP4_4_4
+      - KP5_5_5
+      - KP6
+      xml:
+        name: Tsyganenko89cKp
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Tsyganenko87BFieldModel:
+      type: object
+      description: Tsyganenko 87 external B-Field model.
+      properties:
+        KeyParameterValues:
+          $ref: '#/components/schemas/Tsyganenko87Kp'
+      required:
+      - KeyParameterValues
+      xml:
+        name: Tsyganenko87BFieldModel
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Tsyganenko87Kp:
+      type: string
+      description: Tsyganenko87 key parameter values enumeration.
+      enum:
+      - KP0_0
+      - KP1_1_1
+      - KP2_2_2
+      - KP3_3_3
+      - KP4_4_4
+      - KP5
+      xml:
+        name: Tsyganenko87Kp
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    ConditionOperator:
+      type: string
+      description: Logical Condition Operator enumeration.
+      enum:
+      - All
+      - Any
+      xml:
+        name: ConditionOperator
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Condition:
+      type: object
+      description: Abstract occupancy/conjunction condition.
+      xml:
+        name: Condition
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    SatelliteCondition:
+      type: object
+      description: Satellite condition type.
+      properties:
+        Satellite:
+          $ref: '#/components/schemas/Satellite'
+        SatelliteCombination:
+          type: string
+          minimum: -2147483648
+          maximum: 2147483647
+          xml:
+            name: int
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Satellite
+      - SatelliteCombination
+      xml:
+        name: SatelliteCondition
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Satellite:
+      type: object
+      description: Satellite specification.
+      properties:
+        Id:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        BFieldTraceDirection:
+          $ref: '#/components/schemas/BFieldTraceDirection'
+      required:
+      - Id
+      xml:
+        name: Satellite
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    BFieldTraceDirection:
+      type: string
+      description: Trace direction enumeration.
+      enum:
+      - SameHemisphere
+      - OppositeHemisphere
+      - NorthHemisphere
+      - SouthHemisphere
+      - EitherHemisphere
+      xml:
+        name: BFieldTraceDirection
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    GroundStationCondition:
+      type: object
+      description: Ground Station condition.
+      properties:
+        GroundStation:
+          type: array
+          minItems: 1
+          maxItems: 4
+          items:
+            $ref: '#/components/schemas/GroundStationConjunction'
+        CoordinateSystem:
+          $ref: '#/components/schemas/TraceCoordinateSystem'
+        TraceType:
+          $ref: '#/components/schemas/TraceType'
+      required:
+      - GroundStation
+      - CoordinateSystem
+      - TraceType
+      xml:
+        name: GroundStationCondition
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Coordinates:
+      type: object
+      description: Coordinates type.
+      xml:
+        name: Coordinates
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Latitude:
+      type: string
+      description: Inclination angle measured from reference plane in degrees.
+      minimum: -90.0
+      maximum: 90.0
+      xml:
+        name: Latitude
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Longitude:
+      type: string
+      description: Azimuth angle of an orthogonal projection on a reference plane
+        that passes through the origin and is orthogonal to the zenith (measured in
+        degrees).
+      minimum: -180.0
+      maximum: 360.0
+      xml:
+        name: Longitude
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    SurfaceGeographicCoordinates:
+      type: object
+      description: Surface (altitude implicitly surface) Geographic Coordinates.
+      properties:
+        Latitude:
+          $ref: '#/components/schemas/Latitude'
+        Longitude:
+          $ref: '#/components/schemas/Longitude'
+      required:
+      - Latitude
+      - Longitude
+      xml:
+        name: SurfaceGeographicCoordinates
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    AltitudeGeographicCoordinates:
+      type: object
+      description: Geographic Coordinates with altitude.
+      properties:
+        Latitude:
+          $ref: '#/components/schemas/Latitude'
+        Longitude:
+          $ref: '#/components/schemas/Longitude'
+        Altitude:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Latitude
+      - Longitude
+      - Altitude
+      xml:
+        name: AltitudeGeographicCoordinates
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    RadiusGeographicCoordinates:
+      type: object
+      description: Geographic Coordinates with radius.
+      properties:
+        Latitude:
+          $ref: '#/components/schemas/Latitude'
+        Longitude:
+          $ref: '#/components/schemas/Longitude'
+        Radius:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Latitude
+      - Longitude
+      - Radius
+      xml:
+        name: RadiusGeographicCoordinates
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    CartesionCoordinates:
+      type: object
+      description: Cartesian Coordinates.
+      properties:
+        X:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Y:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Z:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - X
+      - Y
+      - Z
+      xml:
+        name: CartesionCoordinates
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    GroundStation:
+      type: object
+      description: Ground Station.
+      properties:
+        Id:
+          $ref: '#/components/schemas/GroundStationId'
+        Name:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Location:
+          $ref: '#/components/schemas/SurfaceGeographicCoordinates'
+      required:
+      - Id
+      - Name
+      - Location
+      xml:
+        name: GroundStation
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    GroundStationConjunction:
+      type: object
+      description: Ground Station conjunction.
+      properties:
+        Id:
+          $ref: '#/components/schemas/GroundStationId'
+        Name:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Location:
+          $ref: '#/components/schemas/SurfaceGeographicCoordinates'
+        ConjunctionArea:
+          $ref: '#/components/schemas/ConjunctionArea'
+      required:
+      - Id
+      - Name
+      - Location
+      - ConjunctionArea
+      xml:
+        name: GroundStationConjunction
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    ConjunctionAreaType:
+      type: string
+      description: Conjuction area enumeration.
+      enum:
+      - GeoBox
+      - GmBox
+      - Distance
+      xml:
+        name: ConjunctionAreaType
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    CoordinateSystemType:
+      type: string
+      description: Coordinate System type enumeration.
+      enum:
+      - Spherical
+      - Cartesian
+      xml:
+        name: CoordinateSystemType
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    TraceCoordinateSystem:
+      type: string
+      description: Surface Coordinate System enumeration.
+      enum:
+      - Geo
+      - Gm
+      xml:
+        name: TraceCoordinateSystem
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    CoordinateComponent:
+      type: string
+      description: Coordinate component enumeration.
+      enum:
+      - X
+      - Y
+      - Z
+      - Lat
+      - Lon
+      - Local_Time
+      xml:
+        name: CoordinateComponent
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    TraceType:
+      type: string
+      description: Trace Type enumeration.
+      enum:
+      - BField
+      - Radial
+      xml:
+        name: TraceType
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    LeadSatelliteCondition:
+      type: object
+      description: Lead satellite condition.
+      properties:
+        Satellite:
+          $ref: '#/components/schemas/Satellite'
+        ConjunctionArea:
+          $ref: '#/components/schemas/ConjunctionArea'
+        TraceType:
+          $ref: '#/components/schemas/TraceType'
+      required:
+      - Satellite
+      - ConjunctionArea
+      - TraceType
+      xml:
+        name: LeadSatelliteCondition
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    ConjunctionArea:
+      type: object
+      description: Abstract conjunction area.
+      xml:
+        name: ConjunctionArea
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    BoxConjunctionArea:
+      type: object
+      description: Box shaped conjunction area.
+      properties:
+        CoordinateSystem:
+          $ref: '#/components/schemas/TraceCoordinateSystem'
+        DeltaLatitude:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        DeltaLongitude:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - CoordinateSystem
+      - DeltaLatitude
+      - DeltaLongitude
+      xml:
+        name: BoxConjunctionArea
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    DistanceConjunctionArea:
+      type: object
+      description: Distance conjunction area.
+      properties:
+        Radius:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Radius
+      xml:
+        name: DistanceConjunctionArea
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    RegionCondition:
+      type: object
+      description: Space Region condition.
+      properties:
+        ConditionOperator:
+          $ref: '#/components/schemas/ConditionOperator'
+        SpaceRegions:
+          $ref: '#/components/schemas/SpaceRegions'
+        RadialTraceRegions:
+          $ref: '#/components/schemas/TraceRegions'
+        BFieldTraceRegions:
+          $ref: '#/components/schemas/TraceRegions'
+      required:
+      - ConditionOperator
+      xml:
+        name: RegionCondition
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    SpaceRegions:
+      type: object
+      description: Space Regions.
+      properties:
+        SpacecraftRegion:
+          type: array
+          minItems: 1
+          maxItems: 11
+          items:
+            $ref: '#/components/schemas/SpaceRegionType'
+      required:
+      - SpacecraftRegion
+      xml:
+        name: SpaceRegions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    SpaceRegionType:
+      type: string
+      description: Space region enumeration. See http://sscweb.gsfc.nasa.gov/users_guide/ssc_reg_doc.html
+        for a description.
+      enum:
+      - InterplanetaryMedium
+      - DaysideMagnetosheath
+      - NightsideMagnetosheath
+      - DaysideMagnetosphere
+      - NightsideMagnetosphere
+      - PlasmaSheet
+      - TailLobe
+      - HighLatitudeBoundaryLayer
+      - LowLatitudeBoundaryLayer
+      - DaysidePlasmasphere
+      - NightsidePlasmasphere
+      xml:
+        name: SpaceRegionType
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    MapRegion:
+      type: string
+      description: Map region enumeration. See http://sscweb.gsfc.nasa.gov/users_guide/ssc_reg_doc.html
+        for a description.
+      enum:
+      - NorthCusp
+      - SouthCusp
+      - NorthCleft
+      - SouthCleft
+      - NorthAuroralOval
+      - SouthAuroralOval
+      - NorthPolarCap
+      - SouthPolarCap
+      - NorthMidLatitude
+      - SouthMidLatitude
+      - LowLatitude
+      - None
+      xml:
+        name: MapRegion
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    TraceRegions:
+      type: object
+      description: Trace Map Regions. See http://sscweb.gsfc.nasa.gov/users_guide/ssc_reg_doc.html
+        for a description.
+      properties:
+        Cusp:
+          $ref: '#/components/schemas/HemisphereRegions'
+        Cleft:
+          $ref: '#/components/schemas/HemisphereRegions'
+        AuroralOval:
+          $ref: '#/components/schemas/HemisphereRegions'
+        PolarCap:
+          $ref: '#/components/schemas/HemisphereRegions'
+        MidLatitude:
+          $ref: '#/components/schemas/HemisphereRegions'
+        LowLatitude:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Cusp
+      - Cleft
+      - AuroralOval
+      - PolarCap
+      - MidLatitude
+      - LowLatitude
+      xml:
+        name: TraceRegions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    HemisphereRegions:
+      type: object
+      description: Hemisphere Regions selection.
+      properties:
+        North:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        South:
+          type: boolean
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - North
+      - South
+      xml:
+        name: HemisphereRegions
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    DateFormat:
+      type: string
+      description: Date format enumeration.
+      enum:
+      - yyyy_ddd
+      - yy_mm_dd
+      - yy_Mmm_dd
+      - yy_CMMM_dd
+      xml:
+        name: DateFormat
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    TimeFormat:
+      type: string
+      description: Time format enumeration.
+      enum:
+      - hh_hhhh
+      - hh_mm_ss
+      - hh_mm
+      xml:
+        name: TimeFormat
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    DistanceFormat:
+      type: string
+      description: Distance format enumeration.
+      enum:
+      - Re
+      - Km
+      - IntegerKm
+      - ScientificNotationKm
+      xml:
+        name: DistanceFormat
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    DegreeFormat:
+      type: string
+      description: Degree format enumeration.
+      enum:
+      - Decimal
+      - Minutes
+      - MinutesSeconds
+      xml:
+        name: DegreeFormat
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    LatLonFormat:
+      type: string
+      description: Latitude/Longitude format enumeration.
+      enum:
+      - Lat90Lon360
+      - Lat90Lon180
+      - Lat90SnLon180We
+      xml:
+        name: LatLonFormat
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Result:
+      type: object
+      description: A result from SSC.
+      properties:
+        StatusCode:
+          $ref: '#/components/schemas/ResultStatusCode'
+        StatusSubCode:
+          $ref: '#/components/schemas/ResultStatusSubCode'
+        StatusText:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - StatusCode
+      - StatusSubCode
+      - StatusText
+      xml:
+        name: Result
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    ResultStatusCode:
+      type: string
+      description: Result status code.
+      enum:
+      - Success
+      - ConditionalSuccess
+      - Error
+      xml:
+        name: ResultStatusCode
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    ResultStatusSubCode:
+      type: string
+      description: Result status sub-code.
+      enum:
+      - Success
+      - MissingRequest
+      - MissingSatellites
+      - InvalidBeginTime
+      - InvalidEndTime
+      - InvalidSatellite
+      - InvalidTimeRange
+      - InvalidResolutionFactor
+      - MissingOutputOptions
+      - MissingCoordOptions
+      - MissingCoordSystem
+      - InvalidCoordSystem
+      - MissingCoordComponent
+      - MissingSpaceRegions
+      - MissingRadialTraceRegions
+      - MissingMagneticTraceRegions
+      - MissingCuspOptions
+      - MissingCleftOptions
+      - MissingAuroralOvalOptions
+      - MissingPolarCapOptions
+      - MissingMidLatitudeOptions
+      - MissingDistanceFromCenterOfEarth
+      - MissingMagneticFieldStrength
+      - MissingDistanceFromNeutralSheet
+      - MissingDistanceFromBowShock
+      - MissingDistanceFromMagnetopause
+      - MissingDipoleLValue
+      - MissingDipoleInvariantLatitude
+      - MissingGraphOptions
+      - MissingCoordinateSystem
+      - MissingCoordinateComponent
+      - ServerError
+      xml:
+        name: ResultStatusSubCode
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    AbstractResult:
+      type: object
+      description: Abstract result of a request to the Satellite Situation Center.
+      properties:
+        StatusCode:
+          $ref: '#/components/schemas/ResultStatusCode'
+        StatusSubCode:
+          $ref: '#/components/schemas/ResultStatusSubCode'
+        StatusText:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - StatusCode
+      - StatusSubCode
+      - StatusText
+      xml:
+        name: AbstractResult
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    FileResult:
+      type: object
+      description: The result of a location request to the Satellite Situation Center.
+      properties:
+        StatusCode:
+          $ref: '#/components/schemas/ResultStatusCode'
+        StatusSubCode:
+          $ref: '#/components/schemas/ResultStatusSubCode'
+        StatusText:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Files:
+          $ref: '#/components/schemas/FileDescription'
+      required:
+      - StatusCode
+      - StatusSubCode
+      - StatusText
+      - Files
+      xml:
+        name: FileResult
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    DataResult:
+      type: object
+      description: The result of a data request to the Satellite Situation Center.
+      properties:
+        StatusCode:
+          $ref: '#/components/schemas/ResultStatusCode'
+        StatusSubCode:
+          $ref: '#/components/schemas/ResultStatusSubCode'
+        StatusText:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Data:
+          $ref: '#/components/schemas/SatelliteData'
+      required:
+      - StatusCode
+      - StatusSubCode
+      - StatusText
+      - Data
+      xml:
+        name: DataResult
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    SatelliteData:
+      type: object
+      description: Information about a satellite.
+      properties:
+        Id:
+          $ref: '#/components/schemas/SatelliteId'
+        Coordinates:
+          $ref: '#/components/schemas/CoordinateData'
+        Time:
+          type: string
+          format: date-time
+          x-nullable: true
+          xml:
+            name: dateTime
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        BTraceData:
+          $ref: '#/components/schemas/BTraceData'
+        RadialLength:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MagneticStrength:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        NeutralSheetDistance:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        BowShockDistance:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MagnetoPauseDistance:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        DipoleLValue:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        DipoleInvariantLatitude:
+          type: number
+          format: float
+          x-nullable: true
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        SpacecraftRegion:
+          $ref: '#/components/schemas/SpaceRegion'
+        RadialTracedFootpointRegions:
+          $ref: '#/components/schemas/FootpointRegion'
+        BGseX:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        BGseY:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        BGseZ:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        NorthBTracedFootpointRegions:
+          $ref: '#/components/schemas/FootpointRegion'
+        SouthBTracedFootpointRegions:
+          $ref: '#/components/schemas/FootpointRegion'
+      required:
+      - Id
+      xml:
+        name: SatelliteData
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    CoordinateData:
+      type: object
+      description: Satellite coordinate data.
+      properties:
+        CoordinateSystem:
+          $ref: '#/components/schemas/CoordinateSystem'
+        X:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Y:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Z:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Latitude:
+          type: number
+          format: float
+          x-nullable: true
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Longitude:
+          type: number
+          format: float
+          x-nullable: true
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        LocalTime:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - CoordinateSystem
+      xml:
+        name: CoordinateData
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    BTraceData:
+      type: object
+      description: B-field trace data.
+      properties:
+        CoordinateSystem:
+          $ref: '#/components/schemas/CoordinateSystem'
+        Hemisphere:
+          $ref: '#/components/schemas/Hemisphere'
+        Latitude:
+          type: number
+          format: float
+          x-nullable: true
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Longitude:
+          type: number
+          format: float
+          x-nullable: true
+          xml:
+            name: float
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        ArcLength:
+          type: number
+          format: double
+          x-nullable: true
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - CoordinateSystem
+      - Hemisphere
+      xml:
+        name: BTraceData
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    SpaceRegion:
+      type: string
+      description: The different regions of space supported by SSC.
+      enum:
+      - InterplanetaryMedium
+      - DaysideMagnetosheath
+      - NightsideMagnetosheath
+      - DaysideMagnetosphere
+      - NightsideMagnetosphere
+      - PlasmaSheet
+      - TailLobe
+      - LowLatitudeBoundaryLayer
+      - HighLatitudeBoundaryLayer
+      - DaysidePlasmasphere
+      - NightsidePlasmasphere
+      xml:
+        name: SpaceRegion
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    FootpointRegion:
+      type: string
+      description: The different footpoint regions supported by SSC.
+      enum:
+      - NotApplicable
+      - NorthCusp
+      - SouthCusp
+      - NorthCleft
+      - SouthCleft
+      - NorthAuroralOval
+      - SouthAuroralOval
+      - NorthPolarCap
+      - SouthPolarCap
+      - NorthMidLatitude
+      - SouthMidLatitude
+      - LowLatitude
+      xml:
+        name: FootpointRegion
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    QueryResult:
+      type: object
+      description: Query result.
+      properties:
+        StatusCode:
+          $ref: '#/components/schemas/ResultStatusCode'
+        StatusSubCode:
+          $ref: '#/components/schemas/ResultStatusSubCode'
+        StatusText:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        QueryRequest:
+          $ref: '#/components/schemas/QueryRequestType'
+      required:
+      - StatusCode
+      - StatusSubCode
+      - StatusText
+      xml:
+        name: QueryResult
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    QueryDataResult:
+      type: object
+      description: Query result.
+      properties:
+        StatusCode:
+          $ref: '#/components/schemas/ResultStatusCode'
+        StatusSubCode:
+          $ref: '#/components/schemas/ResultStatusSubCode'
+        StatusText:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        QueryRequest:
+          $ref: '#/components/schemas/QueryRequestType'
+        Conjunction:
+          $ref: '#/components/schemas/Conjunction'
+      required:
+      - StatusCode
+      - StatusSubCode
+      - StatusText
+      xml:
+        name: QueryDataResult
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    QueryFileResult:
+      type: object
+      description: Query result containing a reference to the file(s) containing the
+        results.
+      properties:
+        StatusCode:
+          $ref: '#/components/schemas/ResultStatusCode'
+        StatusSubCode:
+          $ref: '#/components/schemas/ResultStatusSubCode'
+        StatusText:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        QueryRequest:
+          $ref: '#/components/schemas/QueryRequestType'
+        Files:
+          $ref: '#/components/schemas/FileDescription'
+      required:
+      - StatusCode
+      - StatusSubCode
+      - StatusText
+      - Files
+      xml:
+        name: QueryFileResult
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    Conjunction:
+      type: object
+      description: SSC query result. Description of conjuction.
+      properties:
+        TimeInterval:
+          $ref: '#/components/schemas/TimeInterval'
+        SatelliteDescription:
+          $ref: '#/components/schemas/SatelliteConjunction'
+      required:
+      - TimeInterval
+      - SatelliteDescription
+      xml:
+        name: Conjunction
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    SatelliteId:
+      type: string
+      description: Satellite identifier.
+      xml:
+        name: SatelliteId
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    GroundStationId:
+      type: string
+      description: Ground Station identifier.
+      xml:
+        name: GroundStationId
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    SatelliteConjunction:
+      type: object
+      description: Description of satellite's conjunction.
+      properties:
+        Satellite:
+          $ref: '#/components/schemas/SatelliteId'
+        Description:
+          type: array
+          minItems: 1
+          maxItems: 2
+          items:
+            $ref: '#/components/schemas/ConjunctionDescription'
+      required:
+      - Satellite
+      - Description
+      xml:
+        name: SatelliteConjunction
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    ConjunctionDescription:
+      type: object
+      description: Description of satellite's conjunction.
+      properties:
+        SpacecraftRegion:
+          $ref: '#/components/schemas/SpaceRegionType'
+        RadialTracedRegion:
+          $ref: '#/components/schemas/MapRegion'
+        NorthBTracedRegion:
+          $ref: '#/components/schemas/MapRegion'
+        SouthBTracedRegion:
+          $ref: '#/components/schemas/MapRegion'
+        Location:
+          $ref: '#/components/schemas/Coordinates'
+        TraceDescription:
+          $ref: '#/components/schemas/TraceDescription'
+      xml:
+        name: ConjunctionDescription
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    TraceDescription:
+      type: object
+      properties:
+        Location:
+          $ref: '#/components/schemas/Coordinates'
+        ArcLength:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Target:
+          $ref: '#/components/schemas/TraceTarget'
+      required:
+      - Location
+      - ArcLength
+      - Target
+      xml:
+        name: TraceDescription
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    TraceTarget:
+      type: object
+      description: Endpoint target of trace.
+      xml:
+        name: TraceTarget
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    SatelliteTarget:
+      type: object
+      description: Satellite target of trace.
+      properties:
+        LeadSatellite:
+          $ref: '#/components/schemas/SatelliteId'
+        Distance:
+          type: number
+          format: double
+          xml:
+            name: double
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - LeadSatellite
+      - Distance
+      xml:
+        name: SatelliteTarget
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    GroundStationTarget:
+      type: object
+      description: Ground Station target of trace.
+      properties:
+        GroundStation:
+          $ref: '#/components/schemas/GroundStationId'
+      required:
+      - GroundStation
+      xml:
+        name: GroundStationTarget
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    FileDescription:
+      type: object
+      description: Description of a file.
+      properties:
+        Name:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        MimeType:
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        Length:
+          type: string
+          minimum: -9223372036854775808
+          maximum: 9223372036854775807
+          xml:
+            name: long
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        LastModified:
+          type: string
+          format: date-time
+          xml:
+            name: dateTime
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - Name
+      - MimeType
+      - Length
+      - LastModified
+      xml:
+        name: FileDescription
+        namespace: http://sscweb.gsfc.nasa.gov/schema
+    GroundStationResponse:
+      type: object
+      description: SSC GroundStation response type.
+      properties:
+        GroundStation:
+          $ref: '#/components/schemas/GroundStation'
+      required:
+      - GroundStation
+    ObservatoryResponse:
+      type: object
+      description: SSC Observatory response type.
+      properties:
+        Observatory:
+          $ref: '#/components/schemas/ObservatoryDescription'
+      required:
+      - Observatory
     DataRequest:
       type: object
       properties:
-        outputOptions: {}
-        regionFilterOptions: {}
-        locationFilterOptions: {}
-        formatOptions: {}
-        satellites:
-          items:
-            type: object
-        description: {}
-        timeInterval: {}
-        bFieldModel: {}
-        dataRequestEntity: {}
-      allOf:
-      - $ref: "#/components/schemas/LocationRequest"
+        Description:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        TimeInterval:
+          $ref: '#/components/schemas/TimeInterval'
+        BFieldModel:
+          $ref: '#/components/schemas/BFieldModel'
+        Satellites:
+          $ref: '#/components/schemas/SatelliteSpecification'
+        OutputOptions:
+          $ref: '#/components/schemas/OutputOptions'
+        RegionFilterOptions:
+          $ref: '#/components/schemas/RegionFilterOptions'
+        LocationFilterOptions:
+          $ref: '#/components/schemas/LocationFilterOptions'
+        FormatOptions:
+          $ref: '#/components/schemas/FormatOptions'
+      required:
+      - TimeInterval
+      - Satellites
+      - OutputOptions
     GraphRequest:
       type: object
       properties:
-        graphOptions: {}
-        satellites:
-          items:
-            type: object
-        description: {}
-        timeInterval: {}
-        bFieldModel: {}
-      allOf:
-      - $ref: "#/components/schemas/LocationRequest"
+        Description:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        TimeInterval:
+          $ref: '#/components/schemas/TimeInterval'
+        BFieldModel:
+          $ref: '#/components/schemas/BFieldModel'
+        Satellites:
+          $ref: '#/components/schemas/SatelliteSpecification'
+        GraphOptions:
+          $ref: '#/components/schemas/GraphOptions'
+      required:
+      - TimeInterval
+      - Satellites
+      - GraphOptions
     KmlRequest:
       type: object
       properties:
-        trajectory:
+        Description:
+          x-nullable: true
+          xml:
+            name: string
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        TimeInterval:
+          $ref: '#/components/schemas/TimeInterval'
+        BFieldModel:
+          $ref: '#/components/schemas/BFieldModel'
+        Satellites:
+          $ref: '#/components/schemas/SatelliteSpecification'
+        Trajectory:
           type: boolean
-        northBFieldTraceFootpoint:
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        NorthBFieldTraceFootpoint:
           type: boolean
-        southBFieldTraceFootpoint:
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+        SouthBFieldTraceFootpoint:
           type: boolean
-        satellites:
-          items:
-            type: object
-        description: {}
-        timeInterval: {}
-        bFieldModel: {}
-      allOf:
-      - $ref: "#/components/schemas/LocationRequest"
-    LocationRequest:
-      type: object
-      properties:
-        satellites:
-          items:
-            type: object
-        description: {}
-        timeInterval: {}
-        bFieldModel: {}
-      allOf:
-      - $ref: "#/components/schemas/Request"
-      - $ref: "#/components/schemas/Request"
-      - $ref: "#/components/schemas/Request"
+          xml:
+            name: boolean
+            namespace: http://sscweb.gsfc.nasa.gov/schema
+      required:
+      - TimeInterval
+      - Satellites
+      - Trajectory
+      - NorthBFieldTraceFootpoint
+      - SouthBFieldTraceFootpoint
     QueryRequest:
       type: object
       properties:
-        request: {}
-    Request:
+        Request:
+          $ref: '#/components/schemas/QueryRequestType'
+      required:
+      - Request
+    Response:
       type: object
       properties:
-        description: {}
-        timeInterval: {}
-        bFieldModel: {}
+        Result:
+          $ref: '#/components/schemas/Result'
+      required:
+      - Result
+    QueryResponse:
+      type: object
+      properties:
+        QueryResult:
+          $ref: '#/components/schemas/QueryResult'
+      required:
+      - QueryResult
