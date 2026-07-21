@@ -637,10 +637,10 @@ paths:
           content:
             application/xml:
               schema:
-              $ref: "#/components/schemas/DataRequest"
+                $ref: "#/components/schemas/DataRequest"
             application/json:
               schema:
-              $ref: "#/components/schemas/DataRequest"
+                $ref: "#/components/schemas/DataRequest"
       deprecated: false
 components:
   schemas:
