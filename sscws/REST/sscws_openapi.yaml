@@ -482,22 +482,6 @@ paths:
                 writeOnly: false
                 deprecated: false
       deprecated: false
-endpoints:
-  /WS/sscr/2:
-  - /WS/sscr/2/conjunctions
-  - /WS/sscr/2/echoDataRequest
-  - /WS/sscr/2/echoGraphRequest
-  - /WS/sscr/2/echoQueryRequest
-  - /WS/sscr/2/graphs
-  - /WS/sscr/2/groundStations
-  - /WS/sscr/2/kml
-  - /WS/sscr/2/locations
-  - "/WS/sscr/2/locations/{objects}/{start: [0-9]{4}(((0[1-9])|(1[0-2]))(([0-2][0-9])|(3[0-1]))?)?T((([0-1][0-9])|(2[0-4]))(([0-5][0-9])(([0-5][0-9])|(60))?)?)?Z},{end:\
-    \ [0-9]{4}(((0[1-9])|(1[0-2]))(([0-2][0-9])|(3[0-1]))?)?T((([0-1][0-9])|(2[0-4]))(([0-5][0-9])(([0-5][0-9])|(60))?)?)?Z}/{coordSystems}"
-  - /WS/sscr/2/observatories
-  - "/WS/sscr/2/observatories/{object: [a-z][a-z0-9]*}/clientLibraryExample/{library\
-    \ : (?:(sscws)([Pp]y|[Ii]dl))?(?:,(?:(sscws)([Pp]y|[Ii]dl)))?}"
-  - /WS/sscr/2/spaseObservatories
 components:
   schemas:
     SatelliteDescription:
