@@ -231,7 +231,7 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/GroundStationDescription'
+                $ref: '#/components/schemas/GroundStationResponse'
             application/json:
               schema:
                 exclusiveMaximum: false
