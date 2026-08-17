@@ -136,7 +136,7 @@
     </ul>
 
 
-<b>Contact:</b><a href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com?subject=SSC%20Web%20Services%20Feedback">SSC Feedback</a>
+<b>Contact:</b><a href="mailto:NASA-SPDF-Support@nasa.gov?subject=SSC%20Web%20Services%20Feedback">SSC Feedback</a>
 
         <a class="attribution" title="pdoc: Python API documentation generator" href="https://pdoc.dev" target="_blank">
             built with <span class="visually-hidden">pdoc</span><img
@@ -151,12 +151,15 @@
 <a href="./../sscws.html">sscws</a><wbr>.result    </h1>
 
                         <div class="docstring"><p>Module defining classes to represent the Result class and its
-sub-classes from
-<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.<br></p>
+sub-classes  in the Satellite Situation Center (SSC) Web Application
+Programming Interface (API).</p>
 
-<p>Copyright &copy; 2013-2023 United States Government as represented by the
-National Aeronautics and Space Administration. No copyright is claimed in
-the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+<p>See <a href="https://berniegsfc.github.io/sscws/REST/">https://berniegsfc.github.io/sscws/REST/</a> for additional details.</p>
+
+<p>Copyright &copy; 2013-2026 United States Government as represented by
+the National Aeronautics and Space Administration. No copyright is
+claimed in the United States under Title 17, U.S.Code. All Other Rights
+Reserved.</p>
 </div>
 
                         <input id="mod-result-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -189,7 +192,7 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="c1">#</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a><span class="c1"># NOSA HEADER END</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="c1">#</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a><span class="c1"># Copyright (c) 2013-2023 United States Government as represented by</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a><span class="c1"># Copyright (c) 2013-2026 United States Government as represented by</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="c1"># the National Aeronautics and Space Administration. No copyright is</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a><span class="c1"># claimed in the United States under Title 17, U.S.Code. All Other</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a><span class="c1"># Rights Reserved.</span>
@@ -197,65 +200,65 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 </span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a>
 </span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">Module defining classes to represent the Result class and its</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">sub-classes from</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">&lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.&lt;br&gt;</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">sub-classes  in the Satellite Situation Center (SSC) Web Application</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">Programming Interface (API).</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">Copyright &amp;copy; 2013-2023 United States Government as represented by the</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">National Aeronautics and Space Administration. No copyright is claimed in</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">the United States under Title 17, U.S.Code. All Other Rights Reserved.</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ET</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">dateutil.parser</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">sscws</span><span class="w"> </span><span class="kn">import</span> <span class="n">NAMESPACES</span> <span class="k">as</span> <span class="n">NS</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">sscws.coordinates</span><span class="w"> </span><span class="kn">import</span> <span class="n">CoordinateSystem</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">sscws.regions</span><span class="w"> </span><span class="kn">import</span> <span class="n">FootpointRegion</span><span class="p">,</span> <span class="n">Hemisphere</span><span class="p">,</span> <span class="n">SpaceRegion</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ResultStatusCode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    Enumerations representing the ResultStatusCode defined</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">SUCCESS</span> <span class="o">=</span> <span class="s1">&#39;Success&#39;</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">CONDITIONAL_SUCCESS</span> <span class="o">=</span> <span class="s1">&#39;ConditionalSuccess&#39;</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">ERROR</span> <span class="o">=</span> <span class="s1">&#39;Error&#39;</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ResultStatusSubCode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    Enumerations representing the ResultStatusSubCode defined</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">SUCCESS</span> <span class="o">=</span> <span class="s1">&#39;Success&#39;</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">MISSING_REQUEST</span> <span class="o">=</span> <span class="s1">&#39;MissingRequest&#39;</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">MISSING_SATELLITES</span> <span class="o">=</span> <span class="s1">&#39;MissingSatellites&#39;</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">INVALID_BEGIN_TIME</span> <span class="o">=</span> <span class="s1">&#39;InvalidBeginTime&#39;</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">INVALID_END_TIME</span> <span class="o">=</span> <span class="s1">&#39;InvalidEndTime&#39;</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">INVALID_SATELLITE</span> <span class="o">=</span> <span class="s1">&#39;InvalidSatellite&#39;</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">INVALID_TIME_RANGE</span> <span class="o">=</span> <span class="s1">&#39;InvalidTimeRange&#39;</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">INVALID_RESOLUTION_FACTOR</span> <span class="o">=</span> <span class="s1">&#39;InvalidResolutionFactor&#39;</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">MISSING_OUTPUT_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;MissingOutputOptions&#39;</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">MISSING_COORD_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordOptions&#39;</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">MISSING_COORD_SYSTEM</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordSystem&#39;</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">INVALID_COORD_SYSTEM</span> <span class="o">=</span> <span class="s1">&#39;InvalidCoordSystem&#39;</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">MISSING_COORD_COMPONENT</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordComponent&#39;</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">MISSING_GRAPH_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;MissingGraphOptions&#39;</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">MISSING_COORDINATE_SYSTEM</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordinateSystem&#39;</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">MISSING_COORDINATE_COMPONENT</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordinateComponent&#39;</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">SERVER_ERROR</span> <span class="o">=</span> <span class="s1">&#39;ServerError&#39;</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">See &lt;https://berniegsfc.github.io/sscws/REST/&gt; for additional details.</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">Copyright &amp;copy; 2013-2026 United States Government as represented by</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">the National Aeronautics and Space Administration. No copyright is</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">claimed in the United States under Title 17, U.S.Code. All Other Rights</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">Reserved.</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ET</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">dateutil.parser</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">sscws</span><span class="w"> </span><span class="kn">import</span> <span class="n">NAMESPACES</span> <span class="k">as</span> <span class="n">NS</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">sscws.coordinates</span><span class="w"> </span><span class="kn">import</span> <span class="n">CoordinateSystem</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">sscws.regions</span><span class="w"> </span><span class="kn">import</span> <span class="n">FootpointRegion</span><span class="p">,</span> <span class="n">Hemisphere</span><span class="p">,</span> <span class="n">SpaceRegion</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ResultStatusCode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    Enumerations representing a ResultStatusCode in the SSC API.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">SUCCESS</span> <span class="o">=</span> <span class="s1">&#39;Success&#39;</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">CONDITIONAL_SUCCESS</span> <span class="o">=</span> <span class="s1">&#39;ConditionalSuccess&#39;</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">ERROR</span> <span class="o">=</span> <span class="s1">&#39;Error&#39;</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ResultStatusSubCode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    Enumerations representing a ResultStatusSubCode in the SSC API.</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">SUCCESS</span> <span class="o">=</span> <span class="s1">&#39;Success&#39;</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">MISSING_REQUEST</span> <span class="o">=</span> <span class="s1">&#39;MissingRequest&#39;</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">MISSING_SATELLITES</span> <span class="o">=</span> <span class="s1">&#39;MissingSatellites&#39;</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">INVALID_BEGIN_TIME</span> <span class="o">=</span> <span class="s1">&#39;InvalidBeginTime&#39;</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">INVALID_END_TIME</span> <span class="o">=</span> <span class="s1">&#39;InvalidEndTime&#39;</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">INVALID_SATELLITE</span> <span class="o">=</span> <span class="s1">&#39;InvalidSatellite&#39;</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">INVALID_TIME_RANGE</span> <span class="o">=</span> <span class="s1">&#39;InvalidTimeRange&#39;</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">INVALID_RESOLUTION_FACTOR</span> <span class="o">=</span> <span class="s1">&#39;InvalidResolutionFactor&#39;</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">MISSING_OUTPUT_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;MissingOutputOptions&#39;</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">MISSING_COORD_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordOptions&#39;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">MISSING_COORD_SYSTEM</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordSystem&#39;</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">INVALID_COORD_SYSTEM</span> <span class="o">=</span> <span class="s1">&#39;InvalidCoordSystem&#39;</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">MISSING_COORD_COMPONENT</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordComponent&#39;</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">MISSING_GRAPH_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;MissingGraphOptions&#39;</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">MISSING_COORDINATE_SYSTEM</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordinateSystem&#39;</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">MISSING_COORDINATE_COMPONENT</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordinateComponent&#39;</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="n">SERVER_ERROR</span> <span class="o">=</span> <span class="s1">&#39;ServerError&#39;</span>
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Result</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    Class representing a Result from</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Result</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    Class representing a Result in the SSC API.</span>
 </span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>
 </span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    Parameters</span>
 </span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">    ----------</span>
@@ -906,19 +909,17 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 
     </div>
     <a class="headerlink" href="#ResultStatusCode"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ResultStatusCode-57"><a href="#ResultStatusCode-57"><span class="linenos">57</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ResultStatusCode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="ResultStatusCode-58"><a href="#ResultStatusCode-58"><span class="linenos">58</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="ResultStatusCode-59"><a href="#ResultStatusCode-59"><span class="linenos">59</span></a><span class="sd">    Enumerations representing the ResultStatusCode defined</span>
-</span><span id="ResultStatusCode-60"><a href="#ResultStatusCode-60"><span class="linenos">60</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="ResultStatusCode-61"><a href="#ResultStatusCode-61"><span class="linenos">61</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="ResultStatusCode-62"><a href="#ResultStatusCode-62"><span class="linenos">62</span></a>    <span class="n">SUCCESS</span> <span class="o">=</span> <span class="s1">&#39;Success&#39;</span>
-</span><span id="ResultStatusCode-63"><a href="#ResultStatusCode-63"><span class="linenos">63</span></a>    <span class="n">CONDITIONAL_SUCCESS</span> <span class="o">=</span> <span class="s1">&#39;ConditionalSuccess&#39;</span>
-</span><span id="ResultStatusCode-64"><a href="#ResultStatusCode-64"><span class="linenos">64</span></a>    <span class="n">ERROR</span> <span class="o">=</span> <span class="s1">&#39;Error&#39;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ResultStatusCode-60"><a href="#ResultStatusCode-60"><span class="linenos">60</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ResultStatusCode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="ResultStatusCode-61"><a href="#ResultStatusCode-61"><span class="linenos">61</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="ResultStatusCode-62"><a href="#ResultStatusCode-62"><span class="linenos">62</span></a><span class="sd">    Enumerations representing a ResultStatusCode in the SSC API.</span>
+</span><span id="ResultStatusCode-63"><a href="#ResultStatusCode-63"><span class="linenos">63</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="ResultStatusCode-64"><a href="#ResultStatusCode-64"><span class="linenos">64</span></a>    <span class="n">SUCCESS</span> <span class="o">=</span> <span class="s1">&#39;Success&#39;</span>
+</span><span id="ResultStatusCode-65"><a href="#ResultStatusCode-65"><span class="linenos">65</span></a>    <span class="n">CONDITIONAL_SUCCESS</span> <span class="o">=</span> <span class="s1">&#39;ConditionalSuccess&#39;</span>
+</span><span id="ResultStatusCode-66"><a href="#ResultStatusCode-66"><span class="linenos">66</span></a>    <span class="n">ERROR</span> <span class="o">=</span> <span class="s1">&#39;Error&#39;</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Enumerations representing the ResultStatusCode defined
-in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Enumerations representing a ResultStatusCode in the SSC API.</p>
 </div>
 
 
@@ -970,33 +971,31 @@ in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscwe
 
     </div>
     <a class="headerlink" href="#ResultStatusSubCode"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ResultStatusSubCode-67"><a href="#ResultStatusSubCode-67"><span class="linenos">67</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ResultStatusSubCode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="ResultStatusSubCode-68"><a href="#ResultStatusSubCode-68"><span class="linenos">68</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="ResultStatusSubCode-69"><a href="#ResultStatusSubCode-69"><span class="linenos">69</span></a><span class="sd">    Enumerations representing the ResultStatusSubCode defined</span>
-</span><span id="ResultStatusSubCode-70"><a href="#ResultStatusSubCode-70"><span class="linenos">70</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="ResultStatusSubCode-71"><a href="#ResultStatusSubCode-71"><span class="linenos">71</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="ResultStatusSubCode-72"><a href="#ResultStatusSubCode-72"><span class="linenos">72</span></a>    <span class="n">SUCCESS</span> <span class="o">=</span> <span class="s1">&#39;Success&#39;</span>
-</span><span id="ResultStatusSubCode-73"><a href="#ResultStatusSubCode-73"><span class="linenos">73</span></a>    <span class="n">MISSING_REQUEST</span> <span class="o">=</span> <span class="s1">&#39;MissingRequest&#39;</span>
-</span><span id="ResultStatusSubCode-74"><a href="#ResultStatusSubCode-74"><span class="linenos">74</span></a>    <span class="n">MISSING_SATELLITES</span> <span class="o">=</span> <span class="s1">&#39;MissingSatellites&#39;</span>
-</span><span id="ResultStatusSubCode-75"><a href="#ResultStatusSubCode-75"><span class="linenos">75</span></a>    <span class="n">INVALID_BEGIN_TIME</span> <span class="o">=</span> <span class="s1">&#39;InvalidBeginTime&#39;</span>
-</span><span id="ResultStatusSubCode-76"><a href="#ResultStatusSubCode-76"><span class="linenos">76</span></a>    <span class="n">INVALID_END_TIME</span> <span class="o">=</span> <span class="s1">&#39;InvalidEndTime&#39;</span>
-</span><span id="ResultStatusSubCode-77"><a href="#ResultStatusSubCode-77"><span class="linenos">77</span></a>    <span class="n">INVALID_SATELLITE</span> <span class="o">=</span> <span class="s1">&#39;InvalidSatellite&#39;</span>
-</span><span id="ResultStatusSubCode-78"><a href="#ResultStatusSubCode-78"><span class="linenos">78</span></a>    <span class="n">INVALID_TIME_RANGE</span> <span class="o">=</span> <span class="s1">&#39;InvalidTimeRange&#39;</span>
-</span><span id="ResultStatusSubCode-79"><a href="#ResultStatusSubCode-79"><span class="linenos">79</span></a>    <span class="n">INVALID_RESOLUTION_FACTOR</span> <span class="o">=</span> <span class="s1">&#39;InvalidResolutionFactor&#39;</span>
-</span><span id="ResultStatusSubCode-80"><a href="#ResultStatusSubCode-80"><span class="linenos">80</span></a>    <span class="n">MISSING_OUTPUT_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;MissingOutputOptions&#39;</span>
-</span><span id="ResultStatusSubCode-81"><a href="#ResultStatusSubCode-81"><span class="linenos">81</span></a>    <span class="n">MISSING_COORD_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordOptions&#39;</span>
-</span><span id="ResultStatusSubCode-82"><a href="#ResultStatusSubCode-82"><span class="linenos">82</span></a>    <span class="n">MISSING_COORD_SYSTEM</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordSystem&#39;</span>
-</span><span id="ResultStatusSubCode-83"><a href="#ResultStatusSubCode-83"><span class="linenos">83</span></a>    <span class="n">INVALID_COORD_SYSTEM</span> <span class="o">=</span> <span class="s1">&#39;InvalidCoordSystem&#39;</span>
-</span><span id="ResultStatusSubCode-84"><a href="#ResultStatusSubCode-84"><span class="linenos">84</span></a>    <span class="n">MISSING_COORD_COMPONENT</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordComponent&#39;</span>
-</span><span id="ResultStatusSubCode-85"><a href="#ResultStatusSubCode-85"><span class="linenos">85</span></a>    <span class="n">MISSING_GRAPH_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;MissingGraphOptions&#39;</span>
-</span><span id="ResultStatusSubCode-86"><a href="#ResultStatusSubCode-86"><span class="linenos">86</span></a>    <span class="n">MISSING_COORDINATE_SYSTEM</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordinateSystem&#39;</span>
-</span><span id="ResultStatusSubCode-87"><a href="#ResultStatusSubCode-87"><span class="linenos">87</span></a>    <span class="n">MISSING_COORDINATE_COMPONENT</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordinateComponent&#39;</span>
-</span><span id="ResultStatusSubCode-88"><a href="#ResultStatusSubCode-88"><span class="linenos">88</span></a>    <span class="n">SERVER_ERROR</span> <span class="o">=</span> <span class="s1">&#39;ServerError&#39;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ResultStatusSubCode-69"><a href="#ResultStatusSubCode-69"><span class="linenos">69</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ResultStatusSubCode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="ResultStatusSubCode-70"><a href="#ResultStatusSubCode-70"><span class="linenos">70</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="ResultStatusSubCode-71"><a href="#ResultStatusSubCode-71"><span class="linenos">71</span></a><span class="sd">    Enumerations representing a ResultStatusSubCode in the SSC API.</span>
+</span><span id="ResultStatusSubCode-72"><a href="#ResultStatusSubCode-72"><span class="linenos">72</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="ResultStatusSubCode-73"><a href="#ResultStatusSubCode-73"><span class="linenos">73</span></a>    <span class="n">SUCCESS</span> <span class="o">=</span> <span class="s1">&#39;Success&#39;</span>
+</span><span id="ResultStatusSubCode-74"><a href="#ResultStatusSubCode-74"><span class="linenos">74</span></a>    <span class="n">MISSING_REQUEST</span> <span class="o">=</span> <span class="s1">&#39;MissingRequest&#39;</span>
+</span><span id="ResultStatusSubCode-75"><a href="#ResultStatusSubCode-75"><span class="linenos">75</span></a>    <span class="n">MISSING_SATELLITES</span> <span class="o">=</span> <span class="s1">&#39;MissingSatellites&#39;</span>
+</span><span id="ResultStatusSubCode-76"><a href="#ResultStatusSubCode-76"><span class="linenos">76</span></a>    <span class="n">INVALID_BEGIN_TIME</span> <span class="o">=</span> <span class="s1">&#39;InvalidBeginTime&#39;</span>
+</span><span id="ResultStatusSubCode-77"><a href="#ResultStatusSubCode-77"><span class="linenos">77</span></a>    <span class="n">INVALID_END_TIME</span> <span class="o">=</span> <span class="s1">&#39;InvalidEndTime&#39;</span>
+</span><span id="ResultStatusSubCode-78"><a href="#ResultStatusSubCode-78"><span class="linenos">78</span></a>    <span class="n">INVALID_SATELLITE</span> <span class="o">=</span> <span class="s1">&#39;InvalidSatellite&#39;</span>
+</span><span id="ResultStatusSubCode-79"><a href="#ResultStatusSubCode-79"><span class="linenos">79</span></a>    <span class="n">INVALID_TIME_RANGE</span> <span class="o">=</span> <span class="s1">&#39;InvalidTimeRange&#39;</span>
+</span><span id="ResultStatusSubCode-80"><a href="#ResultStatusSubCode-80"><span class="linenos">80</span></a>    <span class="n">INVALID_RESOLUTION_FACTOR</span> <span class="o">=</span> <span class="s1">&#39;InvalidResolutionFactor&#39;</span>
+</span><span id="ResultStatusSubCode-81"><a href="#ResultStatusSubCode-81"><span class="linenos">81</span></a>    <span class="n">MISSING_OUTPUT_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;MissingOutputOptions&#39;</span>
+</span><span id="ResultStatusSubCode-82"><a href="#ResultStatusSubCode-82"><span class="linenos">82</span></a>    <span class="n">MISSING_COORD_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordOptions&#39;</span>
+</span><span id="ResultStatusSubCode-83"><a href="#ResultStatusSubCode-83"><span class="linenos">83</span></a>    <span class="n">MISSING_COORD_SYSTEM</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordSystem&#39;</span>
+</span><span id="ResultStatusSubCode-84"><a href="#ResultStatusSubCode-84"><span class="linenos">84</span></a>    <span class="n">INVALID_COORD_SYSTEM</span> <span class="o">=</span> <span class="s1">&#39;InvalidCoordSystem&#39;</span>
+</span><span id="ResultStatusSubCode-85"><a href="#ResultStatusSubCode-85"><span class="linenos">85</span></a>    <span class="n">MISSING_COORD_COMPONENT</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordComponent&#39;</span>
+</span><span id="ResultStatusSubCode-86"><a href="#ResultStatusSubCode-86"><span class="linenos">86</span></a>    <span class="n">MISSING_GRAPH_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;MissingGraphOptions&#39;</span>
+</span><span id="ResultStatusSubCode-87"><a href="#ResultStatusSubCode-87"><span class="linenos">87</span></a>    <span class="n">MISSING_COORDINATE_SYSTEM</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordinateSystem&#39;</span>
+</span><span id="ResultStatusSubCode-88"><a href="#ResultStatusSubCode-88"><span class="linenos">88</span></a>    <span class="n">MISSING_COORDINATE_COMPONENT</span> <span class="o">=</span> <span class="s1">&#39;MissingCoordinateComponent&#39;</span>
+</span><span id="ResultStatusSubCode-89"><a href="#ResultStatusSubCode-89"><span class="linenos">89</span></a>    <span class="n">SERVER_ERROR</span> <span class="o">=</span> <span class="s1">&#39;ServerError&#39;</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Enumerations representing the ResultStatusSubCode defined
-in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Enumerations representing a ResultStatusSubCode in the SSC API.</p>
 </div>
 
 
@@ -1216,10 +1215,9 @@ in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscwe
 
     </div>
     <a class="headerlink" href="#Result"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Result-91"><a href="#Result-91"><span class="linenos"> 91</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Result</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-</span><span id="Result-92"><a href="#Result-92"><span class="linenos"> 92</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Result-93"><a href="#Result-93"><span class="linenos"> 93</span></a><span class="sd">    Class representing a Result from</span>
-</span><span id="Result-94"><a href="#Result-94"><span class="linenos"> 94</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Result-92"><a href="#Result-92"><span class="linenos"> 92</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Result</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+</span><span id="Result-93"><a href="#Result-93"><span class="linenos"> 93</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Result-94"><a href="#Result-94"><span class="linenos"> 94</span></a><span class="sd">    Class representing a Result in the SSC API.</span>
 </span><span id="Result-95"><a href="#Result-95"><span class="linenos"> 95</span></a>
 </span><span id="Result-96"><a href="#Result-96"><span class="linenos"> 96</span></a><span class="sd">    Parameters</span>
 </span><span id="Result-97"><a href="#Result-97"><span class="linenos"> 97</span></a><span class="sd">    ----------</span>
@@ -1858,8 +1856,7 @@ in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscwe
 </span></pre></div>
 
 
-            <div class="docstring"><p>Class representing a Result from
-<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Class representing a Result in the SSC API.</p>
 
 <h6 id="parameters">Parameters</h6>
 

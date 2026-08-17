@@ -190,7 +190,7 @@
     </ul>
 
 
-<b>Contact:</b><a href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com?subject=SSC%20Web%20Services%20Feedback">SSC Feedback</a>
+<b>Contact:</b><a href="mailto:NASA-SPDF-Support@nasa.gov?subject=SSC%20Web%20Services%20Feedback">SSC Feedback</a>
 
         <a class="attribution" title="pdoc: Python API documentation generator" href="https://pdoc.dev" target="_blank">
             built with <span class="visually-hidden">pdoc</span><img
@@ -204,12 +204,15 @@
                     <h1 class="modulename">
 <a href="./../sscws.html">sscws</a><wbr>.regions    </h1>
 
-                        <div class="docstring"><p>Module defining classes to represent region classes from
-<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.<br></p>
+                        <div class="docstring"><p>Module defining classes to represent region classes  in the Satellite
+Situation Center (SSC) Web Application Programming Interface (API).</p>
 
-<p>Copyright &copy; 2013-2026 United States Government as represented by the
-National Aeronautics and Space Administration. No copyright is claimed in
-the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+<p>See <a href="https://berniegsfc.github.io/sscws/REST/">https://berniegsfc.github.io/sscws/REST/</a> for additional details.</p>
+
+<p>Copyright &copy; 2013-2026 United States Government as represented by
+the National Aeronautics and Space Administration. No copyright is
+claimed in the United States under Title 17, U.S.Code. All Other Rights
+Reserved.</p>
 </div>
 
                         <input id="mod-regions-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -249,144 +252,144 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 </span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="c1">#</span>
 </span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a>
 </span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">Module defining classes to represent region classes from</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">&lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.&lt;br&gt;</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">Module defining classes to represent region classes  in the Satellite</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">Situation Center (SSC) Web Application Programming Interface (API).</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">Copyright &amp;copy; 2013-2026 United States Government as represented by the</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">National Aeronautics and Space Administration. No copyright is claimed in</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">the United States under Title 17, U.S.Code. All Other Rights Reserved.</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ET</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">See &lt;https://berniegsfc.github.io/sscws/REST/&gt; for additional details.</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">Copyright &amp;copy; 2013-2026 United States Government as represented by</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">the National Aeronautics and Space Administration. No copyright is</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">claimed in the United States under Title 17, U.S.Code. All Other Rights</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">Reserved.</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ET</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="k">class</span><span class="w"> </span><span class="nc">FootpointRegion</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    Enumerations representing the FootpointRegion defined</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>    <span class="n">NOT_APPLICABLE</span> <span class="o">=</span> <span class="s1">&#39;NotApplicable&#39;</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>    <span class="n">NORTH_CUSP</span> <span class="o">=</span> <span class="s1">&#39;NorthCusp&#39;</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    <span class="n">SOUTH_CUSP</span> <span class="o">=</span> <span class="s1">&#39;SouthCusp&#39;</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="n">NORTH_CLEFT</span> <span class="o">=</span> <span class="s1">&#39;NorthCleft&#39;</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">SOUTH_CLEFT</span> <span class="o">=</span> <span class="s1">&#39;SouthCleft&#39;</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">NORTH_AURORAL_OVAL</span> <span class="o">=</span> <span class="s1">&#39;NorthAuroralOval&#39;</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">SOUTH_AURORAL_OVAL</span> <span class="o">=</span> <span class="s1">&#39;SouthAuroralOval&#39;</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">NORTH_POLAR_CAP</span> <span class="o">=</span> <span class="s1">&#39;NorthPolarCap&#39;</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">SOUTH_POLAR_CAP</span> <span class="o">=</span> <span class="s1">&#39;SouthPolarCap&#39;</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">NORTH_MID_LATITUDE</span> <span class="o">=</span> <span class="s1">&#39;NorthMidLatitude&#39;</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">SOUTH_MID_LATITUDE</span> <span class="o">=</span> <span class="s1">&#39;SouthMidLatitude&#39;</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">LOW_LATITUDE</span> <span class="o">=</span> <span class="s1">&#39;LowLatitude&#39;</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="c1"># pylint: disable=too-many-return-statements</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_code</span><span class="p">(</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>            <span class="n">code</span><span class="p">:</span> <span class="nb">int</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FootpointRegion&#39;</span><span class="p">:</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        Produces the FootpointRegion Enum corresponding to the given code</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        in an SSC CDF.</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        Parameters</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        ----------</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        code</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">            FootpointRegion value from an SSC CDF.</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        Returns</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        -------</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        FootpointRegion</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">            Corresponding to the given code.</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        Raises</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        ------</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        ValueError</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">            If the given code is not a valid FootpointRegion code.</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NOT_APPLICABLE</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_CUSP</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_CUSP</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_CLEFT</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_CLEFT</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_AURORAL_OVAL</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_AURORAL_OVAL</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_POLAR_CAP</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_POLAR_CAP</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_MID_LATITUDE</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_MID_LATITUDE</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">LOW_LATITUDE</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized FootpointRegion code &#39;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="c1"># pylint: enable=too-many-return-statements</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Hemisphere</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">    Enumerations representing the Hemisphere defined</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">SOUTH</span> <span class="o">=</span> <span class="s1">&#39;South&#39;</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">NORTH</span> <span class="o">=</span> <span class="s1">&#39;North&#39;</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="nd">@classmethod</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_identifier</span><span class="p">(</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="bp">cls</span><span class="p">,</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Hemisphere&#39;</span><span class="p">:</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">        Get the Enum corresponding to the given identifier value.</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">        Parameters</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">        ----------</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        cls</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">            class.</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">        identifier</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">            Enum value corresponding to a Hemisphere.</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">        Returns</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">        -------</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">        Hemisphere</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">            Enum corresponding to the given identifier value.</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">        Raises</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        ------</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">        ValueError</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">            If the given identifier does not correspond to any</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">            Hemisphere value.</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>            <span class="c1">#if member.name == identifier or member.value == identifier:</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>            <span class="k">if</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>                <span class="k">return</span> <span class="n">member</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid Hemisphere identifier &#39;</span> <span class="o">+</span> <span class="n">identifier</span><span class="p">)</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="k">class</span><span class="w"> </span><span class="nc">FootpointRegion</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    Enumerations representing the FootpointRegions in the SSC API.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    <span class="n">NOT_APPLICABLE</span> <span class="o">=</span> <span class="s1">&#39;NotApplicable&#39;</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="n">NORTH_CUSP</span> <span class="o">=</span> <span class="s1">&#39;NorthCusp&#39;</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">SOUTH_CUSP</span> <span class="o">=</span> <span class="s1">&#39;SouthCusp&#39;</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">NORTH_CLEFT</span> <span class="o">=</span> <span class="s1">&#39;NorthCleft&#39;</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">SOUTH_CLEFT</span> <span class="o">=</span> <span class="s1">&#39;SouthCleft&#39;</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">NORTH_AURORAL_OVAL</span> <span class="o">=</span> <span class="s1">&#39;NorthAuroralOval&#39;</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">SOUTH_AURORAL_OVAL</span> <span class="o">=</span> <span class="s1">&#39;SouthAuroralOval&#39;</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">NORTH_POLAR_CAP</span> <span class="o">=</span> <span class="s1">&#39;NorthPolarCap&#39;</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">SOUTH_POLAR_CAP</span> <span class="o">=</span> <span class="s1">&#39;SouthPolarCap&#39;</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">NORTH_MID_LATITUDE</span> <span class="o">=</span> <span class="s1">&#39;NorthMidLatitude&#39;</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">SOUTH_MID_LATITUDE</span> <span class="o">=</span> <span class="s1">&#39;SouthMidLatitude&#39;</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">LOW_LATITUDE</span> <span class="o">=</span> <span class="s1">&#39;LowLatitude&#39;</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="c1"># pylint: disable=too-many-return-statements</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_code</span><span class="p">(</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>            <span class="n">code</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FootpointRegion&#39;</span><span class="p">:</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        Produces the FootpointRegion Enum corresponding to the given code</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        in an SSC CDF.</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        Parameters</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        ----------</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        code</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">            FootpointRegion value from an SSC CDF.</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        Returns</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        -------</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        FootpointRegion</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">            Corresponding to the given code.</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        Raises</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        ------</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        ValueError</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">            If the given code is not a valid FootpointRegion code.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NOT_APPLICABLE</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_CUSP</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_CUSP</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_CLEFT</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_CLEFT</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_AURORAL_OVAL</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_AURORAL_OVAL</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_POLAR_CAP</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_POLAR_CAP</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_MID_LATITUDE</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_MID_LATITUDE</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">LOW_LATITUDE</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized FootpointRegion code &#39;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="c1"># pylint: enable=too-many-return-statements</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Hemisphere</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">    Enumerations representing the Hemispheres in the SSC API.</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">SOUTH</span> <span class="o">=</span> <span class="s1">&#39;South&#39;</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="n">NORTH</span> <span class="o">=</span> <span class="s1">&#39;North&#39;</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="nd">@classmethod</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_identifier</span><span class="p">(</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="bp">cls</span><span class="p">,</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Hemisphere&#39;</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">        Get the Enum corresponding to the given identifier value.</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">        Parameters</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        ----------</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">        cls</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">            class.</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">        identifier</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">            Enum value corresponding to a Hemisphere.</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">        Returns</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">        -------</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">        Hemisphere</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">            Enum corresponding to the given identifier value.</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        Raises</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">        ------</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        ValueError</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">            If the given identifier does not correspond to any</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">            Hemisphere value.</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>            <span class="c1">#if member.name == identifier or member.value == identifier:</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>            <span class="k">if</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>                <span class="k">return</span> <span class="n">member</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid Hemisphere identifier &#39;</span> <span class="o">+</span> <span class="n">identifier</span><span class="p">)</span>
 </span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="k">class</span><span class="w"> </span><span class="nc">HemisphereRegions</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    Class representing a HemisphereRegions from</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="k">class</span><span class="w"> </span><span class="nc">HemisphereRegions</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    Class representing HemisphereRegions in the SSC API.</span>
 </span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>
 </span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">    Notes</span>
 </span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    -----</span>
 </span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor using</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    the keyword parameters.</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    using the keyword parameters.</span>
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>
 </span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">north</span><span class="p">:</span> <span class="nb">bool</span>
@@ -436,8 +439,8 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 </span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>
 </span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SpaceRegion</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 </span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    Enumerations representing the magnetosphere SpaceRegion defined</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    Enumerations representing the magnetosphere SpaceRegions in the</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    SSC API.</span>
 </span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">INTERPLANETARY_MEDIUM</span> <span class="o">=</span> <span class="s1">&#39;InterplanetaryMedium&#39;</span>
 </span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">DAYSIDE_MAGNETOSHEATH</span> <span class="o">=</span> <span class="s1">&#39;DaysideMagnetosheath&#39;</span>
@@ -506,20 +509,19 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 </span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>
 </span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SpaceRegionType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 </span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">    Enumerations representing the SpaceRegionType defined</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="n">INTERPLANETARY_MEDIUM</span> <span class="o">=</span> <span class="s1">&#39;InterplanetaryMedium&#39;</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="n">DAYSIDE_MAGNETOSHEATH</span> <span class="o">=</span> <span class="s1">&#39;DaysideMagnetosheath&#39;</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="n">NIGHTSIDE_MAGNETOSHEATH</span> <span class="o">=</span> <span class="s1">&#39;NightsideMagnetosheath&#39;</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="n">DAYSIDE_MAGNETOSPHERE</span> <span class="o">=</span> <span class="s1">&#39;DaysideMagnetosphere&#39;</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="n">NIGHTSIDE_MAGNETOSPHERE</span> <span class="o">=</span> <span class="s1">&#39;NightsideMagnetosphere&#39;</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="n">PLASMA_SHEET</span> <span class="o">=</span> <span class="s1">&#39;PlasmaSheet&#39;</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="n">TAIL_LOBE</span> <span class="o">=</span> <span class="s1">&#39;TailLobe&#39;</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="n">LOW_LATITUDE_BOUNDARY_LAYER</span> <span class="o">=</span> <span class="s1">&#39;LowLatitudeBoundaryLayer&#39;</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="n">HIGH_LATITUDE_BOUNDARY_LAYER</span> <span class="o">=</span> <span class="s1">&#39;HighLatitudeBoundaryLayer&#39;</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="n">DAYSIDE_PLASMASPHERE</span> <span class="o">=</span> <span class="s1">&#39;DaysidePlasmasphere&#39;</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="n">NIGHTSIDE_PLASMASPHERE</span> <span class="o">=</span> <span class="s1">&#39;NightsidePlasmasphere&#39;</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">    Enumerations representing SpaceRegionTypes in the SSC API.</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="n">INTERPLANETARY_MEDIUM</span> <span class="o">=</span> <span class="s1">&#39;InterplanetaryMedium&#39;</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="n">DAYSIDE_MAGNETOSHEATH</span> <span class="o">=</span> <span class="s1">&#39;DaysideMagnetosheath&#39;</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="n">NIGHTSIDE_MAGNETOSHEATH</span> <span class="o">=</span> <span class="s1">&#39;NightsideMagnetosheath&#39;</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="n">DAYSIDE_MAGNETOSPHERE</span> <span class="o">=</span> <span class="s1">&#39;DaysideMagnetosphere&#39;</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="n">NIGHTSIDE_MAGNETOSPHERE</span> <span class="o">=</span> <span class="s1">&#39;NightsideMagnetosphere&#39;</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="n">PLASMA_SHEET</span> <span class="o">=</span> <span class="s1">&#39;PlasmaSheet&#39;</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="n">TAIL_LOBE</span> <span class="o">=</span> <span class="s1">&#39;TailLobe&#39;</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="n">LOW_LATITUDE_BOUNDARY_LAYER</span> <span class="o">=</span> <span class="s1">&#39;LowLatitudeBoundaryLayer&#39;</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="n">HIGH_LATITUDE_BOUNDARY_LAYER</span> <span class="o">=</span> <span class="s1">&#39;HighLatitudeBoundaryLayer&#39;</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="n">DAYSIDE_PLASMASPHERE</span> <span class="o">=</span> <span class="s1">&#39;DaysidePlasmasphere&#39;</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="n">NIGHTSIDE_PLASMASPHERE</span> <span class="o">=</span> <span class="s1">&#39;NightsidePlasmasphere&#39;</span>
 </span></pre></div>
 
 
@@ -535,83 +537,81 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 
     </div>
     <a class="headerlink" href="#FootpointRegion"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FootpointRegion-50"><a href="#FootpointRegion-50"><span class="linenos"> 50</span></a><span class="k">class</span><span class="w"> </span><span class="nc">FootpointRegion</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="FootpointRegion-51"><a href="#FootpointRegion-51"><span class="linenos"> 51</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="FootpointRegion-52"><a href="#FootpointRegion-52"><span class="linenos"> 52</span></a><span class="sd">    Enumerations representing the FootpointRegion defined</span>
-</span><span id="FootpointRegion-53"><a href="#FootpointRegion-53"><span class="linenos"> 53</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="FootpointRegion-54"><a href="#FootpointRegion-54"><span class="linenos"> 54</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="FootpointRegion-55"><a href="#FootpointRegion-55"><span class="linenos"> 55</span></a>    <span class="n">NOT_APPLICABLE</span> <span class="o">=</span> <span class="s1">&#39;NotApplicable&#39;</span>
-</span><span id="FootpointRegion-56"><a href="#FootpointRegion-56"><span class="linenos"> 56</span></a>    <span class="n">NORTH_CUSP</span> <span class="o">=</span> <span class="s1">&#39;NorthCusp&#39;</span>
-</span><span id="FootpointRegion-57"><a href="#FootpointRegion-57"><span class="linenos"> 57</span></a>    <span class="n">SOUTH_CUSP</span> <span class="o">=</span> <span class="s1">&#39;SouthCusp&#39;</span>
-</span><span id="FootpointRegion-58"><a href="#FootpointRegion-58"><span class="linenos"> 58</span></a>    <span class="n">NORTH_CLEFT</span> <span class="o">=</span> <span class="s1">&#39;NorthCleft&#39;</span>
-</span><span id="FootpointRegion-59"><a href="#FootpointRegion-59"><span class="linenos"> 59</span></a>    <span class="n">SOUTH_CLEFT</span> <span class="o">=</span> <span class="s1">&#39;SouthCleft&#39;</span>
-</span><span id="FootpointRegion-60"><a href="#FootpointRegion-60"><span class="linenos"> 60</span></a>    <span class="n">NORTH_AURORAL_OVAL</span> <span class="o">=</span> <span class="s1">&#39;NorthAuroralOval&#39;</span>
-</span><span id="FootpointRegion-61"><a href="#FootpointRegion-61"><span class="linenos"> 61</span></a>    <span class="n">SOUTH_AURORAL_OVAL</span> <span class="o">=</span> <span class="s1">&#39;SouthAuroralOval&#39;</span>
-</span><span id="FootpointRegion-62"><a href="#FootpointRegion-62"><span class="linenos"> 62</span></a>    <span class="n">NORTH_POLAR_CAP</span> <span class="o">=</span> <span class="s1">&#39;NorthPolarCap&#39;</span>
-</span><span id="FootpointRegion-63"><a href="#FootpointRegion-63"><span class="linenos"> 63</span></a>    <span class="n">SOUTH_POLAR_CAP</span> <span class="o">=</span> <span class="s1">&#39;SouthPolarCap&#39;</span>
-</span><span id="FootpointRegion-64"><a href="#FootpointRegion-64"><span class="linenos"> 64</span></a>    <span class="n">NORTH_MID_LATITUDE</span> <span class="o">=</span> <span class="s1">&#39;NorthMidLatitude&#39;</span>
-</span><span id="FootpointRegion-65"><a href="#FootpointRegion-65"><span class="linenos"> 65</span></a>    <span class="n">SOUTH_MID_LATITUDE</span> <span class="o">=</span> <span class="s1">&#39;SouthMidLatitude&#39;</span>
-</span><span id="FootpointRegion-66"><a href="#FootpointRegion-66"><span class="linenos"> 66</span></a>    <span class="n">LOW_LATITUDE</span> <span class="o">=</span> <span class="s1">&#39;LowLatitude&#39;</span>
-</span><span id="FootpointRegion-67"><a href="#FootpointRegion-67"><span class="linenos"> 67</span></a>
-</span><span id="FootpointRegion-68"><a href="#FootpointRegion-68"><span class="linenos"> 68</span></a>
-</span><span id="FootpointRegion-69"><a href="#FootpointRegion-69"><span class="linenos"> 69</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="FootpointRegion-70"><a href="#FootpointRegion-70"><span class="linenos"> 70</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
-</span><span id="FootpointRegion-71"><a href="#FootpointRegion-71"><span class="linenos"> 71</span></a>
-</span><span id="FootpointRegion-72"><a href="#FootpointRegion-72"><span class="linenos"> 72</span></a>
-</span><span id="FootpointRegion-73"><a href="#FootpointRegion-73"><span class="linenos"> 73</span></a>    <span class="c1"># pylint: disable=too-many-return-statements</span>
-</span><span id="FootpointRegion-74"><a href="#FootpointRegion-74"><span class="linenos"> 74</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="FootpointRegion-75"><a href="#FootpointRegion-75"><span class="linenos"> 75</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_code</span><span class="p">(</span>
-</span><span id="FootpointRegion-76"><a href="#FootpointRegion-76"><span class="linenos"> 76</span></a>            <span class="n">code</span><span class="p">:</span> <span class="nb">int</span>
-</span><span id="FootpointRegion-77"><a href="#FootpointRegion-77"><span class="linenos"> 77</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FootpointRegion&#39;</span><span class="p">:</span>
-</span><span id="FootpointRegion-78"><a href="#FootpointRegion-78"><span class="linenos"> 78</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="FootpointRegion-79"><a href="#FootpointRegion-79"><span class="linenos"> 79</span></a><span class="sd">        Produces the FootpointRegion Enum corresponding to the given code</span>
-</span><span id="FootpointRegion-80"><a href="#FootpointRegion-80"><span class="linenos"> 80</span></a><span class="sd">        in an SSC CDF.</span>
-</span><span id="FootpointRegion-81"><a href="#FootpointRegion-81"><span class="linenos"> 81</span></a>
-</span><span id="FootpointRegion-82"><a href="#FootpointRegion-82"><span class="linenos"> 82</span></a><span class="sd">        Parameters</span>
-</span><span id="FootpointRegion-83"><a href="#FootpointRegion-83"><span class="linenos"> 83</span></a><span class="sd">        ----------</span>
-</span><span id="FootpointRegion-84"><a href="#FootpointRegion-84"><span class="linenos"> 84</span></a><span class="sd">        code</span>
-</span><span id="FootpointRegion-85"><a href="#FootpointRegion-85"><span class="linenos"> 85</span></a><span class="sd">            FootpointRegion value from an SSC CDF.</span>
-</span><span id="FootpointRegion-86"><a href="#FootpointRegion-86"><span class="linenos"> 86</span></a><span class="sd">        Returns</span>
-</span><span id="FootpointRegion-87"><a href="#FootpointRegion-87"><span class="linenos"> 87</span></a><span class="sd">        -------</span>
-</span><span id="FootpointRegion-88"><a href="#FootpointRegion-88"><span class="linenos"> 88</span></a><span class="sd">        FootpointRegion</span>
-</span><span id="FootpointRegion-89"><a href="#FootpointRegion-89"><span class="linenos"> 89</span></a><span class="sd">            Corresponding to the given code.</span>
-</span><span id="FootpointRegion-90"><a href="#FootpointRegion-90"><span class="linenos"> 90</span></a><span class="sd">        Raises</span>
-</span><span id="FootpointRegion-91"><a href="#FootpointRegion-91"><span class="linenos"> 91</span></a><span class="sd">        ------</span>
-</span><span id="FootpointRegion-92"><a href="#FootpointRegion-92"><span class="linenos"> 92</span></a><span class="sd">        ValueError</span>
-</span><span id="FootpointRegion-93"><a href="#FootpointRegion-93"><span class="linenos"> 93</span></a><span class="sd">            If the given code is not a valid FootpointRegion code.</span>
-</span><span id="FootpointRegion-94"><a href="#FootpointRegion-94"><span class="linenos"> 94</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="FootpointRegion-95"><a href="#FootpointRegion-95"><span class="linenos"> 95</span></a>
-</span><span id="FootpointRegion-96"><a href="#FootpointRegion-96"><span class="linenos"> 96</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="FootpointRegion-97"><a href="#FootpointRegion-97"><span class="linenos"> 97</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NOT_APPLICABLE</span>
-</span><span id="FootpointRegion-98"><a href="#FootpointRegion-98"><span class="linenos"> 98</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-</span><span id="FootpointRegion-99"><a href="#FootpointRegion-99"><span class="linenos"> 99</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_CUSP</span>
-</span><span id="FootpointRegion-100"><a href="#FootpointRegion-100"><span class="linenos">100</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-</span><span id="FootpointRegion-101"><a href="#FootpointRegion-101"><span class="linenos">101</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_CUSP</span>
-</span><span id="FootpointRegion-102"><a href="#FootpointRegion-102"><span class="linenos">102</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-</span><span id="FootpointRegion-103"><a href="#FootpointRegion-103"><span class="linenos">103</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_CLEFT</span>
-</span><span id="FootpointRegion-104"><a href="#FootpointRegion-104"><span class="linenos">104</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-</span><span id="FootpointRegion-105"><a href="#FootpointRegion-105"><span class="linenos">105</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_CLEFT</span>
-</span><span id="FootpointRegion-106"><a href="#FootpointRegion-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-</span><span id="FootpointRegion-107"><a href="#FootpointRegion-107"><span class="linenos">107</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_AURORAL_OVAL</span>
-</span><span id="FootpointRegion-108"><a href="#FootpointRegion-108"><span class="linenos">108</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-</span><span id="FootpointRegion-109"><a href="#FootpointRegion-109"><span class="linenos">109</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_AURORAL_OVAL</span>
-</span><span id="FootpointRegion-110"><a href="#FootpointRegion-110"><span class="linenos">110</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
-</span><span id="FootpointRegion-111"><a href="#FootpointRegion-111"><span class="linenos">111</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_POLAR_CAP</span>
-</span><span id="FootpointRegion-112"><a href="#FootpointRegion-112"><span class="linenos">112</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
-</span><span id="FootpointRegion-113"><a href="#FootpointRegion-113"><span class="linenos">113</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_POLAR_CAP</span>
-</span><span id="FootpointRegion-114"><a href="#FootpointRegion-114"><span class="linenos">114</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
-</span><span id="FootpointRegion-115"><a href="#FootpointRegion-115"><span class="linenos">115</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_MID_LATITUDE</span>
-</span><span id="FootpointRegion-116"><a href="#FootpointRegion-116"><span class="linenos">116</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
-</span><span id="FootpointRegion-117"><a href="#FootpointRegion-117"><span class="linenos">117</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_MID_LATITUDE</span>
-</span><span id="FootpointRegion-118"><a href="#FootpointRegion-118"><span class="linenos">118</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
-</span><span id="FootpointRegion-119"><a href="#FootpointRegion-119"><span class="linenos">119</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">LOW_LATITUDE</span>
-</span><span id="FootpointRegion-120"><a href="#FootpointRegion-120"><span class="linenos">120</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized FootpointRegion code &#39;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
-</span><span id="FootpointRegion-121"><a href="#FootpointRegion-121"><span class="linenos">121</span></a>    <span class="c1"># pylint: enable=too-many-return-statements</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FootpointRegion-53"><a href="#FootpointRegion-53"><span class="linenos"> 53</span></a><span class="k">class</span><span class="w"> </span><span class="nc">FootpointRegion</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="FootpointRegion-54"><a href="#FootpointRegion-54"><span class="linenos"> 54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FootpointRegion-55"><a href="#FootpointRegion-55"><span class="linenos"> 55</span></a><span class="sd">    Enumerations representing the FootpointRegions in the SSC API.</span>
+</span><span id="FootpointRegion-56"><a href="#FootpointRegion-56"><span class="linenos"> 56</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="FootpointRegion-57"><a href="#FootpointRegion-57"><span class="linenos"> 57</span></a>    <span class="n">NOT_APPLICABLE</span> <span class="o">=</span> <span class="s1">&#39;NotApplicable&#39;</span>
+</span><span id="FootpointRegion-58"><a href="#FootpointRegion-58"><span class="linenos"> 58</span></a>    <span class="n">NORTH_CUSP</span> <span class="o">=</span> <span class="s1">&#39;NorthCusp&#39;</span>
+</span><span id="FootpointRegion-59"><a href="#FootpointRegion-59"><span class="linenos"> 59</span></a>    <span class="n">SOUTH_CUSP</span> <span class="o">=</span> <span class="s1">&#39;SouthCusp&#39;</span>
+</span><span id="FootpointRegion-60"><a href="#FootpointRegion-60"><span class="linenos"> 60</span></a>    <span class="n">NORTH_CLEFT</span> <span class="o">=</span> <span class="s1">&#39;NorthCleft&#39;</span>
+</span><span id="FootpointRegion-61"><a href="#FootpointRegion-61"><span class="linenos"> 61</span></a>    <span class="n">SOUTH_CLEFT</span> <span class="o">=</span> <span class="s1">&#39;SouthCleft&#39;</span>
+</span><span id="FootpointRegion-62"><a href="#FootpointRegion-62"><span class="linenos"> 62</span></a>    <span class="n">NORTH_AURORAL_OVAL</span> <span class="o">=</span> <span class="s1">&#39;NorthAuroralOval&#39;</span>
+</span><span id="FootpointRegion-63"><a href="#FootpointRegion-63"><span class="linenos"> 63</span></a>    <span class="n">SOUTH_AURORAL_OVAL</span> <span class="o">=</span> <span class="s1">&#39;SouthAuroralOval&#39;</span>
+</span><span id="FootpointRegion-64"><a href="#FootpointRegion-64"><span class="linenos"> 64</span></a>    <span class="n">NORTH_POLAR_CAP</span> <span class="o">=</span> <span class="s1">&#39;NorthPolarCap&#39;</span>
+</span><span id="FootpointRegion-65"><a href="#FootpointRegion-65"><span class="linenos"> 65</span></a>    <span class="n">SOUTH_POLAR_CAP</span> <span class="o">=</span> <span class="s1">&#39;SouthPolarCap&#39;</span>
+</span><span id="FootpointRegion-66"><a href="#FootpointRegion-66"><span class="linenos"> 66</span></a>    <span class="n">NORTH_MID_LATITUDE</span> <span class="o">=</span> <span class="s1">&#39;NorthMidLatitude&#39;</span>
+</span><span id="FootpointRegion-67"><a href="#FootpointRegion-67"><span class="linenos"> 67</span></a>    <span class="n">SOUTH_MID_LATITUDE</span> <span class="o">=</span> <span class="s1">&#39;SouthMidLatitude&#39;</span>
+</span><span id="FootpointRegion-68"><a href="#FootpointRegion-68"><span class="linenos"> 68</span></a>    <span class="n">LOW_LATITUDE</span> <span class="o">=</span> <span class="s1">&#39;LowLatitude&#39;</span>
+</span><span id="FootpointRegion-69"><a href="#FootpointRegion-69"><span class="linenos"> 69</span></a>
+</span><span id="FootpointRegion-70"><a href="#FootpointRegion-70"><span class="linenos"> 70</span></a>
+</span><span id="FootpointRegion-71"><a href="#FootpointRegion-71"><span class="linenos"> 71</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="FootpointRegion-72"><a href="#FootpointRegion-72"><span class="linenos"> 72</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+</span><span id="FootpointRegion-73"><a href="#FootpointRegion-73"><span class="linenos"> 73</span></a>
+</span><span id="FootpointRegion-74"><a href="#FootpointRegion-74"><span class="linenos"> 74</span></a>
+</span><span id="FootpointRegion-75"><a href="#FootpointRegion-75"><span class="linenos"> 75</span></a>    <span class="c1"># pylint: disable=too-many-return-statements</span>
+</span><span id="FootpointRegion-76"><a href="#FootpointRegion-76"><span class="linenos"> 76</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="FootpointRegion-77"><a href="#FootpointRegion-77"><span class="linenos"> 77</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_code</span><span class="p">(</span>
+</span><span id="FootpointRegion-78"><a href="#FootpointRegion-78"><span class="linenos"> 78</span></a>            <span class="n">code</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="FootpointRegion-79"><a href="#FootpointRegion-79"><span class="linenos"> 79</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FootpointRegion&#39;</span><span class="p">:</span>
+</span><span id="FootpointRegion-80"><a href="#FootpointRegion-80"><span class="linenos"> 80</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FootpointRegion-81"><a href="#FootpointRegion-81"><span class="linenos"> 81</span></a><span class="sd">        Produces the FootpointRegion Enum corresponding to the given code</span>
+</span><span id="FootpointRegion-82"><a href="#FootpointRegion-82"><span class="linenos"> 82</span></a><span class="sd">        in an SSC CDF.</span>
+</span><span id="FootpointRegion-83"><a href="#FootpointRegion-83"><span class="linenos"> 83</span></a>
+</span><span id="FootpointRegion-84"><a href="#FootpointRegion-84"><span class="linenos"> 84</span></a><span class="sd">        Parameters</span>
+</span><span id="FootpointRegion-85"><a href="#FootpointRegion-85"><span class="linenos"> 85</span></a><span class="sd">        ----------</span>
+</span><span id="FootpointRegion-86"><a href="#FootpointRegion-86"><span class="linenos"> 86</span></a><span class="sd">        code</span>
+</span><span id="FootpointRegion-87"><a href="#FootpointRegion-87"><span class="linenos"> 87</span></a><span class="sd">            FootpointRegion value from an SSC CDF.</span>
+</span><span id="FootpointRegion-88"><a href="#FootpointRegion-88"><span class="linenos"> 88</span></a><span class="sd">        Returns</span>
+</span><span id="FootpointRegion-89"><a href="#FootpointRegion-89"><span class="linenos"> 89</span></a><span class="sd">        -------</span>
+</span><span id="FootpointRegion-90"><a href="#FootpointRegion-90"><span class="linenos"> 90</span></a><span class="sd">        FootpointRegion</span>
+</span><span id="FootpointRegion-91"><a href="#FootpointRegion-91"><span class="linenos"> 91</span></a><span class="sd">            Corresponding to the given code.</span>
+</span><span id="FootpointRegion-92"><a href="#FootpointRegion-92"><span class="linenos"> 92</span></a><span class="sd">        Raises</span>
+</span><span id="FootpointRegion-93"><a href="#FootpointRegion-93"><span class="linenos"> 93</span></a><span class="sd">        ------</span>
+</span><span id="FootpointRegion-94"><a href="#FootpointRegion-94"><span class="linenos"> 94</span></a><span class="sd">        ValueError</span>
+</span><span id="FootpointRegion-95"><a href="#FootpointRegion-95"><span class="linenos"> 95</span></a><span class="sd">            If the given code is not a valid FootpointRegion code.</span>
+</span><span id="FootpointRegion-96"><a href="#FootpointRegion-96"><span class="linenos"> 96</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FootpointRegion-97"><a href="#FootpointRegion-97"><span class="linenos"> 97</span></a>
+</span><span id="FootpointRegion-98"><a href="#FootpointRegion-98"><span class="linenos"> 98</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="FootpointRegion-99"><a href="#FootpointRegion-99"><span class="linenos"> 99</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NOT_APPLICABLE</span>
+</span><span id="FootpointRegion-100"><a href="#FootpointRegion-100"><span class="linenos">100</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="FootpointRegion-101"><a href="#FootpointRegion-101"><span class="linenos">101</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_CUSP</span>
+</span><span id="FootpointRegion-102"><a href="#FootpointRegion-102"><span class="linenos">102</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span><span id="FootpointRegion-103"><a href="#FootpointRegion-103"><span class="linenos">103</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_CUSP</span>
+</span><span id="FootpointRegion-104"><a href="#FootpointRegion-104"><span class="linenos">104</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+</span><span id="FootpointRegion-105"><a href="#FootpointRegion-105"><span class="linenos">105</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_CLEFT</span>
+</span><span id="FootpointRegion-106"><a href="#FootpointRegion-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+</span><span id="FootpointRegion-107"><a href="#FootpointRegion-107"><span class="linenos">107</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_CLEFT</span>
+</span><span id="FootpointRegion-108"><a href="#FootpointRegion-108"><span class="linenos">108</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="FootpointRegion-109"><a href="#FootpointRegion-109"><span class="linenos">109</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_AURORAL_OVAL</span>
+</span><span id="FootpointRegion-110"><a href="#FootpointRegion-110"><span class="linenos">110</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+</span><span id="FootpointRegion-111"><a href="#FootpointRegion-111"><span class="linenos">111</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_AURORAL_OVAL</span>
+</span><span id="FootpointRegion-112"><a href="#FootpointRegion-112"><span class="linenos">112</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+</span><span id="FootpointRegion-113"><a href="#FootpointRegion-113"><span class="linenos">113</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_POLAR_CAP</span>
+</span><span id="FootpointRegion-114"><a href="#FootpointRegion-114"><span class="linenos">114</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+</span><span id="FootpointRegion-115"><a href="#FootpointRegion-115"><span class="linenos">115</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_POLAR_CAP</span>
+</span><span id="FootpointRegion-116"><a href="#FootpointRegion-116"><span class="linenos">116</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+</span><span id="FootpointRegion-117"><a href="#FootpointRegion-117"><span class="linenos">117</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_MID_LATITUDE</span>
+</span><span id="FootpointRegion-118"><a href="#FootpointRegion-118"><span class="linenos">118</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+</span><span id="FootpointRegion-119"><a href="#FootpointRegion-119"><span class="linenos">119</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_MID_LATITUDE</span>
+</span><span id="FootpointRegion-120"><a href="#FootpointRegion-120"><span class="linenos">120</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
+</span><span id="FootpointRegion-121"><a href="#FootpointRegion-121"><span class="linenos">121</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">LOW_LATITUDE</span>
+</span><span id="FootpointRegion-122"><a href="#FootpointRegion-122"><span class="linenos">122</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized FootpointRegion code &#39;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
+</span><span id="FootpointRegion-123"><a href="#FootpointRegion-123"><span class="linenos">123</span></a>    <span class="c1"># pylint: enable=too-many-return-statements</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Enumerations representing the FootpointRegion defined
-in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Enumerations representing the FootpointRegions in the SSC API.</p>
 </div>
 
 
@@ -771,53 +771,53 @@ in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscwe
 
     </div>
     <a class="headerlink" href="#FootpointRegion.from_code"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FootpointRegion.from_code-74"><a href="#FootpointRegion.from_code-74"><span class="linenos"> 74</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="FootpointRegion.from_code-75"><a href="#FootpointRegion.from_code-75"><span class="linenos"> 75</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_code</span><span class="p">(</span>
-</span><span id="FootpointRegion.from_code-76"><a href="#FootpointRegion.from_code-76"><span class="linenos"> 76</span></a>            <span class="n">code</span><span class="p">:</span> <span class="nb">int</span>
-</span><span id="FootpointRegion.from_code-77"><a href="#FootpointRegion.from_code-77"><span class="linenos"> 77</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FootpointRegion&#39;</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-78"><a href="#FootpointRegion.from_code-78"><span class="linenos"> 78</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="FootpointRegion.from_code-79"><a href="#FootpointRegion.from_code-79"><span class="linenos"> 79</span></a><span class="sd">        Produces the FootpointRegion Enum corresponding to the given code</span>
-</span><span id="FootpointRegion.from_code-80"><a href="#FootpointRegion.from_code-80"><span class="linenos"> 80</span></a><span class="sd">        in an SSC CDF.</span>
-</span><span id="FootpointRegion.from_code-81"><a href="#FootpointRegion.from_code-81"><span class="linenos"> 81</span></a>
-</span><span id="FootpointRegion.from_code-82"><a href="#FootpointRegion.from_code-82"><span class="linenos"> 82</span></a><span class="sd">        Parameters</span>
-</span><span id="FootpointRegion.from_code-83"><a href="#FootpointRegion.from_code-83"><span class="linenos"> 83</span></a><span class="sd">        ----------</span>
-</span><span id="FootpointRegion.from_code-84"><a href="#FootpointRegion.from_code-84"><span class="linenos"> 84</span></a><span class="sd">        code</span>
-</span><span id="FootpointRegion.from_code-85"><a href="#FootpointRegion.from_code-85"><span class="linenos"> 85</span></a><span class="sd">            FootpointRegion value from an SSC CDF.</span>
-</span><span id="FootpointRegion.from_code-86"><a href="#FootpointRegion.from_code-86"><span class="linenos"> 86</span></a><span class="sd">        Returns</span>
-</span><span id="FootpointRegion.from_code-87"><a href="#FootpointRegion.from_code-87"><span class="linenos"> 87</span></a><span class="sd">        -------</span>
-</span><span id="FootpointRegion.from_code-88"><a href="#FootpointRegion.from_code-88"><span class="linenos"> 88</span></a><span class="sd">        FootpointRegion</span>
-</span><span id="FootpointRegion.from_code-89"><a href="#FootpointRegion.from_code-89"><span class="linenos"> 89</span></a><span class="sd">            Corresponding to the given code.</span>
-</span><span id="FootpointRegion.from_code-90"><a href="#FootpointRegion.from_code-90"><span class="linenos"> 90</span></a><span class="sd">        Raises</span>
-</span><span id="FootpointRegion.from_code-91"><a href="#FootpointRegion.from_code-91"><span class="linenos"> 91</span></a><span class="sd">        ------</span>
-</span><span id="FootpointRegion.from_code-92"><a href="#FootpointRegion.from_code-92"><span class="linenos"> 92</span></a><span class="sd">        ValueError</span>
-</span><span id="FootpointRegion.from_code-93"><a href="#FootpointRegion.from_code-93"><span class="linenos"> 93</span></a><span class="sd">            If the given code is not a valid FootpointRegion code.</span>
-</span><span id="FootpointRegion.from_code-94"><a href="#FootpointRegion.from_code-94"><span class="linenos"> 94</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="FootpointRegion.from_code-95"><a href="#FootpointRegion.from_code-95"><span class="linenos"> 95</span></a>
-</span><span id="FootpointRegion.from_code-96"><a href="#FootpointRegion.from_code-96"><span class="linenos"> 96</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-97"><a href="#FootpointRegion.from_code-97"><span class="linenos"> 97</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NOT_APPLICABLE</span>
-</span><span id="FootpointRegion.from_code-98"><a href="#FootpointRegion.from_code-98"><span class="linenos"> 98</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-99"><a href="#FootpointRegion.from_code-99"><span class="linenos"> 99</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_CUSP</span>
-</span><span id="FootpointRegion.from_code-100"><a href="#FootpointRegion.from_code-100"><span class="linenos">100</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-101"><a href="#FootpointRegion.from_code-101"><span class="linenos">101</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_CUSP</span>
-</span><span id="FootpointRegion.from_code-102"><a href="#FootpointRegion.from_code-102"><span class="linenos">102</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-103"><a href="#FootpointRegion.from_code-103"><span class="linenos">103</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_CLEFT</span>
-</span><span id="FootpointRegion.from_code-104"><a href="#FootpointRegion.from_code-104"><span class="linenos">104</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-105"><a href="#FootpointRegion.from_code-105"><span class="linenos">105</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_CLEFT</span>
-</span><span id="FootpointRegion.from_code-106"><a href="#FootpointRegion.from_code-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-107"><a href="#FootpointRegion.from_code-107"><span class="linenos">107</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_AURORAL_OVAL</span>
-</span><span id="FootpointRegion.from_code-108"><a href="#FootpointRegion.from_code-108"><span class="linenos">108</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-109"><a href="#FootpointRegion.from_code-109"><span class="linenos">109</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_AURORAL_OVAL</span>
-</span><span id="FootpointRegion.from_code-110"><a href="#FootpointRegion.from_code-110"><span class="linenos">110</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-111"><a href="#FootpointRegion.from_code-111"><span class="linenos">111</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_POLAR_CAP</span>
-</span><span id="FootpointRegion.from_code-112"><a href="#FootpointRegion.from_code-112"><span class="linenos">112</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-113"><a href="#FootpointRegion.from_code-113"><span class="linenos">113</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_POLAR_CAP</span>
-</span><span id="FootpointRegion.from_code-114"><a href="#FootpointRegion.from_code-114"><span class="linenos">114</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-115"><a href="#FootpointRegion.from_code-115"><span class="linenos">115</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_MID_LATITUDE</span>
-</span><span id="FootpointRegion.from_code-116"><a href="#FootpointRegion.from_code-116"><span class="linenos">116</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-117"><a href="#FootpointRegion.from_code-117"><span class="linenos">117</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_MID_LATITUDE</span>
-</span><span id="FootpointRegion.from_code-118"><a href="#FootpointRegion.from_code-118"><span class="linenos">118</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
-</span><span id="FootpointRegion.from_code-119"><a href="#FootpointRegion.from_code-119"><span class="linenos">119</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">LOW_LATITUDE</span>
-</span><span id="FootpointRegion.from_code-120"><a href="#FootpointRegion.from_code-120"><span class="linenos">120</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized FootpointRegion code &#39;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FootpointRegion.from_code-76"><a href="#FootpointRegion.from_code-76"><span class="linenos"> 76</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="FootpointRegion.from_code-77"><a href="#FootpointRegion.from_code-77"><span class="linenos"> 77</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_code</span><span class="p">(</span>
+</span><span id="FootpointRegion.from_code-78"><a href="#FootpointRegion.from_code-78"><span class="linenos"> 78</span></a>            <span class="n">code</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="FootpointRegion.from_code-79"><a href="#FootpointRegion.from_code-79"><span class="linenos"> 79</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FootpointRegion&#39;</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-80"><a href="#FootpointRegion.from_code-80"><span class="linenos"> 80</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FootpointRegion.from_code-81"><a href="#FootpointRegion.from_code-81"><span class="linenos"> 81</span></a><span class="sd">        Produces the FootpointRegion Enum corresponding to the given code</span>
+</span><span id="FootpointRegion.from_code-82"><a href="#FootpointRegion.from_code-82"><span class="linenos"> 82</span></a><span class="sd">        in an SSC CDF.</span>
+</span><span id="FootpointRegion.from_code-83"><a href="#FootpointRegion.from_code-83"><span class="linenos"> 83</span></a>
+</span><span id="FootpointRegion.from_code-84"><a href="#FootpointRegion.from_code-84"><span class="linenos"> 84</span></a><span class="sd">        Parameters</span>
+</span><span id="FootpointRegion.from_code-85"><a href="#FootpointRegion.from_code-85"><span class="linenos"> 85</span></a><span class="sd">        ----------</span>
+</span><span id="FootpointRegion.from_code-86"><a href="#FootpointRegion.from_code-86"><span class="linenos"> 86</span></a><span class="sd">        code</span>
+</span><span id="FootpointRegion.from_code-87"><a href="#FootpointRegion.from_code-87"><span class="linenos"> 87</span></a><span class="sd">            FootpointRegion value from an SSC CDF.</span>
+</span><span id="FootpointRegion.from_code-88"><a href="#FootpointRegion.from_code-88"><span class="linenos"> 88</span></a><span class="sd">        Returns</span>
+</span><span id="FootpointRegion.from_code-89"><a href="#FootpointRegion.from_code-89"><span class="linenos"> 89</span></a><span class="sd">        -------</span>
+</span><span id="FootpointRegion.from_code-90"><a href="#FootpointRegion.from_code-90"><span class="linenos"> 90</span></a><span class="sd">        FootpointRegion</span>
+</span><span id="FootpointRegion.from_code-91"><a href="#FootpointRegion.from_code-91"><span class="linenos"> 91</span></a><span class="sd">            Corresponding to the given code.</span>
+</span><span id="FootpointRegion.from_code-92"><a href="#FootpointRegion.from_code-92"><span class="linenos"> 92</span></a><span class="sd">        Raises</span>
+</span><span id="FootpointRegion.from_code-93"><a href="#FootpointRegion.from_code-93"><span class="linenos"> 93</span></a><span class="sd">        ------</span>
+</span><span id="FootpointRegion.from_code-94"><a href="#FootpointRegion.from_code-94"><span class="linenos"> 94</span></a><span class="sd">        ValueError</span>
+</span><span id="FootpointRegion.from_code-95"><a href="#FootpointRegion.from_code-95"><span class="linenos"> 95</span></a><span class="sd">            If the given code is not a valid FootpointRegion code.</span>
+</span><span id="FootpointRegion.from_code-96"><a href="#FootpointRegion.from_code-96"><span class="linenos"> 96</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FootpointRegion.from_code-97"><a href="#FootpointRegion.from_code-97"><span class="linenos"> 97</span></a>
+</span><span id="FootpointRegion.from_code-98"><a href="#FootpointRegion.from_code-98"><span class="linenos"> 98</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-99"><a href="#FootpointRegion.from_code-99"><span class="linenos"> 99</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NOT_APPLICABLE</span>
+</span><span id="FootpointRegion.from_code-100"><a href="#FootpointRegion.from_code-100"><span class="linenos">100</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-101"><a href="#FootpointRegion.from_code-101"><span class="linenos">101</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_CUSP</span>
+</span><span id="FootpointRegion.from_code-102"><a href="#FootpointRegion.from_code-102"><span class="linenos">102</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-103"><a href="#FootpointRegion.from_code-103"><span class="linenos">103</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_CUSP</span>
+</span><span id="FootpointRegion.from_code-104"><a href="#FootpointRegion.from_code-104"><span class="linenos">104</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-105"><a href="#FootpointRegion.from_code-105"><span class="linenos">105</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_CLEFT</span>
+</span><span id="FootpointRegion.from_code-106"><a href="#FootpointRegion.from_code-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-107"><a href="#FootpointRegion.from_code-107"><span class="linenos">107</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_CLEFT</span>
+</span><span id="FootpointRegion.from_code-108"><a href="#FootpointRegion.from_code-108"><span class="linenos">108</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-109"><a href="#FootpointRegion.from_code-109"><span class="linenos">109</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_AURORAL_OVAL</span>
+</span><span id="FootpointRegion.from_code-110"><a href="#FootpointRegion.from_code-110"><span class="linenos">110</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-111"><a href="#FootpointRegion.from_code-111"><span class="linenos">111</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_AURORAL_OVAL</span>
+</span><span id="FootpointRegion.from_code-112"><a href="#FootpointRegion.from_code-112"><span class="linenos">112</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-113"><a href="#FootpointRegion.from_code-113"><span class="linenos">113</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_POLAR_CAP</span>
+</span><span id="FootpointRegion.from_code-114"><a href="#FootpointRegion.from_code-114"><span class="linenos">114</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-115"><a href="#FootpointRegion.from_code-115"><span class="linenos">115</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_POLAR_CAP</span>
+</span><span id="FootpointRegion.from_code-116"><a href="#FootpointRegion.from_code-116"><span class="linenos">116</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-117"><a href="#FootpointRegion.from_code-117"><span class="linenos">117</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">NORTH_MID_LATITUDE</span>
+</span><span id="FootpointRegion.from_code-118"><a href="#FootpointRegion.from_code-118"><span class="linenos">118</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-119"><a href="#FootpointRegion.from_code-119"><span class="linenos">119</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">SOUTH_MID_LATITUDE</span>
+</span><span id="FootpointRegion.from_code-120"><a href="#FootpointRegion.from_code-120"><span class="linenos">120</span></a>        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
+</span><span id="FootpointRegion.from_code-121"><a href="#FootpointRegion.from_code-121"><span class="linenos">121</span></a>            <span class="k">return</span> <span class="n">FootpointRegion</span><span class="o">.</span><span class="n">LOW_LATITUDE</span>
+</span><span id="FootpointRegion.from_code-122"><a href="#FootpointRegion.from_code-122"><span class="linenos">122</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized FootpointRegion code &#39;</span> <span class="o">+</span> <span class="n">code</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -857,48 +857,46 @@ in an SSC CDF.</p>
 
     </div>
     <a class="headerlink" href="#Hemisphere"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Hemisphere-124"><a href="#Hemisphere-124"><span class="linenos">124</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Hemisphere</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="Hemisphere-125"><a href="#Hemisphere-125"><span class="linenos">125</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Hemisphere-126"><a href="#Hemisphere-126"><span class="linenos">126</span></a><span class="sd">    Enumerations representing the Hemisphere defined</span>
-</span><span id="Hemisphere-127"><a href="#Hemisphere-127"><span class="linenos">127</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="Hemisphere-128"><a href="#Hemisphere-128"><span class="linenos">128</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="Hemisphere-129"><a href="#Hemisphere-129"><span class="linenos">129</span></a>    <span class="n">SOUTH</span> <span class="o">=</span> <span class="s1">&#39;South&#39;</span>
-</span><span id="Hemisphere-130"><a href="#Hemisphere-130"><span class="linenos">130</span></a>    <span class="n">NORTH</span> <span class="o">=</span> <span class="s1">&#39;North&#39;</span>
-</span><span id="Hemisphere-131"><a href="#Hemisphere-131"><span class="linenos">131</span></a>
-</span><span id="Hemisphere-132"><a href="#Hemisphere-132"><span class="linenos">132</span></a>    <span class="nd">@classmethod</span>
-</span><span id="Hemisphere-133"><a href="#Hemisphere-133"><span class="linenos">133</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_identifier</span><span class="p">(</span>
-</span><span id="Hemisphere-134"><a href="#Hemisphere-134"><span class="linenos">134</span></a>        <span class="bp">cls</span><span class="p">,</span>
-</span><span id="Hemisphere-135"><a href="#Hemisphere-135"><span class="linenos">135</span></a>        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Hemisphere&#39;</span><span class="p">:</span>
-</span><span id="Hemisphere-136"><a href="#Hemisphere-136"><span class="linenos">136</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Hemisphere-137"><a href="#Hemisphere-137"><span class="linenos">137</span></a><span class="sd">        Get the Enum corresponding to the given identifier value.</span>
-</span><span id="Hemisphere-138"><a href="#Hemisphere-138"><span class="linenos">138</span></a>
-</span><span id="Hemisphere-139"><a href="#Hemisphere-139"><span class="linenos">139</span></a><span class="sd">        Parameters</span>
-</span><span id="Hemisphere-140"><a href="#Hemisphere-140"><span class="linenos">140</span></a><span class="sd">        ----------</span>
-</span><span id="Hemisphere-141"><a href="#Hemisphere-141"><span class="linenos">141</span></a><span class="sd">        cls</span>
-</span><span id="Hemisphere-142"><a href="#Hemisphere-142"><span class="linenos">142</span></a><span class="sd">            class.</span>
-</span><span id="Hemisphere-143"><a href="#Hemisphere-143"><span class="linenos">143</span></a><span class="sd">        identifier</span>
-</span><span id="Hemisphere-144"><a href="#Hemisphere-144"><span class="linenos">144</span></a><span class="sd">            Enum value corresponding to a Hemisphere.</span>
-</span><span id="Hemisphere-145"><a href="#Hemisphere-145"><span class="linenos">145</span></a><span class="sd">        Returns</span>
-</span><span id="Hemisphere-146"><a href="#Hemisphere-146"><span class="linenos">146</span></a><span class="sd">        -------</span>
-</span><span id="Hemisphere-147"><a href="#Hemisphere-147"><span class="linenos">147</span></a><span class="sd">        Hemisphere</span>
-</span><span id="Hemisphere-148"><a href="#Hemisphere-148"><span class="linenos">148</span></a><span class="sd">            Enum corresponding to the given identifier value.</span>
-</span><span id="Hemisphere-149"><a href="#Hemisphere-149"><span class="linenos">149</span></a><span class="sd">        Raises</span>
-</span><span id="Hemisphere-150"><a href="#Hemisphere-150"><span class="linenos">150</span></a><span class="sd">        ------</span>
-</span><span id="Hemisphere-151"><a href="#Hemisphere-151"><span class="linenos">151</span></a><span class="sd">        ValueError</span>
-</span><span id="Hemisphere-152"><a href="#Hemisphere-152"><span class="linenos">152</span></a><span class="sd">            If the given identifier does not correspond to any</span>
-</span><span id="Hemisphere-153"><a href="#Hemisphere-153"><span class="linenos">153</span></a><span class="sd">            Hemisphere value.</span>
-</span><span id="Hemisphere-154"><a href="#Hemisphere-154"><span class="linenos">154</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Hemisphere-155"><a href="#Hemisphere-155"><span class="linenos">155</span></a>
-</span><span id="Hemisphere-156"><a href="#Hemisphere-156"><span class="linenos">156</span></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
-</span><span id="Hemisphere-157"><a href="#Hemisphere-157"><span class="linenos">157</span></a>            <span class="c1">#if member.name == identifier or member.value == identifier:</span>
-</span><span id="Hemisphere-158"><a href="#Hemisphere-158"><span class="linenos">158</span></a>            <span class="k">if</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
-</span><span id="Hemisphere-159"><a href="#Hemisphere-159"><span class="linenos">159</span></a>                <span class="k">return</span> <span class="n">member</span>
-</span><span id="Hemisphere-160"><a href="#Hemisphere-160"><span class="linenos">160</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid Hemisphere identifier &#39;</span> <span class="o">+</span> <span class="n">identifier</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Hemisphere-126"><a href="#Hemisphere-126"><span class="linenos">126</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Hemisphere</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="Hemisphere-127"><a href="#Hemisphere-127"><span class="linenos">127</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Hemisphere-128"><a href="#Hemisphere-128"><span class="linenos">128</span></a><span class="sd">    Enumerations representing the Hemispheres in the SSC API.</span>
+</span><span id="Hemisphere-129"><a href="#Hemisphere-129"><span class="linenos">129</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="Hemisphere-130"><a href="#Hemisphere-130"><span class="linenos">130</span></a>    <span class="n">SOUTH</span> <span class="o">=</span> <span class="s1">&#39;South&#39;</span>
+</span><span id="Hemisphere-131"><a href="#Hemisphere-131"><span class="linenos">131</span></a>    <span class="n">NORTH</span> <span class="o">=</span> <span class="s1">&#39;North&#39;</span>
+</span><span id="Hemisphere-132"><a href="#Hemisphere-132"><span class="linenos">132</span></a>
+</span><span id="Hemisphere-133"><a href="#Hemisphere-133"><span class="linenos">133</span></a>    <span class="nd">@classmethod</span>
+</span><span id="Hemisphere-134"><a href="#Hemisphere-134"><span class="linenos">134</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_identifier</span><span class="p">(</span>
+</span><span id="Hemisphere-135"><a href="#Hemisphere-135"><span class="linenos">135</span></a>        <span class="bp">cls</span><span class="p">,</span>
+</span><span id="Hemisphere-136"><a href="#Hemisphere-136"><span class="linenos">136</span></a>        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Hemisphere&#39;</span><span class="p">:</span>
+</span><span id="Hemisphere-137"><a href="#Hemisphere-137"><span class="linenos">137</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Hemisphere-138"><a href="#Hemisphere-138"><span class="linenos">138</span></a><span class="sd">        Get the Enum corresponding to the given identifier value.</span>
+</span><span id="Hemisphere-139"><a href="#Hemisphere-139"><span class="linenos">139</span></a>
+</span><span id="Hemisphere-140"><a href="#Hemisphere-140"><span class="linenos">140</span></a><span class="sd">        Parameters</span>
+</span><span id="Hemisphere-141"><a href="#Hemisphere-141"><span class="linenos">141</span></a><span class="sd">        ----------</span>
+</span><span id="Hemisphere-142"><a href="#Hemisphere-142"><span class="linenos">142</span></a><span class="sd">        cls</span>
+</span><span id="Hemisphere-143"><a href="#Hemisphere-143"><span class="linenos">143</span></a><span class="sd">            class.</span>
+</span><span id="Hemisphere-144"><a href="#Hemisphere-144"><span class="linenos">144</span></a><span class="sd">        identifier</span>
+</span><span id="Hemisphere-145"><a href="#Hemisphere-145"><span class="linenos">145</span></a><span class="sd">            Enum value corresponding to a Hemisphere.</span>
+</span><span id="Hemisphere-146"><a href="#Hemisphere-146"><span class="linenos">146</span></a><span class="sd">        Returns</span>
+</span><span id="Hemisphere-147"><a href="#Hemisphere-147"><span class="linenos">147</span></a><span class="sd">        -------</span>
+</span><span id="Hemisphere-148"><a href="#Hemisphere-148"><span class="linenos">148</span></a><span class="sd">        Hemisphere</span>
+</span><span id="Hemisphere-149"><a href="#Hemisphere-149"><span class="linenos">149</span></a><span class="sd">            Enum corresponding to the given identifier value.</span>
+</span><span id="Hemisphere-150"><a href="#Hemisphere-150"><span class="linenos">150</span></a><span class="sd">        Raises</span>
+</span><span id="Hemisphere-151"><a href="#Hemisphere-151"><span class="linenos">151</span></a><span class="sd">        ------</span>
+</span><span id="Hemisphere-152"><a href="#Hemisphere-152"><span class="linenos">152</span></a><span class="sd">        ValueError</span>
+</span><span id="Hemisphere-153"><a href="#Hemisphere-153"><span class="linenos">153</span></a><span class="sd">            If the given identifier does not correspond to any</span>
+</span><span id="Hemisphere-154"><a href="#Hemisphere-154"><span class="linenos">154</span></a><span class="sd">            Hemisphere value.</span>
+</span><span id="Hemisphere-155"><a href="#Hemisphere-155"><span class="linenos">155</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Hemisphere-156"><a href="#Hemisphere-156"><span class="linenos">156</span></a>
+</span><span id="Hemisphere-157"><a href="#Hemisphere-157"><span class="linenos">157</span></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
+</span><span id="Hemisphere-158"><a href="#Hemisphere-158"><span class="linenos">158</span></a>            <span class="c1">#if member.name == identifier or member.value == identifier:</span>
+</span><span id="Hemisphere-159"><a href="#Hemisphere-159"><span class="linenos">159</span></a>            <span class="k">if</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
+</span><span id="Hemisphere-160"><a href="#Hemisphere-160"><span class="linenos">160</span></a>                <span class="k">return</span> <span class="n">member</span>
+</span><span id="Hemisphere-161"><a href="#Hemisphere-161"><span class="linenos">161</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid Hemisphere identifier &#39;</span> <span class="o">+</span> <span class="n">identifier</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Enumerations representing the Hemisphere defined
-in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Enumerations representing the Hemispheres in the SSC API.</p>
 </div>
 
 
@@ -938,35 +936,35 @@ in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscwe
 
     </div>
     <a class="headerlink" href="#Hemisphere.from_identifier"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Hemisphere.from_identifier-132"><a href="#Hemisphere.from_identifier-132"><span class="linenos">132</span></a>    <span class="nd">@classmethod</span>
-</span><span id="Hemisphere.from_identifier-133"><a href="#Hemisphere.from_identifier-133"><span class="linenos">133</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_identifier</span><span class="p">(</span>
-</span><span id="Hemisphere.from_identifier-134"><a href="#Hemisphere.from_identifier-134"><span class="linenos">134</span></a>        <span class="bp">cls</span><span class="p">,</span>
-</span><span id="Hemisphere.from_identifier-135"><a href="#Hemisphere.from_identifier-135"><span class="linenos">135</span></a>        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Hemisphere&#39;</span><span class="p">:</span>
-</span><span id="Hemisphere.from_identifier-136"><a href="#Hemisphere.from_identifier-136"><span class="linenos">136</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Hemisphere.from_identifier-137"><a href="#Hemisphere.from_identifier-137"><span class="linenos">137</span></a><span class="sd">        Get the Enum corresponding to the given identifier value.</span>
-</span><span id="Hemisphere.from_identifier-138"><a href="#Hemisphere.from_identifier-138"><span class="linenos">138</span></a>
-</span><span id="Hemisphere.from_identifier-139"><a href="#Hemisphere.from_identifier-139"><span class="linenos">139</span></a><span class="sd">        Parameters</span>
-</span><span id="Hemisphere.from_identifier-140"><a href="#Hemisphere.from_identifier-140"><span class="linenos">140</span></a><span class="sd">        ----------</span>
-</span><span id="Hemisphere.from_identifier-141"><a href="#Hemisphere.from_identifier-141"><span class="linenos">141</span></a><span class="sd">        cls</span>
-</span><span id="Hemisphere.from_identifier-142"><a href="#Hemisphere.from_identifier-142"><span class="linenos">142</span></a><span class="sd">            class.</span>
-</span><span id="Hemisphere.from_identifier-143"><a href="#Hemisphere.from_identifier-143"><span class="linenos">143</span></a><span class="sd">        identifier</span>
-</span><span id="Hemisphere.from_identifier-144"><a href="#Hemisphere.from_identifier-144"><span class="linenos">144</span></a><span class="sd">            Enum value corresponding to a Hemisphere.</span>
-</span><span id="Hemisphere.from_identifier-145"><a href="#Hemisphere.from_identifier-145"><span class="linenos">145</span></a><span class="sd">        Returns</span>
-</span><span id="Hemisphere.from_identifier-146"><a href="#Hemisphere.from_identifier-146"><span class="linenos">146</span></a><span class="sd">        -------</span>
-</span><span id="Hemisphere.from_identifier-147"><a href="#Hemisphere.from_identifier-147"><span class="linenos">147</span></a><span class="sd">        Hemisphere</span>
-</span><span id="Hemisphere.from_identifier-148"><a href="#Hemisphere.from_identifier-148"><span class="linenos">148</span></a><span class="sd">            Enum corresponding to the given identifier value.</span>
-</span><span id="Hemisphere.from_identifier-149"><a href="#Hemisphere.from_identifier-149"><span class="linenos">149</span></a><span class="sd">        Raises</span>
-</span><span id="Hemisphere.from_identifier-150"><a href="#Hemisphere.from_identifier-150"><span class="linenos">150</span></a><span class="sd">        ------</span>
-</span><span id="Hemisphere.from_identifier-151"><a href="#Hemisphere.from_identifier-151"><span class="linenos">151</span></a><span class="sd">        ValueError</span>
-</span><span id="Hemisphere.from_identifier-152"><a href="#Hemisphere.from_identifier-152"><span class="linenos">152</span></a><span class="sd">            If the given identifier does not correspond to any</span>
-</span><span id="Hemisphere.from_identifier-153"><a href="#Hemisphere.from_identifier-153"><span class="linenos">153</span></a><span class="sd">            Hemisphere value.</span>
-</span><span id="Hemisphere.from_identifier-154"><a href="#Hemisphere.from_identifier-154"><span class="linenos">154</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Hemisphere.from_identifier-155"><a href="#Hemisphere.from_identifier-155"><span class="linenos">155</span></a>
-</span><span id="Hemisphere.from_identifier-156"><a href="#Hemisphere.from_identifier-156"><span class="linenos">156</span></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
-</span><span id="Hemisphere.from_identifier-157"><a href="#Hemisphere.from_identifier-157"><span class="linenos">157</span></a>            <span class="c1">#if member.name == identifier or member.value == identifier:</span>
-</span><span id="Hemisphere.from_identifier-158"><a href="#Hemisphere.from_identifier-158"><span class="linenos">158</span></a>            <span class="k">if</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
-</span><span id="Hemisphere.from_identifier-159"><a href="#Hemisphere.from_identifier-159"><span class="linenos">159</span></a>                <span class="k">return</span> <span class="n">member</span>
-</span><span id="Hemisphere.from_identifier-160"><a href="#Hemisphere.from_identifier-160"><span class="linenos">160</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid Hemisphere identifier &#39;</span> <span class="o">+</span> <span class="n">identifier</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Hemisphere.from_identifier-133"><a href="#Hemisphere.from_identifier-133"><span class="linenos">133</span></a>    <span class="nd">@classmethod</span>
+</span><span id="Hemisphere.from_identifier-134"><a href="#Hemisphere.from_identifier-134"><span class="linenos">134</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_identifier</span><span class="p">(</span>
+</span><span id="Hemisphere.from_identifier-135"><a href="#Hemisphere.from_identifier-135"><span class="linenos">135</span></a>        <span class="bp">cls</span><span class="p">,</span>
+</span><span id="Hemisphere.from_identifier-136"><a href="#Hemisphere.from_identifier-136"><span class="linenos">136</span></a>        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Hemisphere&#39;</span><span class="p">:</span>
+</span><span id="Hemisphere.from_identifier-137"><a href="#Hemisphere.from_identifier-137"><span class="linenos">137</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Hemisphere.from_identifier-138"><a href="#Hemisphere.from_identifier-138"><span class="linenos">138</span></a><span class="sd">        Get the Enum corresponding to the given identifier value.</span>
+</span><span id="Hemisphere.from_identifier-139"><a href="#Hemisphere.from_identifier-139"><span class="linenos">139</span></a>
+</span><span id="Hemisphere.from_identifier-140"><a href="#Hemisphere.from_identifier-140"><span class="linenos">140</span></a><span class="sd">        Parameters</span>
+</span><span id="Hemisphere.from_identifier-141"><a href="#Hemisphere.from_identifier-141"><span class="linenos">141</span></a><span class="sd">        ----------</span>
+</span><span id="Hemisphere.from_identifier-142"><a href="#Hemisphere.from_identifier-142"><span class="linenos">142</span></a><span class="sd">        cls</span>
+</span><span id="Hemisphere.from_identifier-143"><a href="#Hemisphere.from_identifier-143"><span class="linenos">143</span></a><span class="sd">            class.</span>
+</span><span id="Hemisphere.from_identifier-144"><a href="#Hemisphere.from_identifier-144"><span class="linenos">144</span></a><span class="sd">        identifier</span>
+</span><span id="Hemisphere.from_identifier-145"><a href="#Hemisphere.from_identifier-145"><span class="linenos">145</span></a><span class="sd">            Enum value corresponding to a Hemisphere.</span>
+</span><span id="Hemisphere.from_identifier-146"><a href="#Hemisphere.from_identifier-146"><span class="linenos">146</span></a><span class="sd">        Returns</span>
+</span><span id="Hemisphere.from_identifier-147"><a href="#Hemisphere.from_identifier-147"><span class="linenos">147</span></a><span class="sd">        -------</span>
+</span><span id="Hemisphere.from_identifier-148"><a href="#Hemisphere.from_identifier-148"><span class="linenos">148</span></a><span class="sd">        Hemisphere</span>
+</span><span id="Hemisphere.from_identifier-149"><a href="#Hemisphere.from_identifier-149"><span class="linenos">149</span></a><span class="sd">            Enum corresponding to the given identifier value.</span>
+</span><span id="Hemisphere.from_identifier-150"><a href="#Hemisphere.from_identifier-150"><span class="linenos">150</span></a><span class="sd">        Raises</span>
+</span><span id="Hemisphere.from_identifier-151"><a href="#Hemisphere.from_identifier-151"><span class="linenos">151</span></a><span class="sd">        ------</span>
+</span><span id="Hemisphere.from_identifier-152"><a href="#Hemisphere.from_identifier-152"><span class="linenos">152</span></a><span class="sd">        ValueError</span>
+</span><span id="Hemisphere.from_identifier-153"><a href="#Hemisphere.from_identifier-153"><span class="linenos">153</span></a><span class="sd">            If the given identifier does not correspond to any</span>
+</span><span id="Hemisphere.from_identifier-154"><a href="#Hemisphere.from_identifier-154"><span class="linenos">154</span></a><span class="sd">            Hemisphere value.</span>
+</span><span id="Hemisphere.from_identifier-155"><a href="#Hemisphere.from_identifier-155"><span class="linenos">155</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Hemisphere.from_identifier-156"><a href="#Hemisphere.from_identifier-156"><span class="linenos">156</span></a>
+</span><span id="Hemisphere.from_identifier-157"><a href="#Hemisphere.from_identifier-157"><span class="linenos">157</span></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
+</span><span id="Hemisphere.from_identifier-158"><a href="#Hemisphere.from_identifier-158"><span class="linenos">158</span></a>            <span class="c1">#if member.name == identifier or member.value == identifier:</span>
+</span><span id="Hemisphere.from_identifier-159"><a href="#Hemisphere.from_identifier-159"><span class="linenos">159</span></a>            <span class="k">if</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
+</span><span id="Hemisphere.from_identifier-160"><a href="#Hemisphere.from_identifier-160"><span class="linenos">160</span></a>                <span class="k">return</span> <span class="n">member</span>
+</span><span id="Hemisphere.from_identifier-161"><a href="#Hemisphere.from_identifier-161"><span class="linenos">161</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid Hemisphere identifier &#39;</span> <span class="o">+</span> <span class="n">identifier</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -1007,16 +1005,15 @@ Hemisphere value.</li>
 
     </div>
     <a class="headerlink" href="#HemisphereRegions"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="HemisphereRegions-163"><a href="#HemisphereRegions-163"><span class="linenos">163</span></a><span class="k">class</span><span class="w"> </span><span class="nc">HemisphereRegions</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-</span><span id="HemisphereRegions-164"><a href="#HemisphereRegions-164"><span class="linenos">164</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="HemisphereRegions-165"><a href="#HemisphereRegions-165"><span class="linenos">165</span></a><span class="sd">    Class representing a HemisphereRegions from</span>
-</span><span id="HemisphereRegions-166"><a href="#HemisphereRegions-166"><span class="linenos">166</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="HemisphereRegions-164"><a href="#HemisphereRegions-164"><span class="linenos">164</span></a><span class="k">class</span><span class="w"> </span><span class="nc">HemisphereRegions</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="HemisphereRegions-165"><a href="#HemisphereRegions-165"><span class="linenos">165</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="HemisphereRegions-166"><a href="#HemisphereRegions-166"><span class="linenos">166</span></a><span class="sd">    Class representing HemisphereRegions in the SSC API.</span>
 </span><span id="HemisphereRegions-167"><a href="#HemisphereRegions-167"><span class="linenos">167</span></a>
 </span><span id="HemisphereRegions-168"><a href="#HemisphereRegions-168"><span class="linenos">168</span></a><span class="sd">    Notes</span>
 </span><span id="HemisphereRegions-169"><a href="#HemisphereRegions-169"><span class="linenos">169</span></a><span class="sd">    -----</span>
 </span><span id="HemisphereRegions-170"><a href="#HemisphereRegions-170"><span class="linenos">170</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
-</span><span id="HemisphereRegions-171"><a href="#HemisphereRegions-171"><span class="linenos">171</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor using</span>
-</span><span id="HemisphereRegions-172"><a href="#HemisphereRegions-172"><span class="linenos">172</span></a><span class="sd">    the keyword parameters.</span>
+</span><span id="HemisphereRegions-171"><a href="#HemisphereRegions-171"><span class="linenos">171</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor</span>
+</span><span id="HemisphereRegions-172"><a href="#HemisphereRegions-172"><span class="linenos">172</span></a><span class="sd">    using the keyword parameters.</span>
 </span><span id="HemisphereRegions-173"><a href="#HemisphereRegions-173"><span class="linenos">173</span></a>
 </span><span id="HemisphereRegions-174"><a href="#HemisphereRegions-174"><span class="linenos">174</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="HemisphereRegions-175"><a href="#HemisphereRegions-175"><span class="linenos">175</span></a>    <span class="n">north</span><span class="p">:</span> <span class="nb">bool</span>
@@ -1065,14 +1062,13 @@ Hemisphere value.</li>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Class representing a HemisphereRegions from
-<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Class representing HemisphereRegions in the SSC API.</p>
 
 <h6 id="notes">Notes</h6>
 
 <p>The positional parameters in the constructor below are for backward
-compatibility with pre-pydantic releases.  New code should favor using
-the keyword parameters.</p>
+compatibility with pre-pydantic releases.  New code should favor
+using the keyword parameters.</p>
 </div>
 
 
@@ -1176,8 +1172,8 @@ the keyword parameters.</p>
     <a class="headerlink" href="#SpaceRegion"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="SpaceRegion-220"><a href="#SpaceRegion-220"><span class="linenos">220</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SpaceRegion</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 </span><span id="SpaceRegion-221"><a href="#SpaceRegion-221"><span class="linenos">221</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SpaceRegion-222"><a href="#SpaceRegion-222"><span class="linenos">222</span></a><span class="sd">    Enumerations representing the magnetosphere SpaceRegion defined</span>
-</span><span id="SpaceRegion-223"><a href="#SpaceRegion-223"><span class="linenos">223</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
+</span><span id="SpaceRegion-222"><a href="#SpaceRegion-222"><span class="linenos">222</span></a><span class="sd">    Enumerations representing the magnetosphere SpaceRegions in the</span>
+</span><span id="SpaceRegion-223"><a href="#SpaceRegion-223"><span class="linenos">223</span></a><span class="sd">    SSC API.</span>
 </span><span id="SpaceRegion-224"><a href="#SpaceRegion-224"><span class="linenos">224</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="SpaceRegion-225"><a href="#SpaceRegion-225"><span class="linenos">225</span></a>    <span class="n">INTERPLANETARY_MEDIUM</span> <span class="o">=</span> <span class="s1">&#39;InterplanetaryMedium&#39;</span>
 </span><span id="SpaceRegion-226"><a href="#SpaceRegion-226"><span class="linenos">226</span></a>    <span class="n">DAYSIDE_MAGNETOSHEATH</span> <span class="o">=</span> <span class="s1">&#39;DaysideMagnetosheath&#39;</span>
@@ -1245,8 +1241,8 @@ the keyword parameters.</p>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Enumerations representing the magnetosphere SpaceRegion defined
-in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Enumerations representing the magnetosphere SpaceRegions in the
+SSC API.</p>
 </div>
 
 
@@ -1480,25 +1476,23 @@ in an SSC CDF.</p>
     <a class="headerlink" href="#SpaceRegionType"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="SpaceRegionType-290"><a href="#SpaceRegionType-290"><span class="linenos">290</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SpaceRegionType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 </span><span id="SpaceRegionType-291"><a href="#SpaceRegionType-291"><span class="linenos">291</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SpaceRegionType-292"><a href="#SpaceRegionType-292"><span class="linenos">292</span></a><span class="sd">    Enumerations representing the SpaceRegionType defined</span>
-</span><span id="SpaceRegionType-293"><a href="#SpaceRegionType-293"><span class="linenos">293</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="SpaceRegionType-294"><a href="#SpaceRegionType-294"><span class="linenos">294</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="SpaceRegionType-295"><a href="#SpaceRegionType-295"><span class="linenos">295</span></a>    <span class="n">INTERPLANETARY_MEDIUM</span> <span class="o">=</span> <span class="s1">&#39;InterplanetaryMedium&#39;</span>
-</span><span id="SpaceRegionType-296"><a href="#SpaceRegionType-296"><span class="linenos">296</span></a>    <span class="n">DAYSIDE_MAGNETOSHEATH</span> <span class="o">=</span> <span class="s1">&#39;DaysideMagnetosheath&#39;</span>
-</span><span id="SpaceRegionType-297"><a href="#SpaceRegionType-297"><span class="linenos">297</span></a>    <span class="n">NIGHTSIDE_MAGNETOSHEATH</span> <span class="o">=</span> <span class="s1">&#39;NightsideMagnetosheath&#39;</span>
-</span><span id="SpaceRegionType-298"><a href="#SpaceRegionType-298"><span class="linenos">298</span></a>    <span class="n">DAYSIDE_MAGNETOSPHERE</span> <span class="o">=</span> <span class="s1">&#39;DaysideMagnetosphere&#39;</span>
-</span><span id="SpaceRegionType-299"><a href="#SpaceRegionType-299"><span class="linenos">299</span></a>    <span class="n">NIGHTSIDE_MAGNETOSPHERE</span> <span class="o">=</span> <span class="s1">&#39;NightsideMagnetosphere&#39;</span>
-</span><span id="SpaceRegionType-300"><a href="#SpaceRegionType-300"><span class="linenos">300</span></a>    <span class="n">PLASMA_SHEET</span> <span class="o">=</span> <span class="s1">&#39;PlasmaSheet&#39;</span>
-</span><span id="SpaceRegionType-301"><a href="#SpaceRegionType-301"><span class="linenos">301</span></a>    <span class="n">TAIL_LOBE</span> <span class="o">=</span> <span class="s1">&#39;TailLobe&#39;</span>
-</span><span id="SpaceRegionType-302"><a href="#SpaceRegionType-302"><span class="linenos">302</span></a>    <span class="n">LOW_LATITUDE_BOUNDARY_LAYER</span> <span class="o">=</span> <span class="s1">&#39;LowLatitudeBoundaryLayer&#39;</span>
-</span><span id="SpaceRegionType-303"><a href="#SpaceRegionType-303"><span class="linenos">303</span></a>    <span class="n">HIGH_LATITUDE_BOUNDARY_LAYER</span> <span class="o">=</span> <span class="s1">&#39;HighLatitudeBoundaryLayer&#39;</span>
-</span><span id="SpaceRegionType-304"><a href="#SpaceRegionType-304"><span class="linenos">304</span></a>    <span class="n">DAYSIDE_PLASMASPHERE</span> <span class="o">=</span> <span class="s1">&#39;DaysidePlasmasphere&#39;</span>
-</span><span id="SpaceRegionType-305"><a href="#SpaceRegionType-305"><span class="linenos">305</span></a>    <span class="n">NIGHTSIDE_PLASMASPHERE</span> <span class="o">=</span> <span class="s1">&#39;NightsidePlasmasphere&#39;</span>
+</span><span id="SpaceRegionType-292"><a href="#SpaceRegionType-292"><span class="linenos">292</span></a><span class="sd">    Enumerations representing SpaceRegionTypes in the SSC API.</span>
+</span><span id="SpaceRegionType-293"><a href="#SpaceRegionType-293"><span class="linenos">293</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="SpaceRegionType-294"><a href="#SpaceRegionType-294"><span class="linenos">294</span></a>    <span class="n">INTERPLANETARY_MEDIUM</span> <span class="o">=</span> <span class="s1">&#39;InterplanetaryMedium&#39;</span>
+</span><span id="SpaceRegionType-295"><a href="#SpaceRegionType-295"><span class="linenos">295</span></a>    <span class="n">DAYSIDE_MAGNETOSHEATH</span> <span class="o">=</span> <span class="s1">&#39;DaysideMagnetosheath&#39;</span>
+</span><span id="SpaceRegionType-296"><a href="#SpaceRegionType-296"><span class="linenos">296</span></a>    <span class="n">NIGHTSIDE_MAGNETOSHEATH</span> <span class="o">=</span> <span class="s1">&#39;NightsideMagnetosheath&#39;</span>
+</span><span id="SpaceRegionType-297"><a href="#SpaceRegionType-297"><span class="linenos">297</span></a>    <span class="n">DAYSIDE_MAGNETOSPHERE</span> <span class="o">=</span> <span class="s1">&#39;DaysideMagnetosphere&#39;</span>
+</span><span id="SpaceRegionType-298"><a href="#SpaceRegionType-298"><span class="linenos">298</span></a>    <span class="n">NIGHTSIDE_MAGNETOSPHERE</span> <span class="o">=</span> <span class="s1">&#39;NightsideMagnetosphere&#39;</span>
+</span><span id="SpaceRegionType-299"><a href="#SpaceRegionType-299"><span class="linenos">299</span></a>    <span class="n">PLASMA_SHEET</span> <span class="o">=</span> <span class="s1">&#39;PlasmaSheet&#39;</span>
+</span><span id="SpaceRegionType-300"><a href="#SpaceRegionType-300"><span class="linenos">300</span></a>    <span class="n">TAIL_LOBE</span> <span class="o">=</span> <span class="s1">&#39;TailLobe&#39;</span>
+</span><span id="SpaceRegionType-301"><a href="#SpaceRegionType-301"><span class="linenos">301</span></a>    <span class="n">LOW_LATITUDE_BOUNDARY_LAYER</span> <span class="o">=</span> <span class="s1">&#39;LowLatitudeBoundaryLayer&#39;</span>
+</span><span id="SpaceRegionType-302"><a href="#SpaceRegionType-302"><span class="linenos">302</span></a>    <span class="n">HIGH_LATITUDE_BOUNDARY_LAYER</span> <span class="o">=</span> <span class="s1">&#39;HighLatitudeBoundaryLayer&#39;</span>
+</span><span id="SpaceRegionType-303"><a href="#SpaceRegionType-303"><span class="linenos">303</span></a>    <span class="n">DAYSIDE_PLASMASPHERE</span> <span class="o">=</span> <span class="s1">&#39;DaysidePlasmasphere&#39;</span>
+</span><span id="SpaceRegionType-304"><a href="#SpaceRegionType-304"><span class="linenos">304</span></a>    <span class="n">NIGHTSIDE_PLASMASPHERE</span> <span class="o">=</span> <span class="s1">&#39;NightsidePlasmasphere&#39;</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Enumerations representing the SpaceRegionType defined
-in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Enumerations representing SpaceRegionTypes in the SSC API.</p>
 </div>
 
 

@@ -58,7 +58,7 @@
     </ul>
 
 
-<b>Contact:</b><a href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com?subject=SSC%20Web%20Services%20Feedback">SSC Feedback</a>
+<b>Contact:</b><a href="mailto:NASA-SPDF-Support@nasa.gov?subject=SSC%20Web%20Services%20Feedback">SSC Feedback</a>
 
         <a class="attribution" title="pdoc: Python API documentation generator" href="https://pdoc.dev" target="_blank">
             built with <span class="visually-hidden">pdoc</span><img
@@ -72,12 +72,16 @@
                     <h1 class="modulename">
 <a href="./../sscws.html">sscws</a><wbr>.timeinterval    </h1>
 
-                        <div class="docstring"><p>Module defining a class to represent the TimeInterval class from
-<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.<br></p>
+                        <div class="docstring"><p>Module defining a class to represent the TimeInterval class in the
+Satellite Situation Center (SSC) Web Application Programming
+Interface (API).</p>
 
-<p>Copyright &copy; 2018-2026 United States Government as represented by the
-National Aeronautics and Space Administration. No copyright is claimed in
-the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+<p>See <a href="https://berniegsfc.github.io/sscws/REST/">https://berniegsfc.github.io/sscws/REST/</a> for additional details.</p>
+
+<p>Copyright &copy; 2018-2026 United States Government as represented by
+the National Aeronautics and Space Administration. No copyright is
+claimed in the United States under Title 17, U.S.Code. All Other Rights
+Reserved.</p>
 </div>
 
                         <input id="mod-timeinterval-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -118,188 +122,191 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 </span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a>
 </span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">Module defining a class to represent the TimeInterval class from</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">&lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.&lt;br&gt;</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">Copyright &amp;copy; 2018-2026 United States Government as represented by the</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">National Aeronautics and Space Administration. No copyright is claimed in</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">the United States under Title 17, U.S.Code. All Other Rights Reserved.</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ET</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">dateutil</span><span class="w"> </span><span class="kn">import</span> <span class="n">parser</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParserError</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">Module defining a class to represent the TimeInterval class in the</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">Satellite Situation Center (SSC) Web Application Programming</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">Interface (API).</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">See &lt;https://berniegsfc.github.io/sscws/REST/&gt; for additional details.</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">Copyright &amp;copy; 2018-2026 United States Government as represented by</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">the National Aeronautics and Space Administration. No copyright is</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">claimed in the United States under Title 17, U.S.Code. All Other Rights</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">Reserved.</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ET</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">dateutil</span><span class="w"> </span><span class="kn">import</span> <span class="n">parser</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParserError</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="k">class</span><span class="w"> </span><span class="nc">TimeInterval</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    A class representing a TimeInterval class from</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    Notes</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    -----</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    Since SSC, and satellite position information in general, uses UTC,</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">    the resulting start and end properties have a UTC timezone.  If</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">    the given values&#39; timezone is not UTC, the start/end values are</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">    adjusted to UTC.  If the given value has no timezone (is naive) a</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">    UTC value is set.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor using</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">    the keyword parameters.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">    Raises</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    ------</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">    ValueError</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        If the given start/end datetime values are invalid.</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">start</span><span class="p">:</span> <span class="n">datetime</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Start time of interval.&quot;&quot;&quot;</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">end</span><span class="p">:</span> <span class="n">datetime</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; End time of interval.&quot;&quot;&quot;</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="n">start</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="n">end</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        Returns</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        -------</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        ET</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">            XML Element represenation of this object.</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;TimeInterval&#39;</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Start&#39;</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;Start&#39;</span><span class="p">)</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;TimeInterval&#39;</span><span class="p">)</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="k">class</span><span class="w"> </span><span class="nc">TimeInterval</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    A class representing a TimeInterval class in the SSC API.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">    Notes</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">    -----</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">    Since SSC, and satellite position information in general, uses UTC,</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">    the resulting start and end properties have a UTC timezone.  If</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">    the given values&#39; timezone is not UTC, the start/end values are</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">    adjusted to UTC.  If the given value has no timezone (is naive) a</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    UTC value is set.</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    using the keyword parameters.</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    Raises</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    ------</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    ValueError</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        If the given start/end datetime values are invalid.</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">start</span><span class="p">:</span> <span class="n">datetime</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Start time of interval.&quot;&quot;&quot;</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">end</span><span class="p">:</span> <span class="n">datetime</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; End time of interval.&quot;&quot;&quot;</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="n">start</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">end</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        Returns</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        -------</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        ET</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            XML Element represenation of this object.</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;TimeInterval&#39;</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Start&#39;</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;Start&#39;</span><span class="p">)</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">)</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;TimeInterval&#39;</span><span class="p">)</span>
 </span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">start</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">end</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>
 </span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_datetime</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        Produces a datetime representation of the given value.  The</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">        returned datetime always has a timezone of timezone.utc.  If</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        the given value&#39;s timezone is not utc, the return value is</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">        adjusted to utc.  If the given value has no timezone (is naive)</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">        a utc value is set.</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">        Parameters</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">        ----------</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">        value</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">            value to convert to a datetime.</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">        Returns</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">        -------</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">        datetime</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">            datetime representation of the given value in the UTC</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">            timezone.</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">        Raises</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">        ------</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">        ValueError</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">            If the given value is not a valid datetime value.</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>            <span class="n">datetime_value</span> <span class="o">=</span> <span class="n">value</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>            <span class="k">try</span><span class="p">:</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>                <span class="n">datetime_value</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>            <span class="k">except</span> <span class="n">ParserError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error parsing &quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&quot;: invalid datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized datetime value&#39;</span><span class="p">)</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="k">if</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> \
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>           <span class="n">datetime_value</span><span class="o">.</span><span class="n">tzinfo</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>            <span class="k">return</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="k">return</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">start</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">end</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_datetime</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">        Produces a datetime representation of the given value.  The</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">        returned datetime always has a timezone of timezone.utc.  If</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">        the given value&#39;s timezone is not utc, the return value is</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">        adjusted to utc.  If the given value has no timezone (is naive)</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">        a utc value is set.</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">        Parameters</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">        ----------</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">        value</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">            value to convert to a datetime.</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">        Returns</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        -------</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">        datetime</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">            datetime representation of the given value in the UTC</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">            timezone.</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">        Raises</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">        ------</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">        ValueError</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">            If the given value is not a valid datetime value.</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>            <span class="n">datetime_value</span> <span class="o">=</span> <span class="n">value</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>            <span class="k">try</span><span class="p">:</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>                <span class="n">datetime_value</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>            <span class="k">except</span> <span class="n">ParserError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error parsing &quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&quot;: invalid datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized datetime value&#39;</span><span class="p">)</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="k">if</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> \
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>           <span class="n">datetime_value</span><span class="o">.</span><span class="n">tzinfo</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>            <span class="k">return</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
 </span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_datetimes</span><span class="p">(</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>            <span class="n">start</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>            <span class="n">end</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">datetime</span><span class="p">]:</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        Produces a datetime representation of the given values.</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        Parameters</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">        ----------</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        start</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">            start value to convert to a datetime.</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        end</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">            end value to convert to a datetime.</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        Returns</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        -------</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        Tuple</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">            [0] datetime representation of the given start value.</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">            [1] datetime representation of the given end value.</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        Raises</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        ------</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">        ValueError</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">            If either of the given values is not a valid datetime value.</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>            <span class="n">start_datetime</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized start datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>            <span class="n">end_datetime</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized end datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>        <span class="k">return</span> <span class="n">start_datetime</span><span class="p">,</span> <span class="n">end_datetime</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="k">return</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_datetimes</span><span class="p">(</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>            <span class="n">start</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>            <span class="n">end</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">datetime</span><span class="p">]:</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">        Produces a datetime representation of the given values.</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        Parameters</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        ----------</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        start</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">            start value to convert to a datetime.</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        end</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">            end value to convert to a datetime.</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        Returns</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        -------</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        Tuple</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">            [0] datetime representation of the given start value.</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">            [1] datetime representation of the given end value.</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">        Raises</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        ------</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">        ValueError</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">            If either of the given values is not a valid datetime value.</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>            <span class="n">start_datetime</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized start datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>            <span class="n">end_datetime</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized end datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
 </span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">basic_iso_format</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        Produces the basic (minimal) ISO 8601 format of the given</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        datetime.</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">        Parameters</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        ----------</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">        value</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">            datetime value to convert to string.</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">        Returns</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">        -------</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">        str</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">            Basic ISO 8601 format time string.</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>            <span class="p">{</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">):</span><span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;:-&#39;</span><span class="p">})</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="k">return</span> <span class="n">start_datetime</span><span class="p">,</span> <span class="n">end_datetime</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">basic_iso_format</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">        Produces the basic (minimal) ISO 8601 format of the given</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        datetime.</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">        Parameters</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">        ----------</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">        value</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">            datetime value to convert to string.</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">        Returns</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        -------</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        str</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">            Basic ISO 8601 format time string.</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>            <span class="p">{</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">):</span><span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;:-&#39;</span><span class="p">})</span>
 </span></pre></div>
 
 
@@ -315,174 +322,172 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 
     </div>
     <a class="headerlink" href="#TimeInterval"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="TimeInterval-55"><a href="#TimeInterval-55"><span class="linenos"> 55</span></a><span class="k">class</span><span class="w"> </span><span class="nc">TimeInterval</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-</span><span id="TimeInterval-56"><a href="#TimeInterval-56"><span class="linenos"> 56</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="TimeInterval-57"><a href="#TimeInterval-57"><span class="linenos"> 57</span></a><span class="sd">    A class representing a TimeInterval class from</span>
-</span><span id="TimeInterval-58"><a href="#TimeInterval-58"><span class="linenos"> 58</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="TimeInterval-59"><a href="#TimeInterval-59"><span class="linenos"> 59</span></a>
-</span><span id="TimeInterval-60"><a href="#TimeInterval-60"><span class="linenos"> 60</span></a><span class="sd">    Notes</span>
-</span><span id="TimeInterval-61"><a href="#TimeInterval-61"><span class="linenos"> 61</span></a><span class="sd">    -----</span>
-</span><span id="TimeInterval-62"><a href="#TimeInterval-62"><span class="linenos"> 62</span></a><span class="sd">    Since SSC, and satellite position information in general, uses UTC,</span>
-</span><span id="TimeInterval-63"><a href="#TimeInterval-63"><span class="linenos"> 63</span></a><span class="sd">    the resulting start and end properties have a UTC timezone.  If</span>
-</span><span id="TimeInterval-64"><a href="#TimeInterval-64"><span class="linenos"> 64</span></a><span class="sd">    the given values&#39; timezone is not UTC, the start/end values are</span>
-</span><span id="TimeInterval-65"><a href="#TimeInterval-65"><span class="linenos"> 65</span></a><span class="sd">    adjusted to UTC.  If the given value has no timezone (is naive) a</span>
-</span><span id="TimeInterval-66"><a href="#TimeInterval-66"><span class="linenos"> 66</span></a><span class="sd">    UTC value is set.</span>
-</span><span id="TimeInterval-67"><a href="#TimeInterval-67"><span class="linenos"> 67</span></a>
-</span><span id="TimeInterval-68"><a href="#TimeInterval-68"><span class="linenos"> 68</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
-</span><span id="TimeInterval-69"><a href="#TimeInterval-69"><span class="linenos"> 69</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor using</span>
-</span><span id="TimeInterval-70"><a href="#TimeInterval-70"><span class="linenos"> 70</span></a><span class="sd">    the keyword parameters.</span>
-</span><span id="TimeInterval-71"><a href="#TimeInterval-71"><span class="linenos"> 71</span></a>
-</span><span id="TimeInterval-72"><a href="#TimeInterval-72"><span class="linenos"> 72</span></a><span class="sd">    Raises</span>
-</span><span id="TimeInterval-73"><a href="#TimeInterval-73"><span class="linenos"> 73</span></a><span class="sd">    ------</span>
-</span><span id="TimeInterval-74"><a href="#TimeInterval-74"><span class="linenos"> 74</span></a><span class="sd">    ValueError</span>
-</span><span id="TimeInterval-75"><a href="#TimeInterval-75"><span class="linenos"> 75</span></a><span class="sd">        If the given start/end datetime values are invalid.</span>
-</span><span id="TimeInterval-76"><a href="#TimeInterval-76"><span class="linenos"> 76</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="TimeInterval-77"><a href="#TimeInterval-77"><span class="linenos"> 77</span></a>    <span class="n">start</span><span class="p">:</span> <span class="n">datetime</span>
-</span><span id="TimeInterval-78"><a href="#TimeInterval-78"><span class="linenos"> 78</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Start time of interval.&quot;&quot;&quot;</span>
-</span><span id="TimeInterval-79"><a href="#TimeInterval-79"><span class="linenos"> 79</span></a>    <span class="n">end</span><span class="p">:</span> <span class="n">datetime</span>
-</span><span id="TimeInterval-80"><a href="#TimeInterval-80"><span class="linenos"> 80</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; End time of interval.&quot;&quot;&quot;</span>
-</span><span id="TimeInterval-81"><a href="#TimeInterval-81"><span class="linenos"> 81</span></a>
-</span><span id="TimeInterval-82"><a href="#TimeInterval-82"><span class="linenos"> 82</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="TimeInterval-83"><a href="#TimeInterval-83"><span class="linenos"> 83</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="TimeInterval-84"><a href="#TimeInterval-84"><span class="linenos"> 84</span></a>        <span class="n">start</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
-</span><span id="TimeInterval-85"><a href="#TimeInterval-85"><span class="linenos"> 85</span></a>        <span class="n">end</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
-</span><span id="TimeInterval-86"><a href="#TimeInterval-86"><span class="linenos"> 86</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="TimeInterval-87"><a href="#TimeInterval-87"><span class="linenos"> 87</span></a>
-</span><span id="TimeInterval-88"><a href="#TimeInterval-88"><span class="linenos"> 88</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
-</span><span id="TimeInterval-89"><a href="#TimeInterval-89"><span class="linenos"> 89</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
-</span><span id="TimeInterval-90"><a href="#TimeInterval-90"><span class="linenos"> 90</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="TimeInterval-91"><a href="#TimeInterval-91"><span class="linenos"> 91</span></a>
-</span><span id="TimeInterval-92"><a href="#TimeInterval-92"><span class="linenos"> 92</span></a>
-</span><span id="TimeInterval-93"><a href="#TimeInterval-93"><span class="linenos"> 93</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
-</span><span id="TimeInterval-94"><a href="#TimeInterval-94"><span class="linenos"> 94</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="TimeInterval-95"><a href="#TimeInterval-95"><span class="linenos"> 95</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
-</span><span id="TimeInterval-96"><a href="#TimeInterval-96"><span class="linenos"> 96</span></a>
-</span><span id="TimeInterval-97"><a href="#TimeInterval-97"><span class="linenos"> 97</span></a><span class="sd">        Returns</span>
-</span><span id="TimeInterval-98"><a href="#TimeInterval-98"><span class="linenos"> 98</span></a><span class="sd">        -------</span>
-</span><span id="TimeInterval-99"><a href="#TimeInterval-99"><span class="linenos"> 99</span></a><span class="sd">        ET</span>
-</span><span id="TimeInterval-100"><a href="#TimeInterval-100"><span class="linenos">100</span></a><span class="sd">            XML Element represenation of this object.</span>
-</span><span id="TimeInterval-101"><a href="#TimeInterval-101"><span class="linenos">101</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="TimeInterval-102"><a href="#TimeInterval-102"><span class="linenos">102</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
-</span><span id="TimeInterval-103"><a href="#TimeInterval-103"><span class="linenos">103</span></a>
-</span><span id="TimeInterval-104"><a href="#TimeInterval-104"><span class="linenos">104</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;TimeInterval&#39;</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="TimeInterval-105"><a href="#TimeInterval-105"><span class="linenos">105</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Start&#39;</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="TimeInterval-106"><a href="#TimeInterval-106"><span class="linenos">106</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
-</span><span id="TimeInterval-107"><a href="#TimeInterval-107"><span class="linenos">107</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;Start&#39;</span><span class="p">)</span>
-</span><span id="TimeInterval-108"><a href="#TimeInterval-108"><span class="linenos">108</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="TimeInterval-109"><a href="#TimeInterval-109"><span class="linenos">109</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
-</span><span id="TimeInterval-110"><a href="#TimeInterval-110"><span class="linenos">110</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">)</span>
-</span><span id="TimeInterval-111"><a href="#TimeInterval-111"><span class="linenos">111</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;TimeInterval&#39;</span><span class="p">)</span>
-</span><span id="TimeInterval-112"><a href="#TimeInterval-112"><span class="linenos">112</span></a>
-</span><span id="TimeInterval-113"><a href="#TimeInterval-113"><span class="linenos">113</span></a>        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span><span id="TimeInterval-114"><a href="#TimeInterval-114"><span class="linenos">114</span></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="TimeInterval-59"><a href="#TimeInterval-59"><span class="linenos"> 59</span></a><span class="k">class</span><span class="w"> </span><span class="nc">TimeInterval</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="TimeInterval-60"><a href="#TimeInterval-60"><span class="linenos"> 60</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="TimeInterval-61"><a href="#TimeInterval-61"><span class="linenos"> 61</span></a><span class="sd">    A class representing a TimeInterval class in the SSC API.</span>
+</span><span id="TimeInterval-62"><a href="#TimeInterval-62"><span class="linenos"> 62</span></a>
+</span><span id="TimeInterval-63"><a href="#TimeInterval-63"><span class="linenos"> 63</span></a><span class="sd">    Notes</span>
+</span><span id="TimeInterval-64"><a href="#TimeInterval-64"><span class="linenos"> 64</span></a><span class="sd">    -----</span>
+</span><span id="TimeInterval-65"><a href="#TimeInterval-65"><span class="linenos"> 65</span></a><span class="sd">    Since SSC, and satellite position information in general, uses UTC,</span>
+</span><span id="TimeInterval-66"><a href="#TimeInterval-66"><span class="linenos"> 66</span></a><span class="sd">    the resulting start and end properties have a UTC timezone.  If</span>
+</span><span id="TimeInterval-67"><a href="#TimeInterval-67"><span class="linenos"> 67</span></a><span class="sd">    the given values&#39; timezone is not UTC, the start/end values are</span>
+</span><span id="TimeInterval-68"><a href="#TimeInterval-68"><span class="linenos"> 68</span></a><span class="sd">    adjusted to UTC.  If the given value has no timezone (is naive) a</span>
+</span><span id="TimeInterval-69"><a href="#TimeInterval-69"><span class="linenos"> 69</span></a><span class="sd">    UTC value is set.</span>
+</span><span id="TimeInterval-70"><a href="#TimeInterval-70"><span class="linenos"> 70</span></a>
+</span><span id="TimeInterval-71"><a href="#TimeInterval-71"><span class="linenos"> 71</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
+</span><span id="TimeInterval-72"><a href="#TimeInterval-72"><span class="linenos"> 72</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor</span>
+</span><span id="TimeInterval-73"><a href="#TimeInterval-73"><span class="linenos"> 73</span></a><span class="sd">    using the keyword parameters.</span>
+</span><span id="TimeInterval-74"><a href="#TimeInterval-74"><span class="linenos"> 74</span></a>
+</span><span id="TimeInterval-75"><a href="#TimeInterval-75"><span class="linenos"> 75</span></a><span class="sd">    Raises</span>
+</span><span id="TimeInterval-76"><a href="#TimeInterval-76"><span class="linenos"> 76</span></a><span class="sd">    ------</span>
+</span><span id="TimeInterval-77"><a href="#TimeInterval-77"><span class="linenos"> 77</span></a><span class="sd">    ValueError</span>
+</span><span id="TimeInterval-78"><a href="#TimeInterval-78"><span class="linenos"> 78</span></a><span class="sd">        If the given start/end datetime values are invalid.</span>
+</span><span id="TimeInterval-79"><a href="#TimeInterval-79"><span class="linenos"> 79</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="TimeInterval-80"><a href="#TimeInterval-80"><span class="linenos"> 80</span></a>    <span class="n">start</span><span class="p">:</span> <span class="n">datetime</span>
+</span><span id="TimeInterval-81"><a href="#TimeInterval-81"><span class="linenos"> 81</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Start time of interval.&quot;&quot;&quot;</span>
+</span><span id="TimeInterval-82"><a href="#TimeInterval-82"><span class="linenos"> 82</span></a>    <span class="n">end</span><span class="p">:</span> <span class="n">datetime</span>
+</span><span id="TimeInterval-83"><a href="#TimeInterval-83"><span class="linenos"> 83</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; End time of interval.&quot;&quot;&quot;</span>
+</span><span id="TimeInterval-84"><a href="#TimeInterval-84"><span class="linenos"> 84</span></a>
+</span><span id="TimeInterval-85"><a href="#TimeInterval-85"><span class="linenos"> 85</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="TimeInterval-86"><a href="#TimeInterval-86"><span class="linenos"> 86</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="TimeInterval-87"><a href="#TimeInterval-87"><span class="linenos"> 87</span></a>        <span class="n">start</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+</span><span id="TimeInterval-88"><a href="#TimeInterval-88"><span class="linenos"> 88</span></a>        <span class="n">end</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+</span><span id="TimeInterval-89"><a href="#TimeInterval-89"><span class="linenos"> 89</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="TimeInterval-90"><a href="#TimeInterval-90"><span class="linenos"> 90</span></a>
+</span><span id="TimeInterval-91"><a href="#TimeInterval-91"><span class="linenos"> 91</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+</span><span id="TimeInterval-92"><a href="#TimeInterval-92"><span class="linenos"> 92</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+</span><span id="TimeInterval-93"><a href="#TimeInterval-93"><span class="linenos"> 93</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="TimeInterval-94"><a href="#TimeInterval-94"><span class="linenos"> 94</span></a>
+</span><span id="TimeInterval-95"><a href="#TimeInterval-95"><span class="linenos"> 95</span></a>
+</span><span id="TimeInterval-96"><a href="#TimeInterval-96"><span class="linenos"> 96</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
+</span><span id="TimeInterval-97"><a href="#TimeInterval-97"><span class="linenos"> 97</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="TimeInterval-98"><a href="#TimeInterval-98"><span class="linenos"> 98</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
+</span><span id="TimeInterval-99"><a href="#TimeInterval-99"><span class="linenos"> 99</span></a>
+</span><span id="TimeInterval-100"><a href="#TimeInterval-100"><span class="linenos">100</span></a><span class="sd">        Returns</span>
+</span><span id="TimeInterval-101"><a href="#TimeInterval-101"><span class="linenos">101</span></a><span class="sd">        -------</span>
+</span><span id="TimeInterval-102"><a href="#TimeInterval-102"><span class="linenos">102</span></a><span class="sd">        ET</span>
+</span><span id="TimeInterval-103"><a href="#TimeInterval-103"><span class="linenos">103</span></a><span class="sd">            XML Element represenation of this object.</span>
+</span><span id="TimeInterval-104"><a href="#TimeInterval-104"><span class="linenos">104</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TimeInterval-105"><a href="#TimeInterval-105"><span class="linenos">105</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
+</span><span id="TimeInterval-106"><a href="#TimeInterval-106"><span class="linenos">106</span></a>
+</span><span id="TimeInterval-107"><a href="#TimeInterval-107"><span class="linenos">107</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;TimeInterval&#39;</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="TimeInterval-108"><a href="#TimeInterval-108"><span class="linenos">108</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Start&#39;</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="TimeInterval-109"><a href="#TimeInterval-109"><span class="linenos">109</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+</span><span id="TimeInterval-110"><a href="#TimeInterval-110"><span class="linenos">110</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;Start&#39;</span><span class="p">)</span>
+</span><span id="TimeInterval-111"><a href="#TimeInterval-111"><span class="linenos">111</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="TimeInterval-112"><a href="#TimeInterval-112"><span class="linenos">112</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+</span><span id="TimeInterval-113"><a href="#TimeInterval-113"><span class="linenos">113</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">)</span>
+</span><span id="TimeInterval-114"><a href="#TimeInterval-114"><span class="linenos">114</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;TimeInterval&#39;</span><span class="p">)</span>
 </span><span id="TimeInterval-115"><a href="#TimeInterval-115"><span class="linenos">115</span></a>
-</span><span id="TimeInterval-116"><a href="#TimeInterval-116"><span class="linenos">116</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="TimeInterval-117"><a href="#TimeInterval-117"><span class="linenos">117</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+</span><span id="TimeInterval-116"><a href="#TimeInterval-116"><span class="linenos">116</span></a>        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="TimeInterval-117"><a href="#TimeInterval-117"><span class="linenos">117</span></a>
 </span><span id="TimeInterval-118"><a href="#TimeInterval-118"><span class="linenos">118</span></a>
-</span><span id="TimeInterval-119"><a href="#TimeInterval-119"><span class="linenos">119</span></a>
-</span><span id="TimeInterval-120"><a href="#TimeInterval-120"><span class="linenos">120</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-</span><span id="TimeInterval-121"><a href="#TimeInterval-121"><span class="linenos">121</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">start</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">end</span>
+</span><span id="TimeInterval-119"><a href="#TimeInterval-119"><span class="linenos">119</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="TimeInterval-120"><a href="#TimeInterval-120"><span class="linenos">120</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+</span><span id="TimeInterval-121"><a href="#TimeInterval-121"><span class="linenos">121</span></a>
 </span><span id="TimeInterval-122"><a href="#TimeInterval-122"><span class="linenos">122</span></a>
-</span><span id="TimeInterval-123"><a href="#TimeInterval-123"><span class="linenos">123</span></a>
-</span><span id="TimeInterval-124"><a href="#TimeInterval-124"><span class="linenos">124</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="TimeInterval-125"><a href="#TimeInterval-125"><span class="linenos">125</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_datetime</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-</span><span id="TimeInterval-126"><a href="#TimeInterval-126"><span class="linenos">126</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="TimeInterval-127"><a href="#TimeInterval-127"><span class="linenos">127</span></a><span class="sd">        Produces a datetime representation of the given value.  The</span>
-</span><span id="TimeInterval-128"><a href="#TimeInterval-128"><span class="linenos">128</span></a><span class="sd">        returned datetime always has a timezone of timezone.utc.  If</span>
-</span><span id="TimeInterval-129"><a href="#TimeInterval-129"><span class="linenos">129</span></a><span class="sd">        the given value&#39;s timezone is not utc, the return value is</span>
-</span><span id="TimeInterval-130"><a href="#TimeInterval-130"><span class="linenos">130</span></a><span class="sd">        adjusted to utc.  If the given value has no timezone (is naive)</span>
-</span><span id="TimeInterval-131"><a href="#TimeInterval-131"><span class="linenos">131</span></a><span class="sd">        a utc value is set.</span>
-</span><span id="TimeInterval-132"><a href="#TimeInterval-132"><span class="linenos">132</span></a>
-</span><span id="TimeInterval-133"><a href="#TimeInterval-133"><span class="linenos">133</span></a><span class="sd">        Parameters</span>
-</span><span id="TimeInterval-134"><a href="#TimeInterval-134"><span class="linenos">134</span></a><span class="sd">        ----------</span>
-</span><span id="TimeInterval-135"><a href="#TimeInterval-135"><span class="linenos">135</span></a><span class="sd">        value</span>
-</span><span id="TimeInterval-136"><a href="#TimeInterval-136"><span class="linenos">136</span></a><span class="sd">            value to convert to a datetime.</span>
-</span><span id="TimeInterval-137"><a href="#TimeInterval-137"><span class="linenos">137</span></a><span class="sd">        Returns</span>
-</span><span id="TimeInterval-138"><a href="#TimeInterval-138"><span class="linenos">138</span></a><span class="sd">        -------</span>
-</span><span id="TimeInterval-139"><a href="#TimeInterval-139"><span class="linenos">139</span></a><span class="sd">        datetime</span>
-</span><span id="TimeInterval-140"><a href="#TimeInterval-140"><span class="linenos">140</span></a><span class="sd">            datetime representation of the given value in the UTC</span>
-</span><span id="TimeInterval-141"><a href="#TimeInterval-141"><span class="linenos">141</span></a><span class="sd">            timezone.</span>
-</span><span id="TimeInterval-142"><a href="#TimeInterval-142"><span class="linenos">142</span></a><span class="sd">        Raises</span>
-</span><span id="TimeInterval-143"><a href="#TimeInterval-143"><span class="linenos">143</span></a><span class="sd">        ------</span>
-</span><span id="TimeInterval-144"><a href="#TimeInterval-144"><span class="linenos">144</span></a><span class="sd">        ValueError</span>
-</span><span id="TimeInterval-145"><a href="#TimeInterval-145"><span class="linenos">145</span></a><span class="sd">            If the given value is not a valid datetime value.</span>
-</span><span id="TimeInterval-146"><a href="#TimeInterval-146"><span class="linenos">146</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="TimeInterval-147"><a href="#TimeInterval-147"><span class="linenos">147</span></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
-</span><span id="TimeInterval-148"><a href="#TimeInterval-148"><span class="linenos">148</span></a>            <span class="n">datetime_value</span> <span class="o">=</span> <span class="n">value</span>
-</span><span id="TimeInterval-149"><a href="#TimeInterval-149"><span class="linenos">149</span></a>        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="TimeInterval-150"><a href="#TimeInterval-150"><span class="linenos">150</span></a>            <span class="k">try</span><span class="p">:</span>
-</span><span id="TimeInterval-151"><a href="#TimeInterval-151"><span class="linenos">151</span></a>                <span class="n">datetime_value</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-</span><span id="TimeInterval-152"><a href="#TimeInterval-152"><span class="linenos">152</span></a>            <span class="k">except</span> <span class="n">ParserError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="TimeInterval-153"><a href="#TimeInterval-153"><span class="linenos">153</span></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error parsing &quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&quot;: invalid datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-</span><span id="TimeInterval-154"><a href="#TimeInterval-154"><span class="linenos">154</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="TimeInterval-155"><a href="#TimeInterval-155"><span class="linenos">155</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized datetime value&#39;</span><span class="p">)</span>
-</span><span id="TimeInterval-156"><a href="#TimeInterval-156"><span class="linenos">156</span></a>
-</span><span id="TimeInterval-157"><a href="#TimeInterval-157"><span class="linenos">157</span></a>        <span class="k">if</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> \
-</span><span id="TimeInterval-158"><a href="#TimeInterval-158"><span class="linenos">158</span></a>           <span class="n">datetime_value</span><span class="o">.</span><span class="n">tzinfo</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="TimeInterval-159"><a href="#TimeInterval-159"><span class="linenos">159</span></a>            <span class="k">return</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
-</span><span id="TimeInterval-160"><a href="#TimeInterval-160"><span class="linenos">160</span></a>
-</span><span id="TimeInterval-161"><a href="#TimeInterval-161"><span class="linenos">161</span></a>        <span class="k">return</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
-</span><span id="TimeInterval-162"><a href="#TimeInterval-162"><span class="linenos">162</span></a>
+</span><span id="TimeInterval-123"><a href="#TimeInterval-123"><span class="linenos">123</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+</span><span id="TimeInterval-124"><a href="#TimeInterval-124"><span class="linenos">124</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">start</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">end</span>
+</span><span id="TimeInterval-125"><a href="#TimeInterval-125"><span class="linenos">125</span></a>
+</span><span id="TimeInterval-126"><a href="#TimeInterval-126"><span class="linenos">126</span></a>
+</span><span id="TimeInterval-127"><a href="#TimeInterval-127"><span class="linenos">127</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="TimeInterval-128"><a href="#TimeInterval-128"><span class="linenos">128</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_datetime</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+</span><span id="TimeInterval-129"><a href="#TimeInterval-129"><span class="linenos">129</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="TimeInterval-130"><a href="#TimeInterval-130"><span class="linenos">130</span></a><span class="sd">        Produces a datetime representation of the given value.  The</span>
+</span><span id="TimeInterval-131"><a href="#TimeInterval-131"><span class="linenos">131</span></a><span class="sd">        returned datetime always has a timezone of timezone.utc.  If</span>
+</span><span id="TimeInterval-132"><a href="#TimeInterval-132"><span class="linenos">132</span></a><span class="sd">        the given value&#39;s timezone is not utc, the return value is</span>
+</span><span id="TimeInterval-133"><a href="#TimeInterval-133"><span class="linenos">133</span></a><span class="sd">        adjusted to utc.  If the given value has no timezone (is naive)</span>
+</span><span id="TimeInterval-134"><a href="#TimeInterval-134"><span class="linenos">134</span></a><span class="sd">        a utc value is set.</span>
+</span><span id="TimeInterval-135"><a href="#TimeInterval-135"><span class="linenos">135</span></a>
+</span><span id="TimeInterval-136"><a href="#TimeInterval-136"><span class="linenos">136</span></a><span class="sd">        Parameters</span>
+</span><span id="TimeInterval-137"><a href="#TimeInterval-137"><span class="linenos">137</span></a><span class="sd">        ----------</span>
+</span><span id="TimeInterval-138"><a href="#TimeInterval-138"><span class="linenos">138</span></a><span class="sd">        value</span>
+</span><span id="TimeInterval-139"><a href="#TimeInterval-139"><span class="linenos">139</span></a><span class="sd">            value to convert to a datetime.</span>
+</span><span id="TimeInterval-140"><a href="#TimeInterval-140"><span class="linenos">140</span></a><span class="sd">        Returns</span>
+</span><span id="TimeInterval-141"><a href="#TimeInterval-141"><span class="linenos">141</span></a><span class="sd">        -------</span>
+</span><span id="TimeInterval-142"><a href="#TimeInterval-142"><span class="linenos">142</span></a><span class="sd">        datetime</span>
+</span><span id="TimeInterval-143"><a href="#TimeInterval-143"><span class="linenos">143</span></a><span class="sd">            datetime representation of the given value in the UTC</span>
+</span><span id="TimeInterval-144"><a href="#TimeInterval-144"><span class="linenos">144</span></a><span class="sd">            timezone.</span>
+</span><span id="TimeInterval-145"><a href="#TimeInterval-145"><span class="linenos">145</span></a><span class="sd">        Raises</span>
+</span><span id="TimeInterval-146"><a href="#TimeInterval-146"><span class="linenos">146</span></a><span class="sd">        ------</span>
+</span><span id="TimeInterval-147"><a href="#TimeInterval-147"><span class="linenos">147</span></a><span class="sd">        ValueError</span>
+</span><span id="TimeInterval-148"><a href="#TimeInterval-148"><span class="linenos">148</span></a><span class="sd">            If the given value is not a valid datetime value.</span>
+</span><span id="TimeInterval-149"><a href="#TimeInterval-149"><span class="linenos">149</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TimeInterval-150"><a href="#TimeInterval-150"><span class="linenos">150</span></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+</span><span id="TimeInterval-151"><a href="#TimeInterval-151"><span class="linenos">151</span></a>            <span class="n">datetime_value</span> <span class="o">=</span> <span class="n">value</span>
+</span><span id="TimeInterval-152"><a href="#TimeInterval-152"><span class="linenos">152</span></a>        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="TimeInterval-153"><a href="#TimeInterval-153"><span class="linenos">153</span></a>            <span class="k">try</span><span class="p">:</span>
+</span><span id="TimeInterval-154"><a href="#TimeInterval-154"><span class="linenos">154</span></a>                <span class="n">datetime_value</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span id="TimeInterval-155"><a href="#TimeInterval-155"><span class="linenos">155</span></a>            <span class="k">except</span> <span class="n">ParserError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="TimeInterval-156"><a href="#TimeInterval-156"><span class="linenos">156</span></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error parsing &quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&quot;: invalid datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+</span><span id="TimeInterval-157"><a href="#TimeInterval-157"><span class="linenos">157</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="TimeInterval-158"><a href="#TimeInterval-158"><span class="linenos">158</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized datetime value&#39;</span><span class="p">)</span>
+</span><span id="TimeInterval-159"><a href="#TimeInterval-159"><span class="linenos">159</span></a>
+</span><span id="TimeInterval-160"><a href="#TimeInterval-160"><span class="linenos">160</span></a>        <span class="k">if</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> \
+</span><span id="TimeInterval-161"><a href="#TimeInterval-161"><span class="linenos">161</span></a>           <span class="n">datetime_value</span><span class="o">.</span><span class="n">tzinfo</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="TimeInterval-162"><a href="#TimeInterval-162"><span class="linenos">162</span></a>            <span class="k">return</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
 </span><span id="TimeInterval-163"><a href="#TimeInterval-163"><span class="linenos">163</span></a>
-</span><span id="TimeInterval-164"><a href="#TimeInterval-164"><span class="linenos">164</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="TimeInterval-165"><a href="#TimeInterval-165"><span class="linenos">165</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_datetimes</span><span class="p">(</span>
-</span><span id="TimeInterval-166"><a href="#TimeInterval-166"><span class="linenos">166</span></a>            <span class="n">start</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
-</span><span id="TimeInterval-167"><a href="#TimeInterval-167"><span class="linenos">167</span></a>            <span class="n">end</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
-</span><span id="TimeInterval-168"><a href="#TimeInterval-168"><span class="linenos">168</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">datetime</span><span class="p">]:</span>
-</span><span id="TimeInterval-169"><a href="#TimeInterval-169"><span class="linenos">169</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="TimeInterval-170"><a href="#TimeInterval-170"><span class="linenos">170</span></a><span class="sd">        Produces a datetime representation of the given values.</span>
-</span><span id="TimeInterval-171"><a href="#TimeInterval-171"><span class="linenos">171</span></a>
-</span><span id="TimeInterval-172"><a href="#TimeInterval-172"><span class="linenos">172</span></a><span class="sd">        Parameters</span>
-</span><span id="TimeInterval-173"><a href="#TimeInterval-173"><span class="linenos">173</span></a><span class="sd">        ----------</span>
-</span><span id="TimeInterval-174"><a href="#TimeInterval-174"><span class="linenos">174</span></a><span class="sd">        start</span>
-</span><span id="TimeInterval-175"><a href="#TimeInterval-175"><span class="linenos">175</span></a><span class="sd">            start value to convert to a datetime.</span>
-</span><span id="TimeInterval-176"><a href="#TimeInterval-176"><span class="linenos">176</span></a><span class="sd">        end</span>
-</span><span id="TimeInterval-177"><a href="#TimeInterval-177"><span class="linenos">177</span></a><span class="sd">            end value to convert to a datetime.</span>
-</span><span id="TimeInterval-178"><a href="#TimeInterval-178"><span class="linenos">178</span></a><span class="sd">        Returns</span>
-</span><span id="TimeInterval-179"><a href="#TimeInterval-179"><span class="linenos">179</span></a><span class="sd">        -------</span>
-</span><span id="TimeInterval-180"><a href="#TimeInterval-180"><span class="linenos">180</span></a><span class="sd">        Tuple</span>
-</span><span id="TimeInterval-181"><a href="#TimeInterval-181"><span class="linenos">181</span></a><span class="sd">            [0] datetime representation of the given start value.</span>
-</span><span id="TimeInterval-182"><a href="#TimeInterval-182"><span class="linenos">182</span></a><span class="sd">            [1] datetime representation of the given end value.</span>
-</span><span id="TimeInterval-183"><a href="#TimeInterval-183"><span class="linenos">183</span></a><span class="sd">        Raises</span>
-</span><span id="TimeInterval-184"><a href="#TimeInterval-184"><span class="linenos">184</span></a><span class="sd">        ------</span>
-</span><span id="TimeInterval-185"><a href="#TimeInterval-185"><span class="linenos">185</span></a><span class="sd">        ValueError</span>
-</span><span id="TimeInterval-186"><a href="#TimeInterval-186"><span class="linenos">186</span></a><span class="sd">            If either of the given values is not a valid datetime value.</span>
-</span><span id="TimeInterval-187"><a href="#TimeInterval-187"><span class="linenos">187</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="TimeInterval-188"><a href="#TimeInterval-188"><span class="linenos">188</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="TimeInterval-189"><a href="#TimeInterval-189"><span class="linenos">189</span></a>            <span class="n">start_datetime</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
-</span><span id="TimeInterval-190"><a href="#TimeInterval-190"><span class="linenos">190</span></a>        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-</span><span id="TimeInterval-191"><a href="#TimeInterval-191"><span class="linenos">191</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized start datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
-</span><span id="TimeInterval-192"><a href="#TimeInterval-192"><span class="linenos">192</span></a>
-</span><span id="TimeInterval-193"><a href="#TimeInterval-193"><span class="linenos">193</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="TimeInterval-194"><a href="#TimeInterval-194"><span class="linenos">194</span></a>            <span class="n">end_datetime</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
-</span><span id="TimeInterval-195"><a href="#TimeInterval-195"><span class="linenos">195</span></a>        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-</span><span id="TimeInterval-196"><a href="#TimeInterval-196"><span class="linenos">196</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized end datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
-</span><span id="TimeInterval-197"><a href="#TimeInterval-197"><span class="linenos">197</span></a>
-</span><span id="TimeInterval-198"><a href="#TimeInterval-198"><span class="linenos">198</span></a>        <span class="k">return</span> <span class="n">start_datetime</span><span class="p">,</span> <span class="n">end_datetime</span>
-</span><span id="TimeInterval-199"><a href="#TimeInterval-199"><span class="linenos">199</span></a>
+</span><span id="TimeInterval-164"><a href="#TimeInterval-164"><span class="linenos">164</span></a>        <span class="k">return</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+</span><span id="TimeInterval-165"><a href="#TimeInterval-165"><span class="linenos">165</span></a>
+</span><span id="TimeInterval-166"><a href="#TimeInterval-166"><span class="linenos">166</span></a>
+</span><span id="TimeInterval-167"><a href="#TimeInterval-167"><span class="linenos">167</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="TimeInterval-168"><a href="#TimeInterval-168"><span class="linenos">168</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_datetimes</span><span class="p">(</span>
+</span><span id="TimeInterval-169"><a href="#TimeInterval-169"><span class="linenos">169</span></a>            <span class="n">start</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+</span><span id="TimeInterval-170"><a href="#TimeInterval-170"><span class="linenos">170</span></a>            <span class="n">end</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+</span><span id="TimeInterval-171"><a href="#TimeInterval-171"><span class="linenos">171</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">datetime</span><span class="p">]:</span>
+</span><span id="TimeInterval-172"><a href="#TimeInterval-172"><span class="linenos">172</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="TimeInterval-173"><a href="#TimeInterval-173"><span class="linenos">173</span></a><span class="sd">        Produces a datetime representation of the given values.</span>
+</span><span id="TimeInterval-174"><a href="#TimeInterval-174"><span class="linenos">174</span></a>
+</span><span id="TimeInterval-175"><a href="#TimeInterval-175"><span class="linenos">175</span></a><span class="sd">        Parameters</span>
+</span><span id="TimeInterval-176"><a href="#TimeInterval-176"><span class="linenos">176</span></a><span class="sd">        ----------</span>
+</span><span id="TimeInterval-177"><a href="#TimeInterval-177"><span class="linenos">177</span></a><span class="sd">        start</span>
+</span><span id="TimeInterval-178"><a href="#TimeInterval-178"><span class="linenos">178</span></a><span class="sd">            start value to convert to a datetime.</span>
+</span><span id="TimeInterval-179"><a href="#TimeInterval-179"><span class="linenos">179</span></a><span class="sd">        end</span>
+</span><span id="TimeInterval-180"><a href="#TimeInterval-180"><span class="linenos">180</span></a><span class="sd">            end value to convert to a datetime.</span>
+</span><span id="TimeInterval-181"><a href="#TimeInterval-181"><span class="linenos">181</span></a><span class="sd">        Returns</span>
+</span><span id="TimeInterval-182"><a href="#TimeInterval-182"><span class="linenos">182</span></a><span class="sd">        -------</span>
+</span><span id="TimeInterval-183"><a href="#TimeInterval-183"><span class="linenos">183</span></a><span class="sd">        Tuple</span>
+</span><span id="TimeInterval-184"><a href="#TimeInterval-184"><span class="linenos">184</span></a><span class="sd">            [0] datetime representation of the given start value.</span>
+</span><span id="TimeInterval-185"><a href="#TimeInterval-185"><span class="linenos">185</span></a><span class="sd">            [1] datetime representation of the given end value.</span>
+</span><span id="TimeInterval-186"><a href="#TimeInterval-186"><span class="linenos">186</span></a><span class="sd">        Raises</span>
+</span><span id="TimeInterval-187"><a href="#TimeInterval-187"><span class="linenos">187</span></a><span class="sd">        ------</span>
+</span><span id="TimeInterval-188"><a href="#TimeInterval-188"><span class="linenos">188</span></a><span class="sd">        ValueError</span>
+</span><span id="TimeInterval-189"><a href="#TimeInterval-189"><span class="linenos">189</span></a><span class="sd">            If either of the given values is not a valid datetime value.</span>
+</span><span id="TimeInterval-190"><a href="#TimeInterval-190"><span class="linenos">190</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TimeInterval-191"><a href="#TimeInterval-191"><span class="linenos">191</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="TimeInterval-192"><a href="#TimeInterval-192"><span class="linenos">192</span></a>            <span class="n">start_datetime</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+</span><span id="TimeInterval-193"><a href="#TimeInterval-193"><span class="linenos">193</span></a>        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+</span><span id="TimeInterval-194"><a href="#TimeInterval-194"><span class="linenos">194</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized start datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+</span><span id="TimeInterval-195"><a href="#TimeInterval-195"><span class="linenos">195</span></a>
+</span><span id="TimeInterval-196"><a href="#TimeInterval-196"><span class="linenos">196</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="TimeInterval-197"><a href="#TimeInterval-197"><span class="linenos">197</span></a>            <span class="n">end_datetime</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+</span><span id="TimeInterval-198"><a href="#TimeInterval-198"><span class="linenos">198</span></a>        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+</span><span id="TimeInterval-199"><a href="#TimeInterval-199"><span class="linenos">199</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized end datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
 </span><span id="TimeInterval-200"><a href="#TimeInterval-200"><span class="linenos">200</span></a>
-</span><span id="TimeInterval-201"><a href="#TimeInterval-201"><span class="linenos">201</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="TimeInterval-202"><a href="#TimeInterval-202"><span class="linenos">202</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">basic_iso_format</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="TimeInterval-203"><a href="#TimeInterval-203"><span class="linenos">203</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="TimeInterval-204"><a href="#TimeInterval-204"><span class="linenos">204</span></a><span class="sd">        Produces the basic (minimal) ISO 8601 format of the given</span>
-</span><span id="TimeInterval-205"><a href="#TimeInterval-205"><span class="linenos">205</span></a><span class="sd">        datetime.</span>
-</span><span id="TimeInterval-206"><a href="#TimeInterval-206"><span class="linenos">206</span></a>
-</span><span id="TimeInterval-207"><a href="#TimeInterval-207"><span class="linenos">207</span></a><span class="sd">        Parameters</span>
-</span><span id="TimeInterval-208"><a href="#TimeInterval-208"><span class="linenos">208</span></a><span class="sd">        ----------</span>
-</span><span id="TimeInterval-209"><a href="#TimeInterval-209"><span class="linenos">209</span></a><span class="sd">        value</span>
-</span><span id="TimeInterval-210"><a href="#TimeInterval-210"><span class="linenos">210</span></a><span class="sd">            datetime value to convert to string.</span>
-</span><span id="TimeInterval-211"><a href="#TimeInterval-211"><span class="linenos">211</span></a><span class="sd">        Returns</span>
-</span><span id="TimeInterval-212"><a href="#TimeInterval-212"><span class="linenos">212</span></a><span class="sd">        -------</span>
-</span><span id="TimeInterval-213"><a href="#TimeInterval-213"><span class="linenos">213</span></a><span class="sd">        str</span>
-</span><span id="TimeInterval-214"><a href="#TimeInterval-214"><span class="linenos">214</span></a><span class="sd">            Basic ISO 8601 format time string.</span>
-</span><span id="TimeInterval-215"><a href="#TimeInterval-215"><span class="linenos">215</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="TimeInterval-216"><a href="#TimeInterval-216"><span class="linenos">216</span></a>        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
-</span><span id="TimeInterval-217"><a href="#TimeInterval-217"><span class="linenos">217</span></a>            <span class="p">{</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">):</span><span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;:-&#39;</span><span class="p">})</span>
+</span><span id="TimeInterval-201"><a href="#TimeInterval-201"><span class="linenos">201</span></a>        <span class="k">return</span> <span class="n">start_datetime</span><span class="p">,</span> <span class="n">end_datetime</span>
+</span><span id="TimeInterval-202"><a href="#TimeInterval-202"><span class="linenos">202</span></a>
+</span><span id="TimeInterval-203"><a href="#TimeInterval-203"><span class="linenos">203</span></a>
+</span><span id="TimeInterval-204"><a href="#TimeInterval-204"><span class="linenos">204</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="TimeInterval-205"><a href="#TimeInterval-205"><span class="linenos">205</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">basic_iso_format</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="TimeInterval-206"><a href="#TimeInterval-206"><span class="linenos">206</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="TimeInterval-207"><a href="#TimeInterval-207"><span class="linenos">207</span></a><span class="sd">        Produces the basic (minimal) ISO 8601 format of the given</span>
+</span><span id="TimeInterval-208"><a href="#TimeInterval-208"><span class="linenos">208</span></a><span class="sd">        datetime.</span>
+</span><span id="TimeInterval-209"><a href="#TimeInterval-209"><span class="linenos">209</span></a>
+</span><span id="TimeInterval-210"><a href="#TimeInterval-210"><span class="linenos">210</span></a><span class="sd">        Parameters</span>
+</span><span id="TimeInterval-211"><a href="#TimeInterval-211"><span class="linenos">211</span></a><span class="sd">        ----------</span>
+</span><span id="TimeInterval-212"><a href="#TimeInterval-212"><span class="linenos">212</span></a><span class="sd">        value</span>
+</span><span id="TimeInterval-213"><a href="#TimeInterval-213"><span class="linenos">213</span></a><span class="sd">            datetime value to convert to string.</span>
+</span><span id="TimeInterval-214"><a href="#TimeInterval-214"><span class="linenos">214</span></a><span class="sd">        Returns</span>
+</span><span id="TimeInterval-215"><a href="#TimeInterval-215"><span class="linenos">215</span></a><span class="sd">        -------</span>
+</span><span id="TimeInterval-216"><a href="#TimeInterval-216"><span class="linenos">216</span></a><span class="sd">        str</span>
+</span><span id="TimeInterval-217"><a href="#TimeInterval-217"><span class="linenos">217</span></a><span class="sd">            Basic ISO 8601 format time string.</span>
+</span><span id="TimeInterval-218"><a href="#TimeInterval-218"><span class="linenos">218</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TimeInterval-219"><a href="#TimeInterval-219"><span class="linenos">219</span></a>        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+</span><span id="TimeInterval-220"><a href="#TimeInterval-220"><span class="linenos">220</span></a>            <span class="p">{</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">):</span><span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;:-&#39;</span><span class="p">})</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>A class representing a TimeInterval class from
-<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>A class representing a TimeInterval class in the SSC API.</p>
 
 <h6 id="notes">Notes</h6>
 
@@ -493,8 +498,8 @@ adjusted to UTC.  If the given value has no timezone (is naive) a
 UTC value is set.</p>
 
 <p>The positional parameters in the constructor below are for backward
-compatibility with pre-pydantic releases.  New code should favor using
-the keyword parameters.</p>
+compatibility with pre-pydantic releases.  New code should favor
+using the keyword parameters.</p>
 
 <h6 id="raises">Raises</h6>
 
@@ -543,27 +548,27 @@ the keyword parameters.</p>
 
     </div>
     <a class="headerlink" href="#TimeInterval.xml_element"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="TimeInterval.xml_element-93"><a href="#TimeInterval.xml_element-93"><span class="linenos"> 93</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
-</span><span id="TimeInterval.xml_element-94"><a href="#TimeInterval.xml_element-94"><span class="linenos"> 94</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="TimeInterval.xml_element-95"><a href="#TimeInterval.xml_element-95"><span class="linenos"> 95</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
-</span><span id="TimeInterval.xml_element-96"><a href="#TimeInterval.xml_element-96"><span class="linenos"> 96</span></a>
-</span><span id="TimeInterval.xml_element-97"><a href="#TimeInterval.xml_element-97"><span class="linenos"> 97</span></a><span class="sd">        Returns</span>
-</span><span id="TimeInterval.xml_element-98"><a href="#TimeInterval.xml_element-98"><span class="linenos"> 98</span></a><span class="sd">        -------</span>
-</span><span id="TimeInterval.xml_element-99"><a href="#TimeInterval.xml_element-99"><span class="linenos"> 99</span></a><span class="sd">        ET</span>
-</span><span id="TimeInterval.xml_element-100"><a href="#TimeInterval.xml_element-100"><span class="linenos">100</span></a><span class="sd">            XML Element represenation of this object.</span>
-</span><span id="TimeInterval.xml_element-101"><a href="#TimeInterval.xml_element-101"><span class="linenos">101</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="TimeInterval.xml_element-102"><a href="#TimeInterval.xml_element-102"><span class="linenos">102</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
-</span><span id="TimeInterval.xml_element-103"><a href="#TimeInterval.xml_element-103"><span class="linenos">103</span></a>
-</span><span id="TimeInterval.xml_element-104"><a href="#TimeInterval.xml_element-104"><span class="linenos">104</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;TimeInterval&#39;</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="TimeInterval.xml_element-105"><a href="#TimeInterval.xml_element-105"><span class="linenos">105</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Start&#39;</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="TimeInterval.xml_element-106"><a href="#TimeInterval.xml_element-106"><span class="linenos">106</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
-</span><span id="TimeInterval.xml_element-107"><a href="#TimeInterval.xml_element-107"><span class="linenos">107</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;Start&#39;</span><span class="p">)</span>
-</span><span id="TimeInterval.xml_element-108"><a href="#TimeInterval.xml_element-108"><span class="linenos">108</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="TimeInterval.xml_element-109"><a href="#TimeInterval.xml_element-109"><span class="linenos">109</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
-</span><span id="TimeInterval.xml_element-110"><a href="#TimeInterval.xml_element-110"><span class="linenos">110</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">)</span>
-</span><span id="TimeInterval.xml_element-111"><a href="#TimeInterval.xml_element-111"><span class="linenos">111</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;TimeInterval&#39;</span><span class="p">)</span>
-</span><span id="TimeInterval.xml_element-112"><a href="#TimeInterval.xml_element-112"><span class="linenos">112</span></a>
-</span><span id="TimeInterval.xml_element-113"><a href="#TimeInterval.xml_element-113"><span class="linenos">113</span></a>        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="TimeInterval.xml_element-96"><a href="#TimeInterval.xml_element-96"><span class="linenos"> 96</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
+</span><span id="TimeInterval.xml_element-97"><a href="#TimeInterval.xml_element-97"><span class="linenos"> 97</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="TimeInterval.xml_element-98"><a href="#TimeInterval.xml_element-98"><span class="linenos"> 98</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
+</span><span id="TimeInterval.xml_element-99"><a href="#TimeInterval.xml_element-99"><span class="linenos"> 99</span></a>
+</span><span id="TimeInterval.xml_element-100"><a href="#TimeInterval.xml_element-100"><span class="linenos">100</span></a><span class="sd">        Returns</span>
+</span><span id="TimeInterval.xml_element-101"><a href="#TimeInterval.xml_element-101"><span class="linenos">101</span></a><span class="sd">        -------</span>
+</span><span id="TimeInterval.xml_element-102"><a href="#TimeInterval.xml_element-102"><span class="linenos">102</span></a><span class="sd">        ET</span>
+</span><span id="TimeInterval.xml_element-103"><a href="#TimeInterval.xml_element-103"><span class="linenos">103</span></a><span class="sd">            XML Element represenation of this object.</span>
+</span><span id="TimeInterval.xml_element-104"><a href="#TimeInterval.xml_element-104"><span class="linenos">104</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TimeInterval.xml_element-105"><a href="#TimeInterval.xml_element-105"><span class="linenos">105</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
+</span><span id="TimeInterval.xml_element-106"><a href="#TimeInterval.xml_element-106"><span class="linenos">106</span></a>
+</span><span id="TimeInterval.xml_element-107"><a href="#TimeInterval.xml_element-107"><span class="linenos">107</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;TimeInterval&#39;</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="TimeInterval.xml_element-108"><a href="#TimeInterval.xml_element-108"><span class="linenos">108</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Start&#39;</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="TimeInterval.xml_element-109"><a href="#TimeInterval.xml_element-109"><span class="linenos">109</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+</span><span id="TimeInterval.xml_element-110"><a href="#TimeInterval.xml_element-110"><span class="linenos">110</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;Start&#39;</span><span class="p">)</span>
+</span><span id="TimeInterval.xml_element-111"><a href="#TimeInterval.xml_element-111"><span class="linenos">111</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="TimeInterval.xml_element-112"><a href="#TimeInterval.xml_element-112"><span class="linenos">112</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+</span><span id="TimeInterval.xml_element-113"><a href="#TimeInterval.xml_element-113"><span class="linenos">113</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">)</span>
+</span><span id="TimeInterval.xml_element-114"><a href="#TimeInterval.xml_element-114"><span class="linenos">114</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;TimeInterval&#39;</span><span class="p">)</span>
+</span><span id="TimeInterval.xml_element-115"><a href="#TimeInterval.xml_element-115"><span class="linenos">115</span></a>
+</span><span id="TimeInterval.xml_element-116"><a href="#TimeInterval.xml_element-116"><span class="linenos">116</span></a>        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span></pre></div>
 
 
@@ -590,44 +595,44 @@ the keyword parameters.</p>
 
     </div>
     <a class="headerlink" href="#TimeInterval.get_datetime"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="TimeInterval.get_datetime-124"><a href="#TimeInterval.get_datetime-124"><span class="linenos">124</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="TimeInterval.get_datetime-125"><a href="#TimeInterval.get_datetime-125"><span class="linenos">125</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_datetime</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-</span><span id="TimeInterval.get_datetime-126"><a href="#TimeInterval.get_datetime-126"><span class="linenos">126</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="TimeInterval.get_datetime-127"><a href="#TimeInterval.get_datetime-127"><span class="linenos">127</span></a><span class="sd">        Produces a datetime representation of the given value.  The</span>
-</span><span id="TimeInterval.get_datetime-128"><a href="#TimeInterval.get_datetime-128"><span class="linenos">128</span></a><span class="sd">        returned datetime always has a timezone of timezone.utc.  If</span>
-</span><span id="TimeInterval.get_datetime-129"><a href="#TimeInterval.get_datetime-129"><span class="linenos">129</span></a><span class="sd">        the given value&#39;s timezone is not utc, the return value is</span>
-</span><span id="TimeInterval.get_datetime-130"><a href="#TimeInterval.get_datetime-130"><span class="linenos">130</span></a><span class="sd">        adjusted to utc.  If the given value has no timezone (is naive)</span>
-</span><span id="TimeInterval.get_datetime-131"><a href="#TimeInterval.get_datetime-131"><span class="linenos">131</span></a><span class="sd">        a utc value is set.</span>
-</span><span id="TimeInterval.get_datetime-132"><a href="#TimeInterval.get_datetime-132"><span class="linenos">132</span></a>
-</span><span id="TimeInterval.get_datetime-133"><a href="#TimeInterval.get_datetime-133"><span class="linenos">133</span></a><span class="sd">        Parameters</span>
-</span><span id="TimeInterval.get_datetime-134"><a href="#TimeInterval.get_datetime-134"><span class="linenos">134</span></a><span class="sd">        ----------</span>
-</span><span id="TimeInterval.get_datetime-135"><a href="#TimeInterval.get_datetime-135"><span class="linenos">135</span></a><span class="sd">        value</span>
-</span><span id="TimeInterval.get_datetime-136"><a href="#TimeInterval.get_datetime-136"><span class="linenos">136</span></a><span class="sd">            value to convert to a datetime.</span>
-</span><span id="TimeInterval.get_datetime-137"><a href="#TimeInterval.get_datetime-137"><span class="linenos">137</span></a><span class="sd">        Returns</span>
-</span><span id="TimeInterval.get_datetime-138"><a href="#TimeInterval.get_datetime-138"><span class="linenos">138</span></a><span class="sd">        -------</span>
-</span><span id="TimeInterval.get_datetime-139"><a href="#TimeInterval.get_datetime-139"><span class="linenos">139</span></a><span class="sd">        datetime</span>
-</span><span id="TimeInterval.get_datetime-140"><a href="#TimeInterval.get_datetime-140"><span class="linenos">140</span></a><span class="sd">            datetime representation of the given value in the UTC</span>
-</span><span id="TimeInterval.get_datetime-141"><a href="#TimeInterval.get_datetime-141"><span class="linenos">141</span></a><span class="sd">            timezone.</span>
-</span><span id="TimeInterval.get_datetime-142"><a href="#TimeInterval.get_datetime-142"><span class="linenos">142</span></a><span class="sd">        Raises</span>
-</span><span id="TimeInterval.get_datetime-143"><a href="#TimeInterval.get_datetime-143"><span class="linenos">143</span></a><span class="sd">        ------</span>
-</span><span id="TimeInterval.get_datetime-144"><a href="#TimeInterval.get_datetime-144"><span class="linenos">144</span></a><span class="sd">        ValueError</span>
-</span><span id="TimeInterval.get_datetime-145"><a href="#TimeInterval.get_datetime-145"><span class="linenos">145</span></a><span class="sd">            If the given value is not a valid datetime value.</span>
-</span><span id="TimeInterval.get_datetime-146"><a href="#TimeInterval.get_datetime-146"><span class="linenos">146</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="TimeInterval.get_datetime-147"><a href="#TimeInterval.get_datetime-147"><span class="linenos">147</span></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
-</span><span id="TimeInterval.get_datetime-148"><a href="#TimeInterval.get_datetime-148"><span class="linenos">148</span></a>            <span class="n">datetime_value</span> <span class="o">=</span> <span class="n">value</span>
-</span><span id="TimeInterval.get_datetime-149"><a href="#TimeInterval.get_datetime-149"><span class="linenos">149</span></a>        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="TimeInterval.get_datetime-150"><a href="#TimeInterval.get_datetime-150"><span class="linenos">150</span></a>            <span class="k">try</span><span class="p">:</span>
-</span><span id="TimeInterval.get_datetime-151"><a href="#TimeInterval.get_datetime-151"><span class="linenos">151</span></a>                <span class="n">datetime_value</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-</span><span id="TimeInterval.get_datetime-152"><a href="#TimeInterval.get_datetime-152"><span class="linenos">152</span></a>            <span class="k">except</span> <span class="n">ParserError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="TimeInterval.get_datetime-153"><a href="#TimeInterval.get_datetime-153"><span class="linenos">153</span></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error parsing &quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&quot;: invalid datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-</span><span id="TimeInterval.get_datetime-154"><a href="#TimeInterval.get_datetime-154"><span class="linenos">154</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="TimeInterval.get_datetime-155"><a href="#TimeInterval.get_datetime-155"><span class="linenos">155</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized datetime value&#39;</span><span class="p">)</span>
-</span><span id="TimeInterval.get_datetime-156"><a href="#TimeInterval.get_datetime-156"><span class="linenos">156</span></a>
-</span><span id="TimeInterval.get_datetime-157"><a href="#TimeInterval.get_datetime-157"><span class="linenos">157</span></a>        <span class="k">if</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> \
-</span><span id="TimeInterval.get_datetime-158"><a href="#TimeInterval.get_datetime-158"><span class="linenos">158</span></a>           <span class="n">datetime_value</span><span class="o">.</span><span class="n">tzinfo</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="TimeInterval.get_datetime-159"><a href="#TimeInterval.get_datetime-159"><span class="linenos">159</span></a>            <span class="k">return</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
-</span><span id="TimeInterval.get_datetime-160"><a href="#TimeInterval.get_datetime-160"><span class="linenos">160</span></a>
-</span><span id="TimeInterval.get_datetime-161"><a href="#TimeInterval.get_datetime-161"><span class="linenos">161</span></a>        <span class="k">return</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="TimeInterval.get_datetime-127"><a href="#TimeInterval.get_datetime-127"><span class="linenos">127</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="TimeInterval.get_datetime-128"><a href="#TimeInterval.get_datetime-128"><span class="linenos">128</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_datetime</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+</span><span id="TimeInterval.get_datetime-129"><a href="#TimeInterval.get_datetime-129"><span class="linenos">129</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="TimeInterval.get_datetime-130"><a href="#TimeInterval.get_datetime-130"><span class="linenos">130</span></a><span class="sd">        Produces a datetime representation of the given value.  The</span>
+</span><span id="TimeInterval.get_datetime-131"><a href="#TimeInterval.get_datetime-131"><span class="linenos">131</span></a><span class="sd">        returned datetime always has a timezone of timezone.utc.  If</span>
+</span><span id="TimeInterval.get_datetime-132"><a href="#TimeInterval.get_datetime-132"><span class="linenos">132</span></a><span class="sd">        the given value&#39;s timezone is not utc, the return value is</span>
+</span><span id="TimeInterval.get_datetime-133"><a href="#TimeInterval.get_datetime-133"><span class="linenos">133</span></a><span class="sd">        adjusted to utc.  If the given value has no timezone (is naive)</span>
+</span><span id="TimeInterval.get_datetime-134"><a href="#TimeInterval.get_datetime-134"><span class="linenos">134</span></a><span class="sd">        a utc value is set.</span>
+</span><span id="TimeInterval.get_datetime-135"><a href="#TimeInterval.get_datetime-135"><span class="linenos">135</span></a>
+</span><span id="TimeInterval.get_datetime-136"><a href="#TimeInterval.get_datetime-136"><span class="linenos">136</span></a><span class="sd">        Parameters</span>
+</span><span id="TimeInterval.get_datetime-137"><a href="#TimeInterval.get_datetime-137"><span class="linenos">137</span></a><span class="sd">        ----------</span>
+</span><span id="TimeInterval.get_datetime-138"><a href="#TimeInterval.get_datetime-138"><span class="linenos">138</span></a><span class="sd">        value</span>
+</span><span id="TimeInterval.get_datetime-139"><a href="#TimeInterval.get_datetime-139"><span class="linenos">139</span></a><span class="sd">            value to convert to a datetime.</span>
+</span><span id="TimeInterval.get_datetime-140"><a href="#TimeInterval.get_datetime-140"><span class="linenos">140</span></a><span class="sd">        Returns</span>
+</span><span id="TimeInterval.get_datetime-141"><a href="#TimeInterval.get_datetime-141"><span class="linenos">141</span></a><span class="sd">        -------</span>
+</span><span id="TimeInterval.get_datetime-142"><a href="#TimeInterval.get_datetime-142"><span class="linenos">142</span></a><span class="sd">        datetime</span>
+</span><span id="TimeInterval.get_datetime-143"><a href="#TimeInterval.get_datetime-143"><span class="linenos">143</span></a><span class="sd">            datetime representation of the given value in the UTC</span>
+</span><span id="TimeInterval.get_datetime-144"><a href="#TimeInterval.get_datetime-144"><span class="linenos">144</span></a><span class="sd">            timezone.</span>
+</span><span id="TimeInterval.get_datetime-145"><a href="#TimeInterval.get_datetime-145"><span class="linenos">145</span></a><span class="sd">        Raises</span>
+</span><span id="TimeInterval.get_datetime-146"><a href="#TimeInterval.get_datetime-146"><span class="linenos">146</span></a><span class="sd">        ------</span>
+</span><span id="TimeInterval.get_datetime-147"><a href="#TimeInterval.get_datetime-147"><span class="linenos">147</span></a><span class="sd">        ValueError</span>
+</span><span id="TimeInterval.get_datetime-148"><a href="#TimeInterval.get_datetime-148"><span class="linenos">148</span></a><span class="sd">            If the given value is not a valid datetime value.</span>
+</span><span id="TimeInterval.get_datetime-149"><a href="#TimeInterval.get_datetime-149"><span class="linenos">149</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TimeInterval.get_datetime-150"><a href="#TimeInterval.get_datetime-150"><span class="linenos">150</span></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+</span><span id="TimeInterval.get_datetime-151"><a href="#TimeInterval.get_datetime-151"><span class="linenos">151</span></a>            <span class="n">datetime_value</span> <span class="o">=</span> <span class="n">value</span>
+</span><span id="TimeInterval.get_datetime-152"><a href="#TimeInterval.get_datetime-152"><span class="linenos">152</span></a>        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="TimeInterval.get_datetime-153"><a href="#TimeInterval.get_datetime-153"><span class="linenos">153</span></a>            <span class="k">try</span><span class="p">:</span>
+</span><span id="TimeInterval.get_datetime-154"><a href="#TimeInterval.get_datetime-154"><span class="linenos">154</span></a>                <span class="n">datetime_value</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span id="TimeInterval.get_datetime-155"><a href="#TimeInterval.get_datetime-155"><span class="linenos">155</span></a>            <span class="k">except</span> <span class="n">ParserError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="TimeInterval.get_datetime-156"><a href="#TimeInterval.get_datetime-156"><span class="linenos">156</span></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error parsing &quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&quot;: invalid datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+</span><span id="TimeInterval.get_datetime-157"><a href="#TimeInterval.get_datetime-157"><span class="linenos">157</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="TimeInterval.get_datetime-158"><a href="#TimeInterval.get_datetime-158"><span class="linenos">158</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized datetime value&#39;</span><span class="p">)</span>
+</span><span id="TimeInterval.get_datetime-159"><a href="#TimeInterval.get_datetime-159"><span class="linenos">159</span></a>
+</span><span id="TimeInterval.get_datetime-160"><a href="#TimeInterval.get_datetime-160"><span class="linenos">160</span></a>        <span class="k">if</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> \
+</span><span id="TimeInterval.get_datetime-161"><a href="#TimeInterval.get_datetime-161"><span class="linenos">161</span></a>           <span class="n">datetime_value</span><span class="o">.</span><span class="n">tzinfo</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="TimeInterval.get_datetime-162"><a href="#TimeInterval.get_datetime-162"><span class="linenos">162</span></a>            <span class="k">return</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+</span><span id="TimeInterval.get_datetime-163"><a href="#TimeInterval.get_datetime-163"><span class="linenos">163</span></a>
+</span><span id="TimeInterval.get_datetime-164"><a href="#TimeInterval.get_datetime-164"><span class="linenos">164</span></a>        <span class="k">return</span> <span class="n">datetime_value</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -671,41 +676,41 @@ timezone.</li>
 
     </div>
     <a class="headerlink" href="#TimeInterval.get_datetimes"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="TimeInterval.get_datetimes-164"><a href="#TimeInterval.get_datetimes-164"><span class="linenos">164</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="TimeInterval.get_datetimes-165"><a href="#TimeInterval.get_datetimes-165"><span class="linenos">165</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_datetimes</span><span class="p">(</span>
-</span><span id="TimeInterval.get_datetimes-166"><a href="#TimeInterval.get_datetimes-166"><span class="linenos">166</span></a>            <span class="n">start</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
-</span><span id="TimeInterval.get_datetimes-167"><a href="#TimeInterval.get_datetimes-167"><span class="linenos">167</span></a>            <span class="n">end</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
-</span><span id="TimeInterval.get_datetimes-168"><a href="#TimeInterval.get_datetimes-168"><span class="linenos">168</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">datetime</span><span class="p">]:</span>
-</span><span id="TimeInterval.get_datetimes-169"><a href="#TimeInterval.get_datetimes-169"><span class="linenos">169</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="TimeInterval.get_datetimes-170"><a href="#TimeInterval.get_datetimes-170"><span class="linenos">170</span></a><span class="sd">        Produces a datetime representation of the given values.</span>
-</span><span id="TimeInterval.get_datetimes-171"><a href="#TimeInterval.get_datetimes-171"><span class="linenos">171</span></a>
-</span><span id="TimeInterval.get_datetimes-172"><a href="#TimeInterval.get_datetimes-172"><span class="linenos">172</span></a><span class="sd">        Parameters</span>
-</span><span id="TimeInterval.get_datetimes-173"><a href="#TimeInterval.get_datetimes-173"><span class="linenos">173</span></a><span class="sd">        ----------</span>
-</span><span id="TimeInterval.get_datetimes-174"><a href="#TimeInterval.get_datetimes-174"><span class="linenos">174</span></a><span class="sd">        start</span>
-</span><span id="TimeInterval.get_datetimes-175"><a href="#TimeInterval.get_datetimes-175"><span class="linenos">175</span></a><span class="sd">            start value to convert to a datetime.</span>
-</span><span id="TimeInterval.get_datetimes-176"><a href="#TimeInterval.get_datetimes-176"><span class="linenos">176</span></a><span class="sd">        end</span>
-</span><span id="TimeInterval.get_datetimes-177"><a href="#TimeInterval.get_datetimes-177"><span class="linenos">177</span></a><span class="sd">            end value to convert to a datetime.</span>
-</span><span id="TimeInterval.get_datetimes-178"><a href="#TimeInterval.get_datetimes-178"><span class="linenos">178</span></a><span class="sd">        Returns</span>
-</span><span id="TimeInterval.get_datetimes-179"><a href="#TimeInterval.get_datetimes-179"><span class="linenos">179</span></a><span class="sd">        -------</span>
-</span><span id="TimeInterval.get_datetimes-180"><a href="#TimeInterval.get_datetimes-180"><span class="linenos">180</span></a><span class="sd">        Tuple</span>
-</span><span id="TimeInterval.get_datetimes-181"><a href="#TimeInterval.get_datetimes-181"><span class="linenos">181</span></a><span class="sd">            [0] datetime representation of the given start value.</span>
-</span><span id="TimeInterval.get_datetimes-182"><a href="#TimeInterval.get_datetimes-182"><span class="linenos">182</span></a><span class="sd">            [1] datetime representation of the given end value.</span>
-</span><span id="TimeInterval.get_datetimes-183"><a href="#TimeInterval.get_datetimes-183"><span class="linenos">183</span></a><span class="sd">        Raises</span>
-</span><span id="TimeInterval.get_datetimes-184"><a href="#TimeInterval.get_datetimes-184"><span class="linenos">184</span></a><span class="sd">        ------</span>
-</span><span id="TimeInterval.get_datetimes-185"><a href="#TimeInterval.get_datetimes-185"><span class="linenos">185</span></a><span class="sd">        ValueError</span>
-</span><span id="TimeInterval.get_datetimes-186"><a href="#TimeInterval.get_datetimes-186"><span class="linenos">186</span></a><span class="sd">            If either of the given values is not a valid datetime value.</span>
-</span><span id="TimeInterval.get_datetimes-187"><a href="#TimeInterval.get_datetimes-187"><span class="linenos">187</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="TimeInterval.get_datetimes-188"><a href="#TimeInterval.get_datetimes-188"><span class="linenos">188</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="TimeInterval.get_datetimes-189"><a href="#TimeInterval.get_datetimes-189"><span class="linenos">189</span></a>            <span class="n">start_datetime</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
-</span><span id="TimeInterval.get_datetimes-190"><a href="#TimeInterval.get_datetimes-190"><span class="linenos">190</span></a>        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-</span><span id="TimeInterval.get_datetimes-191"><a href="#TimeInterval.get_datetimes-191"><span class="linenos">191</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized start datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
-</span><span id="TimeInterval.get_datetimes-192"><a href="#TimeInterval.get_datetimes-192"><span class="linenos">192</span></a>
-</span><span id="TimeInterval.get_datetimes-193"><a href="#TimeInterval.get_datetimes-193"><span class="linenos">193</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="TimeInterval.get_datetimes-194"><a href="#TimeInterval.get_datetimes-194"><span class="linenos">194</span></a>            <span class="n">end_datetime</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
-</span><span id="TimeInterval.get_datetimes-195"><a href="#TimeInterval.get_datetimes-195"><span class="linenos">195</span></a>        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-</span><span id="TimeInterval.get_datetimes-196"><a href="#TimeInterval.get_datetimes-196"><span class="linenos">196</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized end datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
-</span><span id="TimeInterval.get_datetimes-197"><a href="#TimeInterval.get_datetimes-197"><span class="linenos">197</span></a>
-</span><span id="TimeInterval.get_datetimes-198"><a href="#TimeInterval.get_datetimes-198"><span class="linenos">198</span></a>        <span class="k">return</span> <span class="n">start_datetime</span><span class="p">,</span> <span class="n">end_datetime</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="TimeInterval.get_datetimes-167"><a href="#TimeInterval.get_datetimes-167"><span class="linenos">167</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="TimeInterval.get_datetimes-168"><a href="#TimeInterval.get_datetimes-168"><span class="linenos">168</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_datetimes</span><span class="p">(</span>
+</span><span id="TimeInterval.get_datetimes-169"><a href="#TimeInterval.get_datetimes-169"><span class="linenos">169</span></a>            <span class="n">start</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+</span><span id="TimeInterval.get_datetimes-170"><a href="#TimeInterval.get_datetimes-170"><span class="linenos">170</span></a>            <span class="n">end</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+</span><span id="TimeInterval.get_datetimes-171"><a href="#TimeInterval.get_datetimes-171"><span class="linenos">171</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">datetime</span><span class="p">]:</span>
+</span><span id="TimeInterval.get_datetimes-172"><a href="#TimeInterval.get_datetimes-172"><span class="linenos">172</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="TimeInterval.get_datetimes-173"><a href="#TimeInterval.get_datetimes-173"><span class="linenos">173</span></a><span class="sd">        Produces a datetime representation of the given values.</span>
+</span><span id="TimeInterval.get_datetimes-174"><a href="#TimeInterval.get_datetimes-174"><span class="linenos">174</span></a>
+</span><span id="TimeInterval.get_datetimes-175"><a href="#TimeInterval.get_datetimes-175"><span class="linenos">175</span></a><span class="sd">        Parameters</span>
+</span><span id="TimeInterval.get_datetimes-176"><a href="#TimeInterval.get_datetimes-176"><span class="linenos">176</span></a><span class="sd">        ----------</span>
+</span><span id="TimeInterval.get_datetimes-177"><a href="#TimeInterval.get_datetimes-177"><span class="linenos">177</span></a><span class="sd">        start</span>
+</span><span id="TimeInterval.get_datetimes-178"><a href="#TimeInterval.get_datetimes-178"><span class="linenos">178</span></a><span class="sd">            start value to convert to a datetime.</span>
+</span><span id="TimeInterval.get_datetimes-179"><a href="#TimeInterval.get_datetimes-179"><span class="linenos">179</span></a><span class="sd">        end</span>
+</span><span id="TimeInterval.get_datetimes-180"><a href="#TimeInterval.get_datetimes-180"><span class="linenos">180</span></a><span class="sd">            end value to convert to a datetime.</span>
+</span><span id="TimeInterval.get_datetimes-181"><a href="#TimeInterval.get_datetimes-181"><span class="linenos">181</span></a><span class="sd">        Returns</span>
+</span><span id="TimeInterval.get_datetimes-182"><a href="#TimeInterval.get_datetimes-182"><span class="linenos">182</span></a><span class="sd">        -------</span>
+</span><span id="TimeInterval.get_datetimes-183"><a href="#TimeInterval.get_datetimes-183"><span class="linenos">183</span></a><span class="sd">        Tuple</span>
+</span><span id="TimeInterval.get_datetimes-184"><a href="#TimeInterval.get_datetimes-184"><span class="linenos">184</span></a><span class="sd">            [0] datetime representation of the given start value.</span>
+</span><span id="TimeInterval.get_datetimes-185"><a href="#TimeInterval.get_datetimes-185"><span class="linenos">185</span></a><span class="sd">            [1] datetime representation of the given end value.</span>
+</span><span id="TimeInterval.get_datetimes-186"><a href="#TimeInterval.get_datetimes-186"><span class="linenos">186</span></a><span class="sd">        Raises</span>
+</span><span id="TimeInterval.get_datetimes-187"><a href="#TimeInterval.get_datetimes-187"><span class="linenos">187</span></a><span class="sd">        ------</span>
+</span><span id="TimeInterval.get_datetimes-188"><a href="#TimeInterval.get_datetimes-188"><span class="linenos">188</span></a><span class="sd">        ValueError</span>
+</span><span id="TimeInterval.get_datetimes-189"><a href="#TimeInterval.get_datetimes-189"><span class="linenos">189</span></a><span class="sd">            If either of the given values is not a valid datetime value.</span>
+</span><span id="TimeInterval.get_datetimes-190"><a href="#TimeInterval.get_datetimes-190"><span class="linenos">190</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TimeInterval.get_datetimes-191"><a href="#TimeInterval.get_datetimes-191"><span class="linenos">191</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="TimeInterval.get_datetimes-192"><a href="#TimeInterval.get_datetimes-192"><span class="linenos">192</span></a>            <span class="n">start_datetime</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+</span><span id="TimeInterval.get_datetimes-193"><a href="#TimeInterval.get_datetimes-193"><span class="linenos">193</span></a>        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+</span><span id="TimeInterval.get_datetimes-194"><a href="#TimeInterval.get_datetimes-194"><span class="linenos">194</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized start datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+</span><span id="TimeInterval.get_datetimes-195"><a href="#TimeInterval.get_datetimes-195"><span class="linenos">195</span></a>
+</span><span id="TimeInterval.get_datetimes-196"><a href="#TimeInterval.get_datetimes-196"><span class="linenos">196</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="TimeInterval.get_datetimes-197"><a href="#TimeInterval.get_datetimes-197"><span class="linenos">197</span></a>            <span class="n">end_datetime</span> <span class="o">=</span> <span class="n">TimeInterval</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+</span><span id="TimeInterval.get_datetimes-198"><a href="#TimeInterval.get_datetimes-198"><span class="linenos">198</span></a>        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+</span><span id="TimeInterval.get_datetimes-199"><a href="#TimeInterval.get_datetimes-199"><span class="linenos">199</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unrecognized end datetime value&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+</span><span id="TimeInterval.get_datetimes-200"><a href="#TimeInterval.get_datetimes-200"><span class="linenos">200</span></a>
+</span><span id="TimeInterval.get_datetimes-201"><a href="#TimeInterval.get_datetimes-201"><span class="linenos">201</span></a>        <span class="k">return</span> <span class="n">start_datetime</span><span class="p">,</span> <span class="n">end_datetime</span>
 </span></pre></div>
 
 
@@ -746,23 +751,23 @@ timezone.</li>
 
     </div>
     <a class="headerlink" href="#TimeInterval.basic_iso_format"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="TimeInterval.basic_iso_format-201"><a href="#TimeInterval.basic_iso_format-201"><span class="linenos">201</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="TimeInterval.basic_iso_format-202"><a href="#TimeInterval.basic_iso_format-202"><span class="linenos">202</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">basic_iso_format</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="TimeInterval.basic_iso_format-203"><a href="#TimeInterval.basic_iso_format-203"><span class="linenos">203</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="TimeInterval.basic_iso_format-204"><a href="#TimeInterval.basic_iso_format-204"><span class="linenos">204</span></a><span class="sd">        Produces the basic (minimal) ISO 8601 format of the given</span>
-</span><span id="TimeInterval.basic_iso_format-205"><a href="#TimeInterval.basic_iso_format-205"><span class="linenos">205</span></a><span class="sd">        datetime.</span>
-</span><span id="TimeInterval.basic_iso_format-206"><a href="#TimeInterval.basic_iso_format-206"><span class="linenos">206</span></a>
-</span><span id="TimeInterval.basic_iso_format-207"><a href="#TimeInterval.basic_iso_format-207"><span class="linenos">207</span></a><span class="sd">        Parameters</span>
-</span><span id="TimeInterval.basic_iso_format-208"><a href="#TimeInterval.basic_iso_format-208"><span class="linenos">208</span></a><span class="sd">        ----------</span>
-</span><span id="TimeInterval.basic_iso_format-209"><a href="#TimeInterval.basic_iso_format-209"><span class="linenos">209</span></a><span class="sd">        value</span>
-</span><span id="TimeInterval.basic_iso_format-210"><a href="#TimeInterval.basic_iso_format-210"><span class="linenos">210</span></a><span class="sd">            datetime value to convert to string.</span>
-</span><span id="TimeInterval.basic_iso_format-211"><a href="#TimeInterval.basic_iso_format-211"><span class="linenos">211</span></a><span class="sd">        Returns</span>
-</span><span id="TimeInterval.basic_iso_format-212"><a href="#TimeInterval.basic_iso_format-212"><span class="linenos">212</span></a><span class="sd">        -------</span>
-</span><span id="TimeInterval.basic_iso_format-213"><a href="#TimeInterval.basic_iso_format-213"><span class="linenos">213</span></a><span class="sd">        str</span>
-</span><span id="TimeInterval.basic_iso_format-214"><a href="#TimeInterval.basic_iso_format-214"><span class="linenos">214</span></a><span class="sd">            Basic ISO 8601 format time string.</span>
-</span><span id="TimeInterval.basic_iso_format-215"><a href="#TimeInterval.basic_iso_format-215"><span class="linenos">215</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="TimeInterval.basic_iso_format-216"><a href="#TimeInterval.basic_iso_format-216"><span class="linenos">216</span></a>        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
-</span><span id="TimeInterval.basic_iso_format-217"><a href="#TimeInterval.basic_iso_format-217"><span class="linenos">217</span></a>            <span class="p">{</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">):</span><span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;:-&#39;</span><span class="p">})</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="TimeInterval.basic_iso_format-204"><a href="#TimeInterval.basic_iso_format-204"><span class="linenos">204</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="TimeInterval.basic_iso_format-205"><a href="#TimeInterval.basic_iso_format-205"><span class="linenos">205</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">basic_iso_format</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="TimeInterval.basic_iso_format-206"><a href="#TimeInterval.basic_iso_format-206"><span class="linenos">206</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="TimeInterval.basic_iso_format-207"><a href="#TimeInterval.basic_iso_format-207"><span class="linenos">207</span></a><span class="sd">        Produces the basic (minimal) ISO 8601 format of the given</span>
+</span><span id="TimeInterval.basic_iso_format-208"><a href="#TimeInterval.basic_iso_format-208"><span class="linenos">208</span></a><span class="sd">        datetime.</span>
+</span><span id="TimeInterval.basic_iso_format-209"><a href="#TimeInterval.basic_iso_format-209"><span class="linenos">209</span></a>
+</span><span id="TimeInterval.basic_iso_format-210"><a href="#TimeInterval.basic_iso_format-210"><span class="linenos">210</span></a><span class="sd">        Parameters</span>
+</span><span id="TimeInterval.basic_iso_format-211"><a href="#TimeInterval.basic_iso_format-211"><span class="linenos">211</span></a><span class="sd">        ----------</span>
+</span><span id="TimeInterval.basic_iso_format-212"><a href="#TimeInterval.basic_iso_format-212"><span class="linenos">212</span></a><span class="sd">        value</span>
+</span><span id="TimeInterval.basic_iso_format-213"><a href="#TimeInterval.basic_iso_format-213"><span class="linenos">213</span></a><span class="sd">            datetime value to convert to string.</span>
+</span><span id="TimeInterval.basic_iso_format-214"><a href="#TimeInterval.basic_iso_format-214"><span class="linenos">214</span></a><span class="sd">        Returns</span>
+</span><span id="TimeInterval.basic_iso_format-215"><a href="#TimeInterval.basic_iso_format-215"><span class="linenos">215</span></a><span class="sd">        -------</span>
+</span><span id="TimeInterval.basic_iso_format-216"><a href="#TimeInterval.basic_iso_format-216"><span class="linenos">216</span></a><span class="sd">        str</span>
+</span><span id="TimeInterval.basic_iso_format-217"><a href="#TimeInterval.basic_iso_format-217"><span class="linenos">217</span></a><span class="sd">            Basic ISO 8601 format time string.</span>
+</span><span id="TimeInterval.basic_iso_format-218"><a href="#TimeInterval.basic_iso_format-218"><span class="linenos">218</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TimeInterval.basic_iso_format-219"><a href="#TimeInterval.basic_iso_format-219"><span class="linenos">219</span></a>        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+</span><span id="TimeInterval.basic_iso_format-220"><a href="#TimeInterval.basic_iso_format-220"><span class="linenos">220</span></a>            <span class="p">{</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">):</span><span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;:-&#39;</span><span class="p">})</span>
 </span></pre></div>
 
 

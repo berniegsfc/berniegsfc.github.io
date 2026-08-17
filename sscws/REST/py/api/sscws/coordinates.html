@@ -154,7 +154,7 @@
     </ul>
 
 
-<b>Contact:</b><a href="mailto:NASA-SPDF-Support@nasa.onmicrosoft.com?subject=SSC%20Web%20Services%20Feedback">SSC Feedback</a>
+<b>Contact:</b><a href="mailto:NASA-SPDF-Support@nasa.gov?subject=SSC%20Web%20Services%20Feedback">SSC Feedback</a>
 
         <a class="attribution" title="pdoc: Python API documentation generator" href="https://pdoc.dev" target="_blank">
             built with <span class="visually-hidden">pdoc</span><img
@@ -168,12 +168,16 @@
                     <h1 class="modulename">
 <a href="./../sscws.html">sscws</a><wbr>.coordinates    </h1>
 
-                        <div class="docstring"><p>Module defining classes to represent the coordinate related classes from
-<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.<br></p>
+                        <div class="docstring"><p>Module defining classes to represent the coordinate related classes in
+the Satellite Situation Center (SSC) Web Application Programming
+Interface (API).</p>
 
-<p>Copyright &copy; 2013-2026 United States Government as represented by the
-National Aeronautics and Space Administration. No copyright is claimed in
-the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
+<p>See <a href="https://berniegsfc.github.io/sscws/REST/">https://berniegsfc.github.io/sscws/REST/</a> for additional details.</p>
+
+<p>Copyright &copy; 2013-2026 United States Government as represented by
+the National Aeronautics and Space Administration. No copyright is
+claimed in the United States under Title 17, U.S.Code. All Other Rights
+Reserved.</p>
 </div>
 
                         <input id="mod-coordinates-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -213,170 +217,170 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 </span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="c1">#</span>
 </span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a>
 </span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">Module defining classes to represent the coordinate related classes from</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">&lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.&lt;br&gt;</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">Copyright &amp;copy; 2013-2026 United States Government as represented by the</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">National Aeronautics and Space Administration. No copyright is claimed in</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">the United States under Title 17, U.S.Code. All Other Rights Reserved.</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ET</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">abc</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">Module defining classes to represent the coordinate related classes in</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">the Satellite Situation Center (SSC) Web Application Programming</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">Interface (API).</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">See &lt;https://berniegsfc.github.io/sscws/REST/&gt; for additional details.</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">Copyright &amp;copy; 2013-2026 United States Government as represented by</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">the National Aeronautics and Space Administration. No copyright is</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">claimed in the United States under Title 17, U.S.Code. All Other Rights</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">Reserved.</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">confloat</span><span class="p">,</span> <span class="n">Field</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ET</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">abc</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CoordinateSystem</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    Enumerations representing the CoordinateSystem type defined</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt; and</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/users_guide/#appendix-c-description-of-selected-coordinate-systems-used-in-ssc-programs&gt;.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="n">GEO</span> <span class="o">=</span> <span class="s1">&#39;Geo&#39;</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geographic coordinate system.&quot;&quot;&quot;</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">GM</span> <span class="o">=</span> <span class="s1">&#39;Gm&#39;</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geomagnetic coordinate system.&quot;&quot;&quot;</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">GSE</span> <span class="o">=</span> <span class="s1">&#39;Gse&#39;</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Solar Ecliptic coordinate system.&quot;&quot;&quot;</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">GSM</span> <span class="o">=</span> <span class="s1">&#39;Gsm&#39;</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Solar Magnetospheric coordinate system.&quot;&quot;&quot;</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">SM</span> <span class="o">=</span> <span class="s1">&#39;Sm&#39;</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Solar Magnetic coordinate system.&quot;&quot;&quot;</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">GEI_TOD</span> <span class="o">=</span> <span class="s1">&#39;GeiTod&#39;</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Equatorial Inertial coordinate system.&quot;&quot;&quot;</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">GEI_J_2000</span> <span class="o">=</span> <span class="s1">&#39;GeiJ2000&#39;</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Equatorial Inertial coordinate system for epoch J2000.0 (GEI2000).&quot;&quot;&quot;</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="nd">@classmethod</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_identifier</span><span class="p">(</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="bp">cls</span><span class="p">,</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;CoordinateSystem&#39;</span><span class="p">:</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        Gets the Enum corresponding to the given identifier value.</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        Parameters</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        ----------</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        cls</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">            class.</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        identifier</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">            Enum value corresponding to a CoordinateSystem.</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        Returns</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        -------</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        CoordinateSystem</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">            Enum corresponding to the given identifier value.</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        Raises</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        ------</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        ValueError</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">            If the given identifier does not correspond to any</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">            CoordinateSystem value.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="c1">#if member.name == identifier or member.value == identifier:</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="k">if</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>                <span class="k">return</span> <span class="n">member</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid CoordinateSystem identifier &#39;</span> <span class="o">+</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>                         <span class="n">identifier</span><span class="p">)</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CoordinateSystemType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    Enumerations representing the CoordinateSystemType defined</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">SPHERICAL</span> <span class="o">=</span> <span class="s1">&#39;Spherical&#39;</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">CARTESIAN</span> <span class="o">=</span> <span class="s1">&#39;Cartesian&#39;</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CoordinateComponent</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    Enumerations representing the CoordinateComponent defined</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">X</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">Y</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">Z</span> <span class="o">=</span> <span class="s1">&#39;Z&#39;</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">LAT</span> <span class="o">=</span> <span class="s1">&#39;Lat&#39;</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">LON</span> <span class="o">=</span> <span class="s1">&#39;Lon&#39;</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">LOCAL_TIME</span> <span class="o">=</span> <span class="s1">&#39;Local_Time&#39;</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ProjectionCoordinateSystem</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">    Enumerations representing the ProjectionCoordinateSystem defined</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="n">GEO</span> <span class="o">=</span> <span class="s1">&#39;Geo&#39;</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="n">GM</span> <span class="o">=</span> <span class="s1">&#39;Gm&#39;</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="n">SM</span> <span class="o">=</span> <span class="s1">&#39;Sm&#39;</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Coordinates</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">    Class representing a Coordinates defined</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">    Notes</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    -----</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor using</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    the keyword parameters.</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="c1"># Is sub_type still needed for a pydantic class? Use</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="c1"># self.__class__.__name__ instead?</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="n">sub_type</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Sub-type name.&quot;&quot;&quot;</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">sub_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;sub_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_type</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">confloat</span><span class="p">,</span> <span class="n">Field</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CoordinateSystem</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    Enumerations representing the CoordinateSystem type in the SSC API.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    See also</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/users_guide/#appendix-c-description-of-selected-coordinate-systems-used-in-ssc-programs&gt;.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">GEO</span> <span class="o">=</span> <span class="s1">&#39;Geo&#39;</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geographic coordinate system.&quot;&quot;&quot;</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">GM</span> <span class="o">=</span> <span class="s1">&#39;Gm&#39;</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geomagnetic coordinate system.&quot;&quot;&quot;</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">GSE</span> <span class="o">=</span> <span class="s1">&#39;Gse&#39;</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Solar Ecliptic coordinate system.&quot;&quot;&quot;</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">GSM</span> <span class="o">=</span> <span class="s1">&#39;Gsm&#39;</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Solar Magnetospheric coordinate system.&quot;&quot;&quot;</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">SM</span> <span class="o">=</span> <span class="s1">&#39;Sm&#39;</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Solar Magnetic coordinate system.&quot;&quot;&quot;</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">GEI_TOD</span> <span class="o">=</span> <span class="s1">&#39;GeiTod&#39;</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Equatorial Inertial coordinate system.&quot;&quot;&quot;</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">GEI_J_2000</span> <span class="o">=</span> <span class="s1">&#39;GeiJ2000&#39;</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Equatorial Inertial coordinate system for epoch J2000.0 (GEI2000).&quot;&quot;&quot;</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="nd">@classmethod</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_identifier</span><span class="p">(</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="bp">cls</span><span class="p">,</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;CoordinateSystem&#39;</span><span class="p">:</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        Gets the Enum corresponding to the given identifier value.</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        Parameters</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        ----------</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        cls</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">            class.</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        identifier</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">            Enum value corresponding to a CoordinateSystem.</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        Returns</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        -------</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        CoordinateSystem</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">            Enum corresponding to the given identifier value.</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        Raises</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        ------</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        ValueError</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">            If the given identifier does not correspond to any</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            CoordinateSystem value.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="c1">#if member.name == identifier or member.value == identifier:</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="k">if</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>                <span class="k">return</span> <span class="n">member</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid CoordinateSystem identifier &#39;</span> <span class="o">+</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>                         <span class="n">identifier</span><span class="p">)</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CoordinateSystemType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">    Enumerations representing the CoordinateSystemType in the SSC API.</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">SPHERICAL</span> <span class="o">=</span> <span class="s1">&#39;Spherical&#39;</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">CARTESIAN</span> <span class="o">=</span> <span class="s1">&#39;Cartesian&#39;</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CoordinateComponent</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    Enumerations representing the CoordinateComponent in the SSC API.</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">X</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">Y</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">Z</span> <span class="o">=</span> <span class="s1">&#39;Z&#39;</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">LAT</span> <span class="o">=</span> <span class="s1">&#39;Lat&#39;</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="n">LON</span> <span class="o">=</span> <span class="s1">&#39;Lon&#39;</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">LOCAL_TIME</span> <span class="o">=</span> <span class="s1">&#39;Local_Time&#39;</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ProjectionCoordinateSystem</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    Enumerations representing the ProjectionCoordinateSystem in the</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    SSC API.</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="n">GEO</span> <span class="o">=</span> <span class="s1">&#39;Geo&#39;</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="n">GM</span> <span class="o">=</span> <span class="s1">&#39;Gm&#39;</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="n">SM</span> <span class="o">=</span> <span class="s1">&#39;Sm&#39;</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Coordinates</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    Class representing a Coordinates in the SSC API.</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    Notes</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    -----</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">    using the keyword parameters.</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="c1"># Is sub_type still needed for a pydantic class? Use</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="c1"># self.__class__.__name__ instead?</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">sub_type</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Sub-type name.&quot;&quot;&quot;</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="n">sub_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;sub_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_type</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">        Parameters</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        ----------</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        name</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">            Element name.  If None, use class sub-type.</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        Returns</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">        -------</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        ET</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">            XML Element represenation of this object.</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>            <span class="n">element_name</span> <span class="o">=</span> <span class="n">name</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>            <span class="n">element_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sub_type</span> <span class="o">+</span> <span class="s1">&#39;Coordinates&#39;</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">element_name</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="n">element_name</span><span class="p">)</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        Parameters</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        ----------</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        name</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">            Element name.  If None, use class sub-type.</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">        Returns</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        -------</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        ET</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">            XML Element represenation of this object.</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>            <span class="n">element_name</span> <span class="o">=</span> <span class="n">name</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="n">element_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sub_type</span> <span class="o">+</span> <span class="s1">&#39;Coordinates&#39;</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">element_name</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="n">element_name</span><span class="p">)</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SurfaceGeographicCoordinates</span><span class="p">(</span><span class="n">Coordinates</span><span class="p">):</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">    Class representing an SurfaceGeographicCoordinates from</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SurfaceGeographicCoordinates</span><span class="p">(</span><span class="n">Coordinates</span><span class="p">):</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">    Class representing SurfaceGeographicCoordinates in the SSC API.</span>
 </span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>
 </span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    Notes</span>
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    -----</span>
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor using</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">    the keyword parameters.</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">    using the keyword parameters.</span>
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>
 </span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">latitude</span><span class="p">:</span> <span class="n">confloat</span><span class="p">(</span><span class="n">gt</span><span class="o">=-</span><span class="mf">90.0</span><span class="p">,</span> <span class="n">lt</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Latitude.&#39;</span><span class="p">)</span>
@@ -432,55 +436,54 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 </span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>
 </span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AltitudeGeographicCoordinates</span><span class="p">(</span><span class="n">SurfaceGeographicCoordinates</span><span class="p">):</span>
 </span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">    Class representing an AltitudeGeographicCoordinates from</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">    Notes</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">    -----</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor using</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">    the keyword parameters.</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="n">altitude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Altitude.&#39;</span><span class="p">)</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>        <span class="n">latitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>        <span class="n">longitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="n">altitude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;sub_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;AltitudeGeographic&#39;</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">latitude</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">longitude</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;altitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">altitude</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">    Class representing AltitudeGeographicCoordinates in the SSC API.</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="sd">    Notes</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">    -----</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">    using the keyword parameters.</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="n">altitude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Altitude.&#39;</span><span class="p">)</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>        <span class="n">latitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>        <span class="n">longitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>        <span class="n">altitude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;sub_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;AltitudeGeographic&#39;</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">latitude</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">longitude</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;altitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">altitude</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>
 </span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">        Parameters</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">        ----------</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">        name</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">            Element name.  If None, use class sub-type.</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">        Returns</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">        -------</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">        ET</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">            XML Element represenation of this object.</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>        <span class="n">xml_element</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">xml_element</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="p">))</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">)</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>        <span class="n">xml_element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">())</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>        <span class="k">return</span> <span class="n">xml_element</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">        Parameters</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">        ----------</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">        name</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">            Element name.  If None, use class sub-type.</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">        Returns</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">        -------</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">        ET</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">            XML Element represenation of this object.</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>        <span class="n">xml_element</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">xml_element</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="p">))</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">)</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>        <span class="n">xml_element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">())</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>        <span class="k">return</span> <span class="n">xml_element</span>
 </span></pre></div>
 
 
@@ -496,63 +499,63 @@ the United States under Title 17, U.S.Code. All Other Rights Reserved.</p>
 
     </div>
     <a class="headerlink" href="#CoordinateSystem"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CoordinateSystem-52"><a href="#CoordinateSystem-52"><span class="linenos"> 52</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CoordinateSystem</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="CoordinateSystem-53"><a href="#CoordinateSystem-53"><span class="linenos"> 53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem-54"><a href="#CoordinateSystem-54"><span class="linenos"> 54</span></a><span class="sd">    Enumerations representing the CoordinateSystem type defined</span>
-</span><span id="CoordinateSystem-55"><a href="#CoordinateSystem-55"><span class="linenos"> 55</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt; and</span>
-</span><span id="CoordinateSystem-56"><a href="#CoordinateSystem-56"><span class="linenos"> 56</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/users_guide/#appendix-c-description-of-selected-coordinate-systems-used-in-ssc-programs&gt;.</span>
-</span><span id="CoordinateSystem-57"><a href="#CoordinateSystem-57"><span class="linenos"> 57</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem-58"><a href="#CoordinateSystem-58"><span class="linenos"> 58</span></a>    <span class="n">GEO</span> <span class="o">=</span> <span class="s1">&#39;Geo&#39;</span>
-</span><span id="CoordinateSystem-59"><a href="#CoordinateSystem-59"><span class="linenos"> 59</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geographic coordinate system.&quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem-60"><a href="#CoordinateSystem-60"><span class="linenos"> 60</span></a>    <span class="n">GM</span> <span class="o">=</span> <span class="s1">&#39;Gm&#39;</span>
-</span><span id="CoordinateSystem-61"><a href="#CoordinateSystem-61"><span class="linenos"> 61</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geomagnetic coordinate system.&quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem-62"><a href="#CoordinateSystem-62"><span class="linenos"> 62</span></a>    <span class="n">GSE</span> <span class="o">=</span> <span class="s1">&#39;Gse&#39;</span>
-</span><span id="CoordinateSystem-63"><a href="#CoordinateSystem-63"><span class="linenos"> 63</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Solar Ecliptic coordinate system.&quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem-64"><a href="#CoordinateSystem-64"><span class="linenos"> 64</span></a>    <span class="n">GSM</span> <span class="o">=</span> <span class="s1">&#39;Gsm&#39;</span>
-</span><span id="CoordinateSystem-65"><a href="#CoordinateSystem-65"><span class="linenos"> 65</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Solar Magnetospheric coordinate system.&quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem-66"><a href="#CoordinateSystem-66"><span class="linenos"> 66</span></a>    <span class="n">SM</span> <span class="o">=</span> <span class="s1">&#39;Sm&#39;</span>
-</span><span id="CoordinateSystem-67"><a href="#CoordinateSystem-67"><span class="linenos"> 67</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Solar Magnetic coordinate system.&quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem-68"><a href="#CoordinateSystem-68"><span class="linenos"> 68</span></a>    <span class="n">GEI_TOD</span> <span class="o">=</span> <span class="s1">&#39;GeiTod&#39;</span>
-</span><span id="CoordinateSystem-69"><a href="#CoordinateSystem-69"><span class="linenos"> 69</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Equatorial Inertial coordinate system.&quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem-70"><a href="#CoordinateSystem-70"><span class="linenos"> 70</span></a>    <span class="n">GEI_J_2000</span> <span class="o">=</span> <span class="s1">&#39;GeiJ2000&#39;</span>
-</span><span id="CoordinateSystem-71"><a href="#CoordinateSystem-71"><span class="linenos"> 71</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Equatorial Inertial coordinate system for epoch J2000.0 (GEI2000).&quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem-72"><a href="#CoordinateSystem-72"><span class="linenos"> 72</span></a>
-</span><span id="CoordinateSystem-73"><a href="#CoordinateSystem-73"><span class="linenos"> 73</span></a>    <span class="nd">@classmethod</span>
-</span><span id="CoordinateSystem-74"><a href="#CoordinateSystem-74"><span class="linenos"> 74</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_identifier</span><span class="p">(</span>
-</span><span id="CoordinateSystem-75"><a href="#CoordinateSystem-75"><span class="linenos"> 75</span></a>        <span class="bp">cls</span><span class="p">,</span>
-</span><span id="CoordinateSystem-76"><a href="#CoordinateSystem-76"><span class="linenos"> 76</span></a>        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="CoordinateSystem-77"><a href="#CoordinateSystem-77"><span class="linenos"> 77</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;CoordinateSystem&#39;</span><span class="p">:</span>
-</span><span id="CoordinateSystem-78"><a href="#CoordinateSystem-78"><span class="linenos"> 78</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem-79"><a href="#CoordinateSystem-79"><span class="linenos"> 79</span></a><span class="sd">        Gets the Enum corresponding to the given identifier value.</span>
-</span><span id="CoordinateSystem-80"><a href="#CoordinateSystem-80"><span class="linenos"> 80</span></a>
-</span><span id="CoordinateSystem-81"><a href="#CoordinateSystem-81"><span class="linenos"> 81</span></a><span class="sd">        Parameters</span>
-</span><span id="CoordinateSystem-82"><a href="#CoordinateSystem-82"><span class="linenos"> 82</span></a><span class="sd">        ----------</span>
-</span><span id="CoordinateSystem-83"><a href="#CoordinateSystem-83"><span class="linenos"> 83</span></a><span class="sd">        cls</span>
-</span><span id="CoordinateSystem-84"><a href="#CoordinateSystem-84"><span class="linenos"> 84</span></a><span class="sd">            class.</span>
-</span><span id="CoordinateSystem-85"><a href="#CoordinateSystem-85"><span class="linenos"> 85</span></a><span class="sd">        identifier</span>
-</span><span id="CoordinateSystem-86"><a href="#CoordinateSystem-86"><span class="linenos"> 86</span></a><span class="sd">            Enum value corresponding to a CoordinateSystem.</span>
-</span><span id="CoordinateSystem-87"><a href="#CoordinateSystem-87"><span class="linenos"> 87</span></a><span class="sd">        Returns</span>
-</span><span id="CoordinateSystem-88"><a href="#CoordinateSystem-88"><span class="linenos"> 88</span></a><span class="sd">        -------</span>
-</span><span id="CoordinateSystem-89"><a href="#CoordinateSystem-89"><span class="linenos"> 89</span></a><span class="sd">        CoordinateSystem</span>
-</span><span id="CoordinateSystem-90"><a href="#CoordinateSystem-90"><span class="linenos"> 90</span></a><span class="sd">            Enum corresponding to the given identifier value.</span>
-</span><span id="CoordinateSystem-91"><a href="#CoordinateSystem-91"><span class="linenos"> 91</span></a><span class="sd">        Raises</span>
-</span><span id="CoordinateSystem-92"><a href="#CoordinateSystem-92"><span class="linenos"> 92</span></a><span class="sd">        ------</span>
-</span><span id="CoordinateSystem-93"><a href="#CoordinateSystem-93"><span class="linenos"> 93</span></a><span class="sd">        ValueError</span>
-</span><span id="CoordinateSystem-94"><a href="#CoordinateSystem-94"><span class="linenos"> 94</span></a><span class="sd">            If the given identifier does not correspond to any</span>
-</span><span id="CoordinateSystem-95"><a href="#CoordinateSystem-95"><span class="linenos"> 95</span></a><span class="sd">            CoordinateSystem value.</span>
-</span><span id="CoordinateSystem-96"><a href="#CoordinateSystem-96"><span class="linenos"> 96</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem-97"><a href="#CoordinateSystem-97"><span class="linenos"> 97</span></a>
-</span><span id="CoordinateSystem-98"><a href="#CoordinateSystem-98"><span class="linenos"> 98</span></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
-</span><span id="CoordinateSystem-99"><a href="#CoordinateSystem-99"><span class="linenos"> 99</span></a>            <span class="c1">#if member.name == identifier or member.value == identifier:</span>
-</span><span id="CoordinateSystem-100"><a href="#CoordinateSystem-100"><span class="linenos">100</span></a>            <span class="k">if</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
-</span><span id="CoordinateSystem-101"><a href="#CoordinateSystem-101"><span class="linenos">101</span></a>                <span class="k">return</span> <span class="n">member</span>
-</span><span id="CoordinateSystem-102"><a href="#CoordinateSystem-102"><span class="linenos">102</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid CoordinateSystem identifier &#39;</span> <span class="o">+</span>
-</span><span id="CoordinateSystem-103"><a href="#CoordinateSystem-103"><span class="linenos">103</span></a>                         <span class="n">identifier</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CoordinateSystem-56"><a href="#CoordinateSystem-56"><span class="linenos"> 56</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CoordinateSystem</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="CoordinateSystem-57"><a href="#CoordinateSystem-57"><span class="linenos"> 57</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem-58"><a href="#CoordinateSystem-58"><span class="linenos"> 58</span></a><span class="sd">    Enumerations representing the CoordinateSystem type in the SSC API.</span>
+</span><span id="CoordinateSystem-59"><a href="#CoordinateSystem-59"><span class="linenos"> 59</span></a><span class="sd">    See also</span>
+</span><span id="CoordinateSystem-60"><a href="#CoordinateSystem-60"><span class="linenos"> 60</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/users_guide/#appendix-c-description-of-selected-coordinate-systems-used-in-ssc-programs&gt;.</span>
+</span><span id="CoordinateSystem-61"><a href="#CoordinateSystem-61"><span class="linenos"> 61</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem-62"><a href="#CoordinateSystem-62"><span class="linenos"> 62</span></a>    <span class="n">GEO</span> <span class="o">=</span> <span class="s1">&#39;Geo&#39;</span>
+</span><span id="CoordinateSystem-63"><a href="#CoordinateSystem-63"><span class="linenos"> 63</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geographic coordinate system.&quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem-64"><a href="#CoordinateSystem-64"><span class="linenos"> 64</span></a>    <span class="n">GM</span> <span class="o">=</span> <span class="s1">&#39;Gm&#39;</span>
+</span><span id="CoordinateSystem-65"><a href="#CoordinateSystem-65"><span class="linenos"> 65</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geomagnetic coordinate system.&quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem-66"><a href="#CoordinateSystem-66"><span class="linenos"> 66</span></a>    <span class="n">GSE</span> <span class="o">=</span> <span class="s1">&#39;Gse&#39;</span>
+</span><span id="CoordinateSystem-67"><a href="#CoordinateSystem-67"><span class="linenos"> 67</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Solar Ecliptic coordinate system.&quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem-68"><a href="#CoordinateSystem-68"><span class="linenos"> 68</span></a>    <span class="n">GSM</span> <span class="o">=</span> <span class="s1">&#39;Gsm&#39;</span>
+</span><span id="CoordinateSystem-69"><a href="#CoordinateSystem-69"><span class="linenos"> 69</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Solar Magnetospheric coordinate system.&quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem-70"><a href="#CoordinateSystem-70"><span class="linenos"> 70</span></a>    <span class="n">SM</span> <span class="o">=</span> <span class="s1">&#39;Sm&#39;</span>
+</span><span id="CoordinateSystem-71"><a href="#CoordinateSystem-71"><span class="linenos"> 71</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Solar Magnetic coordinate system.&quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem-72"><a href="#CoordinateSystem-72"><span class="linenos"> 72</span></a>    <span class="n">GEI_TOD</span> <span class="o">=</span> <span class="s1">&#39;GeiTod&#39;</span>
+</span><span id="CoordinateSystem-73"><a href="#CoordinateSystem-73"><span class="linenos"> 73</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Equatorial Inertial coordinate system.&quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem-74"><a href="#CoordinateSystem-74"><span class="linenos"> 74</span></a>    <span class="n">GEI_J_2000</span> <span class="o">=</span> <span class="s1">&#39;GeiJ2000&#39;</span>
+</span><span id="CoordinateSystem-75"><a href="#CoordinateSystem-75"><span class="linenos"> 75</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Geocentric Equatorial Inertial coordinate system for epoch J2000.0 (GEI2000).&quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem-76"><a href="#CoordinateSystem-76"><span class="linenos"> 76</span></a>
+</span><span id="CoordinateSystem-77"><a href="#CoordinateSystem-77"><span class="linenos"> 77</span></a>    <span class="nd">@classmethod</span>
+</span><span id="CoordinateSystem-78"><a href="#CoordinateSystem-78"><span class="linenos"> 78</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_identifier</span><span class="p">(</span>
+</span><span id="CoordinateSystem-79"><a href="#CoordinateSystem-79"><span class="linenos"> 79</span></a>        <span class="bp">cls</span><span class="p">,</span>
+</span><span id="CoordinateSystem-80"><a href="#CoordinateSystem-80"><span class="linenos"> 80</span></a>        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="CoordinateSystem-81"><a href="#CoordinateSystem-81"><span class="linenos"> 81</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;CoordinateSystem&#39;</span><span class="p">:</span>
+</span><span id="CoordinateSystem-82"><a href="#CoordinateSystem-82"><span class="linenos"> 82</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem-83"><a href="#CoordinateSystem-83"><span class="linenos"> 83</span></a><span class="sd">        Gets the Enum corresponding to the given identifier value.</span>
+</span><span id="CoordinateSystem-84"><a href="#CoordinateSystem-84"><span class="linenos"> 84</span></a>
+</span><span id="CoordinateSystem-85"><a href="#CoordinateSystem-85"><span class="linenos"> 85</span></a><span class="sd">        Parameters</span>
+</span><span id="CoordinateSystem-86"><a href="#CoordinateSystem-86"><span class="linenos"> 86</span></a><span class="sd">        ----------</span>
+</span><span id="CoordinateSystem-87"><a href="#CoordinateSystem-87"><span class="linenos"> 87</span></a><span class="sd">        cls</span>
+</span><span id="CoordinateSystem-88"><a href="#CoordinateSystem-88"><span class="linenos"> 88</span></a><span class="sd">            class.</span>
+</span><span id="CoordinateSystem-89"><a href="#CoordinateSystem-89"><span class="linenos"> 89</span></a><span class="sd">        identifier</span>
+</span><span id="CoordinateSystem-90"><a href="#CoordinateSystem-90"><span class="linenos"> 90</span></a><span class="sd">            Enum value corresponding to a CoordinateSystem.</span>
+</span><span id="CoordinateSystem-91"><a href="#CoordinateSystem-91"><span class="linenos"> 91</span></a><span class="sd">        Returns</span>
+</span><span id="CoordinateSystem-92"><a href="#CoordinateSystem-92"><span class="linenos"> 92</span></a><span class="sd">        -------</span>
+</span><span id="CoordinateSystem-93"><a href="#CoordinateSystem-93"><span class="linenos"> 93</span></a><span class="sd">        CoordinateSystem</span>
+</span><span id="CoordinateSystem-94"><a href="#CoordinateSystem-94"><span class="linenos"> 94</span></a><span class="sd">            Enum corresponding to the given identifier value.</span>
+</span><span id="CoordinateSystem-95"><a href="#CoordinateSystem-95"><span class="linenos"> 95</span></a><span class="sd">        Raises</span>
+</span><span id="CoordinateSystem-96"><a href="#CoordinateSystem-96"><span class="linenos"> 96</span></a><span class="sd">        ------</span>
+</span><span id="CoordinateSystem-97"><a href="#CoordinateSystem-97"><span class="linenos"> 97</span></a><span class="sd">        ValueError</span>
+</span><span id="CoordinateSystem-98"><a href="#CoordinateSystem-98"><span class="linenos"> 98</span></a><span class="sd">            If the given identifier does not correspond to any</span>
+</span><span id="CoordinateSystem-99"><a href="#CoordinateSystem-99"><span class="linenos"> 99</span></a><span class="sd">            CoordinateSystem value.</span>
+</span><span id="CoordinateSystem-100"><a href="#CoordinateSystem-100"><span class="linenos">100</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem-101"><a href="#CoordinateSystem-101"><span class="linenos">101</span></a>
+</span><span id="CoordinateSystem-102"><a href="#CoordinateSystem-102"><span class="linenos">102</span></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
+</span><span id="CoordinateSystem-103"><a href="#CoordinateSystem-103"><span class="linenos">103</span></a>            <span class="c1">#if member.name == identifier or member.value == identifier:</span>
+</span><span id="CoordinateSystem-104"><a href="#CoordinateSystem-104"><span class="linenos">104</span></a>            <span class="k">if</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
+</span><span id="CoordinateSystem-105"><a href="#CoordinateSystem-105"><span class="linenos">105</span></a>                <span class="k">return</span> <span class="n">member</span>
+</span><span id="CoordinateSystem-106"><a href="#CoordinateSystem-106"><span class="linenos">106</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid CoordinateSystem identifier &#39;</span> <span class="o">+</span>
+</span><span id="CoordinateSystem-107"><a href="#CoordinateSystem-107"><span class="linenos">107</span></a>                         <span class="n">identifier</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Enumerations representing the CoordinateSystem type defined
-in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a> and
+            <div class="docstring"><p>Enumerations representing the CoordinateSystem type in the SSC API.
+See also
 <a href="https://sscweb.gsfc.nasa.gov/users_guide/#appendix-c-description-of-selected-coordinate-systems-used-in-ssc-programs">https://sscweb.gsfc.nasa.gov/users_guide/#appendix-c-description-of-selected-coordinate-systems-used-in-ssc-programs</a>.</p>
 </div>
 
@@ -667,37 +670,37 @@ in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscwe
 
     </div>
     <a class="headerlink" href="#CoordinateSystem.from_identifier"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CoordinateSystem.from_identifier-73"><a href="#CoordinateSystem.from_identifier-73"><span class="linenos"> 73</span></a>    <span class="nd">@classmethod</span>
-</span><span id="CoordinateSystem.from_identifier-74"><a href="#CoordinateSystem.from_identifier-74"><span class="linenos"> 74</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_identifier</span><span class="p">(</span>
-</span><span id="CoordinateSystem.from_identifier-75"><a href="#CoordinateSystem.from_identifier-75"><span class="linenos"> 75</span></a>        <span class="bp">cls</span><span class="p">,</span>
-</span><span id="CoordinateSystem.from_identifier-76"><a href="#CoordinateSystem.from_identifier-76"><span class="linenos"> 76</span></a>        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="CoordinateSystem.from_identifier-77"><a href="#CoordinateSystem.from_identifier-77"><span class="linenos"> 77</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;CoordinateSystem&#39;</span><span class="p">:</span>
-</span><span id="CoordinateSystem.from_identifier-78"><a href="#CoordinateSystem.from_identifier-78"><span class="linenos"> 78</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem.from_identifier-79"><a href="#CoordinateSystem.from_identifier-79"><span class="linenos"> 79</span></a><span class="sd">        Gets the Enum corresponding to the given identifier value.</span>
-</span><span id="CoordinateSystem.from_identifier-80"><a href="#CoordinateSystem.from_identifier-80"><span class="linenos"> 80</span></a>
-</span><span id="CoordinateSystem.from_identifier-81"><a href="#CoordinateSystem.from_identifier-81"><span class="linenos"> 81</span></a><span class="sd">        Parameters</span>
-</span><span id="CoordinateSystem.from_identifier-82"><a href="#CoordinateSystem.from_identifier-82"><span class="linenos"> 82</span></a><span class="sd">        ----------</span>
-</span><span id="CoordinateSystem.from_identifier-83"><a href="#CoordinateSystem.from_identifier-83"><span class="linenos"> 83</span></a><span class="sd">        cls</span>
-</span><span id="CoordinateSystem.from_identifier-84"><a href="#CoordinateSystem.from_identifier-84"><span class="linenos"> 84</span></a><span class="sd">            class.</span>
-</span><span id="CoordinateSystem.from_identifier-85"><a href="#CoordinateSystem.from_identifier-85"><span class="linenos"> 85</span></a><span class="sd">        identifier</span>
-</span><span id="CoordinateSystem.from_identifier-86"><a href="#CoordinateSystem.from_identifier-86"><span class="linenos"> 86</span></a><span class="sd">            Enum value corresponding to a CoordinateSystem.</span>
-</span><span id="CoordinateSystem.from_identifier-87"><a href="#CoordinateSystem.from_identifier-87"><span class="linenos"> 87</span></a><span class="sd">        Returns</span>
-</span><span id="CoordinateSystem.from_identifier-88"><a href="#CoordinateSystem.from_identifier-88"><span class="linenos"> 88</span></a><span class="sd">        -------</span>
-</span><span id="CoordinateSystem.from_identifier-89"><a href="#CoordinateSystem.from_identifier-89"><span class="linenos"> 89</span></a><span class="sd">        CoordinateSystem</span>
-</span><span id="CoordinateSystem.from_identifier-90"><a href="#CoordinateSystem.from_identifier-90"><span class="linenos"> 90</span></a><span class="sd">            Enum corresponding to the given identifier value.</span>
-</span><span id="CoordinateSystem.from_identifier-91"><a href="#CoordinateSystem.from_identifier-91"><span class="linenos"> 91</span></a><span class="sd">        Raises</span>
-</span><span id="CoordinateSystem.from_identifier-92"><a href="#CoordinateSystem.from_identifier-92"><span class="linenos"> 92</span></a><span class="sd">        ------</span>
-</span><span id="CoordinateSystem.from_identifier-93"><a href="#CoordinateSystem.from_identifier-93"><span class="linenos"> 93</span></a><span class="sd">        ValueError</span>
-</span><span id="CoordinateSystem.from_identifier-94"><a href="#CoordinateSystem.from_identifier-94"><span class="linenos"> 94</span></a><span class="sd">            If the given identifier does not correspond to any</span>
-</span><span id="CoordinateSystem.from_identifier-95"><a href="#CoordinateSystem.from_identifier-95"><span class="linenos"> 95</span></a><span class="sd">            CoordinateSystem value.</span>
-</span><span id="CoordinateSystem.from_identifier-96"><a href="#CoordinateSystem.from_identifier-96"><span class="linenos"> 96</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="CoordinateSystem.from_identifier-97"><a href="#CoordinateSystem.from_identifier-97"><span class="linenos"> 97</span></a>
-</span><span id="CoordinateSystem.from_identifier-98"><a href="#CoordinateSystem.from_identifier-98"><span class="linenos"> 98</span></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
-</span><span id="CoordinateSystem.from_identifier-99"><a href="#CoordinateSystem.from_identifier-99"><span class="linenos"> 99</span></a>            <span class="c1">#if member.name == identifier or member.value == identifier:</span>
-</span><span id="CoordinateSystem.from_identifier-100"><a href="#CoordinateSystem.from_identifier-100"><span class="linenos">100</span></a>            <span class="k">if</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
-</span><span id="CoordinateSystem.from_identifier-101"><a href="#CoordinateSystem.from_identifier-101"><span class="linenos">101</span></a>                <span class="k">return</span> <span class="n">member</span>
-</span><span id="CoordinateSystem.from_identifier-102"><a href="#CoordinateSystem.from_identifier-102"><span class="linenos">102</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid CoordinateSystem identifier &#39;</span> <span class="o">+</span>
-</span><span id="CoordinateSystem.from_identifier-103"><a href="#CoordinateSystem.from_identifier-103"><span class="linenos">103</span></a>                         <span class="n">identifier</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CoordinateSystem.from_identifier-77"><a href="#CoordinateSystem.from_identifier-77"><span class="linenos"> 77</span></a>    <span class="nd">@classmethod</span>
+</span><span id="CoordinateSystem.from_identifier-78"><a href="#CoordinateSystem.from_identifier-78"><span class="linenos"> 78</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_identifier</span><span class="p">(</span>
+</span><span id="CoordinateSystem.from_identifier-79"><a href="#CoordinateSystem.from_identifier-79"><span class="linenos"> 79</span></a>        <span class="bp">cls</span><span class="p">,</span>
+</span><span id="CoordinateSystem.from_identifier-80"><a href="#CoordinateSystem.from_identifier-80"><span class="linenos"> 80</span></a>        <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="CoordinateSystem.from_identifier-81"><a href="#CoordinateSystem.from_identifier-81"><span class="linenos"> 81</span></a>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;CoordinateSystem&#39;</span><span class="p">:</span>
+</span><span id="CoordinateSystem.from_identifier-82"><a href="#CoordinateSystem.from_identifier-82"><span class="linenos"> 82</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem.from_identifier-83"><a href="#CoordinateSystem.from_identifier-83"><span class="linenos"> 83</span></a><span class="sd">        Gets the Enum corresponding to the given identifier value.</span>
+</span><span id="CoordinateSystem.from_identifier-84"><a href="#CoordinateSystem.from_identifier-84"><span class="linenos"> 84</span></a>
+</span><span id="CoordinateSystem.from_identifier-85"><a href="#CoordinateSystem.from_identifier-85"><span class="linenos"> 85</span></a><span class="sd">        Parameters</span>
+</span><span id="CoordinateSystem.from_identifier-86"><a href="#CoordinateSystem.from_identifier-86"><span class="linenos"> 86</span></a><span class="sd">        ----------</span>
+</span><span id="CoordinateSystem.from_identifier-87"><a href="#CoordinateSystem.from_identifier-87"><span class="linenos"> 87</span></a><span class="sd">        cls</span>
+</span><span id="CoordinateSystem.from_identifier-88"><a href="#CoordinateSystem.from_identifier-88"><span class="linenos"> 88</span></a><span class="sd">            class.</span>
+</span><span id="CoordinateSystem.from_identifier-89"><a href="#CoordinateSystem.from_identifier-89"><span class="linenos"> 89</span></a><span class="sd">        identifier</span>
+</span><span id="CoordinateSystem.from_identifier-90"><a href="#CoordinateSystem.from_identifier-90"><span class="linenos"> 90</span></a><span class="sd">            Enum value corresponding to a CoordinateSystem.</span>
+</span><span id="CoordinateSystem.from_identifier-91"><a href="#CoordinateSystem.from_identifier-91"><span class="linenos"> 91</span></a><span class="sd">        Returns</span>
+</span><span id="CoordinateSystem.from_identifier-92"><a href="#CoordinateSystem.from_identifier-92"><span class="linenos"> 92</span></a><span class="sd">        -------</span>
+</span><span id="CoordinateSystem.from_identifier-93"><a href="#CoordinateSystem.from_identifier-93"><span class="linenos"> 93</span></a><span class="sd">        CoordinateSystem</span>
+</span><span id="CoordinateSystem.from_identifier-94"><a href="#CoordinateSystem.from_identifier-94"><span class="linenos"> 94</span></a><span class="sd">            Enum corresponding to the given identifier value.</span>
+</span><span id="CoordinateSystem.from_identifier-95"><a href="#CoordinateSystem.from_identifier-95"><span class="linenos"> 95</span></a><span class="sd">        Raises</span>
+</span><span id="CoordinateSystem.from_identifier-96"><a href="#CoordinateSystem.from_identifier-96"><span class="linenos"> 96</span></a><span class="sd">        ------</span>
+</span><span id="CoordinateSystem.from_identifier-97"><a href="#CoordinateSystem.from_identifier-97"><span class="linenos"> 97</span></a><span class="sd">        ValueError</span>
+</span><span id="CoordinateSystem.from_identifier-98"><a href="#CoordinateSystem.from_identifier-98"><span class="linenos"> 98</span></a><span class="sd">            If the given identifier does not correspond to any</span>
+</span><span id="CoordinateSystem.from_identifier-99"><a href="#CoordinateSystem.from_identifier-99"><span class="linenos"> 99</span></a><span class="sd">            CoordinateSystem value.</span>
+</span><span id="CoordinateSystem.from_identifier-100"><a href="#CoordinateSystem.from_identifier-100"><span class="linenos">100</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="CoordinateSystem.from_identifier-101"><a href="#CoordinateSystem.from_identifier-101"><span class="linenos">101</span></a>
+</span><span id="CoordinateSystem.from_identifier-102"><a href="#CoordinateSystem.from_identifier-102"><span class="linenos">102</span></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
+</span><span id="CoordinateSystem.from_identifier-103"><a href="#CoordinateSystem.from_identifier-103"><span class="linenos">103</span></a>            <span class="c1">#if member.name == identifier or member.value == identifier:</span>
+</span><span id="CoordinateSystem.from_identifier-104"><a href="#CoordinateSystem.from_identifier-104"><span class="linenos">104</span></a>            <span class="k">if</span> <span class="n">identifier</span> <span class="ow">in</span> <span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
+</span><span id="CoordinateSystem.from_identifier-105"><a href="#CoordinateSystem.from_identifier-105"><span class="linenos">105</span></a>                <span class="k">return</span> <span class="n">member</span>
+</span><span id="CoordinateSystem.from_identifier-106"><a href="#CoordinateSystem.from_identifier-106"><span class="linenos">106</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid CoordinateSystem identifier &#39;</span> <span class="o">+</span>
+</span><span id="CoordinateSystem.from_identifier-107"><a href="#CoordinateSystem.from_identifier-107"><span class="linenos">107</span></a>                         <span class="n">identifier</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -738,18 +741,16 @@ CoordinateSystem value.</li>
 
     </div>
     <a class="headerlink" href="#CoordinateSystemType"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CoordinateSystemType-106"><a href="#CoordinateSystemType-106"><span class="linenos">106</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CoordinateSystemType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="CoordinateSystemType-107"><a href="#CoordinateSystemType-107"><span class="linenos">107</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CoordinateSystemType-108"><a href="#CoordinateSystemType-108"><span class="linenos">108</span></a><span class="sd">    Enumerations representing the CoordinateSystemType defined</span>
-</span><span id="CoordinateSystemType-109"><a href="#CoordinateSystemType-109"><span class="linenos">109</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="CoordinateSystemType-110"><a href="#CoordinateSystemType-110"><span class="linenos">110</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="CoordinateSystemType-111"><a href="#CoordinateSystemType-111"><span class="linenos">111</span></a>    <span class="n">SPHERICAL</span> <span class="o">=</span> <span class="s1">&#39;Spherical&#39;</span>
-</span><span id="CoordinateSystemType-112"><a href="#CoordinateSystemType-112"><span class="linenos">112</span></a>    <span class="n">CARTESIAN</span> <span class="o">=</span> <span class="s1">&#39;Cartesian&#39;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CoordinateSystemType-110"><a href="#CoordinateSystemType-110"><span class="linenos">110</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CoordinateSystemType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="CoordinateSystemType-111"><a href="#CoordinateSystemType-111"><span class="linenos">111</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CoordinateSystemType-112"><a href="#CoordinateSystemType-112"><span class="linenos">112</span></a><span class="sd">    Enumerations representing the CoordinateSystemType in the SSC API.</span>
+</span><span id="CoordinateSystemType-113"><a href="#CoordinateSystemType-113"><span class="linenos">113</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="CoordinateSystemType-114"><a href="#CoordinateSystemType-114"><span class="linenos">114</span></a>    <span class="n">SPHERICAL</span> <span class="o">=</span> <span class="s1">&#39;Spherical&#39;</span>
+</span><span id="CoordinateSystemType-115"><a href="#CoordinateSystemType-115"><span class="linenos">115</span></a>    <span class="n">CARTESIAN</span> <span class="o">=</span> <span class="s1">&#39;Cartesian&#39;</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Enumerations representing the CoordinateSystemType defined
-in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Enumerations representing the CoordinateSystemType in the SSC API.</p>
 </div>
 
 
@@ -789,22 +790,20 @@ in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscwe
 
     </div>
     <a class="headerlink" href="#CoordinateComponent"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CoordinateComponent-115"><a href="#CoordinateComponent-115"><span class="linenos">115</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CoordinateComponent</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="CoordinateComponent-116"><a href="#CoordinateComponent-116"><span class="linenos">116</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="CoordinateComponent-117"><a href="#CoordinateComponent-117"><span class="linenos">117</span></a><span class="sd">    Enumerations representing the CoordinateComponent defined</span>
-</span><span id="CoordinateComponent-118"><a href="#CoordinateComponent-118"><span class="linenos">118</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="CoordinateComponent-119"><a href="#CoordinateComponent-119"><span class="linenos">119</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="CoordinateComponent-120"><a href="#CoordinateComponent-120"><span class="linenos">120</span></a>    <span class="n">X</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
-</span><span id="CoordinateComponent-121"><a href="#CoordinateComponent-121"><span class="linenos">121</span></a>    <span class="n">Y</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>
-</span><span id="CoordinateComponent-122"><a href="#CoordinateComponent-122"><span class="linenos">122</span></a>    <span class="n">Z</span> <span class="o">=</span> <span class="s1">&#39;Z&#39;</span>
-</span><span id="CoordinateComponent-123"><a href="#CoordinateComponent-123"><span class="linenos">123</span></a>    <span class="n">LAT</span> <span class="o">=</span> <span class="s1">&#39;Lat&#39;</span>
-</span><span id="CoordinateComponent-124"><a href="#CoordinateComponent-124"><span class="linenos">124</span></a>    <span class="n">LON</span> <span class="o">=</span> <span class="s1">&#39;Lon&#39;</span>
-</span><span id="CoordinateComponent-125"><a href="#CoordinateComponent-125"><span class="linenos">125</span></a>    <span class="n">LOCAL_TIME</span> <span class="o">=</span> <span class="s1">&#39;Local_Time&#39;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CoordinateComponent-118"><a href="#CoordinateComponent-118"><span class="linenos">118</span></a><span class="k">class</span><span class="w"> </span><span class="nc">CoordinateComponent</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="CoordinateComponent-119"><a href="#CoordinateComponent-119"><span class="linenos">119</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CoordinateComponent-120"><a href="#CoordinateComponent-120"><span class="linenos">120</span></a><span class="sd">    Enumerations representing the CoordinateComponent in the SSC API.</span>
+</span><span id="CoordinateComponent-121"><a href="#CoordinateComponent-121"><span class="linenos">121</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="CoordinateComponent-122"><a href="#CoordinateComponent-122"><span class="linenos">122</span></a>    <span class="n">X</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+</span><span id="CoordinateComponent-123"><a href="#CoordinateComponent-123"><span class="linenos">123</span></a>    <span class="n">Y</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>
+</span><span id="CoordinateComponent-124"><a href="#CoordinateComponent-124"><span class="linenos">124</span></a>    <span class="n">Z</span> <span class="o">=</span> <span class="s1">&#39;Z&#39;</span>
+</span><span id="CoordinateComponent-125"><a href="#CoordinateComponent-125"><span class="linenos">125</span></a>    <span class="n">LAT</span> <span class="o">=</span> <span class="s1">&#39;Lat&#39;</span>
+</span><span id="CoordinateComponent-126"><a href="#CoordinateComponent-126"><span class="linenos">126</span></a>    <span class="n">LON</span> <span class="o">=</span> <span class="s1">&#39;Lon&#39;</span>
+</span><span id="CoordinateComponent-127"><a href="#CoordinateComponent-127"><span class="linenos">127</span></a>    <span class="n">LOCAL_TIME</span> <span class="o">=</span> <span class="s1">&#39;Local_Time&#39;</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Enumerations representing the CoordinateComponent defined
-in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Enumerations representing the CoordinateComponent in the SSC API.</p>
 </div>
 
 
@@ -892,19 +891,19 @@ in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscwe
 
     </div>
     <a class="headerlink" href="#ProjectionCoordinateSystem"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ProjectionCoordinateSystem-128"><a href="#ProjectionCoordinateSystem-128"><span class="linenos">128</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ProjectionCoordinateSystem</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-</span><span id="ProjectionCoordinateSystem-129"><a href="#ProjectionCoordinateSystem-129"><span class="linenos">129</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="ProjectionCoordinateSystem-130"><a href="#ProjectionCoordinateSystem-130"><span class="linenos">130</span></a><span class="sd">    Enumerations representing the ProjectionCoordinateSystem defined</span>
-</span><span id="ProjectionCoordinateSystem-131"><a href="#ProjectionCoordinateSystem-131"><span class="linenos">131</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="ProjectionCoordinateSystem-132"><a href="#ProjectionCoordinateSystem-132"><span class="linenos">132</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="ProjectionCoordinateSystem-133"><a href="#ProjectionCoordinateSystem-133"><span class="linenos">133</span></a>    <span class="n">GEO</span> <span class="o">=</span> <span class="s1">&#39;Geo&#39;</span>
-</span><span id="ProjectionCoordinateSystem-134"><a href="#ProjectionCoordinateSystem-134"><span class="linenos">134</span></a>    <span class="n">GM</span> <span class="o">=</span> <span class="s1">&#39;Gm&#39;</span>
-</span><span id="ProjectionCoordinateSystem-135"><a href="#ProjectionCoordinateSystem-135"><span class="linenos">135</span></a>    <span class="n">SM</span> <span class="o">=</span> <span class="s1">&#39;Sm&#39;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ProjectionCoordinateSystem-130"><a href="#ProjectionCoordinateSystem-130"><span class="linenos">130</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ProjectionCoordinateSystem</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span><span id="ProjectionCoordinateSystem-131"><a href="#ProjectionCoordinateSystem-131"><span class="linenos">131</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="ProjectionCoordinateSystem-132"><a href="#ProjectionCoordinateSystem-132"><span class="linenos">132</span></a><span class="sd">    Enumerations representing the ProjectionCoordinateSystem in the</span>
+</span><span id="ProjectionCoordinateSystem-133"><a href="#ProjectionCoordinateSystem-133"><span class="linenos">133</span></a><span class="sd">    SSC API.</span>
+</span><span id="ProjectionCoordinateSystem-134"><a href="#ProjectionCoordinateSystem-134"><span class="linenos">134</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="ProjectionCoordinateSystem-135"><a href="#ProjectionCoordinateSystem-135"><span class="linenos">135</span></a>    <span class="n">GEO</span> <span class="o">=</span> <span class="s1">&#39;Geo&#39;</span>
+</span><span id="ProjectionCoordinateSystem-136"><a href="#ProjectionCoordinateSystem-136"><span class="linenos">136</span></a>    <span class="n">GM</span> <span class="o">=</span> <span class="s1">&#39;Gm&#39;</span>
+</span><span id="ProjectionCoordinateSystem-137"><a href="#ProjectionCoordinateSystem-137"><span class="linenos">137</span></a>    <span class="n">SM</span> <span class="o">=</span> <span class="s1">&#39;Sm&#39;</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Enumerations representing the ProjectionCoordinateSystem defined
-in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Enumerations representing the ProjectionCoordinateSystem in the
+SSC API.</p>
 </div>
 
 
@@ -956,66 +955,64 @@ in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscwe
 
     </div>
     <a class="headerlink" href="#Coordinates"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Coordinates-138"><a href="#Coordinates-138"><span class="linenos">138</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Coordinates</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
-</span><span id="Coordinates-139"><a href="#Coordinates-139"><span class="linenos">139</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Coordinates-140"><a href="#Coordinates-140"><span class="linenos">140</span></a><span class="sd">    Class representing a Coordinates defined</span>
-</span><span id="Coordinates-141"><a href="#Coordinates-141"><span class="linenos">141</span></a><span class="sd">    in &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="Coordinates-142"><a href="#Coordinates-142"><span class="linenos">142</span></a>
-</span><span id="Coordinates-143"><a href="#Coordinates-143"><span class="linenos">143</span></a><span class="sd">    Notes</span>
-</span><span id="Coordinates-144"><a href="#Coordinates-144"><span class="linenos">144</span></a><span class="sd">    -----</span>
-</span><span id="Coordinates-145"><a href="#Coordinates-145"><span class="linenos">145</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
-</span><span id="Coordinates-146"><a href="#Coordinates-146"><span class="linenos">146</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor using</span>
-</span><span id="Coordinates-147"><a href="#Coordinates-147"><span class="linenos">147</span></a><span class="sd">    the keyword parameters.</span>
-</span><span id="Coordinates-148"><a href="#Coordinates-148"><span class="linenos">148</span></a>
-</span><span id="Coordinates-149"><a href="#Coordinates-149"><span class="linenos">149</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="Coordinates-150"><a href="#Coordinates-150"><span class="linenos">150</span></a>    <span class="c1"># Is sub_type still needed for a pydantic class? Use</span>
-</span><span id="Coordinates-151"><a href="#Coordinates-151"><span class="linenos">151</span></a>    <span class="c1"># self.__class__.__name__ instead?</span>
-</span><span id="Coordinates-152"><a href="#Coordinates-152"><span class="linenos">152</span></a>    <span class="n">sub_type</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="Coordinates-153"><a href="#Coordinates-153"><span class="linenos">153</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Sub-type name.&quot;&quot;&quot;</span>
-</span><span id="Coordinates-154"><a href="#Coordinates-154"><span class="linenos">154</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="Coordinates-155"><a href="#Coordinates-155"><span class="linenos">155</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="Coordinates-156"><a href="#Coordinates-156"><span class="linenos">156</span></a>        <span class="n">sub_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="Coordinates-157"><a href="#Coordinates-157"><span class="linenos">157</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="Coordinates-158"><a href="#Coordinates-158"><span class="linenos">158</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;sub_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_type</span>
-</span><span id="Coordinates-159"><a href="#Coordinates-159"><span class="linenos">159</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="Coordinates-160"><a href="#Coordinates-160"><span class="linenos">160</span></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Coordinates-140"><a href="#Coordinates-140"><span class="linenos">140</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Coordinates</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
+</span><span id="Coordinates-141"><a href="#Coordinates-141"><span class="linenos">141</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Coordinates-142"><a href="#Coordinates-142"><span class="linenos">142</span></a><span class="sd">    Class representing a Coordinates in the SSC API.</span>
+</span><span id="Coordinates-143"><a href="#Coordinates-143"><span class="linenos">143</span></a>
+</span><span id="Coordinates-144"><a href="#Coordinates-144"><span class="linenos">144</span></a><span class="sd">    Notes</span>
+</span><span id="Coordinates-145"><a href="#Coordinates-145"><span class="linenos">145</span></a><span class="sd">    -----</span>
+</span><span id="Coordinates-146"><a href="#Coordinates-146"><span class="linenos">146</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
+</span><span id="Coordinates-147"><a href="#Coordinates-147"><span class="linenos">147</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor</span>
+</span><span id="Coordinates-148"><a href="#Coordinates-148"><span class="linenos">148</span></a><span class="sd">    using the keyword parameters.</span>
+</span><span id="Coordinates-149"><a href="#Coordinates-149"><span class="linenos">149</span></a>
+</span><span id="Coordinates-150"><a href="#Coordinates-150"><span class="linenos">150</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="Coordinates-151"><a href="#Coordinates-151"><span class="linenos">151</span></a>    <span class="c1"># Is sub_type still needed for a pydantic class? Use</span>
+</span><span id="Coordinates-152"><a href="#Coordinates-152"><span class="linenos">152</span></a>    <span class="c1"># self.__class__.__name__ instead?</span>
+</span><span id="Coordinates-153"><a href="#Coordinates-153"><span class="linenos">153</span></a>    <span class="n">sub_type</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="Coordinates-154"><a href="#Coordinates-154"><span class="linenos">154</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Sub-type name.&quot;&quot;&quot;</span>
+</span><span id="Coordinates-155"><a href="#Coordinates-155"><span class="linenos">155</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="Coordinates-156"><a href="#Coordinates-156"><span class="linenos">156</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="Coordinates-157"><a href="#Coordinates-157"><span class="linenos">157</span></a>        <span class="n">sub_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="Coordinates-158"><a href="#Coordinates-158"><span class="linenos">158</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="Coordinates-159"><a href="#Coordinates-159"><span class="linenos">159</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;sub_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_type</span>
+</span><span id="Coordinates-160"><a href="#Coordinates-160"><span class="linenos">160</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span><span id="Coordinates-161"><a href="#Coordinates-161"><span class="linenos">161</span></a>
-</span><span id="Coordinates-162"><a href="#Coordinates-162"><span class="linenos">162</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-</span><span id="Coordinates-163"><a href="#Coordinates-163"><span class="linenos">163</span></a>                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
-</span><span id="Coordinates-164"><a href="#Coordinates-164"><span class="linenos">164</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Coordinates-165"><a href="#Coordinates-165"><span class="linenos">165</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
-</span><span id="Coordinates-166"><a href="#Coordinates-166"><span class="linenos">166</span></a>
-</span><span id="Coordinates-167"><a href="#Coordinates-167"><span class="linenos">167</span></a><span class="sd">        Parameters</span>
-</span><span id="Coordinates-168"><a href="#Coordinates-168"><span class="linenos">168</span></a><span class="sd">        ----------</span>
-</span><span id="Coordinates-169"><a href="#Coordinates-169"><span class="linenos">169</span></a><span class="sd">        name</span>
-</span><span id="Coordinates-170"><a href="#Coordinates-170"><span class="linenos">170</span></a><span class="sd">            Element name.  If None, use class sub-type.</span>
-</span><span id="Coordinates-171"><a href="#Coordinates-171"><span class="linenos">171</span></a>
-</span><span id="Coordinates-172"><a href="#Coordinates-172"><span class="linenos">172</span></a><span class="sd">        Returns</span>
-</span><span id="Coordinates-173"><a href="#Coordinates-173"><span class="linenos">173</span></a><span class="sd">        -------</span>
-</span><span id="Coordinates-174"><a href="#Coordinates-174"><span class="linenos">174</span></a><span class="sd">        ET</span>
-</span><span id="Coordinates-175"><a href="#Coordinates-175"><span class="linenos">175</span></a><span class="sd">            XML Element represenation of this object.</span>
-</span><span id="Coordinates-176"><a href="#Coordinates-176"><span class="linenos">176</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Coordinates-177"><a href="#Coordinates-177"><span class="linenos">177</span></a>
-</span><span id="Coordinates-178"><a href="#Coordinates-178"><span class="linenos">178</span></a>        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="Coordinates-179"><a href="#Coordinates-179"><span class="linenos">179</span></a>            <span class="n">element_name</span> <span class="o">=</span> <span class="n">name</span>
-</span><span id="Coordinates-180"><a href="#Coordinates-180"><span class="linenos">180</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="Coordinates-181"><a href="#Coordinates-181"><span class="linenos">181</span></a>            <span class="n">element_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sub_type</span> <span class="o">+</span> <span class="s1">&#39;Coordinates&#39;</span>
-</span><span id="Coordinates-182"><a href="#Coordinates-182"><span class="linenos">182</span></a>
-</span><span id="Coordinates-183"><a href="#Coordinates-183"><span class="linenos">183</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
-</span><span id="Coordinates-184"><a href="#Coordinates-184"><span class="linenos">184</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">element_name</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="Coordinates-185"><a href="#Coordinates-185"><span class="linenos">185</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="n">element_name</span><span class="p">)</span>
-</span><span id="Coordinates-186"><a href="#Coordinates-186"><span class="linenos">186</span></a>        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="Coordinates-162"><a href="#Coordinates-162"><span class="linenos">162</span></a>
+</span><span id="Coordinates-163"><a href="#Coordinates-163"><span class="linenos">163</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+</span><span id="Coordinates-164"><a href="#Coordinates-164"><span class="linenos">164</span></a>                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
+</span><span id="Coordinates-165"><a href="#Coordinates-165"><span class="linenos">165</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Coordinates-166"><a href="#Coordinates-166"><span class="linenos">166</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
+</span><span id="Coordinates-167"><a href="#Coordinates-167"><span class="linenos">167</span></a>
+</span><span id="Coordinates-168"><a href="#Coordinates-168"><span class="linenos">168</span></a><span class="sd">        Parameters</span>
+</span><span id="Coordinates-169"><a href="#Coordinates-169"><span class="linenos">169</span></a><span class="sd">        ----------</span>
+</span><span id="Coordinates-170"><a href="#Coordinates-170"><span class="linenos">170</span></a><span class="sd">        name</span>
+</span><span id="Coordinates-171"><a href="#Coordinates-171"><span class="linenos">171</span></a><span class="sd">            Element name.  If None, use class sub-type.</span>
+</span><span id="Coordinates-172"><a href="#Coordinates-172"><span class="linenos">172</span></a>
+</span><span id="Coordinates-173"><a href="#Coordinates-173"><span class="linenos">173</span></a><span class="sd">        Returns</span>
+</span><span id="Coordinates-174"><a href="#Coordinates-174"><span class="linenos">174</span></a><span class="sd">        -------</span>
+</span><span id="Coordinates-175"><a href="#Coordinates-175"><span class="linenos">175</span></a><span class="sd">        ET</span>
+</span><span id="Coordinates-176"><a href="#Coordinates-176"><span class="linenos">176</span></a><span class="sd">            XML Element represenation of this object.</span>
+</span><span id="Coordinates-177"><a href="#Coordinates-177"><span class="linenos">177</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Coordinates-178"><a href="#Coordinates-178"><span class="linenos">178</span></a>
+</span><span id="Coordinates-179"><a href="#Coordinates-179"><span class="linenos">179</span></a>        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="Coordinates-180"><a href="#Coordinates-180"><span class="linenos">180</span></a>            <span class="n">element_name</span> <span class="o">=</span> <span class="n">name</span>
+</span><span id="Coordinates-181"><a href="#Coordinates-181"><span class="linenos">181</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="Coordinates-182"><a href="#Coordinates-182"><span class="linenos">182</span></a>            <span class="n">element_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sub_type</span> <span class="o">+</span> <span class="s1">&#39;Coordinates&#39;</span>
+</span><span id="Coordinates-183"><a href="#Coordinates-183"><span class="linenos">183</span></a>
+</span><span id="Coordinates-184"><a href="#Coordinates-184"><span class="linenos">184</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
+</span><span id="Coordinates-185"><a href="#Coordinates-185"><span class="linenos">185</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">element_name</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="Coordinates-186"><a href="#Coordinates-186"><span class="linenos">186</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="n">element_name</span><span class="p">)</span>
+</span><span id="Coordinates-187"><a href="#Coordinates-187"><span class="linenos">187</span></a>        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Class representing a Coordinates defined
-in <a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Class representing a Coordinates in the SSC API.</p>
 
 <h6 id="notes">Notes</h6>
 
 <p>The positional parameters in the constructor below are for backward
-compatibility with pre-pydantic releases.  New code should favor using
-the keyword parameters.</p>
+compatibility with pre-pydantic releases.  New code should favor
+using the keyword parameters.</p>
 </div>
 
 
@@ -1044,31 +1041,31 @@ the keyword parameters.</p>
 
     </div>
     <a class="headerlink" href="#Coordinates.xml_element"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Coordinates.xml_element-162"><a href="#Coordinates.xml_element-162"><span class="linenos">162</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-</span><span id="Coordinates.xml_element-163"><a href="#Coordinates.xml_element-163"><span class="linenos">163</span></a>                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
-</span><span id="Coordinates.xml_element-164"><a href="#Coordinates.xml_element-164"><span class="linenos">164</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Coordinates.xml_element-165"><a href="#Coordinates.xml_element-165"><span class="linenos">165</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
-</span><span id="Coordinates.xml_element-166"><a href="#Coordinates.xml_element-166"><span class="linenos">166</span></a>
-</span><span id="Coordinates.xml_element-167"><a href="#Coordinates.xml_element-167"><span class="linenos">167</span></a><span class="sd">        Parameters</span>
-</span><span id="Coordinates.xml_element-168"><a href="#Coordinates.xml_element-168"><span class="linenos">168</span></a><span class="sd">        ----------</span>
-</span><span id="Coordinates.xml_element-169"><a href="#Coordinates.xml_element-169"><span class="linenos">169</span></a><span class="sd">        name</span>
-</span><span id="Coordinates.xml_element-170"><a href="#Coordinates.xml_element-170"><span class="linenos">170</span></a><span class="sd">            Element name.  If None, use class sub-type.</span>
-</span><span id="Coordinates.xml_element-171"><a href="#Coordinates.xml_element-171"><span class="linenos">171</span></a>
-</span><span id="Coordinates.xml_element-172"><a href="#Coordinates.xml_element-172"><span class="linenos">172</span></a><span class="sd">        Returns</span>
-</span><span id="Coordinates.xml_element-173"><a href="#Coordinates.xml_element-173"><span class="linenos">173</span></a><span class="sd">        -------</span>
-</span><span id="Coordinates.xml_element-174"><a href="#Coordinates.xml_element-174"><span class="linenos">174</span></a><span class="sd">        ET</span>
-</span><span id="Coordinates.xml_element-175"><a href="#Coordinates.xml_element-175"><span class="linenos">175</span></a><span class="sd">            XML Element represenation of this object.</span>
-</span><span id="Coordinates.xml_element-176"><a href="#Coordinates.xml_element-176"><span class="linenos">176</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Coordinates.xml_element-177"><a href="#Coordinates.xml_element-177"><span class="linenos">177</span></a>
-</span><span id="Coordinates.xml_element-178"><a href="#Coordinates.xml_element-178"><span class="linenos">178</span></a>        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="Coordinates.xml_element-179"><a href="#Coordinates.xml_element-179"><span class="linenos">179</span></a>            <span class="n">element_name</span> <span class="o">=</span> <span class="n">name</span>
-</span><span id="Coordinates.xml_element-180"><a href="#Coordinates.xml_element-180"><span class="linenos">180</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="Coordinates.xml_element-181"><a href="#Coordinates.xml_element-181"><span class="linenos">181</span></a>            <span class="n">element_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sub_type</span> <span class="o">+</span> <span class="s1">&#39;Coordinates&#39;</span>
-</span><span id="Coordinates.xml_element-182"><a href="#Coordinates.xml_element-182"><span class="linenos">182</span></a>
-</span><span id="Coordinates.xml_element-183"><a href="#Coordinates.xml_element-183"><span class="linenos">183</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
-</span><span id="Coordinates.xml_element-184"><a href="#Coordinates.xml_element-184"><span class="linenos">184</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">element_name</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="Coordinates.xml_element-185"><a href="#Coordinates.xml_element-185"><span class="linenos">185</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="n">element_name</span><span class="p">)</span>
-</span><span id="Coordinates.xml_element-186"><a href="#Coordinates.xml_element-186"><span class="linenos">186</span></a>        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Coordinates.xml_element-163"><a href="#Coordinates.xml_element-163"><span class="linenos">163</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+</span><span id="Coordinates.xml_element-164"><a href="#Coordinates.xml_element-164"><span class="linenos">164</span></a>                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
+</span><span id="Coordinates.xml_element-165"><a href="#Coordinates.xml_element-165"><span class="linenos">165</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Coordinates.xml_element-166"><a href="#Coordinates.xml_element-166"><span class="linenos">166</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
+</span><span id="Coordinates.xml_element-167"><a href="#Coordinates.xml_element-167"><span class="linenos">167</span></a>
+</span><span id="Coordinates.xml_element-168"><a href="#Coordinates.xml_element-168"><span class="linenos">168</span></a><span class="sd">        Parameters</span>
+</span><span id="Coordinates.xml_element-169"><a href="#Coordinates.xml_element-169"><span class="linenos">169</span></a><span class="sd">        ----------</span>
+</span><span id="Coordinates.xml_element-170"><a href="#Coordinates.xml_element-170"><span class="linenos">170</span></a><span class="sd">        name</span>
+</span><span id="Coordinates.xml_element-171"><a href="#Coordinates.xml_element-171"><span class="linenos">171</span></a><span class="sd">            Element name.  If None, use class sub-type.</span>
+</span><span id="Coordinates.xml_element-172"><a href="#Coordinates.xml_element-172"><span class="linenos">172</span></a>
+</span><span id="Coordinates.xml_element-173"><a href="#Coordinates.xml_element-173"><span class="linenos">173</span></a><span class="sd">        Returns</span>
+</span><span id="Coordinates.xml_element-174"><a href="#Coordinates.xml_element-174"><span class="linenos">174</span></a><span class="sd">        -------</span>
+</span><span id="Coordinates.xml_element-175"><a href="#Coordinates.xml_element-175"><span class="linenos">175</span></a><span class="sd">        ET</span>
+</span><span id="Coordinates.xml_element-176"><a href="#Coordinates.xml_element-176"><span class="linenos">176</span></a><span class="sd">            XML Element represenation of this object.</span>
+</span><span id="Coordinates.xml_element-177"><a href="#Coordinates.xml_element-177"><span class="linenos">177</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Coordinates.xml_element-178"><a href="#Coordinates.xml_element-178"><span class="linenos">178</span></a>
+</span><span id="Coordinates.xml_element-179"><a href="#Coordinates.xml_element-179"><span class="linenos">179</span></a>        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="Coordinates.xml_element-180"><a href="#Coordinates.xml_element-180"><span class="linenos">180</span></a>            <span class="n">element_name</span> <span class="o">=</span> <span class="n">name</span>
+</span><span id="Coordinates.xml_element-181"><a href="#Coordinates.xml_element-181"><span class="linenos">181</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="Coordinates.xml_element-182"><a href="#Coordinates.xml_element-182"><span class="linenos">182</span></a>            <span class="n">element_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sub_type</span> <span class="o">+</span> <span class="s1">&#39;Coordinates&#39;</span>
+</span><span id="Coordinates.xml_element-183"><a href="#Coordinates.xml_element-183"><span class="linenos">183</span></a>
+</span><span id="Coordinates.xml_element-184"><a href="#Coordinates.xml_element-184"><span class="linenos">184</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
+</span><span id="Coordinates.xml_element-185"><a href="#Coordinates.xml_element-185"><span class="linenos">185</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">element_name</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="Coordinates.xml_element-186"><a href="#Coordinates.xml_element-186"><span class="linenos">186</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="n">element_name</span><span class="p">)</span>
+</span><span id="Coordinates.xml_element-187"><a href="#Coordinates.xml_element-187"><span class="linenos">187</span></a>        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span></pre></div>
 
 
@@ -1101,16 +1098,15 @@ the keyword parameters.</p>
 
     </div>
     <a class="headerlink" href="#SurfaceGeographicCoordinates"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SurfaceGeographicCoordinates-189"><a href="#SurfaceGeographicCoordinates-189"><span class="linenos">189</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SurfaceGeographicCoordinates</span><span class="p">(</span><span class="n">Coordinates</span><span class="p">):</span>
-</span><span id="SurfaceGeographicCoordinates-190"><a href="#SurfaceGeographicCoordinates-190"><span class="linenos">190</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SurfaceGeographicCoordinates-191"><a href="#SurfaceGeographicCoordinates-191"><span class="linenos">191</span></a><span class="sd">    Class representing an SurfaceGeographicCoordinates from</span>
-</span><span id="SurfaceGeographicCoordinates-192"><a href="#SurfaceGeographicCoordinates-192"><span class="linenos">192</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SurfaceGeographicCoordinates-190"><a href="#SurfaceGeographicCoordinates-190"><span class="linenos">190</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SurfaceGeographicCoordinates</span><span class="p">(</span><span class="n">Coordinates</span><span class="p">):</span>
+</span><span id="SurfaceGeographicCoordinates-191"><a href="#SurfaceGeographicCoordinates-191"><span class="linenos">191</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SurfaceGeographicCoordinates-192"><a href="#SurfaceGeographicCoordinates-192"><span class="linenos">192</span></a><span class="sd">    Class representing SurfaceGeographicCoordinates in the SSC API.</span>
 </span><span id="SurfaceGeographicCoordinates-193"><a href="#SurfaceGeographicCoordinates-193"><span class="linenos">193</span></a>
 </span><span id="SurfaceGeographicCoordinates-194"><a href="#SurfaceGeographicCoordinates-194"><span class="linenos">194</span></a><span class="sd">    Notes</span>
 </span><span id="SurfaceGeographicCoordinates-195"><a href="#SurfaceGeographicCoordinates-195"><span class="linenos">195</span></a><span class="sd">    -----</span>
 </span><span id="SurfaceGeographicCoordinates-196"><a href="#SurfaceGeographicCoordinates-196"><span class="linenos">196</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
-</span><span id="SurfaceGeographicCoordinates-197"><a href="#SurfaceGeographicCoordinates-197"><span class="linenos">197</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor using</span>
-</span><span id="SurfaceGeographicCoordinates-198"><a href="#SurfaceGeographicCoordinates-198"><span class="linenos">198</span></a><span class="sd">    the keyword parameters.</span>
+</span><span id="SurfaceGeographicCoordinates-197"><a href="#SurfaceGeographicCoordinates-197"><span class="linenos">197</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor</span>
+</span><span id="SurfaceGeographicCoordinates-198"><a href="#SurfaceGeographicCoordinates-198"><span class="linenos">198</span></a><span class="sd">    using the keyword parameters.</span>
 </span><span id="SurfaceGeographicCoordinates-199"><a href="#SurfaceGeographicCoordinates-199"><span class="linenos">199</span></a>
 </span><span id="SurfaceGeographicCoordinates-200"><a href="#SurfaceGeographicCoordinates-200"><span class="linenos">200</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="SurfaceGeographicCoordinates-201"><a href="#SurfaceGeographicCoordinates-201"><span class="linenos">201</span></a>    <span class="n">latitude</span><span class="p">:</span> <span class="n">confloat</span><span class="p">(</span><span class="n">gt</span><span class="o">=-</span><span class="mf">90.0</span><span class="p">,</span> <span class="n">lt</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Latitude.&#39;</span><span class="p">)</span>
@@ -1165,14 +1161,13 @@ the keyword parameters.</p>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Class representing an SurfaceGeographicCoordinates from
-<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Class representing SurfaceGeographicCoordinates in the SSC API.</p>
 
 <h6 id="notes">Notes</h6>
 
 <p>The positional parameters in the constructor below are for backward
-compatibility with pre-pydantic releases.  New code should favor using
-the keyword parameters.</p>
+compatibility with pre-pydantic releases.  New code should favor
+using the keyword parameters.</p>
 </div>
 
 
@@ -1288,66 +1283,64 @@ the keyword parameters.</p>
     <a class="headerlink" href="#AltitudeGeographicCoordinates"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AltitudeGeographicCoordinates-252"><a href="#AltitudeGeographicCoordinates-252"><span class="linenos">252</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AltitudeGeographicCoordinates</span><span class="p">(</span><span class="n">SurfaceGeographicCoordinates</span><span class="p">):</span>
 </span><span id="AltitudeGeographicCoordinates-253"><a href="#AltitudeGeographicCoordinates-253"><span class="linenos">253</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="AltitudeGeographicCoordinates-254"><a href="#AltitudeGeographicCoordinates-254"><span class="linenos">254</span></a><span class="sd">    Class representing an AltitudeGeographicCoordinates from</span>
-</span><span id="AltitudeGeographicCoordinates-255"><a href="#AltitudeGeographicCoordinates-255"><span class="linenos">255</span></a><span class="sd">    &lt;https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd&gt;.</span>
-</span><span id="AltitudeGeographicCoordinates-256"><a href="#AltitudeGeographicCoordinates-256"><span class="linenos">256</span></a>
-</span><span id="AltitudeGeographicCoordinates-257"><a href="#AltitudeGeographicCoordinates-257"><span class="linenos">257</span></a><span class="sd">    Notes</span>
-</span><span id="AltitudeGeographicCoordinates-258"><a href="#AltitudeGeographicCoordinates-258"><span class="linenos">258</span></a><span class="sd">    -----</span>
-</span><span id="AltitudeGeographicCoordinates-259"><a href="#AltitudeGeographicCoordinates-259"><span class="linenos">259</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
-</span><span id="AltitudeGeographicCoordinates-260"><a href="#AltitudeGeographicCoordinates-260"><span class="linenos">260</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor using</span>
-</span><span id="AltitudeGeographicCoordinates-261"><a href="#AltitudeGeographicCoordinates-261"><span class="linenos">261</span></a><span class="sd">    the keyword parameters.</span>
-</span><span id="AltitudeGeographicCoordinates-262"><a href="#AltitudeGeographicCoordinates-262"><span class="linenos">262</span></a>
-</span><span id="AltitudeGeographicCoordinates-263"><a href="#AltitudeGeographicCoordinates-263"><span class="linenos">263</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="AltitudeGeographicCoordinates-264"><a href="#AltitudeGeographicCoordinates-264"><span class="linenos">264</span></a>    <span class="n">altitude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Altitude.&#39;</span><span class="p">)</span>
-</span><span id="AltitudeGeographicCoordinates-265"><a href="#AltitudeGeographicCoordinates-265"><span class="linenos">265</span></a>
-</span><span id="AltitudeGeographicCoordinates-266"><a href="#AltitudeGeographicCoordinates-266"><span class="linenos">266</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="AltitudeGeographicCoordinates-267"><a href="#AltitudeGeographicCoordinates-267"><span class="linenos">267</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="AltitudeGeographicCoordinates-268"><a href="#AltitudeGeographicCoordinates-268"><span class="linenos">268</span></a>        <span class="n">latitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="AltitudeGeographicCoordinates-269"><a href="#AltitudeGeographicCoordinates-269"><span class="linenos">269</span></a>        <span class="n">longitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="AltitudeGeographicCoordinates-270"><a href="#AltitudeGeographicCoordinates-270"><span class="linenos">270</span></a>        <span class="n">altitude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
-</span><span id="AltitudeGeographicCoordinates-271"><a href="#AltitudeGeographicCoordinates-271"><span class="linenos">271</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="AltitudeGeographicCoordinates-272"><a href="#AltitudeGeographicCoordinates-272"><span class="linenos">272</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;sub_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;AltitudeGeographic&#39;</span>
-</span><span id="AltitudeGeographicCoordinates-273"><a href="#AltitudeGeographicCoordinates-273"><span class="linenos">273</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">latitude</span>
-</span><span id="AltitudeGeographicCoordinates-274"><a href="#AltitudeGeographicCoordinates-274"><span class="linenos">274</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">longitude</span>
-</span><span id="AltitudeGeographicCoordinates-275"><a href="#AltitudeGeographicCoordinates-275"><span class="linenos">275</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;altitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">altitude</span>
-</span><span id="AltitudeGeographicCoordinates-276"><a href="#AltitudeGeographicCoordinates-276"><span class="linenos">276</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="AltitudeGeographicCoordinates-254"><a href="#AltitudeGeographicCoordinates-254"><span class="linenos">254</span></a><span class="sd">    Class representing AltitudeGeographicCoordinates in the SSC API.</span>
+</span><span id="AltitudeGeographicCoordinates-255"><a href="#AltitudeGeographicCoordinates-255"><span class="linenos">255</span></a>
+</span><span id="AltitudeGeographicCoordinates-256"><a href="#AltitudeGeographicCoordinates-256"><span class="linenos">256</span></a><span class="sd">    Notes</span>
+</span><span id="AltitudeGeographicCoordinates-257"><a href="#AltitudeGeographicCoordinates-257"><span class="linenos">257</span></a><span class="sd">    -----</span>
+</span><span id="AltitudeGeographicCoordinates-258"><a href="#AltitudeGeographicCoordinates-258"><span class="linenos">258</span></a><span class="sd">    The positional parameters in the constructor below are for backward</span>
+</span><span id="AltitudeGeographicCoordinates-259"><a href="#AltitudeGeographicCoordinates-259"><span class="linenos">259</span></a><span class="sd">    compatibility with pre-pydantic releases.  New code should favor</span>
+</span><span id="AltitudeGeographicCoordinates-260"><a href="#AltitudeGeographicCoordinates-260"><span class="linenos">260</span></a><span class="sd">    using the keyword parameters.</span>
+</span><span id="AltitudeGeographicCoordinates-261"><a href="#AltitudeGeographicCoordinates-261"><span class="linenos">261</span></a>
+</span><span id="AltitudeGeographicCoordinates-262"><a href="#AltitudeGeographicCoordinates-262"><span class="linenos">262</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="AltitudeGeographicCoordinates-263"><a href="#AltitudeGeographicCoordinates-263"><span class="linenos">263</span></a>    <span class="n">altitude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Altitude.&#39;</span><span class="p">)</span>
+</span><span id="AltitudeGeographicCoordinates-264"><a href="#AltitudeGeographicCoordinates-264"><span class="linenos">264</span></a>
+</span><span id="AltitudeGeographicCoordinates-265"><a href="#AltitudeGeographicCoordinates-265"><span class="linenos">265</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="AltitudeGeographicCoordinates-266"><a href="#AltitudeGeographicCoordinates-266"><span class="linenos">266</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="AltitudeGeographicCoordinates-267"><a href="#AltitudeGeographicCoordinates-267"><span class="linenos">267</span></a>        <span class="n">latitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="AltitudeGeographicCoordinates-268"><a href="#AltitudeGeographicCoordinates-268"><span class="linenos">268</span></a>        <span class="n">longitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="AltitudeGeographicCoordinates-269"><a href="#AltitudeGeographicCoordinates-269"><span class="linenos">269</span></a>        <span class="n">altitude</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+</span><span id="AltitudeGeographicCoordinates-270"><a href="#AltitudeGeographicCoordinates-270"><span class="linenos">270</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="AltitudeGeographicCoordinates-271"><a href="#AltitudeGeographicCoordinates-271"><span class="linenos">271</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;sub_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;AltitudeGeographic&#39;</span>
+</span><span id="AltitudeGeographicCoordinates-272"><a href="#AltitudeGeographicCoordinates-272"><span class="linenos">272</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">latitude</span>
+</span><span id="AltitudeGeographicCoordinates-273"><a href="#AltitudeGeographicCoordinates-273"><span class="linenos">273</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">longitude</span>
+</span><span id="AltitudeGeographicCoordinates-274"><a href="#AltitudeGeographicCoordinates-274"><span class="linenos">274</span></a>        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;altitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">altitude</span>
+</span><span id="AltitudeGeographicCoordinates-275"><a href="#AltitudeGeographicCoordinates-275"><span class="linenos">275</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="AltitudeGeographicCoordinates-276"><a href="#AltitudeGeographicCoordinates-276"><span class="linenos">276</span></a>
 </span><span id="AltitudeGeographicCoordinates-277"><a href="#AltitudeGeographicCoordinates-277"><span class="linenos">277</span></a>
-</span><span id="AltitudeGeographicCoordinates-278"><a href="#AltitudeGeographicCoordinates-278"><span class="linenos">278</span></a>
-</span><span id="AltitudeGeographicCoordinates-279"><a href="#AltitudeGeographicCoordinates-279"><span class="linenos">279</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-</span><span id="AltitudeGeographicCoordinates-280"><a href="#AltitudeGeographicCoordinates-280"><span class="linenos">280</span></a>                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
-</span><span id="AltitudeGeographicCoordinates-281"><a href="#AltitudeGeographicCoordinates-281"><span class="linenos">281</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="AltitudeGeographicCoordinates-282"><a href="#AltitudeGeographicCoordinates-282"><span class="linenos">282</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
-</span><span id="AltitudeGeographicCoordinates-283"><a href="#AltitudeGeographicCoordinates-283"><span class="linenos">283</span></a>
-</span><span id="AltitudeGeographicCoordinates-284"><a href="#AltitudeGeographicCoordinates-284"><span class="linenos">284</span></a><span class="sd">        Parameters</span>
-</span><span id="AltitudeGeographicCoordinates-285"><a href="#AltitudeGeographicCoordinates-285"><span class="linenos">285</span></a><span class="sd">        ----------</span>
-</span><span id="AltitudeGeographicCoordinates-286"><a href="#AltitudeGeographicCoordinates-286"><span class="linenos">286</span></a><span class="sd">        name</span>
-</span><span id="AltitudeGeographicCoordinates-287"><a href="#AltitudeGeographicCoordinates-287"><span class="linenos">287</span></a><span class="sd">            Element name.  If None, use class sub-type.</span>
-</span><span id="AltitudeGeographicCoordinates-288"><a href="#AltitudeGeographicCoordinates-288"><span class="linenos">288</span></a>
-</span><span id="AltitudeGeographicCoordinates-289"><a href="#AltitudeGeographicCoordinates-289"><span class="linenos">289</span></a><span class="sd">        Returns</span>
-</span><span id="AltitudeGeographicCoordinates-290"><a href="#AltitudeGeographicCoordinates-290"><span class="linenos">290</span></a><span class="sd">        -------</span>
-</span><span id="AltitudeGeographicCoordinates-291"><a href="#AltitudeGeographicCoordinates-291"><span class="linenos">291</span></a><span class="sd">        ET</span>
-</span><span id="AltitudeGeographicCoordinates-292"><a href="#AltitudeGeographicCoordinates-292"><span class="linenos">292</span></a><span class="sd">            XML Element represenation of this object.</span>
-</span><span id="AltitudeGeographicCoordinates-293"><a href="#AltitudeGeographicCoordinates-293"><span class="linenos">293</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="AltitudeGeographicCoordinates-294"><a href="#AltitudeGeographicCoordinates-294"><span class="linenos">294</span></a>        <span class="n">xml_element</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">xml_element</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-</span><span id="AltitudeGeographicCoordinates-295"><a href="#AltitudeGeographicCoordinates-295"><span class="linenos">295</span></a>
-</span><span id="AltitudeGeographicCoordinates-296"><a href="#AltitudeGeographicCoordinates-296"><span class="linenos">296</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
-</span><span id="AltitudeGeographicCoordinates-297"><a href="#AltitudeGeographicCoordinates-297"><span class="linenos">297</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="AltitudeGeographicCoordinates-298"><a href="#AltitudeGeographicCoordinates-298"><span class="linenos">298</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="p">))</span>
-</span><span id="AltitudeGeographicCoordinates-299"><a href="#AltitudeGeographicCoordinates-299"><span class="linenos">299</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">)</span>
-</span><span id="AltitudeGeographicCoordinates-300"><a href="#AltitudeGeographicCoordinates-300"><span class="linenos">300</span></a>        <span class="n">xml_element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">())</span>
-</span><span id="AltitudeGeographicCoordinates-301"><a href="#AltitudeGeographicCoordinates-301"><span class="linenos">301</span></a>
-</span><span id="AltitudeGeographicCoordinates-302"><a href="#AltitudeGeographicCoordinates-302"><span class="linenos">302</span></a>        <span class="k">return</span> <span class="n">xml_element</span>
+</span><span id="AltitudeGeographicCoordinates-278"><a href="#AltitudeGeographicCoordinates-278"><span class="linenos">278</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+</span><span id="AltitudeGeographicCoordinates-279"><a href="#AltitudeGeographicCoordinates-279"><span class="linenos">279</span></a>                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
+</span><span id="AltitudeGeographicCoordinates-280"><a href="#AltitudeGeographicCoordinates-280"><span class="linenos">280</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="AltitudeGeographicCoordinates-281"><a href="#AltitudeGeographicCoordinates-281"><span class="linenos">281</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
+</span><span id="AltitudeGeographicCoordinates-282"><a href="#AltitudeGeographicCoordinates-282"><span class="linenos">282</span></a>
+</span><span id="AltitudeGeographicCoordinates-283"><a href="#AltitudeGeographicCoordinates-283"><span class="linenos">283</span></a><span class="sd">        Parameters</span>
+</span><span id="AltitudeGeographicCoordinates-284"><a href="#AltitudeGeographicCoordinates-284"><span class="linenos">284</span></a><span class="sd">        ----------</span>
+</span><span id="AltitudeGeographicCoordinates-285"><a href="#AltitudeGeographicCoordinates-285"><span class="linenos">285</span></a><span class="sd">        name</span>
+</span><span id="AltitudeGeographicCoordinates-286"><a href="#AltitudeGeographicCoordinates-286"><span class="linenos">286</span></a><span class="sd">            Element name.  If None, use class sub-type.</span>
+</span><span id="AltitudeGeographicCoordinates-287"><a href="#AltitudeGeographicCoordinates-287"><span class="linenos">287</span></a>
+</span><span id="AltitudeGeographicCoordinates-288"><a href="#AltitudeGeographicCoordinates-288"><span class="linenos">288</span></a><span class="sd">        Returns</span>
+</span><span id="AltitudeGeographicCoordinates-289"><a href="#AltitudeGeographicCoordinates-289"><span class="linenos">289</span></a><span class="sd">        -------</span>
+</span><span id="AltitudeGeographicCoordinates-290"><a href="#AltitudeGeographicCoordinates-290"><span class="linenos">290</span></a><span class="sd">        ET</span>
+</span><span id="AltitudeGeographicCoordinates-291"><a href="#AltitudeGeographicCoordinates-291"><span class="linenos">291</span></a><span class="sd">            XML Element represenation of this object.</span>
+</span><span id="AltitudeGeographicCoordinates-292"><a href="#AltitudeGeographicCoordinates-292"><span class="linenos">292</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="AltitudeGeographicCoordinates-293"><a href="#AltitudeGeographicCoordinates-293"><span class="linenos">293</span></a>        <span class="n">xml_element</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">xml_element</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="AltitudeGeographicCoordinates-294"><a href="#AltitudeGeographicCoordinates-294"><span class="linenos">294</span></a>
+</span><span id="AltitudeGeographicCoordinates-295"><a href="#AltitudeGeographicCoordinates-295"><span class="linenos">295</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
+</span><span id="AltitudeGeographicCoordinates-296"><a href="#AltitudeGeographicCoordinates-296"><span class="linenos">296</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="AltitudeGeographicCoordinates-297"><a href="#AltitudeGeographicCoordinates-297"><span class="linenos">297</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="p">))</span>
+</span><span id="AltitudeGeographicCoordinates-298"><a href="#AltitudeGeographicCoordinates-298"><span class="linenos">298</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">)</span>
+</span><span id="AltitudeGeographicCoordinates-299"><a href="#AltitudeGeographicCoordinates-299"><span class="linenos">299</span></a>        <span class="n">xml_element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">())</span>
+</span><span id="AltitudeGeographicCoordinates-300"><a href="#AltitudeGeographicCoordinates-300"><span class="linenos">300</span></a>
+</span><span id="AltitudeGeographicCoordinates-301"><a href="#AltitudeGeographicCoordinates-301"><span class="linenos">301</span></a>        <span class="k">return</span> <span class="n">xml_element</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Class representing an AltitudeGeographicCoordinates from
-<a href="https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd">https://sscweb.gsfc.nasa.gov/WebServices/REST/SSC.xsd</a>.</p>
+            <div class="docstring"><p>Class representing AltitudeGeographicCoordinates in the SSC API.</p>
 
 <h6 id="notes">Notes</h6>
 
 <p>The positional parameters in the constructor below are for backward
-compatibility with pre-pydantic releases.  New code should favor using
-the keyword parameters.</p>
+compatibility with pre-pydantic releases.  New code should favor
+using the keyword parameters.</p>
 </div>
 
 
@@ -1376,30 +1369,30 @@ the keyword parameters.</p>
 
     </div>
     <a class="headerlink" href="#AltitudeGeographicCoordinates.xml_element"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="AltitudeGeographicCoordinates.xml_element-279"><a href="#AltitudeGeographicCoordinates.xml_element-279"><span class="linenos">279</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-280"><a href="#AltitudeGeographicCoordinates.xml_element-280"><span class="linenos">280</span></a>                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-281"><a href="#AltitudeGeographicCoordinates.xml_element-281"><span class="linenos">281</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-282"><a href="#AltitudeGeographicCoordinates.xml_element-282"><span class="linenos">282</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-283"><a href="#AltitudeGeographicCoordinates.xml_element-283"><span class="linenos">283</span></a>
-</span><span id="AltitudeGeographicCoordinates.xml_element-284"><a href="#AltitudeGeographicCoordinates.xml_element-284"><span class="linenos">284</span></a><span class="sd">        Parameters</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-285"><a href="#AltitudeGeographicCoordinates.xml_element-285"><span class="linenos">285</span></a><span class="sd">        ----------</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-286"><a href="#AltitudeGeographicCoordinates.xml_element-286"><span class="linenos">286</span></a><span class="sd">        name</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-287"><a href="#AltitudeGeographicCoordinates.xml_element-287"><span class="linenos">287</span></a><span class="sd">            Element name.  If None, use class sub-type.</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-288"><a href="#AltitudeGeographicCoordinates.xml_element-288"><span class="linenos">288</span></a>
-</span><span id="AltitudeGeographicCoordinates.xml_element-289"><a href="#AltitudeGeographicCoordinates.xml_element-289"><span class="linenos">289</span></a><span class="sd">        Returns</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-290"><a href="#AltitudeGeographicCoordinates.xml_element-290"><span class="linenos">290</span></a><span class="sd">        -------</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-291"><a href="#AltitudeGeographicCoordinates.xml_element-291"><span class="linenos">291</span></a><span class="sd">        ET</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-292"><a href="#AltitudeGeographicCoordinates.xml_element-292"><span class="linenos">292</span></a><span class="sd">            XML Element represenation of this object.</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-293"><a href="#AltitudeGeographicCoordinates.xml_element-293"><span class="linenos">293</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-294"><a href="#AltitudeGeographicCoordinates.xml_element-294"><span class="linenos">294</span></a>        <span class="n">xml_element</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">xml_element</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-295"><a href="#AltitudeGeographicCoordinates.xml_element-295"><span class="linenos">295</span></a>
-</span><span id="AltitudeGeographicCoordinates.xml_element-296"><a href="#AltitudeGeographicCoordinates.xml_element-296"><span class="linenos">296</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-297"><a href="#AltitudeGeographicCoordinates.xml_element-297"><span class="linenos">297</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-298"><a href="#AltitudeGeographicCoordinates.xml_element-298"><span class="linenos">298</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="p">))</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-299"><a href="#AltitudeGeographicCoordinates.xml_element-299"><span class="linenos">299</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">)</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-300"><a href="#AltitudeGeographicCoordinates.xml_element-300"><span class="linenos">300</span></a>        <span class="n">xml_element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">())</span>
-</span><span id="AltitudeGeographicCoordinates.xml_element-301"><a href="#AltitudeGeographicCoordinates.xml_element-301"><span class="linenos">301</span></a>
-</span><span id="AltitudeGeographicCoordinates.xml_element-302"><a href="#AltitudeGeographicCoordinates.xml_element-302"><span class="linenos">302</span></a>        <span class="k">return</span> <span class="n">xml_element</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AltitudeGeographicCoordinates.xml_element-278"><a href="#AltitudeGeographicCoordinates.xml_element-278"><span class="linenos">278</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">xml_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-279"><a href="#AltitudeGeographicCoordinates.xml_element-279"><span class="linenos">279</span></a>                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-280"><a href="#AltitudeGeographicCoordinates.xml_element-280"><span class="linenos">280</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-281"><a href="#AltitudeGeographicCoordinates.xml_element-281"><span class="linenos">281</span></a><span class="sd">        Produces the XML Element representation of this object.</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-282"><a href="#AltitudeGeographicCoordinates.xml_element-282"><span class="linenos">282</span></a>
+</span><span id="AltitudeGeographicCoordinates.xml_element-283"><a href="#AltitudeGeographicCoordinates.xml_element-283"><span class="linenos">283</span></a><span class="sd">        Parameters</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-284"><a href="#AltitudeGeographicCoordinates.xml_element-284"><span class="linenos">284</span></a><span class="sd">        ----------</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-285"><a href="#AltitudeGeographicCoordinates.xml_element-285"><span class="linenos">285</span></a><span class="sd">        name</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-286"><a href="#AltitudeGeographicCoordinates.xml_element-286"><span class="linenos">286</span></a><span class="sd">            Element name.  If None, use class sub-type.</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-287"><a href="#AltitudeGeographicCoordinates.xml_element-287"><span class="linenos">287</span></a>
+</span><span id="AltitudeGeographicCoordinates.xml_element-288"><a href="#AltitudeGeographicCoordinates.xml_element-288"><span class="linenos">288</span></a><span class="sd">        Returns</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-289"><a href="#AltitudeGeographicCoordinates.xml_element-289"><span class="linenos">289</span></a><span class="sd">        -------</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-290"><a href="#AltitudeGeographicCoordinates.xml_element-290"><span class="linenos">290</span></a><span class="sd">        ET</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-291"><a href="#AltitudeGeographicCoordinates.xml_element-291"><span class="linenos">291</span></a><span class="sd">            XML Element represenation of this object.</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-292"><a href="#AltitudeGeographicCoordinates.xml_element-292"><span class="linenos">292</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-293"><a href="#AltitudeGeographicCoordinates.xml_element-293"><span class="linenos">293</span></a>        <span class="n">xml_element</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">xml_element</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-294"><a href="#AltitudeGeographicCoordinates.xml_element-294"><span class="linenos">294</span></a>
+</span><span id="AltitudeGeographicCoordinates.xml_element-295"><a href="#AltitudeGeographicCoordinates.xml_element-295"><span class="linenos">295</span></a>        <span class="n">builder</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">TreeBuilder</span><span class="p">()</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-296"><a href="#AltitudeGeographicCoordinates.xml_element-296"><span class="linenos">296</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-297"><a href="#AltitudeGeographicCoordinates.xml_element-297"><span class="linenos">297</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="p">))</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-298"><a href="#AltitudeGeographicCoordinates.xml_element-298"><span class="linenos">298</span></a>        <span class="n">builder</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">)</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-299"><a href="#AltitudeGeographicCoordinates.xml_element-299"><span class="linenos">299</span></a>        <span class="n">xml_element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">close</span><span class="p">())</span>
+</span><span id="AltitudeGeographicCoordinates.xml_element-300"><a href="#AltitudeGeographicCoordinates.xml_element-300"><span class="linenos">300</span></a>
+</span><span id="AltitudeGeographicCoordinates.xml_element-301"><a href="#AltitudeGeographicCoordinates.xml_element-301"><span class="linenos">301</span></a>        <span class="k">return</span> <span class="n">xml_element</span>
 </span></pre></div>
 
 
