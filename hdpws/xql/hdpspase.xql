@@ -290,6 +290,8 @@ as xs:string*
  : @return canonical DOI values.
  :)
 declare
+    %test:arg("values", "https://doi.org/10.48322/kk2y-1x76", "TBD")
+        %test:assertEquals("10.48322/kk2y-1x76")
     %test:arg("values", "https://doi.org/10.48322/e0dc-0h53", 
                         "10.48322/E0DC-0H53",
                         "10.48322/e0dc-0h53")
@@ -302,7 +304,9 @@ as xs:string*
 {
     for $value in $values
     return
-        lower-case(replace($value, "https://doi.org/", ""))
+        if ($value ne "TBD")
+        then lower-case(replace($value, "https://doi.org/", ""))
+        else ()
 };
 
 
