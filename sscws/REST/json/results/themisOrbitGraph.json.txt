@@ -1,0 +1,50 @@
+[
+    "gov.nasa.gsfc.sscweb.schema.Response",
+    {
+        "Result": [
+            "gov.nasa.gsfc.sscweb.schema.FileResult",
+            {
+                "StatusCode": "SUCCESS",
+                "StatusSubCode": "SUCCESS",
+                "Files": [
+                    "java.util.ArrayList",
+                    [
+                        [
+                            "gov.nasa.gsfc.sscweb.schema.FileDescription",
+                            {
+                                "Name": "http://sscweb-dev.sci.gsfc.nasa.gov/images/ORBIT_185515_001.gif",
+                                "Length": -1,
+                                "LastModified": [
+                                    "javax.xml.datatype.XMLGregorianCalendar",
+                                    "2024-04-24T12:31:39.844+00:00"
+                                ]
+                            }
+                        ],
+                        [
+                            "gov.nasa.gsfc.sscweb.schema.FileDescription",
+                            {
+                                "Name": "http://sscweb-dev.sci.gsfc.nasa.gov/images/ORBIT_185515_001.eps",
+                                "Length": -1,
+                                "LastModified": [
+                                    "javax.xml.datatype.XMLGregorianCalendar",
+                                    "2024-04-24T12:31:39.845+00:00"
+                                ]
+                            }
+                        ],
+                        [
+                            "gov.nasa.gsfc.sscweb.schema.FileDescription",
+                            {
+                                "Name": "http://sscweb-dev.sci.gsfc.nasa.gov/images/ORBIT_185515_001.pdf",
+                                "Length": -1,
+                                "LastModified": [
+                                    "javax.xml.datatype.XMLGregorianCalendar",
+                                    "2024-04-24T12:31:39.846+00:00"
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ]
+    }
+]

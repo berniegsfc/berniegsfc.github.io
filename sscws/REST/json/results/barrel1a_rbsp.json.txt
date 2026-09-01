@@ -1,0 +1,496 @@
+[
+    "gov.nasa.gsfc.sscweb.schema.QueryResponse",
+    {
+        "QueryResult": [
+            "gov.nasa.gsfc.sscweb.schema.QueryDataResult",
+            {
+                "StatusCode": "SUCCESS",
+                "StatusSubCode": "SUCCESS",
+                "QueryRequest": [
+                    "gov.nasa.gsfc.sscweb.schema.QueryRequestType",
+                    {
+                        "Description": "Magnetic conjunction of at least 1 RBSP satellites with BARREL 1A (lead satellite).",
+                        "TimeInterval": [
+                            "gov.nasa.gsfc.sscweb.schema.TimeInterval",
+                            {
+                                "Start": [
+                                    "javax.xml.datatype.XMLGregorianCalendar",
+                                    "2013-01-29T00:00:00.000+00:00"
+                                ],
+                                "End": [
+                                    "javax.xml.datatype.XMLGregorianCalendar",
+                                    "2013-02-13T23:00:00.000+00:00"
+                                ]
+                            }
+                        ],
+                        "ExecuteOptions": [
+                            "gov.nasa.gsfc.sscweb.schema.ExecuteOptions",
+                            {
+                                "WaitForResult": true
+                            }
+                        ],
+                        "ResultOptions": [
+                            "gov.nasa.gsfc.sscweb.schema.ResultOptions",
+                            {
+                                "IncludeQueryInResult": true,
+                                "QueryResultType": "XML",
+                                "FormatOptions": [
+                                    "gov.nasa.gsfc.sscweb.schema.FormatOptions",
+                                    {
+                                        "DateFormat": "YYYY_DDD",
+                                        "TimeFormat": "HH_MM_SS",
+                                        "DistanceFormat": "INTEGER_KM",
+                                        "DistanceDigits": 1,
+                                        "DegreeFormat": "DECIMAL",
+                                        "DegreeDigits": 2,
+                                        "LatLonFormat": "LAT_90_LON_360",
+                                        "LinesPerPage": 0
+                                    }
+                                ],
+                                "TraceCoordinateSystem": "GEO",
+                                "SubSatelliteCoordinateSystem": "GEO",
+                                "SubSatelliteCoordinateSystemType": "SPHERICAL"
+                            }
+                        ],
+                        "ConditionOperator": "ALL",
+                        "Conditions": [
+                            "java.util.ArrayList",
+                            [
+                                [
+                                    "gov.nasa.gsfc.sscweb.schema.SatelliteCondition",
+                                    {
+                                        "Satellite": [
+                                            "java.util.ArrayList",
+                                            [
+                                                [
+                                                    "gov.nasa.gsfc.sscweb.schema.Satellite",
+                                                    {
+                                                        "Id": "barrel1a",
+                                                        "BfieldTraceDirection": "SOUTH_HEMISPHERE"
+                                                    }
+                                                ],
+                                                [
+                                                    "gov.nasa.gsfc.sscweb.schema.Satellite",
+                                                    {
+                                                        "Id": "rbspa",
+                                                        "BfieldTraceDirection": "SOUTH_HEMISPHERE"
+                                                    }
+                                                ],
+                                                [
+                                                    "gov.nasa.gsfc.sscweb.schema.Satellite",
+                                                    {
+                                                        "Id": "rbspb",
+                                                        "BfieldTraceDirection": "SOUTH_HEMISPHERE"
+                                                    }
+                                                ]
+                                            ]
+                                        ],
+                                        "SatelliteCombination": 1
+                                    }
+                                ],
+                                [
+                                    "gov.nasa.gsfc.sscweb.schema.LeadSatelliteCondition",
+                                    {
+                                        "Satellite": [
+                                            "java.util.ArrayList",
+                                            [
+                                                [
+                                                    "gov.nasa.gsfc.sscweb.schema.Satellite",
+                                                    {
+                                                        "Id": "barrel1a",
+                                                        "BfieldTraceDirection": "SOUTH_HEMISPHERE"
+                                                    }
+                                                ]
+                                            ]
+                                        ],
+                                        "ConjunctionArea": [
+                                            "gov.nasa.gsfc.sscweb.schema.BoxConjunctionArea",
+                                            {
+                                                "CoordinateSystem": "GEO",
+                                                "DeltaLatitude": 3.0,
+                                                "DeltaLongitude": 10.0
+                                            }
+                                        ],
+                                        "TraceType": "B_FIELD"
+                                    }
+                                ]
+                            ]
+                        ],
+                        "BfieldModel": [
+                            "gov.nasa.gsfc.sscweb.schema.BFieldModel",
+                            {
+                                "InternalBFieldModel": "IGRF",
+                                "ExternalBFieldModel": [
+                                    "gov.nasa.gsfc.sscweb.schema.Tsyganenko89CBFieldModel",
+                                    {
+                                        "KeyParameterValues": "KP_3_3_3"
+                                    }
+                                ],
+                                "TraceStopAltitude": 1
+                            }
+                        ]
+                    }
+                ],
+                "Conjunction": [
+                    "java.util.ArrayList",
+                    [
+                        [
+                            "gov.nasa.gsfc.sscweb.schema.Conjunction",
+                            {
+                                "TimeInterval": [
+                                    "gov.nasa.gsfc.sscweb.schema.TimeInterval",
+                                    {
+                                        "Start": [
+                                            "javax.xml.datatype.XMLGregorianCalendar",
+                                            "2013-01-30T07:08:00.000+00:00"
+                                        ],
+                                        "End": [
+                                            "javax.xml.datatype.XMLGregorianCalendar",
+                                            "2013-01-30T07:48:00.000+00:00"
+                                        ]
+                                    }
+                                ],
+                                "SatelliteDescription": [
+                                    "java.util.ArrayList",
+                                    [
+                                        [
+                                            "gov.nasa.gsfc.sscweb.schema.SatelliteConjunction",
+                                            {
+                                                "Satellite": "barrel1a",
+                                                "Description": [
+                                                    "java.util.ArrayList",
+                                                    [
+                                                        [
+                                                            "gov.nasa.gsfc.sscweb.schema.ConjunctionDescription",
+                                                            {
+                                                                "Location": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.RadiusGeographicCoordinates",
+                                                                    {
+                                                                        "Latitude": -75.84,
+                                                                        "Longitude": 320.49,
+                                                                        "Radius": 6412.0
+                                                                    }
+                                                                ],
+                                                                "TraceDescription": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.TraceDescription",
+                                                                    {
+                                                                        "Location": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SurfaceGeographicCoordinates",
+                                                                            {
+                                                                                "Latitude": -76.07,
+                                                                                "Longitude": 320.37
+                                                                            }
+                                                                        ],
+                                                                        "ArcLength": 59.0,
+                                                                        "Target": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SatelliteTarget",
+                                                                            {
+                                                                                "LeadSatellite": "barrel1a",
+                                                                                "Distance": 0.0
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ],
+                                                        [
+                                                            "gov.nasa.gsfc.sscweb.schema.ConjunctionDescription",
+                                                            {
+                                                                "Location": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.RadiusGeographicCoordinates",
+                                                                    {
+                                                                        "Latitude": -75.88,
+                                                                        "Longitude": 320.44,
+                                                                        "Radius": 6412.0
+                                                                    }
+                                                                ],
+                                                                "TraceDescription": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.TraceDescription",
+                                                                    {
+                                                                        "Location": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SurfaceGeographicCoordinates",
+                                                                            {
+                                                                                "Latitude": -76.11,
+                                                                                "Longitude": 320.32
+                                                                            }
+                                                                        ],
+                                                                        "ArcLength": 59.0,
+                                                                        "Target": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SatelliteTarget",
+                                                                            {
+                                                                                "LeadSatellite": "barrel1a",
+                                                                                "Distance": 0.0
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    ]
+                                                ]
+                                            }
+                                        ],
+                                        [
+                                            "gov.nasa.gsfc.sscweb.schema.SatelliteConjunction",
+                                            {
+                                                "Satellite": "rbspa",
+                                                "Description": [
+                                                    "java.util.ArrayList",
+                                                    [
+                                                        [
+                                                            "gov.nasa.gsfc.sscweb.schema.ConjunctionDescription",
+                                                            {
+                                                                "Location": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.RadiusGeographicCoordinates",
+                                                                    {
+                                                                        "Latitude": -3.69,
+                                                                        "Longitude": 312.0,
+                                                                        "Radius": 32571.0
+                                                                    }
+                                                                ],
+                                                                "TraceDescription": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.TraceDescription",
+                                                                    {
+                                                                        "Location": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SurfaceGeographicCoordinates",
+                                                                            {
+                                                                                "Latitude": -76.17,
+                                                                                "Longitude": 325.36
+                                                                            }
+                                                                        ],
+                                                                        "ArcLength": 40123.0,
+                                                                        "Target": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SatelliteTarget",
+                                                                            {
+                                                                                "LeadSatellite": "barrel1a",
+                                                                                "Distance": 31226.0
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ],
+                                                        [
+                                                            "gov.nasa.gsfc.sscweb.schema.ConjunctionDescription",
+                                                            {
+                                                                "Location": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.RadiusGeographicCoordinates",
+                                                                    {
+                                                                        "Latitude": -2.05,
+                                                                        "Longitude": 311.89,
+                                                                        "Radius": 28537.0
+                                                                    }
+                                                                ],
+                                                                "TraceDescription": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.TraceDescription",
+                                                                    {
+                                                                        "Location": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SurfaceGeographicCoordinates",
+                                                                            {
+                                                                                "Latitude": -74.67,
+                                                                                "Longitude": 324.41
+                                                                            }
+                                                                        ],
+                                                                        "ArcLength": 36101.0,
+                                                                        "Target": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SatelliteTarget",
+                                                                            {
+                                                                                "LeadSatellite": "barrel1a",
+                                                                                "Distance": 27469.0
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    ]
+                                                ]
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "gov.nasa.gsfc.sscweb.schema.Conjunction",
+                            {
+                                "TimeInterval": [
+                                    "gov.nasa.gsfc.sscweb.schema.TimeInterval",
+                                    {
+                                        "Start": [
+                                            "javax.xml.datatype.XMLGregorianCalendar",
+                                            "2013-02-10T06:59:00.000+00:00"
+                                        ],
+                                        "End": [
+                                            "javax.xml.datatype.XMLGregorianCalendar",
+                                            "2013-02-10T07:38:00.000+00:00"
+                                        ]
+                                    }
+                                ],
+                                "SatelliteDescription": [
+                                    "java.util.ArrayList",
+                                    [
+                                        [
+                                            "gov.nasa.gsfc.sscweb.schema.SatelliteConjunction",
+                                            {
+                                                "Satellite": "barrel1a",
+                                                "Description": [
+                                                    "java.util.ArrayList",
+                                                    [
+                                                        [
+                                                            "gov.nasa.gsfc.sscweb.schema.ConjunctionDescription",
+                                                            {
+                                                                "Location": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.RadiusGeographicCoordinates",
+                                                                    {
+                                                                        "Latitude": -73.96,
+                                                                        "Longitude": 321.41,
+                                                                        "Radius": 6404.0
+                                                                    }
+                                                                ],
+                                                                "TraceDescription": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.TraceDescription",
+                                                                    {
+                                                                        "Location": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SurfaceGeographicCoordinates",
+                                                                            {
+                                                                                "Latitude": -74.17,
+                                                                                "Longitude": 321.34
+                                                                            }
+                                                                        ],
+                                                                        "ArcLength": 51.0,
+                                                                        "Target": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SatelliteTarget",
+                                                                            {
+                                                                                "LeadSatellite": "barrel1a",
+                                                                                "Distance": 0.0
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ],
+                                                        [
+                                                            "gov.nasa.gsfc.sscweb.schema.ConjunctionDescription",
+                                                            {
+                                                                "Location": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.RadiusGeographicCoordinates",
+                                                                    {
+                                                                        "Latitude": -73.94,
+                                                                        "Longitude": 321.21,
+                                                                        "Radius": 6405.0
+                                                                    }
+                                                                ],
+                                                                "TraceDescription": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.TraceDescription",
+                                                                    {
+                                                                        "Location": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SurfaceGeographicCoordinates",
+                                                                            {
+                                                                                "Latitude": -74.15,
+                                                                                "Longitude": 321.13
+                                                                            }
+                                                                        ],
+                                                                        "ArcLength": 51.0,
+                                                                        "Target": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SatelliteTarget",
+                                                                            {
+                                                                                "LeadSatellite": "barrel1a",
+                                                                                "Distance": 0.0
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    ]
+                                                ]
+                                            }
+                                        ],
+                                        [
+                                            "gov.nasa.gsfc.sscweb.schema.SatelliteConjunction",
+                                            {
+                                                "Satellite": "rbspb",
+                                                "Description": [
+                                                    "java.util.ArrayList",
+                                                    [
+                                                        [
+                                                            "gov.nasa.gsfc.sscweb.schema.ConjunctionDescription",
+                                                            {
+                                                                "Location": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.RadiusGeographicCoordinates",
+                                                                    {
+                                                                        "Latitude": -1.57,
+                                                                        "Longitude": 311.68,
+                                                                        "Radius": 31055.0
+                                                                    }
+                                                                ],
+                                                                "TraceDescription": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.TraceDescription",
+                                                                    {
+                                                                        "Location": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SurfaceGeographicCoordinates",
+                                                                            {
+                                                                                "Latitude": -75.66,
+                                                                                "Longitude": 324.68
+                                                                            }
+                                                                        ],
+                                                                        "ArcLength": 39776.0,
+                                                                        "Target": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SatelliteTarget",
+                                                                            {
+                                                                                "LeadSatellite": "barrel1a",
+                                                                                "Distance": 29777.0
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ],
+                                                        [
+                                                            "gov.nasa.gsfc.sscweb.schema.ConjunctionDescription",
+                                                            {
+                                                                "Location": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.RadiusGeographicCoordinates",
+                                                                    {
+                                                                        "Latitude": 0.31,
+                                                                        "Longitude": 312.81,
+                                                                        "Radius": 26456.0
+                                                                    }
+                                                                ],
+                                                                "TraceDescription": [
+                                                                    "gov.nasa.gsfc.sscweb.schema.TraceDescription",
+                                                                    {
+                                                                        "Location": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SurfaceGeographicCoordinates",
+                                                                            {
+                                                                                "Latitude": -73.45,
+                                                                                "Longitude": 326.08
+                                                                            }
+                                                                        ],
+                                                                        "ArcLength": 34695.0,
+                                                                        "Target": [
+                                                                            "gov.nasa.gsfc.sscweb.schema.SatelliteTarget",
+                                                                            {
+                                                                                "LeadSatellite": "barrel1a",
+                                                                                "Distance": 25494.0
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    ]
+                                                ]
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ]
+    }
+]

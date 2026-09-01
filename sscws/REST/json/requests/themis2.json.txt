@@ -1,0 +1,235 @@
+[
+  "gov.nasa.gsfc.sscweb.schema.DataRequest",
+  {
+    "Description": "Complex locator request with nearly all options.",
+    "TimeInterval": [
+      "gov.nasa.gsfc.sscweb.schema.TimeInterval",
+      {
+        "Start": [
+          "javax.xml.datatype.XMLGregorianCalendar",
+          "2008-01-02T11:00:00.000+00:00"
+        ],
+        "End": [
+          "javax.xml.datatype.XMLGregorianCalendar",
+          "2008-01-02T11:59:59.000+00:00"
+        ]
+      }
+    ],
+    "Satellites": [
+      "java.util.ArrayList",
+      [
+        [
+          "gov.nasa.gsfc.sscweb.schema.SatelliteSpecification",
+          {
+            "Id": "themisa",
+            "ResolutionFactor": 2
+          }
+        ],
+        [
+          "gov.nasa.gsfc.sscweb.schema.SatelliteSpecification",
+          {
+            "Id": "themisb",
+            "ResolutionFactor": 2
+          }
+        ]
+      ]
+    ],
+    "OutputOptions": [
+      "gov.nasa.gsfc.sscweb.schema.OutputOptions",
+      {
+        "AllLocationFilters": true,
+        "CoordinateOptions": [
+          "java.util.ArrayList",
+          [
+            [
+              "gov.nasa.gsfc.sscweb.schema.FilteredCoordinateOptions",
+              {
+                "CoordinateSystem": "GSE",
+                "Component": "X"
+              }
+            ],
+            [
+              "gov.nasa.gsfc.sscweb.schema.FilteredCoordinateOptions",
+              {
+                "CoordinateSystem": "GSE",
+                "Component": "Y"
+              }
+            ],
+            [
+              "gov.nasa.gsfc.sscweb.schema.FilteredCoordinateOptions",
+              {
+                "CoordinateSystem": "GSE",
+                "Component": "Z"
+              }
+            ],
+            [
+              "gov.nasa.gsfc.sscweb.schema.FilteredCoordinateOptions",
+              {
+                "CoordinateSystem": "GSE",
+                "Component": "LAT"
+              }
+            ],
+            [
+              "gov.nasa.gsfc.sscweb.schema.FilteredCoordinateOptions",
+              {
+                "CoordinateSystem": "GSE",
+                "Component": "LON"
+              }
+            ],
+            [
+              "gov.nasa.gsfc.sscweb.schema.FilteredCoordinateOptions",
+              {
+                "CoordinateSystem": "GSE",
+                "Component": "LOCAL_TIME"
+              }
+            ]
+          ]
+        ],
+        "RegionOptions": [
+          "gov.nasa.gsfc.sscweb.schema.RegionOptions",
+          {
+            "Spacecraft": true,
+            "RadialTracedFootpoint": true,
+            "NorthBTracedFootpoint": true,
+            "SouthBTracedFootpoint": true
+          }
+        ],
+        "ValueOptions": [
+          "gov.nasa.gsfc.sscweb.schema.ValueOptions",
+          {
+            "RadialDistance": true,
+            "DipoleLValue": true,
+            "DipoleInvLat": true,
+            "BfieldStrength": true
+          }
+        ],
+        "DistanceFromOptions": [
+          "gov.nasa.gsfc.sscweb.schema.DistanceFromOptions",
+          {
+            "NeutralSheet": true,
+            "BowShock": true,
+            "Mpause": true,
+            "BgseXYZ": true
+          }
+        ],
+        "MinMaxPoints": 2
+      }
+    ],
+    "RegionFilterOptions": [
+      "gov.nasa.gsfc.sscweb.schema.RegionFilterOptions",
+      {
+        "SpaceRegions": [
+          "gov.nasa.gsfc.sscweb.schema.SpaceRegionsFilterOptions",
+          {
+            "InterplanetaryMedium": true,
+            "DaysideMagnetosheath": true,
+            "NightsideMagnetosheath": true,
+            "DaysideMagnetosphere": true,
+            "NightsideMagnetosphere": true,
+            "PlasmaSheet": true,
+            "TailLobe": true,
+            "HighLatitudeBoundaryLayer": true,
+            "LowLatitudeBoundaryLayer": true,
+            "DaysidePlasmasphere": true,
+            "NightsidePlasmasphere": true
+          }
+        ],
+        "RadialTraceRegions": [
+          "gov.nasa.gsfc.sscweb.schema.MappedRegionFilterOptions",
+          {
+            "Cusp": [
+              "gov.nasa.gsfc.sscweb.schema.HemisphereOptions",
+              {
+                "North": true,
+                "South": true
+              }
+            ],
+            "Cleft": [
+              "gov.nasa.gsfc.sscweb.schema.HemisphereOptions",
+              {
+                "North": true,
+                "South": true
+              }
+            ],
+            "AuroralOval": [
+              "gov.nasa.gsfc.sscweb.schema.HemisphereOptions",
+              {
+                "North": true,
+                "South": true
+              }
+            ],
+            "PolarCap": [
+              "gov.nasa.gsfc.sscweb.schema.HemisphereOptions",
+              {
+                "North": true,
+                "South": true
+              }
+            ],
+            "MidLatitude": [
+              "gov.nasa.gsfc.sscweb.schema.HemisphereOptions",
+              {
+                "North": true,
+                "South": true
+              }
+            ],
+            "LowLatitude": true
+          }
+        ],
+        "MagneticTraceRegions": [
+          "gov.nasa.gsfc.sscweb.schema.MappedRegionFilterOptions",
+          {
+            "Cusp": [
+              "gov.nasa.gsfc.sscweb.schema.HemisphereOptions",
+              {
+                "North": true,
+                "South": true
+              }
+            ],
+            "Cleft": [
+              "gov.nasa.gsfc.sscweb.schema.HemisphereOptions",
+              {
+                "North": true,
+                "South": true
+              }
+            ],
+            "AuroralOval": [
+              "gov.nasa.gsfc.sscweb.schema.HemisphereOptions",
+              {
+                "North": true,
+                "South": true
+              }
+            ],
+            "PolarCap": [
+              "gov.nasa.gsfc.sscweb.schema.HemisphereOptions",
+              {
+                "North": true,
+                "South": true
+              }
+            ],
+            "MidLatitude": [
+              "gov.nasa.gsfc.sscweb.schema.HemisphereOptions",
+              {
+                "North": true,
+                "South": true
+              }
+            ],
+            "LowLatitude": true
+          }
+        ]
+      }
+    ],
+    "BfieldModel": [
+      "gov.nasa.gsfc.sscweb.schema.BFieldModel",
+      {
+        "InternalBFieldModel": "IGRF",
+        "ExternalBFieldModel": [
+          "gov.nasa.gsfc.sscweb.schema.Tsyganenko89CBFieldModel",
+          {
+            "KeyParameterValues": "KP_3_3_3"
+          }
+        ],
+        "TraceStopAltitude": 100
+      }
+    ]
+  }
+]

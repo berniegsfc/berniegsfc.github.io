@@ -1,0 +1,130 @@
+[
+    "gov.nasa.gsfc.sscweb.schema.QueryRequest",
+    {
+        "Request": [
+            "gov.nasa.gsfc.sscweb.schema.QueryRequestType",
+            {
+                "Description": "Magnetic conjunction of at least 1 RBSP satellites with BARREL 1A (lead satellite).",
+                "TimeInterval": [
+                    "gov.nasa.gsfc.sscweb.schema.TimeInterval",
+                    {
+                        "Start": [
+                            "javax.xml.datatype.XMLGregorianCalendar",
+                            "2013-01-29T00:00:00.000+00:00"
+                        ],
+                        "End": [
+                            "javax.xml.datatype.XMLGregorianCalendar",
+                            "2013-02-13T23:00:00.000+00:00"
+                        ]
+                    }
+                ],
+                "ExecuteOptions": [
+                    "gov.nasa.gsfc.sscweb.schema.ExecuteOptions",
+                    {
+                        "WaitForResult": true
+                    }
+                ],
+                "ResultOptions": [
+                    "gov.nasa.gsfc.sscweb.schema.ResultOptions",
+                    {
+                        "IncludeQueryInResult": true,
+                        "QueryResultType": "XML",
+                        "FormatOptions": [
+                            "gov.nasa.gsfc.sscweb.schema.FormatOptions",
+                            {
+                                "DateFormat": "YYYY_DDD",
+                                "TimeFormat": "HH_HHHH",
+                                "DistanceFormat": "INTEGER_KM",
+                                "DistanceDigits": 1,
+                                "DegreeFormat": "DECIMAL",
+                                "DegreeDigits": 2,
+                                "LatLonFormat": "LAT_90_LON_360",
+                                "LinesPerPage": 55
+                            }
+                        ],
+                        "TraceCoordinateSystem": "GEO",
+                        "SubSatelliteCoordinateSystem": "GEO",
+                        "SubSatelliteCoordinateSystemType": "SPHERICAL"
+                    }
+                ],
+                "ConditionOperator": "ALL",
+                "Conditions": [
+                    "java.util.ArrayList",
+                    [
+                        [
+                            "gov.nasa.gsfc.sscweb.schema.SatelliteCondition",
+                            {
+                                "Satellite": [
+                                    "java.util.ArrayList",
+                                    [
+                                        [
+                                            "gov.nasa.gsfc.sscweb.schema.Satellite",
+                                            {
+                                                "Id": "barrel1a",
+                                                "BfieldTraceDirection": "SOUTH_HEMISPHERE"
+                                            }
+                                        ],
+                                        [
+                                            "gov.nasa.gsfc.sscweb.schema.Satellite",
+                                            {
+                                                "Id": "rbspa",
+                                                "BfieldTraceDirection": "SOUTH_HEMISPHERE"
+                                            }
+                                        ],
+                                        [
+                                            "gov.nasa.gsfc.sscweb.schema.Satellite",
+                                            {
+                                                "Id": "rbspb",
+                                                "BfieldTraceDirection": "SOUTH_HEMISPHERE"
+                                            }
+                                        ]
+                                    ]
+                                ],
+                                "SatelliteCombination": 1
+                            }
+                        ],
+                        [
+                            "gov.nasa.gsfc.sscweb.schema.LeadSatelliteCondition",
+                            {
+                                "Satellite": [
+                                    "java.util.ArrayList",
+                                    [
+                                        [
+                                            "gov.nasa.gsfc.sscweb.schema.Satellite",
+                                            {
+                                                "Id": "barrel1a",
+                                                "BfieldTraceDirection": "SOUTH_HEMISPHERE"
+                                            }
+                                        ]
+                                    ]
+                                ],
+                                "ConjunctionArea": [
+                                    "gov.nasa.gsfc.sscweb.schema.BoxConjunctionArea",
+                                    {
+                                        "CoordinateSystem": "GEO",
+                                        "DeltaLatitude": 3.0,
+                                        "DeltaLongitude": 10.0
+                                    }
+                                ],
+                                "TraceType": "B_FIELD"
+                            }
+                        ]
+                    ]
+                ],
+                "BfieldModel": [
+                    "gov.nasa.gsfc.sscweb.schema.BFieldModel",
+                    {
+                        "InternalBFieldModel": "IGRF",
+                        "ExternalBFieldModel": [
+                            "gov.nasa.gsfc.sscweb.schema.Tsyganenko89CBFieldModel",
+                            {
+                                "KeyParameterValues": "KP_3_3_3"
+                            }
+                        ],
+                        "TraceStopAltitude": 1
+                    }
+                ]
+            }
+        ]
+    }
+]

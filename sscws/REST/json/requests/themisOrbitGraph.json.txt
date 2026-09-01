@@ -1,0 +1,67 @@
+[
+    "gov.nasa.gsfc.sscweb.schema.GraphRequest",
+    {
+        "Description": "Simple locator graphics (Orbit plot) request.",
+        "TimeInterval": [
+            "gov.nasa.gsfc.sscweb.schema.TimeInterval",
+            {
+                "Start": [
+                    "javax.xml.datatype.XMLGregorianCalendar",
+                    "2008-01-02T11:00:00.000+00:00"
+                ],
+                "End": [
+                    "javax.xml.datatype.XMLGregorianCalendar",
+                    "2008-01-02T11:59:59.000+00:00"
+                ]
+            }
+        ],
+        "Satellites": [
+            "java.util.ArrayList",
+            [
+                [
+                    "gov.nasa.gsfc.sscweb.schema.SatelliteSpecification",
+                    {
+                        "Id": "themisa",
+                        "ResolutionFactor": 2
+                    }
+                ],
+                [
+                    "gov.nasa.gsfc.sscweb.schema.SatelliteSpecification",
+                    {
+                        "Id": "themisb",
+                        "ResolutionFactor": 2
+                    }
+                ]
+            ]
+        ],
+        "GraphOptions": [
+            "gov.nasa.gsfc.sscweb.schema.OrbitGraphOptions",
+            {
+                "CoordinateSystem": "GSE",
+                "Combined": true,
+                "XyView": true,
+                "XzView": true,
+                "YzView": true,
+                "XrView": true,
+                "SunToRight": false,
+                "EvenAxesScale": false,
+                "ShowBowShockMagnetopause": true,
+                "SolarWindPressure": 2.1,
+                "ImfBz": 0.0
+            }
+        ],
+        "BfieldModel": [
+            "gov.nasa.gsfc.sscweb.schema.BFieldModel",
+            {
+                "InternalBFieldModel": "IGRF",
+                "ExternalBFieldModel": [
+                    "gov.nasa.gsfc.sscweb.schema.Tsyganenko89CBFieldModel",
+                    {
+                        "KeyParameterValues": "KP_3_3_3"
+                    }
+                ],
+                "TraceStopAltitude": 100
+            }
+        ]
+    }
+]

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<!--
+  <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://dap.digitalgov.gov/ https://www.google-analytics.com/ https://code.jquery.com/; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com/;" >
+-->
+  <title>SSC RESTful Web Services</title>
+  <meta content="Bernie Harris" name="author">
+  <meta name="orgcode" content="672">
+  <meta name="description"
+ content="The SSC Web services allow a software developer to use SSC services in their own application...">
+  <meta name="keywords"
+ content="science, data, CDAWeb, coordinated data analysis, multi-mission, multi-instrument, space physics, XML, Web services">
+<!--
+  <meta name="rno" content="Robert.M.Candey.1">
+  <meta name="content-owner" content="Tamara.J.Kovalick.1">
+  <meta name="webmaster" content="Tamara.J.Kovalick.1">
+  <link rel="icon" href="nasaicon.png" type="image/png">
+  <link rel="SHORTCUT ICON" href="favicon.ico">
+  <link rel="stylesheet" href="/css/common.css" type="text/css">
+  <link rel="stylesheet" href="/css/spdf_services.css" type="text/css">
+  <style type="text/css">	
+	        a.modellink {font-size:13px; font-style:oblique; font-weight:700;} 
+	   	a.serviceName {color: #069; background-color: #fff;}
+		table td {border: thin solid black}
+
+	   	#sources	td.selected {color: #ffffff; background-color: #006699; text-decoration:none;} 
+   	  	#services	td.selected {padding: 2px; border: 1px dashed #069; text-decoration:none; font-size: 16px; color: #006699;} 
+  </style>
+  <script type="text/javascript" id="_fed_an_ua_tag"
+           src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC">
+  </script>
+  <script type="text/javascript"
+      src="https://code.jquery.com/jquery-3.5.1.min.js">
+  </script>
+  <script type="text/javascript" src="../WebServices.js">
+  </script>
+-->
+</head>
+<!--
+<body alink="#000088" bgcolor="#ffffff" link="#0000ff" text="#000000"
+ vlink="#ff0000">
+<div id="paper">
+-->
+<!--#include virtual="../../header.html"-->
+<h1>JSON with the SSC RESTful Web Services</h1>
+
+<h2>Introduction</h2>
+<p>
+The following contains additional information concerning the use of
+<a href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a>
+with the <a href="..">SSC web services</a>.
+</p>
+
+<h2>Target Audience</h2>
+<p>
+This document assumes that the reader is familar with the 
+<a href="..">SSC web services</a> and
+<a href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a>.
+</p>
+
+<h2>Overview</h2>
+<p>
+The official interface to the SSC web services is defined by this
+<a href="..">page</a> and <a href="../SSC.xsd" target="_blank">this</a>
+<a href="https://en.wikipedia.org/wiki/XML_schema" target="_blank">
+XML schema</a>.  This is a well defined interface and every effort is made
+to maintain backward compatibility in future releases.  Client developers
+who want maximum stability should use XML to interface with the SSC web
+services.  However, JSON is supported as an alternative.  Anyone choosing
+to use JSON should realize that <i>it is less stable and may change in the
+future</i>.  There are also some limitations and peculiarities that a client
+developer must be aware of.  The rest of this document describes these
+issues and contains some working examples of using JSON with the SSC web
+services.
+</p>
+
+<!--
+<h3><a name="Limitations"></a>Limitations</h3>
+<p>
+The following are limitations when using JSON which are not present
+when using XML:
+<ul>
+  <li>It is not possible to request magnetic field line tracing.  That is,
+      a <code>DataRequest</code> cannot include 
+        <code>DataRequest/OutputOptions/BFieldTraceOptions</code>
+      (<code>{"OutputOptions": {"BfieldTraceOptions": ...</code>).  If a
+      client needs magnetic field line tracing, they must use XML to make
+      the request.</li>
+</ul>
+</p>
+-->
+
+<h3><a name="Peculiarities"></a>Peculiarities</h3>
+<p>
+There are many detailed formatting issue with a JSON request that a client
+must follow.  The details generally have to do with additional typing
+information that must be included in the JSON.  For example, see the 
+<code>[ "gov.nasa.gsfc.sscweb.schema.DataRequest, ...]"</code>
+and <code>"java.util.ArrayList"</code> fields in the following JSON fragment:
+<pre>
+[
+  "gov.nasa.gsfc.sscweb.schema.DataRequest",
+  {
+    "Description": "Complex locator request with nearly all options.",
+    "TimeInterval": [
+      "gov.nasa.gsfc.sscweb.schema.TimeInterval",
+      {
+        "Start": [
+          "javax.xml.datatype.XMLGregorianCalendar",
+          "2008-01-02T11:00:00.000+00:00"
+        ],
+        "End": [
+          "javax.xml.datatype.XMLGregorianCalendar",
+          "2008-01-02T11:59:59.000+00:00"
+        ]
+      }
+    ],
+    "Satellites": [
+      "java.util.ArrayList",
+      [
+        [
+          "gov.nasa.gsfc.sscweb.schema.SatelliteSpecification",
+          {
+            "Id": "themisa",
+            "ResolutionFactor": 2
+          }
+        ],
+   ...
+</pre>
+</p>
+<p>
+The easiest way to determine what a JSON request should be is to POST the
+equivalent XML request to <code>/echoDataRequest</code>, 
+<code>/echoGraphRequest</code>, or <code>/echoQueryRequest</code> and
+request JSON for the response.  For example, if you create an XML 
+<code>DataRequest</code> in a file named <code>dataRequest.xml</code>.  Then
+do
+<pre>
+$ curl -H "Content-Type: application/xml" -H "Accept: application/json" \
+    --data-ascii @dataRequest.xml \
+    http://sscweb.gsfc.nasa.gov/WS/sscr/2/echoDataRequest \
+    | python -mjson.tool > dataRequest.json
+
+</pre>
+<!--
+Next, edit <code>dataRequest.json</code> and change the
+<code>"java.util.GregorianCalendar"</code> field names in the 
+<code>"TimeInterval"</code> object to
+<code>"javax.xml.datatype.XMLGregorianCalendar"</code>.  Now,
+<code>dataRequest.json</code> contains a JSON request that can be used
+with the SSC web services.  Alternatively, you can examine the examples
+below.
+-->
+</p>
+
+<h3><a name="Examples"></a>Examples</h3>
+<p>
+The following section contains JSON examples of each type of SSC request.
+They illustrate how to use JSON to interact with the SSC web services.
+</p>
+
+<h4>Location Example</h4>
+<p>
+The following illustrates an SSC <code>/locations</code> request.
+The request entity body is
+</p>
+<iframe src="requests/themis2.json.txt" height="300" width="90%"></iframe>
+<p>and the response is</p>
+<iframe src="results/themis2.json.txt" height="300" width="90%"></iframe>
+<p></p>
+
+<h4>Graph Example</h4>
+<p>
+The following illustrates an SSC <code>/graphs</code> request.
+The request entity body is
+</p>
+<iframe src="requests/themisOrbitGraph.json.txt" height="300" width="90%"></iframe>
+<p>and the response is</p>
+<iframe src="results/themisOrbitGraph.json.txt" height="300" width="90%"></iframe>
+<p></p>
+
+<h4>Conjunction Example</h4>
+<p>
+The following illustrates an SSC <code>/conjuctions</code> request.
+The request entity body is
+</p>
+<iframe src="requests/barrel1a_rbsp.json.txt" height="300" width="90%"></iframe>
+<p>and the response is</p>
+<iframe src="results/barrel1a_rbsp.json.txt" height="300" width="90%"></iframe>
+<p></p>
+
+<h2>Questions/Comments</h2>
+<p>Questions or comments concerning these Web services should be sent
+to <a
+ href="mailto:NASA-SPDF-Support@nasa.gov?subject=SSC%20Web%20Service%0As%20Feedback">SSC
+Feedback</a>.</p>
+<!--#include virtual="/sscfooter.html"--> </div>
+</body>
+</html>
