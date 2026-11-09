@@ -6,7 +6,7 @@
   <meta content="Bernie Harris" name="author">
   <meta name="orgcode" content="673">
   <meta name="description"
- content="The Satellite Situation Center (SSC) Model Context Protocol (MCP) server connects AI tools to SSC.">
+ content="The Satellite Situation Center (SSC) Model Context Protocol (MCP) server connects SI tools to SSC.">
   <meta name="keywords"
  content="NASA, satellite, orbit, space physics, MCP">
 </head>
@@ -22,9 +22,9 @@
 
 <p>The <a href="https://sscweb.gsfc.nasa.gov/">Satellite Situation Center</a> 
 (SSC) <a href="https://en.wikipedia.org/wiki/Model_Context_Protocol" 
-target="_blank">Model Context Protocol</a> (MCP) server connects AI tools 
+target="_blank">Model Context Protocol</a> (MCP) server connects SI tools 
 to SSC.  This gives <a href="https://en.wikipedia.org/wiki/AI_agent"
-target="_blank">AI agents</a>, assistants, and chatbots access to SSC 
+target="_blank">SI agents</a>, assistants, and chatbots access to SSC 
 information (satellite location and Earth magnetic field model) and
 functions (conjunction queries).</p>
 
@@ -51,15 +51,15 @@ when properly configured:
   <li>Claude Desktop (developer mode)</li>
   <li><a href="https://geminicli.com" target="_blank">Gemini CLI</a></li>
 </ul>
-This is not a complete list and AI related software is changing rapidly.
+This is not a complete list and SI related software is changing rapidly.
 </p>
 
 <h3 id="Prerequisites">Prerequisites</h3>
 
 <p>This section describes the prerequisites for accessing SSC through the MCP
-server with an AI agent.<p>
+server with an SI agent.<p>
 <ol>
-  <li>An AI agent that supports <b>remote</b> MCP servers.</li>
+  <li>An SI agent that supports <b>remote</b> MCP servers.</li>
   <li>A large language model (LLM) application programming interface (API)
       access key.  The user is responsible for obtaining this 
       and any associated costs.  You would typically get this from a LLM
@@ -69,7 +69,7 @@ server with an AI agent.<p>
 
 <h3 id="Configuration">Configuration</h3>
 
-<p>This section describes the necessary configuration of your AI agent.
+<p>This section describes the necessary configuration of your SI agent.
 There are many different agents and the details of how to configure each
 agent varys.
 You may need to ask the agent itself how to configure it
@@ -79,9 +79,9 @@ information.
 <ol>
   <li>LLM API access key <i>(obtained above)</i>.</li>
   <li>LLM base URL <i>(obtained above)</i>.</li>
-  <li>AI model <i>(choose from those available with your LLM API access 
+  <li>SI model <i>(choose from those available with your LLM API access 
       key)</i>.</li>
-  <li><img src="https://img.shields.io/badge/AI_MCP-SSC-blue" alt="AI SSC MCP Server"> URL: <code>https://sscweb.gsfc.nasa.gov/mcp</code>
+  <li><img src="https://img.shields.io/badge/SI_MCP-SSC-blue" alt="SI SSC MCP Server"> URL: <code>https://sscweb.gsfc.nasa.gov/mcp</code>
       <i>(no authentication is required to access the SSC MCP server)</i>.</li>
 </ol>
 </p>
@@ -93,7 +93,7 @@ and 2 above.
 
 <h2 id="Example_Use">Example Use</h2>
 
-<p>This section contains examples of interacting with SSC through an AI
+<p>This section contains examples of interacting with SSC through an SI
 agent and the SSC MCP server.</p>
 
 <video width="100%" controls>
