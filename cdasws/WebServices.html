@@ -9,7 +9,7 @@
 -->
   <title>CDAS RESTful Web Services</title>
   <meta content="Bernie Harris" name="author">
-  <meta name="orgcode" content="672">
+  <meta name="orgcode" content="673">
   <meta name="description"
  content="The CDAS Web services allow a software developer to use CDAS services in their own application...">
   <meta name="keywords"
@@ -130,93 +130,168 @@ these do not meet your needs, you may be interested the
           </div>
         </li>
         <li id="Jupyter_Notebook_Examples">
-<!-- Use
-    binder.org (and static.binder.org for badge) OR
-    binder.opensci.2i2c.cloud
-    in this notebook section and CSP above
- -->
-          <div style="display: flex">Jupyter Notebook Examples:&nbsp;
-            <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main"
+          <img alt="Jupyter" width="50px" height="auto"  
+              style="vertical-align: middle"
+              src="jupyter_app_icon_161280.svg"></img>Jupyter Notebook Examples
+          <ul>
+            <li>Installation of the 
+              <a href="https://jupyter.org/" target="_blank">
+              Jupyter Notebook</a> software is only required if 
+              using the source notebook files (.ipynb) below.
+            </li>
+            <li>All example notebooks in the cloud
+              <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main"
                target="_blank">
               <img alt="launch binder"
                   src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
-            </a>
-          </div>
-          <ul>
-            <li id="CdasWsDataRetrieval">
-                <a href="jupyter/CdasWsDataRetrieval.html" target="_blank">
-                Data Retrieval</a> into SpacePy DataModel, xarray.Dataset, and Pandas DataFrame
-                 (<a href="jupyter/CdasWsDataRetrieval.ipynb" download>ipynb file</a>).
+              </a>
+            </li>
+<!--
+            <li>All example notebooks in JupyterLite
+              <a href="https://berniegsfc.github.io/jupyterlite/" target="_blank">
+              <img alt="launch Jupyter Lite"
+                  src="https://img.shields.io/badge/Launch-JupyterLite-blue"></img>
+              </a>
+            </li>
+-->
+          </ul>
+          <div>
+          <table border="1" cellpadding="2" cellspacing="2">
+            <tr>
+              <th>Notebook (static)</th>
+              <th>Source File</th>
+              <th>Cloud Version (interactive)</th>
+<!--
+              <th>JupyterLite Version (interactive)</ht></tr>
+-->
+            </tr>
+            <tr id="CdasWsDataRetrieval">
+              <td><a href="jupyter/CdasWsDataRetrieval.html" target="_blank">
+                Data Retrieval</a> with SpacePy DataModel, xarray.Dataset, and Pandas DataFrame results
+              <td><a href="jupyter/CdasWsDataRetrieval.ipynb" download>CdasWsDataRetrieval.ipynb</a>
+              </td>
+              <td>
                 <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsDataRetrieval.ipynb"
                     target="_blank">
                   <img alt="launch binder"
                        src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
                 </a>
-            </li>
-            <li id="CdasWsBinningExample">
-                <a href="jupyter/CdasWsBinningExample.html" target="_blank">
-                CDAWeb Binning Example</a> (with SpacePy DataModel results)
-                 (<a href="jupyter/CdasWsBinningExample.ipynb" download>ipynb file</a>).
+              </td>
+<!--
+              <td>
+              </td>
+-->
+            </tr>
+            <tr id="CdasWsBinningExample">
+              <td><a href="jupyter/CdasWsBinningExample.html" target="_blank">
+                CDAWeb Binning Example</a> with SpacePy DataModel results
+              </td>
+              <td><a href="jupyter/CdasWsBinningExample.ipynb" download>CdasWebBinningExample.ipynb file</a>
+              </td>
+              <td>
                 <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsBinningExample.ipynb"
                     target="_blank">
                   <img alt="launch binder"
                        src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
                 </a>
-            </li>
-            <li id="CdasWsNetCdfExample">
-                <a href="jupyter/CdasWsNetCdfExample.html" target="_blank">
-                NetCDF Example</a> (with xarray.Dataset results)
-                 (<a href="jupyter/CdasWsNetCdfExample.ipynb" download>ipynb file</a>).
-                <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsNetCdfExample.ipynb"
+              </td>
+<!--
+              <td>
+              </td>
+-->
+            </tr>
+            <tr id="CdasWsNetCdfExample">
+              <td><a href="jupyter/CdasWsNetCdfExample.html" target="_blank">
+                NetCDF Example</a> with xarray.Dataset results
+              </td>
+              <td><a href="jupyter/CdasWsNetCdfExample.ipynb" download>CdasWsNetCdfExample.ipynb</a>
+              </td>
+              <td><a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsNetCdfExample.ipynb"
                     target="_blank">
                   <img alt="launch binder"
                        src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
                 </a>
-            </li>
-            <li id="CdasWsGraphExample">
-                <a href="jupyter/CdasWsGraphExample.html" target="_blank">
+              </td>
+<!--
+              <td>
+              </td>
+-->
+            </tr>
+            <tr id="CdasWsGraphExample">
+              <td><a href="jupyter/CdasWsGraphExample.html" target="_blank">
                 CDAWlib Graph Example</a> 
-                 (<a href="jupyter/CdasWsGraphExample.ipynb" download>ipynb file</a>).
-                <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsGraphExample.ipynb"
+              </td>
+              <td><a href="jupyter/CdasWsGraphExample.ipynb" download>CdasWsGraphExample.ipynb</a>
+              </td>
+              <td><a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsGraphExample.ipynb"
                     target="_blank">
                   <img alt="launch binder"
                        src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
                 </a>
-            </li>
-            <li id="CdasWsAudioExample">
-                <a href="jupyter/CdasWsAudioExample.html" target="_blank">
+              </td>
+<!--
+              <td>
+              </td>
+-->
+            </tr>
+            <tr id="CdasWsAudioExample">
+              <td><a href="jupyter/CdasWsAudioExample.html" target="_blank">
                 CDAWlib Audio Example</a> 
-                 (<a href="jupyter/CdasWsAudioExample.ipynb" download>ipynb file</a>).
-                <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsAudioExample.ipynb"
+              </td>
+              <td><a href="jupyter/CdasWsAudioExample.ipynb" download>CdasWsAudioExample.ipynb</a>
+              </td>
+              <td><a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/cdasws-notebooks/main?labpath=CdasWsAudioExample.ipynb"
                     target="_blank">
                   <img alt="launch binder"
                        src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
                 </a>
-            </li>
-            <li id="SscWsConjunctionExample">
-                <a href="https://berniegsfc.github.io/sscws/REST/jupyter/SscWsConjunctionExample.html#Setup-For-Access-To-CDAWeb-Data"
+              </td>
+<!--
+              <td>
+              </td>
+-->
+            </tr>
+            <tr id="SscWsConjunctionExample">
+              <td><a href="https://berniegsfc.github.io/sscws/REST/jupyter/SscWsConjunctionExample.html#Setup-For-Access-To-CDAWeb-Data"
                    target="_blank">Magnetic Field Line Conjunction Example</a>
-                (<a href="https://berniegsfc.github.io/sscws/REST/jupyter/SscWsConjunctionExample.ipynb" download>ipynb file</a>)
                 with related data retrieval/plotting using cdasws.
-                <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/sscws-notebooks/main?labpath=SscWsConjunctionExample.ipynb"
+              </td>
+              <td><a href="https://berniegsfc.github.io/sscws/REST/jupyter/SscWsConjunctionExample.ipynb" download>SscWsConjunctionExample.ipynb</a>
+              </td>
+              <td><a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/sscws-notebooks/main?labpath=SscWsConjunctionExample.ipynb"
                    target="_blank">
                   <img alt="launch binder"
                     src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
                 </a>
-            </li>
-            <li id="HdpWsExampleWithCdasWs">
-              <a href="https://heliophysicsdata.gsfc.nasa.gov/WebServices/jupyter/HdpWsExampleWithCdasWs.html" 
+              </td>
+<!--
+              <td>
+              </td>
+-->
+            </tr>
+            <tr id="HdpWsExampleWithCdasWs">
+              <td><a href="https://heliophysicsdata.gsfc.nasa.gov/WebServices/jupyter/HdpWsExampleWithCdasWs.html" 
                  target="_blank">Example of finding the data</a> with
               <a href="https://heliophysicsdata.gsfc.nasa.gov/WebServices/" 
                  target="_blank">hdpws</a> 
-             (<a href="https://heliophysicsdata.gsfc.nasa.gov/WebServices/jupyter/HdpWsExampleWithCdasWs.ipynb" download>ipynb file</a>)
               and then retrieving the data with cdasws.
+              </td>
+              <td><a href="https://heliophysicsdata.gsfc.nasa.gov/WebServices/jupyter/HdpWsExampleWithCdasWs.ipynb" download>HdpWsExampleWithCdasWs.ipynb</a>
+              </td>
+              <td>
               <a href="https://binder.opensci.2i2c.cloud/v2/gh/berniegsfc/hdpws-notebooks/main?labpath=HdpWsExampleWithCdasWs.ipynb"
              target="_blank">
                 <img alt="launch binder"
                   src="https://binder.opensci.2i2c.cloud/badge_logo.svg"></img>
               </a>
-            </li>
+              </td>
+<!--
+              <td>
+              </td>
+-->
+            </tr>
+          </table>
+          </div>
           </ul>
         </li>
         <li id="heliocloud">
