@@ -22,7 +22,7 @@
  *
  * NOSA HEADER END
  *
- * Copyright (c) 2017 United States Government as represented by
+ * Copyright (c) 2017-2026 United States Government as represented by
  * the National Aeronautics and Space Administration. No copyright is
  * claimed in the United States under Title 17, U.S.Code. All Other
  * Rights Reserved.
@@ -30,7 +30,7 @@
  */
 "use strict";
 
-var cdasUrl = "/WS/cdasr/1/dataviews/sp_phys";
+var cdasUrl = "https://cdaweb.gsfc.nasa.gov/WS/cdasr/1/dataviews/sp_phys";
 
 
 function ajaxFail (jqxhr, textStatus, errorThrown) {
